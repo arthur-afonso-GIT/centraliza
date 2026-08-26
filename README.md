@@ -3,7 +3,7 @@
 
    Sistema centralizado para gerenciar, acompanhar e monitorar demandas recebidas pela Vigilância em Saúde do Trabalhador (VISAT).
 
-- PROBLEMA
+PROBLEMA
 
    A VISAT recebe constantemente solicitações de órgãos como:
 
@@ -15,13 +15,13 @@
 
    Atualmente, a falta de uma plataforma centralizada dificulta o controle das demandas, acompanhamento das inspeções, gestão de prazos e registro das respostas.
 
-- SOLUCÃO
+SOLUCÃO
 
    Desenvolver um sistema único para acompanhar todo o ciclo da demanda:
 
    Recebimento → Análise → Inspeção → Parecer/Relatório → Resposta → Encerramento
 
-- PRINCIPAIS FUNCIONALIDADES
+PRINCIPAIS FUNCIONALIDADES
 
  * Cadastro e classificação de demandas;
  * Distribuição para os responsáveis;
@@ -32,23 +32,23 @@
  * Dashboard e indicadores;
  * Histórico e rastreabilidade das demandas.
 
-- OBJETIVO
+OBJETIVO
 
    Centralizar as informações e melhorar a organização, eficiência, transparência e capacidade de resposta da Vigilância em Saúde do Trabalhador.
 
-- TECNOLOGIAS
+TECNOLOGIAS
 
  * Python
  * GitHub
 
-- FERRAMENTAS ADICIONAIS
+FERRAMENTAS ADICIONAIS
 
  * ChatGPT
  * Claude
  * Notion
  * Figma
 
-- ROADMAP
+ROADMAP
 
  * Levantamento de requisitos
  * Modelagem do sistema
@@ -59,7 +59,7 @@
  * Dashboard e indicadores
  * Testes e implantação
 
-- PAPEL DE CADA INTEGRANTE
+PAPEL DE CADA INTEGRANTE
 
  * Antônio Marcos Soares de Araujo Filho: Desenvolvedor
  * Arthur Florêncio Afonso de Albuquerque: Arquiteto de soluções
