@@ -69,6 +69,14 @@ PAPEL DE CADA INTEGRANTE
  * Silvio Ronaldo de Lima Lobo Filho: Product 
  * Victor Bacelar Palazzin: Pesquisador de UX
 
+HISTORIAS DO USUÁRIO
+
+  https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing 
+
+BACKLOG 
+
+  https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing
+
 ⸻
 
 Uma solução para centralizar demandas, acompanhar ações e fortalecer a gestão da Saúde do Trabalhador.
