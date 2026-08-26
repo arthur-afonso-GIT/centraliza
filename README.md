@@ -61,13 +61,13 @@
 
 - PAPEL DE CADA INTEGRANTE
 
- *Antônio Marcos Soares de Araujo Filho: Desenvolvedor
- *Arthur Florêncio Afonso de Albuquerque: Arquiteto de soluções
- *Cecília de Moraes Andrade Oliveira: UX designer
- *Lívia Cabral da Mata Buonora: Gerente de projetos
- *Luiza Beltrão Pereira de Melo: Pesquisadora
- *Silvio Ronaldo de Lima Lobo Filho: Product 
- *Victor Bacelar Palazzin: Pesquisador de UX
+ * Antônio Marcos Soares de Araujo Filho: Desenvolvedor
+ * Arthur Florêncio Afonso de Albuquerque: Arquiteto de soluções
+ * Cecília de Moraes Andrade Oliveira: UX designer
+ * Lívia Cabral da Mata Buonora: Gerente de projetos
+ * Luiza Beltrão Pereira de Melo: Pesquisadora
+ * Silvio Ronaldo de Lima Lobo Filho: Product 
+ * Victor Bacelar Palazzin: Pesquisador de UX
 
 ⸻
 
