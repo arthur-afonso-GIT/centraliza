@@ -69,7 +69,7 @@ PAPEL DE CADA INTEGRANTE
  * Silvio Ronaldo de Lima Lobo Filho: Product 
  * Victor Bacelar Palazzin: Pesquisador de UX
 
-HISTORIAS DO USUÁRIO
+HISTÓRIAS DO USUÁRIO
 
   https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing 
 
