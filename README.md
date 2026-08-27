@@ -66,13 +66,13 @@ Centralize information to improve the organization, efficiency, transparency, an
 
 | Member | Role | Contact |
 | --- | --- | --- |
-| Antônio Marcos Soares de Araujo Filho | Developer | — |
+| Antônio Marcos Soares de Araujo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/antonio-m-29aa4a3b0/) |
 | Arthur Florêncio Afonso de Albuquerque | Solutions Architect | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
-| Cecília de Moraes Andrade Oliveira | UX Designer | — |
-| Lívia Cabral da Mata Buonora | Project Manager | — |
-| Luiza Beltrão Pereira de Melo | Researcher | — |
-| Silvio Ronaldo de Lima Lobo Filho | Product | — |
-| Victor Bacelar Palazzin | UX Researcher | — |
+| Cecília de Moraes Andrade Oliveira | UX Designer | [LinkedIn](https://www.linkedin.com/in/ceciliademoraesa) |
+| Lívia Cabral da Mata Buonora | Project Manager | [LinkedIn](https://www.linkedin.com/in/l%C3%ADvia-buonora-381294365/) |
+| Luiza Beltrão Pereira de Melo | Researcher | [LinkedIn](https://www.linkedin.com/in/luiza-beltr%C3%A3o-pereira-de-melo/) |
+| Silvio Ronaldo de Lima Lobo Filho | Product | [LinkedIn](https://www.linkedin.com/in/silvio-lobo-a836b6393/) |
+| Victor Bacelar Palazzin | UX Researcher | [LinkedIn](https://www.linkedin.com/in/victor-bacelar-palazzin-a444a23b0/) |
 
 ---
 
