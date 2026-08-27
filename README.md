@@ -1,82 +1,79 @@
-# centraliza
----SISTEMA DE GESTÃO DE DEMANDAS — VIGILÂNCIA EM SAÚDE DO TRABALHADOR
+# Centraliza
 
-   Sistema centralizado para gerenciar, acompanhar e monitorar demandas recebidas pela Vigilância em Saúde do Trabalhador (VISAT).
+<p align="center">
+  <strong>Occupational Health Surveillance Request Management System</strong><br>
+  A proposal to centralize requests, track actions, and strengthen Occupational Health management.
+</p>
 
-PROBLEMA
+---
 
-   A VISAT recebe constantemente solicitações de órgãos como:
+## Overview
 
-* Ministério Público do Trabalho (MPT);
-* Tribunal Regional do Trabalho (TRT);
-* Conselhos de Saúde;
-* Sindicatos;
-* Outros órgãos e instituições.
+Centraliza is a system project designed to manage, track, and monitor requests received by Occupational Health Surveillance (VISAT).
 
-   Atualmente, a falta de uma plataforma centralizada dificulta o controle das demandas, acompanhamento das inspeções, gestão de prazos e registro das respostas.
+The proposal is to bring together, in a single environment, the information required to track the entire lifecycle of a request, from receipt to closure.
 
-SOLUCÃO
+## Context
 
-   Desenvolver um sistema único para acompanhar todo o ciclo da demanda:
+VISAT receives requests from different agencies and institutions, including:
 
-   Recebimento → Análise → Inspeção → Parecer/Relatório → Resposta → Encerramento
+- the Public Labor Prosecutor's Office (MPT);
+- the Regional Labor Court (TRT);
+- health councils;
+- labor unions;
+- other agencies and institutions.
 
-PRINCIPAIS FUNCIONALIDADES
+Without a centralized platform, managing requests, tracking inspections, monitoring deadlines, and recording responses becomes more difficult.
 
- * Cadastro e classificação de demandas;
- * Distribuição para os responsáveis;
- * Gerenciamento de inspeções;
- * Registro de pareceres e relatórios;
- * Controle das respostas às instituições;
- * Acompanhamento de prazos;
- * Dashboard e indicadores;
- * Histórico e rastreabilidade das demandas.
+## Proposed workflow
 
-OBJETIVO
+```text
+Receipt → Analysis → Inspection → Opinion or report → Response → Closure
+```
 
-   Centralizar as informações e melhorar a organização, eficiência, transparência e capacidade de resposta da Vigilância em Saúde do Trabalhador.
+## Planned features
 
-TECNOLOGIAS
+- **Request registration and classification** — record and organize incoming requests.
+- **Assignment of responsibilities** — assign requests to the people responsible for handling them.
+- **Inspection management** — track inspection activities related to each request.
+- **Opinions and reports** — record documents produced while handling a request.
+- **Response management** — track responses sent to requesting institutions.
+- **Deadline management** — monitor deadlines associated with requests.
+- **Dashboard and indicators** — provide a consolidated view for management monitoring.
+- **History and traceability** — record the progress of each request throughout its lifecycle.
 
- * Python
- * GitHub
+## Objective
 
-FERRAMENTAS ADICIONAIS
+Centralize information to improve the organization, efficiency, transparency, and responsiveness of Occupational Health Surveillance.
 
- * ChatGPT
- * Claude
- * Notion
- * Figma
+## Roadmap
 
-ROADMAP
+- [ ] Requirements gathering
+- [ ] System modeling
+- [ ] Request registration and management
+- [ ] Inspection management
+- [ ] Document and opinion management
+- [ ] Response management
+- [ ] Dashboard and indicators
+- [ ] Testing and deployment
 
- * Levantamento de requisitos
- * Modelagem do sistema
- * Cadastro e gerenciamento de demandas
- * Gestão de inspeções
- * Gestão de documentos e pareceres
- * Controle de respostas
- * Dashboard e indicadores
- * Testes e implantação
+## Project documentation
 
-PAPEL DE CADA INTEGRANTE
+- [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing)
+- [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing)
 
- * Antônio Marcos Soares de Araujo Filho: Desenvolvedor
- * Arthur Florêncio Afonso de Albuquerque: Arquiteto de soluções
- * Cecília de Moraes Andrade Oliveira: UX designer
- * Lívia Cabral da Mata Buonora: Gerente de projetos
- * Luiza Beltrão Pereira de Melo: Pesquisadora
- * Silvio Ronaldo de Lima Lobo Filho: Product 
- * Victor Bacelar Palazzin: Pesquisador de UX
+## Team
 
-HISTÓRIAS DO USUÁRIO
+| Member | Role | Contact |
+| --- | --- | --- |
+| Antônio Marcos Soares de Araujo Filho | Developer | — |
+| Arthur Florêncio Afonso de Albuquerque | Solutions Architect | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
+| Cecília de Moraes Andrade Oliveira | UX Designer | — |
+| Lívia Cabral da Mata Buonora | Project Manager | — |
+| Luiza Beltrão Pereira de Melo | Researcher | — |
+| Silvio Ronaldo de Lima Lobo Filho | Product | — |
+| Victor Bacelar Palazzin | UX Researcher | — |
 
-  https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing 
+---
 
-BACKLOG 
-
-  https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing
-
-⸻
-
-Uma solução para centralizar demandas, acompanhar ações e fortalecer a gestão da Saúde do Trabalhador.
+> The repository does not yet contain code or configuration files that would allow the project's technologies, architecture, installation, or execution to be documented reliably.
