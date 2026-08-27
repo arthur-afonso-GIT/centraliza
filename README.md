@@ -1,6 +1,10 @@
 # Centraliza
 
 <p align="center">
+  <img src="assets/centraliza-logo.png" alt="Centraliza VISAT logo" width="450">
+</p>
+
+<p align="center">
   <strong>Occupational Health Surveillance Request Management System</strong><br>
   A proposal to centralize requests, track actions, and strengthen Occupational Health management.
 </p>
