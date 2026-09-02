@@ -63,6 +63,7 @@ Centralize information to improve the organization, efficiency, transparency, an
 
 ## Project documentation
 
+- [Project website (Google Sites)](https://sites.google.com/d/1Gl2q-D5mBjyQXdf7TQzvZGixE2KBdlAt/p/1n2VHQyZPKBafgjNYSRll-f1jiF31qBa8/edit)
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing)
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing)
 
