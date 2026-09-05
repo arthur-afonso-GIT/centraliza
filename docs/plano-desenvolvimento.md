@@ -27,6 +27,12 @@ Sem datas atribuídas: ajustar com a equipe após a revisão da semana 1.
 
 ## Processo por tarefa
 
+O README segue a organização por produto do
+[Prontu](https://github.com/arthur-afonso-GIT/Prontu/blob/main/README.md): visão geral,
+funcionalidades, perfis, documentação, capturas, tecnologias, arquitetura,
+execução e equipe. Não organizar o README por semanas ou entregas cronológicas;
+manter esse acompanhamento no plano. Distinguir recursos disponíveis e planejados.
+
 1. Consultar o grafo e os arquivos envolvidos.
 2. Implementar uma mudança com escopo claro.
 3. Validar tipos, lint, build e testes pertinentes.
