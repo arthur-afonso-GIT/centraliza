@@ -5,11 +5,13 @@ for (const width of [390, 1366]) {
   test(`acessibilidade e largura das páginas em ${width}px`, async ({
     page,
   }, testInfo) => {
+    // A primeira compilação local pode demorar mais em máquinas Windows.
+    test.setTimeout(60_000);
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/login');
     await expect(
       page.getByRole('button', { name: 'Entrar como Gestor' }),
-    ).toBeVisible();
+    ).toBeVisible({ timeout: 15_000 });
     for (const route of [
       '/login',
       '/',

@@ -2219,6 +2219,24 @@
       "_origin": "ast"
     },
     {
+      "id": "docs_paleta_visual",
+      "label": "paleta-visual.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/paleta-visual.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_paleta_visual_paleta_visual_centraliza_visat",
+      "label": "Paleta visual — Centraliza VISAT",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/paleta-visual.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "docs_plano_desenvolvimento",
       "label": "plano-desenvolvimento.md",
       "file_type": "document",
@@ -2251,7 +2269,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast"
     },
     {
@@ -2260,7 +2278,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast"
     },
     {
@@ -2269,7 +2287,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L36",
+      "source_location": "L37",
       "_origin": "ast"
     },
     {
@@ -2278,7 +2296,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L54",
+      "source_location": "L55",
       "_origin": "ast"
     },
     {
@@ -2287,7 +2305,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L71",
+      "source_location": "L73",
       "_origin": "ast"
     },
     {
@@ -5589,6 +5607,16 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_paleta_visual",
+      "target": "docs_paleta_visual_paleta_visual_centraliza_visat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/paleta-visual.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_plano_desenvolvimento",
       "target": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
       "relation": "contains",
@@ -5614,7 +5642,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5624,7 +5652,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5634,7 +5662,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5644,7 +5672,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5654,7 +5682,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5664,7 +5692,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L69",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5674,7 +5702,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L71",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },

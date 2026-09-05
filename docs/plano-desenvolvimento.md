@@ -9,6 +9,7 @@
 | S1-03 — Mapa e documentação | Concluída | Graphify atualizado, instruções de execução e histórico das tarefas registrados |
 | S1-04 — Acessibilidade da navegação | Concluída | Contraste corrigido, foco acompanha a navegação e títulos identificam as páginas; sete testes aprovados |
 | S1-05 — Revisão final da semana 1 | Concluída | 12 testes aprovados, capturas revisadas e checklist técnico atualizado; aceitação da equipe pendente |
+| S1-06 — Paleta da identidade visual | Concluída | Vermelho, grafite e branco aplicados; contraste e foco validados em celular e desktop |
 
 O escopo detalhado e o roteiro de revisão estão em [semana-1.md](semana-1.md).
 A demonstração usa perfis fictícios: não é a autenticação definitiva da VISAT.
