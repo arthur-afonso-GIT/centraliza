@@ -103,10 +103,16 @@ Os módulos ainda não executam operações reais.
 ### Organização
 
 - `frontend/app`: rotas e páginas de erro.
-- `frontend/components/workspace.tsx`: layout, navegação e páginas iniciais.
+- `frontend/components/workspace.tsx`: coordenação dos estados da aplicação.
+- `frontend/components/workspace-layout.tsx`: layout e menu responsivo.
+- `frontend/components/login-screen.tsx`: seleção do perfil de demonstração.
+- `frontend/components/module-content.tsx`: conteúdo inicial dos módulos.
+- `frontend/hooks/use-session.ts`: entrada, saída, carregamento e recuperação da sessão.
+- `frontend/lib/navigation.ts`: configuração dos itens do menu.
 - `frontend/lib/auth.ts`: adaptador de sessão fictícia, a substituir pela API.
 - `frontend/tests`: testes de navegação com Playwright.
 - [Plano, contrato da API e checklist](docs/semana-1.md).
+- [Tarefas, processo de commits e uso do Graphify](docs/plano-desenvolvimento.md).
 
 O front-end usa React e TypeScript com Vinext/Vite, a partir do starter Sites.
 O starter inclui componentes shadcn para uso futuro; seus arquivos gerados
@@ -119,9 +125,9 @@ permite integrar esse back-end depois, sem depender da hospedagem de demonstraç
 
 ```powershell
 npm run build
-npx tsc --noEmit
+npm run typecheck
 npm run lint
-npx playwright test
+npm test
 ```
 
 Os testes usam Microsoft Edge instalado. Em outro ambiente, ajuste `channel`
@@ -130,3 +136,10 @@ no `playwright.config.ts` ou instale o navegador do Playwright.
 Autenticação mock e controle de rotas do navegador não protegem dados reais.
 Antes do uso institucional: implementar autenticação e permissões na API,
 revisar dependências, conectar o banco e validar requisitos com a equipe VISAT.
+
+### Mapa do código
+
+O grafo local do Graphify está em `graphify-out/graph.json`. Para atualizar
+após alterações de código, execute `graphify update . --no-cluster` na raiz.
+Consulte `graphify explain Workspace` ou `graphify affected useSession` antes
+de modificar esses componentes. A extração usa somente AST local.

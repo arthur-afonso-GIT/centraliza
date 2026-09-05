@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | S1-01 — Base de navegação | Concluída | Cinco módulos, sessão fictícia, menu responsivo e quatro testes de navegador aprovados |
 | S1-02 — Organização do código | Concluída | Sessão, navegação e conteúdo separados; fluxos existentes preservados |
-| S1-03 — Mapa e documentação | Em andamento | Atualizar Graphify, instruções de execução e histórico das tarefas |
+| S1-03 — Mapa e documentação | Concluída | Graphify atualizado, instruções de execução e histórico das tarefas registrados |
 
 O escopo detalhado e o roteiro de revisão estão em [semana-1.md](semana-1.md).
 A demonstração usa perfis fictícios: não é a autenticação definitiva da VISAT.
@@ -56,3 +56,14 @@ manualmente e a interface precisa de validação própria.
 - S1-02: sessão em `useSession`, menu em `lib/navigation`, telas e layout em
   componentes separados. Build, tipos, lint e quatro testes aprovados, incluindo
   voltar/avançar no navegador. Graphify atualizado: 279 nós e 314 relações.
+- S1-03: README alinhado à estrutura final, comandos de validação padronizados
+  e procedimento de consulta/atualização do Graphify documentado.
+
+## Commits das tarefas de implementação
+
+- `6827442` — feat: implementar navegação inicial do Centraliza VISAT.
+- `71a0820` — refactor: separar sessão, navegação e telas do Centraliza.
+
+O checklist manual da semana 1 permanece disponível para a revisão da equipe.
+A demonstração hospedada corresponde à entrega inicial; a reorganização
+posterior está no repositório local e não altera a aparência nem os fluxos.
