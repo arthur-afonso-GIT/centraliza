@@ -1,4 +1,7 @@
 {
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
   "nodes": [
     {
       "id": "frontend_oxfmtrc",
@@ -514,7 +517,7 @@
     },
     {
       "id": "frontend_app_module_page",
-      "label": "[module]/page.tsx",
+      "label": "page.tsx",
       "file_type": "code",
       "source_file": "frontend/app/[module]/page.tsx",
       "source_location": "L1",
@@ -590,7 +593,7 @@
     },
     {
       "id": "frontend_app_page",
-      "label": "app/page.tsx",
+      "label": "page.tsx",
       "file_type": "code",
       "source_file": "frontend/app/page.tsx",
       "source_location": "L1",
@@ -782,6 +785,57 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_components_login_screen",
+      "label": "login-screen.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_login_screen_loginscreen",
+      "label": "LoginScreen()",
+      "file_type": "code",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_module_content",
+      "label": "module-content.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_module_content_modulecontent",
+      "label": "ModuleContent()",
+      "file_type": "code",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_workspace_layout",
+      "label": "workspace-layout.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_workspace_layout_workspacelayout",
+      "label": "WorkspaceLayout()",
+      "file_type": "code",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_components_workspace",
       "label": "workspace.tsx",
       "file_type": "code",
@@ -790,37 +844,55 @@
       "_origin": "ast"
     },
     {
-      "id": "frontend_components_workspace_modules",
-      "label": "modules",
-      "file_type": "code",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L8",
-      "_origin": "ast"
-    },
-    {
       "id": "frontend_components_workspace_workspace",
       "label": "Workspace()",
       "file_type": "code",
       "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L16",
+      "source_location": "L8",
       "_callable": true,
       "_origin": "ast"
     },
     {
-      "id": "frontend_components_workspace_workspace_login",
+      "id": "frontend_hooks_use_session",
+      "label": "use-session.ts",
+      "file_type": "code",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_hooks_use_session_usesession",
+      "label": "useSession()",
+      "file_type": "code",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_hooks_use_session_usesession_login",
       "label": "login()",
       "file_type": "code",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L46",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L42",
       "_callable": true,
       "_origin": "ast"
     },
     {
-      "id": "frontend_components_workspace_workspace_logout",
+      "id": "frontend_hooks_use_session_usesession_logout",
       "label": "logout()",
       "file_type": "code",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L52",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L54",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_hooks_use_session_usesession_retry",
+      "label": "retry()",
+      "file_type": "code",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L67",
       "_callable": true,
       "_origin": "ast"
     },
@@ -885,6 +957,22 @@
       "source_file": "frontend/lib/auth.ts",
       "source_location": "L18",
       "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_navigation",
+      "label": "navigation.ts",
+      "file_type": "code",
+      "source_file": "frontend/lib/navigation.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_navigation_modules",
+      "label": "modules",
+      "file_type": "code",
+      "source_file": "frontend/lib/navigation.ts",
+      "source_location": "L9",
       "_origin": "ast"
     },
     {
@@ -977,11 +1065,27 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_package_scripts_test",
+      "label": "test",
+      "file_type": "code",
+      "source_file": "frontend/package.json",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_package_scripts_typecheck",
+      "label": "typecheck",
+      "file_type": "code",
+      "source_file": "frontend/package.json",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_package_scripts_dev",
       "label": "dev",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast"
     },
     {
@@ -989,7 +1093,7 @@
       "label": "build",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L10",
+      "source_location": "L12",
       "_origin": "ast"
     },
     {
@@ -997,7 +1101,7 @@
       "label": "start",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L11",
+      "source_location": "L13",
       "_origin": "ast"
     },
     {
@@ -1005,7 +1109,7 @@
       "label": "lint",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L12",
+      "source_location": "L14",
       "_origin": "ast"
     },
     {
@@ -1013,7 +1117,7 @@
       "label": "format",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L13",
+      "source_location": "L15",
       "_origin": "ast"
     },
     {
@@ -1021,7 +1125,7 @@
       "label": "dependencies",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L15",
+      "source_location": "L17",
       "_origin": "ast"
     },
     {
@@ -1029,7 +1133,7 @@
       "label": "@base-ui/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "_origin": "ast"
     },
     {
@@ -1037,7 +1141,7 @@
       "label": "@base-ui/react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "_origin": "ast"
     },
     {
@@ -1045,7 +1149,7 @@
       "label": "@shadcn/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L17",
+      "source_location": "L19",
       "_origin": "ast"
     },
     {
@@ -1053,7 +1157,7 @@
       "label": "@shadcn/react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L17",
+      "source_location": "L19",
       "_origin": "ast"
     },
     {
@@ -1061,7 +1165,7 @@
       "label": "class-variance-authority",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L18",
+      "source_location": "L20",
       "_origin": "ast"
     },
     {
@@ -1069,7 +1173,7 @@
       "label": "class-variance-authority",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L18",
+      "source_location": "L20",
       "_origin": "ast"
     },
     {
@@ -1077,7 +1181,7 @@
       "label": "clsx",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast"
     },
     {
@@ -1085,7 +1189,7 @@
       "label": "clsx",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast"
     },
     {
@@ -1093,7 +1197,7 @@
       "label": "cmdk",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast"
     },
     {
@@ -1101,7 +1205,7 @@
       "label": "cmdk",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast"
     },
     {
@@ -1109,7 +1213,7 @@
       "label": "date-fns",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast"
     },
     {
@@ -1117,7 +1221,7 @@
       "label": "date-fns",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast"
     },
     {
@@ -1125,7 +1229,7 @@
       "label": "embla-carousel-react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "_origin": "ast"
     },
     {
@@ -1133,7 +1237,7 @@
       "label": "embla-carousel-react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "_origin": "ast"
     },
     {
@@ -1141,7 +1245,7 @@
       "label": "input-otp",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L25",
       "_origin": "ast"
     },
     {
@@ -1149,7 +1253,7 @@
       "label": "input-otp",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L25",
       "_origin": "ast"
     },
     {
@@ -1157,7 +1261,7 @@
       "label": "lucide-react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L26",
       "_origin": "ast"
     },
     {
@@ -1165,7 +1269,7 @@
       "label": "lucide-react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L26",
       "_origin": "ast"
     },
     {
@@ -1173,7 +1277,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "_origin": "ast"
     },
     {
@@ -1181,7 +1285,7 @@
       "label": "react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "_origin": "ast"
     },
     {
@@ -1189,7 +1293,7 @@
       "label": "react-day-picker",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "_origin": "ast"
     },
     {
@@ -1197,7 +1301,7 @@
       "label": "react-day-picker",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "_origin": "ast"
     },
     {
@@ -1205,7 +1309,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast"
     },
     {
@@ -1213,7 +1317,7 @@
       "label": "react-dom",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast"
     },
     {
@@ -1221,7 +1325,7 @@
       "label": "react-resizable-panels",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "_origin": "ast"
     },
     {
@@ -1229,7 +1333,7 @@
       "label": "react-resizable-panels",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "_origin": "ast"
     },
     {
@@ -1237,7 +1341,7 @@
       "label": "react-server-dom-webpack",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "_origin": "ast"
     },
     {
@@ -1245,7 +1349,7 @@
       "label": "react-server-dom-webpack",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "_origin": "ast"
     },
     {
@@ -1253,7 +1357,7 @@
       "label": "recharts",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "_origin": "ast"
     },
     {
@@ -1261,7 +1365,7 @@
       "label": "recharts",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "_origin": "ast"
     },
     {
@@ -1269,7 +1373,7 @@
       "label": "shadcn",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "_origin": "ast"
     },
     {
@@ -1277,7 +1381,7 @@
       "label": "shadcn",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "_origin": "ast"
     },
     {
@@ -1285,7 +1389,7 @@
       "label": "tailwind-merge",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast"
     },
     {
@@ -1293,7 +1397,7 @@
       "label": "tailwind-merge",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "_origin": "ast"
     },
     {
@@ -1301,7 +1405,7 @@
       "label": "tw-animate-css",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast"
     },
     {
@@ -1309,7 +1413,7 @@
       "label": "tw-animate-css",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast"
     },
     {
@@ -1317,7 +1421,7 @@
       "label": "vinext",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "_origin": "ast"
     },
     {
@@ -1325,7 +1429,7 @@
       "label": "vinext",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "_origin": "ast"
     },
     {
@@ -1333,7 +1437,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "_origin": "ast"
     },
     {
@@ -1341,7 +1445,7 @@
       "label": "@cloudflare/vite-plugin",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast"
     },
     {
@@ -1349,7 +1453,7 @@
       "label": "@cloudflare/vite-plugin",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast"
     },
     {
@@ -1357,7 +1461,7 @@
       "label": "@cloudflare/workers-types",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "_origin": "ast"
     },
     {
@@ -1365,7 +1469,7 @@
       "label": "@cloudflare/workers-types",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "_origin": "ast"
     },
     {
@@ -1373,7 +1477,7 @@
       "label": "@openai/sites-vite-plugin",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "_origin": "ast"
     },
     {
@@ -1381,7 +1485,7 @@
       "label": "@openai/sites-vite-plugin",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "_origin": "ast"
     },
     {
@@ -1389,7 +1493,7 @@
       "label": "@playwright/test",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast"
     },
     {
@@ -1397,7 +1501,7 @@
       "label": "@playwright/test",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast"
     },
     {
@@ -1405,7 +1509,7 @@
       "label": "@tailwindcss/postcss",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "_origin": "ast"
     },
     {
@@ -1413,7 +1517,7 @@
       "label": "@tailwindcss/postcss",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "_origin": "ast"
     },
     {
@@ -1421,7 +1525,7 @@
       "label": "@types/node",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "_origin": "ast"
     },
     {
@@ -1429,7 +1533,7 @@
       "label": "@types/node",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "_origin": "ast"
     },
     {
@@ -1437,7 +1541,7 @@
       "label": "@types/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast"
     },
     {
@@ -1445,7 +1549,7 @@
       "label": "@types/react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast"
     },
     {
@@ -1453,7 +1557,7 @@
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "_origin": "ast"
     },
     {
@@ -1461,7 +1565,7 @@
       "label": "@types/react-dom",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "_origin": "ast"
     },
     {
@@ -1469,7 +1573,7 @@
       "label": "@vitejs/plugin-react",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "_origin": "ast"
     },
     {
@@ -1477,7 +1581,7 @@
       "label": "@vitejs/plugin-react",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "_origin": "ast"
     },
     {
@@ -1485,7 +1589,7 @@
       "label": "@vitejs/plugin-rsc",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L46",
+      "source_location": "L48",
       "_origin": "ast"
     },
     {
@@ -1493,7 +1597,7 @@
       "label": "@vitejs/plugin-rsc",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L46",
+      "source_location": "L48",
       "_origin": "ast"
     },
     {
@@ -1501,7 +1605,7 @@
       "label": "oxfmt",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "_origin": "ast"
     },
     {
@@ -1509,7 +1613,7 @@
       "label": "oxfmt",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "_origin": "ast"
     },
     {
@@ -1517,7 +1621,7 @@
       "label": "oxlint",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "_origin": "ast"
     },
     {
@@ -1525,7 +1629,7 @@
       "label": "oxlint",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "_origin": "ast"
     },
     {
@@ -1533,7 +1637,7 @@
       "label": "oxlint-tsgolint",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "_origin": "ast"
     },
     {
@@ -1541,7 +1645,7 @@
       "label": "oxlint-tsgolint",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "_origin": "ast"
     },
     {
@@ -1549,7 +1653,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "_origin": "ast"
     },
     {
@@ -1557,7 +1661,7 @@
       "label": "tailwindcss",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "_origin": "ast"
     },
     {
@@ -1565,7 +1669,7 @@
       "label": "typescript",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -1573,7 +1677,7 @@
       "label": "typescript",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -1581,7 +1685,7 @@
       "label": "vite",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L52",
+      "source_location": "L54",
       "_origin": "ast"
     },
     {
@@ -1589,7 +1693,7 @@
       "label": "vite",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L52",
+      "source_location": "L54",
       "_origin": "ast"
     },
     {
@@ -1597,7 +1701,7 @@
       "label": "wrangler",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L53",
+      "source_location": "L55",
       "_origin": "ast"
     },
     {
@@ -1605,7 +1709,7 @@
       "label": "wrangler",
       "file_type": "concept",
       "source_file": "frontend/package.json",
-      "source_location": "L53",
+      "source_location": "L55",
       "_origin": "ast"
     },
     {
@@ -1613,7 +1717,7 @@
       "label": "type",
       "file_type": "code",
       "source_file": "frontend/package.json",
-      "source_location": "L55",
+      "source_location": "L57",
       "_origin": "ast"
     },
     {
@@ -1637,7 +1741,7 @@
       "label": ".getItem()",
       "file_type": "code",
       "source_file": "frontend/tests/navigation.spec.ts",
-      "source_location": "L55",
+      "source_location": "L61",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1920,9 +2024,270 @@
       "source_file": "@cloudflare/vite-plugin",
       "confidence": "EXTRACTED",
       "_origin": "ast"
+    },
+    {
+      "id": "readme",
+      "label": "README.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_centraliza",
+      "label": "Centraliza",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_overview",
+      "label": "Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_context",
+      "label": "Context",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_proposed_workflow",
+      "label": "Proposed workflow",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_planned_features",
+      "label": "Planned features",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_objective",
+      "label": "Objective",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L49",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_roadmap",
+      "label": "Roadmap",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L53",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_project_documentation",
+      "label": "Project documentation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_team",
+      "label": "Team",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L70",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_executar_a_entrega_da_semana_1",
+      "label": "Executar a entrega da semana 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_organização",
+      "label": "Organização",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L103",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_verificação",
+      "label": "Verificação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L118",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento",
+      "label": "plano-desenvolvimento.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "label": "Plano de desenvolvimento — Centraliza",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_entrega_atual_semana_1",
+      "label": "Entrega atual: semana 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_próximas_entregas_propostas",
+      "label": "Próximas entregas propostas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_processo_por_tarefa",
+      "label": "Processo por tarefa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_graphify",
+      "label": "Graphify",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_registro",
+      "label": "Registro",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1",
+      "label": "semana-1.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_semana_1_navegação",
+      "label": "Semana 1 — navegação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_objetivo",
+      "label": "Objetivo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_arquitetura_desta_entrega",
+      "label": "Arquitetura desta entrega",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_contrato_proposto_para_a_api_futura",
+      "label": "Contrato proposto para a API futura",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_acesso_inicial",
+      "label": "Acesso inicial",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_roteiro_de_aceitação",
+      "label": "Roteiro de aceitação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_fora_do_escopo",
+      "label": "Fora do escopo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_1_validação_automatizada_realizada",
+      "label": "Validação automatizada realizada",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L55",
+      "_origin": "ast"
     }
   ],
-  "edges": [
+  "links": [
     {
       "source": "frontend_oxfmtrc",
       "target": "frontend_oxfmtrc_schema",
@@ -2904,35 +3269,208 @@
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace",
-      "target": "ref_react",
+      "source": "frontend_components_login_screen",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
+      "source_file": "frontend/components/login-screen.tsx",
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace",
-      "target": "ref_next_link",
+      "source": "frontend_components_login_screen",
+      "target": "frontend_lib_auth",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
+      "source_file": "frontend/components/login-screen.tsx",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace",
-      "target": "ref_next_navigation",
+      "source": "frontend_components_login_screen",
+      "target": "frontend_lib_auth_profile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_login_screen",
+      "target": "frontend_components_login_screen_loginscreen",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "ref_next_link",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_lib_navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_lib_navigation_modules",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
       "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_components_module_content_modulecontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "ref_next_link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "frontend_lib_navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "frontend_lib_navigation_modules",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace_layout",
+      "target": "frontend_components_workspace_layout_workspacelayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace-layout.tsx",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -2943,13 +3481,57 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_hooks_use_session",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_hooks_use_session_usesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_login_screen",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_module_content",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth",
+      "target": "frontend_components_workspace_layout",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -2960,62 +3542,7 @@
     },
     {
       "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth_entrar",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth_obterusuarioatual",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth_sair",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth_profile",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_workspace",
-      "target": "frontend_lib_auth_user",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_workspace",
-      "target": "frontend_components_workspace_modules",
+      "target": "frontend_components_workspace_workspace",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
@@ -3024,43 +3551,166 @@
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace",
-      "target": "frontend_components_workspace_workspace",
-      "relation": "contains",
+      "source": "frontend_hooks_use_session",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L16",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace_workspace",
-      "target": "frontend_components_workspace_workspace_login",
-      "relation": "contains",
+      "source": "frontend_hooks_use_session",
+      "target": "ref_next_navigation",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L46",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace_workspace",
-      "target": "frontend_components_workspace_workspace_logout",
-      "relation": "contains",
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L52",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace_workspace",
-      "target": "frontend_components_workspace_workspace_login",
-      "relation": "calls",
-      "context": "call",
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth_entrar",
+      "relation": "imports",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L63",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth_obterusuarioatual",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth_sair",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth_profile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session",
+      "target": "frontend_hooks_use_session_usesession",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_login",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_logout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_retry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_login",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_logout",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
+      "target": "frontend_hooks_use_session_usesession_retry",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3121,6 +3771,27 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/auth.ts",
       "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_navigation",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/navigation.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_navigation",
+      "target": "frontend_lib_navigation_modules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/navigation.ts",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3239,7 +3910,7 @@
     },
     {
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_dev",
+      "target": "frontend_package_scripts_test",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
@@ -3249,7 +3920,7 @@
     },
     {
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_build",
+      "target": "frontend_package_scripts_typecheck",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
@@ -3259,7 +3930,7 @@
     },
     {
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_start",
+      "target": "frontend_package_scripts_dev",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
@@ -3269,7 +3940,7 @@
     },
     {
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_lint",
+      "target": "frontend_package_scripts_build",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
@@ -3279,11 +3950,31 @@
     },
     {
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_format",
+      "target": "frontend_package_scripts_start",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
       "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_package_scripts",
+      "target": "frontend_package_scripts_lint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_package_scripts",
+      "target": "frontend_package_scripts_format",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/package.json",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3293,7 +3984,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3303,7 +3994,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3313,7 +4004,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3324,7 +4015,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3334,7 +4025,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3345,7 +4036,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3355,7 +4046,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3366,7 +4057,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3376,7 +4067,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3387,7 +4078,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3397,7 +4088,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3408,7 +4099,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3418,7 +4109,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3429,7 +4120,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3439,7 +4130,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3450,7 +4141,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3460,7 +4151,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3471,7 +4162,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3481,7 +4172,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L24",
+      "source_location": "L26",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3492,7 +4183,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3502,7 +4193,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3513,7 +4204,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3523,7 +4214,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3534,7 +4225,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3544,7 +4235,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3555,7 +4246,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3565,7 +4256,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3576,7 +4267,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3586,7 +4277,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3597,7 +4288,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3607,7 +4298,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3618,7 +4309,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3628,7 +4319,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3639,7 +4330,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3649,7 +4340,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3660,7 +4351,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3670,7 +4361,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3681,7 +4372,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3691,7 +4382,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3702,7 +4393,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3712,7 +4403,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3722,7 +4413,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3733,7 +4424,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3743,7 +4434,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3754,7 +4445,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3764,7 +4455,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3775,7 +4466,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3785,7 +4476,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3796,7 +4487,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3806,7 +4497,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3817,7 +4508,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3827,7 +4518,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3838,7 +4529,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3848,7 +4539,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3859,7 +4550,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3869,7 +4560,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3880,7 +4571,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3890,7 +4581,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3901,7 +4592,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3911,7 +4602,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3922,7 +4613,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3932,7 +4623,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3943,7 +4634,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3953,7 +4644,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3964,7 +4655,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3974,7 +4665,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -3985,7 +4676,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -3995,7 +4686,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -4006,7 +4697,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -4016,7 +4707,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -4027,7 +4718,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L52",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -4037,7 +4728,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L52",
+      "source_location": "L54",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -4048,7 +4739,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L53",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -4058,7 +4749,7 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L53",
+      "source_location": "L55",
       "weight": 1.0,
       "context": "import",
       "_origin": "ast"
@@ -4069,7 +4760,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/package.json",
-      "source_location": "L55",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -4492,6 +5183,286 @@
       "_origin": "ast"
     },
     {
+      "source": "readme",
+      "target": "readme_centraliza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_overview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_context",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_proposed_workflow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_planned_features",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_objective",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_roadmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_project_documentation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_team",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_executar_a_entrega_da_semana_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_executar_a_entrega_da_semana_1",
+      "target": "readme_organização",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_executar_a_entrega_da_semana_1",
+      "target": "readme_verificação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento",
+      "target": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_entrega_atual_semana_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento",
+      "target": "docs_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_próximas_entregas_propostas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_processo_por_tarefa",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_graphify",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_registro",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1",
+      "target": "docs_semana_1_semana_1_navegação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_objetivo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_arquitetura_desta_entrega",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_contrato_proposto_para_a_api_futura",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_acesso_inicial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_roteiro_de_aceitação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_fora_do_escopo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1_semana_1_navegação",
+      "target": "docs_semana_1_validação_automatizada_realizada",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_app_module_page",
       "target": "frontend_components_workspace_workspace",
       "relation": "imports",
@@ -4514,43 +5485,86 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_login_screen_loginscreen",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_module_content_modulecontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_workspace_layout_workspacelayout",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_workspace_workspace",
+      "target": "frontend_hooks_use_session_usesession",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_hooks_use_session_usesession",
       "target": "frontend_lib_auth_obterusuarioatual",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L29",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace_workspace_login",
+      "source": "frontend_hooks_use_session_usesession_login",
       "target": "frontend_lib_auth_entrar",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L48",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_components_workspace_workspace_logout",
+      "source": "frontend_hooks_use_session_usesession_logout",
       "target": "frontend_lib_auth_sair",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L54",
+      "source_file": "frontend/hooks/use-session.ts",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast"
     }
   ],
-  "hyperedges": [],
-  "input_tokens": 0,
-  "output_tokens": 0
+  "directed": false
 }

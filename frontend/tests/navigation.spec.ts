@@ -13,6 +13,12 @@ test('protege rotas; gestor navega, atualiza e sai', async ({ page }) => {
   await page.goto('/demandas');
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Demandas', exact: true })).toBeVisible();
+  await page.getByRole('navigation').getByRole('link', { name: 'Agenda', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Agenda', exact: true })).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('heading', { name: 'Demandas', exact: true })).toBeVisible();
+  await page.goForward();
+  await expect(page.getByRole('heading', { name: 'Agenda', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Sair da demonstração' }).click();
   await expect(page).toHaveURL('/login');
   await page.goto('/agenda');

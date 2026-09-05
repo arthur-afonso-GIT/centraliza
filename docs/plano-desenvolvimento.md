@@ -5,7 +5,7 @@
 | Tarefa | Situação | Critério de conclusão |
 | --- | --- | --- |
 | S1-01 — Base de navegação | Concluída | Cinco módulos, sessão fictícia, menu responsivo e quatro testes de navegador aprovados |
-| S1-02 — Organização do código | Em andamento | Separar sessão, navegação e conteúdo; preservar os fluxos existentes |
+| S1-02 — Organização do código | Concluída | Sessão, navegação e conteúdo separados; fluxos existentes preservados |
 | S1-03 — Mapa e documentação | Em andamento | Atualizar Graphify, instruções de execução e histórico das tarefas |
 
 O escopo detalhado e o roteiro de revisão estão em [semana-1.md](semana-1.md).
@@ -53,3 +53,6 @@ manualmente e a interface precisa de validação própria.
 
 - S1-01: build, TypeScript, lint da aplicação e quatro testes no Edge aprovados.
 - Graphify inicial: 238 nós e 252 relações; Workspace concentra sessão e telas.
+- S1-02: sessão em `useSession`, menu em `lib/navigation`, telas e layout em
+  componentes separados. Build, tipos, lint e quatro testes aprovados, incluindo
+  voltar/avançar no navegador. Graphify atualizado: 279 nós e 314 relações.
