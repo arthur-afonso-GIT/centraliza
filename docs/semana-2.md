@@ -24,7 +24,9 @@ desta entrega, não uma integração que já está pronta.
 | S2-07 | Validar e documentar a entrega | QA + equipe | S2-06 | Testes, evidências, medição de desempenho e instruções atualizadas |
 
 As frentes indicam responsabilidades; distribuir os nomes na reunião da equipe.
-Todas as tarefas começam como **planejadas**, sem implementação iniciada por este plano.
+Situação da execução: S2-01 concluída com o [contrato de implementação](contrato-demandas.md);
+S2-03 em andamento. As demais tarefas permanecem planejadas. A revisão de
+produto pela equipe continua distinta da definição técnica implementada.
 
 ## Cronograma diário
 
