@@ -7,6 +7,8 @@
 | S1-01 — Base de navegação | Concluída | Cinco módulos, sessão fictícia, menu responsivo e quatro testes de navegador aprovados |
 | S1-02 — Organização do código | Concluída | Sessão, navegação e conteúdo separados; fluxos existentes preservados |
 | S1-03 — Mapa e documentação | Concluída | Graphify atualizado, instruções de execução e histórico das tarefas registrados |
+| S1-04 — Acessibilidade da navegação | Concluída | Contraste corrigido, foco acompanha a navegação e títulos identificam as páginas; sete testes aprovados |
+| S1-05 — Revisão final da semana 1 | Em andamento | Evidências de responsividade, checklist atualizado e cenários de sessão revisados |
 
 O escopo detalhado e o roteiro de revisão estão em [semana-1.md](semana-1.md).
 A demonstração usa perfis fictícios: não é a autenticação definitiva da VISAT.
@@ -58,6 +60,10 @@ manualmente e a interface precisa de validação própria.
   voltar/avançar no navegador. Graphify atualizado: 279 nós e 314 relações.
 - S1-03: README alinhado à estrutura final, comandos de validação padronizados
   e procedimento de consulta/atualização do Graphify documentado.
+- S1-04: corrigidos contraste de textos secundários, foco após navegação e
+  fechamento do menu no item atual. Títulos específicos por rota. Axe sem
+  violações nas regras WCAG A/AA selecionadas em seis páginas, nas larguras
+  390 e 1366 px. Sete testes, lint, tipos e build aprovados.
 
 ## Commits das tarefas de implementação
 

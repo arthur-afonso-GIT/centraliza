@@ -68,7 +68,10 @@ export default function WorkspaceLayout({
                 key={item.id}
                 href={item.href}
                 aria-current={page === item.id ? 'page' : undefined}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  if (menuOpen && page === item.id) menuButton.current?.focus();
+                }}
               >
                 <ItemIcon size={20} />
                 {item.title}

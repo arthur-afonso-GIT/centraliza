@@ -1,3 +1,5 @@
+'use client';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ClipboardList, ShieldCheck } from 'lucide-react';
 import { modules } from '../lib/navigation';
@@ -12,14 +14,24 @@ export default function ModuleContent({
 }) {
   const active = modules.find((item) => item.id === page) ?? modules[0];
   const Icon = active.icon;
+  const contentRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    contentRef.current?.focus({ preventScroll: true });
+  }, [page]);
   return (
-    <main id="conteudo" tabIndex={-1} className="content">
+    <main
+      ref={contentRef}
+      id="conteudo"
+      tabIndex={-1}
+      className="content"
+      aria-labelledby="titulo-pagina"
+    >
       <div className="page-heading">
         <div>
           <span className="eyebrow">
             {page === 'home' ? 'SEU ESPAÇO DE TRABALHO' : 'CENTRALIZA · VISAT'}
           </span>
-          <h1>
+          <h1 id="titulo-pagina">
             {page === 'home'
               ? `Olá, ${user.perfil === 'gestor' ? 'Gestor' : 'Inspetor'}.`
               : active.title}
