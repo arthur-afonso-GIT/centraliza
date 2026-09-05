@@ -8,7 +8,7 @@
 | S1-02 — Organização do código | Concluída | Sessão, navegação e conteúdo separados; fluxos existentes preservados |
 | S1-03 — Mapa e documentação | Concluída | Graphify atualizado, instruções de execução e histórico das tarefas registrados |
 | S1-04 — Acessibilidade da navegação | Concluída | Contraste corrigido, foco acompanha a navegação e títulos identificam as páginas; sete testes aprovados |
-| S1-05 — Revisão final da semana 1 | Em andamento | Evidências de responsividade, checklist atualizado e cenários de sessão revisados |
+| S1-05 — Revisão final da semana 1 | Concluída | 12 testes aprovados, capturas revisadas e checklist técnico atualizado; aceitação da equipe pendente |
 
 O escopo detalhado e o roteiro de revisão estão em [semana-1.md](semana-1.md).
 A demonstração usa perfis fictícios: não é a autenticação definitiva da VISAT.
@@ -64,12 +64,17 @@ manualmente e a interface precisa de validação própria.
   fechamento do menu no item atual. Títulos específicos por rota. Axe sem
   violações nas regras WCAG A/AA selecionadas em seis páginas, nas larguras
   390 e 1366 px. Sete testes, lint, tipos e build aprovados.
+- S1-05: verificados acesso sem sessão válida, falhas de gravação/saída,
+  carregamento e atalho de conteúdo. Suíte final: 12 testes aprovados.
+  Graphify final atualizado: 295 nós e 335 relações.
+  [Relatório técnico e capturas](validacao-semana-1.md) disponíveis para apresentação.
 
 ## Commits das tarefas de implementação
 
 - `6827442` — feat: implementar navegação inicial do Centraliza VISAT.
 - `71a0820` — refactor: separar sessão, navegação e telas do Centraliza.
+- `2e6d881` — fix: melhorar contraste e foco da navegação.
 
-O checklist manual da semana 1 permanece disponível para a revisão da equipe.
-A demonstração hospedada corresponde à entrega inicial; a reorganização
-posterior está no repositório local e não altera a aparência nem os fluxos.
+O checklist técnico foi concluído e permanece disponível para a revisão da
+equipe. A demonstração hospedada corresponde à entrega inicial; os ajustes
+posteriores de organização, contraste, foco e títulos estão no repositório local.

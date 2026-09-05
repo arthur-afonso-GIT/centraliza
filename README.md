@@ -113,6 +113,7 @@ Os módulos ainda não executam operações reais.
 - `frontend/tests`: testes de navegação com Playwright.
 - [Plano, contrato da API e checklist](docs/semana-1.md).
 - [Tarefas, processo de commits e uso do Graphify](docs/plano-desenvolvimento.md).
+- [Validação da semana 1 e capturas das telas](docs/validacao-semana-1.md).
 
 O front-end usa React e TypeScript com Vinext/Vite, a partir do starter Sites.
 O starter inclui componentes shadcn para uso futuro; seus arquivos gerados

@@ -33,19 +33,22 @@ Os dois perfis acessam os cinco módulos. As diferenças de ações serão
 implementadas nas próximas entregas. Sem sessão, as páginas levam à entrada.
 Rotas desconhecidas mostram uma página de erro com caminho de retorno.
 
-## Roteiro de aceitação
+## Checklist técnico verificado
 
-- [ ] Entrar como Gestor e como Inspetor.
-- [ ] Conferir o nome e o perfil exibidos.
-- [ ] Navegar pelas cinco páginas e conferir o item selecionado.
-- [ ] Atualizar uma rota interna e usar voltar/avançar do navegador.
-- [ ] Sair e tentar acessar uma página protegida.
-- [ ] Abrir uma URL inexistente e retornar à Home.
-- [ ] Navegar por teclado com foco visível.
-- [ ] Abrir o menu móvel, selecionar uma página e conferir seu fechamento.
-- [ ] Fechar o menu móvel com Escape.
-- [ ] Conferir carregamento e recuperação de erro da sessão.
-- [ ] Conferir a interface em largura de celular e computador.
+- [x] Entrar como Gestor e como Inspetor.
+- [x] Conferir a identificação do perfil de demonstração.
+- [x] Navegar pelas cinco páginas e conferir o item selecionado.
+- [x] Atualizar uma rota interna e usar voltar/avançar do navegador.
+- [x] Sair e tentar acessar uma página protegida.
+- [x] Abrir uma URL inexistente e retornar à Home.
+- [x] Navegar por teclado com foco visível.
+- [x] Abrir o menu móvel, selecionar uma página e conferir seu fechamento.
+- [x] Fechar o menu móvel com Escape.
+- [x] Conferir carregamento e recuperação de erro da sessão.
+- [x] Conferir a interface em largura de celular e computador.
+
+Esses itens registram verificação técnica. A revisão e aceitação pela equipe
+VISAT ainda não foram realizadas; usar o mesmo roteiro na apresentação.
 
 ## Fora do escopo
 
@@ -54,7 +57,9 @@ publicáveis, indicadores de desempenho e implantação de banco de dados.
 
 ## Validação automatizada realizada
 
-Quatro testes de navegador verificam: navegação do gestor e saída; menu móvel
-do inspetor com Enter/Escape e ausência de overflow; página 404 com retorno;
-falha de armazenamento com recuperação. Todos passaram em Microsoft Edge.
-O checklist acima permanece como roteiro de revisão manual da equipe.
+A suíte contém 12 testes de navegador, todos aprovados em Microsoft Edge.
+Além dos fluxos iniciais, cobre acesso direto às rotas, perfil inválido,
+falhas de leitura/escrita/remoção da sessão, carregamento, atalho de conteúdo,
+foco após navegação e análise de acessibilidade em celular e desktop.
+
+Veja o [relatório e as evidências](validacao-semana-1.md) para escopo e limites.

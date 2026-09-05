@@ -1787,6 +1787,32 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_session_spec",
+      "label": "session.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_tests_session_spec_storage_setitem",
+      "label": ".setItem()",
+      "file_type": "code",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_tests_session_spec_storage_removeitem",
+      "label": ".removeItem()",
+      "file_type": "code",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L40",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tsconfig",
       "label": "tsconfig.json",
       "file_type": "code",
@@ -2180,7 +2206,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L124",
+      "source_location": "L125",
       "_origin": "ast"
     },
     {
@@ -2189,7 +2215,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L141",
       "_origin": "ast"
     },
     {
@@ -2261,7 +2287,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L68",
+      "source_location": "L71",
       "_origin": "ast"
     },
     {
@@ -2319,8 +2345,8 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_semana_1_roteiro_de_aceitação",
-      "label": "Roteiro de aceitação",
+      "id": "docs_semana_1_checklist_técnico_verificado",
+      "label": "Checklist técnico verificado",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-1.md",
@@ -2333,7 +2359,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-1.md",
-      "source_location": "L50",
+      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -2342,7 +2368,61 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-1.md",
-      "source_location": "L55",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1",
+      "label": "validacao-semana-1.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "label": "Validação técnica — semana 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1_resultado",
+      "label": "Resultado",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1_inspeção_visual",
+      "label": "Inspeção visual",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1_reproduzir",
+      "label": "Reproduzir",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_1_limites_e_pendências_para_o_uso_institucional",
+      "label": "Limites e pendências para o uso institucional",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L52",
       "_origin": "ast"
     }
   ],
@@ -4942,6 +5022,17 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_session_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tsconfig",
       "target": "frontend_tsconfig_compileroptions",
       "relation": "contains",
@@ -5468,12 +5559,22 @@
       "_origin": "ast"
     },
     {
+      "source": "readme",
+      "target": "docs_validacao_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "readme_executar_a_entrega_da_semana_1",
       "target": "readme_verificação",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5483,7 +5584,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L141",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5558,12 +5659,22 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_plano_desenvolvimento",
+      "target": "docs_validacao_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
       "target": "docs_plano_desenvolvimento_commits_das_tarefas_de_implementação",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L68",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5619,7 +5730,7 @@
     },
     {
       "source": "docs_semana_1_semana_1_navegação",
-      "target": "docs_semana_1_roteiro_de_aceitação",
+      "target": "docs_semana_1_checklist_técnico_verificado",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-1.md",
@@ -5633,7 +5744,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-1.md",
-      "source_location": "L50",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5643,7 +5754,67 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-1.md",
-      "source_location": "L55",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_1",
+      "target": "docs_validacao_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-1.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_1",
+      "target": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "target": "docs_validacao_semana_1_resultado",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "target": "docs_validacao_semana_1_inspeção_visual",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "target": "docs_validacao_semana_1_reproduzir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_1_validação_técnica_semana_1",
+      "target": "docs_validacao_semana_1_limites_e_pendências_para_o_uso_institucional",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-1.md",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast"
     },
