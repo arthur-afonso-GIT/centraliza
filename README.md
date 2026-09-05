@@ -81,4 +81,52 @@ Centralize information to improve the organization, efficiency, transparency, an
 
 ---
 
-> The repository does not yet contain code or configuration files that would allow the project's technologies, architecture, installation, or execution to be documented reliably.
+## Executar a entrega da semana 1
+
+Requisito: Node.js 22.13 ou superior e npm.
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+Abra o endereço informado pelo terminal (normalmente http://localhost:3000).
+Selecione **Gestor** ou **Inspetor** para entrar na demonstração. Use **Sair da
+demonstração** para trocar de perfil. A sessão simulada dura enquanto a aba
+mantiver seu armazenamento e sobrevive à atualização da página.
+
+Esta entrega inclui Home, Agenda, Avisos, Demandas e Chats, menu responsivo,
+rotas protegidas pela sessão simulada e estados de carregamento e erro.
+Os módulos ainda não executam operações reais.
+
+### Organização
+
+- `frontend/app`: rotas e páginas de erro.
+- `frontend/components/workspace.tsx`: layout, navegação e páginas iniciais.
+- `frontend/lib/auth.ts`: adaptador de sessão fictícia, a substituir pela API.
+- `frontend/tests`: testes de navegação com Playwright.
+- [Plano, contrato da API e checklist](docs/semana-1.md).
+
+O front-end usa React e TypeScript com Vinext/Vite, a partir do starter Sites.
+O starter inclui componentes shadcn para uso futuro; seus arquivos gerados
+(`components/ui` e `hooks/use-mobile.ts`) ficam fora do lint da aplicação.
+O servidor local usa Node; o build para demonstração hospedada usa Workers.
+Python e PostgreSQL **ainda não foram implementados**. O contrato documentado
+permite integrar esse back-end depois, sem depender da hospedagem de demonstração.
+
+### Verificação
+
+```powershell
+npm run build
+npx tsc --noEmit
+npm run lint
+npx playwright test
+```
+
+Os testes usam Microsoft Edge instalado. Em outro ambiente, ajuste `channel`
+no `playwright.config.ts` ou instale o navegador do Playwright.
+
+Autenticação mock e controle de rotas do navegador não protegem dados reais.
+Antes do uso institucional: implementar autenticação e permissões na API,
+revisar dependências, conectar o banco e validar requisitos com a equipe VISAT.

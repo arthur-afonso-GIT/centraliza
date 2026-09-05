@@ -1,0 +1,7 @@
+# Cache incremental do TypeScript
+*.tsbuildinfo
+
+# Metadados locais do Graphify; graph.json é versionado
+graphify-out/cache/
+graphify-out/manifest.json
+graphify-out/.graphify_root

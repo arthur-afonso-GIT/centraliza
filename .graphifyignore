@@ -1,0 +1,12 @@
+# Dependências, saídas de build e componentes de terceiros gerados pelo starter
+**/node_modules/**
+**/dist/**
+**/.wrangler/**
+**/.vinext/**
+**/test-results/**
+**/playwright-report/**
+**/*.tsbuildinfo
+frontend/components/ui/**
+frontend/hooks/use-mobile.ts
+graphify-out/**
+.git/**
