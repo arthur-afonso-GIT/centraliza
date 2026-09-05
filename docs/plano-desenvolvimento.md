@@ -1,6 +1,12 @@
 # Plano de desenvolvimento — Centraliza
 
-## Entrega atual: semana 1
+## Próxima execução: listagem de demandas
+
+O [plano da semana 2, de 07/09 a 13/09](semana-2.md) define tarefas,
+dependências, contrato da API, critérios de conclusão e validação da listagem.
+Situação: planejado; implementação ainda não iniciada.
+
+## Entrega técnica concluída: semana 1
 
 | Tarefa | Situação | Critério de conclusão |
 | --- | --- | --- |
