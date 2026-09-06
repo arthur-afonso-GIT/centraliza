@@ -63,6 +63,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Navigation validation](docs/validacao-semana-1.md) — browser coverage and visual evidence.
 - [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
 - [Request-detail validation](docs/validacao-semana-3.md) — status transitions, timeline consistency, and integrated-flow evidence.
+- [Agenda validation](docs/validacao-semana-4.md) — date ranges, timezone, calendar navigation, and role-based results.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
 ## Screenshots
@@ -109,11 +110,11 @@ centraliza/
 └── graphify-out/           Versioned code graph
 ```
 
-Workspace coordinates session state and chooses the appropriate screen. The session hook calls the API adapter in frontend/lib/auth.ts; layout and module components handle presentation. Request filters call frontend/lib/demandas.ts, while the Django API applies role and team authorization before querying PostgreSQL.
+Workspace coordinates session state and chooses the appropriate screen. The session hook calls the API adapter in frontend/lib/auth.ts; layout and module components handle presentation. Request filters call frontend/lib/demandas.ts, and calendar ranges use frontend/lib/agenda.ts. The Django API applies role and team authorization before querying PostgreSQL.
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 15 Django tests and 14 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [validation report](docs/validacao-semana-2.md) for the method and limitations.
+The current quality baseline includes 27 Django tests and 21 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
 
 ## Local development
 
@@ -125,6 +126,7 @@ uv sync
 uv run python manage.py migrate
 $env:CENTRALIZA_DEMO_PASSWORD = "choose-a-local-password-with-12-characters"
 uv run python manage.py seed_demo --total 30
+uv run python manage.py seed_agenda
 uv run python manage.py runserver
 ```
 

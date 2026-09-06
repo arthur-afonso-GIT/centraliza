@@ -26,8 +26,9 @@ configuração, armazenando instantes em UTC e apresentando horários locais.
 Situação técnica: S4-03 concluída com módulo de agenda, modelo, migração e carga
 fictícia idempotente. S4-04 concluída com intervalo semiaberto, acesso por perfil
 e resposta em Fortaleza. S4-05 e S4-06 concluídas com calendário responsivo e
-navegação temporal integrada. As regras e o protótipo ainda aguardam revisão da
-equipe; S4-07 reunirá a validação final.
+navegação temporal integrada. S4-07 foi validada tecnicamente no
+[relatório da Agenda](validacao-semana-4.md). A revisão das regras e do
+protótipo pela equipe permanece pendente.
 
 ## Cronograma diário
 
@@ -182,9 +183,9 @@ mostrar “+N” sem esconder a contagem. Selecionar um dia muda para a visão d
 - [x] Visualizações Dia, Semana e Mês apresentam dados reais.
 - [x] Anterior, Próximo e Hoje consultam os intervalos corretos.
 - [x] Loader, vazio, erro e sessão expirada estão implementados.
-- [ ] Testes Django e Playwright, lint, tipos, build e acessibilidade passaram.
-- [ ] Documentação e Graphify atualizados.
-- [ ] Cada tarefa concluída possui commit em português com sua validação.
+- [x] Testes Django e Playwright, lint, tipos, build e acessibilidade passaram.
+- [x] Documentação e Graphify atualizados.
+- [x] Cada tarefa concluída possui commit em português com sua validação.
 
 ## Fora do escopo
 

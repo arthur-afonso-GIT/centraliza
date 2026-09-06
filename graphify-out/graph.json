@@ -4302,7 +4302,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L68",
+      "source_location": "L69",
       "_origin": "ast"
     },
     {
@@ -4311,7 +4311,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L70",
+      "source_location": "L71",
       "_origin": "ast"
     },
     {
@@ -4320,7 +4320,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L74",
+      "source_location": "L75",
       "_origin": "ast"
     },
     {
@@ -4329,7 +4329,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L82",
+      "source_location": "L83",
       "_origin": "ast"
     },
     {
@@ -4338,7 +4338,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L95",
+      "source_location": "L96",
       "_origin": "ast"
     },
     {
@@ -4347,7 +4347,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L118",
+      "source_location": "L119",
       "_origin": "ast"
     },
     {
@@ -4356,7 +4356,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L159",
+      "source_location": "L161",
       "_origin": "ast"
     },
     {
@@ -4365,7 +4365,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L166",
+      "source_location": "L168",
       "_origin": "ast"
     },
     {
@@ -4374,7 +4374,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L170",
+      "source_location": "L172",
       "_origin": "ast"
     },
     {
@@ -4950,7 +4950,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast"
     },
     {
@@ -4959,7 +4959,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L44",
+      "source_location": "L45",
       "_origin": "ast"
     },
     {
@@ -4968,7 +4968,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L64",
+      "source_location": "L65",
       "_origin": "ast"
     },
     {
@@ -4977,7 +4977,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L82",
+      "source_location": "L83",
       "_origin": "ast"
     },
     {
@@ -4986,7 +4986,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -4995,7 +4995,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L119",
+      "source_location": "L120",
       "_origin": "ast"
     },
     {
@@ -5004,7 +5004,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L130",
+      "source_location": "L131",
       "_origin": "ast"
     },
     {
@@ -5013,7 +5013,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L135",
+      "source_location": "L136",
       "_origin": "ast"
     },
     {
@@ -5022,7 +5022,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L140",
+      "source_location": "L141",
       "_origin": "ast"
     },
     {
@@ -5031,7 +5031,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L145",
+      "source_location": "L146",
       "_origin": "ast"
     },
     {
@@ -5040,7 +5040,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L153",
+      "source_location": "L154",
       "_origin": "ast"
     },
     {
@@ -5049,7 +5049,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L155",
+      "source_location": "L156",
       "_origin": "ast"
     },
     {
@@ -5058,7 +5058,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L165",
+      "source_location": "L166",
       "_origin": "ast"
     },
     {
@@ -5067,7 +5067,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L176",
+      "source_location": "L177",
       "_origin": "ast"
     },
     {
@@ -5076,7 +5076,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L189",
+      "source_location": "L190",
       "_origin": "ast"
     },
     {
@@ -5239,6 +5239,60 @@
       "node_kind": "heading",
       "source_file": "docs/validacao-semana-3.md",
       "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4",
+      "label": "validacao-semana-4.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "label": "Validação técnica — agenda e calendário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4_resultado",
+      "label": "Resultado",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4_fluxo_integrado",
+      "label": "Fluxo integrado",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4_comportamentos_verificados",
+      "label": "Comportamentos verificados",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_4_limitações",
+      "label": "Limitações",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L43",
       "_origin": "ast"
     }
   ],
@@ -13085,11 +13139,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_validacao_semana_4",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13099,7 +13163,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L68",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13109,7 +13173,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L70",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13119,7 +13183,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13129,7 +13193,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13139,7 +13203,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L95",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13149,7 +13213,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L118",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13159,7 +13223,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L159",
+      "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13169,7 +13233,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L166",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13179,7 +13243,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L170",
+      "source_location": "L172",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13804,12 +13868,22 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_semana_4",
+      "target": "docs_validacao_semana_4",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
       "target": "docs_semana_4_cronograma_diário",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13819,7 +13893,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13829,7 +13903,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13839,7 +13913,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13849,7 +13923,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13859,7 +13933,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L119",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13869,7 +13943,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L130",
+      "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13879,7 +13953,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L135",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13889,7 +13963,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L140",
+      "source_location": "L141",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13899,7 +13973,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L145",
+      "source_location": "L146",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13909,7 +13983,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L153",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13919,7 +13993,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13929,7 +14003,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L165",
+      "source_location": "L166",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13939,7 +14013,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L176",
+      "source_location": "L177",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13949,7 +14023,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L189",
+      "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14110,6 +14184,56 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/validacao-semana-3.md",
       "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_4",
+      "target": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "target": "docs_validacao_semana_4_resultado",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "target": "docs_validacao_semana_4_fluxo_integrado",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "target": "docs_validacao_semana_4_comportamentos_verificados",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_4_validação_técnica_agenda_e_calendário",
+      "target": "docs_validacao_semana_4_limitações",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-4.md",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
