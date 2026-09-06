@@ -15,7 +15,7 @@ async function responseJson<T>(response: Response): Promise<T> {
   throw new ApiError(response.status, body.detail ?? 'Não foi possível concluir a operação.');
 }
 
-async function csrfToken() {
+export async function csrfToken() {
   const current = cookie('centraliza_csrftoken');
   if (current) return decodeURIComponent(current);
   const response = await fetch('/api/auth/csrf/', { credentials: 'same-origin' });

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { listarDemandas, type PaginaDemandas, type SegmentoDemanda } from '../lib/demandas';
 import type { User } from '../lib/auth';
@@ -43,7 +44,7 @@ export default function DemandasList({ user }: { user: User }) {
     {!data && !error && <output className="demand-loading"><span className="spinner" /> Carregando demandas…</output>}
     {error && <div className="demand-empty" role="alert"><AlertTriangle /><h3>Não foi possível carregar</h3><p>Tente novamente para consultar as demandas.</p><button className="secondary" onClick={retry}><RotateCcw size={17} /> Tentar novamente</button></div>}
     {data?.results.length === 0 && <div className="demand-empty"><h3>Nenhuma demanda neste segmento</h3><p>Quando houver novas atividades, elas aparecerão aqui.</p></div>}
-    {data && data.results.length > 0 && <div className="demand-list">{data.results.map(item => <article className="demand-card" key={item.id}><div className="demand-card-top"><span className={`status status-${item.status}`}>{statusLabel[item.status]}</span>{item.critica && <span className="critical"><AlertTriangle size={15} /> Crítica</span>}</div><h3>{item.titulo}</h3><dl><div><dt>Prioridade</dt><dd>{prioridadeLabel[item.prioridade]}</dd></div><div><dt>Prazo</dt><dd><CalendarDays size={16} /> {new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(`${item.prazo}T00:00:00Z`))}</dd></div><div><dt>Responsável</dt><dd>{item.responsavel?.nome ?? 'Não atribuída'}</dd></div></dl></article>)}</div>}
+    {data && data.results.length > 0 && <div className="demand-list">{data.results.map(item => <article className="demand-card" key={item.id}><div className="demand-card-top"><span className={`status status-${item.status}`}>{statusLabel[item.status]}</span>{item.critica && <span className="critical"><AlertTriangle size={15} /> Crítica</span>}</div><h3>{item.titulo}</h3><dl><div><dt>Prioridade</dt><dd>{prioridadeLabel[item.prioridade]}</dd></div><div><dt>Prazo</dt><dd><CalendarDays size={16} /> {new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(new Date(`${item.prazo}T00:00:00Z`))}</dd></div><div><dt>Responsável</dt><dd>{item.responsavel?.nome ?? 'Não atribuída'}</dd></div></dl><Link className="detail-link" href={`/demandas/${item.id}`}>Ver detalhes <ChevronRight size={17} /></Link></article>)}</div>}
     {data && data.count > 0 && <nav className="pagination" aria-label="Paginação das demandas"><button disabled={!data.previous} onClick={() => changePage(page - 1)}><ChevronLeft size={17} /> Anterior</button><span>Página {page} de {Math.ceil(data.count / 4)}</span><button disabled={!data.next} onClick={() => changePage(page + 1)}>Próxima <ChevronRight size={17} /></button></nav>}
   </section>;
 }

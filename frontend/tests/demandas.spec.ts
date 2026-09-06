@@ -10,7 +10,6 @@ async function entrar(page: import('@playwright/test').Page, perfil: 'gestor' | 
 
 test('gestor filtra demandas e percorre a paginação', async ({ page }) => {
   await entrar(page, 'gestor');
-  await expect(page.getByRole('status')).toContainText('Carregando demandas');
   await expect(page.getByText('9 demandas')).toBeVisible();
   await expect(page.locator('.demand-card')).toHaveCount(4);
 

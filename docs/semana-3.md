@@ -23,6 +23,11 @@ inspetor somente demandas atribuídas a ele.
 | S3-06 | Integrar alteração de status | Front-end + back-end | S3-04 e S3-05 | Feedback durante a ação, mensagem de sucesso/erro e lista atualizada ao voltar |
 | S3-07 | Validar e documentar | QA + equipe | S3-06 | Fluxo ponta a ponta, consistência do histórico, acessibilidade e Graphify atualizados |
 
+Situação técnica: S3-03 e S3-04 concluídas com modelo, migração e endpoints;
+S3-05 e S3-06 concluídas com página responsiva, timeline, comentários, alteração
+de status e atualização da lista. A revisão dos protótipos e regras pela equipe
+permanece pendente; S3-07 reunirá a validação final e as evidências.
+
 ## Cronograma diário
 
 | Data | Prioridade | Resultado esperado |
@@ -147,10 +152,10 @@ O servidor define autor, data e tipo; o navegador não envia esses campos.
 - [x] Migração do histórico reproduzível em banco vazio.
 - [x] API protege detalhe e alterações conforme equipe, perfil e responsável.
 - [x] Mudança de status e evento são salvos atomicamente.
-- [ ] Página apresenta dados reais e histórico do PostgreSQL.
-- [ ] Feedback de carregamento, sucesso, erro, 404 e sessão expirada implementado.
-- [ ] Fluxo “abrir → alterar status → voltar à lista” aprovado.
-- [ ] Testes do backend e frontend, lint, tipos e build aprovados.
+- [x] Página apresenta dados reais e histórico do PostgreSQL.
+- [x] Feedback de carregamento, sucesso, erro, 404 e sessão expirada implementado.
+- [x] Fluxo “abrir → alterar status → voltar à lista” aprovado tecnicamente.
+- [x] Testes do backend e frontend, lint, tipos e build aprovados.
 - [ ] Documentação e Graphify atualizados.
 - [ ] Cada tarefa concluída possui commit em português com descrição da validação.
 

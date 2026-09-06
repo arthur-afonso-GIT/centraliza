@@ -4,8 +4,9 @@ import { useSession } from '../hooks/use-session';
 import LoginScreen from './login-screen';
 import ModuleContent from './module-content';
 import WorkspaceLayout from './workspace-layout';
+import DemandaDetail from './demanda-detail';
 
-export default function Workspace({ page }: { page: string }) {
+export default function Workspace({ page, demandId }: { page: string; demandId?: number }) {
   const session = useSession(page);
   if (session.error)
     return (
@@ -38,7 +39,7 @@ export default function Workspace({ page }: { page: string }) {
       busy={session.busy}
       logout={session.logout}
     >
-      <ModuleContent page={page} user={session.user} />
+      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : <ModuleContent page={page} user={session.user} />}
     </WorkspaceLayout>
   );
 }

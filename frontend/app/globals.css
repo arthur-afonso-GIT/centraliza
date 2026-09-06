@@ -141,6 +141,26 @@ p { line-height: 1.65; }
 .pagination button { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--visat-border); border-radius: 6px; background: white; color: var(--visat-graphite); padding: 9px 12px; }
 .pagination button:disabled { opacity: .45; cursor: default; }.pagination span { color: var(--visat-muted); font-size: 13px; }
 @media(max-width: 760px) { .segments { width: 100%; }.segments button { flex: 1; padding-inline: 8px; font-size: 12px; }.demand-list { grid-template-columns: 1fr; }.demand-card dl { grid-template-columns: 1fr 1fr; }.demand-card dl div:last-child { grid-column: 1/-1; }.pagination { gap: 8px; }.pagination button { padding-inline: 9px; } }
+.detail-link,.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--visat-red-dark); font-weight: 700; }
+.detail-link { margin-top: 18px; }.back-link { margin-bottom: 26px; }
+.demand-detail { max-width: 1280px; }.detail-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; margin-bottom: 26px; }
+.detail-heading h1 { margin: 8px 0; font-size: clamp(28px,4vw,42px); }.detail-heading p { color: var(--visat-muted); margin: 0; }
+.detail-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }.detail-actions .primary { white-space: nowrap; }
+.detail-grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(360px,1.1fr); gap: 22px; align-items: start; }
+.detail-card { background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; padding: 28px; }.detail-card h2 { font-size: 21px; margin-bottom: 22px; }
+.detail-card .description { white-space: pre-wrap; color: var(--visat-muted); padding-bottom: 22px; border-bottom: 1px solid var(--visat-border); }
+.detail-card dl { display: grid; gap: 18px; margin: 0; }.detail-card dl div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
+.detail-card dt { color: var(--visat-muted); font-size: 13px; }.detail-card dd { display: flex; align-items: center; gap: 7px; margin: 0; font-weight: 650; }
+.comment-form { display: grid; gap: 9px; padding-bottom: 24px; border-bottom: 1px solid var(--visat-border); }.comment-form label { font-size: 14px; font-weight: 700; }
+.comment-form textarea { min-height: 92px; resize: vertical; border: 1px solid var(--visat-border); border-radius: 8px; padding: 12px; font: inherit; color: var(--visat-graphite); }
+.comment-form textarea:focus { outline: 3px solid color-mix(in srgb,var(--visat-red) 28%,transparent); border-color: var(--visat-red); }.comment-form button { justify-self: start; }
+.timeline { list-style: none; margin: 24px 0 0; padding: 0; }.timeline li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; position: relative; padding-bottom: 24px; }
+.timeline li:not(:last-child)::before { content: ''; position: absolute; left: 16px; top: 32px; bottom: 0; border-left: 1px solid var(--visat-border); }
+.timeline-icon { width: 34px; height: 34px; display: grid; place-items: center; color: var(--visat-red); background: var(--visat-soft); border-radius: 50%; z-index: 1; }.timeline-icon svg { width: 17px; }
+.timeline p { margin: 5px 0; color: var(--visat-muted); }.timeline small,.empty-history { color: var(--visat-muted); }.empty-history { margin: 24px 0 0; }
+.toast { display: flex; align-items: center; gap: 10px; padding: 13px 16px; margin-bottom: 20px; border-radius: 8px; font-weight: 650; }.toast.success { color: #17633a; background: #eaf8ef; }.toast.error { color: #8e141b; background: var(--visat-soft); }.toast svg { width: 19px; }
+.detail-state { display: grid; place-items: center; align-content: center; gap: 14px; text-align: center; min-height: calc(100vh - 76px); }.detail-state output { display: flex; gap: 10px; align-items: center; }
+@media(max-width: 760px) { .detail-heading { flex-direction: column; }.detail-actions { justify-content: flex-start; }.detail-grid { grid-template-columns: 1fr; }.detail-card { padding: 22px; }.detail-card dl div { grid-template-columns: 1fr; gap: 4px; } }
 
 @custom-variant dark (&:is(.dark *));
 

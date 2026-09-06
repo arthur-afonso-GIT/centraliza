@@ -24,6 +24,7 @@ Available in the current version:
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
+- **Request details and history** — inspect complete request data, add timeline comments, and let the assigned inspector advance permitted statuses.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
@@ -31,7 +32,7 @@ Available in the current version:
 Planned operational capabilities:
 
 - **Request management** — create, prioritize, assign, reassign, cancel, and monitor deadlines.
-- **Inspection execution** — accept work, update progress, and attach documents and evidence.
+- **Inspection execution** — record extended progress and attach documents and evidence.
 - **Management review** — approve completed activities or request corrections, with a traceable history.
 - **Team planning and communication** — schedule meetings, identify conflicts, publish notices, and exchange messages.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.

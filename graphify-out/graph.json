@@ -1660,6 +1660,31 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_app_demandas_id_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_app_demandas_id_page_metadata",
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_app_demandas_id_page_demandapage",
+      "label": "DemandaPage()",
+      "file_type": "code",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_app_error",
       "label": "error.tsx",
       "file_type": "code",
@@ -1920,6 +1945,75 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_components_demanda_detail",
+      "label": "demanda-detail.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_statuslabel",
+      "label": "statusLabel",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_prioridadelabel",
+      "label": "prioridadeLabel",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_data",
+      "label": "data()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_demandadetail",
+      "label": "DemandaDetail()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_demandadetail_retry",
+      "label": "retry()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_demandadetail_advance",
+      "label": "advance()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_detail_demandadetail_comment",
+      "label": "comment()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L46",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_components_demandas_list",
       "label": "demandas-list.tsx",
       "file_type": "code",
@@ -1932,7 +2026,7 @@
       "label": "segmentos",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast"
     },
     {
@@ -1940,7 +2034,7 @@
       "label": "statusLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast"
     },
     {
@@ -1948,7 +2042,7 @@
       "label": "prioridadeLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast"
     },
     {
@@ -1956,7 +2050,7 @@
       "label": "DemandasList()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1965,7 +2059,7 @@
       "label": "prepareRequest()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L31",
+      "source_location": "L32",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1974,7 +2068,7 @@
       "label": "select()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1983,7 +2077,7 @@
       "label": "changePage()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1992,7 +2086,7 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2001,7 +2095,7 @@
       "label": "moveTab()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2078,7 +2172,7 @@
       "label": "Workspace()",
       "file_type": "code",
       "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2240,7 +2334,7 @@
       "label": "SegmentoDemanda",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L1",
+      "source_location": "L3",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2250,7 +2344,7 @@
       "label": "DemandaResumo",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L2",
+      "source_location": "L4",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2260,9 +2354,38 @@
       "label": "PaginaDemandas",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L3",
+      "source_location": "L5",
       "_callable": true,
       "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_eventodemanda",
+      "label": "EventoDemanda",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_demandadetalhe",
+      "label": "DemandaDetalhe",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_resposta",
+      "label": "resposta()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L9",
+      "_callable": true,
       "_origin": "ast"
     },
     {
@@ -2270,7 +2393,34 @@
       "label": "listarDemandas()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L5",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_obterdemanda",
+      "label": "obterDemanda()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L21",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_alterarstatus",
+      "label": "alterarStatus()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L25",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_adicionarcomentario",
+      "label": "adicionarComentario()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3093,6 +3243,14 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_detalhe_demanda_spec",
+      "label": "detalhe-demanda.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tests_navigation_spec",
       "label": "navigation.spec.ts",
       "file_type": "code",
@@ -3140,7 +3298,7 @@
       "label": "entrarComo()",
       "file_type": "code",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L34",
+      "source_location": "L56",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3466,7 +3624,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast"
     },
     {
@@ -3475,7 +3633,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L51",
       "_origin": "ast"
     },
     {
@@ -3484,7 +3642,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L65",
+      "source_location": "L66",
       "_origin": "ast"
     },
     {
@@ -3493,7 +3651,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "_origin": "ast"
     },
     {
@@ -3502,7 +3660,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L71",
+      "source_location": "L72",
       "_origin": "ast"
     },
     {
@@ -3511,7 +3669,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L79",
+      "source_location": "L80",
       "_origin": "ast"
     },
     {
@@ -3520,7 +3678,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L92",
+      "source_location": "L93",
       "_origin": "ast"
     },
     {
@@ -3529,7 +3687,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L115",
+      "source_location": "L116",
       "_origin": "ast"
     },
     {
@@ -3538,7 +3696,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L156",
+      "source_location": "L157",
       "_origin": "ast"
     },
     {
@@ -3547,7 +3705,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L163",
+      "source_location": "L164",
       "_origin": "ast"
     },
     {
@@ -3556,7 +3714,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "_origin": "ast"
     },
     {
@@ -3979,7 +4137,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L26",
+      "source_location": "L31",
       "_origin": "ast"
     },
     {
@@ -3988,7 +4146,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L38",
+      "source_location": "L43",
       "_origin": "ast"
     },
     {
@@ -3997,7 +4155,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L57",
+      "source_location": "L62",
       "_origin": "ast"
     },
     {
@@ -4006,7 +4164,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L75",
+      "source_location": "L80",
       "_origin": "ast"
     },
     {
@@ -4015,7 +4173,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L77",
+      "source_location": "L82",
       "_origin": "ast"
     },
     {
@@ -4024,7 +4182,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L84",
+      "source_location": "L89",
       "_origin": "ast"
     },
     {
@@ -4033,7 +4191,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L95",
+      "source_location": "L100",
       "_origin": "ast"
     },
     {
@@ -4042,7 +4200,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L106",
+      "source_location": "L111",
       "_origin": "ast"
     },
     {
@@ -4051,7 +4209,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L120",
+      "source_location": "L125",
       "_origin": "ast"
     },
     {
@@ -4060,7 +4218,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L122",
+      "source_location": "L127",
       "_origin": "ast"
     },
     {
@@ -4069,7 +4227,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L133",
+      "source_location": "L138",
       "_origin": "ast"
     },
     {
@@ -4078,7 +4236,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L143",
+      "source_location": "L148",
       "_origin": "ast"
     },
     {
@@ -4087,7 +4245,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
-      "source_location": "L157",
+      "source_location": "L162",
       "_origin": "ast"
     },
     {
@@ -7053,6 +7211,48 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_app_demandas_id_page",
+      "target": "ref_next_navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_app_demandas_id_page",
+      "target": "frontend_components_workspace",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_app_demandas_id_page",
+      "target": "frontend_app_demandas_id_page_metadata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_app_demandas_id_page",
+      "target": "frontend_app_demandas_id_page_demandapage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_app_error",
       "target": "frontend_app_error_errorpage",
       "relation": "contains",
@@ -7367,6 +7567,219 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_demanda_detail",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "ref_next_link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "ref_next_navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_demandas_adicionarcomentario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_demandas_alterarstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_demandas_obterdemanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_lib_demandas_demandadetalhe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_statuslabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_prioridadelabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_data",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_demandadetail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_components_demanda_detail_demandadetail_retry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_components_demanda_detail_demandadetail_advance",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_components_demanda_detail_demandadetail_comment",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_components_demanda_detail_data",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demandas_list",
       "target": "ref_react",
       "relation": "imports_from",
@@ -7390,7 +7803,7 @@
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "ref_lucide_react",
+      "target": "ref_next_link",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7401,12 +7814,23 @@
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "frontend_lib_demandas",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7417,7 +7841,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7428,7 +7852,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7439,7 +7863,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7450,7 +7874,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7461,7 +7885,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7471,7 +7895,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7481,7 +7905,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7491,7 +7915,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7501,7 +7925,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7511,23 +7935,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_select",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_changepage",
+      "target": "frontend_components_demandas_list_demandaslist_select",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -7537,7 +7951,7 @@
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_retry",
+      "target": "frontend_components_demandas_list_demandaslist_changepage",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -7547,11 +7961,21 @@
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_movetab",
+      "target": "frontend_components_demandas_list_demandaslist_retry",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_movetab",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7562,7 +7986,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7573,7 +7997,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7584,7 +8008,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7595,7 +8019,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7606,7 +8030,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7617,7 +8041,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7628,7 +8052,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7927,11 +8351,22 @@
     },
     {
       "source": "frontend_components_workspace",
+      "target": "frontend_components_demanda_detail",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
       "target": "frontend_components_workspace_workspace",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8245,8 +8680,9 @@
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_segmentodemanda",
-      "relation": "contains",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
       "source_location": "L1",
@@ -8255,17 +8691,29 @@
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_demandaresumo",
-      "relation": "contains",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "imports",
+      "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L2",
+      "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_paginademandas",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_segmentodemanda",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
@@ -8275,11 +8723,135 @@
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_listardemandas",
+      "target": "frontend_lib_demandas_demandaresumo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_paginademandas",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
       "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_eventodemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_demandadetalhe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_listardemandas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_obterdemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_alterarstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_adicionarcomentario",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_listardemandas",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_obterdemanda",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_alterarstatus",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_adicionarcomentario",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9423,6 +9995,61 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_detalhe_demanda_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_detalhe_demanda_spec",
+      "target": "ref_axe_core_playwright",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_detalhe_demanda_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_detalhe_demanda_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_detalhe_demanda_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/detalhe-demanda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_navigation_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -9547,7 +10174,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L34",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9983,7 +10610,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9993,7 +10620,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10003,7 +10630,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10013,7 +10640,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10023,7 +10650,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10033,7 +10660,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10043,7 +10670,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10053,7 +10680,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10063,7 +10690,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10073,7 +10700,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L65",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10083,7 +10710,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10093,7 +10720,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L71",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10103,7 +10730,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10113,7 +10740,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10123,7 +10750,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L115",
+      "source_location": "L116",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10133,7 +10760,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L156",
+      "source_location": "L157",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10143,7 +10770,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L163",
+      "source_location": "L164",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10153,7 +10780,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10613,7 +11240,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L26",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10623,7 +11250,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L38",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10633,7 +11260,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L57",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10643,7 +11270,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L75",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10653,7 +11280,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L77",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10663,7 +11290,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L84",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10673,7 +11300,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L95",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10683,7 +11310,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L106",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10693,7 +11320,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L120",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10703,7 +11330,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L122",
+      "source_location": "L127",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10713,7 +11340,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L133",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10723,7 +11350,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L143",
+      "source_location": "L148",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10733,7 +11360,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
-      "source_location": "L157",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10859,6 +11486,17 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_app_demandas_id_page",
+      "target": "frontend_components_workspace_workspace",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/app/demandas/[id]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_app_page",
       "target": "frontend_components_workspace_workspace",
       "relation": "imports",
@@ -10910,6 +11548,17 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
       "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_workspace",
+      "target": "frontend_components_demanda_detail_demandadetail",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/workspace.tsx",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11524,6 +12173,42 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_lib_demandas_obterdemanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail_advance",
+      "target": "frontend_lib_demandas_alterarstatus",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail_demandadetail_comment",
+      "target": "frontend_lib_demandas_adicionarcomentario",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demandas_list_demandaslist",
       "target": "frontend_lib_demandas_listardemandas",
       "relation": "calls",
@@ -11531,7 +12216,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11543,7 +12228,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/workspace.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11580,6 +12265,30 @@
       "confidence_score": 1.0,
       "source_file": "frontend/hooks/use-session.ts",
       "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_alterarstatus",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_adicionarcomentario",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     }
