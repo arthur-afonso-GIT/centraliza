@@ -3443,8 +3443,8 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_plano_desenvolvimento_próxima_execução_listagem_de_demandas",
-      "label": "Próxima execução: listagem de demandas",
+      "id": "docs_plano_desenvolvimento_próxima_execução_detalhe_e_histórico_da_demanda",
+      "label": "Próxima execução: detalhe e histórico da demanda",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -3457,7 +3457,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast"
     },
     {
@@ -3466,7 +3466,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast"
     },
     {
@@ -3475,7 +3475,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast"
     },
     {
@@ -3484,7 +3484,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast"
     },
     {
@@ -3493,7 +3493,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "_origin": "ast"
     },
     {
@@ -3502,7 +3502,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L85",
+      "source_location": "L86",
       "_origin": "ast"
     },
     {
@@ -3701,6 +3701,159 @@
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
       "source_location": "L193",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3",
+      "label": "semana-3.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "label": "Plano de execução — detalhe e histórico da demanda",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_ponto_de_partida",
+      "label": "Ponto de partida",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_metas_e_tarefas",
+      "label": "Metas e tarefas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_cronograma_diário",
+      "label": "Cronograma diário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_decisões_de_escopo_propostas",
+      "label": "Decisões de escopo propostas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_modelo_do_histórico",
+      "label": "Modelo do histórico",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L57",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_contrato_inicial_da_api",
+      "label": "Contrato inicial da API",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L75",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_consultar_detalhe",
+      "label": "Consultar detalhe",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_alterar_status",
+      "label": "Alterar status",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_adicionar_comentário",
+      "label": "Adicionar comentário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L95",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_comportamento_da_interface",
+      "label": "Comportamento da interface",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L106",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_testes",
+      "label": "Testes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L120",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_back_end",
+      "label": "Back-end",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L122",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_front_end_e_fluxo_integrado",
+      "label": "Front-end e fluxo integrado",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L133",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_critérios_de_conclusão",
+      "label": "Critérios de conclusão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L143",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_3_fora_do_escopo",
+      "label": "Fora do escopo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L157",
       "_origin": "ast"
     },
     {
@@ -9440,7 +9593,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
-      "target": "docs_plano_desenvolvimento_próxima_execução_listagem_de_demandas",
+      "target": "docs_plano_desenvolvimento_próxima_execução_detalhe_e_histórico_da_demanda",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -9450,7 +9603,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento",
-      "target": "docs_semana_2",
+      "target": "docs_semana_3",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -9464,7 +9617,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9474,7 +9627,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9484,7 +9637,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9494,7 +9647,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9504,7 +9657,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9514,7 +9667,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9524,7 +9677,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9534,7 +9687,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9765,6 +9918,166 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
       "source_location": "L193",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3",
+      "target": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_ponto_de_partida",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_metas_e_tarefas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_cronograma_diário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_decisões_de_escopo_propostas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_modelo_do_histórico",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_contrato_inicial_da_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_contrato_inicial_da_api",
+      "target": "docs_semana_3_consultar_detalhe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_contrato_inicial_da_api",
+      "target": "docs_semana_3_alterar_status",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_contrato_inicial_da_api",
+      "target": "docs_semana_3_adicionar_comentário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_comportamento_da_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_testes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_testes",
+      "target": "docs_semana_3_back_end",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_testes",
+      "target": "docs_semana_3_front_end_e_fluxo_integrado",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_critérios_de_conclusão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_3_plano_de_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_semana_3_fora_do_escopo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-3.md",
+      "source_location": "L157",
       "weight": 1.0,
       "_origin": "ast"
     },

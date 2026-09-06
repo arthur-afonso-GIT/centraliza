@@ -1,10 +1,11 @@
 # Plano de desenvolvimento — Centraliza
 
-## Próxima execução: listagem de demandas
+## Próxima execução: detalhe e histórico da demanda
 
-O [plano da semana 2, de 07/09 a 13/09](semana-2.md) define tarefas,
-dependências, contrato da API, critérios de conclusão e validação da listagem.
-Situação: S2-01, S2-03 e S2-04 concluídas; protótipo e listagem React são os próximos passos.
+O [plano da semana 3, de 14/09 a 20/09](semana-3.md) define tarefas,
+dependências, contrato da API, transições de status, timeline e validação do
+fluxo entre lista e detalhe. A listagem autenticada, sua integração ao
+PostgreSQL e a validação de desempenho já estão concluídas.
 
 ## Entrega técnica concluída: semana 1
 
