@@ -28,7 +28,9 @@ carga fictícia idempotente. S5-03 concluída com feed priorizado, detalhe e
 isolamento por sessão e equipe. O contrato e a direção visual de S5-01 estão
 prontos para revisão da equipe. S5-04 e S5-05 concluídas com feed responsivo,
 tags textuais, detalhe navegável e estados de recuperação. A execução segue pela
-regressão integrada e preparação da demonstração.
+regressão integrada e preparação da demonstração. S5-06 foi aprovada
+tecnicamente e S5-07 possui checklist, roteiro e versão candidata preparados; a
+revisão visual, o ensaio e o congelamento definitivo dependem da equipe.
 
 ## Cronograma diário
 
@@ -190,10 +192,10 @@ Após a regressão aprovada:
 - [x] APIs de feed e detalhe isolam equipes e sessões corretamente.
 - [x] Feed e detalhe funcionam com dados reais em desktop e celular.
 - [x] Urgência é comunicada por texto e estilo acessível.
-- [ ] Todos os fluxos MUST HAVE passam no smoke integrado.
-- [ ] Testes Django e Playwright, lint, tipos e build passam.
-- [ ] README, relatório técnico e Graphify estão atualizados.
-- [ ] Commit da demonstração, roteiro e contingência estão registrados.
+- [x] Todos os fluxos MUST HAVE passam no smoke integrado.
+- [x] Testes Django e Playwright, lint, tipos e build passam.
+- [x] README, relatório técnico e Graphify estão atualizados.
+- [x] Versão candidata, roteiro e contingência estão registrados.
 - [ ] Equipe aprovou o congelamento para apresentação em 03/10.
 
 ## Fora do escopo

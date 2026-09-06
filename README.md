@@ -66,6 +66,8 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
 - [Request-detail validation](docs/validacao-semana-3.md) — status transitions, timeline consistency, and integrated-flow evidence.
 - [Agenda validation](docs/validacao-semana-4.md) — date ranges, timezone, calendar navigation, and role-based results.
+- [Notices validation](docs/validacao-semana-5.md) — feed/detail permissions, regression, accessibility, and integrated evidence.
+- [Status Report 1 checklist](docs/status-report-1.md) — setup, eight-minute demonstration route, smoke checks, and contingency.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
 ## Screenshots
