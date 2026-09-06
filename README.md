@@ -57,6 +57,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
 - [Navigation and session contract](docs/semana-1.md) — prototype scope and proposed authentication endpoints.
 - [Technical validation](docs/validacao-semana-1.md) — test coverage, evidence, and limitations.
+- [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
 ## Screenshots

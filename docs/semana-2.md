@@ -31,7 +31,8 @@ S2-05 concluída com listagem React ligada a fixtures do contrato, segmentos
 operáveis por teclado, paginação e estados de carregamento, vazio e erro.
 S2-06 concluída com autenticação por sessão, proxy de desenvolvimento e dados
 do PostgreSQL exibidos pela interface conforme o perfil autenticado.
-As demais tarefas permanecem planejadas. A revisão de
+S2-07 concluída com testes, validação ponta a ponta e medições reproduzíveis
+registradas em [Validação técnica](validacao-semana-2.md). A revisão de
 produto pela equipe continua distinta da definição técnica implementada.
 
 ## Cronograma diário
@@ -184,10 +185,10 @@ uma consulta adicional por cartão; criar índices conforme filtros e medição.
 - [x] Os três segmentos exibem dados reais da API.
 - [x] Cartões e estados vazio/carregamento/erro estão implementados.
 - [x] Testes de acesso, filtros, paginação e interface passaram.
-- [ ] Desempenho foi medido com as duas massas e limitações registradas.
+- [x] Desempenho foi medido com as duas massas e limitações registradas.
 - [x] Graphify atualizado após alterações de código.
-- [ ] Cada tarefa concluída possui commit com título e descrição em português.
-- [ ] README descreve o produto atual, sem seções organizadas por semana.
+- [x] Cada tarefa concluída possui commit com título e descrição em português.
+- [x] README descreve o produto atual, sem seções organizadas por semana.
 
 ## Fora do escopo e contingência
 

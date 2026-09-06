@@ -60,6 +60,50 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_management_commands_benchmark_demandas",
+      "label": "benchmark_demandas.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_benchmark_demandas_command",
+      "label": "Command",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L14",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_benchmark_demandas_py_basecommand",
+      "label": "BaseCommand",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_benchmark_demandas_command_add_arguments",
+      "label": ".add_arguments()",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L17",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_benchmark_demandas_command_handle",
+      "label": ".handle()",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_management_commands_seed_demo",
       "label": "seed_demo.py",
       "file_type": "code",
@@ -78,7 +122,7 @@
       "_origin": "ast"
     },
     {
-      "id": "basecommand",
+      "id": "backend_demandas_management_commands_seed_demo_py_basecommand",
       "label": "BaseCommand",
       "file_type": "code",
       "source_file": "",
@@ -3206,7 +3250,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "_origin": "ast"
     },
     {
@@ -3215,7 +3259,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L65",
       "_origin": "ast"
     },
     {
@@ -3224,7 +3268,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L68",
+      "source_location": "L69",
       "_origin": "ast"
     },
     {
@@ -3233,7 +3277,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L76",
+      "source_location": "L77",
       "_origin": "ast"
     },
     {
@@ -3242,7 +3286,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L89",
+      "source_location": "L90",
       "_origin": "ast"
     },
     {
@@ -3251,7 +3295,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L110",
+      "source_location": "L111",
       "_origin": "ast"
     },
     {
@@ -3260,7 +3304,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L135",
+      "source_location": "L136",
       "_origin": "ast"
     },
     {
@@ -3269,7 +3313,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L142",
+      "source_location": "L143",
       "_origin": "ast"
     },
     {
@@ -3278,7 +3322,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L146",
+      "source_location": "L147",
       "_origin": "ast"
     },
     {
@@ -3584,7 +3628,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "_origin": "ast"
     },
     {
@@ -3593,7 +3637,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L53",
+      "source_location": "L54",
       "_origin": "ast"
     },
     {
@@ -3602,7 +3646,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "_origin": "ast"
     },
     {
@@ -3611,7 +3655,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L85",
+      "source_location": "L86",
       "_origin": "ast"
     },
     {
@@ -3620,7 +3664,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L133",
+      "source_location": "L134",
       "_origin": "ast"
     },
     {
@@ -3629,7 +3673,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L146",
+      "source_location": "L147",
       "_origin": "ast"
     },
     {
@@ -3638,7 +3682,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L159",
+      "source_location": "L160",
       "_origin": "ast"
     },
     {
@@ -3647,7 +3691,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L179",
+      "source_location": "L180",
       "_origin": "ast"
     },
     {
@@ -3656,7 +3700,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L192",
+      "source_location": "L193",
       "_origin": "ast"
     },
     {
@@ -3711,6 +3755,60 @@
       "node_kind": "heading",
       "source_file": "docs/validacao-semana-1.md",
       "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2",
+      "label": "validacao-semana-2.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "label": "Validação técnica — listagem de demandas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2_resultado_funcional",
+      "label": "Resultado funcional",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2_desempenho",
+      "label": "Desempenho",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2_reproduzir",
+      "label": "Reproduzir",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_semana_2_limitações_atuais",
+      "label": "Limitações atuais",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L51",
       "_origin": "ast"
     }
   ],
@@ -3826,6 +3924,145 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "statistics",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "django_core_management_base",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "django_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "django_test_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "backend_demandas_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "backend_demandas_management_commands_benchmark_demandas_command",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas_command",
+      "target": "backend_demandas_management_commands_benchmark_demandas_py_basecommand",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas_command",
+      "target": "backend_demandas_management_commands_benchmark_demandas_command_add_arguments",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas_command",
+      "target": "backend_demandas_management_commands_benchmark_demandas_command_handle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_management_commands_seed_demo",
       "target": "os",
       "relation": "imports",
@@ -3914,7 +4151,7 @@
     },
     {
       "source": "backend_demandas_management_commands_seed_demo_command",
-      "target": "basecommand",
+      "target": "backend_demandas_management_commands_seed_demo_py_basecommand",
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/management/commands/seed_demo.py",
@@ -8983,11 +9220,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_validacao_semana_2",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8997,7 +9244,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9007,7 +9254,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9017,7 +9264,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L68",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9027,7 +9274,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L76",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9037,7 +9284,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9047,7 +9294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L110",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9057,7 +9304,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L112",
+      "source_location": "L113",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9067,7 +9314,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L135",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9077,7 +9324,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L142",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9087,7 +9334,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L146",
+      "source_location": "L147",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9412,12 +9659,22 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_semana_2",
+      "target": "docs_validacao_semana_2",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
       "target": "docs_semana_2_cronograma_diário",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9427,7 +9684,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9437,7 +9694,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9447,7 +9704,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9457,7 +9714,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L133",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9467,7 +9724,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L146",
+      "source_location": "L147",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9477,7 +9734,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L159",
+      "source_location": "L160",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9487,7 +9744,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L179",
+      "source_location": "L180",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9497,7 +9754,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L192",
+      "source_location": "L193",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9548,6 +9805,66 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/validacao-semana-1.md",
       "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2",
+      "target": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "target": "docs_validacao_semana_2_resultado_funcional",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "target": "docs_validacao_semana_2_desempenho",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "target": "docs_validacao_semana_2_reproduzir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2",
+      "target": "backend_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_semana_2_validação_técnica_listagem_de_demandas",
+      "target": "docs_validacao_semana_2_limitações_atuais",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-semana-2.md",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9669,6 +9986,28 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/config/urls.py",
       "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "backend_demandas_models_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9813,6 +10152,17 @@
       "source_file": "frontend/tests/demandas.spec.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_benchmark_demandas_command",
+      "target": "backend_demandas_models_demanda",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
+      "source_location": "L51",
+      "weight": 0.8,
       "_origin": "ast"
     },
     {
