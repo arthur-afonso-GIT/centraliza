@@ -38,7 +38,7 @@
       "_origin": "ast"
     },
     {
-      "id": "appconfig",
+      "id": "backend_agenda_apps_py_appconfig",
       "label": "AppConfig",
       "file_type": "code",
       "source_file": "",
@@ -426,6 +426,314 @@
       "file_type": "code",
       "source_file": "backend/agenda/views.py",
       "source_location": "L21",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_admin",
+      "label": "admin.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "register",
+      "label": "register",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_admin_avisoadmin",
+      "label": "AvisoAdmin",
+      "file_type": "code",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_apps",
+      "label": "apps.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/apps.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_apps_avisosconfig",
+      "label": "AvisosConfig",
+      "file_type": "code",
+      "source_file": "backend/avisos/apps.py",
+      "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_apps_py_appconfig",
+      "label": "AppConfig",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/management/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/management/commands/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_seed_avisos",
+      "label": "seed_avisos.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_seed_avisos_command",
+      "label": "Command",
+      "file_type": "code",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_seed_avisos_py_basecommand",
+      "label": "BaseCommand",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_seed_avisos_py_atomic",
+      "label": "atomic",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_management_commands_seed_avisos_command_handle",
+      "label": ".handle()",
+      "file_type": "code",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_migrations_0001_initial",
+      "label": "0001_initial.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_migrations_0001_initial_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_migrations_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/migrations/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models",
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models_aviso",
+      "label": "Aviso",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models_categoria",
+      "label": "Categoria",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models_meta",
+      "label": "Meta",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L22",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models_aviso_clean",
+      "label": ".clean()",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_models_aviso_save",
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests",
+      "label": "tests.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest",
+      "label": "AvisoModelTest",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_py_testcase",
+      "label": "TestCase",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_dados",
+      "label": ".dados()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
+      "label": ".test_aceita_aviso_de_gestor_ativo_da_equipe()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L29",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_inspetor",
+      "label": ".test_rejeita_autor_inspetor()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_de_outra_equipe",
+      "label": ".test_rejeita_autor_de_outra_equipe()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L37",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_avisomodeltest_test_rejeita_categoria_desconhecida",
+      "label": ".test_rejeita_categoria_desconhecida()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L41",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_seedavisostest",
+      "label": "SeedAvisosTest",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L46",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "override_settings",
+      "label": "override_settings",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_seedavisostest_test_carga_e_idempotente",
+      "label": ".test_carga_e_idempotente()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L48",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4356,7 +4664,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L162",
+      "source_location": "L163",
       "_origin": "ast"
     },
     {
@@ -4365,7 +4673,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L169",
+      "source_location": "L170",
       "_origin": "ast"
     },
     {
@@ -4374,7 +4682,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L173",
+      "source_location": "L174",
       "_origin": "ast"
     },
     {
@@ -5121,7 +5429,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L26",
+      "source_location": "L30",
       "_origin": "ast"
     },
     {
@@ -5130,7 +5438,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L37",
+      "source_location": "L41",
       "_origin": "ast"
     },
     {
@@ -5139,7 +5447,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L39",
+      "source_location": "L43",
       "_origin": "ast"
     },
     {
@@ -5148,7 +5456,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L54",
+      "source_location": "L58",
       "_origin": "ast"
     },
     {
@@ -5157,7 +5465,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L72",
+      "source_location": "L76",
       "_origin": "ast"
     },
     {
@@ -5166,7 +5474,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L74",
+      "source_location": "L78",
       "_origin": "ast"
     },
     {
@@ -5175,7 +5483,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L95",
+      "source_location": "L99",
       "_origin": "ast"
     },
     {
@@ -5184,25 +5492,25 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L103",
+      "source_location": "L107",
       "_origin": "ast"
     },
     {
-      "id": "docs_semana_5_feed_105",
+      "id": "docs_semana_5_feed_109",
       "label": "Feed",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L105",
+      "source_location": "L109",
       "_origin": "ast"
     },
     {
-      "id": "docs_semana_5_detalhe_114",
+      "id": "docs_semana_5_detalhe_118",
       "label": "Detalhe",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L114",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -5211,7 +5519,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L122",
+      "source_location": "L126",
       "_origin": "ast"
     },
     {
@@ -5220,7 +5528,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L140",
+      "source_location": "L144",
       "_origin": "ast"
     },
     {
@@ -5229,7 +5537,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L142",
+      "source_location": "L146",
       "_origin": "ast"
     },
     {
@@ -5238,7 +5546,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L149",
+      "source_location": "L153",
       "_origin": "ast"
     },
     {
@@ -5247,7 +5555,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L156",
+      "source_location": "L160",
       "_origin": "ast"
     },
     {
@@ -5256,7 +5564,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L164",
+      "source_location": "L168",
       "_origin": "ast"
     },
     {
@@ -5265,7 +5573,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L179",
+      "source_location": "L183",
       "_origin": "ast"
     },
     {
@@ -5274,7 +5582,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-5.md",
-      "source_location": "L192",
+      "source_location": "L196",
       "_origin": "ast"
     },
     {
@@ -5529,7 +5837,7 @@
     },
     {
       "source": "backend_agenda_apps_agendaconfig",
-      "target": "appconfig",
+      "target": "backend_agenda_apps_py_appconfig",
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/apps.py",
@@ -6293,6 +6601,566 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
       "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_admin",
+      "target": "django_contrib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_admin",
+      "target": "backend_avisos_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_admin_avisoadmin",
+      "target": "register",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_admin",
+      "target": "backend_avisos_admin_avisoadmin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_apps",
+      "target": "django_apps",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/apps.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_apps",
+      "target": "backend_avisos_apps_avisosconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/apps.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_apps_avisosconfig",
+      "target": "backend_avisos_apps_py_appconfig",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/apps.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "zoneinfo",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "django_core_management_base",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "backend_avisos_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "backend_avisos_management_commands_seed_avisos_command",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos_command",
+      "target": "backend_avisos_management_commands_seed_avisos_py_basecommand",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos_command_handle",
+      "target": "backend_avisos_management_commands_seed_avisos_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos_command",
+      "target": "backend_avisos_management_commands_seed_avisos_command_handle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0001_initial",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0001_initial",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0001_initial",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0001_initial",
+      "target": "backend_avisos_migrations_0001_initial_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0001_initial.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models",
+      "target": "backend_avisos_models_aviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models_aviso",
+      "target": "backend_avisos_models_categoria",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models_aviso",
+      "target": "backend_avisos_models_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models_aviso",
+      "target": "backend_avisos_models_aviso_clean",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_models_aviso",
+      "target": "backend_avisos_models_aviso_save",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/models.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "zoneinfo",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "django_core_management",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "django_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_avisos_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_avisos_tests_avisomodeltest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_py_testcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_dados",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_inspetor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_de_outra_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest",
+      "target": "backend_avisos_tests_avisomodeltest_test_rejeita_categoria_desconhecida",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_avisos_tests_seedavisostest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_seedavisostest",
+      "target": "backend_avisos_tests_py_testcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_seedavisostest_test_carga_e_idempotente",
+      "target": "override_settings",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_seedavisostest",
+      "target": "backend_avisos_tests_seedavisostest_test_carga_e_idempotente",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
+      "target": "backend_avisos_tests_avisomodeltest_dados",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_inspetor",
+      "target": "backend_avisos_tests_avisomodeltest_dados",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest_test_rejeita_autor_de_outra_equipe",
+      "target": "backend_avisos_tests_avisomodeltest_dados",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_avisomodeltest_test_rejeita_categoria_desconhecida",
+      "target": "backend_avisos_tests_avisomodeltest_dados",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13431,7 +14299,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L162",
+      "source_location": "L163",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13441,7 +14309,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L169",
+      "source_location": "L170",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13451,7 +14319,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14271,7 +15139,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14281,7 +15149,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14291,7 +15159,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L39",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14301,7 +15169,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L54",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14311,7 +15179,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L72",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14321,7 +15189,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L74",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14331,7 +15199,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L95",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14341,27 +15209,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L103",
+      "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "docs_semana_5_direção_visual",
-      "target": "docs_semana_5_feed_105",
+      "target": "docs_semana_5_feed_109",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L105",
+      "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "docs_semana_5_direção_visual",
-      "target": "docs_semana_5_detalhe_114",
+      "target": "docs_semana_5_detalhe_118",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L114",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14371,7 +15239,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L122",
+      "source_location": "L126",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14381,7 +15249,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L140",
+      "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14391,7 +15259,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L142",
+      "source_location": "L146",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14401,7 +15269,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L149",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14411,7 +15279,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L156",
+      "source_location": "L160",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14421,7 +15289,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L164",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14431,7 +15299,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L179",
+      "source_location": "L183",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14441,7 +15309,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-5.md",
-      "source_location": "L192",
+      "source_location": "L196",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14839,6 +15707,72 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
       "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_admin",
+      "target": "backend_avisos_models_aviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/admin.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "backend_avisos_models_aviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_management_commands_seed_avisos",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/management/commands/seed_avisos.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_avisos_models_aviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },

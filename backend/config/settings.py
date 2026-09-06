@@ -13,7 +13,7 @@ if not DEBUG and SECRET_KEY.startswith("development-only"):
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,testserver").split(",")
 INSTALLED_APPS = [
     "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions",
-    "rest_framework", "usuarios", "demandas", "agenda",
+    "rest_framework", "usuarios", "demandas", "agenda", "avisos",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

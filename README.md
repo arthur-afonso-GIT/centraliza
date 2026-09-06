@@ -128,6 +128,7 @@ uv run python manage.py migrate
 $env:CENTRALIZA_DEMO_PASSWORD = "choose-a-local-password-with-12-characters"
 uv run python manage.py seed_demo --total 30
 uv run python manage.py seed_agenda
+uv run python manage.py seed_avisos
 uv run python manage.py runserver
 ```
 

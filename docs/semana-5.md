@@ -23,6 +23,10 @@ com um feed categorizado e detalhe, sem ampliar o escopo perto da apresentação
 | S5-06 | Executar smoke e regressão MUST HAVE | QA | S5-05 | Login, navegação, demandas, agenda e avisos aprovados no fluxo integrado |
 | S5-07 | Congelar e preparar a demonstração | Equipe | S5-06 | Versão identificada, checklist, roteiro, evidências e plano de contingência revisados |
 
+Situação técnica: S5-02 concluída com modelo, migração, validação de autoria e
+carga fictícia idempotente. O contrato e a direção visual de S5-01 estão prontos
+para revisão da equipe; a implementação segue pelo feed e detalhe da API.
+
 ## Cronograma diário
 
 | Data | Prioridade | Resultado esperado |
@@ -179,7 +183,7 @@ Após a regressão aprovada:
 ## Critérios de conclusão
 
 - [ ] Regras e protótipo de feed/detalhe revisados pela equipe.
-- [ ] Migração e carga fictícia são reproduzíveis.
+- [x] Migração e carga fictícia são reproduzíveis.
 - [ ] APIs de feed e detalhe isolam equipes e sessões corretamente.
 - [ ] Feed e detalhe funcionam com dados reais em desktop e celular.
 - [ ] Urgência é comunicada por texto e estilo acessível.
