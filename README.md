@@ -61,6 +61,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Request API contract](docs/contrato-demandas.md) — filters, pagination, access rules, and response format.
 - [Navigation validation](docs/validacao-semana-1.md) — browser coverage and visual evidence.
 - [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
+- [Request-detail validation](docs/validacao-semana-3.md) — status transitions, timeline consistency, and integrated-flow evidence.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
 ## Screenshots

@@ -1,10 +1,11 @@
 import { ApiError, csrfToken } from './auth';
 
 export type SegmentoDemanda = 'pendentes' | 'andamento' | 'criticas';
+export type StatusDemanda = 'pendente' | 'em_andamento' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; status: 'pendente' | 'em_andamento'; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
 export type EventoDemanda = { id: number; tipo: 'status_alterado' | 'comentario'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
-export type DemandaDetalhe = DemandaResumo & { descricao: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
+export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
 
 async function resposta<T>(response: Response): Promise<T> {
   if (response.ok) return response.json() as Promise<T>;

@@ -25,8 +25,9 @@ inspetor somente demandas atribuídas a ele.
 
 Situação técnica: S3-03 e S3-04 concluídas com modelo, migração e endpoints;
 S3-05 e S3-06 concluídas com página responsiva, timeline, comentários, alteração
-de status e atualização da lista. A revisão dos protótipos e regras pela equipe
-permanece pendente; S3-07 reunirá a validação final e as evidências.
+de status e atualização da lista. S3-07 foi validada tecnicamente e está
+documentada no [relatório de validação](validacao-semana-3.md). A revisão dos
+protótipos e regras pela equipe permanece pendente.
 
 ## Cronograma diário
 
@@ -156,8 +157,8 @@ O servidor define autor, data e tipo; o navegador não envia esses campos.
 - [x] Feedback de carregamento, sucesso, erro, 404 e sessão expirada implementado.
 - [x] Fluxo “abrir → alterar status → voltar à lista” aprovado tecnicamente.
 - [x] Testes do backend e frontend, lint, tipos e build aprovados.
-- [ ] Documentação e Graphify atualizados.
-- [ ] Cada tarefa concluída possui commit em português com descrição da validação.
+- [x] Documentação e Graphify atualizados.
+- [x] Cada tarefa concluída possui commit em português com descrição da validação.
 
 ## Fora do escopo
 
