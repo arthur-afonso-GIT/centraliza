@@ -7,10 +7,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from demandas.models import Demanda, EventoDemanda
-from demandas.services import alterar_status_demanda
+from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda
 from demandas.serializers import (
     AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
-    DemandaSerializer, EventoDemandaSerializer,
+    DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer,
 )
 
 
@@ -56,7 +56,19 @@ class DemandasPagination(PageNumberPagination):
 class DemandaListView(generics.ListAPIView):
     serializer_class = DemandaSerializer
     pagination_class = DemandasPagination
-    http_method_names = ["get", "head", "options"]
+    http_method_names = ["get", "post", "head", "options"]
+
+    def post(self, request):
+        serializer = GerenciarDemandaSerializer(data=request.data, context={"request": request})
+        serializer.fields["titulo"].required = True
+        serializer.fields["prazo"].required = True
+        serializer.is_valid(raise_exception=True)
+        try:
+            demanda = criar_demanda(usuario=request.user, dados=dict(serializer.validated_data))
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=demanda.pk)
+        return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
 
     def get_queryset(self) -> QuerySet[Demanda]:
         user = self.request.user
@@ -83,6 +95,18 @@ class DemandaDetailView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return demandas_permitidas(self.request.user).select_related("responsavel").prefetch_related("historico__autor")
+
+    def patch(self, request, pk):
+        demanda = get_object_or_404(demandas_permitidas(request.user).select_related("responsavel"), pk=pk)
+        serializer = GerenciarDemandaSerializer(data=request.data, partial=True, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        try:
+            editar_demanda(demanda=demanda, usuario=request.user, dados=dict(serializer.validated_data))
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk)).data)
 
 
 class DemandaStatusView(APIView):

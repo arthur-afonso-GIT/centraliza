@@ -19,6 +19,7 @@ class Demanda(models.Model):
 
     titulo = models.CharField(max_length=200)
     descricao = models.TextField(blank=True)
+    origem = models.CharField(max_length=200, blank=True)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDENTE)
     prioridade = models.CharField(max_length=10, choices=Prioridade.choices, default=Prioridade.MEDIA)
     prazo = models.DateField()
@@ -59,6 +60,9 @@ class Demanda(models.Model):
 
 class EventoDemanda(models.Model):
     class Tipo(models.TextChoices):
+        DEMANDA_CRIADA = "demanda_criada", "Demanda criada"
+        DEMANDA_EDITADA = "demanda_editada", "Demanda editada"
+        RESPONSAVEL_ALTERADO = "responsavel_alterado", "Responsável alterado"
         STATUS_ALTERADO = "status_alterado", "Status alterado"
         COMENTARIO = "comentario", "Comentário"
 
@@ -78,6 +82,7 @@ class EventoDemanda(models.Model):
                 condition=(
                     models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="")
                     | models.Q(tipo="comentario", status_anterior="", status_novo="", texto__gt="")
+                    | models.Q(tipo__in=["demanda_criada", "demanda_editada", "responsavel_alterado"], status_anterior="", status_novo="", texto__gt="")
                 ),
                 name="evento_conteudo_por_tipo",
             ),

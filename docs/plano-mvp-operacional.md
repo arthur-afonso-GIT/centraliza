@@ -29,6 +29,8 @@ testável antes de iniciar a próxima.
 Situação técnica: Etapa 1 implementada com seis estados, matriz de transições,
 serviço transacional, justificativas obrigatórias e histórico atômico. A matriz
 ainda precisa de validação institucional antes de ser considerada definitiva.
+O backend da Etapa 2 já oferece criação, edição, atribuição e reatribuição com
+auditoria; os formulários do gestor são a próxima tarefa.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

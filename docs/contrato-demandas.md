@@ -49,6 +49,17 @@ As permissões e origens válidas estão na
 [matriz do fluxo operacional](fluxo-demandas.md). A operação bloqueia a linha,
 altera a demanda e cria o evento na mesma transação.
 
+## Gerenciamento pelo gestor
+
+`POST /api/demandas/` cria uma demanda com `titulo`, `descricao`, `origem`,
+`prioridade`, `prazo`, `critica` e `responsavel_id`. Título e prazo são
+obrigatórios. O responsável pode ser nulo ou um inspetor ativo da mesma equipe.
+
+`PATCH /api/demandas/{id}/` atualiza parcialmente esses campos. Demandas
+concluídas ou canceladas não aceitam edição. Criação, campos alterados e troca de
+responsável geram eventos separados no histórico. Inspetores recebem `403` e
+registros de outra equipe permanecem ocultos por `404`.
+
 ## Interface
 
 Pendentes envia `status=pendente`, Em andamento envia `status=em_andamento`

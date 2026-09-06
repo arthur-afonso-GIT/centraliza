@@ -75,9 +75,9 @@ class ListagemDemandasTest(APITestCase):
         self.autenticar(self.sem_equipe)
         self.assertEqual(self.client.get("/api/demandas/").status_code, 403)
 
-    def test_metodos_de_escrita_nao_sao_oferecidos(self):
+    def test_exclusao_direta_nao_e_oferecida(self):
         self.autenticar(self.gestor_a)
-        self.assertEqual(self.client.post("/api/demandas/", {}).status_code, 405)
+        self.assertEqual(self.client.delete("/api/demandas/", {}).status_code, 405)
 
 
 class SessaoTest(APITestCase):
@@ -211,3 +211,53 @@ class DetalheHistoricoTest(APITestCase):
         url = f"/api/demandas/{self.demanda.id}/historico/"
         self.assertEqual(self.client.patch(url, {"texto": "alterado"}).status_code, 405)
         self.assertEqual(self.client.delete(url).status_code, 405)
+
+
+class GerenciamentoDemandasTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe gestão")
+        cls.outra = Equipe.objects.create(nome="Outra equipe gestão")
+        cls.gestor = Usuario.objects.create_user(username="gestor.crud", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.crud", perfil="inspetor", equipe=cls.equipe)
+        cls.segundo = Usuario.objects.create_user(username="inspetor2.crud", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="inspetor.externo.crud", perfil="inspetor", equipe=cls.outra)
+
+    def payload(self):
+        return {"titulo": "Nova inspeção", "descricao": "Descrição", "origem": "MPT", "prioridade": "alta", "prazo": "2026-10-20", "critica": True, "responsavel_id": self.inspetor.id}
+
+    def test_gestor_cria_demanda_atribuida_com_historico(self):
+        self.client.force_authenticate(self.gestor)
+        response = self.client.post("/api/demandas/", self.payload())
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data["responsavel"]["id"], self.inspetor.id)
+        self.assertEqual(response.data["origem"], "MPT")
+        self.assertEqual([item["tipo"] for item in response.data["historico"]], ["responsavel_alterado", "demanda_criada"])
+
+    def test_inspetor_nao_cria_nem_edita(self):
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.post("/api/demandas/", self.payload()).status_code, 403)
+        self.client.force_authenticate(self.gestor)
+        demanda = Demanda.objects.create(titulo="Protegida", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 403)
+
+    def test_rejeita_responsavel_externo(self):
+        self.client.force_authenticate(self.gestor)
+        payload = self.payload(); payload["responsavel_id"] = self.externo.id
+        self.assertEqual(self.client.post("/api/demandas/", payload).status_code, 400)
+        self.assertEqual(Demanda.objects.count(), 0)
+
+    def test_gestor_edita_e_reatribui_com_eventos_separados(self):
+        demanda = Demanda.objects.create(titulo="Original", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
+        self.client.force_authenticate(self.gestor)
+        response = self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Revisada", "responsavel_id": self.segundo.id})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["titulo"], "Revisada")
+        self.assertEqual(response.data["responsavel"]["id"], self.segundo.id)
+        self.assertEqual({item["tipo"] for item in response.data["historico"]}, {"demanda_editada", "responsavel_alterado"})
+
+    def test_demanda_encerrada_nao_pode_ser_editada(self):
+        demanda = Demanda.objects.create(titulo="Encerrada", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, status="concluida")
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 400)

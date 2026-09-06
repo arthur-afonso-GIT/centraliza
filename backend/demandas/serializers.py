@@ -33,7 +33,27 @@ class DemandaDetalheSerializer(DemandaSerializer):
     historico = EventoDemandaSerializer(many=True, read_only=True)
 
     class Meta(DemandaSerializer.Meta):
-        fields = DemandaSerializer.Meta.fields + ["descricao", "criada_em", "atualizada_em", "historico"]
+        fields = DemandaSerializer.Meta.fields + ["descricao", "origem", "criada_em", "atualizada_em", "historico"]
+
+
+class GerenciarDemandaSerializer(serializers.Serializer):
+    titulo = serializers.CharField(max_length=200, required=False)
+    descricao = serializers.CharField(allow_blank=True, required=False)
+    origem = serializers.CharField(max_length=200, allow_blank=True, required=False)
+    prioridade = serializers.ChoiceField(choices=Demanda.Prioridade.choices, required=False)
+    prazo = serializers.DateField(required=False)
+    critica = serializers.BooleanField(required=False)
+    responsavel_id = serializers.IntegerField(allow_null=True, required=False)
+
+    def validate_responsavel_id(self, value):
+        if value is None:
+            return None
+        from usuarios.models import Usuario
+        user = self.context["request"].user
+        try:
+            return Usuario.objects.get(id=value, equipe_id=user.equipe_id, perfil="inspetor", is_active=True)
+        except Usuario.DoesNotExist as exc:
+            raise serializers.ValidationError("Selecione um inspetor ativo da sua equipe.") from exc
 
 
 class AlterarStatusSerializer(serializers.Serializer):

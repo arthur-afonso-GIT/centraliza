@@ -1152,6 +1152,24 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more",
+      "label": "0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_migrations_init",
       "label": "__init__.py",
       "file_type": "code",
@@ -1202,7 +1220,7 @@
       "label": "Meta",
       "file_type": "code",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L34",
+      "source_location": "L35",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1212,7 +1230,7 @@
       "label": ".clean()",
       "file_type": "code",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1221,7 +1239,7 @@
       "label": ".save()",
       "file_type": "code",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L55",
+      "source_location": "L56",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1230,7 +1248,7 @@
       "label": "EventoDemanda",
       "file_type": "code",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L60",
+      "source_location": "L61",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1240,7 +1258,7 @@
       "label": "Tipo",
       "file_type": "code",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1314,11 +1332,30 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_serializers_gerenciardemandaserializer",
+      "label": "GerenciarDemandaSerializer",
+      "file_type": "code",
+      "source_file": "backend/demandas/serializers.py",
+      "source_location": "L39",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_serializers_gerenciardemandaserializer_validate_responsavel_id",
+      "label": ".validate_responsavel_id()",
+      "file_type": "code",
+      "source_file": "backend/demandas/serializers.py",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_serializers_alterarstatusserializer",
       "label": "AlterarStatusSerializer",
       "file_type": "code",
       "source_file": "backend/demandas/serializers.py",
-      "source_location": "L39",
+      "source_location": "L59",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1328,7 +1365,7 @@
       "label": "CriarComentarioSerializer",
       "file_type": "code",
       "source_file": "backend/demandas/serializers.py",
-      "source_location": "L44",
+      "source_location": "L64",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1365,6 +1402,24 @@
       "file_type": "code",
       "source_file": "backend/demandas/services.py",
       "source_location": "L29",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_services_criar_demanda",
+      "label": "criar_demanda()",
+      "file_type": "code",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L52",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_services_editar_demanda",
+      "label": "editar_demanda()",
+      "file_type": "code",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L64",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1485,8 +1540,8 @@
       "_origin": "ast"
     },
     {
-      "id": "backend_demandas_tests_listagemdemandastest_test_metodos_de_escrita_nao_sao_oferecidos",
-      "label": ".test_metodos_de_escrita_nao_sao_oferecidos()",
+      "id": "backend_demandas_tests_listagemdemandastest_test_exclusao_direta_nao_e_oferecida",
+      "label": ".test_exclusao_direta_nao_e_oferecida()",
       "file_type": "code",
       "source_file": "backend/demandas/tests.py",
       "source_location": "L78",
@@ -1613,6 +1668,79 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_tests_gerenciamentodemandastest",
+      "label": "GerenciamentoDemandasTest",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L216",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L218",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "label": ".payload()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L226",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_test_gestor_cria_demanda_atribuida_com_historico",
+      "label": ".test_gestor_cria_demanda_atribuida_com_historico()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L229",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_test_inspetor_nao_cria_nem_edita",
+      "label": ".test_inspetor_nao_cria_nem_edita()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L237",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_test_rejeita_responsavel_externo",
+      "label": ".test_rejeita_responsavel_externo()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L245",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_test_gestor_edita_e_reatribui_com_eventos_separados",
+      "label": ".test_gestor_edita_e_reatribui_com_eventos_separados()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L251",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_tests_gerenciamentodemandastest_test_demanda_encerrada_nao_pode_ser_editada",
+      "label": ".test_demanda_encerrada_nao_pode_ser_editada()",
+      "file_type": "code",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L260",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_views",
       "label": "views.py",
       "file_type": "code",
@@ -1676,11 +1804,20 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_views_demandalistview_post",
+      "label": ".post()",
+      "file_type": "code",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L61",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_views_demandalistview_get_queryset",
       "label": ".get_queryset()",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L61",
+      "source_location": "L73",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1697,7 +1834,7 @@
       "label": "DemandaDetailView",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L81",
+      "source_location": "L93",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1707,7 +1844,16 @@
       "label": ".get_queryset()",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L84",
+      "source_location": "L96",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_views_demandadetailview_patch",
+      "label": ".patch()",
+      "file_type": "code",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L99",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1716,7 +1862,7 @@
       "label": "DemandaStatusView",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L88",
+      "source_location": "L112",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1734,7 +1880,7 @@
       "label": ".patch()",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L89",
+      "source_location": "L113",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1743,7 +1889,7 @@
       "label": "DemandaComentarioView",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L108",
+      "source_location": "L132",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1753,7 +1899,7 @@
       "label": ".post()",
       "file_type": "code",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L109",
+      "source_location": "L133",
       "_callable": true,
       "_origin": "ast"
     },
@@ -5170,12 +5316,21 @@
       "_origin": "ast"
     },
     {
+      "id": "docs_contrato_demandas_gerenciamento_pelo_gestor",
+      "label": "Gerenciamento pelo gestor",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
       "id": "docs_contrato_demandas_interface",
       "label": "Interface",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/contrato-demandas.md",
-      "source_location": "L52",
+      "source_location": "L63",
       "_origin": "ast"
     },
     {
@@ -5364,7 +5519,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast"
     },
     {
@@ -5373,7 +5528,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L49",
+      "source_location": "L51",
       "_origin": "ast"
     },
     {
@@ -5382,7 +5537,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L66",
+      "source_location": "L68",
       "_origin": "ast"
     },
     {
@@ -5391,7 +5546,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L81",
+      "source_location": "L83",
       "_origin": "ast"
     },
     {
@@ -5400,7 +5555,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L100",
+      "source_location": "L102",
       "_origin": "ast"
     },
     {
@@ -5409,7 +5564,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L117",
+      "source_location": "L119",
       "_origin": "ast"
     },
     {
@@ -5418,7 +5573,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L132",
+      "source_location": "L134",
       "_origin": "ast"
     },
     {
@@ -5427,7 +5582,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L151",
+      "source_location": "L153",
       "_origin": "ast"
     },
     {
@@ -5436,7 +5591,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L169",
+      "source_location": "L171",
       "_origin": "ast"
     },
     {
@@ -5445,7 +5600,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L180",
+      "source_location": "L182",
       "_origin": "ast"
     },
     {
@@ -5454,7 +5609,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L193",
+      "source_location": "L195",
       "_origin": "ast"
     },
     {
@@ -5463,7 +5618,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L204",
+      "source_location": "L206",
       "_origin": "ast"
     },
     {
@@ -8796,6 +8951,38 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more",
+      "target": "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_models",
       "target": "django_conf",
       "relation": "imports_from",
@@ -8864,7 +9051,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8874,7 +9061,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8884,7 +9071,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8894,7 +9081,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8904,7 +9091,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8914,7 +9101,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
-      "source_location": "L73",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9032,11 +9219,31 @@
     },
     {
       "source": "backend_demandas_serializers",
-      "target": "backend_demandas_serializers_alterarstatusserializer",
+      "target": "backend_demandas_serializers_gerenciardemandaserializer",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/serializers.py",
       "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_serializers_gerenciardemandaserializer",
+      "target": "backend_demandas_serializers_gerenciardemandaserializer_validate_responsavel_id",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/serializers.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_serializers",
+      "target": "backend_demandas_serializers_alterarstatusserializer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/serializers.py",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9046,7 +9253,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/serializers.py",
-      "source_location": "L44",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9133,6 +9340,70 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/services.py",
       "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services_criar_demanda",
+      "target": "backend_demandas_services_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services",
+      "target": "backend_demandas_services_criar_demanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services_criar_demanda",
+      "target": "backend_demandas_models_demanda",
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services_editar_demanda",
+      "target": "backend_demandas_services_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services",
+      "target": "backend_demandas_services_editar_demanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_services_editar_demanda",
+      "target": "backend_demandas_models_demanda",
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/services.py",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9313,7 +9584,7 @@
     },
     {
       "source": "backend_demandas_tests_listagemdemandastest",
-      "target": "backend_demandas_tests_listagemdemandastest_test_metodos_de_escrita_nao_sao_oferecidos",
+      "target": "backend_demandas_tests_listagemdemandastest_test_exclusao_direta_nao_e_oferecida",
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/tests.py",
@@ -9472,6 +9743,96 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_tests",
+      "target": "backend_demandas_tests_gerenciamentodemandastest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_py_apitestcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L218",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L226",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_test_gestor_cria_demanda_atribuida_com_historico",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_test_inspetor_nao_cria_nem_edita",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L237",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_test_rejeita_responsavel_externo",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L245",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_test_gestor_edita_e_reatribui_com_eventos_separados",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_test_demanda_encerrada_nao_pode_ser_editada",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L260",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_tests_listagemdemandastest_setuptestdata",
       "target": "backend_demandas_tests_listagemdemandastest_criar",
       "relation": "calls",
@@ -9549,13 +9910,46 @@
       "_origin": "ast"
     },
     {
-      "source": "backend_demandas_tests_listagemdemandastest_test_metodos_de_escrita_nao_sao_oferecidos",
+      "source": "backend_demandas_tests_listagemdemandastest_test_exclusao_direta_nao_e_oferecida",
       "target": "backend_demandas_tests_listagemdemandastest_autenticar",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/tests.py",
       "source_location": "L79",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest_test_gestor_cria_demanda_atribuida_com_historico",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L231",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest_test_inspetor_nao_cria_nem_edita",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L239",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_tests_gerenciamentodemandastest_test_rejeita_responsavel_externo",
+      "target": "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/tests.py",
+      "source_location": "L247",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9731,11 +10125,21 @@
     },
     {
       "source": "backend_demandas_views_demandalistview",
-      "target": "backend_demandas_views_demandalistview_get_queryset",
+      "target": "backend_demandas_views_demandalistview_post",
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
       "source_location": "L61",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandalistview",
+      "target": "backend_demandas_views_demandalistview_get_queryset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9746,7 +10150,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L61",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9757,7 +10161,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L61",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9767,7 +10171,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L81",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9777,7 +10181,17 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L84",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview",
+      "target": "backend_demandas_views_demandadetailview_patch",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9787,7 +10201,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L88",
+      "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9797,7 +10211,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L88",
+      "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9807,7 +10221,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L89",
+      "source_location": "L113",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9817,7 +10231,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L108",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9827,7 +10241,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L108",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9837,7 +10251,18 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L109",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandalistview_post",
+      "target": "backend_demandas_views_demandas_permitidas",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9848,7 +10273,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L63",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9859,7 +10284,29 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L85",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview_patch",
+      "target": "backend_demandas_views_demandas_permitidas",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview_patch",
+      "target": "backend_demandas_views_demandadetailview_get_queryset",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9870,7 +10317,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L104",
+      "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9881,7 +10328,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/views.py",
-      "source_location": "L110",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16149,11 +16596,21 @@
     },
     {
       "source": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
-      "target": "docs_contrato_demandas_interface",
+      "target": "docs_contrato_demandas_gerenciamento_pelo_gestor",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/contrato-demandas.md",
       "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "target": "docs_contrato_demandas_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16353,7 +16810,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16363,7 +16820,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16373,7 +16830,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L66",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16383,7 +16840,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L81",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16393,7 +16850,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L100",
+      "source_location": "L102",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16403,7 +16860,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L117",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16413,7 +16870,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L132",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16423,7 +16880,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L151",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16433,7 +16890,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L169",
+      "source_location": "L171",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16443,7 +16900,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L180",
+      "source_location": "L182",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16453,7 +16910,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L193",
+      "source_location": "L195",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16463,7 +16920,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L204",
+      "source_location": "L206",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18116,6 +18573,17 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_serializers",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/serializers.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_services",
       "target": "backend_demandas_models_demanda",
       "relation": "imports",
@@ -18216,6 +18684,28 @@
     },
     {
       "source": "backend_demandas_views",
+      "target": "backend_demandas_services_criar_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views",
+      "target": "backend_demandas_services_editar_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views",
       "target": "backend_demandas_serializers_alterarstatusserializer",
       "relation": "imports",
       "context": "import",
@@ -18261,6 +18751,17 @@
     {
       "source": "backend_demandas_views",
       "target": "backend_demandas_serializers_eventodemandaserializer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views",
+      "target": "backend_demandas_serializers_gerenciardemandaserializer",
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -18404,6 +18905,78 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_views_demandalistview_post",
+      "target": "backend_demandas_serializers_gerenciardemandaserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandalistview_post",
+      "target": "backend_demandas_services_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandalistview_post",
+      "target": "backend_demandas_serializers_demandadetalheserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview_patch",
+      "target": "backend_demandas_serializers_gerenciardemandaserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview_patch",
+      "target": "backend_demandas_services_editar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_views_demandadetailview_patch",
+      "target": "backend_demandas_serializers_demandadetalheserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/demandas/views.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_views_demandastatusview_patch",
       "target": "backend_demandas_serializers_alterarstatusserializer",
       "relation": "calls",
@@ -18411,7 +18984,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/demandas/views.py",
-      "source_location": "L90",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18423,7 +18996,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/demandas/views.py",
-      "source_location": "L93",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18435,7 +19008,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/demandas/views.py",
-      "source_location": "L105",
+      "source_location": "L129",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18447,7 +19020,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/demandas/views.py",
-      "source_location": "L111",
+      "source_location": "L135",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18459,7 +19032,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/demandas/views.py",
-      "source_location": "L117",
+      "source_location": "L141",
       "weight": 1.0,
       "_origin": "ast"
     },

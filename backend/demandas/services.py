@@ -46,3 +46,40 @@ def alterar_status_demanda(*, demanda_id: int, usuario, novo_status: str, texto:
         status_anterior=anterior, status_novo=novo_status, texto=texto,
     )
     return demanda
+
+
+@transaction.atomic
+def criar_demanda(*, usuario, dados: dict) -> Demanda:
+    if usuario.perfil != "gestor" or not usuario.equipe_id:
+        raise PermissionDenied("Somente gestores vinculados a uma equipe podem criar demandas.")
+    responsavel = dados.pop("responsavel_id", None)
+    demanda = Demanda.objects.create(**dados, equipe_id=usuario.equipe_id, criador=usuario, responsavel=responsavel)
+    EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_CRIADA, autor=usuario, texto="Demanda criada pela gestão.")
+    if responsavel:
+        EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.RESPONSAVEL_ALTERADO, autor=usuario, texto=f"Responsável definido: {responsavel.nome}.")
+    return demanda
+
+
+@transaction.atomic
+def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
+    if usuario.perfil != "gestor" or demanda.equipe_id != usuario.equipe_id:
+        raise PermissionDenied("Somente gestores da equipe podem editar a demanda.")
+    if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
+        raise ValidationError({"status": "Demandas encerradas não podem ser editadas."})
+    marcador = object()
+    responsavel = dados.pop("responsavel_id", marcador)
+    alterados = []
+    for campo, valor in dados.items():
+        if getattr(demanda, campo) != valor:
+            setattr(demanda, campo, valor)
+            alterados.append(campo)
+    if alterados:
+        demanda.save(update_fields=[*alterados, "atualizada_em"])
+        EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto=f"Campos atualizados: {', '.join(alterados)}.")
+    if responsavel is not marcador and demanda.responsavel_id != (responsavel.id if responsavel else None):
+        anterior = demanda.responsavel.nome if demanda.responsavel_id else "não atribuído"
+        demanda.responsavel = responsavel
+        demanda.save(update_fields=["responsavel", "atualizada_em"])
+        novo = responsavel.nome if responsavel else "não atribuído"
+        EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.RESPONSAVEL_ALTERADO, autor=usuario, texto=f"Responsável alterado de {anterior} para {novo}.")
+    return demanda
