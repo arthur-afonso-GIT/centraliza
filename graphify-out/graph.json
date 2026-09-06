@@ -3845,8 +3845,8 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_plano_desenvolvimento_próxima_execução_detalhe_e_histórico_da_demanda",
-      "label": "Próxima execução: detalhe e histórico da demanda",
+      "id": "docs_plano_desenvolvimento_próxima_execução_agenda_e_calendário",
+      "label": "Próxima execução: agenda e calendário",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -4256,6 +4256,177 @@
       "node_kind": "heading",
       "source_file": "docs/semana-3.md",
       "source_location": "L163",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4",
+      "label": "semana-4.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "label": "Plano de execução — agenda e calendário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_ponto_de_partida",
+      "label": "Ponto de partida",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_metas_e_tarefas",
+      "label": "Metas e tarefas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_cronograma_diário",
+      "label": "Cronograma diário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_regras_propostas",
+      "label": "Regras propostas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_modelo_mínimo",
+      "label": "Modelo mínimo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_contrato_inicial_da_api",
+      "label": "Contrato inicial da API",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L76",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_comportamento_do_calendário",
+      "label": "Comportamento do calendário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L111",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_controles_compartilhados",
+      "label": "Controles compartilhados",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L113",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_dia",
+      "label": "Dia",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L124",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_semana",
+      "label": "Semana",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_mês",
+      "label": "Mês",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L134",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_estados",
+      "label": "Estados",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L139",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_testes",
+      "label": "Testes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L147",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_back_end",
+      "label": "Back-end",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L149",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_front_end",
+      "label": "Front-end",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L159",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_critérios_de_conclusão",
+      "label": "Critérios de conclusão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L170",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_4_fora_do_escopo",
+      "label": "Fora do escopo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L183",
       "_origin": "ast"
     },
     {
@@ -10960,7 +11131,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
-      "target": "docs_plano_desenvolvimento_próxima_execução_detalhe_e_histórico_da_demanda",
+      "target": "docs_plano_desenvolvimento_próxima_execução_agenda_e_calendário",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -10970,7 +11141,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento",
-      "target": "docs_semana_3",
+      "target": "docs_semana_4",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -11455,6 +11626,186 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-3.md",
       "source_location": "L163",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4",
+      "target": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_ponto_de_partida",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_metas_e_tarefas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_cronograma_diário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_regras_propostas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_modelo_mínimo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_contrato_inicial_da_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_comportamento_do_calendário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_comportamento_do_calendário",
+      "target": "docs_semana_4_controles_compartilhados",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_comportamento_do_calendário",
+      "target": "docs_semana_4_dia",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_comportamento_do_calendário",
+      "target": "docs_semana_4_semana",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_comportamento_do_calendário",
+      "target": "docs_semana_4_mês",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_comportamento_do_calendário",
+      "target": "docs_semana_4_estados",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_testes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_testes",
+      "target": "docs_semana_4_back_end",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_testes",
+      "target": "docs_semana_4_front_end",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_critérios_de_conclusão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L170",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_4_plano_de_execução_agenda_e_calendário",
+      "target": "docs_semana_4_fora_do_escopo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-4.md",
+      "source_location": "L183",
       "weight": 1.0,
       "_origin": "ast"
     },

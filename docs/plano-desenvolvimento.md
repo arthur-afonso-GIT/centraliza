@@ -1,11 +1,11 @@
 # Plano de desenvolvimento — Centraliza
 
-## Próxima execução: detalhe e histórico da demanda
+## Próxima execução: agenda e calendário
 
-O [plano da semana 3, de 14/09 a 20/09](semana-3.md) define tarefas,
-dependências, contrato da API, transições de status, timeline e validação do
-fluxo entre lista e detalhe. A listagem autenticada, sua integração ao
-PostgreSQL e a validação de desempenho já estão concluídas.
+O [plano da semana 4, de 21/09 a 27/09](semana-4.md) define o contrato de
+intervalos, timezone, regras de acesso, visualizações de dia/semana/mês e
+interação do botão Hoje. A listagem, o detalhe, as transições de status e o
+histórico de demandas já estão tecnicamente concluídos.
 
 ## Entrega técnica concluída: semana 1
 
