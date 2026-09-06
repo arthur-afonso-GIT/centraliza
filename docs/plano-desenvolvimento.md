@@ -1,11 +1,10 @@
 # Plano de desenvolvimento — Centraliza
 
-## Próxima execução: agenda e calendário
+## Próxima execução: avisos e Status Report 1
 
-O [plano da semana 4, de 21/09 a 27/09](semana-4.md) define o contrato de
-intervalos, timezone, regras de acesso, visualizações de dia/semana/mês e
-interação do botão Hoje. A listagem, o detalhe, as transições de status e o
-histórico de demandas já estão tecnicamente concluídos.
+O [plano de 28/09 a 03/10](semana-5.md) define o MVP de avisos, a regressão dos
+recursos essenciais, o congelamento do código e a preparação do Status Report 1.
+Demandas e Agenda já estão tecnicamente concluídas e integram a bateria final.
 
 ## Entrega técnica concluída: semana 1
 

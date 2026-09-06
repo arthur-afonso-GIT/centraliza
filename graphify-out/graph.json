@@ -4302,7 +4302,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "_origin": "ast"
     },
     {
@@ -4311,7 +4311,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L71",
+      "source_location": "L72",
       "_origin": "ast"
     },
     {
@@ -4320,7 +4320,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast"
     },
     {
@@ -4329,7 +4329,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L83",
+      "source_location": "L84",
       "_origin": "ast"
     },
     {
@@ -4338,7 +4338,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L96",
+      "source_location": "L97",
       "_origin": "ast"
     },
     {
@@ -4347,7 +4347,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L119",
+      "source_location": "L120",
       "_origin": "ast"
     },
     {
@@ -4356,7 +4356,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L161",
+      "source_location": "L162",
       "_origin": "ast"
     },
     {
@@ -4365,7 +4365,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L168",
+      "source_location": "L169",
       "_origin": "ast"
     },
     {
@@ -4374,7 +4374,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L172",
+      "source_location": "L173",
       "_origin": "ast"
     },
     {
@@ -4495,8 +4495,8 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_plano_desenvolvimento_próxima_execução_agenda_e_calendário",
-      "label": "Próxima execução: agenda e calendário",
+      "id": "docs_plano_desenvolvimento_próxima_execução_avisos_e_status_report_1",
+      "label": "Próxima execução: avisos e Status Report 1",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -4509,7 +4509,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L10",
+      "source_location": "L9",
       "_origin": "ast"
     },
     {
@@ -4518,7 +4518,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L24",
+      "source_location": "L23",
       "_origin": "ast"
     },
     {
@@ -4527,7 +4527,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L35",
+      "source_location": "L34",
       "_origin": "ast"
     },
     {
@@ -4536,7 +4536,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L50",
+      "source_location": "L49",
       "_origin": "ast"
     },
     {
@@ -4545,7 +4545,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L68",
+      "source_location": "L67",
       "_origin": "ast"
     },
     {
@@ -4554,7 +4554,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L86",
+      "source_location": "L85",
       "_origin": "ast"
     },
     {
@@ -5077,6 +5077,204 @@
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
       "source_location": "L190",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5",
+      "label": "semana-5.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "label": "Plano de execução — avisos e Status Report 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_ponto_de_partida",
+      "label": "Ponto de partida",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_metas_e_tarefas",
+      "label": "Metas e tarefas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_cronograma_diário",
+      "label": "Cronograma diário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_escopo_do_mvp_de_avisos",
+      "label": "Escopo do MVP de avisos",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L37",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_regras_propostas",
+      "label": "Regras propostas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L39",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_modelo_mínimo",
+      "label": "Modelo mínimo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L54",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_contrato_inicial_da_api",
+      "label": "Contrato inicial da API",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L72",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_feed",
+      "label": "Feed",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L74",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_detalhe",
+      "label": "Detalhe",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L95",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_direção_visual",
+      "label": "Direção visual",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L103",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_feed_105",
+      "label": "Feed",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L105",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_detalhe_114",
+      "label": "Detalhe",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L114",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_must_have_do_status_report_1",
+      "label": "MUST HAVE do Status Report 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L122",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_estratégia_de_testes",
+      "label": "Estratégia de testes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L140",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_back_end",
+      "label": "Back-end",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L142",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_front_end",
+      "label": "Front-end",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L149",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_regressão_integrada",
+      "label": "Regressão integrada",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L156",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_congelamento_e_apresentação",
+      "label": "Congelamento e apresentação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L164",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_critérios_de_conclusão",
+      "label": "Critérios de conclusão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L179",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_5_fora_do_escopo",
+      "label": "Fora do escopo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L192",
       "_origin": "ast"
     },
     {
@@ -13079,7 +13277,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_semana_1",
+      "target": "docs_semana_5",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13089,7 +13287,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_semana_2",
+      "target": "docs_semana_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13099,7 +13297,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_contrato_demandas",
+      "target": "docs_semana_2",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13109,7 +13307,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_1",
+      "target": "docs_contrato_demandas",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13119,7 +13317,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_2",
+      "target": "docs_validacao_semana_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13129,7 +13327,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_3",
+      "target": "docs_validacao_semana_2",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13139,7 +13337,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_4",
+      "target": "docs_validacao_semana_3",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -13149,11 +13347,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_validacao_semana_4",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13163,7 +13371,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13173,7 +13381,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L71",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13183,7 +13391,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13193,7 +13401,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13203,7 +13411,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13213,7 +13421,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L119",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13223,7 +13431,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L161",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13233,7 +13441,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L168",
+      "source_location": "L169",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13243,7 +13451,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L172",
+      "source_location": "L173",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13339,7 +13547,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
-      "target": "docs_plano_desenvolvimento_próxima_execução_agenda_e_calendário",
+      "target": "docs_plano_desenvolvimento_próxima_execução_avisos_e_status_report_1",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -13349,7 +13557,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento",
-      "target": "docs_semana_4",
+      "target": "docs_semana_5",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -13363,7 +13571,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L10",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13373,7 +13581,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13383,7 +13591,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L24",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13393,7 +13601,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L35",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13403,7 +13611,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L50",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13413,7 +13621,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L68",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13423,7 +13631,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L84",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13433,7 +13641,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L86",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14024,6 +14232,216 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
       "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5",
+      "target": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_ponto_de_partida",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_metas_e_tarefas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_cronograma_diário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_escopo_do_mvp_de_avisos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_escopo_do_mvp_de_avisos",
+      "target": "docs_semana_5_regras_propostas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_escopo_do_mvp_de_avisos",
+      "target": "docs_semana_5_modelo_mínimo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_contrato_inicial_da_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_contrato_inicial_da_api",
+      "target": "docs_semana_5_feed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_contrato_inicial_da_api",
+      "target": "docs_semana_5_detalhe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_direção_visual",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_direção_visual",
+      "target": "docs_semana_5_feed_105",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_direção_visual",
+      "target": "docs_semana_5_detalhe_114",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_must_have_do_status_report_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_estratégia_de_testes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_estratégia_de_testes",
+      "target": "docs_semana_5_back_end",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_estratégia_de_testes",
+      "target": "docs_semana_5_front_end",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_estratégia_de_testes",
+      "target": "docs_semana_5_regressão_integrada",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_congelamento_e_apresentação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_critérios_de_conclusão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L179",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "target": "docs_semana_5_fora_do_escopo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-5.md",
+      "source_location": "L192",
       "weight": 1.0,
       "_origin": "ast"
     },
