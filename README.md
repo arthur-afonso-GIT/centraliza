@@ -19,7 +19,7 @@ The repository currently provides authenticated navigation and an operational re
 
 ## Core capabilities
 
-Available in the prototype:
+Available in the current version:
 
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
@@ -38,7 +38,7 @@ Planned operational capabilities:
 
 ## Team workspace
 
-The product is designed around two roles. The API already restricts managers to their team and inspectors to requests assigned to them.
+The product is designed around two roles. The API currently restricts managers to their team and inspectors to requests assigned to them; the remaining responsibilities describe the product direction.
 
 | Role | Intended responsibilities |
 | --- | --- |
@@ -55,8 +55,10 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing) — proposed user needs.
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
-- [Navigation and session contract](docs/semana-1.md) — prototype scope and proposed authentication endpoints.
-- [Technical validation](docs/validacao-semana-1.md) — test coverage, evidence, and limitations.
+- [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
+- [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
+- [Request API contract](docs/contrato-demandas.md) — filters, pagination, access rules, and response format.
+- [Navigation validation](docs/validacao-semana-1.md) — browser coverage and visual evidence.
 - [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
@@ -72,7 +74,7 @@ The interface and supporting project documents use Brazilian Portuguese:
   <img src="docs/evidencias/paleta/home-390.png" alt="Centraliza mobile home" width="320">
 </p>
 
-These screenshots show the local prototype. The previously published demonstration may not include the latest repository changes.
+These screenshots record the approved visual identity. The published static demonstration may not include the authenticated Django integration available in the repository.
 
 ## Technology stack
 
@@ -94,8 +96,8 @@ centraliza/
 ├── frontend/
 │   ├── app/               Routes, metadata, global styles, and error pages
 │   ├── components/        Entry screen, workspace layout, and module content
-│   ├── hooks/             Demo session lifecycle
-│   ├── lib/               Authentication adapter and navigation configuration
+│   ├── hooks/             Authenticated session lifecycle
+│   ├── lib/               API clients and navigation configuration
 │   ├── public/            Browser assets
 │   └── tests/             Navigation, session, and accessibility checks
 ├── backend/               Django API, models, migrations, tests, and demo seed
@@ -108,9 +110,22 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
+The current quality baseline includes 15 Django tests and 14 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [validation report](docs/validacao-semana-2.md) for the method and limitations.
+
 ## Local development
 
-Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Prepare the back-end first using [its setup instructions](backend/README.md), then keep it running on port 8000.
+Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`, then start the API:
+
+```powershell
+cd backend
+uv sync
+uv run python manage.py migrate
+$env:CENTRALIZA_DEMO_PASSWORD = "choose-a-local-password-with-12-characters"
+uv run python manage.py seed_demo --total 30
+uv run python manage.py runserver
+```
+
+In another terminal, start the interface:
 
 ```powershell
 cd frontend
@@ -120,9 +135,14 @@ npm run dev
 
 Open the address printed by the terminal, normally http://localhost:3000. Sign in with one of the accounts created by `seed_demo`; the frontend proxies `/api` to http://127.0.0.1:8000. Set `CENTRALIZA_API_URL` before starting the frontend to use another local API address.
 
-Run checks from frontend:
+Run the complete validation from the corresponding directories:
 
 ```powershell
+cd backend
+uv run python manage.py test usuarios demandas
+uv run python manage.py benchmark_demandas --requests 30 --warmup 5
+
+cd ../frontend
 npm run lint
 npm run typecheck
 npm run build
@@ -142,7 +162,7 @@ For code exploration, run graphify explain Workspace from the repository root. A
 
 ## Product direction
 
-The next development stage is to validate performance and delivery evidence, then implement one complete request lifecycle before expanding agenda, notices, and chat.
+The authenticated request list and its performance baseline are complete. The next development stage is to implement one complete request lifecycle: creation, assignment, progress updates, management review, corrections, completion, and change history. Agenda, notices, dashboards, attachments, and chat follow that core workflow.
 
 ## Team
 
