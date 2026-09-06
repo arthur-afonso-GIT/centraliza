@@ -2371,6 +2371,103 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_components_agenda_calendar",
+      "label": "agenda-calendar.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_views",
+      "label": "views",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_datelabel",
+      "label": "dateLabel()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_timelabel",
+      "label": "timeLabel()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_eventcard",
+      "label": "EventCard()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar",
+      "label": "AgendaCalendar()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "label": "prepare()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_changeview",
+      "label": "changeView()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_move",
+      "label": "move()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L35",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_gotoday",
+      "label": "goToday()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_retry",
+      "label": "retry()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L37",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_components_demanda_detail",
       "label": "demanda-detail.tsx",
       "file_type": "code",
@@ -2564,7 +2661,7 @@
       "label": "ModuleContent()",
       "file_type": "code",
       "source_file": "frontend/components/module-content.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2643,6 +2740,125 @@
       "file_type": "code",
       "source_file": "frontend/hooks/use-session.ts",
       "source_location": "L66",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda",
+      "label": "agenda.ts",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_visaoagenda",
+      "label": "VisaoAgenda",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L3",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_compromisso",
+      "label": "Compromisso",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_agendaresponse",
+      "label": "AgendaResponse",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L5",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_datefrom",
+      "label": "dateFrom()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_isodate",
+      "label": "isoDate()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_shiftdays",
+      "label": "shiftDays()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_hojefortaleza",
+      "label": "hojeFortaleza()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_intervaloagenda",
+      "label": "intervaloAgenda()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_moverreferencia",
+      "label": "moverReferencia()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L28",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_diasentre",
+      "label": "diasEntre()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_ocorrenodia",
+      "label": "ocorreNoDia()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L40",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_listarcompromissos",
+      "label": "listarCompromissos()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L45",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3654,6 +3870,14 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_agenda_spec",
+      "label": "agenda.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tests_demandas_spec",
       "label": "demandas.spec.ts",
       "file_type": "code",
@@ -3734,7 +3958,7 @@
       "label": "entrarComo()",
       "file_type": "code",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L56",
+      "source_location": "L66",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4060,7 +4284,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L40",
+      "source_location": "L41",
       "_origin": "ast"
     },
     {
@@ -4069,7 +4293,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L51",
+      "source_location": "L52",
       "_origin": "ast"
     },
     {
@@ -4078,7 +4302,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "_origin": "ast"
     },
     {
@@ -4087,7 +4311,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "_origin": "ast"
     },
     {
@@ -4096,7 +4320,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L74",
       "_origin": "ast"
     },
     {
@@ -4105,7 +4329,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "_origin": "ast"
     },
     {
@@ -4114,7 +4338,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L94",
+      "source_location": "L95",
       "_origin": "ast"
     },
     {
@@ -4123,7 +4347,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -4132,7 +4356,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L158",
+      "source_location": "L159",
       "_origin": "ast"
     },
     {
@@ -4141,7 +4365,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L165",
+      "source_location": "L166",
       "_origin": "ast"
     },
     {
@@ -4150,7 +4374,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L169",
+      "source_location": "L170",
       "_origin": "ast"
     },
     {
@@ -4726,7 +4950,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L31",
+      "source_location": "L32",
       "_origin": "ast"
     },
     {
@@ -4735,7 +4959,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "_origin": "ast"
     },
     {
@@ -4744,7 +4968,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "_origin": "ast"
     },
     {
@@ -4753,7 +4977,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "_origin": "ast"
     },
     {
@@ -4762,7 +4986,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L116",
+      "source_location": "L117",
       "_origin": "ast"
     },
     {
@@ -4771,7 +4995,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L118",
+      "source_location": "L119",
       "_origin": "ast"
     },
     {
@@ -4780,7 +5004,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L129",
+      "source_location": "L130",
       "_origin": "ast"
     },
     {
@@ -4789,7 +5013,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L134",
+      "source_location": "L135",
       "_origin": "ast"
     },
     {
@@ -4798,7 +5022,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L139",
+      "source_location": "L140",
       "_origin": "ast"
     },
     {
@@ -4807,7 +5031,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L144",
+      "source_location": "L145",
       "_origin": "ast"
     },
     {
@@ -4816,7 +5040,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L152",
+      "source_location": "L153",
       "_origin": "ast"
     },
     {
@@ -4825,7 +5049,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L154",
+      "source_location": "L155",
       "_origin": "ast"
     },
     {
@@ -4834,7 +5058,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L164",
+      "source_location": "L165",
       "_origin": "ast"
     },
     {
@@ -4843,7 +5067,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L175",
+      "source_location": "L176",
       "_origin": "ast"
     },
     {
@@ -4852,7 +5076,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L188",
+      "source_location": "L189",
       "_origin": "ast"
     },
     {
@@ -9040,6 +9264,370 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_agenda_calendar",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "ref_next_navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_diasentre",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_hojefortaleza",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_intervaloagenda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_listarcompromissos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_moverreferencia",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_ocorrenodia",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_agendaresponse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_agenda_visaoagenda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_agenda_calendar_views",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_agenda_calendar_datelabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_agenda_calendar_timelabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_agenda_calendar_eventcard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_changeview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_move",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_gotoday",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_retry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_eventcard",
+      "target": "frontend_components_agenda_calendar_timelabel",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_datelabel",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_move",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_changeview",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_changeview",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_move",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_gotoday",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_retry",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demanda_detail",
       "target": "ref_react",
       "relation": "imports_from",
@@ -9661,11 +10249,22 @@
     },
     {
       "source": "frontend_components_module_content",
+      "target": "frontend_components_agenda_calendar",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
       "target": "frontend_components_module_content_modulecontent",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/module-content.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9993,6 +10592,258 @@
       "confidence_score": 0.85,
       "source_file": "frontend/hooks/use-session.ts",
       "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_visaoagenda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_compromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_agendaresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_datefrom",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_isodate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_hojefortaleza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_intervaloagenda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_moverreferencia",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_diasentre",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_ocorrenodia",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_listarcompromissos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_shiftdays",
+      "target": "frontend_lib_agenda_datefrom",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_shiftdays",
+      "target": "frontend_lib_agenda_isodate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_intervaloagenda",
+      "target": "frontend_lib_agenda_datefrom",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_intervaloagenda",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_intervaloagenda",
+      "target": "frontend_lib_agenda_isodate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_moverreferencia",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_moverreferencia",
+      "target": "frontend_lib_agenda_datefrom",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_moverreferencia",
+      "target": "frontend_lib_agenda_isodate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_diasentre",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_ocorrenodia",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11416,6 +12267,61 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_agenda_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_agenda_spec",
+      "target": "ref_axe_core_playwright",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_agenda_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_agenda_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_agenda_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/agenda.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_demandas_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -11657,7 +12563,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L56",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12093,7 +12999,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12103,7 +13009,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12113,7 +13019,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12123,7 +13029,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12133,7 +13039,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12143,7 +13049,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12153,7 +13059,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12163,7 +13069,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12173,7 +13079,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12183,7 +13089,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L65",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12193,7 +13099,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12203,7 +13109,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12213,7 +13119,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12223,7 +13129,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12233,7 +13139,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12243,7 +13149,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L117",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12253,7 +13159,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L158",
+      "source_location": "L159",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12263,7 +13169,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L165",
+      "source_location": "L166",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12273,7 +13179,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L169",
+      "source_location": "L170",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12903,7 +13809,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12913,7 +13819,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12923,7 +13829,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12933,7 +13839,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12943,7 +13849,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L116",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12953,7 +13859,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L118",
+      "source_location": "L119",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12963,7 +13869,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L129",
+      "source_location": "L130",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12973,7 +13879,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L134",
+      "source_location": "L135",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12983,7 +13889,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L139",
+      "source_location": "L140",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12993,7 +13899,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L144",
+      "source_location": "L145",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13003,7 +13909,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L152",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13013,7 +13919,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L154",
+      "source_location": "L155",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13023,7 +13929,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L164",
+      "source_location": "L165",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13033,7 +13939,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L175",
+      "source_location": "L176",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13043,7 +13949,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13248,6 +14154,17 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/module-content.tsx",
       "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_module_content",
+      "target": "frontend_components_agenda_calendar_agendacalendar",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/module-content.tsx",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13859,6 +14776,78 @@
       "confidence_score": 1.0,
       "source_file": "backend/usuarios/tests.py",
       "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_lib_agenda_hojefortaleza",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_lib_agenda_intervaloagenda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_lib_agenda_listarcompromissos",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_lib_agenda_diasentre",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_lib_agenda_ocorrenodia",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_move",
+      "target": "frontend_lib_agenda_moverreferencia",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },

@@ -25,6 +25,7 @@ Available in the current version:
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
 - **Request details and history** — inspect complete request data, add timeline comments, and let the assigned inspector advance permitted statuses.
+- **Team agenda** — browse authorized commitments by day, week, or month, move between periods, and return to today in Fortaleza time.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.

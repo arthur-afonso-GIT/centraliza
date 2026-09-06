@@ -5,6 +5,7 @@ import { ArrowRight, ClipboardList, ShieldCheck } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import type { User } from '../lib/auth';
 import DemandasList from './demandas-list';
+import AgendaCalendar from './agenda-calendar';
 
 export default function ModuleContent({
   page,
@@ -44,7 +45,7 @@ export default function ModuleContent({
           </p>
         </div>
       </div>
-      {page === 'demandas' ? <DemandasList user={user} /> : page === 'home' ? (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar /> : page === 'home' ? (
         <>
           <section className="welcome-panel">
             <div>
