@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from django.test import override_settings
 from rest_framework.test import APIClient, APITestCase
 
-from demandas.models import Demanda
+from demandas.models import Demanda, EventoDemanda
 from usuarios.models import Equipe, Usuario
 
 
@@ -119,3 +119,71 @@ class SessaoTest(APITestCase):
         )
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.data["detail"], "Credenciais inválidas.")
+
+
+class DetalheHistoricoTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe detalhe")
+        cls.outra_equipe = Equipe.objects.create(nome="Outra equipe detalhe")
+        cls.gestor = Usuario.objects.create_user(username="gestor.detalhe", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.detalhe", perfil="inspetor", equipe=cls.equipe)
+        cls.outro_inspetor = Usuario.objects.create_user(username="outro.detalhe", perfil="inspetor", equipe=cls.equipe)
+        cls.gestor_externo = Usuario.objects.create_user(username="gestor.externo", perfil="gestor", equipe=cls.outra_equipe)
+        cls.demanda = Demanda.objects.create(
+            titulo="Demanda com detalhe", descricao="Descrição completa", equipe=cls.equipe,
+            criador=cls.gestor, responsavel=cls.inspetor, status="pendente",
+            prioridade="alta", prazo=date(2026, 9, 20), critica=True,
+        )
+
+    def test_detalhe_respeita_equipe_e_responsavel(self):
+        for usuario in (self.gestor, self.inspetor):
+            with self.subTest(usuario=usuario.username):
+                self.client.force_authenticate(usuario)
+                response = self.client.get(f"/api/demandas/{self.demanda.id}/")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.data["descricao"], "Descrição completa")
+                self.assertEqual(response.data["historico"], [])
+        for usuario in (self.outro_inspetor, self.gestor_externo):
+            with self.subTest(usuario=usuario.username):
+                self.client.force_authenticate(usuario)
+                self.assertEqual(self.client.get(f"/api/demandas/{self.demanda.id}/").status_code, 404)
+
+    def test_inspetor_executa_transicoes_e_historico_permanece_consistente(self):
+        self.client.force_authenticate(self.inspetor)
+        primeira = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"})
+        self.assertEqual(primeira.status_code, 200)
+        self.assertEqual(primeira.data["status"], "em_andamento")
+        self.assertEqual(primeira.data["historico"][0]["status_anterior"], "pendente")
+        segunda = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "concluida"})
+        self.assertEqual(segunda.status_code, 200)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 2)
+        self.assertEqual(list(EventoDemanda.objects.filter(demanda=self.demanda).values_list("status_novo", flat=True)), ["concluida", "em_andamento"])
+        invalida = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"})
+        self.assertEqual(invalida.status_code, 400)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 2)
+
+    def test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro(self):
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"}).status_code, 403)
+        self.client.force_authenticate(self.outro_inspetor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"}).status_code, 404)
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.status, "pendente")
+
+    def test_comentario_valida_texto_autor_e_acesso(self):
+        self.client.force_authenticate(self.gestor)
+        response = self.client.post(f"/api/demandas/{self.demanda.id}/historico/", {"texto": "  Registro da gestão.  "})
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data["texto"], "Registro da gestão.")
+        self.assertEqual(response.data["autor"]["id"], self.gestor.id)
+        self.assertEqual(self.client.post(f"/api/demandas/{self.demanda.id}/historico/", {"texto": "  "}).status_code, 400)
+        self.client.force_authenticate(self.gestor_externo)
+        self.assertEqual(self.client.post(f"/api/demandas/{self.demanda.id}/historico/", {"texto": "Indevido"}).status_code, 404)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 1)
+
+    def test_historico_nao_oferece_edicao_ou_exclusao(self):
+        self.client.force_authenticate(self.gestor)
+        url = f"/api/demandas/{self.demanda.id}/historico/"
+        self.assertEqual(self.client.patch(url, {"texto": "alterado"}).status_code, 405)
+        self.assertEqual(self.client.delete(url).status_code, 405)

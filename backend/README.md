@@ -9,8 +9,13 @@ paginada de demandas com acesso por equipe e perfil.
 - `GET /api/auth/csrf/`, `POST /api/auth/login/`, `GET /api/auth/me/` e
   `POST /api/auth/logout/` para a sessão.
 - `GET /api/demandas/` para filtros por `status`, `critica`, `page` e `page_size`.
+- `GET /api/demandas/{id}/` para dados completos e histórico autorizado.
+- `PATCH /api/demandas/{id}/status/` para o inspetor responsável executar a
+  próxima transição permitida.
+- `POST /api/demandas/{id}/historico/` para adicionar um comentário simples.
 
-Operações de escrita em demandas não estão disponíveis nesta etapa.
+Alterações de status geram um evento na mesma transação. O histórico exposto
+pela API não oferece edição ou exclusão.
 
 ## Preparação local
 

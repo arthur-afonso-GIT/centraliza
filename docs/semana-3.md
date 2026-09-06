@@ -145,8 +145,8 @@ O servidor define autor, data e tipo; o navegador não envia esses campos.
 - [ ] Contrato e transições revisados pela equipe.
 - [ ] Protótipo de detalhe e timeline revisado em desktop e celular.
 - [x] Migração do histórico reproduzível em banco vazio.
-- [ ] API protege detalhe e alterações conforme equipe, perfil e responsável.
-- [ ] Mudança de status e evento são salvos atomicamente.
+- [x] API protege detalhe e alterações conforme equipe, perfil e responsável.
+- [x] Mudança de status e evento são salvos atomicamente.
 - [ ] Página apresenta dados reais e histórico do PostgreSQL.
 - [ ] Feedback de carregamento, sucesso, erro, 404 e sessão expirada implementado.
 - [ ] Fluxo “abrir → alterar status → voltar à lista” aprovado.
