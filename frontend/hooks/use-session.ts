@@ -5,7 +5,6 @@ import {
   entrar,
   obterUsuarioAtual,
   sair,
-  type Profile,
   type User,
 } from '../lib/auth';
 
@@ -39,10 +38,10 @@ export function useSession(page: string) {
     };
   }, [page, attempt, router]);
 
-  async function login(profile: Profile) {
+  async function login(username: string, password: string) {
     setBusy(true);
     try {
-      await entrar(profile);
+      await entrar(username, password);
       router.replace('/');
     } catch {
       setError(true);

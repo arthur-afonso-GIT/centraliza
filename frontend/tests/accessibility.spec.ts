@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { entrarComo, instalarApi } from './support/api';
+
+test.beforeEach(async ({ page }) => instalarApi(page));
 
 for (const width of [390, 1366]) {
   test(`acessibilidade e largura das páginas em ${width}px`, async ({
@@ -10,7 +13,7 @@ for (const width of [390, 1366]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/login');
     await expect(
-      page.getByRole('button', { name: 'Entrar como Gestor' }),
+      page.getByRole('button', { name: /^Entrar/ }),
     ).toBeVisible({ timeout: 15_000 });
     for (const route of [
       '/login',
@@ -21,7 +24,9 @@ for (const width of [390, 1366]) {
       '/chats',
     ]) {
       if (route === '/') {
-        await page.getByRole('button', { name: 'Entrar como Gestor' }).click();
+        await page.getByLabel('Usuário').fill('demo.gestor.1');
+        await page.getByLabel('Senha').fill('senha-de-teste');
+        await page.getByRole('button', { name: /^Entrar/ }).click();
       } else if (route !== '/login') {
         await page.goto(route);
       }
@@ -58,8 +63,7 @@ test('foco acompanha a navegação e volta ao botão ao fechar o item atual', as
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/login');
-  await page.getByRole('button', { name: 'Entrar como Inspetor' }).click();
+  await entrarComo(page, 'inspetor');
   await expect(page.locator('#conteudo')).toBeFocused();
   await page.getByRole('button', { name: 'Abrir menu' }).click();
   await page

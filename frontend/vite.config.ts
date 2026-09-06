@@ -46,9 +46,10 @@ export default defineConfig(async ({ command }) => {
 
   return {
     css: { postcss: { plugins: [tailwindcss()] } },
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      ...(isCodexSeatbeltSandbox ? { watch: { useFsEvents: false, usePolling: true } } : {}),
+      proxy: { '/api': { target: process.env.CENTRALIZA_API_URL ?? 'http://127.0.0.1:8000' } },
+    },
     plugins: [
       vinext(),
       sites(),

@@ -13,7 +13,7 @@ export default function Workspace({ page }: { page: string }) {
         <ShieldCheck size={40} />
         <h1>Não foi possível acessar a sessão</h1>
         <p>
-          Verifique se o navegador permite armazenamento para este site e tente
+          Verifique suas credenciais e se a API está disponível, depois tente
           novamente.
         </p>
         <button className="primary" onClick={session.retry}>

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { listarDemandas, type PaginaDemandas, type SegmentoDemanda } from '../lib/demandas';
 import type { User } from '../lib/auth';
@@ -9,6 +10,7 @@ const statusLabel = { pendente: 'Pendente', em_andamento: 'Em andamento' };
 const prioridadeLabel = { baixa: 'Baixa', media: 'Média', alta: 'Alta' };
 
 export default function DemandasList({ user }: { user: User }) {
+  const router = useRouter();
   const [segmento, setSegmento] = useState<SegmentoDemanda>('pendentes');
   const [page, setPage] = useState(1);
   const [data, setData] = useState<PaginaDemandas | null>(null);
@@ -17,13 +19,15 @@ export default function DemandasList({ user }: { user: User }) {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   useEffect(() => {
     const controller = new AbortController();
-    listarDemandas(segmento, page, user.perfil, controller.signal)
+    listarDemandas(segmento, page, controller.signal)
       .then(setData)
       .catch((reason: unknown) => {
-        if (!(reason instanceof DOMException && reason.name === 'AbortError')) setError(true);
+        if (reason instanceof DOMException && reason.name === 'AbortError') return;
+        if (typeof reason === 'object' && reason && 'status' in reason && reason.status === 401) router.replace('/login');
+        else setError(true);
       });
     return () => controller.abort();
-  }, [segmento, page, user.perfil, attempt]);
+  }, [segmento, page, user.perfil, attempt, router]);
   function prepareRequest() { setData(null); setError(false); }
   function select(next: SegmentoDemanda) { prepareRequest(); setSegmento(next); setPage(1); }
   function changePage(next: number) { prepareRequest(); setPage(next); }

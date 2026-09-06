@@ -45,6 +45,11 @@ p { line-height: 1.65; }
 .login-footer { color: #d9dadd; font-size: 14px; }
 .login-form { display: flex; align-items: center; justify-content: center; padding: 48px; background: #fff; }
 .login-inner { width: 100%; max-width: 440px; }
+.login-fields { display: grid; gap: 10px; margin-top: 24px; }
+.login-fields label { color: var(--visat-graphite); font-size: 14px; font-weight: 700; }
+.login-fields input { width: 100%; border: 1px solid var(--visat-border); border-radius: 9px; background: #fff; color: var(--visat-graphite); padding: 14px 16px; font: inherit; }
+.login-fields input:focus { outline: 3px solid color-mix(in srgb, var(--visat-red) 28%, transparent); border-color: var(--visat-red); }
+.login-fields .profile-choice { margin-top: 8px; }
 .login-inner h2 { font-size: 28px; margin: 22px 0 12px; letter-spacing: -.8px; }
 .login-inner > p { color: var(--visat-muted); margin-bottom: 30px; }
 .profile-choice { display: flex; align-items: center; width: 100%; gap: 16px; text-align: left; border: 1px solid var(--visat-border); background: white; border-radius: 9px; padding: 20px; margin-bottom: 14px; color: var(--visat-graphite); }

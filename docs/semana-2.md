@@ -29,6 +29,8 @@ S2-03 concluída com Django, migrações, PostgreSQL local e carga fictícia.
 S2-04 concluída com sessão, filtros, paginação e isolamento por equipe.
 S2-05 concluída com listagem React ligada a fixtures do contrato, segmentos
 operáveis por teclado, paginação e estados de carregamento, vazio e erro.
+S2-06 concluída com autenticação por sessão, proxy de desenvolvimento e dados
+do PostgreSQL exibidos pela interface conforme o perfil autenticado.
 As demais tarefas permanecem planejadas. A revisão de
 produto pela equipe continua distinta da definição técnica implementada.
 
@@ -179,9 +181,9 @@ uma consulta adicional por cartão; criar índices conforme filtros e medição.
 - [ ] Protótipo e regras revisados pela equipe.
 - [x] Banco e dados fictícios podem ser preparados seguindo a documentação.
 - [x] API pagina e filtra corretamente, sem vazamento entre usuários/equipes.
-- [ ] Os três segmentos exibem dados reais da API.
+- [x] Os três segmentos exibem dados reais da API.
 - [x] Cartões e estados vazio/carregamento/erro estão implementados.
-- [ ] Testes de acesso, filtros, paginação e interface passaram.
+- [x] Testes de acesso, filtros, paginação e interface passaram.
 - [ ] Desempenho foi medido com as duas massas e limitações registradas.
 - [x] Graphify atualizado após alterações de código.
 - [ ] Cada tarefa concluída possui commit com título e descrição em português.

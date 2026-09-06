@@ -81,7 +81,7 @@ export default function WorkspaceLayout({
           })}
         </nav>
         <div className="sidebar-bottom">
-          <span className="badge">Demonstração</span>
+          <span className="badge">{user.perfil === 'gestor' ? 'GESTÃO' : 'INSPEÇÃO'}</span>
           <p>
             Uma base para o trabalho
             <br />
@@ -95,11 +95,11 @@ export default function WorkspaceLayout({
               <strong>
                 {user.perfil === 'gestor' ? 'Gestor' : 'Inspetor'}
               </strong>
-              <small>Perfil de demonstração</small>
+              <small>{user.nome}</small>
             </div>
           </div>
           <button className="logout" disabled={busy} onClick={logout}>
-            <LogOut size={18} /> Sair da demonstração
+            <LogOut size={18} /> Sair
           </button>
         </div>
       </aside>

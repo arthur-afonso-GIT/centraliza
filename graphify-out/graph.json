@@ -1654,7 +1654,7 @@
       "label": "segmentos",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "_origin": "ast"
     },
     {
@@ -1662,7 +1662,7 @@
       "label": "statusLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast"
     },
     {
@@ -1670,7 +1670,7 @@
       "label": "prioridadeLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast"
     },
     {
@@ -1678,7 +1678,7 @@
       "label": "DemandasList()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1687,7 +1687,7 @@
       "label": "prepareRequest()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L27",
+      "source_location": "L31",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1696,7 +1696,7 @@
       "label": "select()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L28",
+      "source_location": "L32",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1705,7 +1705,7 @@
       "label": "changePage()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L29",
+      "source_location": "L33",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1714,7 +1714,7 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L30",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1723,7 +1723,7 @@
       "label": "moveTab()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L31",
+      "source_location": "L35",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1741,6 +1741,15 @@
       "file_type": "code",
       "source_file": "frontend/components/login-screen.tsx",
       "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_login_screen_loginscreen_submit",
+      "label": "submit()",
+      "file_type": "code",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L14",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1808,7 +1817,7 @@
       "label": "useSession()",
       "file_type": "code",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L13",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1817,7 +1826,7 @@
       "label": "login()",
       "file_type": "code",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L42",
+      "source_location": "L41",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1826,7 +1835,7 @@
       "label": "logout()",
       "file_type": "code",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L54",
+      "source_location": "L53",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1835,7 +1844,7 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L67",
+      "source_location": "L66",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1868,11 +1877,49 @@
       "_origin": "ast"
     },
     {
-      "id": "frontend_lib_auth_users",
-      "label": "USERS",
+      "id": "frontend_lib_auth_apierror",
+      "label": "ApiError",
       "file_type": "code",
       "source_file": "frontend/lib/auth.ts",
       "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_auth_apierror_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_auth_cookie",
+      "label": "cookie()",
+      "file_type": "code",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_auth_responsejson",
+      "label": "responseJson()",
+      "file_type": "code",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_auth_csrftoken",
+      "label": "csrfToken()",
+      "file_type": "code",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L18",
+      "_callable": true,
       "_origin": "ast"
     },
     {
@@ -1880,7 +1927,7 @@
       "label": "obterUsuarioAtual()",
       "file_type": "code",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L9",
+      "source_location": "L25",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1889,7 +1936,7 @@
       "label": "entrar()",
       "file_type": "code",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L14",
+      "source_location": "L31",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1898,7 +1945,7 @@
       "label": "sair()",
       "file_type": "code",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L18",
+      "source_location": "L41",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1915,7 +1962,7 @@
       "label": "SegmentoDemanda",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L3",
+      "source_location": "L1",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1925,7 +1972,7 @@
       "label": "DemandaResumo",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L4",
+      "source_location": "L2",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1935,17 +1982,9 @@
       "label": "PaginaDemandas",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L5",
+      "source_location": "L3",
       "_callable": true,
       "_callable_class": true,
-      "_origin": "ast"
-    },
-    {
-      "id": "frontend_lib_demandas_fixtures",
-      "label": "FIXTURES",
-      "file_type": "code",
-      "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L7",
       "_origin": "ast"
     },
     {
@@ -1953,7 +1992,7 @@
       "label": "listarDemandas()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L18",
+      "source_location": "L5",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2763,8 +2802,16 @@
       "label": "entrar()",
       "file_type": "code",
       "source_file": "frontend/tests/demandas.spec.ts",
-      "source_location": "L3",
+      "source_location": "L6",
       "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "test",
+      "label": "@playwright/test",
+      "file_type": "code",
+      "source_file": "@playwright/test",
+      "confidence": "EXTRACTED",
       "_origin": "ast"
     },
     {
@@ -2776,15 +2823,6 @@
       "_origin": "ast"
     },
     {
-      "id": "frontend_tests_navigation_spec_storage_getitem",
-      "label": ".getItem()",
-      "file_type": "code",
-      "source_file": "frontend/tests/navigation.spec.ts",
-      "source_location": "L61",
-      "_callable": true,
-      "_origin": "ast"
-    },
-    {
       "id": "frontend_tests_session_spec",
       "label": "session.spec.ts",
       "file_type": "code",
@@ -2793,20 +2831,38 @@
       "_origin": "ast"
     },
     {
-      "id": "frontend_tests_session_spec_storage_setitem",
-      "label": ".setItem()",
+      "id": "frontend_tests_support_api",
+      "label": "api.ts",
       "file_type": "code",
-      "source_file": "frontend/tests/session.spec.ts",
-      "source_location": "L19",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_tests_support_api_perfil",
+      "label": "Perfil",
+      "file_type": "code",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L3",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_tests_support_api_instalarapi",
+      "label": "instalarApi()",
+      "file_type": "code",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L5",
       "_callable": true,
       "_origin": "ast"
     },
     {
-      "id": "frontend_tests_session_spec_storage_removeitem",
-      "label": ".removeItem()",
+      "id": "frontend_tests_support_api_entrarcomo",
+      "label": "entrarComo()",
       "file_type": "code",
-      "source_file": "frontend/tests/session.spec.ts",
-      "source_location": "L40",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3132,7 +3188,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L38",
+      "source_location": "L39",
       "_origin": "ast"
     },
     {
@@ -3141,7 +3197,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "_origin": "ast"
     },
     {
@@ -3150,7 +3206,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L61",
+      "source_location": "L62",
       "_origin": "ast"
     },
     {
@@ -3159,7 +3215,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "_origin": "ast"
     },
     {
@@ -3168,7 +3224,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "_origin": "ast"
     },
     {
@@ -3177,7 +3233,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast"
     },
     {
@@ -3186,7 +3242,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L88",
+      "source_location": "L89",
       "_origin": "ast"
     },
     {
@@ -3195,7 +3251,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L108",
+      "source_location": "L110",
       "_origin": "ast"
     },
     {
@@ -3204,7 +3260,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L133",
+      "source_location": "L135",
       "_origin": "ast"
     },
     {
@@ -3213,7 +3269,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L142",
       "_origin": "ast"
     },
     {
@@ -3222,7 +3278,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L144",
+      "source_location": "L146",
       "_origin": "ast"
     },
     {
@@ -3528,7 +3584,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L35",
+      "source_location": "L37",
       "_origin": "ast"
     },
     {
@@ -3537,7 +3593,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L51",
+      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -3546,7 +3602,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L67",
+      "source_location": "L69",
       "_origin": "ast"
     },
     {
@@ -3555,7 +3611,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L83",
+      "source_location": "L85",
       "_origin": "ast"
     },
     {
@@ -3564,7 +3620,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L131",
+      "source_location": "L133",
       "_origin": "ast"
     },
     {
@@ -3573,7 +3629,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L144",
+      "source_location": "L146",
       "_origin": "ast"
     },
     {
@@ -3582,7 +3638,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L157",
+      "source_location": "L159",
       "_origin": "ast"
     },
     {
@@ -3591,7 +3647,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L177",
+      "source_location": "L179",
       "_origin": "ast"
     },
     {
@@ -3600,7 +3656,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-2.md",
-      "source_location": "L190",
+      "source_location": "L192",
       "_origin": "ast"
     },
     {
@@ -6277,12 +6333,23 @@
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "ref_lucide_react",
+      "target": "ref_next_navigation",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6293,7 +6360,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6304,7 +6371,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6315,7 +6382,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6326,7 +6393,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6337,7 +6404,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6348,7 +6415,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6358,7 +6425,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6368,7 +6435,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6378,7 +6445,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6388,53 +6455,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
       "target": "frontend_components_demandas_list_demandaslist_preparerequest",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_select",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_changepage",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L29",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_retry",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_movetab",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -6445,11 +6472,51 @@
     {
       "source": "frontend_components_demandas_list_demandaslist",
       "target": "frontend_components_demandas_list_demandaslist_select",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_changepage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_retry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_movetab",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_select",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6460,7 +6527,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6471,7 +6538,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6482,7 +6549,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L28",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6493,7 +6560,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6504,7 +6571,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L30",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6515,13 +6582,13 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L33",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_login_screen",
-      "target": "ref_lucide_react",
+      "target": "ref_react",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -6532,19 +6599,8 @@
     },
     {
       "source": "frontend_components_login_screen",
-      "target": "frontend_lib_auth",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/login-screen.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_login_screen",
-      "target": "frontend_lib_auth_profile",
-      "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/login-screen.tsx",
@@ -6559,6 +6615,16 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/login-screen.tsx",
       "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_login_screen_loginscreen",
+      "target": "frontend_components_login_screen_loginscreen_submit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/login-screen.tsx",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6891,17 +6957,6 @@
     },
     {
       "source": "frontend_hooks_use_session",
-      "target": "frontend_lib_auth_profile",
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_hooks_use_session",
       "target": "frontend_lib_auth_user",
       "relation": "imports",
       "context": "import",
@@ -6917,7 +6972,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6927,7 +6982,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L42",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6937,7 +6992,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L54",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6947,7 +7002,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L67",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6959,7 +7014,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L73",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6971,7 +7026,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L73",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -6983,7 +7038,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L73",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7009,11 +7064,51 @@
     },
     {
       "source": "frontend_lib_auth",
-      "target": "frontend_lib_auth_users",
+      "target": "frontend_lib_auth_apierror",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/auth.ts",
       "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth_apierror",
+      "target": "frontend_lib_auth_apierror_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth",
+      "target": "frontend_lib_auth_cookie",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth",
+      "target": "frontend_lib_auth_responsejson",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7023,7 +7118,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L9",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7033,7 +7128,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L14",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7043,29 +7138,62 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/auth.ts",
-      "source_location": "L18",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_lib_demandas",
-      "target": "frontend_lib_auth",
-      "relation": "imports_from",
-      "context": "import",
+      "source": "frontend_lib_auth_csrftoken",
+      "target": "frontend_lib_auth_cookie",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L1",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "frontend_lib_demandas",
-      "target": "frontend_lib_auth_profile",
-      "relation": "imports",
-      "context": "import",
+      "source": "frontend_lib_auth_obterusuarioatual",
+      "target": "frontend_lib_auth_responsejson",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L1",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth_entrar",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth_entrar",
+      "target": "frontend_lib_auth_responsejson",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_auth_sair",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/auth.ts",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7075,7 +7203,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L3",
+      "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7085,7 +7213,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L4",
+      "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7095,17 +7223,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_fixtures",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L7",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7115,7 +7233,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L18",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8164,6 +8282,39 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_accessibility_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/accessibility.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_accessibility_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/accessibility.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_accessibility_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/accessibility.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_demandas_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -8176,12 +8327,53 @@
     },
     {
       "source": "frontend_tests_demandas_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/demandas.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_demandas_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/demandas.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_demandas_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/demandas.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_demandas_spec",
       "target": "frontend_tests_demandas_spec_entrar",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/demandas.spec.ts",
-      "source_location": "L3",
+      "source_location": "L6",
       "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_demandas_spec",
+      "target": "test",
+      "relation": "dynamic_import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/demandas.spec.ts",
       "_origin": "ast"
     },
     {
@@ -8196,6 +8388,39 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_navigation_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/navigation.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_navigation_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/navigation.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_navigation_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/navigation.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_session_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -8203,6 +8428,80 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/session.spec.ts",
       "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_session_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_session_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_session_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/session.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_support_api",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_support_api",
+      "target": "frontend_tests_support_api_perfil",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_support_api",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_support_api",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/support/api.ts",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8638,7 +8937,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8648,7 +8947,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8658,7 +8957,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8668,7 +8967,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8678,7 +8977,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8688,7 +8987,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8698,7 +8997,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8708,7 +9007,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8718,7 +9017,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8728,7 +9027,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8738,7 +9037,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L88",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8748,7 +9047,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L108",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "backend_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8758,7 +9067,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L133",
+      "source_location": "L135",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8768,7 +9077,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L140",
+      "source_location": "L142",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8778,7 +9087,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L144",
+      "source_location": "L146",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9108,7 +9417,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9118,7 +9427,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9128,7 +9437,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L67",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9138,7 +9447,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9148,7 +9457,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L131",
+      "source_location": "L133",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9158,7 +9467,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L144",
+      "source_location": "L146",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9168,7 +9477,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L157",
+      "source_location": "L159",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9178,7 +9487,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L177",
+      "source_location": "L179",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9188,7 +9497,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-2.md",
-      "source_location": "L190",
+      "source_location": "L192",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9496,6 +9805,17 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_demandas_spec_entrar",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/demandas.spec.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_management_commands_seed_demo_command",
       "target": "backend_demandas_models_demanda",
       "relation": "uses",
@@ -9581,7 +9901,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9605,7 +9925,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9617,7 +9937,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L45",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9629,7 +9949,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/hooks/use-session.ts",
-      "source_location": "L57",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     }

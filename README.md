@@ -15,17 +15,18 @@ Centraliza is a web application project for organizing the daily work of VISAT m
 
 VISAT receives requests from institutions such as the Public Labor Prosecutor's Office (MPT), the Regional Labor Court (TRT), health councils, and labor unions. Centraliza is intended to help the team follow these requests from assignment through execution and management review.
 
-The repository currently provides an interactive navigation prototype. Operational request management, the Python back-end, and PostgreSQL integration are still under development.
+The repository currently provides authenticated navigation and an operational request list backed by a Django API and PostgreSQL. Creation and workflow transitions are still under development.
 
 ## Core capabilities
 
 Available in the prototype:
 
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
-- **Role previews** — enter as a fictitious manager or inspector and explore the corresponding introductory content.
-- **Session navigation** — redirect to the entry screen without a valid demo session, preserve the session across reloads, and sign out.
+- **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
+- **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
+- **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
-- **Recovery states** — loading feedback, retry after browser-storage failures, and a page-not-found screen.
+- **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
 
 Planned operational capabilities:
 
@@ -37,7 +38,7 @@ Planned operational capabilities:
 
 ## Team workspace
 
-The product is designed around two roles. The table describes their intended responsibilities; the prototype currently simulates their entry and navigation only.
+The product is designed around two roles. The API already restricts managers to their team and inspectors to requests assigned to them.
 
 | Role | Intended responsibilities |
 | --- | --- |
@@ -78,12 +79,12 @@ These screenshots show the local prototype. The previously published demonstrati
 | --- | --- |
 | Web interface | React, TypeScript, Vinext/Vite |
 | Styling and icons | CSS, Tailwind CSS, Lucide; shadcn components supplied by the starter |
-| Demo session | Browser sessionStorage, isolated behind an authentication adapter |
+| Authentication | Django session cookie and CSRF protection through a same-origin development proxy |
 | Validation | Playwright, axe-core, TypeScript, Oxlint |
 | Architecture mapping | Graphify local AST extraction |
 | Demo build | Sites starter with Cloudflare Workers build output; Node for local development |
-| Planned back-end | Python with Django and Django REST Framework; not implemented |
-| Planned database | PostgreSQL; not connected |
+| Back-end | Python, Django, and Django REST Framework |
+| Database | PostgreSQL with migrations and reproducible demonstration data |
 
 ## Architecture
 
@@ -96,18 +97,19 @@ centraliza/
 │   ├── lib/               Authentication adapter and navigation configuration
 │   ├── public/            Browser assets
 │   └── tests/             Navigation, session, and accessibility checks
+├── backend/               Django API, models, migrations, tests, and demo seed
 ├── assets/                Project identity
 ├── docs/                  Planning, contracts, validation, and visual references
 └── graphify-out/           Versioned code graph
 ```
 
-Workspace coordinates session state and chooses the appropriate screen. The session hook calls the adapter in frontend/lib/auth.ts; layout and module components handle presentation. This separation provides a place to connect the future API without embedding storage logic in each page.
+Workspace coordinates session state and chooses the appropriate screen. The session hook calls the API adapter in frontend/lib/auth.ts; layout and module components handle presentation. Request filters call frontend/lib/demandas.ts, while the Django API applies role and team authorization before querying PostgreSQL.
 
-The intended server architecture is a modular Python application backed by PostgreSQL. Business rules, authorization, and audit records will be enforced there when the operational modules are implemented.
+The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
 ## Local development
 
-Requirements: Node.js 22.13 or later and npm.
+Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Prepare the back-end first using [its setup instructions](backend/README.md), then keep it running on port 8000.
 
 ```powershell
 cd frontend
@@ -115,7 +117,7 @@ npm ci
 npm run dev
 ```
 
-Open the address printed by the terminal, normally http://localhost:3000. Choose **Gestor** or **Inspetor** to enter without a password. Use **Sair da demonstração** to switch roles. The demo session is stored in the current browser tab and survives page reloads.
+Open the address printed by the terminal, normally http://localhost:3000. Sign in with one of the accounts created by `seed_demo`; the frontend proxies `/api` to http://127.0.0.1:8000. Set `CENTRALIZA_API_URL` before starting the frontend to use another local API address.
 
 Run checks from frontend:
 
@@ -132,14 +134,14 @@ For code exploration, run graphify explain Workspace from the repository root. A
 
 ## Data and security
 
-- The prototype contains fictitious roles and does not connect to institutional records.
-- Browser route guards and a demo session are not production authentication or authorization.
-- The future API must enforce permissions, validate operations, and keep the request history consistent.
+- Demonstration records and accounts are fictitious and do not contain institutional data.
+- Django enforces request-list permissions on the server; browser guards only control navigation feedback.
+- Future write operations must validate workflow transitions and keep the request history consistent.
 - Real deployment requires dependency-security review, authenticated storage, database setup, and agreement on operational access rules with VISAT.
 
 ## Product direction
 
-The next development stage is to define the request data model and role permissions, then connect the interface to the Python API and PostgreSQL. Implementation will prioritize one complete request lifecycle before expanding agenda, notices, and chat.
+The next development stage is to validate performance and delivery evidence, then implement one complete request lifecycle before expanding agenda, notices, and chat.
 
 ## Team
 

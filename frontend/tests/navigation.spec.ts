@@ -1,9 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { entrarComo, instalarApi } from './support/api';
+
+test.beforeEach(async ({ page }) => instalarApi(page));
 
 test('protege rotas; gestor navega, atualiza e sai', async ({ page }) => {
   await page.goto('/demandas');
   await expect(page).toHaveURL('/login');
-  await page.getByRole('button', { name: 'Entrar como Gestor' }).click();
+  await entrarComo(page, 'gestor');
   await expect(page.getByRole('heading', { name: 'Olá, Gestor.' })).toBeVisible();
   for (const title of ['Agenda', 'Avisos', 'Demandas', 'Chats', 'Home']) {
     const link = page.getByRole('navigation').getByRole('link', { name: title, exact: true });
@@ -19,7 +22,7 @@ test('protege rotas; gestor navega, atualiza e sai', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Demandas', exact: true })).toBeVisible();
   await page.goForward();
   await expect(page.getByRole('heading', { name: 'Agenda', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Sair da demonstração' }).click();
+  await page.getByRole('button', { name: 'Sair', exact: true }).click();
   await expect(page).toHaveURL('/login');
   await page.goto('/agenda');
   await expect(page).toHaveURL('/login');
@@ -27,8 +30,7 @@ test('protege rotas; gestor navega, atualiza e sai', async ({ page }) => {
 
 test('inspetor usa menu móvel por teclado e sem overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/login');
-  await page.getByRole('button', { name: 'Entrar como Inspetor' }).click();
+  await entrarComo(page, 'inspetor');
   await expect(page.getByRole('heading', { name: 'Olá, Inspetor.' })).toBeVisible();
   const menu = page.getByRole('button', { name: 'Abrir menu' });
   await menu.focus();
@@ -52,19 +54,12 @@ test('rota desconhecida retorna 404 e permite voltar', async ({ page }) => {
   await expect(page).toHaveURL('/login');
 });
 
-test('falha de armazenamento permite tentar novamente', async ({ page }) => {
-  await page.addInitScript(() => {
-    // Preservamos o método para invocá-lo abaixo com o mesmo receptor via call.
-    // oxlint-disable-next-line typescript/unbound-method
-    const original = Storage.prototype.getItem;
-    let first = true;
-    Storage.prototype.getItem = function(key) {
-      if (key === 'centraliza.demo.session' && first) { first = false; throw new Error('Falha simulada'); }
-      return original.call(this, key);
-    };
-  });
+test('falha temporária da API permite tentar novamente', async ({ page }) => {
+  await page.unroute('**/api/**');
+  let first = true;
+  await page.route('**/api/auth/me/', route => first ? (first = false, route.abort()) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } }));
   await page.goto('/login');
   await expect(page.getByRole('heading', { name: 'Não foi possível acessar a sessão' })).toBeVisible();
   await page.getByRole('button', { name: 'Tentar novamente' }).click();
-  await expect(page.getByRole('button', { name: 'Entrar como Gestor' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Entrar/ })).toBeVisible();
 });
