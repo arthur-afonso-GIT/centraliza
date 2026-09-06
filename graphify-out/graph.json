@@ -4950,7 +4950,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L74",
       "_origin": "ast"
     },
     {
@@ -4959,7 +4959,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast"
     },
     {
@@ -4968,7 +4968,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L79",
+      "source_location": "L80",
       "_origin": "ast"
     },
     {
@@ -4977,7 +4977,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L87",
+      "source_location": "L88",
       "_origin": "ast"
     },
     {
@@ -4986,7 +4986,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L100",
+      "source_location": "L101",
       "_origin": "ast"
     },
     {
@@ -4995,7 +4995,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L123",
+      "source_location": "L124",
       "_origin": "ast"
     },
     {
@@ -5004,7 +5004,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L166",
+      "source_location": "L167",
       "_origin": "ast"
     },
     {
@@ -5013,7 +5013,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L173",
+      "source_location": "L174",
       "_origin": "ast"
     },
     {
@@ -5022,7 +5022,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L177",
+      "source_location": "L178",
       "_origin": "ast"
     },
     {
@@ -5143,8 +5143,8 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_plano_desenvolvimento_próxima_execução_avisos_e_status_report_1",
-      "label": "Próxima execução: avisos e Status Report 1",
+      "id": "docs_plano_desenvolvimento_próxima_execução_mvp_operacional",
+      "label": "Próxima execução: MVP operacional",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -5175,7 +5175,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L34",
+      "source_location": "L33",
       "_origin": "ast"
     },
     {
@@ -5184,7 +5184,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L49",
+      "source_location": "L48",
       "_origin": "ast"
     },
     {
@@ -5193,7 +5193,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L67",
+      "source_location": "L66",
       "_origin": "ast"
     },
     {
@@ -5202,7 +5202,160 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L85",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional",
+      "label": "plano-mvp-operacional.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "label": "Plano de desenvolvimento — MVP operacional do Centraliza",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_objetivo",
+      "label": "Objetivo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_situação_atual",
+      "label": "Situação atual",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_ordem_de_execução",
+      "label": "Ordem de execução",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L27",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_1_regras_e_base_do_fluxo_de_demandas",
+      "label": "Etapa 1 — Regras e base do fluxo de demandas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L29",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_2_gerenciamento_de_demandas_pelo_gestor",
+      "label": "Etapa 2 — Gerenciamento de demandas pelo gestor",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_3_execução_e_avaliação_da_demanda",
+      "label": "Etapa 3 — Execução e avaliação da demanda",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L62",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_4_anexos_e_evidências",
+      "label": "Etapa 4 — Anexos e evidências",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_5_agenda_gerenciável",
+      "label": "Etapa 5 — Agenda gerenciável",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L96",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_6_gestão_de_avisos",
+      "label": "Etapa 6 — Gestão de avisos",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L113",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_etapa_7_painel_estabilização_e_implantação_de_homologação",
+      "label": "Etapa 7 — Painel, estabilização e implantação de homologação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L128",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_sugestão_de_ciclos",
+      "label": "Sugestão de ciclos",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L147",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_padrão_de_implementação_por_tarefa",
+      "label": "Padrão de implementação por tarefa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L165",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_definição_de_pronto",
+      "label": "Definição de pronto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L176",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_backlog_posterior_ao_mvp",
+      "label": "Backlog posterior ao MVP",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L189",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_mvp_operacional_próxima_ação_recomendada",
+      "label": "Próxima ação recomendada",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L200",
       "_origin": "ast"
     },
     {
@@ -15460,7 +15613,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_semana_5",
+      "target": "docs_plano_mvp_operacional",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15470,7 +15623,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_semana_1",
+      "target": "docs_semana_5",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15480,7 +15633,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_semana_2",
+      "target": "docs_semana_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15490,7 +15643,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_contrato_demandas",
+      "target": "docs_semana_2",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15500,7 +15653,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_1",
+      "target": "docs_contrato_demandas",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15510,7 +15663,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_2",
+      "target": "docs_validacao_semana_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15520,7 +15673,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_3",
+      "target": "docs_validacao_semana_2",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15530,7 +15683,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_4",
+      "target": "docs_validacao_semana_3",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15540,7 +15693,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_5",
+      "target": "docs_validacao_semana_4",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15550,7 +15703,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_status_report_1",
+      "target": "docs_validacao_semana_5",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -15560,11 +15713,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_status_report_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15574,7 +15737,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15584,7 +15747,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15594,7 +15757,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15604,7 +15767,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L87",
+      "source_location": "L88",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15614,7 +15777,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L100",
+      "source_location": "L101",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15624,7 +15787,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L123",
+      "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15634,7 +15797,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L166",
+      "source_location": "L167",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15644,7 +15807,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15654,7 +15817,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L177",
+      "source_location": "L178",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15750,7 +15913,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
-      "target": "docs_plano_desenvolvimento_próxima_execução_avisos_e_status_report_1",
+      "target": "docs_plano_desenvolvimento_próxima_execução_mvp_operacional",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -15760,7 +15923,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento",
-      "target": "docs_semana_5",
+      "target": "docs_plano_mvp_operacional",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -15804,7 +15967,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L34",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15814,7 +15977,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L49",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15824,7 +15987,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L67",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15834,7 +15997,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L83",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15844,7 +16007,167 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L85",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional",
+      "target": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_objetivo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_situação_atual",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_ordem_de_execução",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_1_regras_e_base_do_fluxo_de_demandas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_2_gerenciamento_de_demandas_pelo_gestor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_3_execução_e_avaliação_da_demanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_4_anexos_e_evidências",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_5_agenda_gerenciável",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_6_gestão_de_avisos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_ordem_de_execução",
+      "target": "docs_plano_mvp_operacional_etapa_7_painel_estabilização_e_implantação_de_homologação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_sugestão_de_ciclos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_padrão_de_implementação_por_tarefa",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_definição_de_pronto",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L176",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_backlog_posterior_ao_mvp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "target": "docs_plano_mvp_operacional_próxima_ação_recomendada",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-mvp-operacional.md",
+      "source_location": "L200",
       "weight": 1.0,
       "_origin": "ast"
     },

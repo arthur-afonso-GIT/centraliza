@@ -58,6 +58,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing) — proposed user needs.
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
+- [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.

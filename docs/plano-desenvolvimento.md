@@ -1,10 +1,10 @@
 # Plano de desenvolvimento — Centraliza
 
-## Próxima execução: avisos e Status Report 1
+## Próxima execução: MVP operacional
 
-O [plano de 28/09 a 03/10](semana-5.md) define o MVP de avisos, a regressão dos
-recursos essenciais, o congelamento do código e a preparação do Status Report 1.
-Demandas e Agenda já estão tecnicamente concluídas e integram a bateria final.
+O [plano do MVP operacional](plano-mvp-operacional.md) prioriza gerenciamento
+completo de demandas, anexos protegidos, Agenda gerenciável e publicação de
+avisos. Chat, tempo real e recursos analíticos permanecem no backlog posterior.
 
 ## Entrega técnica concluída: semana 1
 
@@ -22,14 +22,13 @@ A demonstração usa perfis fictícios: não é a autenticação definitiva da V
 
 ## Próximas entregas propostas
 
-Sem datas atribuídas: ajustar com a equipe após a revisão da semana 1.
-
-1. Modelar usuários, demandas, estados e permissões com a equipe VISAT.
-2. Preparar Django, PostgreSQL e autenticação real com testes de acesso.
-3. Implementar criação e atribuição de demandas pelo gestor.
-4. Implementar aceitação, execução e envio para avaliação pelo inspetor.
-5. Implementar aprovação, correção e histórico transacional.
-6. Adicionar anexos e painel; depois agenda, avisos e chat.
+1. Consolidar estados, transições e histórico transacional das demandas.
+2. Implementar criação, edição, atribuição e cancelamento pelo gestor.
+3. Completar execução, avaliação, correção e conclusão.
+4. Adicionar anexos protegidos às demandas.
+5. Permitir gestão de compromissos e conflitos na Agenda.
+6. Permitir publicação e vigência de avisos.
+7. Preparar painel, homologação, backups e aceite dos usuários.
 
 ## Processo por tarefa
 
