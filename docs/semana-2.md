@@ -27,6 +27,8 @@ As frentes indicam responsabilidades; distribuir os nomes na reunião da equipe.
 Situação da execução: S2-01 concluída com o [contrato de implementação](contrato-demandas.md);
 S2-03 concluída com Django, migrações, PostgreSQL local e carga fictícia.
 S2-04 concluída com sessão, filtros, paginação e isolamento por equipe.
+S2-05 concluída com listagem React ligada a fixtures do contrato, segmentos
+operáveis por teclado, paginação e estados de carregamento, vazio e erro.
 As demais tarefas permanecem planejadas. A revisão de
 produto pela equipe continua distinta da definição técnica implementada.
 
@@ -178,10 +180,10 @@ uma consulta adicional por cartão; criar índices conforme filtros e medição.
 - [x] Banco e dados fictícios podem ser preparados seguindo a documentação.
 - [x] API pagina e filtra corretamente, sem vazamento entre usuários/equipes.
 - [ ] Os três segmentos exibem dados reais da API.
-- [ ] Cartões e estados vazio/carregamento/erro estão implementados.
+- [x] Cartões e estados vazio/carregamento/erro estão implementados.
 - [ ] Testes de acesso, filtros, paginação e interface passaram.
 - [ ] Desempenho foi medido com as duas massas e limitações registradas.
-- [ ] Graphify atualizado após alterações de código.
+- [x] Graphify atualizado após alterações de código.
 - [ ] Cada tarefa concluída possui commit com título e descrição em português.
 - [ ] README descreve o produto atual, sem seções organizadas por semana.
 

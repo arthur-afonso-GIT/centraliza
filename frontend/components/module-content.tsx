@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, ClipboardList, ShieldCheck } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import type { User } from '../lib/auth';
+import DemandasList from './demandas-list';
 
 export default function ModuleContent({
   page,
@@ -44,7 +45,7 @@ export default function ModuleContent({
         </div>
         <span className="badge">Semana 1</span>
       </div>
-      {page === 'home' ? (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'home' ? (
         <>
           <section className="welcome-panel">
             <div>
