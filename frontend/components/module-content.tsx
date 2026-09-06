@@ -43,7 +43,6 @@ export default function ModuleContent({
               : active.description}
           </p>
         </div>
-        <span className="badge">Semana 1</span>
       </div>
       {page === 'demandas' ? <DemandasList user={user} /> : page === 'home' ? (
         <>

@@ -13,7 +13,6 @@
   --visat-border: #dedfe2;
 }
 
-/* Interface da semana 1: componentes sem dependência da API futura. */
 body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif !important; color: var(--visat-graphite); background: var(--visat-canvas); }
 * { box-sizing: border-box; }
 a { text-decoration: none; color: inherit; }
