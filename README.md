@@ -24,7 +24,7 @@ Available in the current version:
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
-- **Request details and history** — inspect complete request data, add timeline comments, and let the assigned inspector advance permitted statuses.
+- **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Team agenda** — browse authorized commitments by day, week, or month, move between periods, and return to today in Fortaleza time.
 - **Team notices** — read urgent and informational notices from the authenticated team and open their complete content.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.

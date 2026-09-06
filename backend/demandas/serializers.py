@@ -37,7 +37,8 @@ class DemandaDetalheSerializer(DemandaSerializer):
 
 
 class AlterarStatusSerializer(serializers.Serializer):
-    status = serializers.ChoiceField(choices=[Demanda.Status.EM_ANDAMENTO, Demanda.Status.CONCLUIDA])
+    status = serializers.ChoiceField(choices=Demanda.Status.choices)
+    texto = serializers.CharField(max_length=2000, allow_blank=True, required=False, trim_whitespace=True)
 
 
 class CriarComentarioSerializer(serializers.Serializer):

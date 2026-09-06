@@ -26,6 +26,10 @@ testável antes de iniciar a próxima.
 
 ## Ordem de execução
 
+Situação técnica: Etapa 1 implementada com seis estados, matriz de transições,
+serviço transacional, justificativas obrigatórias e histórico atômico. A matriz
+ainda precisa de validação institucional antes de ser considerada definitiva.
+
 ### Etapa 1 — Regras e base do fluxo de demandas
 
 **Meta:** fechar o ciclo de vida antes de criar formulários.

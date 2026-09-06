@@ -1,4 +1,4 @@
-from django.db import transaction
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 from rest_framework import exceptions, generics, status
@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from demandas.models import Demanda, EventoDemanda
+from demandas.services import alterar_status_demanda
 from demandas.serializers import (
     AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
     DemandaSerializer, EventoDemandaSerializer,
@@ -60,13 +61,13 @@ class DemandaListView(generics.ListAPIView):
     def get_queryset(self) -> QuerySet[Demanda]:
         user = self.request.user
         queryset = demandas_permitidas(user).filter(
-            status__in=[Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO],
+            status__in=[Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO, Demanda.Status.AGUARDANDO_AVALIACAO, Demanda.Status.EM_CORRECAO],
         ).select_related("responsavel")
 
         status = self.request.query_params.get("status")
         if status is not None:
-            if status not in [Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO]:
-                raise exceptions.ValidationError({"status": "Use pendente ou em_andamento."})
+            if status not in [Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO, Demanda.Status.AGUARDANDO_AVALIACAO, Demanda.Status.EM_CORRECAO]:
+                raise exceptions.ValidationError({"status": "Informe um status ativo válido."})
             queryset = queryset.filter(status=status)
 
         critica = self.request.query_params.get("critica")
@@ -85,27 +86,21 @@ class DemandaDetailView(generics.RetrieveAPIView):
 
 
 class DemandaStatusView(APIView):
-    @transaction.atomic
     def patch(self, request, pk):
-        if request.user.perfil != "inspetor":
-            raise exceptions.PermissionDenied("Somente o inspetor responsável pode alterar o status.")
-        demanda = get_object_or_404(demandas_permitidas(request.user).select_for_update(), pk=pk)
         serializer = AlterarStatusSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        novo_status = serializer.validated_data["status"]
-        permitida = {
-            Demanda.Status.PENDENTE: Demanda.Status.EM_ANDAMENTO,
-            Demanda.Status.EM_ANDAMENTO: Demanda.Status.CONCLUIDA,
-        }.get(demanda.status)
-        if novo_status != permitida:
-            raise exceptions.ValidationError({"status": "Transição de status não permitida."})
-        anterior = demanda.status
-        demanda.status = novo_status
-        demanda.save(update_fields=["status", "atualizada_em"])
-        EventoDemanda.objects.create(
-            demanda=demanda, tipo=EventoDemanda.Tipo.STATUS_ALTERADO, autor=request.user,
-            status_anterior=anterior, status_novo=novo_status,
-        )
+        try:
+            demanda = alterar_status_demanda(
+                demanda_id=pk, usuario=request.user,
+                novo_status=serializer.validated_data["status"],
+                texto=serializer.validated_data.get("texto", ""),
+            )
+        except Demanda.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=pk)
         return Response(DemandaDetalheSerializer(demanda).data)
 

@@ -1,7 +1,7 @@
 # Contrato de listagem de demandas
 
-Decisão de implementação S2-01, baseada no plano aprovado. O cadastro e as
-transições de status não fazem parte desta API de leitura.
+Decisão iniciada em S2-01 e ampliada pelo MVP operacional. O cadastro ainda não
+faz parte desta API; as transições usam um endpoint específico e transacional.
 
 ## Acesso e filtros
 
@@ -10,13 +10,14 @@ da própria equipe; inspetor acessa as atribuídas a ele nessa equipe. Nunca
 usar perfil ou ID enviados pelo cliente como autorização. Sem equipe, negar
 acesso. O filtro de acesso também limita o total informado na paginação.
 
-Somente `pendente` e `em_andamento` são ativos. `concluida` e `cancelada`
-existem para distinguir registros encerrados e não entram nesta listagem.
+São ativos `pendente`, `em_andamento`, `aguardando_avaliacao` e `em_correcao`.
+`concluida` e `cancelada` distinguem registros encerrados e não entram nesta
+listagem.
 Crítica é uma flag independente. Status e criticidade combinados usam AND.
 
 | Parâmetro | Validação |
 | --- | --- |
-| status | Opcional: pendente ou em_andamento |
+| status | Opcional: pendente, em_andamento, aguardando_avaliacao ou em_correcao |
 | critica | Opcional: true ou false |
 | page | Inteiro positivo, padrão 1 |
 | page_size | Inteiro de 1 a 50, padrão 20 |
@@ -39,6 +40,14 @@ uma lista vazia é válida. Não oferecer métodos de escrita em demandas.
 Usar cookies de sessão HttpOnly e origem única via proxy de desenvolvimento.
 Credenciais inválidas retornam mensagem genérica, sem identificar contas.
 Contas inativas não entram. Em produção, HTTPS e segredo externo são obrigatórios.
+
+## Transições
+
+`PATCH /api/demandas/{id}/status/` recebe `status` e `texto`. O texto é
+obrigatório no envio para avaliação, devolução para correção e cancelamento.
+As permissões e origens válidas estão na
+[matriz do fluxo operacional](fluxo-demandas.md). A operação bloqueia a linha,
+altera a demanda e cria o evento na mesma transação.
 
 ## Interface
 

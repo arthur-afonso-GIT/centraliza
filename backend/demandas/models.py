@@ -7,6 +7,8 @@ class Demanda(models.Model):
     class Status(models.TextChoices):
         PENDENTE = "pendente", "Pendente"
         EM_ANDAMENTO = "em_andamento", "Em andamento"
+        AGUARDANDO_AVALIACAO = "aguardando_avaliacao", "Aguardando avaliação"
+        EM_CORRECAO = "em_correcao", "Em correção"
         CONCLUIDA = "concluida", "Concluída"
         CANCELADA = "cancelada", "Cancelada"
 
@@ -37,7 +39,7 @@ class Demanda(models.Model):
             models.Index(fields=["equipe", "critica", "prazo", "id"], name="demanda_equipe_critica"),
         ]
         constraints = [
-            models.CheckConstraint(condition=models.Q(status__in=["pendente", "em_andamento", "concluida", "cancelada"]), name="demanda_status_valido"),
+            models.CheckConstraint(condition=models.Q(status__in=["pendente", "em_andamento", "aguardando_avaliacao", "em_correcao", "concluida", "cancelada"]), name="demanda_status_valido"),
             models.CheckConstraint(condition=models.Q(prioridade__in=["baixa", "media", "alta"]), name="demanda_prioridade_valida"),
         ]
 
@@ -74,7 +76,7 @@ class EventoDemanda(models.Model):
         constraints = [
             models.CheckConstraint(
                 condition=(
-                    models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="", texto="")
+                    models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="")
                     | models.Q(tipo="comentario", status_anterior="", status_novo="", texto__gt="")
                 ),
                 name="evento_conteudo_por_tipo",

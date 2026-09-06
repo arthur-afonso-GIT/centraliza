@@ -7,7 +7,7 @@ import { listarDemandas, type PaginaDemandas, type SegmentoDemanda } from '../li
 import type { User } from '../lib/auth';
 
 const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'criticas', label: 'Críticas' }];
-const statusLabel = { pendente: 'Pendente', em_andamento: 'Em andamento' };
+const statusLabel: Record<string, string> = { pendente: 'Pendente', em_andamento: 'Em andamento', aguardando_avaliacao: 'Aguardando avaliação', em_correcao: 'Em correção', concluida: 'Concluída', cancelada: 'Cancelada' };
 const prioridadeLabel = { baixa: 'Baixa', media: 'Média', alta: 'Alta' };
 
 export default function DemandasList({ user }: { user: User }) {

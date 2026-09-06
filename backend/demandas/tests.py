@@ -155,13 +155,37 @@ class DetalheHistoricoTest(APITestCase):
         self.assertEqual(primeira.status_code, 200)
         self.assertEqual(primeira.data["status"], "em_andamento")
         self.assertEqual(primeira.data["historico"][0]["status_anterior"], "pendente")
-        segunda = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "concluida"})
+        segunda = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aguardando_avaliacao", "texto": "Atividade executada."})
         self.assertEqual(segunda.status_code, 200)
-        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 2)
-        self.assertEqual(list(EventoDemanda.objects.filter(demanda=self.demanda).values_list("status_novo", flat=True)), ["concluida", "em_andamento"])
+        self.client.force_authenticate(self.gestor)
+        terceira = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "concluida"})
+        self.assertEqual(terceira.status_code, 200)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 3)
+        self.assertEqual(list(EventoDemanda.objects.filter(demanda=self.demanda).values_list("status_novo", flat=True)), ["concluida", "aguardando_avaliacao", "em_andamento"])
+        self.client.force_authenticate(self.inspetor)
         invalida = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"})
         self.assertEqual(invalida.status_code, 400)
-        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 2)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 3)
+
+    def test_resumo_correcao_e_cancelamento_obrigam_texto(self):
+        self.demanda.status = "em_andamento"
+        self.demanda.save()
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aguardando_avaliacao"}).status_code, 400)
+        self.assertEqual(EventoDemanda.objects.count(), 0)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aguardando_avaliacao", "texto": "Relatório enviado."}).status_code, 200)
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_correcao"}).status_code, 400)
+        response = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_correcao", "texto": "Inclua as fotografias."})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["historico"][0]["texto"], "Inclua as fotografias.")
+
+    def test_gestor_cancela_estado_ativo_com_justificativa(self):
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "cancelada"}).status_code, 400)
+        response = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "cancelada", "texto": "Solicitação retirada pela origem."})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["status"], "cancelada")
 
     def test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro(self):
         self.client.force_authenticate(self.gestor)
