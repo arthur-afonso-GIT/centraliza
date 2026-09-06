@@ -1,7 +1,16 @@
 # API Centraliza
 
 Base Django e PostgreSQL para as regras e os dados do Centraliza. Nesta etapa,
-contém os modelos de equipe, usuário e demanda e uma carga fictícia reproduzível.
+contém os modelos, uma carga fictícia, sessão protegida por CSRF e a listagem
+paginada de demandas com acesso por equipe e perfil.
+
+## Endpoints disponíveis
+
+- `GET /api/auth/csrf/`, `POST /api/auth/login/`, `GET /api/auth/me/` e
+  `POST /api/auth/logout/` para a sessão.
+- `GET /api/demandas/` para filtros por `status`, `critica`, `page` e `page_size`.
+
+Operações de escrita em demandas não estão disponíveis nesta etapa.
 
 ## Preparação local
 
