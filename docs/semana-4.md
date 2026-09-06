@@ -23,6 +23,10 @@ configuração, armazenando instantes em UTC e apresentando horários locais.
 | S4-06 | Integrar navegação temporal | Front-end + back-end | S4-04 e S4-05 | Cada mudança de período consulta apenas o intervalo visível; Hoje reposiciona a agenda |
 | S4-07 | Validar e documentar | QA + equipe | S4-06 | Testes de limites, timezone, responsividade, teclado, build e Graphify |
 
+Situação técnica: S4-03 concluída com módulo de agenda, modelo, migração e carga
+fictícia idempotente. As regras e o protótipo ainda aguardam revisão da equipe;
+endpoint e calendário permanecem nas próximas tarefas.
+
 ## Cronograma diário
 
 | Data | Prioridade | Resultado esperado |
@@ -170,7 +174,7 @@ mostrar “+N” sem esconder a contagem. Selecionar um dia muda para a visão d
 ## Critérios de conclusão
 
 - [ ] Regras, timezone e protótipo revisados pela equipe.
-- [ ] Migração e carga fictícia são reproduzíveis.
+- [x] Migração e carga fictícia são reproduzíveis.
 - [ ] API filtra intervalo e acesso sem vazamento entre equipes e usuários.
 - [ ] API recebe instantes com offset e responde em `America/Fortaleza`.
 - [ ] Visualizações Dia, Semana e Mês apresentam dados reais.

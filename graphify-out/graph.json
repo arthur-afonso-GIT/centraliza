@@ -4,6 +4,259 @@
   "output_tokens": 0,
   "nodes": [
     {
+      "id": "backend_agenda_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_admin",
+      "label": "admin.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/admin.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_apps",
+      "label": "apps.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/apps.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_apps_agendaconfig",
+      "label": "AgendaConfig",
+      "file_type": "code",
+      "source_file": "backend/agenda/apps.py",
+      "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "appconfig",
+      "label": "AppConfig",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/management/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/management/commands/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_seed_agenda",
+      "label": "seed_agenda.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_seed_agenda_command",
+      "label": "Command",
+      "file_type": "code",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_seed_agenda_py_basecommand",
+      "label": "BaseCommand",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_seed_agenda_py_atomic",
+      "label": "atomic",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_management_commands_seed_agenda_command_handle",
+      "label": ".handle()",
+      "file_type": "code",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_migrations_0001_initial",
+      "label": "0001_initial.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_migrations_0001_initial_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_migrations_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/migrations/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models",
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models_compromisso",
+      "label": "Compromisso",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models_tipo",
+      "label": "Tipo",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models_meta",
+      "label": "Meta",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L23",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models_compromisso_clean",
+      "label": ".clean()",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_models_compromisso_save",
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L41",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests",
+      "label": "tests.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_compromissomodeltest",
+      "label": "CompromissoModelTest",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L11",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_py_testcase",
+      "label": "TestCase",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_compromissomodeltest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_compromissomodeltest_test_exige_fim_posterior_ao_inicio",
+      "label": ".test_exige_fim_posterior_ao_inicio()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L20",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_compromissomodeltest_test_exige_criador_da_mesma_equipe",
+      "label": ".test_exige_criador_da_mesma_equipe()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L27",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_compromissomodeltest_test_aceita_intervalo_consciente_valido",
+      "label": ".test_aceita_intervalo_consciente_valido()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_views",
+      "label": "views.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "backend_config_init",
       "label": "__init__.py",
       "file_type": "code",
@@ -951,7 +1204,7 @@
       "_origin": "ast"
     },
     {
-      "id": "testcase",
+      "id": "backend_usuarios_tests_py_testcase",
       "label": "TestCase",
       "file_type": "code",
       "source_file": "",
@@ -4300,7 +4553,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L26",
+      "source_location": "L30",
       "_origin": "ast"
     },
     {
@@ -4309,7 +4562,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L38",
+      "source_location": "L42",
       "_origin": "ast"
     },
     {
@@ -4318,7 +4571,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L58",
+      "source_location": "L62",
       "_origin": "ast"
     },
     {
@@ -4327,7 +4580,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L76",
+      "source_location": "L80",
       "_origin": "ast"
     },
     {
@@ -4336,7 +4589,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L111",
+      "source_location": "L115",
       "_origin": "ast"
     },
     {
@@ -4345,7 +4598,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L113",
+      "source_location": "L117",
       "_origin": "ast"
     },
     {
@@ -4354,7 +4607,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L124",
+      "source_location": "L128",
       "_origin": "ast"
     },
     {
@@ -4363,7 +4616,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L129",
+      "source_location": "L133",
       "_origin": "ast"
     },
     {
@@ -4372,7 +4625,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L134",
+      "source_location": "L138",
       "_origin": "ast"
     },
     {
@@ -4381,7 +4634,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L139",
+      "source_location": "L143",
       "_origin": "ast"
     },
     {
@@ -4390,7 +4643,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L147",
+      "source_location": "L151",
       "_origin": "ast"
     },
     {
@@ -4399,7 +4652,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L149",
+      "source_location": "L153",
       "_origin": "ast"
     },
     {
@@ -4408,7 +4661,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L159",
+      "source_location": "L163",
       "_origin": "ast"
     },
     {
@@ -4417,7 +4670,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L170",
+      "source_location": "L174",
       "_origin": "ast"
     },
     {
@@ -4426,7 +4679,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/semana-4.md",
-      "source_location": "L183",
+      "source_location": "L187",
       "_origin": "ast"
     },
     {
@@ -4593,6 +4846,429 @@
     }
   ],
   "links": [
+    {
+      "source": "backend_agenda_admin",
+      "target": "django_contrib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/admin.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_apps",
+      "target": "django_apps",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/apps.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_apps",
+      "target": "backend_agenda_apps_agendaconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/apps.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_apps_agendaconfig",
+      "target": "appconfig",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/apps.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "zoneinfo",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "django_core_management_base",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "backend_agenda_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "backend_agenda_management_commands_seed_agenda_command",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda_command",
+      "target": "backend_agenda_management_commands_seed_agenda_py_basecommand",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda_command_handle",
+      "target": "backend_agenda_management_commands_seed_agenda_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda_command",
+      "target": "backend_agenda_management_commands_seed_agenda_command_handle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0001_initial",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0001_initial",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0001_initial",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0001_initial",
+      "target": "backend_agenda_migrations_0001_initial_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0001_initial.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models_compromisso",
+      "target": "backend_agenda_models_tipo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models_compromisso",
+      "target": "backend_agenda_models_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models_compromisso",
+      "target": "backend_agenda_models_compromisso_clean",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_models_compromisso",
+      "target": "backend_agenda_models_compromisso_save",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/models.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "zoneinfo",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "django_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_agenda_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_agenda_tests_compromissomodeltest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_tests_py_testcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_tests_compromissomodeltest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_tests_compromissomodeltest_test_exige_fim_posterior_ao_inicio",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_tests_compromissomodeltest_test_exige_criador_da_mesma_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_tests_compromissomodeltest_test_aceita_intervalo_consciente_valido",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "django_shortcuts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
     {
       "source": "backend_config_settings",
       "target": "os",
@@ -6396,7 +7072,7 @@
     },
     {
       "source": "backend_usuarios_tests_regrasdomodelotest",
-      "target": "testcase",
+      "target": "backend_usuarios_tests_py_testcase",
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
@@ -11665,7 +12341,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11675,7 +12351,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L38",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11685,7 +12361,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L58",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11695,7 +12371,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L76",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11705,7 +12381,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L111",
+      "source_location": "L115",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11715,7 +12391,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L113",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11725,7 +12401,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L124",
+      "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11735,7 +12411,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L129",
+      "source_location": "L133",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11745,7 +12421,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L134",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11755,7 +12431,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L139",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11765,7 +12441,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L147",
+      "source_location": "L151",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11775,7 +12451,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L149",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11785,7 +12461,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L159",
+      "source_location": "L163",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11795,7 +12471,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L170",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11805,7 +12481,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-4.md",
-      "source_location": "L183",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12054,6 +12730,61 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
       "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_management_commands_seed_agenda",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12388,145 +13119,24 @@
       "_origin": "ast"
     },
     {
-      "source": "backend_demandas_management_commands_benchmark_demandas_command",
-      "target": "backend_demandas_models_demanda",
+      "source": "backend_agenda_management_commands_seed_agenda_command",
+      "target": "backend_agenda_models_compromisso",
       "relation": "uses",
       "confidence": "INFERRED",
       "confidence_score": 0.95,
-      "source_file": "backend/demandas/management/commands/benchmark_demandas.py",
-      "source_location": "L51",
+      "source_file": "backend/agenda/management/commands/seed_agenda.py",
+      "source_location": "L39",
       "weight": 0.8,
       "_origin": "ast"
     },
     {
-      "source": "backend_demandas_management_commands_seed_demo_command",
-      "target": "backend_demandas_models_demanda",
+      "source": "backend_agenda_tests_compromissomodeltest",
+      "target": "backend_agenda_models_compromisso",
       "relation": "uses",
       "confidence": "INFERRED",
       "confidence_score": 0.95,
-      "source_file": "backend/demandas/management/commands/seed_demo.py",
-      "source_location": "L41",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_serializers_demandaserializer",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/serializers.py",
-      "source_location": "L15",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_serializers_alterarstatusserializer",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/serializers.py",
-      "source_location": "L40",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_serializers_eventodemandaserializer",
-      "target": "backend_demandas_models_eventodemanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/serializers.py",
-      "source_location": "L28",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_tests_listagemdemandastest",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/tests.py",
-      "source_location": "L30",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_tests_detalhehistoricotest",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/tests.py",
-      "source_location": "L133",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_tests_detalhehistoricotest",
-      "target": "backend_demandas_models_eventodemanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/tests.py",
-      "source_location": "L160",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_views_demandas_permitidas",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/views.py",
-      "source_location": "L19",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_views_demandalistview",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/views.py",
-      "source_location": "L60",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_views_demandastatusview",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/views.py",
-      "source_location": "L97",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_views_demandastatusview",
-      "target": "backend_demandas_models_eventodemanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/views.py",
-      "source_location": "L105",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_demandas_views_demandacomentarioview",
-      "target": "backend_demandas_models_eventodemanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/demandas/views.py",
-      "source_location": "L118",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L22",
       "weight": 0.8,
       "_origin": "ast"
     },
@@ -12593,17 +13203,6 @@
       "confidence_score": 0.95,
       "source_file": "backend/demandas/views.py",
       "source_location": "L122",
-      "weight": 0.8,
-      "_origin": "ast"
-    },
-    {
-      "source": "backend_usuarios_tests_regrasdomodelotest",
-      "target": "backend_demandas_models_demanda",
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "backend/usuarios/tests.py",
-      "source_location": "L32",
       "weight": 0.8,
       "_origin": "ast"
     },
