@@ -3,6 +3,7 @@ from django.urls import path
 
 from demandas.views import DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaStatusView
 from agenda.views import CompromissoListView
+from avisos.views import AvisoDetailView, AvisoListView
 from usuarios.views import CsrfView, LoginView, LogoutView, MeView
 
 urlpatterns = [
@@ -16,4 +17,6 @@ urlpatterns = [
     path("api/demandas/<int:pk>/status/", DemandaStatusView.as_view(), name="demandas-status"),
     path("api/demandas/<int:pk>/historico/", DemandaComentarioView.as_view(), name="demandas-historico"),
     path("api/compromissos/", CompromissoListView.as_view(), name="compromissos-list"),
+    path("api/avisos/", AvisoListView.as_view(), name="avisos-list"),
+    path("api/avisos/<int:pk>/", AvisoDetailView.as_view(), name="avisos-detail"),
 ]

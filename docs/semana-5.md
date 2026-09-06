@@ -24,8 +24,9 @@ com um feed categorizado e detalhe, sem ampliar o escopo perto da apresentação
 | S5-07 | Congelar e preparar a demonstração | Equipe | S5-06 | Versão identificada, checklist, roteiro, evidências e plano de contingência revisados |
 
 Situação técnica: S5-02 concluída com modelo, migração, validação de autoria e
-carga fictícia idempotente. O contrato e a direção visual de S5-01 estão prontos
-para revisão da equipe; a implementação segue pelo feed e detalhe da API.
+carga fictícia idempotente. S5-03 concluída com feed priorizado, detalhe e
+isolamento por sessão e equipe. O contrato e a direção visual de S5-01 estão
+prontos para revisão da equipe; a implementação segue pela interface React.
 
 ## Cronograma diário
 
@@ -184,7 +185,7 @@ Após a regressão aprovada:
 
 - [ ] Regras e protótipo de feed/detalhe revisados pela equipe.
 - [x] Migração e carga fictícia são reproduzíveis.
-- [ ] APIs de feed e detalhe isolam equipes e sessões corretamente.
+- [x] APIs de feed e detalhe isolam equipes e sessões corretamente.
 - [ ] Feed e detalhe funcionam com dados reais em desktop e celular.
 - [ ] Urgência é comunicada por texto e estilo acessível.
 - [ ] Todos os fluxos MUST HAVE passam no smoke integrado.
