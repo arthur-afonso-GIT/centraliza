@@ -53,3 +53,30 @@ class Demanda(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         return super().save(*args, **kwargs)
+
+
+class EventoDemanda(models.Model):
+    class Tipo(models.TextChoices):
+        STATUS_ALTERADO = "status_alterado", "Status alterado"
+        COMENTARIO = "comentario", "Comentário"
+
+    demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="historico")
+    tipo = models.CharField(max_length=20, choices=Tipo.choices)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="eventos_demandas")
+    criado_em = models.DateTimeField(auto_now_add=True)
+    status_anterior = models.CharField(max_length=20, choices=Demanda.Status.choices, blank=True)
+    status_novo = models.CharField(max_length=20, choices=Demanda.Status.choices, blank=True)
+    texto = models.CharField(max_length=2000, blank=True)
+
+    class Meta:
+        ordering = ["-criado_em", "-id"]
+        indexes = [models.Index(fields=["demanda", "-criado_em", "-id"], name="evento_demanda_data")]
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="", texto="")
+                    | models.Q(tipo="comentario", status_anterior="", status_novo="", texto__gt="")
+                ),
+                name="evento_conteudo_por_tipo",
+            ),
+        ]

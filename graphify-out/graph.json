@@ -192,6 +192,24 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_demandas_migrations_0003_eventodemanda",
+      "label": "0003_eventodemanda.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0003_eventodemanda_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_demandas_migrations_init",
       "label": "__init__.py",
       "file_type": "code",
@@ -263,6 +281,26 @@
       "source_file": "backend/demandas/models.py",
       "source_location": "L53",
       "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_eventodemanda",
+      "label": "EventoDemanda",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L58",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_tipo",
+      "label": "Tipo",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L59",
+      "_callable": true,
+      "_callable_class": true,
       "_origin": "ast"
     },
     {
@@ -4408,6 +4446,49 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_demandas_migrations_0003_eventodemanda",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0003_eventodemanda",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0003_eventodemanda",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0003_eventodemanda",
+      "target": "backend_demandas_migrations_0003_eventodemanda_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0003_eventodemanda.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_demandas_models",
       "target": "django_conf",
       "relation": "imports_from",
@@ -4497,6 +4578,36 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/demandas/models.py",
       "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models",
+      "target": "backend_demandas_models_eventodemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_eventodemanda",
+      "target": "backend_demandas_models_tipo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_eventodemanda",
+      "target": "backend_demandas_models_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
