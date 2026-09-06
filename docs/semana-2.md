@@ -25,7 +25,8 @@ desta entrega, não uma integração que já está pronta.
 
 As frentes indicam responsabilidades; distribuir os nomes na reunião da equipe.
 Situação da execução: S2-01 concluída com o [contrato de implementação](contrato-demandas.md);
-S2-03 em andamento. As demais tarefas permanecem planejadas. A revisão de
+S2-03 concluída com Django, migrações, PostgreSQL local e carga fictícia.
+As demais tarefas permanecem planejadas. A revisão de
 produto pela equipe continua distinta da definição técnica implementada.
 
 ## Cronograma diário
@@ -173,7 +174,7 @@ uma consulta adicional por cartão; criar índices conforme filtros e medição.
 ## Critérios de conclusão
 
 - [ ] Protótipo e regras revisados pela equipe.
-- [ ] Banco e dados fictícios podem ser preparados seguindo a documentação.
+- [x] Banco e dados fictícios podem ser preparados seguindo a documentação.
 - [ ] API pagina e filtra corretamente, sem vazamento entre usuários/equipes.
 - [ ] Os três segmentos exibem dados reais da API.
 - [ ] Cartões e estados vazio/carregamento/erro estão implementados.

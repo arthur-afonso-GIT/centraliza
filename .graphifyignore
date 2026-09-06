@@ -10,3 +10,6 @@ frontend/components/ui/**
 frontend/hooks/use-mobile.ts
 graphify-out/**
 .git/**
+**/.venv/**
+**/__pycache__/**
+.local/**

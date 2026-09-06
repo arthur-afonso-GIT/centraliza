@@ -4,6 +4,475 @@
   "output_tokens": 0,
   "nodes": [
     {
+      "id": "backend_config_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/config/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_config_settings",
+      "label": "settings.py",
+      "file_type": "code",
+      "source_file": "backend/config/settings.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_config_urls",
+      "label": "urls.py",
+      "file_type": "code",
+      "source_file": "backend/config/urls.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_config_wsgi",
+      "label": "wsgi.py",
+      "file_type": "code",
+      "source_file": "backend/config/wsgi.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_seed_demo",
+      "label": "seed_demo.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_seed_demo_command",
+      "label": "Command",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L11",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "basecommand",
+      "label": "BaseCommand",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_seed_demo_command_add_arguments",
+      "label": ".add_arguments()",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "atomic",
+      "label": "atomic",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_management_commands_seed_demo_command_handle",
+      "label": ".handle()",
+      "file_type": "code",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0001_initial",
+      "label": "0001_initial.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0001_initial.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0001_initial_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0001_initial.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0002_initial",
+      "label": "0002_initial.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_0002_initial_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_migrations_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/migrations/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models",
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_demanda",
+      "label": "Demanda",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_status",
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_prioridade",
+      "label": "Prioridade",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_meta",
+      "label": "Meta",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L32",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_demanda_clean",
+      "label": ".clean()",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_demandas_models_demanda_save",
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L53",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_manage",
+      "label": "manage.py",
+      "file_type": "code",
+      "source_file": "backend/manage.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "pkg_centraliza_api",
+      "label": "centraliza-api",
+      "file_type": "code",
+      "type": "package",
+      "ecosystem": "python",
+      "source_file": "backend/pyproject.toml",
+      "source_location": "L1",
+      "version": "0.1.0",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_authentication",
+      "label": "authentication.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_authentication_sessionauthentication",
+      "label": "SessionAuthentication",
+      "file_type": "code",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "drfsessionauthentication",
+      "label": "DRFSessionAuthentication",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_authentication_sessionauthentication_authenticate_header",
+      "label": ".authenticate_header()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L5",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_migrations_0001_initial",
+      "label": "0001_initial.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_migrations_0001_initial_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L10",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_migrations_init",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/migrations/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models",
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_equipe",
+      "label": "Equipe",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L5",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_equipe_str",
+      "label": ".__str__()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_usuario",
+      "label": "Usuario",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "abstractuser",
+      "label": "AbstractUser",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_perfil",
+      "label": "Perfil",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_meta",
+      "label": "Meta",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L20",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_models_usuario_nome",
+      "label": ".nome()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests",
+      "label": "tests.py",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest",
+      "label": "RegrasDoModeloTest",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "testcase",
+      "label": "TestCase",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "label": ".criar_demanda()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L23",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_test_aceita_inspetor_da_mesma_equipe",
+      "label": ".test_aceita_inspetor_da_mesma_equipe()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_test_aceita_demanda_sem_responsavel",
+      "label": ".test_aceita_demanda_sem_responsavel()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_responsavel_de_outra_equipe",
+      "label": ".test_rejeita_responsavel_de_outra_equipe()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L44",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_gestor_como_responsavel",
+      "label": ".test_rejeita_gestor_como_responsavel()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L49",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_regrasdomodelotest_test_criticidade_independe_do_status",
+      "label": ".test_criticidade_independe_do_status()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L54",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_oxfmtrc",
       "label": ".oxfmtrc.json",
       "file_type": "code",
@@ -2116,12 +2585,12 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L14",
+      "source_location": "L12",
       "_origin": "ast"
     },
     {
-      "id": "readme_context",
-      "label": "Context",
+      "id": "readme_core_capabilities",
+      "label": "Core capabilities",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
@@ -2129,39 +2598,12 @@
       "_origin": "ast"
     },
     {
-      "id": "readme_proposed_workflow",
-      "label": "Proposed workflow",
-      "file_type": "document",
-      "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L32",
-      "_origin": "ast"
-    },
-    {
-      "id": "readme_planned_features",
-      "label": "Planned features",
+      "id": "readme_team_workspace",
+      "label": "Team workspace",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
       "source_location": "L38",
-      "_origin": "ast"
-    },
-    {
-      "id": "readme_objective",
-      "label": "Objective",
-      "file_type": "document",
-      "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L49",
-      "_origin": "ast"
-    },
-    {
-      "id": "readme_roadmap",
-      "label": "Roadmap",
-      "file_type": "document",
-      "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -2170,7 +2612,79 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L49",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_screenshots",
+      "label": "Screenshots",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L61",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_home",
+      "label": "Home",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L63",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_mobile_navigation_layout",
+      "label": "Mobile navigation layout",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L67",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_technology_stack",
+      "label": "Technology stack",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L75",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_architecture",
+      "label": "Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_local_development",
+      "label": "Local development",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L108",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_data_and_security",
+      "label": "Data and security",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L133",
+      "_origin": "ast"
+    },
+    {
+      "id": "readme_product_direction",
+      "label": "Product direction",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "README.md",
+      "source_location": "L140",
       "_origin": "ast"
     },
     {
@@ -2179,43 +2693,79 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L70",
+      "source_location": "L144",
       "_origin": "ast"
     },
     {
-      "id": "readme_executar_a_entrega_da_semana_1",
-      "label": "Executar a entrega da semana 1",
+      "id": "backend_readme",
+      "label": "README.md",
       "file_type": "document",
-      "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L84",
+      "node_kind": "page",
+      "source_file": "backend/README.md",
+      "source_location": "L1",
       "_origin": "ast"
     },
     {
-      "id": "readme_organização",
-      "label": "Organização",
+      "id": "backend_readme_api_centraliza",
+      "label": "API Centraliza",
       "file_type": "document",
       "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L103",
+      "source_file": "backend/README.md",
+      "source_location": "L1",
       "_origin": "ast"
     },
     {
-      "id": "readme_verificação",
-      "label": "Verificação",
+      "id": "backend_readme_preparação_local",
+      "label": "Preparação local",
       "file_type": "document",
       "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L125",
+      "source_file": "backend/README.md",
+      "source_location": "L6",
       "_origin": "ast"
     },
     {
-      "id": "readme_mapa_do_código",
-      "label": "Mapa do código",
+      "id": "docs_contrato_demandas",
+      "label": "contrato-demandas.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "label": "Contrato de listagem de demandas",
       "file_type": "document",
       "node_kind": "heading",
-      "source_file": "README.md",
-      "source_location": "L141",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_contrato_demandas_acesso_e_filtros",
+      "label": "Acesso e filtros",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_contrato_demandas_sessão",
+      "label": "Sessão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_contrato_demandas_interface",
+      "label": "Interface",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L43",
       "_origin": "ast"
     },
     {
@@ -2255,12 +2805,21 @@
       "_origin": "ast"
     },
     {
-      "id": "docs_plano_desenvolvimento_entrega_atual_semana_1",
-      "label": "Entrega atual: semana 1",
+      "id": "docs_plano_desenvolvimento_próxima_execução_listagem_de_demandas",
+      "label": "Próxima execução: listagem de demandas",
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
       "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_desenvolvimento_entrega_técnica_concluída_semana_1",
+      "label": "Entrega técnica concluída: semana 1",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L9",
       "_origin": "ast"
     },
     {
@@ -2269,7 +2828,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L17",
+      "source_location": "L23",
       "_origin": "ast"
     },
     {
@@ -2278,7 +2837,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L28",
+      "source_location": "L34",
       "_origin": "ast"
     },
     {
@@ -2287,7 +2846,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L37",
+      "source_location": "L49",
       "_origin": "ast"
     },
     {
@@ -2296,7 +2855,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L55",
+      "source_location": "L67",
       "_origin": "ast"
     },
     {
@@ -2305,7 +2864,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L73",
+      "source_location": "L85",
       "_origin": "ast"
     },
     {
@@ -2390,6 +2949,123 @@
       "_origin": "ast"
     },
     {
+      "id": "docs_semana_2",
+      "label": "semana-2.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "label": "Plano de execução — listagem de demandas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_ponto_de_partida",
+      "label": "Ponto de partida",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_metas_e_tarefas",
+      "label": "Metas e tarefas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_cronograma_diário",
+      "label": "Cronograma diário",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_regras_propostas_para_alinhar_na_segunda_feira",
+      "label": "Regras propostas para alinhar na segunda-feira",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L48",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_modelo_mínimo",
+      "label": "Modelo mínimo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L64",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_contrato_inicial_da_api",
+      "label": "Contrato inicial da API",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L80",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_identidade_e_integração",
+      "label": "Identidade e integração",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L128",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_conteúdo_e_estados_da_interface",
+      "label": "Conteúdo e estados da interface",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L141",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_testes_e_desempenho",
+      "label": "Testes e desempenho",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L154",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_critérios_de_conclusão",
+      "label": "Critérios de conclusão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L174",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_semana_2_fora_do_escopo_e_contingência",
+      "label": "Fora do escopo e contingência",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L187",
+      "_origin": "ast"
+    },
+    {
       "id": "docs_validacao_semana_1",
       "label": "validacao-semana-1.md",
       "file_type": "document",
@@ -2445,6 +3121,847 @@
     }
   ],
   "links": [
+    {
+      "source": "backend_config_settings",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/settings.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_settings",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/settings.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_settings",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/settings.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_settings",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/settings.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_urls",
+      "target": "django_urls",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/urls.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_urls",
+      "target": "django_http",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/urls.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_wsgi",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/wsgi.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_wsgi",
+      "target": "django_core_wsgi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/wsgi.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "django_core_management_base",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_demandas_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_demandas_management_commands_seed_demo_command",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo_command",
+      "target": "basecommand",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo_command",
+      "target": "backend_demandas_management_commands_seed_demo_command_add_arguments",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo_command_handle",
+      "target": "atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo_command",
+      "target": "backend_demandas_management_commands_seed_demo_command_handle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0001_initial",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0001_initial.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0001_initial",
+      "target": "backend_demandas_migrations_0001_initial_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0001_initial.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0002_initial",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0002_initial",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0002_initial",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_migrations_0002_initial",
+      "target": "backend_demandas_migrations_0002_initial_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/migrations/0002_initial.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models",
+      "target": "backend_demandas_models_demanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_demanda",
+      "target": "backend_demandas_models_status",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_demanda",
+      "target": "backend_demandas_models_prioridade",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_demanda",
+      "target": "backend_demandas_models_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_demanda",
+      "target": "backend_demandas_models_demanda_clean",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_models_demanda",
+      "target": "backend_demandas_models_demanda_save",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/models.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_manage",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/manage.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_manage",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/manage.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_manage",
+      "target": "django_core_management",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/manage.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "pkg_centraliza_api",
+      "target": "pkg_django",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "pkg_centraliza_api",
+      "target": "pkg_djangorestframework",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "pkg_centraliza_api",
+      "target": "pkg_psycopg",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "pkg_centraliza_api",
+      "target": "pkg_python_dotenv",
+      "relation": "depends_on",
+      "context": "dependency",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/pyproject.toml",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_authentication",
+      "target": "rest_framework_authentication",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_authentication",
+      "target": "backend_usuarios_authentication_sessionauthentication",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_authentication_sessionauthentication",
+      "target": "drfsessionauthentication",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_authentication_sessionauthentication",
+      "target": "backend_usuarios_authentication_sessionauthentication_authenticate_header",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/authentication.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "django_contrib_auth_models",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "django_contrib_auth_validators",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "django_utils_timezone",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_migrations_0001_initial",
+      "target": "backend_usuarios_migrations_0001_initial_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/migrations/0001_initial.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models",
+      "target": "django_contrib_auth_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models_equipe",
+      "target": "backend_usuarios_models_equipe_str",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models_usuario",
+      "target": "abstractuser",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models_usuario",
+      "target": "backend_usuarios_models_perfil",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models_usuario",
+      "target": "backend_usuarios_models_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_models_usuario",
+      "target": "backend_usuarios_models_usuario_nome",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/models.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "django_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_demandas_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_tests_regrasdomodelotest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "testcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_test_aceita_inspetor_da_mesma_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_test_aceita_demanda_sem_responsavel",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_responsavel_de_outra_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_gestor_como_responsavel",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_usuarios_tests_regrasdomodelotest_test_criticidade_independe_do_status",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_test_aceita_inspetor_da_mesma_equipe",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_test_aceita_demanda_sem_responsavel",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_responsavel_de_outra_equipe",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_test_rejeita_gestor_como_responsavel",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_test_criticidade_independe_do_status",
+      "target": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
     {
       "source": "frontend_oxfmtrc",
       "target": "frontend_oxfmtrc_schema",
@@ -5462,13 +6979,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "readme_centraliza",
-      "target": "readme_context",
+      "target": "readme_core_capabilities",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -5478,17 +6995,7 @@
     },
     {
       "source": "readme_centraliza",
-      "target": "readme_proposed_workflow",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L32",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_centraliza",
-      "target": "readme_planned_features",
+      "target": "readme_team_workspace",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -5498,71 +7005,11 @@
     },
     {
       "source": "readme_centraliza",
-      "target": "readme_objective",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L49",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_centraliza",
-      "target": "readme_roadmap",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L53",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_centraliza",
       "target": "readme_project_documentation",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L64",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_centraliza",
-      "target": "readme_team",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L70",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_centraliza",
-      "target": "readme_executar_a_entrega_da_semana_1",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L84",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme_executar_a_entrega_da_semana_1",
-      "target": "readme_organização",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L103",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "readme",
-      "target": "docs_semana_1",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L114",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5572,7 +7019,17 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L115",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_semana_1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5582,27 +7039,167 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L116",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "readme_executar_a_entrega_da_semana_1",
-      "target": "readme_verificação",
-      "relation": "contains",
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L125",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
-      "source": "readme_executar_a_entrega_da_semana_1",
-      "target": "readme_mapa_do_código",
+      "source": "readme_centraliza",
+      "target": "readme_screenshots",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L141",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_screenshots",
+      "target": "readme_home",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_screenshots",
+      "target": "readme_mobile_navigation_layout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_technology_stack",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_architecture",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_local_development",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_data_and_security",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_product_direction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme_centraliza",
+      "target": "readme_team",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_readme",
+      "target": "backend_readme_api_centraliza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_readme_api_centraliza",
+      "target": "backend_readme_preparação_local",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/README.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_contrato_demandas",
+      "target": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "target": "docs_contrato_demandas_acesso_e_filtros",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "target": "docs_contrato_demandas_sessão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "target": "docs_contrato_demandas_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/contrato-demandas.md",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5628,7 +7225,7 @@
     },
     {
       "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
-      "target": "docs_plano_desenvolvimento_entrega_atual_semana_1",
+      "target": "docs_plano_desenvolvimento_próxima_execução_listagem_de_demandas",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
@@ -5638,11 +7235,31 @@
     },
     {
       "source": "docs_plano_desenvolvimento",
+      "target": "docs_semana_2",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento_plano_de_desenvolvimento_centraliza",
+      "target": "docs_plano_desenvolvimento_entrega_técnica_concluída_semana_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-desenvolvimento.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_desenvolvimento",
       "target": "docs_semana_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L14",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5652,7 +7269,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L17",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5662,7 +7279,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L28",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5672,7 +7289,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L37",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5682,7 +7299,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L55",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5692,7 +7309,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L71",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5702,7 +7319,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-desenvolvimento.md",
-      "source_location": "L73",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5793,6 +7410,136 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/semana-1.md",
       "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2",
+      "target": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_ponto_de_partida",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_metas_e_tarefas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2",
+      "target": "docs_contrato_demandas",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_cronograma_diário",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_regras_propostas_para_alinhar_na_segunda_feira",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_modelo_mínimo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_contrato_inicial_da_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_contrato_inicial_da_api",
+      "target": "docs_semana_2_identidade_e_integração",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_conteúdo_e_estados_da_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_testes_e_desempenho",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_critérios_de_conclusão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_semana_2_plano_de_execução_listagem_de_demandas",
+      "target": "docs_semana_2_fora_do_escopo_e_contingência",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/semana-2.md",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -5898,6 +7645,106 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/workspace.tsx",
       "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_demandas_models_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_demandas_models_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_demandas_management_commands_seed_demo_command",
+      "target": "backend_demandas_models_demanda",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/demandas/management/commands/seed_demo.py",
+      "source_location": "L41",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest",
+      "target": "backend_demandas_models_demanda",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L32",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
+      "target": "backend_demandas_models_demanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },

@@ -1,5 +1,10 @@
 # Cache incremental do TypeScript
 *.tsbuildinfo
+.local/
+**/.venv/
+**/__pycache__/
+*.pyc
+backend/.env
 
 # Metadados locais do Graphify; graph.json é versionado
 graphify-out/cache/
