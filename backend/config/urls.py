@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.urls import path
 
 from demandas.views import DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaStatusView
+from agenda.views import CompromissoListView
 from usuarios.views import CsrfView, LoginView, LogoutView, MeView
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path("api/demandas/<int:pk>/", DemandaDetailView.as_view(), name="demandas-detail"),
     path("api/demandas/<int:pk>/status/", DemandaStatusView.as_view(), name="demandas-status"),
     path("api/demandas/<int:pk>/historico/", DemandaComentarioView.as_view(), name="demandas-historico"),
+    path("api/compromissos/", CompromissoListView.as_view(), name="compromissos-list"),
 ]

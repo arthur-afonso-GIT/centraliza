@@ -13,6 +13,8 @@ paginada de demandas com acesso por equipe e perfil.
 - `PATCH /api/demandas/{id}/status/` para o inspetor responsável executar a
   próxima transição permitida.
 - `POST /api/demandas/{id}/historico/` para adicionar um comentário simples.
+- `GET /api/compromissos/?inicio={ISO}&fim={ISO}` para listar compromissos
+  sobrepostos ao intervalo autorizado, com horários em `America/Fortaleza`.
 
 Alterações de status geram um evento na mesma transação. O histórico exposto
 pela API não oferece edição ou exclusão.
@@ -28,6 +30,7 @@ uv sync
 uv run python manage.py migrate
 $env:CENTRALIZA_DEMO_PASSWORD = "uma-senha-local-com-12-caracteres"
 uv run python manage.py seed_demo --total 30
+uv run python manage.py seed_agenda
 uv run python manage.py test usuarios demandas
 uv run python manage.py benchmark_demandas --requests 30 --warmup 5
 uv run python manage.py runserver
@@ -38,6 +41,8 @@ referência: não apaga dados e não duplica sua própria massa. Só funciona co
 `DJANGO_DEBUG=1` e exige a senha pelo ambiente; não há senha padrão no código.
 O benchmark também só funciona em desenvolvimento, usa a conta
 `demo.gestor.1` por padrão e informa média, p95, máximo e consultas por chamada.
+A carga da agenda cria 12 compromissos e exige que `seed_demo` tenha sido
+executado antes; ela também pode ser repetida sem duplicar registros.
 
 O banco isolado usado no desenvolvimento deste repositório escuta somente em
 `127.0.0.1:55432` e fica em `.local`, fora do controle de versão. Outra pessoa

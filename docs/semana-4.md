@@ -24,8 +24,9 @@ configuração, armazenando instantes em UTC e apresentando horários locais.
 | S4-07 | Validar e documentar | QA + equipe | S4-06 | Testes de limites, timezone, responsividade, teclado, build e Graphify |
 
 Situação técnica: S4-03 concluída com módulo de agenda, modelo, migração e carga
-fictícia idempotente. As regras e o protótipo ainda aguardam revisão da equipe;
-endpoint e calendário permanecem nas próximas tarefas.
+fictícia idempotente. S4-04 concluída com intervalo semiaberto, acesso por perfil
+e resposta em Fortaleza. As regras e o protótipo ainda aguardam revisão da
+equipe; o calendário permanece nas próximas tarefas.
 
 ## Cronograma diário
 
@@ -175,8 +176,8 @@ mostrar “+N” sem esconder a contagem. Selecionar um dia muda para a visão d
 
 - [ ] Regras, timezone e protótipo revisados pela equipe.
 - [x] Migração e carga fictícia são reproduzíveis.
-- [ ] API filtra intervalo e acesso sem vazamento entre equipes e usuários.
-- [ ] API recebe instantes com offset e responde em `America/Fortaleza`.
+- [x] API filtra intervalo e acesso sem vazamento entre equipes e usuários.
+- [x] API recebe instantes com offset e responde em `America/Fortaleza`.
 - [ ] Visualizações Dia, Semana e Mês apresentam dados reais.
 - [ ] Anterior, Próximo e Hoje consultam os intervalos corretos.
 - [ ] Loader, vazio, erro e sessão expirada estão implementados.
