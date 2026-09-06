@@ -26,6 +26,7 @@ Available in the current version:
 - **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
 - **Request details and history** — inspect complete request data, add timeline comments, and let the assigned inspector advance permitted statuses.
 - **Team agenda** — browse authorized commitments by day, week, or month, move between periods, and return to today in Fortaleza time.
+- **Team notices** — read urgent and informational notices from the authenticated team and open their complete content.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
@@ -35,7 +36,7 @@ Planned operational capabilities:
 - **Request management** — create, prioritize, assign, reassign, cancel, and monitor deadlines.
 - **Inspection execution** — record extended progress and attach documents and evidence.
 - **Management review** — approve completed activities or request corrections, with a traceable history.
-- **Team planning and communication** — schedule meetings, identify conflicts, publish notices, and exchange messages.
+- **Team planning and communication** — schedule meetings, identify conflicts, manage notice publishing, and exchange messages.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
 ## Team workspace
@@ -115,7 +116,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 27 Django tests and 21 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
+The current quality baseline includes 36 Django tests and 24 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
 
 ## Local development
 

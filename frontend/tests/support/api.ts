@@ -59,6 +59,20 @@ export async function instalarApi(page: Page) {
         ],
       } });
     }
+    if (url.pathname === '/api/avisos/') {
+      if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+      await new Promise(resolve => setTimeout(resolve, 80));
+      return route.fulfill({ json: { resultados: [
+        { id: 1, titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00' },
+        { id: 2, titulo: 'Atualização de procedimento', resumo: 'Novo roteiro disponível para inspeções.', categoria: 'informativo', autor: 'Gestor de teste', publicado_em: '2026-09-30T09:00:00-03:00' },
+      ] } });
+    }
+    const aviso = url.pathname.match(/^\/api\/avisos\/(\d+)\/$/);
+    if (aviso) {
+      if (!perfil) return route.fulfill({ status: 401, json: {} });
+      if (aviso[1] === '404') return route.fulfill({ status: 404, json: {} });
+      return route.fulfill({ json: { id: Number(aviso[1]), titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', conteudo: 'Consulte a nova escala e confirme sua disponibilidade com a gestão.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00' } });
+    }
     return route.fulfill({ status: 404 });
   });
 }

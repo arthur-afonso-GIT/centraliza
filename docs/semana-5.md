@@ -26,7 +26,9 @@ com um feed categorizado e detalhe, sem ampliar o escopo perto da apresentação
 Situação técnica: S5-02 concluída com modelo, migração, validação de autoria e
 carga fictícia idempotente. S5-03 concluída com feed priorizado, detalhe e
 isolamento por sessão e equipe. O contrato e a direção visual de S5-01 estão
-prontos para revisão da equipe; a implementação segue pela interface React.
+prontos para revisão da equipe. S5-04 e S5-05 concluídas com feed responsivo,
+tags textuais, detalhe navegável e estados de recuperação. A execução segue pela
+regressão integrada e preparação da demonstração.
 
 ## Cronograma diário
 
@@ -186,8 +188,8 @@ Após a regressão aprovada:
 - [ ] Regras e protótipo de feed/detalhe revisados pela equipe.
 - [x] Migração e carga fictícia são reproduzíveis.
 - [x] APIs de feed e detalhe isolam equipes e sessões corretamente.
-- [ ] Feed e detalhe funcionam com dados reais em desktop e celular.
-- [ ] Urgência é comunicada por texto e estilo acessível.
+- [x] Feed e detalhe funcionam com dados reais em desktop e celular.
+- [x] Urgência é comunicada por texto e estilo acessível.
 - [ ] Todos os fluxos MUST HAVE passam no smoke integrado.
 - [ ] Testes Django e Playwright, lint, tipos e build passam.
 - [ ] README, relatório técnico e Graphify estão atualizados.

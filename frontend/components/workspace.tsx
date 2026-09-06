@@ -5,8 +5,9 @@ import LoginScreen from './login-screen';
 import ModuleContent from './module-content';
 import WorkspaceLayout from './workspace-layout';
 import DemandaDetail from './demanda-detail';
+import AvisoDetail from './aviso-detail';
 
-export default function Workspace({ page, demandId }: { page: string; demandId?: number }) {
+export default function Workspace({ page, demandId, avisoId }: { page: string; demandId?: number; avisoId?: number }) {
   const session = useSession(page);
   if (session.error)
     return (
@@ -39,7 +40,7 @@ export default function Workspace({ page, demandId }: { page: string; demandId?:
       busy={session.busy}
       logout={session.logout}
     >
-      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : <ModuleContent page={page} user={session.user} />}
+      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : avisoId ? <AvisoDetail id={avisoId} /> : <ModuleContent page={page} user={session.user} />}
     </WorkspaceLayout>
   );
 }

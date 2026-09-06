@@ -303,3 +303,23 @@ body {
     @apply font-sans;
   }
 }
+
+.notices-feed { display: grid; gap: 1rem; max-width: 920px; }
+.notice-card { display: block; color: inherit; text-decoration: none; background: #fff; border: 1px solid var(--line, #d9dde1); border-left: 4px solid #66717a; border-radius: 10px; padding: 1.25rem; transition: border-color .15s, box-shadow .15s; }
+.notice-card.notice-urgente { border-left-color: #e31b2b; }
+.notice-card:hover, .notice-card:focus-visible { border-color: #e31b2b; box-shadow: 0 8px 24px rgba(26,31,35,.08); }
+.notice-card-top, .notice-meta { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.notice-card-top time, .notice-meta { color: #505b64; font-size: .875rem; }
+.notice-card h2 { margin: 1rem 0 .4rem; font-size: 1.2rem; }
+.notice-card p { color: #424c54; margin: 0 0 1rem; }
+.notice-tag { display: inline-flex; width: fit-content; border-radius: 999px; padding: .3rem .65rem; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.notice-tag.urgente { color: #991522; background: #fff0f1; border: 1px solid #f2b7bc; }
+.notice-tag.informativo { color: #313b43; background: #f1f3f4; border: 1px solid #cdd2d6; }
+.notices-state { min-height: 280px; display: grid; place-content: center; justify-items: center; text-align: center; gap: .75rem; border: 1px dashed #cdd2d6; border-radius: 10px; padding: 2rem; }
+.notice-detail { max-width: 980px; }
+.notice-detail article { max-width: 760px; margin-top: 2rem; padding: clamp(1.5rem, 4vw, 3rem); background: #fff; border: 1px solid #d9dde1; border-radius: 12px; }
+.notice-detail h1 { margin: 1rem 0 .5rem; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; }
+.notice-byline { color: #505b64; font-size: .9rem; }
+.notice-summary { margin: 2rem 0 1.25rem; font-size: 1.15rem; font-weight: 600; color: #273139; }
+.notice-body { white-space: pre-wrap; line-height: 1.75; color: #313b43; }
+@media (max-width: 560px) { .notice-card-top, .notice-meta { align-items: flex-start; flex-direction: column; gap: .5rem; } }

@@ -6,6 +6,7 @@ import { modules } from '../lib/navigation';
 import type { User } from '../lib/auth';
 import DemandasList from './demandas-list';
 import AgendaCalendar from './agenda-calendar';
+import AvisosFeed from './avisos-feed';
 
 export default function ModuleContent({
   page,
@@ -45,7 +46,7 @@ export default function ModuleContent({
           </p>
         </div>
       </div>
-      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar /> : page === 'home' ? (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar /> : page === 'avisos' ? <AvisosFeed /> : page === 'home' ? (
         <>
           <section className="welcome-panel">
             <div>
