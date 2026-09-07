@@ -125,13 +125,25 @@ The current quality baseline includes 60 Django tests and 37 browser scenarios, 
 
 ## Local development
 
-Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`, then start the API:
+Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`.
+
+The prepared Windows workspace uses an isolated PostgreSQL instance on port `55432`. Start it from the repository root:
+
+```powershell
+& '.\.local\postgresql\pgsql\bin\pg_ctl.exe' start `
+  -D '.\.local\pgdata' `
+  -l '.\.local\postgresql.log' `
+  -o '-p 55432 -h 127.0.0.1' `
+  -w
+```
+
+Then prepare and start the API:
 
 ```powershell
 cd backend
 uv sync
 uv run python manage.py migrate
-$env:CENTRALIZA_DEMO_PASSWORD = "choose-a-local-password-with-12-characters"
+$env:CENTRALIZA_DEMO_PASSWORD = "Centraliza@2026"
 uv run python manage.py seed_demo --total 30
 uv run python manage.py seed_agenda
 uv run python manage.py seed_avisos
@@ -146,13 +158,24 @@ npm ci
 npm run dev
 ```
 
-Open the address printed by the terminal, normally http://localhost:3000. Sign in with one of the accounts created by `seed_demo`; the frontend proxies `/api` to http://127.0.0.1:8000. Set `CENTRALIZA_API_URL` before starting the frontend to use another local API address.
+Open the address printed by the terminal, normally http://localhost:3000. The frontend proxies `/api` to http://127.0.0.1:8000. Set `CENTRALIZA_API_URL` before starting the frontend to use another local API address.
+
+### Demonstration accounts
+
+These credentials are only for fictitious local development data. All six accounts currently use `Centraliza@2026`.
+
+| Profile | Usernames |
+| --- | --- |
+| Manager | `demo.gestor.1`, `demo.gestor.2` |
+| Inspector | `demo.inspetor.1`, `demo.inspetor.2`, `demo.inspetor2.1`, `demo.inspetor2.2` |
+
+`seed_demo` sets the password when it creates an account. It preserves the password of an account that already exists, so changing `CENTRALIZA_DEMO_PASSWORD` alone does not reset existing users.
 
 Run the complete validation from the corresponding directories:
 
 ```powershell
 cd backend
-uv run python manage.py test usuarios demandas
+uv run python manage.py test
 uv run python manage.py benchmark_demandas --requests 30 --warmup 5
 
 cd ../frontend
@@ -169,13 +192,13 @@ For code exploration, run graphify explain Workspace from the repository root. A
 ## Data and security
 
 - Demonstration records and accounts are fictitious and do not contain institutional data.
-- Django enforces request-list permissions on the server; browser guards only control navigation feedback.
-- Future write operations must validate workflow transitions and keep the request history consistent.
-- Real deployment requires dependency-security review, authenticated storage, database setup, and agreement on operational access rules with VISAT.
+- Django enforces permissions by role, team, assignment, participant, recipient, and validity period; browser guards only control navigation feedback.
+- Request transitions and their history are written through transactional backend services.
+- Real deployment requires secret rotation, HTTPS, a production application server, persistent protected storage, backup and restore, attachment scanning, monitoring, and agreement on operational access rules with VISAT.
 
 ## Product direction
 
-The authenticated request list and its performance baseline are complete. The next development stage is to implement one complete request lifecycle: creation, assignment, progress updates, management review, corrections, completion, and change history. Agenda, notices, dashboards, attachments, and chat follow that core workflow.
+The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, and managed notices. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, notifications, and chat remain later product increments.
 
 ## Team
 
