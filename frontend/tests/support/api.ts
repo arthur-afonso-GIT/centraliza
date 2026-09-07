@@ -28,11 +28,12 @@ export async function instalarApi(page: Page) {
       await new Promise(resolve => setTimeout(resolve, 120));
       const segmento = url.searchParams.get('status');
       const critica = url.searchParams.get('critica') === 'true';
+      const atrasada = url.searchParams.get('atrasada') === 'true';
       const moved = segmento === 'pendente' && demandStatus !== 'pendente';
       const total = (perfil === 'gestor' ? (critica ? 4 : segmento === 'pendente' ? 9 : 5) : (critica ? 3 : segmento === 'pendente' ? 7 : 4)) - (moved ? 1 : 0);
       const current = Number(url.searchParams.get('page') ?? 1);
       const start = (current - 1) * 4;
-      const results = Array.from({ length: Math.min(4, Math.max(0, total - start)) }, (_, index) => { const id = start + index + 1 + (moved ? 1 : 0); return { id, titulo: `Inspeção demonstrativa ${id}`, status: segmento ?? (index % 2 ? 'pendente' : 'em_andamento'), prioridade: 'alta', prazo: '2026-09-15', critica, responsavel: { id: 2, nome: 'Inspetor de teste' } }; });
+      const results = Array.from({ length: Math.min(4, Math.max(0, total - start)) }, (_, index) => { const id = start + index + 1 + (moved ? 1 : 0); return { id, titulo: `Inspeção demonstrativa ${id}`, status: segmento ?? (index % 2 ? 'pendente' : 'em_andamento'), prioridade: 'alta', prazo: atrasada ? '2026-09-01' : '2026-09-15', critica, atrasada, responsavel: { id: 2, nome: 'Inspetor de teste' } }; });
       return route.fulfill({ json: { count: total, previous: current > 1 ? 'anterior' : null, next: start + 4 < total ? 'proxima' : null, results } });
     }
     const detail = url.pathname.match(/^\/api\/demandas\/(\d+)\/$/);

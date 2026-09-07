@@ -2,12 +2,13 @@ import { ApiError, csrfToken } from './auth';
 
 export type SegmentoDemanda = 'pendentes' | 'andamento' | 'criticas';
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
-export type DemandaResumo = { id: number; titulo: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel: { id: number; nome: string } | null };
+export type DemandaResumo = { id: number; titulo: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
 export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
 export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
 export type Inspetor = { id: number; nome: string };
 export type DadosDemanda = { titulo: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null };
+export type FiltrosDemandas = { responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean };
 
 async function resposta<T>(response: Response): Promise<T> {
   if (response.ok) return response.json() as Promise<T>;
@@ -15,9 +16,14 @@ async function resposta<T>(response: Response): Promise<T> {
   throw new ApiError(response.status, body.detail ?? body.status?.[0] ?? body.texto?.[0] ?? 'Não foi possível concluir a operação.');
 }
 
-export async function listarDemandas(segmento: SegmentoDemanda, page: number, signal?: AbortSignal): Promise<PaginaDemandas> {
-  const filter = segmento === 'pendentes' ? 'status=pendente' : segmento === 'andamento' ? 'status=em_andamento' : 'critica=true';
-  const response = await fetch(`/api/demandas/?${filter}&page=${page}&page_size=4`, { credentials: 'same-origin', signal });
+export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
+  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'andamento' ? { status: 'em_andamento' } : { critica: 'true' });
+  query.set('page', String(page)); query.set('page_size', '4');
+  if (filtros?.responsavel) query.set('responsavel', filtros.responsavel);
+  if (filtros?.prazoDe) query.set('prazo_de', filtros.prazoDe);
+  if (filtros?.prazoAte) query.set('prazo_ate', filtros.prazoAte);
+  if (filtros?.atrasada) query.set('atrasada', 'true');
+  const response = await fetch(`/api/demandas/?${query}`, { credentials: 'same-origin', signal });
   return resposta<PaginaDemandas>(response);
 }
 

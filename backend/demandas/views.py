@@ -1,6 +1,8 @@
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
+from django.utils.dateparse import parse_date
 from rest_framework import exceptions, generics, status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
@@ -87,6 +89,37 @@ class DemandaListView(generics.ListAPIView):
             if critica not in ["true", "false"]:
                 raise exceptions.ValidationError({"critica": "Use true ou false."})
             queryset = queryset.filter(critica=critica == "true")
+
+        responsavel = self.request.query_params.get("responsavel")
+        if responsavel is not None:
+            if user.perfil != "gestor":
+                raise exceptions.PermissionDenied("Somente gestores podem filtrar por responsável.")
+            try:
+                responsavel_id = int(responsavel)
+            except ValueError as exc:
+                raise exceptions.ValidationError({"responsavel": "Informe um ID inteiro positivo."}) from exc
+            if responsavel_id < 1:
+                raise exceptions.ValidationError({"responsavel": "Informe um ID inteiro positivo."})
+            queryset = queryset.filter(responsavel_id=responsavel_id, responsavel__equipe_id=user.equipe_id)
+
+        limites = {}
+        for parametro, lookup in (("prazo_de", "prazo__gte"), ("prazo_ate", "prazo__lte")):
+            valor = self.request.query_params.get(parametro)
+            if valor is not None:
+                parsed = parse_date(valor)
+                if parsed is None:
+                    raise exceptions.ValidationError({parametro: "Informe uma data no formato AAAA-MM-DD."})
+                limites[lookup] = parsed
+        if limites.get("prazo__gte") and limites.get("prazo__lte") and limites["prazo__gte"] > limites["prazo__lte"]:
+            raise exceptions.ValidationError({"prazo_ate": "O fim do período deve ser igual ou posterior ao início."})
+        queryset = queryset.filter(**limites)
+
+        atrasada = self.request.query_params.get("atrasada")
+        if atrasada is not None:
+            if atrasada not in ["true", "false"]:
+                raise exceptions.ValidationError({"atrasada": "Use true ou false."})
+            hoje = timezone.localdate()
+            queryset = queryset.filter(prazo__lt=hoje) if atrasada == "true" else queryset.filter(prazo__gte=hoje)
         return queryset.order_by("prazo", "id")
 
 

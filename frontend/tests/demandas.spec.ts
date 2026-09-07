@@ -35,3 +35,20 @@ test('inspetor visualiza somente demandas atribuídas em tela móvel', async ({ 
   await expect(page.getByText('Não atribuída')).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
+
+test('gestor combina responsável, prazo e atraso e limpa os filtros', async ({ page }) => {
+  await entrarComo(page, 'gestor');
+  await page.goto('/demandas');
+  await page.getByLabel('Responsável').selectOption('2');
+  await page.getByLabel('Prazo inicial').fill('2026-09-01');
+  await page.getByLabel('Prazo final').fill('2026-09-30');
+  const requestPromise = page.waitForRequest(value => value.url().includes('/api/demandas/') && value.url().includes('atrasada=true'));
+  await page.getByLabel('Somente atrasadas').check();
+  await expect(page.getByText('Atrasada', { exact: true }).first()).toBeVisible();
+  const request = await requestPromise;
+  expect(request.url()).toContain('responsavel=2');
+  expect(request.url()).toContain('prazo_de=2026-09-01');
+  expect(request.url()).toContain('prazo_ate=2026-09-30');
+  await page.getByRole('button', { name: 'Limpar filtros' }).click();
+  await expect(page.getByLabel('Responsável')).toHaveValue('');
+});

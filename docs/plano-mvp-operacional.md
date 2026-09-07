@@ -31,9 +31,10 @@ serviço transacional, justificativas obrigatórias e histórico atômico. A mat
 ainda precisa de validação institucional antes de ser considerada definitiva.
 O backend da Etapa 2 já oferece criação, edição, atribuição e reatribuição com
 auditoria. Os formulários do gestor cobrem criação, edição, atribuição,
-reatribuição e cancelamento; filtros por responsável, prazo e atraso são a
-próxima tarefa. A integração PostgreSQL desta interface deve ser repetida quando
-o serviço local estiver disponível.
+reatribuição e cancelamento. A Etapa 2 está tecnicamente concluída com filtros
+combináveis por responsável, intervalo de prazo e atraso calculado no servidor.
+A integração PostgreSQL desta interface deve ser repetida quando o serviço local
+estiver disponível. A próxima execução é a avaliação e correção da Etapa 3.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

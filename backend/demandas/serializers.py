@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.utils import timezone
 
 from demandas.models import Demanda, EventoDemanda
 
@@ -10,10 +11,14 @@ class ResponsavelSerializer(serializers.Serializer):
 
 class DemandaSerializer(serializers.ModelSerializer):
     responsavel = ResponsavelSerializer(read_only=True, allow_null=True)
+    atrasada = serializers.SerializerMethodField()
 
     class Meta:
         model = Demanda
-        fields = ["id", "titulo", "status", "prioridade", "prazo", "critica", "responsavel"]
+        fields = ["id", "titulo", "status", "prioridade", "prazo", "critica", "atrasada", "responsavel"]
+
+    def get_atrasada(self, obj):
+        return obj.prazo < timezone.localdate() and obj.status not in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}
 
 
 class AutorSerializer(serializers.Serializer):

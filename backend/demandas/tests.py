@@ -63,9 +63,28 @@ class ListagemDemandasTest(APITestCase):
 
     def test_rejeita_parametros_invalidos(self):
         self.autenticar(self.gestor_a)
-        for query in ["status=concluida", "critica=sim", "page_size=0", "page_size=51", "page_size=abc", "page=abc"]:
+        for query in ["status=concluida", "critica=sim", "atrasada=sim", "responsavel=abc", "responsavel=0", "prazo_de=20-09-2026", "prazo_de=2026-10-10&prazo_ate=2026-10-01", "page_size=0", "page_size=51", "page_size=abc", "page=abc"]:
             with self.subTest(query=query):
                 self.assertEqual(self.client.get(f"/api/demandas/?{query}").status_code, 400)
+
+    def test_combina_responsavel_periodo_e_atraso(self):
+        ontem = date.today() - timedelta(days=1)
+        amanha = date.today() + timedelta(days=1)
+        antiga = self.criar("Atrasada filtrável", self.a, self.gestor_a, self.inspetor_a, "pendente", False, 20)
+        antiga.prazo = ontem; antiga.save()
+        futura = self.criar("Futura filtrável", self.a, self.gestor_a, self.inspetor_a, "pendente", False, 21)
+        futura.prazo = amanha; futura.save()
+        self.autenticar(self.gestor_a)
+        response = self.client.get(f"/api/demandas/?responsavel={self.inspetor_a.id}&prazo_de={ontem.isoformat()}&prazo_ate={ontem.isoformat()}&atrasada=true")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["titulo"] for item in response.data["results"]], ["Atrasada filtrável"])
+        self.assertTrue(response.data["results"][0]["atrasada"])
+        response = self.client.get(f"/api/demandas/?responsavel={self.inspetor_a.id}&atrasada=false")
+        self.assertIn("Futura filtrável", [item["titulo"] for item in response.data["results"]])
+
+    def test_inspetor_nao_filtra_por_responsavel(self):
+        self.autenticar(self.inspetor_a)
+        self.assertEqual(self.client.get(f"/api/demandas/?responsavel={self.inspetor_a.id}").status_code, 403)
 
     def test_pagina_fora_do_intervalo_retorna_404(self):
         self.autenticar(self.gestor_a)

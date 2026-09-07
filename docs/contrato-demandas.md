@@ -19,6 +19,10 @@ Crítica é uma flag independente. Status e criticidade combinados usam AND.
 | --- | --- |
 | status | Opcional: pendente, em_andamento, aguardando_avaliacao ou em_correcao |
 | critica | Opcional: true ou false |
+| responsavel | ID inteiro positivo; disponível ao gestor |
+| prazo_de | Data inicial inclusiva em AAAA-MM-DD |
+| prazo_ate | Data final inclusiva em AAAA-MM-DD |
+| atrasada | true ou false; compara o prazo com a data local do servidor |
 | page | Inteiro positivo, padrão 1 |
 | page_size | Inteiro de 1 a 50, padrão 20 |
 
@@ -70,3 +74,6 @@ Pendentes envia `status=pendente`, Em andamento envia `status=em_andamento`
 e Críticas envia `critica=true`. Ao trocar segmento, voltar à página 1 e
 cancelar/ignorar a resposta anterior. Responsável null aparece como “Não atribuída”.
 Cartões exibem criticidade em texto, sem depender apenas da cor.
+Demandas atrasadas também recebem indicação textual. No perfil de gestor, os
+filtros de responsável, período e atraso combinam com o segmento ativo e toda
+alteração retorna à primeira página.
