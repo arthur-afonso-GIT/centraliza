@@ -22,8 +22,8 @@ com os compromissos envolvidos. Entradas e respostas usam explicitamente o fuso
   acessibilidade e recuperação de erro.
 - Oxlint e build de produção aprovados.
 
-O PostgreSQL local não estava disponível. A migração foi criada e validada com
-SQLite temporário e deverá ser aplicada novamente no PostgreSQL da aplicação.
+A migração foi aplicada no PostgreSQL local e a suíte completa de 60 testes
+Django passou nesse banco em 7 de setembro de 2026.
 
 ## Limites atuais
 

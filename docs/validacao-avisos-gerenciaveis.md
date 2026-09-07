@@ -19,8 +19,8 @@ administrar publicações atuais, futuras e expiradas.
   acessibilidade móvel e indisponibilidade entre equipes.
 - Oxlint e build de produção aprovados.
 
-O PostgreSQL local não estava disponível. A migração foi criada e validada com
-SQLite temporário e deverá ser aplicada no PostgreSQL antes da demonstração.
+A migração foi aplicada no PostgreSQL local e a suíte completa de 60 testes
+Django, incluindo os avisos, passou nesse banco em 7 de setembro de 2026.
 
 ## Limites atuais
 

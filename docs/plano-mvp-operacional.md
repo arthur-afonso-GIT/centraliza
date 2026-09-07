@@ -33,8 +33,8 @@ O backend da Etapa 2 já oferece criação, edição, atribuição e reatribuiç
 auditoria. Os formulários do gestor cobrem criação, edição, atribuição,
 reatribuição e cancelamento. A Etapa 2 está tecnicamente concluída com filtros
 combináveis por responsável, intervalo de prazo e atraso calculado no servidor.
-A integração PostgreSQL desta interface deve ser repetida quando o serviço local
-estiver disponível.
+A integração foi repetida no PostgreSQL local após a aplicação das migrações de
+demandas, anexos, Agenda e avisos; os 60 testes Django passaram nesse banco.
 A Etapa 3 está tecnicamente concluída: o inspetor envia e reenvia entregas com
 resumo, enquanto o gestor aprova ou devolve com justificativa. A Etapa 4 também
 está concluída no escopo do MVP: arquivos ficam fora da área pública, usam nome

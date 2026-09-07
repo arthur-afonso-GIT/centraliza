@@ -21,9 +21,8 @@ registro e o evento de histórico permanecem disponíveis para auditoria.
   execução exclusiva.
 - Oxlint e build de produção aprovados.
 
-O PostgreSQL local não estava disponível durante esta validação. Os testes do
-backend foram executados com SQLite temporário e a migração foi aplicada nesse
-banco de teste. A migração deve ser repetida no PostgreSQL antes da demonstração.
+A migração foi aplicada no PostgreSQL local e a suíte completa de 60 testes
+Django, incluindo os anexos, passou nesse banco em 7 de setembro de 2026.
 
 ## Limites antes de produção
 

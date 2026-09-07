@@ -47,3 +47,18 @@ executado antes; ela também pode ser repetida sem duplicar registros.
 O banco isolado usado no desenvolvimento deste repositório escuta somente em
 `127.0.0.1:55432` e fica em `.local`, fora do controle de versão. Outra pessoa
 pode usar sua instalação normal do PostgreSQL ajustando as variáveis do `.env`.
+
+Se essa instância local já tiver sido preparada e `migrate` retornar
+`connection timeout expired`, inicie-a na raiz do repositório antes de subir a
+API:
+
+```powershell
+& '.\.local\postgresql\pgsql\bin\pg_ctl.exe' start `
+  -D '.\.local\pgdata' `
+  -l '.\.local\postgresql.log' `
+  -o '-p 55432 -h 127.0.0.1' `
+  -w
+```
+
+Confirme com `.\.local\postgresql\pgsql\bin\pg_isready.exe -h 127.0.0.1 -p
+55432 -d centraliza`. A resposta esperada é `accepting connections`.
