@@ -24,6 +24,8 @@ test('gestor filtra demandas e percorre a paginação', async ({ page }) => {
   await expect(page.getByText('Página 1 de 2')).toBeVisible();
 
   await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Aguardando avaliação' })).toHaveAttribute('aria-selected', 'true');
+  await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tab', { name: 'Críticas' })).toHaveAttribute('aria-selected', 'true');
   await expect(page.getByText('4 demandas')).toBeVisible();
 });

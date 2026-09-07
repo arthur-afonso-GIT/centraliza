@@ -34,7 +34,10 @@ auditoria. Os formulários do gestor cobrem criação, edição, atribuição,
 reatribuição e cancelamento. A Etapa 2 está tecnicamente concluída com filtros
 combináveis por responsável, intervalo de prazo e atraso calculado no servidor.
 A integração PostgreSQL desta interface deve ser repetida quando o serviço local
-estiver disponível. A próxima execução é a avaliação e correção da Etapa 3.
+estiver disponível.
+A Etapa 3 está tecnicamente concluída: o inspetor envia e reenvia entregas com
+resumo, enquanto o gestor aprova ou devolve com justificativa. A próxima etapa é
+o armazenamento protegido de anexos e evidências.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

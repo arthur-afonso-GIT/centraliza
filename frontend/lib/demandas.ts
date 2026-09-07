@@ -1,6 +1,6 @@
 import { ApiError, csrfToken } from './auth';
 
-export type SegmentoDemanda = 'pendentes' | 'andamento' | 'criticas';
+export type SegmentoDemanda = 'pendentes' | 'andamento' | 'avaliacao' | 'criticas';
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
@@ -17,7 +17,7 @@ async function resposta<T>(response: Response): Promise<T> {
 }
 
 export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
-  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'andamento' ? { status: 'em_andamento' } : { critica: 'true' });
+  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : { critica: 'true' });
   query.set('page', String(page)); query.set('page_size', '4');
   if (filtros?.responsavel) query.set('responsavel', filtros.responsavel);
   if (filtros?.prazoDe) query.set('prazo_de', filtros.prazoDe);

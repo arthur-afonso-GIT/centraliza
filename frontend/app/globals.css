@@ -348,5 +348,6 @@ body {
 .filter-clear { min-height: 40px; border: 0; background: transparent; color: #b01422; font-weight: 700; }
 .filter-clear:disabled { color: #7c858c; }
 .overdue { display: inline-flex; align-items: center; gap: .3rem; color: #8c1a24; font-weight: 700; }
+.evaluation-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
 @media (max-width: 900px) { .demand-filters { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .demand-filters { grid-template-columns: 1fr; } }

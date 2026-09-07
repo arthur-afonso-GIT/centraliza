@@ -34,7 +34,6 @@ Available in the current version:
 Planned operational capabilities:
 
 - **Inspection execution** — record extended progress and attach documents and evidence.
-- **Management review** — approve completed activities or request corrections, with a traceable history.
 - **Team planning and communication** — schedule meetings, identify conflicts, manage notice publishing, and exchange messages.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
@@ -118,7 +117,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 47 Django tests and 29 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
+The current quality baseline includes 47 Django tests and 31 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
 
 ## Local development
 

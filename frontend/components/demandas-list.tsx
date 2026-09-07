@@ -7,7 +7,7 @@ import { listarDemandas, listarInspetores, type FiltrosDemandas, type Inspetor, 
 import type { User } from '../lib/auth';
 import DemandaForm from './demanda-form';
 
-const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'criticas', label: 'Críticas' }];
+const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'avaliacao', label: 'Aguardando avaliação' }, { id: 'criticas', label: 'Críticas' }];
 const statusLabel: Record<string, string> = { pendente: 'Pendente', em_andamento: 'Em andamento', aguardando_avaliacao: 'Aguardando avaliação', em_correcao: 'Em correção', concluida: 'Concluída', cancelada: 'Cancelada' };
 const prioridadeLabel = { baixa: 'Baixa', media: 'Média', alta: 'Alta' };
 const filtrosVazios: FiltrosDemandas = { responsavel: '', prazoDe: '', prazoAte: '', atrasada: false };
