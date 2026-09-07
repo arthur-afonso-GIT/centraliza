@@ -1,5 +1,6 @@
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db.models import QuerySet
+from django.http import FileResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.utils.dateparse import parse_date
@@ -8,11 +9,12 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from demandas.models import Demanda, EventoDemanda
+from demandas.anexos import adicionar_anexo, remover_anexo
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda
 from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda
 from demandas.serializers import (
     AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
-    DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer,
+    AnexoDemandaSerializer, DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer,
 )
 
 
@@ -172,3 +174,48 @@ class DemandaComentarioView(APIView):
             autor=request.user, texto=serializer.validated_data["texto"],
         )
         return Response(EventoDemandaSerializer(evento).data, status=status.HTTP_201_CREATED)
+
+
+class DemandaAnexoListView(APIView):
+    def get_demanda(self, request, pk):
+        return get_object_or_404(demandas_permitidas(request.user), pk=pk)
+
+    def get(self, request, pk):
+        demanda = self.get_demanda(request, pk)
+        anexos = demanda.anexos.filter(removido_em__isnull=True).select_related("autor")
+        return Response({"resultados": AnexoDemandaSerializer(anexos, many=True).data})
+
+    def post(self, request, pk):
+        demanda = self.get_demanda(request, pk)
+        arquivo = request.FILES.get("arquivo")
+        if arquivo is None:
+            raise exceptions.ValidationError({"arquivo": "Selecione um arquivo."})
+        try:
+            anexo = adicionar_anexo(demanda=demanda, usuario=request.user, arquivo=arquivo)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        return Response(AnexoDemandaSerializer(anexo).data, status=status.HTTP_201_CREATED)
+
+
+class DemandaAnexoView(APIView):
+    def get_anexo(self, request, pk, anexo_id):
+        demanda = get_object_or_404(demandas_permitidas(request.user), pk=pk)
+        return get_object_or_404(AnexoDemanda.objects.select_related("demanda", "autor"), pk=anexo_id, demanda=demanda, removido_em__isnull=True)
+
+    def delete(self, request, pk, anexo_id):
+        anexo = self.get_anexo(request, pk, anexo_id)
+        try:
+            remover_anexo(anexo=anexo, usuario=request.user)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class DemandaAnexoDownloadView(DemandaAnexoView):
+    def get(self, request, pk, anexo_id):
+        anexo = self.get_anexo(request, pk, anexo_id)
+        response = FileResponse(anexo.arquivo.open("rb"), as_attachment=True, filename=anexo.nome_original, content_type=anexo.mime_type)
+        response["X-Content-Type-Options"] = "nosniff"
+        return response

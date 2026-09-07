@@ -1,6 +1,12 @@
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
+from pathlib import Path
+from uuid import uuid4
+
+
+def caminho_anexo(instance, filename):
+    return f"demandas/{instance.demanda_id}/{uuid4().hex}{Path(filename).suffix.lower()}"
 
 
 class Demanda(models.Model):
@@ -65,6 +71,8 @@ class EventoDemanda(models.Model):
         RESPONSAVEL_ALTERADO = "responsavel_alterado", "Responsável alterado"
         STATUS_ALTERADO = "status_alterado", "Status alterado"
         COMENTARIO = "comentario", "Comentário"
+        ANEXO_ADICIONADO = "anexo_adicionado", "Anexo adicionado"
+        ANEXO_REMOVIDO = "anexo_removido", "Anexo removido"
 
     demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="historico")
     tipo = models.CharField(max_length=20, choices=Tipo.choices)
@@ -82,8 +90,24 @@ class EventoDemanda(models.Model):
                 condition=(
                     models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="")
                     | models.Q(tipo="comentario", status_anterior="", status_novo="", texto__gt="")
-                    | models.Q(tipo__in=["demanda_criada", "demanda_editada", "responsavel_alterado"], status_anterior="", status_novo="", texto__gt="")
+                    | models.Q(tipo__in=["demanda_criada", "demanda_editada", "responsavel_alterado", "anexo_adicionado", "anexo_removido"], status_anterior="", status_novo="", texto__gt="")
                 ),
                 name="evento_conteudo_por_tipo",
             ),
         ]
+
+
+class AnexoDemanda(models.Model):
+    demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="anexos")
+    arquivo = models.FileField(upload_to=caminho_anexo, max_length=500)
+    nome_original = models.CharField(max_length=255)
+    mime_type = models.CharField(max_length=100)
+    tamanho = models.PositiveBigIntegerField()
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="anexos_demandas")
+    criado_em = models.DateTimeField(auto_now_add=True)
+    removido_em = models.DateTimeField(null=True, blank=True)
+    removido_por = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="anexos_demandas_removidos", null=True, blank=True)
+
+    class Meta:
+        ordering = ["-criado_em", "-id"]
+        indexes = [models.Index(fields=["demanda", "removido_em", "-criado_em"], name="anexo_demanda_ativo")]

@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.urls import path
 
-from demandas.views import DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaStatusView
+from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaStatusView
 from agenda.views import CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView
 from usuarios.views import CsrfView, InspetorListView, LoginView, LogoutView, MeView
@@ -17,6 +17,9 @@ urlpatterns = [
     path("api/demandas/<int:pk>/", DemandaDetailView.as_view(), name="demandas-detail"),
     path("api/demandas/<int:pk>/status/", DemandaStatusView.as_view(), name="demandas-status"),
     path("api/demandas/<int:pk>/historico/", DemandaComentarioView.as_view(), name="demandas-historico"),
+    path("api/demandas/<int:pk>/anexos/", DemandaAnexoListView.as_view(), name="demandas-anexos"),
+    path("api/demandas/<int:pk>/anexos/<int:anexo_id>/", DemandaAnexoView.as_view(), name="demandas-anexo"),
+    path("api/demandas/<int:pk>/anexos/<int:anexo_id>/download/", DemandaAnexoDownloadView.as_view(), name="demandas-anexo-download"),
     path("api/compromissos/", CompromissoListView.as_view(), name="compromissos-list"),
     path("api/avisos/", AvisoListView.as_view(), name="avisos-list"),
     path("api/avisos/<int:pk>/", AvisoDetailView.as_view(), name="avisos-detail"),

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.utils import timezone
 
-from demandas.models import Demanda, EventoDemanda
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda
 
 
 class ResponsavelSerializer(serializers.Serializer):
@@ -68,3 +68,15 @@ class AlterarStatusSerializer(serializers.Serializer):
 
 class CriarComentarioSerializer(serializers.Serializer):
     texto = serializers.CharField(max_length=2000, allow_blank=False, trim_whitespace=True)
+
+
+class AnexoDemandaSerializer(serializers.ModelSerializer):
+    autor = AutorSerializer(read_only=True)
+    download_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = AnexoDemanda
+        fields = ["id", "nome_original", "mime_type", "tamanho", "autor", "criado_em", "download_url"]
+
+    def get_download_url(self, obj):
+        return f"/api/demandas/{obj.demanda_id}/anexos/{obj.id}/download/"

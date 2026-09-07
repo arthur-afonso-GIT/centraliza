@@ -21,7 +21,7 @@ testável antes de iniciar a próxima.
 | Histórico | Eventos de status e comentários | Cobrir todas as ações e proteger eventos contra alteração |
 | Agenda | Consulta por dia, semana e mês | Criar, editar, cancelar, associar e detectar conflitos |
 | Avisos | Feed categorizado e detalhe | Publicar, editar, cancelar e controlar vigência |
-| Anexos | Não disponível | Upload, armazenamento, autorização e download |
+| Anexos | Upload, lista, download autorizado e remoção lógica | Antivírus e política de retenção para produção |
 | Chat | Página de demonstração | Opcional após o MVP operacional |
 
 ## Ordem de execução
@@ -36,8 +36,13 @@ combináveis por responsável, intervalo de prazo e atraso calculado no servidor
 A integração PostgreSQL desta interface deve ser repetida quando o serviço local
 estiver disponível.
 A Etapa 3 está tecnicamente concluída: o inspetor envia e reenvia entregas com
-resumo, enquanto o gestor aprova ou devolve com justificativa. A próxima etapa é
-o armazenamento protegido de anexos e evidências.
+resumo, enquanto o gestor aprova ou devolve com justificativa. A Etapa 4 também
+está concluída no escopo do MVP: arquivos ficam fora da área pública, usam nome
+interno aleatório e passam por validação de extensão, MIME, assinatura e tamanho.
+Listagem, download e remoção respeitam a autorização da demanda, e inclusão e
+remoção aparecem no histórico. Antes de produção ainda será preciso definir
+retenção, varredura antivírus e armazenamento persistente com backup. A próxima
+etapa é tornar a Agenda gerenciável.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

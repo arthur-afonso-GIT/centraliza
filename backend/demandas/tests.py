@@ -1,9 +1,11 @@
 from datetime import date, timedelta
+from tempfile import TemporaryDirectory
 
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import override_settings
 from rest_framework.test import APIClient, APITestCase
 
-from demandas.models import Demanda, EventoDemanda
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda
 from usuarios.models import Equipe, Usuario
 
 
@@ -230,6 +232,84 @@ class DetalheHistoricoTest(APITestCase):
         url = f"/api/demandas/{self.demanda.id}/historico/"
         self.assertEqual(self.client.patch(url, {"texto": "alterado"}).status_code, 405)
         self.assertEqual(self.client.delete(url).status_code, 405)
+
+
+class AnexosDemandaTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe anexos")
+        cls.outra = Equipe.objects.create(nome="Equipe externa anexos")
+        cls.gestor = Usuario.objects.create_user(username="gestor.anexos", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.anexos", perfil="inspetor", equipe=cls.equipe)
+        cls.outro = Usuario.objects.create_user(username="outro.anexos", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="externo.anexos", perfil="gestor", equipe=cls.outra)
+        cls.demanda = Demanda.objects.create(
+            titulo="Demanda com evidências", prazo=date(2026, 10, 20), equipe=cls.equipe,
+            criador=cls.gestor, responsavel=cls.inspetor,
+        )
+
+    def setUp(self):
+        self.uploads = TemporaryDirectory()
+        self.settings = override_settings(MEDIA_ROOT=self.uploads.name)
+        self.settings.enable()
+
+    def tearDown(self):
+        self.settings.disable()
+        self.uploads.cleanup()
+
+    @staticmethod
+    def pdf(nome="evidencia.pdf"):
+        return SimpleUploadedFile(nome, b"%PDF-1.4\nconteudo de teste", content_type="application/pdf")
+
+    def test_inspetor_atribuido_adiciona_lista_e_baixa_anexo(self):
+        self.client.force_authenticate(self.inspetor)
+        url = f"/api/demandas/{self.demanda.id}/anexos/"
+        criado = self.client.post(url, {"arquivo": self.pdf()}, format="multipart")
+        self.assertEqual(criado.status_code, 201)
+        self.assertEqual(criado.data["nome_original"], "evidencia.pdf")
+        self.assertNotIn("arquivo", criado.data)
+        self.assertEqual(self.client.get(url).data["resultados"][0]["id"], criado.data["id"])
+        download = self.client.get(criado.data["download_url"])
+        self.assertEqual(download.status_code, 200)
+        self.assertEqual(b"".join(download.streaming_content), b"%PDF-1.4\nconteudo de teste")
+        self.assertEqual(download["X-Content-Type-Options"], "nosniff")
+        self.assertEqual(EventoDemanda.objects.get(tipo="anexo_adicionado").autor, self.inspetor)
+
+    def test_valida_formato_assinatura_e_tamanho(self):
+        self.client.force_authenticate(self.gestor)
+        url = f"/api/demandas/{self.demanda.id}/anexos/"
+        casos = [
+            SimpleUploadedFile("evidencia.exe", b"arquivo", content_type="application/octet-stream"),
+            SimpleUploadedFile("falso.pdf", b"nao e pdf", content_type="application/pdf"),
+            SimpleUploadedFile("vazio.png", b"", content_type="image/png"),
+        ]
+        for arquivo in casos:
+            with self.subTest(nome=arquivo.name):
+                self.assertEqual(self.client.post(url, {"arquivo": arquivo}, format="multipart").status_code, 400)
+        grande = SimpleUploadedFile("grande.pdf", b"%PDF-" + b"0" * (10 * 1024 * 1024), content_type="application/pdf")
+        self.assertEqual(self.client.post(url, {"arquivo": grande}, format="multipart").status_code, 400)
+        self.assertEqual(AnexoDemanda.objects.count(), 0)
+
+    def test_acesso_e_remocao_logica_respeitam_permissoes(self):
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post(f"/api/demandas/{self.demanda.id}/anexos/", {"arquivo": self.pdf()}, format="multipart")
+        anexo_url = f"/api/demandas/{self.demanda.id}/anexos/{criado.data['id']}/"
+        self.client.force_authenticate(self.outro)
+        self.assertEqual(self.client.delete(anexo_url).status_code, 404)
+        self.client.force_authenticate(self.externo)
+        self.assertEqual(self.client.get(criado.data["download_url"]).status_code, 404)
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.delete(anexo_url).status_code, 204)
+        self.assertEqual(self.client.get(criado.data["download_url"]).status_code, 404)
+        self.assertIsNotNone(AnexoDemanda.objects.get(pk=criado.data["id"]).removido_em)
+        self.assertTrue(EventoDemanda.objects.filter(tipo="anexo_removido", texto="Anexo removido: evidencia.pdf").exists())
+
+    def test_demanda_encerrada_nao_recebe_anexo(self):
+        self.demanda.status = "concluida"
+        self.demanda.save()
+        self.client.force_authenticate(self.gestor)
+        response = self.client.post(f"/api/demandas/{self.demanda.id}/anexos/", {"arquivo": self.pdf()}, format="multipart")
+        self.assertEqual(response.status_code, 400)
 
 
 class GerenciamentoDemandasTest(APITestCase):

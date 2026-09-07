@@ -38,6 +38,7 @@ LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Fortaleza"
 USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+MEDIA_ROOT = Path(os.getenv("CENTRALIZA_UPLOAD_ROOT", BASE_DIR / ".data" / "uploads"))
 SESSION_COOKIE_NAME = "centraliza_session"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"

@@ -5,6 +5,7 @@
 **/__pycache__/
 *.pyc
 backend/.env
+backend/.data/
 
 # Metadados locais do Graphify; graph.json é versionado
 graphify-out/cache/

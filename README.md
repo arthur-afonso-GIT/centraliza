@@ -15,7 +15,7 @@ Centraliza is a web application project for organizing the daily work of VISAT m
 
 VISAT receives requests from institutions such as the Public Labor Prosecutor's Office (MPT), the Regional Labor Court (TRT), health councils, and labor unions. Centraliza is intended to help the team follow these requests from assignment through execution and management review.
 
-The repository currently provides authenticated navigation and an operational request list backed by a Django API and PostgreSQL. Creation and workflow transitions are still under development.
+The repository currently provides authenticated navigation and an operational request workflow backed by a Django API and PostgreSQL, including management review and protected evidence files.
 
 ## Core capabilities
 
@@ -25,6 +25,7 @@ Available in the current version:
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request management** — managers can create, edit, assign, reassign, cancel, and filter team requests by assignee, deadline, or overdue state.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
+- **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse authorized commitments by day, week, or month, move between periods, and return to today in Fortaleza time.
 - **Team notices** — read urgent and informational notices from the authenticated team and open their complete content.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
@@ -33,7 +34,7 @@ Available in the current version:
 
 Planned operational capabilities:
 
-- **Inspection execution** — record extended progress and attach documents and evidence.
+- **Inspection execution** — expand structured progress records beyond comments and evidence files.
 - **Team planning and communication** — schedule meetings, identify conflicts, manage notice publishing, and exchange messages.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
@@ -64,6 +65,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Navigation validation](docs/validacao-semana-1.md) — browser coverage and visual evidence.
 - [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
 - [Request-detail validation](docs/validacao-semana-3.md) — status transitions, timeline consistency, and integrated-flow evidence.
+- [Attachment validation](docs/validacao-anexos.md) — protected storage, file checks, authorization, and audit trail.
 - [Agenda validation](docs/validacao-semana-4.md) — date ranges, timezone, calendar navigation, and role-based results.
 - [Notices validation](docs/validacao-semana-5.md) — feed/detail permissions, regression, accessibility, and integrated evidence.
 - [Status Report 1 checklist](docs/status-report-1.md) — setup, eight-minute demonstration route, smoke checks, and contingency.
@@ -117,7 +119,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 47 Django tests and 31 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
+The current quality baseline includes 51 Django tests and 33 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
 
 ## Local development
 

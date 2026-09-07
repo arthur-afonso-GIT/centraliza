@@ -4,16 +4,18 @@ export type SegmentoDemanda = 'pendentes' | 'andamento' | 'avaliacao' | 'critica
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
-export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
+export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario' | 'anexo_adicionado' | 'anexo_removido'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
 export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
+export type AnexoDemanda = { id: number; nome_original: string; mime_type: string; tamanho: number; autor: { id: number; nome: string }; criado_em: string; download_url: string };
 export type Inspetor = { id: number; nome: string };
 export type DadosDemanda = { titulo: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null };
 export type FiltrosDemandas = { responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean };
 
 async function resposta<T>(response: Response): Promise<T> {
   if (response.ok) return response.json() as Promise<T>;
-  const body = await response.json().catch(() => ({})) as { detail?: string; status?: string[]; texto?: string[] };
-  throw new ApiError(response.status, body.detail ?? body.status?.[0] ?? body.texto?.[0] ?? 'Não foi possível concluir a operação.');
+  const body = await response.json().catch(() => ({})) as Record<string, string | string[]>;
+  const primeira = Object.values(body).find(value => typeof value === 'string' || Array.isArray(value));
+  throw new ApiError(response.status, body.detail as string ?? (Array.isArray(primeira) ? primeira[0] : primeira) ?? 'Não foi possível concluir a operação.');
 }
 
 export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
@@ -61,4 +63,25 @@ export async function salvarDemanda(dados: DadosDemanda, id?: number) {
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
     body: JSON.stringify(dados),
   }));
+}
+
+export async function listarAnexos(id: number, signal?: AbortSignal) {
+  return resposta<{ resultados: AnexoDemanda[] }>(await fetch(`/api/demandas/${id}/anexos/`, { credentials: 'same-origin', signal })).then(data => data.resultados);
+}
+
+export async function enviarAnexo(id: number, arquivo: File) {
+  const token = await csrfToken();
+  const data = new FormData();
+  data.append('arquivo', arquivo);
+  return resposta<AnexoDemanda>(await fetch(`/api/demandas/${id}/anexos/`, {
+    method: 'POST', credentials: 'same-origin', headers: { 'X-CSRFToken': token }, body: data,
+  }));
+}
+
+export async function excluirAnexo(demandaId: number, anexoId: number) {
+  const token = await csrfToken();
+  const response = await fetch(`/api/demandas/${demandaId}/anexos/${anexoId}/`, {
+    method: 'DELETE', credentials: 'same-origin', headers: { 'X-CSRFToken': token },
+  });
+  if (!response.ok) await resposta<never>(response);
 }

@@ -6,6 +6,7 @@ export async function instalarApi(page: Page) {
   let perfil: Perfil | null = null;
   let demandStatus = 'pendente';
   const history: Array<Record<string, unknown>> = [];
+  let attachments: Array<Record<string, unknown>> = [];
   await page.route('**/api/**', async route => {
     const request = route.request();
     const url = new URL(request.url());
@@ -36,6 +37,20 @@ export async function instalarApi(page: Page) {
       const results = Array.from({ length: Math.min(4, Math.max(0, total - start)) }, (_, index) => { const id = start + index + 1 + (moved ? 1 : 0); return { id, titulo: `Inspeção demonstrativa ${id}`, status: segmento ?? (index % 2 ? 'pendente' : 'em_andamento'), prioridade: 'alta', prazo: atrasada ? '2026-09-01' : '2026-09-15', critica, atrasada, responsavel: { id: 2, nome: 'Inspetor de teste' } }; });
       return route.fulfill({ json: { count: total, previous: current > 1 ? 'anterior' : null, next: start + 4 < total ? 'proxima' : null, results } });
     }
+    const attachmentList = url.pathname.match(/^\/api\/demandas\/(\d+)\/anexos\/$/);
+    if (attachmentList) {
+      if (request.method() === 'POST') {
+        const created = { id: 1, nome_original: 'relatorio.pdf', mime_type: 'application/pdf', tamanho: 25, autor: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste' }, criado_em: '2026-09-14T15:00:00Z', download_url: `/api/demandas/${attachmentList[1]}/anexos/1/download/` };
+        attachments = [created];
+        history.unshift({ id: 80, tipo: 'anexo_adicionado', autor: created.autor, criado_em: '2026-09-14T15:00:00Z', status_anterior: '', status_novo: '', texto: 'Anexo adicionado: relatorio.pdf' });
+        return route.fulfill({ status: 201, json: created });
+      }
+      return route.fulfill({ json: { resultados: attachments } });
+    }
+    const attachment = url.pathname.match(/^\/api\/demandas\/(\d+)\/anexos\/(\d+)\/$/);
+    if (attachment && request.method() === 'DELETE') { attachments = []; history.unshift({ id: 81, tipo: 'anexo_removido', autor: { id: 1, nome: 'Gestor de teste' }, criado_em: '2026-09-14T15:05:00Z', status_anterior: '', status_novo: '', texto: 'Anexo removido: relatorio.pdf' }); return route.fulfill({ status: 204 }); }
+    const attachmentDownload = url.pathname.match(/^\/api\/demandas\/(\d+)\/anexos\/(\d+)\/download\/$/);
+    if (attachmentDownload) return route.fulfill({ contentType: 'application/pdf', body: '%PDF-1.4 test' });
     const detail = url.pathname.match(/^\/api\/demandas\/(\d+)\/$/);
     if (detail) {
       if (!perfil) return route.fulfill({ status: 401, json: {} });
