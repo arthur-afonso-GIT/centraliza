@@ -82,7 +82,7 @@ class AvisoApiTest(APITestCase):
 
     def test_feed_prioriza_urgentes_recentes_e_isola_equipe(self):
         self.client.force_authenticate(self.gestor)
-        with self.assertNumQueries(1):
+        with self.assertNumQueries(2):
             response = self.client.get("/api/avisos/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
@@ -95,7 +95,7 @@ class AvisoApiTest(APITestCase):
     def test_inspetor_pode_consultar_feed_e_detalhe_da_equipe(self):
         self.client.force_authenticate(self.inspetor)
         self.assertEqual(self.client.get("/api/avisos/").status_code, 200)
-        with self.assertNumQueries(1):
+        with self.assertNumQueries(2):
             response = self.client.get(f"/api/avisos/{self.informativo.id}/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data["conteudo"], "Conteúdo: Informativo recente")
@@ -107,3 +107,62 @@ class AvisoApiTest(APITestCase):
     def test_feed_e_detalhe_exigem_sessao(self):
         self.assertEqual(self.client.get("/api/avisos/").status_code, 401)
         self.assertEqual(self.client.get(f"/api/avisos/{self.informativo.id}/").status_code, 401)
+
+
+class GerenciamentoAvisosTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe gestão avisos")
+        cls.outra = Equipe.objects.create(nome="Outra gestão avisos")
+        cls.gestor = Usuario.objects.create_user(username="gestor.gerencia.avisos", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.gerencia.avisos", perfil="inspetor", equipe=cls.equipe)
+        cls.segundo = Usuario.objects.create_user(username="segundo.gerencia.avisos", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="externo.gerencia.avisos", perfil="inspetor", equipe=cls.outra)
+
+    def payload(self, **changes):
+        agora = timezone.now()
+        data = {
+            "titulo": "Novo comunicado", "resumo": "Resumo operacional", "conteudo": "Conteúdo completo do comunicado.",
+            "categoria": "urgente", "publicado_em": agora.isoformat(), "expira_em": (agora + timedelta(days=2)).isoformat(),
+            "destinatario_ids": [self.inspetor.id],
+        }
+        data.update(changes)
+        return data
+
+    def test_gestor_publica_edita_e_cancela_aviso_direcionado(self):
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post("/api/avisos/", self.payload(), format="json")
+        self.assertEqual(criado.status_code, 201)
+        self.assertEqual(criado.data["destinatarios"][0]["id"], self.inspetor.id)
+        atualizado = self.client.patch(f"/api/avisos/{criado.data['id']}/", {"titulo": "Comunicado revisado", "destinatario_ids": []}, format="json")
+        self.assertEqual(atualizado.status_code, 200)
+        self.assertEqual(atualizado.data["titulo"], "Comunicado revisado")
+        self.assertEqual(atualizado.data["destinatarios"], [])
+        self.assertEqual(self.client.delete(f"/api/avisos/{criado.data['id']}/").status_code, 204)
+        self.assertFalse(any(item["id"] == criado.data["id"] for item in self.client.get("/api/avisos/").data["resultados"]))
+        aviso = Aviso.objects.get(pk=criado.data["id"])
+        self.assertEqual(aviso.cancelado_por, self.gestor)
+
+    def test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia(self):
+        self.client.force_authenticate(self.gestor)
+        direcionado = self.client.post("/api/avisos/", self.payload(), format="json").data
+        self.client.post("/api/avisos/", self.payload(titulo="Para outro", destinatario_ids=[self.segundo.id]), format="json")
+        self.client.post("/api/avisos/", self.payload(titulo="Futuro", publicado_em=(timezone.now() + timedelta(days=1)).isoformat(), expira_em=(timezone.now() + timedelta(days=2)).isoformat()), format="json")
+        self.client.force_authenticate(self.inspetor)
+        response = self.client.get("/api/avisos/")
+        self.assertEqual([item["id"] for item in response.data["resultados"]], [direcionado["id"]])
+
+    def test_rejeita_vigencia_e_destinatario_invalidos(self):
+        agora = timezone.now()
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.post("/api/avisos/", self.payload(publicado_em=agora.isoformat(), expira_em=(agora - timedelta(hours=1)).isoformat()), format="json").status_code, 400)
+        self.assertEqual(self.client.post("/api/avisos/", self.payload(destinatario_ids=[self.externo.id]), format="json").status_code, 400)
+
+    def test_inspetor_nao_gerencia_e_equipe_externa_nao_edita(self):
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.post("/api/avisos/", self.payload(), format="json").status_code, 403)
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post("/api/avisos/", self.payload(), format="json").data
+        gestor_externo = Usuario.objects.create_user(username="gestor.externo.gerencia.avisos", perfil="gestor", equipe=self.outra)
+        self.client.force_authenticate(gestor_externo)
+        self.assertEqual(self.client.patch(f"/api/avisos/{criado['id']}/", {"titulo": "Indevido"}, format="json").status_code, 404)

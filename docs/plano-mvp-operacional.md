@@ -20,7 +20,7 @@ testável antes de iniciar a próxima.
 | Demandas | Lista, filtros, detalhe, comentários e duas transições | Criação, atribuição, avaliação, correção e cancelamento |
 | Histórico | Eventos de status e comentários | Cobrir todas as ações e proteger eventos contra alteração |
 | Agenda | Consulta, criação, edição, cancelamento, associação e conflitos | Lembretes e recorrência após o MVP |
-| Avisos | Feed categorizado e detalhe | Publicar, editar, cancelar e controlar vigência |
+| Avisos | Feed, publicação, edição, destinatários, vigência e cancelamento | Confirmação de leitura após o MVP |
 | Anexos | Upload, lista, download autorizado e remoção lógica | Antivírus e política de retenção para produção |
 | Chat | Página de demonstração | Opcional após o MVP operacional |
 
@@ -45,7 +45,10 @@ retenção, varredura antivírus e armazenamento persistente com backup. A Etapa
 está tecnicamente concluída: o gestor gerencia compromissos vinculados
 opcionalmente a demandas, escolhe inspetores participantes e recebe conflito
 antes de salvar; o inspetor mantém uma agenda somente de leitura com seus
-próprios compromissos. A próxima etapa é a gestão de publicação dos avisos.
+próprios compromissos. A Etapa 6 está tecnicamente concluída: gestores publicam,
+editam, direcionam, agendam e cancelam avisos, enquanto inspetores recebem apenas
+itens vigentes destinados a eles ou à equipe. A próxima etapa é o endurecimento
+para produção e a validação integrada do MVP operacional.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

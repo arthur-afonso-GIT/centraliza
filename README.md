@@ -27,7 +27,7 @@ Available in the current version:
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.
-- **Team notices** — read urgent and informational notices from the authenticated team and open their complete content.
+- **Team notices** — managers publish, edit, target, schedule, expire, and cancel urgent or informational notices; inspectors receive the active notices authorized for them.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
@@ -35,7 +35,7 @@ Available in the current version:
 Planned operational capabilities:
 
 - **Inspection execution** — expand structured progress records beyond comments and evidence files.
-- **Team planning and communication** — manage notice publishing and, after the operational core is stable, exchange messages.
+- **Team communication** — exchange messages after the operational core is stable.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
 ## Team workspace
@@ -69,6 +69,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Agenda validation](docs/validacao-semana-4.md) — date ranges, timezone, calendar navigation, and role-based results.
 - [Managed-agenda validation](docs/validacao-agenda-gerenciavel.md) — management operations, conflicts, logical cancellation, and current limits.
 - [Notices validation](docs/validacao-semana-5.md) — feed/detail permissions, regression, accessibility, and integrated evidence.
+- [Notice-management validation](docs/validacao-avisos-gerenciaveis.md) — publishing, targeting, validity periods, cancellation, and access rules.
 - [Status Report 1 checklist](docs/status-report-1.md) — setup, eight-minute demonstration route, smoke checks, and contingency.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
@@ -120,7 +121,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 56 Django tests and 35 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [managed-agenda validation](docs/validacao-agenda-gerenciavel.md) reports for their methods and limitations.
+The current quality baseline includes 60 Django tests and 37 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md), [managed-agenda validation](docs/validacao-agenda-gerenciavel.md), and [notice-management validation](docs/validacao-avisos-gerenciaveis.md) reports for their methods and limitations.
 
 ## Local development
 

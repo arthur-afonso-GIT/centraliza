@@ -11,6 +11,10 @@ export async function instalarApi(page: Page) {
     { id: 1, titulo: 'Reunião de alinhamento', descricao: 'Revisão da equipe', tipo: 'reuniao', inicio: '2026-09-23T09:00:00-03:00', fim: '2026-09-23T10:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: null, cancelado_em: null },
     { id: 2, titulo: 'Visita técnica', descricao: 'Atividade externa', tipo: 'atividade', inicio: '2026-09-24T14:00:00-03:00', fim: '2026-09-24T16:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: 1, cancelado_em: null },
   ];
+  let notices: Array<Record<string, unknown>> = [
+    { id: 1, titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', conteudo: 'Consulte a nova escala e confirme sua disponibilidade com a gestão.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00', expira_em: null, destinatarios: [] },
+    { id: 2, titulo: 'Atualização de procedimento', resumo: 'Novo roteiro disponível para inspeções.', conteudo: 'Consulte o procedimento atualizado.', categoria: 'informativo', autor: 'Gestor de teste', publicado_em: '2026-09-30T09:00:00-03:00', expira_em: null, destinatarios: [] },
+  ];
   await page.route('**/api/**', async route => {
     const request = route.request();
     const url = new URL(request.url());
@@ -101,17 +105,23 @@ export async function instalarApi(page: Page) {
     if (appointment && request.method() === 'DELETE') { appointments = appointments.filter(item => item.id !== Number(appointment[1])); return route.fulfill({ status: 204 }); }
     if (url.pathname === '/api/avisos/') {
       if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+      if (request.method() === 'POST') {
+        const body = request.postDataJSON() as Record<string, unknown>;
+        const created = { id: 3, ...body, autor: 'Gestor de teste', destinatarios: (body.destinatario_ids as number[]).map(id => ({ id, nome: id === 2 ? 'Inspetor de teste' : 'Segundo inspetor' })) };
+        notices = [created, ...notices];
+        return route.fulfill({ status: 201, json: created });
+      }
       await new Promise(resolve => setTimeout(resolve, 80));
-      return route.fulfill({ json: { resultados: [
-        { id: 1, titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00' },
-        { id: 2, titulo: 'Atualização de procedimento', resumo: 'Novo roteiro disponível para inspeções.', categoria: 'informativo', autor: 'Gestor de teste', publicado_em: '2026-09-30T09:00:00-03:00' },
-      ] } });
+      return route.fulfill({ json: { resultados: notices } });
     }
     const aviso = url.pathname.match(/^\/api\/avisos\/(\d+)\/$/);
     if (aviso) {
       if (!perfil) return route.fulfill({ status: 401, json: {} });
       if (aviso[1] === '404') return route.fulfill({ status: 404, json: {} });
-      return route.fulfill({ json: { id: Number(aviso[1]), titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', conteudo: 'Consulte a nova escala e confirme sua disponibilidade com a gestão.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00' } });
+      const index = notices.findIndex(item => item.id === Number(aviso[1]));
+      if (request.method() === 'PATCH') { const body = request.postDataJSON() as Record<string, unknown>; notices[index] = { ...notices[index], ...body, destinatarios: (body.destinatario_ids as number[]).map(id => ({ id, nome: id === 2 ? 'Inspetor de teste' : 'Segundo inspetor' })) }; return route.fulfill({ json: notices[index] }); }
+      if (request.method() === 'DELETE') { notices = notices.filter(item => item.id !== Number(aviso[1])); return route.fulfill({ status: 204 }); }
+      return route.fulfill({ json: notices[index] });
     }
     return route.fulfill({ status: 404 });
   });

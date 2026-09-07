@@ -40,7 +40,7 @@ export default function Workspace({ page, demandId, avisoId }: { page: string; d
       busy={session.busy}
       logout={session.logout}
     >
-      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : avisoId ? <AvisoDetail id={avisoId} /> : <ModuleContent page={page} user={session.user} />}
+      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : avisoId ? <AvisoDetail id={avisoId} user={session.user} /> : <ModuleContent page={page} user={session.user} />}
     </WorkspaceLayout>
   );
 }

@@ -46,7 +46,7 @@ export default function ModuleContent({
           </p>
         </div>
       </div>
-      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed /> : page === 'home' ? (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed user={user} /> : page === 'home' ? (
         <>
           <section className="welcome-panel">
             <div>

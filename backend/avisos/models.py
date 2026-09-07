@@ -14,7 +14,11 @@ class Aviso(models.Model):
     categoria = models.CharField(max_length=12, choices=Categoria.choices)
     equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT, related_name="avisos")
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="avisos_criados")
+    destinatarios = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="avisos_recebidos", blank=True)
     publicado_em = models.DateTimeField()
+    expira_em = models.DateTimeField(null=True, blank=True)
+    cancelado_em = models.DateTimeField(null=True, blank=True)
+    cancelado_por = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="avisos_cancelados", null=True, blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
     referencia_demo = models.CharField(max_length=60, unique=True, null=True, blank=True, editable=False)
@@ -44,6 +48,8 @@ class Aviso(models.Model):
             erros["autor"] = "O autor do aviso deve estar ativo."
         if erros:
             raise ValidationError(erros)
+        if self.expira_em and self.publicado_em and self.expira_em <= self.publicado_em:
+            raise ValidationError({"expira_em": "A vigência final deve ser posterior à publicação."})
 
     def save(self, *args, **kwargs):
         self.full_clean()

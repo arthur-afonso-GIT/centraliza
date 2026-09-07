@@ -830,6 +830,24 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
+      "label": "0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "file_type": "code",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_avisos_migrations_init",
       "label": "__init__.py",
       "file_type": "code",
@@ -870,7 +888,7 @@
       "label": "Meta",
       "file_type": "code",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L22",
+      "source_location": "L26",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -880,7 +898,7 @@
       "label": ".clean()",
       "file_type": "code",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L34",
+      "source_location": "L38",
       "_callable": true,
       "_origin": "ast"
     },
@@ -889,7 +907,7 @@
       "label": ".save()",
       "file_type": "code",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L48",
+      "source_location": "L54",
       "_callable": true,
       "_origin": "ast"
     },
@@ -906,7 +924,7 @@
       "label": "AvisoFeedSerializer",
       "file_type": "code",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -916,7 +934,7 @@
       "label": "Meta",
       "file_type": "code",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L12",
+      "source_location": "L15",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -926,7 +944,25 @@
       "label": ".get_publicado_em()",
       "file_type": "code",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L16",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_serializers_avisofeedserializer_get_expira_em",
+      "label": ".get_expira_em()",
+      "file_type": "code",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_serializers_avisofeedserializer_get_destinatarios",
+      "label": ".get_destinatarios()",
+      "file_type": "code",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L25",
       "_callable": true,
       "_origin": "ast"
     },
@@ -935,9 +971,28 @@
       "label": "AvisoDetalheSerializer",
       "file_type": "code",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L20",
+      "source_location": "L29",
       "_callable": true,
       "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_serializers_gerenciaravisoserializer",
+      "label": "GerenciarAvisoSerializer",
+      "file_type": "code",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L34",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_serializers_gerenciaravisoserializer_validate",
+      "label": ".validate()",
+      "file_type": "code",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L43",
+      "_callable": true,
       "_origin": "ast"
     },
     {
@@ -1120,6 +1175,70 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_avisos_tests_gerenciamentoavisostest",
+      "label": "GerenciamentoAvisosTest",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L112",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L114",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "label": ".payload()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L122",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_test_gestor_publica_edita_e_cancela_aviso_direcionado",
+      "label": ".test_gestor_publica_edita_e_cancela_aviso_direcionado()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L132",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia",
+      "label": ".test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L146",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_test_rejeita_vigencia_e_destinatario_invalidos",
+      "label": ".test_rejeita_vigencia_e_destinatario_invalidos()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L155",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_nao_gerencia_e_equipe_externa_nao_edita",
+      "label": ".test_inspetor_nao_gerencia_e_equipe_externa_nao_edita()",
+      "file_type": "code",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L161",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_avisos_views",
       "label": "views.py",
       "file_type": "code",
@@ -1132,7 +1251,25 @@
       "label": "avisos_da_equipe()",
       "file_type": "code",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L11",
+      "source_location": "L15",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_views_exigir_gestor",
+      "label": "exigir_gestor()",
+      "file_type": "code",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L23",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_views_salvar_aviso",
+      "label": "salvar_aviso()",
+      "file_type": "code",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L28",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1141,7 +1278,7 @@
       "label": "AvisoListView",
       "file_type": "code",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L19",
+      "source_location": "L47",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1155,11 +1292,20 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_avisos_views_avisolistview_post",
+      "label": ".post()",
+      "file_type": "code",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L48",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_avisos_views_avisolistview_get",
       "label": ".get()",
       "file_type": "code",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L20",
+      "source_location": "L56",
       "_callable": true,
       "_origin": "ast"
     },
@@ -1168,7 +1314,7 @@
       "label": "AvisoDetailView",
       "file_type": "code",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L32",
+      "source_location": "L72",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -1186,7 +1332,25 @@
       "label": ".get_queryset()",
       "file_type": "code",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L35",
+      "source_location": "L75",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_views_avisodetailview_patch",
+      "label": ".patch()",
+      "file_type": "code",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L82",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_avisos_views_avisodetailview_delete",
+      "label": ".delete()",
+      "file_type": "code",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L90",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3928,7 +4092,7 @@
       "label": "data()",
       "file_type": "code",
       "source_file": "frontend/components/aviso-detail.tsx",
-      "source_location": "L9",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3937,7 +4101,60 @@
       "label": "AvisoDetail()",
       "file_type": "code",
       "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form",
+      "label": "aviso-form.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form_local",
+      "label": "local()",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form_offset",
+      "label": "offset()",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form_avisoform",
+      "label": "AvisoForm()",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
       "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form_avisoform_toggle",
+      "label": "toggle()",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_aviso_form_avisoform_submit",
+      "label": "submit()",
+      "file_type": "code",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L19",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3954,7 +4171,7 @@
       "label": "data()",
       "file_type": "code",
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3963,7 +4180,24 @@
       "label": "AvisosFeed()",
       "file_type": "code",
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_aviso",
+      "label": "cancelar-aviso.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_aviso_cancelaraviso",
+      "label": "CancelarAviso()",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L6",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4732,11 +4966,21 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_lib_avisos_dadosaviso",
+      "label": "DadosAviso",
+      "file_type": "code",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_lib_avisos_resposta",
       "label": "resposta()",
       "file_type": "code",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4745,7 +4989,7 @@
       "label": "listarAvisos()",
       "file_type": "code",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L12",
+      "source_location": "L17",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4754,7 +4998,25 @@
       "label": "obterAviso()",
       "file_type": "code",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L17",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_avisos_salvaraviso",
+      "label": "salvarAviso()",
+      "file_type": "code",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L26",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_avisos_cancelaraviso",
+      "label": "cancelarAviso()",
+      "file_type": "code",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -5841,6 +6103,14 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_gerenciar_avisos_spec",
+      "label": "gerenciar-avisos.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/gerenciar-avisos.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tests_gerenciar_demandas_spec",
       "label": "gerenciar-demandas.spec.ts",
       "file_type": "code",
@@ -5896,7 +6166,7 @@
       "label": "entrarComo()",
       "file_type": "code",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L120",
+      "source_location": "L130",
       "_callable": true,
       "_origin": "ast"
     },
@@ -6240,7 +6510,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast"
     },
     {
@@ -6249,7 +6519,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L77",
+      "source_location": "L78",
       "_origin": "ast"
     },
     {
@@ -6258,7 +6528,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "_origin": "ast"
     },
     {
@@ -6267,7 +6537,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L89",
+      "source_location": "L90",
       "_origin": "ast"
     },
     {
@@ -6276,7 +6546,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L102",
+      "source_location": "L103",
       "_origin": "ast"
     },
     {
@@ -6285,7 +6555,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L125",
+      "source_location": "L126",
       "_origin": "ast"
     },
     {
@@ -6294,7 +6564,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L168",
+      "source_location": "L169",
       "_origin": "ast"
     },
     {
@@ -6303,7 +6573,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L175",
+      "source_location": "L176",
       "_origin": "ast"
     },
     {
@@ -6312,7 +6582,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L179",
+      "source_location": "L180",
       "_origin": "ast"
     },
     {
@@ -6600,7 +6870,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L50",
+      "source_location": "L53",
       "_origin": "ast"
     },
     {
@@ -6609,7 +6879,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L66",
+      "source_location": "L69",
       "_origin": "ast"
     },
     {
@@ -6618,7 +6888,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L83",
+      "source_location": "L86",
       "_origin": "ast"
     },
     {
@@ -6627,7 +6897,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L98",
+      "source_location": "L101",
       "_origin": "ast"
     },
     {
@@ -6636,7 +6906,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L117",
+      "source_location": "L120",
       "_origin": "ast"
     },
     {
@@ -6645,7 +6915,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L134",
+      "source_location": "L137",
       "_origin": "ast"
     },
     {
@@ -6654,7 +6924,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L149",
+      "source_location": "L152",
       "_origin": "ast"
     },
     {
@@ -6663,7 +6933,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L168",
+      "source_location": "L171",
       "_origin": "ast"
     },
     {
@@ -6672,7 +6942,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L186",
+      "source_location": "L189",
       "_origin": "ast"
     },
     {
@@ -6681,7 +6951,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L197",
+      "source_location": "L200",
       "_origin": "ast"
     },
     {
@@ -6690,7 +6960,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L210",
+      "source_location": "L213",
       "_origin": "ast"
     },
     {
@@ -6699,7 +6969,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L221",
+      "source_location": "L224",
       "_origin": "ast"
     },
     {
@@ -7573,6 +7843,51 @@
       "node_kind": "heading",
       "source_file": "docs/validacao-anexos.md",
       "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_avisos_gerenciaveis",
+      "label": "validacao-avisos-gerenciaveis.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
+      "label": "Validação dos avisos gerenciáveis",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_avisos_gerenciaveis_escopo_entregue",
+      "label": "Escopo entregue",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_avisos_gerenciaveis_verificações_executadas",
+      "label": "Verificações executadas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_avisos_gerenciaveis_limites_atuais",
+      "label": "Limites atuais",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L25",
       "_origin": "ast"
     },
     {
@@ -9472,6 +9787,49 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
+      "target": "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/migrations/0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_avisos_models",
       "target": "django_conf",
       "relation": "imports_from",
@@ -9530,7 +9888,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L22",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9540,7 +9898,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L34",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9550,7 +9908,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/models.py",
-      "source_location": "L48",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9589,11 +9947,22 @@
     },
     {
       "source": "backend_avisos_serializers",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_serializers",
       "target": "backend_avisos_serializers_avisofeedserializer",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9603,7 +9972,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9613,7 +9982,27 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L16",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_serializers_avisofeedserializer",
+      "target": "backend_avisos_serializers_avisofeedserializer_get_expira_em",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_serializers_avisofeedserializer",
+      "target": "backend_avisos_serializers_avisofeedserializer_get_destinatarios",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9623,7 +10012,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L20",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9633,7 +10022,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L20",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9643,7 +10032,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/serializers.py",
-      "source_location": "L21",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_serializers",
+      "target": "backend_avisos_serializers_gerenciaravisoserializer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_serializers_gerenciaravisoserializer",
+      "target": "backend_avisos_serializers_gerenciaravisoserializer_validate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -9948,6 +10357,86 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_tests",
+      "target": "backend_avisos_tests_gerenciamentoavisostest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_py_apitestcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_test_gestor_publica_edita_e_cancela_aviso_direcionado",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_test_rejeita_vigencia_e_destinatario_invalidos",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L155",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_nao_gerencia_e_equipe_externa_nao_edita",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
       "target": "backend_avisos_tests_avisomodeltest_dados",
       "relation": "calls",
@@ -10003,8 +10492,52 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_tests_gerenciamentoavisostest_test_gestor_publica_edita_e_cancela_aviso_direcionado",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest_test_rejeita_vigencia_e_destinatario_invalidos",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L158",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_nao_gerencia_e_equipe_externa_nao_edita",
+      "target": "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/tests.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_avisos_views",
-      "target": "django_db_models",
+      "target": "django_core_exceptions",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10015,7 +10548,7 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "rest_framework",
+      "target": "django_db",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10026,7 +10559,7 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "rest_framework_generics",
+      "target": "django_db_models",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10037,7 +10570,7 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "rest_framework_response",
+      "target": "django_shortcuts",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10048,7 +10581,7 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "rest_framework_views",
+      "target": "django_utils",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10059,7 +10592,18 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "backend_avisos_models",
+      "target": "rest_framework",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "rest_framework_generics",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10070,7 +10614,7 @@
     },
     {
       "source": "backend_avisos_views",
-      "target": "backend_avisos_serializers",
+      "target": "rest_framework_response",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10081,11 +10625,64 @@
     },
     {
       "source": "backend_avisos_views",
+      "target": "rest_framework_views",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "backend_avisos_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "backend_avisos_serializers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
       "target": "backend_avisos_views_avisos_da_equipe",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L11",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "backend_avisos_views_exigir_gestor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "backend_avisos_views_salvar_aviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10095,7 +10692,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L19",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10105,7 +10702,17 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L19",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisolistview",
+      "target": "backend_avisos_views_avisolistview_post",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10115,7 +10722,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L20",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10125,7 +10732,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L32",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10135,7 +10742,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L32",
+      "source_location": "L72",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10145,7 +10752,49 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L35",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview",
+      "target": "backend_avisos_views_avisodetailview_patch",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview",
+      "target": "backend_avisos_views_avisodetailview_delete",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_salvar_aviso",
+      "target": "backend_avisos_views_exigir_gestor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisolistview_post",
+      "target": "backend_avisos_views_salvar_aviso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10156,7 +10805,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L26",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10167,7 +10816,62 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L36",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_patch",
+      "target": "backend_avisos_views_exigir_gestor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_patch",
+      "target": "backend_avisos_views_avisos_da_equipe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_patch",
+      "target": "backend_avisos_views_salvar_aviso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_delete",
+      "target": "backend_avisos_views_exigir_gestor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_delete",
+      "target": "backend_avisos_views_avisos_da_equipe",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L92",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15727,11 +16431,44 @@
     },
     {
       "source": "frontend_components_aviso_detail",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_detail",
+      "target": "frontend_components_aviso_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_detail",
+      "target": "frontend_components_cancelar_aviso",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_detail",
       "target": "frontend_components_aviso_detail_data",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/aviso-detail.tsx",
-      "source_location": "L9",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15741,7 +16478,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/aviso-detail.tsx",
-      "source_location": "L11",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15752,7 +16489,266 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/aviso-detail.tsx",
-      "source_location": "L30",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_avisos",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_avisos_salvaraviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_avisos_avisodetalhe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_avisos_dadosaviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_lib_demandas_inspetor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_ui_dialog_dialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_aviso_form_local",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_aviso_form_offset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form",
+      "target": "frontend_components_aviso_form_avisoform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform",
+      "target": "frontend_components_aviso_form_avisoform_toggle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform",
+      "target": "frontend_components_aviso_form_avisoform_submit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform",
+      "target": "frontend_components_aviso_form_local",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform",
+      "target": "frontend_components_aviso_form_avisoform_toggle",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform_submit",
+      "target": "frontend_components_aviso_form_offset",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15857,11 +16853,33 @@
     },
     {
       "source": "frontend_components_avisos_feed",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/avisos-feed.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_avisos_feed",
+      "target": "frontend_components_aviso_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/avisos-feed.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_avisos_feed",
       "target": "frontend_components_avisos_feed_data",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15871,7 +16889,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15882,7 +16900,160 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L28",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_lib_avisos",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_lib_avisos_cancelaraviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcancel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogfooter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso",
+      "target": "frontend_components_cancelar_aviso_cancelaraviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18429,6 +19600,17 @@
     },
     {
       "source": "frontend_lib_avisos",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos",
       "target": "frontend_lib_avisos_categoriaaviso",
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -18459,11 +19641,21 @@
     },
     {
       "source": "frontend_lib_avisos",
+      "target": "frontend_lib_avisos_dadosaviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos",
       "target": "frontend_lib_avisos_resposta",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18473,7 +19665,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L12",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18483,7 +19675,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L17",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos",
+      "target": "frontend_lib_avisos_salvaraviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos",
+      "target": "frontend_lib_avisos_cancelaraviso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18494,7 +19706,18 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/avisos.ts",
-      "source_location": "L18",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos_salvaraviso",
+      "target": "frontend_lib_avisos_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -20298,6 +21521,50 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_gerenciar_avisos_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-avisos.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_avisos_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-avisos.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_avisos_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-avisos.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_avisos_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-avisos.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_gerenciar_demandas_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -20477,7 +21744,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L120",
+      "source_location": "L130",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21059,7 +22326,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_status_report_1",
+      "target": "docs_validacao_avisos_gerenciaveis",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -21069,11 +22336,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_status_report_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21083,7 +22360,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21093,7 +22370,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21103,7 +22380,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21113,7 +22390,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21123,7 +22400,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L102",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21133,7 +22410,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L125",
+      "source_location": "L126",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21143,7 +22420,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L168",
+      "source_location": "L169",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21153,7 +22430,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L175",
+      "source_location": "L176",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21163,7 +22440,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L179",
+      "source_location": "L180",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21463,7 +22740,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L50",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21473,7 +22750,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L66",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21483,7 +22760,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L83",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21493,7 +22770,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L98",
+      "source_location": "L101",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21503,7 +22780,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L117",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21513,7 +22790,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L134",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21523,7 +22800,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L149",
+      "source_location": "L152",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21533,7 +22810,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L168",
+      "source_location": "L171",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21543,7 +22820,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L186",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21553,7 +22830,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L197",
+      "source_location": "L200",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21563,7 +22840,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L210",
+      "source_location": "L213",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21573,7 +22850,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L221",
+      "source_location": "L224",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22518,6 +23795,46 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_validacao_avisos_gerenciaveis",
+      "target": "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
+      "target": "docs_validacao_avisos_gerenciaveis_escopo_entregue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
+      "target": "docs_validacao_avisos_gerenciaveis_verificações_executadas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
+      "target": "docs_validacao_avisos_gerenciaveis_limites_atuais",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-avisos-gerenciaveis.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_validacao_semana_1",
       "target": "docs_validacao_semana_1_validação_técnica_semana_1",
       "relation": "contains",
@@ -22839,6 +24156,39 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_detail",
+      "target": "frontend_components_aviso_form_avisoform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_detail",
+      "target": "frontend_components_cancelar_aviso_cancelaraviso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/aviso-detail.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_avisos_feed",
+      "target": "frontend_components_aviso_form_avisoform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/avisos-feed.tsx",
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
@@ -23207,6 +24557,17 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_serializers",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/serializers.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_avisos_tests",
       "target": "backend_avisos_models_aviso",
       "relation": "imports",
@@ -23246,7 +24607,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L7",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -23257,7 +24618,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L8",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -23268,7 +24629,18 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/avisos/views.py",
-      "source_location": "L8",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views",
+      "target": "backend_avisos_serializers_gerenciaravisoserializer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -23900,6 +25272,17 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_views_salvar_aviso",
+      "target": "backend_avisos_models_aviso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_agenda_management_commands_seed_agenda_command",
       "target": "backend_agenda_models_compromisso",
       "relation": "uses",
@@ -24172,6 +25555,30 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_avisos_views_avisolistview_post",
+      "target": "backend_avisos_serializers_gerenciaravisoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisolistview_post",
+      "target": "backend_avisos_serializers_avisodetalheserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_avisos_views_avisolistview_get",
       "target": "backend_avisos_serializers_avisofeedserializer",
       "relation": "calls",
@@ -24179,7 +25586,31 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/avisos/views.py",
-      "source_location": "L29",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_patch",
+      "target": "backend_avisos_serializers_gerenciaravisoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_avisos_views_avisodetailview_patch",
+      "target": "backend_avisos_serializers_avisodetalheserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/avisos/views.py",
+      "source_location": "L88",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -24515,7 +25946,31 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/aviso-detail.tsx",
-      "source_location": "L19",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_aviso_form_avisoform_submit",
+      "target": "frontend_lib_avisos_salvaraviso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/aviso-form.tsx",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -24527,7 +25982,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/avisos-feed.tsx",
-      "source_location": "L18",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_aviso_cancelaraviso",
+      "target": "frontend_lib_avisos_cancelaraviso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/cancelar-aviso.tsx",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -24756,6 +26223,30 @@
       "confidence_score": 1.0,
       "source_file": "frontend/lib/agenda.ts",
       "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos_salvaraviso",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_avisos_cancelaraviso",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/avisos.ts",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
