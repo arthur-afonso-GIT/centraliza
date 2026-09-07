@@ -30,7 +30,10 @@ Situação técnica: Etapa 1 implementada com seis estados, matriz de transiçõ
 serviço transacional, justificativas obrigatórias e histórico atômico. A matriz
 ainda precisa de validação institucional antes de ser considerada definitiva.
 O backend da Etapa 2 já oferece criação, edição, atribuição e reatribuição com
-auditoria; os formulários do gestor são a próxima tarefa.
+auditoria. Os formulários do gestor cobrem criação, edição, atribuição,
+reatribuição e cancelamento; filtros por responsável, prazo e atraso são a
+próxima tarefa. A integração PostgreSQL desta interface deve ser repetida quando
+o serviço local estiver disponível.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

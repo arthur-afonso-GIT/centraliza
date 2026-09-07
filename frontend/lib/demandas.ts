@@ -4,8 +4,10 @@ export type SegmentoDemanda = 'pendentes' | 'andamento' | 'criticas';
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
-export type EventoDemanda = { id: number; tipo: 'status_alterado' | 'comentario'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
-export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
+export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
+export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
+export type Inspetor = { id: number; nome: string };
+export type DadosDemanda = { titulo: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null };
 
 async function resposta<T>(response: Response): Promise<T> {
   if (response.ok) return response.json() as Promise<T>;
@@ -38,5 +40,19 @@ export async function adicionarComentario(id: number, texto: string) {
     method: 'POST', credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
     body: JSON.stringify({ texto }),
+  }));
+}
+
+export async function listarInspetores(signal?: AbortSignal) {
+  const response = await fetch('/api/usuarios/inspetores/', { credentials: 'same-origin', signal });
+  return resposta<{ resultados: Inspetor[] }>(response).then(data => data.resultados);
+}
+
+export async function salvarDemanda(dados: DadosDemanda, id?: number) {
+  const token = await csrfToken();
+  return resposta<DemandaDetalhe>(await fetch(id ? `/api/demandas/${id}/` : '/api/demandas/', {
+    method: id ? 'PATCH' : 'POST', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify(dados),
   }));
 }

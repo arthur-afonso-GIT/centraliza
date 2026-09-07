@@ -23,7 +23,7 @@ Available in the current version:
 
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
-- **Request list** — filter pending, in-progress, and critical requests with server-side access control and pagination.
+- **Request management** — managers can create, edit, assign, reassign, and cancel team requests; lists remain protected and paginated.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Team agenda** — browse authorized commitments by day, week, or month, move between periods, and return to today in Fortaleza time.
 - **Team notices** — read urgent and informational notices from the authenticated team and open their complete content.
@@ -33,7 +33,7 @@ Available in the current version:
 
 Planned operational capabilities:
 
-- **Request management** — create, prioritize, assign, reassign, cancel, and monitor deadlines.
+- **Request monitoring** — expand filters for assignee, deadline, and overdue work.
 - **Inspection execution** — record extended progress and attach documents and evidence.
 - **Management review** — approve completed activities or request corrections, with a traceable history.
 - **Team planning and communication** — schedule meetings, identify conflicts, manage notice publishing, and exchange messages.
@@ -119,7 +119,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 36 Django tests and 24 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
+The current quality baseline includes 45 Django tests and 28 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) and [agenda validation](docs/validacao-semana-4.md) reports for their methods and limitations.
 
 ## Local development
 

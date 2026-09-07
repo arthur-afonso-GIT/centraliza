@@ -60,6 +60,10 @@ concluídas ou canceladas não aceitam edição. Criação, campos alterados e t
 responsável geram eventos separados no histórico. Inspetores recebem `403` e
 registros de outra equipe permanecem ocultos por `404`.
 
+`GET /api/usuarios/inspetores/` fornece ao gestor os inspetores ativos da sua
+equipe para os campos de atribuição. Inspetores e usuários sem equipe não podem
+consultar essa seleção.
+
 ## Interface
 
 Pendentes envia `status=pendente`, Em andamento envia `status=em_andamento`

@@ -18,8 +18,13 @@ export async function instalarApi(page: Page) {
     }
     if (url.pathname === '/api/auth/logout/') { perfil = null; return route.fulfill({ status: 204 }); }
     if (url.pathname === '/api/auth/me/') return perfil ? route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil } }) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+    if (url.pathname === '/api/usuarios/inspetores/') return perfil === 'gestor' ? route.fulfill({ json: { resultados: [{ id: 2, nome: 'Inspetor de teste' }, { id: 3, nome: 'Segundo inspetor' }] } }) : route.fulfill({ status: 403, json: {} });
     if (url.pathname === '/api/demandas/') {
       if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+      if (request.method() === 'POST') {
+        const body = request.postDataJSON() as Record<string, unknown>;
+        return route.fulfill({ status: 201, json: { id: 90, ...body, origem: body.origem ?? '', status: 'pendente', responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: [{ id: 90, tipo: 'demanda_criada', autor: { id: 1, nome: 'Gestor de teste' }, criado_em: '2026-09-14T12:00:00Z', status_anterior: '', status_novo: '', texto: 'Demanda criada pela gestão.' }] } });
+      }
       await new Promise(resolve => setTimeout(resolve, 120));
       const segmento = url.searchParams.get('status');
       const critica = url.searchParams.get('critica') === 'true';
@@ -34,14 +39,18 @@ export async function instalarApi(page: Page) {
     if (detail) {
       if (!perfil) return route.fulfill({ status: 401, json: {} });
       if (detail[1] === '404') return route.fulfill({ status: 404, json: {} });
-      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: history } });
+      if (request.method() === 'PATCH') {
+        const body = request.postDataJSON() as Record<string, unknown>;
+        return route.fulfill({ json: { id: Number(detail[1]), titulo: body.titulo ?? 'Inspeção demonstrativa 1', descricao: body.descricao ?? 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: body.origem ?? 'MPT', status: demandStatus, prioridade: body.prioridade ?? 'alta', prazo: body.prazo ?? '2026-09-20', critica: body.critica ?? true, responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: body.responsavel_id === 3 ? 'Segundo inspetor' : 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', historico: history } });
+      }
+      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: history } });
     }
     const status = url.pathname.match(/^\/api\/demandas\/(\d+)\/status\/$/);
     if (status && request.method() === 'PATCH') {
       const previous = demandStatus;
       demandStatus = (request.postDataJSON() as { status: string }).status;
       history.unshift({ id: history.length + 1, tipo: 'status_alterado', autor: { id: 2, nome: 'Inspetor de teste' }, criado_em: '2026-09-14T13:00:00Z', status_anterior: previous, status_novo: demandStatus, texto: '' });
-      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', historico: history } });
+      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', historico: history } });
     }
     const comment = url.pathname.match(/^\/api\/demandas\/(\d+)\/historico\/$/);
     if (comment && request.method() === 'POST') {

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { listarDemandas, type PaginaDemandas, type SegmentoDemanda } from '../lib/demandas';
 import type { User } from '../lib/auth';
+import DemandaForm from './demanda-form';
 
 const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'criticas', label: 'Críticas' }];
 const statusLabel: Record<string, string> = { pendente: 'Pendente', em_andamento: 'Em andamento', aguardando_avaliacao: 'Aguardando avaliação', em_correcao: 'Em correção', concluida: 'Concluída', cancelada: 'Cancelada' };
@@ -39,6 +40,7 @@ export default function DemandasList({ user }: { user: User }) {
     tabRefs.current[nextIndex]?.focus();
   }
   return <section className="demands" aria-labelledby="demandas-titulo">
+    {user.perfil === 'gestor' && <div className="demand-management"><DemandaForm onSaved={() => { prepareRequest(); setSegmento('pendentes'); setPage(1); setAttempt(value => value + 1); }} /></div>}
     <div className="segments" role="tablist" aria-label="Filtrar demandas">{segmentos.map((item, index) => <button key={item.id} ref={element => { tabRefs.current[index] = element; }} role="tab" aria-selected={segmento === item.id} tabIndex={segmento === item.id ? 0 : -1} onClick={() => select(item.id)} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveTab(index, event.key === 'ArrowRight' ? 1 : -1); } }}>{item.label}</button>)}</div>
     <div className="list-summary"><h2 id="demandas-titulo">{segmentos.find(item => item.id === segmento)?.label}</h2><span aria-live="polite">{data ? `${data.count} demanda${data.count === 1 ? '' : 's'}` : 'Atualizando…'}</span></div>
     {!data && !error && <output className="demand-loading"><span className="spinner" /> Carregando demandas…</output>}

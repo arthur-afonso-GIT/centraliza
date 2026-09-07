@@ -6,6 +6,8 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from usuarios.models import Usuario
+
 
 class CsrfView(APIView):
     authentication_classes = []
@@ -40,3 +42,14 @@ class LogoutView(APIView):
     def post(self, request):
         logout(request)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class InspetorListView(APIView):
+    def get(self, request):
+        user = request.user
+        if user.perfil != "gestor" or not user.equipe_id:
+            return Response({"detail": "Somente gestores podem consultar inspetores."}, status=status.HTTP_403_FORBIDDEN)
+        inspetores = Usuario.objects.filter(
+            equipe_id=user.equipe_id, perfil="inspetor", is_active=True,
+        ).order_by("first_name", "last_name", "username", "id")
+        return Response({"resultados": [{"id": item.id, "nome": item.nome} for item in inspetores]})

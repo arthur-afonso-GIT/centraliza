@@ -2078,7 +2078,7 @@
       "label": "RegrasDoModeloTest",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2096,7 +2096,7 @@
       "label": ".setUpTestData()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2105,7 +2105,7 @@
       "label": ".criar_demanda()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L23",
+      "source_location": "L24",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2114,7 +2114,7 @@
       "label": ".test_aceita_inspetor_da_mesma_equipe()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L34",
+      "source_location": "L35",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2123,7 +2123,7 @@
       "label": ".test_aceita_demanda_sem_responsavel()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2132,7 +2132,7 @@
       "label": ".test_rejeita_responsavel_de_outra_equipe()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L44",
+      "source_location": "L45",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2141,7 +2141,7 @@
       "label": ".test_rejeita_gestor_como_responsavel()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L49",
+      "source_location": "L50",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2150,7 +2150,52 @@
       "label": ".test_criticidade_independe_do_status()",
       "file_type": "code",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L54",
+      "source_location": "L55",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_listainspetorestest",
+      "label": "ListaInspetoresTest",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L62",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_py_apitestcase",
+      "label": "APITestCase",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_listainspetorestest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L64",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_listainspetorestest_test_gestor_recebe_somente_inspetores_ativos_da_equipe",
+      "label": ".test_gestor_recebe_somente_inspetores_ativos_da_equipe()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L72",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_tests_listainspetorestest_test_inspetor_e_sessao_ausente_sao_bloqueados",
+      "label": ".test_inspetor_e_sessao_ausente_sao_bloqueados()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L79",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2167,7 +2212,7 @@
       "label": "CsrfView",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2185,7 +2230,7 @@
       "label": ".get()",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L14",
+      "source_location": "L16",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2202,7 +2247,7 @@
       "label": "LoginView",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2212,7 +2257,7 @@
       "label": ".post()",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L23",
+      "source_location": "L25",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2221,7 +2266,7 @@
       "label": "MeView",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L33",
+      "source_location": "L35",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2231,7 +2276,7 @@
       "label": ".get()",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L34",
+      "source_location": "L36",
       "_callable": true,
       "_origin": "ast"
     },
@@ -2240,7 +2285,7 @@
       "label": "LogoutView",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L39",
+      "source_location": "L41",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -2250,7 +2295,26 @@
       "label": ".post()",
       "file_type": "code",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L40",
+      "source_location": "L42",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_views_inspetorlistview",
+      "label": "InspetorListView",
+      "file_type": "code",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L47",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_usuarios_views_inspetorlistview_get",
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L48",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3252,6 +3316,32 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_components_cancelar_demanda",
+      "label": "cancelar-demanda.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_demanda_cancelardemanda",
+      "label": "CancelarDemanda()",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_demanda_cancelardemanda_cancel",
+      "label": "cancel()",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_components_demanda_detail",
       "label": "demanda-detail.tsx",
       "file_type": "code",
@@ -3264,7 +3354,7 @@
       "label": "statusLabel",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast"
     },
     {
@@ -3272,7 +3362,7 @@
       "label": "prioridadeLabel",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L10",
+      "source_location": "L12",
       "_origin": "ast"
     },
     {
@@ -3280,7 +3370,7 @@
       "label": "data()",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3289,7 +3379,7 @@
       "label": "DemandaDetail()",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L13",
+      "source_location": "L15",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3298,7 +3388,7 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3307,7 +3397,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3316,7 +3406,50 @@
       "label": "comment()",
       "file_type": "code",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_form",
+      "label": "demanda-form.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_form_vazio",
+      "label": "vazio",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_form_demandaform",
+      "label": "DemandaForm()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_form_demandaform_changeopen",
+      "label": "changeOpen()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L17",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_demanda_form_demandaform_submit",
+      "label": "submit()",
+      "file_type": "code",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L31",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3333,7 +3466,7 @@
       "label": "segmentos",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "_origin": "ast"
     },
     {
@@ -3341,7 +3474,7 @@
       "label": "statusLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "_origin": "ast"
     },
     {
@@ -3349,7 +3482,7 @@
       "label": "prioridadeLabel",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "_origin": "ast"
     },
     {
@@ -3357,7 +3490,7 @@
       "label": "DemandasList()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3366,7 +3499,7 @@
       "label": "prepareRequest()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3375,7 +3508,7 @@
       "label": "select()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3384,7 +3517,7 @@
       "label": "changePage()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3393,7 +3526,7 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3402,7 +3535,7 @@
       "label": "moveTab()",
       "file_type": "code",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L36",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3881,11 +4014,31 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_lib_demandas_inspetor",
+      "label": "Inspetor",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_dadosdemanda",
+      "label": "DadosDemanda",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L10",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_lib_demandas_resposta",
       "label": "resposta()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L10",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3894,7 +4047,7 @@
       "label": "listarDemandas()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L16",
+      "source_location": "L18",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3903,7 +4056,7 @@
       "label": "obterDemanda()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L22",
+      "source_location": "L24",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3912,7 +4065,7 @@
       "label": "alterarStatus()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L26",
+      "source_location": "L28",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3921,7 +4074,25 @@
       "label": "adicionarComentario()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L35",
+      "source_location": "L37",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_listarinspetores",
+      "label": "listarInspetores()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L46",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_demandas_salvardemanda",
+      "label": "salvarDemanda()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L51",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4768,6 +4939,14 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_gerenciar_demandas_spec",
+      "label": "gerenciar-demandas.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tests_navigation_spec",
       "label": "navigation.spec.ts",
       "file_type": "code",
@@ -4815,7 +4994,7 @@
       "label": "entrarComo()",
       "file_type": "code",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L80",
+      "source_location": "L89",
       "_callable": true,
       "_origin": "ast"
     },
@@ -5330,7 +5509,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/contrato-demandas.md",
-      "source_location": "L63",
+      "source_location": "L67",
       "_origin": "ast"
     },
     {
@@ -5519,7 +5698,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L35",
+      "source_location": "L38",
       "_origin": "ast"
     },
     {
@@ -5528,7 +5707,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L51",
+      "source_location": "L54",
       "_origin": "ast"
     },
     {
@@ -5537,7 +5716,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L68",
+      "source_location": "L71",
       "_origin": "ast"
     },
     {
@@ -5546,7 +5725,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L83",
+      "source_location": "L86",
       "_origin": "ast"
     },
     {
@@ -5555,7 +5734,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L102",
+      "source_location": "L105",
       "_origin": "ast"
     },
     {
@@ -5564,7 +5743,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L119",
+      "source_location": "L122",
       "_origin": "ast"
     },
     {
@@ -5573,7 +5752,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L134",
+      "source_location": "L137",
       "_origin": "ast"
     },
     {
@@ -5582,7 +5761,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L153",
+      "source_location": "L156",
       "_origin": "ast"
     },
     {
@@ -5591,7 +5770,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L171",
+      "source_location": "L174",
       "_origin": "ast"
     },
     {
@@ -5600,7 +5779,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L182",
+      "source_location": "L185",
       "_origin": "ast"
     },
     {
@@ -5609,7 +5788,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L195",
+      "source_location": "L198",
       "_origin": "ast"
     },
     {
@@ -5618,7 +5797,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L206",
+      "source_location": "L209",
       "_origin": "ast"
     },
     {
@@ -10635,18 +10814,18 @@
     },
     {
       "source": "backend_usuarios_tests",
-      "target": "backend_demandas_models",
+      "target": "rest_framework_test",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L4",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "backend_usuarios_tests",
-      "target": "backend_usuarios_models",
+      "target": "backend_demandas_models",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10657,11 +10836,22 @@
     },
     {
       "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
       "target": "backend_usuarios_tests_regrasdomodelotest",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10671,7 +10861,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10681,7 +10871,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10691,7 +10881,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10701,7 +10891,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10711,7 +10901,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10721,7 +10911,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10731,7 +10921,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10741,7 +10931,57 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L54",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests",
+      "target": "backend_usuarios_tests_listainspetorestest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_listainspetorestest",
+      "target": "backend_usuarios_tests_py_apitestcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_listainspetorestest",
+      "target": "backend_usuarios_tests_listainspetorestest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_listainspetorestest",
+      "target": "backend_usuarios_tests_listainspetorestest_test_gestor_recebe_somente_inspetores_ativos_da_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_tests_listainspetorestest",
+      "target": "backend_usuarios_tests_listainspetorestest_test_inspetor_e_sessao_ausente_sao_bloqueados",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/tests.py",
+      "source_location": "L79",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10752,7 +10992,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10763,7 +11003,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10774,7 +11014,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10785,7 +11025,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10796,7 +11036,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10879,11 +11119,22 @@
     },
     {
       "source": "backend_usuarios_views",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_views",
       "target": "backend_usuarios_views_csrfview",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10893,7 +11144,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10903,7 +11154,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10913,7 +11164,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast"
@@ -10924,7 +11175,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10934,7 +11185,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10944,7 +11195,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10954,7 +11205,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10964,7 +11215,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10974,7 +11225,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10984,7 +11235,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -10994,7 +11245,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -11004,7 +11255,37 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/views.py",
-      "source_location": "L40",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_views",
+      "target": "backend_usuarios_views_inspetorlistview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_views_inspetorlistview",
+      "target": "backend_usuarios_views_py_apiview",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_views_inspetorlistview",
+      "target": "backend_usuarios_views_inspetorlistview_get",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12739,6 +13020,191 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_lib_demandas_alterarstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_lib_demandas_demandadetalhe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcancel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogfooter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda",
+      "target": "frontend_components_cancelar_demanda_cancelardemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_demanda_cancelardemanda",
+      "target": "frontend_components_cancelar_demanda_cancelardemanda_cancel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demanda_detail",
       "target": "ref_react",
       "relation": "imports_from",
@@ -12872,8 +13338,20 @@
     },
     {
       "source": "frontend_components_demanda_detail",
-      "target": "frontend_components_demanda_detail_statuslabel",
-      "relation": "contains",
+      "target": "frontend_components_demanda_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_cancelar_demanda",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
       "source_location": "L9",
@@ -12882,17 +13360,7 @@
     },
     {
       "source": "frontend_components_demanda_detail",
-      "target": "frontend_components_demanda_detail_prioridadelabel",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demanda_detail",
-      "target": "frontend_components_demanda_detail_data",
+      "target": "frontend_components_demanda_detail_statuslabel",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
@@ -12902,11 +13370,31 @@
     },
     {
       "source": "frontend_components_demanda_detail",
-      "target": "frontend_components_demanda_detail_demandadetail",
+      "target": "frontend_components_demanda_detail_prioridadelabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_data",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
       "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_detail_demandadetail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12916,7 +13404,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12926,7 +13414,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12936,7 +13424,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -12947,7 +13435,245 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L68",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_ui_dialog_dialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_auth",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas_salvardemanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas_dadosdemanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas_demandadetalhe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_lib_demandas_inspetor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_demanda_form_vazio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form",
+      "target": "frontend_components_demanda_form_demandaform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form_demandaform",
+      "target": "frontend_components_demanda_form_demandaform_changeopen",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form_demandaform",
+      "target": "frontend_components_demanda_form_demandaform_submit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form_demandaform",
+      "target": "frontend_components_demanda_form_demandaform_changeopen",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13063,17 +13789,18 @@
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "frontend_components_demandas_list_segmentos",
-      "relation": "contains",
+      "target": "frontend_components_demanda_form",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "frontend_components_demandas_list_statuslabel",
+      "target": "frontend_components_demandas_list_segmentos",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -13083,7 +13810,7 @@
     },
     {
       "source": "frontend_components_demandas_list",
-      "target": "frontend_components_demandas_list_prioridadelabel",
+      "target": "frontend_components_demandas_list_statuslabel",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -13093,11 +13820,21 @@
     },
     {
       "source": "frontend_components_demandas_list",
+      "target": "frontend_components_demandas_list_prioridadelabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list",
       "target": "frontend_components_demandas_list_demandaslist",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13107,23 +13844,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L32",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_select",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_changepage",
+      "target": "frontend_components_demandas_list_demandaslist_select",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -13133,7 +13860,7 @@
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_retry",
+      "target": "frontend_components_demandas_list_demandaslist_changepage",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
@@ -13143,11 +13870,32 @@
     },
     {
       "source": "frontend_components_demandas_list_demandaslist",
-      "target": "frontend_components_demandas_list_demandaslist_movetab",
+      "target": "frontend_components_demandas_list_demandaslist_retry",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
       "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_movetab",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list_demandaslist",
+      "target": "frontend_components_demandas_list_demandaslist_preparerequest",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13158,7 +13906,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13169,7 +13917,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13180,7 +13928,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13191,7 +13939,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13202,7 +13950,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13213,7 +13961,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13224,7 +13972,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14323,7 +15071,17 @@
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_resposta",
+      "target": "frontend_lib_demandas_inspetor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_dadosdemanda",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
@@ -14333,11 +15091,21 @@
     },
     {
       "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
       "target": "frontend_lib_demandas_listardemandas",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14347,7 +15115,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14357,7 +15125,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14367,7 +15135,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L35",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_salvardemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14378,7 +15166,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14389,7 +15177,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14400,7 +15188,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14411,7 +15199,29 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L37",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_listarinspetores",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_salvardemanda",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -15720,6 +16530,61 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_gerenciar_demandas_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_demandas_spec",
+      "target": "ref_axe_core_playwright",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_demandas_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_demandas_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_demandas_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-demandas.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_navigation_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -15844,7 +16709,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L80",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16610,7 +17475,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/contrato-demandas.md",
-      "source_location": "L63",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16810,7 +17675,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16820,7 +17685,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L51",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16830,7 +17695,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L68",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16840,7 +17705,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L83",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16850,7 +17715,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L102",
+      "source_location": "L105",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16860,7 +17725,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L119",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16870,7 +17735,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L134",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16880,7 +17745,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L153",
+      "source_location": "L156",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16890,7 +17755,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L171",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16900,7 +17765,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L182",
+      "source_location": "L185",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16910,7 +17775,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L195",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16920,7 +17785,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L206",
+      "source_location": "L209",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18089,6 +18954,39 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_demanda_form_demandaform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_detail",
+      "target": "frontend_components_cancelar_demanda_cancelardemanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demanda-detail.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demandas_list",
+      "target": "frontend_components_demanda_form_demandaform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/demandas-list.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_module_content",
       "target": "frontend_components_demandas_list_demandaslist",
       "relation": "imports",
@@ -18464,6 +19362,17 @@
     },
     {
       "source": "backend_config_urls",
+      "target": "backend_usuarios_views_inspetorlistview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/urls.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_urls",
       "target": "backend_usuarios_views_loginview",
       "relation": "imports",
       "context": "import",
@@ -18777,7 +19686,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18788,7 +19697,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18799,7 +19708,18 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L5",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_usuarios_views",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/usuarios/views.py",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19044,7 +19964,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/usuarios/tests.py",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19145,6 +20065,18 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_cancelar_demanda_cancelardemanda_cancel",
+      "target": "frontend_lib_demandas_alterarstatus",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/cancelar-demanda.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demanda_detail_demandadetail",
       "target": "frontend_lib_demandas_obterdemanda",
       "relation": "calls",
@@ -19152,7 +20084,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19164,7 +20096,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19176,7 +20108,31 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demanda-detail.tsx",
-      "source_location": "L53",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form_demandaform",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_demanda_form_demandaform_submit",
+      "target": "frontend_lib_demandas_salvardemanda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/demanda-form.tsx",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19188,7 +20144,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/demandas-list.tsx",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19248,7 +20204,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19260,7 +20216,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L36",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas_salvardemanda",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast"
     }
