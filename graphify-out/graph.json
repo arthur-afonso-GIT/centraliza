@@ -123,6 +123,24 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
+      "label": "0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more_migration",
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_agenda_migrations_init",
       "label": "__init__.py",
       "file_type": "code",
@@ -163,7 +181,7 @@
       "label": "Meta",
       "file_type": "code",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L23",
+      "source_location": "L26",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -173,7 +191,7 @@
       "label": ".clean()",
       "file_type": "code",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L34",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast"
     },
@@ -182,7 +200,7 @@
       "label": ".save()",
       "file_type": "code",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L41",
+      "source_location": "L46",
       "_callable": true,
       "_origin": "ast"
     },
@@ -199,9 +217,28 @@
       "label": "ParticipanteSerializer",
       "file_type": "code",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L8",
+      "source_location": "L11",
       "_callable": true,
       "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_serializers_datahoracomoffsetfield",
+      "label": "DataHoraComOffsetField",
+      "file_type": "code",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L16",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_serializers_datahoracomoffsetfield_to_internal_value",
+      "label": ".to_internal_value()",
+      "file_type": "code",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L17",
+      "_callable": true,
       "_origin": "ast"
     },
     {
@@ -209,7 +246,7 @@
       "label": "CompromissoSerializer",
       "file_type": "code",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L13",
+      "source_location": "L24",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -219,7 +256,7 @@
       "label": "Meta",
       "file_type": "code",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L18",
+      "source_location": "L29",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -229,7 +266,7 @@
       "label": ".get_inicio()",
       "file_type": "code",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L22",
+      "source_location": "L33",
       "_callable": true,
       "_origin": "ast"
     },
@@ -238,7 +275,114 @@
       "label": ".get_fim()",
       "file_type": "code",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L25",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "label": "GerenciarCompromissoSerializer",
+      "file_type": "code",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L40",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_serializers_gerenciarcompromissoserializer_validate",
+      "label": ".validate()",
+      "file_type": "code",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L49",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services",
+      "label": "services.py",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_conflitoagenda",
+      "label": "ConflitoAgenda",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "exception",
+      "label": "Exception",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_conflitoagenda_init",
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_exigir_gestor",
+      "label": "exigir_gestor()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_validar_intervalo",
+      "label": "validar_intervalo()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_buscar_conflitos",
+      "label": "buscar_conflitos()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L23",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_py_atomic",
+      "label": "atomic",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_salvar_compromisso",
+      "label": "salvar_compromisso()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L33",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_services_cancelar_compromisso",
+      "label": "cancelar_compromisso()",
+      "file_type": "code",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L59",
       "_callable": true,
       "_origin": "ast"
     },
@@ -255,7 +399,7 @@
       "label": "CompromissoModelTest",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -273,7 +417,7 @@
       "label": ".setUpTestData()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L15",
+      "source_location": "L16",
       "_callable": true,
       "_origin": "ast"
     },
@@ -282,7 +426,7 @@
       "label": ".test_exige_fim_posterior_ao_inicio()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L22",
+      "source_location": "L23",
       "_callable": true,
       "_origin": "ast"
     },
@@ -291,7 +435,7 @@
       "label": ".test_exige_criador_da_mesma_equipe()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L29",
+      "source_location": "L30",
       "_callable": true,
       "_origin": "ast"
     },
@@ -300,7 +444,7 @@
       "label": ".test_aceita_intervalo_consciente_valido()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L36",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast"
     },
@@ -309,7 +453,7 @@
       "label": "CompromissoListagemTest",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L44",
+      "source_location": "L45",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -327,7 +471,7 @@
       "label": ".setUpTestData()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "_callable": true,
       "_origin": "ast"
     },
@@ -336,7 +480,7 @@
       "label": ".criar()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L62",
+      "source_location": "L63",
       "_callable": true,
       "_origin": "ast"
     },
@@ -345,7 +489,7 @@
       "label": ".url()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L66",
+      "source_location": "L67",
       "_callable": true,
       "_origin": "ast"
     },
@@ -354,7 +498,7 @@
       "label": ".test_gestor_recebe_sobreposicao_da_equipe_com_limites_semiabertos()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L70",
+      "source_location": "L71",
       "_callable": true,
       "_origin": "ast"
     },
@@ -363,7 +507,7 @@
       "label": ".test_inspetor_recebe_somente_compromissos_em_que_participa()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L79",
+      "source_location": "L80",
       "_callable": true,
       "_origin": "ast"
     },
@@ -372,7 +516,7 @@
       "label": ".test_rejeita_parametros_ausentes_naive_invertidos_e_intervalo_longo()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L84",
+      "source_location": "L85",
       "_callable": true,
       "_origin": "ast"
     },
@@ -381,7 +525,80 @@
       "label": ".test_exige_sessao()",
       "file_type": "code",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L96",
+      "source_location": "L97",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest",
+      "label": "GerenciamentoAgendaTest",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L101",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_setuptestdata",
+      "label": ".setUpTestData()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L103",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "label": ".payload()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L112",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_test_gestor_cria_edita_e_cancela_compromisso",
+      "label": ".test_gestor_cria_edita_e_cancela_compromisso()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L121",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_test_rejeita_conflito_de_participante_com_resposta_util",
+      "label": ".test_rejeita_conflito_de_participante_com_resposta_util()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L137",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_test_permite_horario_contiguo_e_participantes_sem_conflito",
+      "label": ".test_permite_horario_contiguo_e_participantes_sem_conflito()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L145",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa",
+      "label": ".test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L153",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_tests_gerenciamentoagendatest_test_valida_intervalo_participantes_e_demanda_da_equipe",
+      "label": ".test_valida_intervalo_participantes_e_demanda_da_equipe()",
+      "file_type": "code",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L161",
       "_callable": true,
       "_origin": "ast"
     },
@@ -398,7 +615,7 @@
       "label": "limite_iso()",
       "file_type": "code",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L13",
+      "source_location": "L16",
       "_callable": true,
       "_origin": "ast"
     },
@@ -407,7 +624,7 @@
       "label": "CompromissoListView",
       "file_type": "code",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L20",
+      "source_location": "L23",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -421,11 +638,57 @@
       "_origin": "ast"
     },
     {
+      "id": "backend_agenda_views_compromissolistview_post",
+      "label": ".post()",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "backend_agenda_views_compromissolistview_get",
       "label": ".get()",
       "file_type": "code",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L21",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_views_compromissodetailview",
+      "label": "CompromissoDetailView",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L66",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_views_compromissodetailview_get_object",
+      "label": ".get_object()",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L67",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_views_compromissodetailview_patch",
+      "label": ".patch()",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L72",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_agenda_views_compromissodetailview_delete",
+      "label": ".delete()",
+      "file_type": "code",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L86",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3480,7 +3743,7 @@
       "label": "views",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L8",
+      "source_location": "L11",
       "_origin": "ast"
     },
     {
@@ -3488,7 +3751,7 @@
       "label": "dateLabel()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L9",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3497,7 +3760,7 @@
       "label": "timeLabel()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L10",
+      "source_location": "L13",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3506,7 +3769,7 @@
       "label": "EventCard()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L12",
+      "source_location": "L15",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3515,7 +3778,7 @@
       "label": "AgendaCalendar()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L16",
+      "source_location": "L19",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3524,7 +3787,7 @@
       "label": "prepare()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L33",
+      "source_location": "L36",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3533,7 +3796,7 @@
       "label": "changeView()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L34",
+      "source_location": "L37",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3542,7 +3805,7 @@
       "label": "move()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L35",
+      "source_location": "L38",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3551,7 +3814,7 @@
       "label": "goToday()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L36",
+      "source_location": "L39",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3560,7 +3823,16 @@
       "label": "retry()",
       "file_type": "code",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L37",
+      "source_location": "L40",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_agenda_calendar_agendacalendar_changed",
+      "label": "changed()",
+      "file_type": "code",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L41",
       "_callable": true,
       "_origin": "ast"
     },
@@ -3696,6 +3968,32 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_components_cancelar_compromisso",
+      "label": "cancelar-compromisso.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_compromisso_cancelarcompromisso",
+      "label": "CancelarCompromisso()",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_cancelar_compromisso_cancelarcompromisso_cancel",
+      "label": "cancel()",
+      "file_type": "code",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_components_cancelar_demanda",
       "label": "cancelar-demanda.tsx",
       "file_type": "code",
@@ -3718,6 +4016,59 @@
       "file_type": "code",
       "source_file": "frontend/components/cancelar-demanda.tsx",
       "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form",
+      "label": "compromisso-form.tsx",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form_local",
+      "label": "local()",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form_offset",
+      "label": "offset()",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form_compromissoform",
+      "label": "CompromissoForm()",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form_compromissoform_toggle",
+      "label": "toggle()",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_components_compromisso_form_compromissoform_submit",
+      "label": "submit()",
+      "file_type": "code",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L25",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4095,11 +4446,21 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_lib_agenda_dadoscompromisso",
+      "label": "DadosCompromisso",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L5",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_lib_agenda_agendaresponse",
       "label": "AgendaResponse",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast"
@@ -4109,7 +4470,7 @@
       "label": "dateFrom()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4118,7 +4479,7 @@
       "label": "isoDate()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L8",
+      "source_location": "L9",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4127,7 +4488,7 @@
       "label": "shiftDays()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L9",
+      "source_location": "L10",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4136,7 +4497,7 @@
       "label": "hojeFortaleza()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4145,7 +4506,7 @@
       "label": "intervaloAgenda()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4154,7 +4515,7 @@
       "label": "moverReferencia()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L28",
+      "source_location": "L29",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4163,7 +4524,7 @@
       "label": "diasEntre()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L34",
+      "source_location": "L35",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4172,7 +4533,7 @@
       "label": "ocorreNoDia()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L40",
+      "source_location": "L41",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4181,7 +4542,53 @@
       "label": "listarCompromissos()",
       "file_type": "code",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L45",
+      "source_location": "L46",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_conflitoagendaerror",
+      "label": "ConflitoAgendaError",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L53",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_conflitoagendaerror_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L55",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_respostacompromisso",
+      "label": "respostaCompromisso()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L58",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_salvarcompromisso",
+      "label": "salvarCompromisso()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L66",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
+      "id": "frontend_lib_agenda_cancelarcompromisso",
+      "label": "cancelarCompromisso()",
+      "file_type": "code",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L74",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4514,11 +4921,20 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_lib_demandas_listardemandasparaagenda",
+      "label": "listarDemandasParaAgenda()",
+      "file_type": "code",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L59",
+      "_callable": true,
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_lib_demandas_salvardemanda",
       "label": "salvarDemanda()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L59",
+      "source_location": "L64",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4527,7 +4943,7 @@
       "label": "listarAnexos()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L68",
+      "source_location": "L73",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4536,7 +4952,7 @@
       "label": "enviarAnexo()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L72",
+      "source_location": "L77",
       "_callable": true,
       "_origin": "ast"
     },
@@ -4545,7 +4961,7 @@
       "label": "excluirAnexo()",
       "file_type": "code",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L81",
+      "source_location": "L86",
       "_callable": true,
       "_origin": "ast"
     },
@@ -5417,6 +5833,14 @@
       "_origin": "ast"
     },
     {
+      "id": "frontend_tests_gerenciar_agenda_spec",
+      "label": "gerenciar-agenda.spec.ts",
+      "file_type": "code",
+      "source_file": "frontend/tests/gerenciar-agenda.spec.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "frontend_tests_gerenciar_demandas_spec",
       "label": "gerenciar-demandas.spec.ts",
       "file_type": "code",
@@ -5472,7 +5896,7 @@
       "label": "entrarComo()",
       "file_type": "code",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L105",
+      "source_location": "L120",
       "_callable": true,
       "_origin": "ast"
     },
@@ -5816,7 +6240,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L74",
+      "source_location": "L75",
       "_origin": "ast"
     },
     {
@@ -5825,7 +6249,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L76",
+      "source_location": "L77",
       "_origin": "ast"
     },
     {
@@ -5834,7 +6258,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L80",
+      "source_location": "L81",
       "_origin": "ast"
     },
     {
@@ -5843,7 +6267,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L88",
+      "source_location": "L89",
       "_origin": "ast"
     },
     {
@@ -5852,7 +6276,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L101",
+      "source_location": "L102",
       "_origin": "ast"
     },
     {
@@ -5861,7 +6285,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L124",
+      "source_location": "L125",
       "_origin": "ast"
     },
     {
@@ -5870,7 +6294,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "_origin": "ast"
     },
     {
@@ -5879,7 +6303,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L174",
+      "source_location": "L175",
       "_origin": "ast"
     },
     {
@@ -5888,7 +6312,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "README.md",
-      "source_location": "L178",
+      "source_location": "L179",
       "_origin": "ast"
     },
     {
@@ -6176,7 +6600,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L47",
+      "source_location": "L50",
       "_origin": "ast"
     },
     {
@@ -6185,7 +6609,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L63",
+      "source_location": "L66",
       "_origin": "ast"
     },
     {
@@ -6194,7 +6618,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L80",
+      "source_location": "L83",
       "_origin": "ast"
     },
     {
@@ -6203,7 +6627,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L95",
+      "source_location": "L98",
       "_origin": "ast"
     },
     {
@@ -6212,7 +6636,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L114",
+      "source_location": "L117",
       "_origin": "ast"
     },
     {
@@ -6221,7 +6645,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L131",
+      "source_location": "L134",
       "_origin": "ast"
     },
     {
@@ -6230,7 +6654,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L146",
+      "source_location": "L149",
       "_origin": "ast"
     },
     {
@@ -6239,7 +6663,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L165",
+      "source_location": "L168",
       "_origin": "ast"
     },
     {
@@ -6248,7 +6672,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L183",
+      "source_location": "L186",
       "_origin": "ast"
     },
     {
@@ -6257,7 +6681,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L194",
+      "source_location": "L197",
       "_origin": "ast"
     },
     {
@@ -6266,7 +6690,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L207",
+      "source_location": "L210",
       "_origin": "ast"
     },
     {
@@ -6275,7 +6699,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L218",
+      "source_location": "L221",
       "_origin": "ast"
     },
     {
@@ -7062,6 +7486,51 @@
       "_origin": "ast"
     },
     {
+      "id": "docs_validacao_agenda_gerenciavel",
+      "label": "validacao-agenda-gerenciavel.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
+      "label": "Validação da Agenda gerenciável",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_agenda_gerenciavel_escopo_entregue",
+      "label": "Escopo entregue",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_agenda_gerenciavel_verificações_executadas",
+      "label": "Verificações executadas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_validacao_agenda_gerenciavel_limites_atuais",
+      "label": "Limites atuais",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
       "id": "docs_validacao_anexos",
       "label": "validacao-anexos.md",
       "file_type": "document",
@@ -7582,6 +8051,49 @@
       "_origin": "ast"
     },
     {
+      "source": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
+      "target": "django_db_models_deletion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
+      "target": "django_conf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
+      "target": "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more_migration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/migrations/0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_agenda_models",
       "target": "django_conf",
       "relation": "imports_from",
@@ -7640,7 +8152,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L23",
+      "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7650,7 +8162,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7660,7 +8172,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/models.py",
-      "source_location": "L41",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7688,12 +8200,45 @@
     },
     {
       "source": "backend_agenda_serializers",
+      "target": "django_utils_dateparse",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
       "target": "backend_agenda_models",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L5",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_demandas_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7703,7 +8248,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L8",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_agenda_serializers_datahoracomoffsetfield",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers_datahoracomoffsetfield",
+      "target": "backend_agenda_serializers_datahoracomoffsetfield_to_internal_value",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7713,7 +8278,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L13",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7723,7 +8288,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L18",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7733,7 +8298,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L22",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7743,7 +8308,228 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L25",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer_validate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "django_core_exceptions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "django_db",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "django_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_conflitoagenda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_conflitoagenda",
+      "target": "exception",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_conflitoagenda",
+      "target": "backend_agenda_services_conflitoagenda_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_exigir_gestor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_validar_intervalo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_buscar_conflitos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_services_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_salvar_compromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_cancelar_compromisso",
+      "target": "backend_agenda_services_py_atomic",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_services_cancelar_compromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_services_exigir_gestor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_services_validar_intervalo",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_services_buscar_conflitos",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_services_conflitoagenda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_cancelar_compromisso",
+      "target": "backend_agenda_services_exigir_gestor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7826,7 +8612,7 @@
     },
     {
       "source": "backend_agenda_tests",
-      "target": "backend_usuarios_models",
+      "target": "backend_demandas_models",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7837,11 +8623,22 @@
     },
     {
       "source": "backend_agenda_tests",
+      "target": "backend_usuarios_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
       "target": "backend_agenda_tests_compromissomodeltest",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7851,7 +8648,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7861,7 +8658,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7871,7 +8668,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7881,7 +8678,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7891,7 +8688,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7901,7 +8698,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7911,7 +8708,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7921,7 +8718,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7931,7 +8728,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7941,7 +8738,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7951,7 +8748,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L70",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7961,7 +8758,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7971,7 +8768,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L84",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7981,7 +8778,97 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L96",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
+      "target": "backend_agenda_tests_gerenciamentoagendatest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_py_apitestcase",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_setuptestdata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_test_gestor_cria_edita_e_cancela_compromisso",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_test_rejeita_conflito_de_participante_com_resposta_util",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_test_permite_horario_contiguo_e_participantes_sem_conflito",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_test_valida_intervalo_participantes_e_demanda_da_equipe",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -7992,7 +8879,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8003,7 +8890,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8014,7 +8901,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8025,7 +8912,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8036,7 +8923,62 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L97",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest_test_gestor_cria_edita_e_cancela_compromisso",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest_test_rejeita_conflito_de_participante_com_resposta_util",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest_test_permite_horario_contiguo_e_participantes_sem_conflito",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest_test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L155",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest_test_valida_intervalo_participantes_e_demanda_da_equipe",
+      "target": "backend_agenda_tests_gerenciamentoagendatest_payload",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L165",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8075,7 +9017,7 @@
     },
     {
       "source": "backend_agenda_views",
-      "target": "rest_framework",
+      "target": "django_core_exceptions",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8086,7 +9028,7 @@
     },
     {
       "source": "backend_agenda_views",
-      "target": "rest_framework_response",
+      "target": "django_shortcuts",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8097,7 +9039,7 @@
     },
     {
       "source": "backend_agenda_views",
-      "target": "rest_framework_views",
+      "target": "rest_framework",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8108,7 +9050,18 @@
     },
     {
       "source": "backend_agenda_views",
-      "target": "backend_agenda_models",
+      "target": "rest_framework_response",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "rest_framework_views",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8119,12 +9072,34 @@
     },
     {
       "source": "backend_agenda_views",
+      "target": "backend_agenda_models",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
       "target": "backend_agenda_serializers",
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L10",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_services",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8134,7 +9109,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L13",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8144,7 +9119,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L20",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8154,7 +9129,17 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L20",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview",
+      "target": "backend_agenda_views_compromissolistview_post",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8164,7 +9149,57 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L21",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_views_compromissodetailview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_views_py_apiview",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_views_compromissodetailview_get_object",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_views_compromissodetailview_patch",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_views_compromissodetailview_delete",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -8175,7 +9210,29 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L22",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_patch",
+      "target": "backend_agenda_views_compromissodetailview_get_object",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_delete",
+      "target": "backend_agenda_views_compromissodetailview_get_object",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13819,11 +14876,44 @@
     },
     {
       "source": "frontend_components_agenda_calendar",
+      "target": "frontend_lib_auth_user",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_compromisso_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_cancelar_compromisso",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
       "target": "frontend_components_agenda_calendar_views",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L8",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13833,7 +14923,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L9",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13843,7 +14933,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L10",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13853,7 +14943,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13863,7 +14953,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L16",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13873,7 +14963,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13883,7 +14973,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13893,7 +14983,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13903,7 +14993,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13913,7 +15003,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L37",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar",
+      "target": "frontend_components_agenda_calendar_agendacalendar_changed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13924,7 +15024,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L13",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13935,7 +15035,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L40",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13946,7 +15046,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L42",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13957,7 +15057,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L42",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13968,7 +15068,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L48",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13979,7 +15079,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -13990,7 +15090,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14001,7 +15101,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14012,7 +15112,18 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L37",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar_agendacalendar_changed",
+      "target": "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -14776,6 +15887,180 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_lib_agenda",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_lib_agenda_cancelarcompromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_lib_agenda_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcancel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogfooter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_ui_alert_dialog_alertdialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso",
+      "target": "frontend_components_cancelar_compromisso_cancelarcompromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_cancelar_compromisso_cancelarcompromisso",
+      "target": "frontend_components_cancelar_compromisso_cancelarcompromisso_cancel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_cancelar_demanda",
       "target": "ref_react",
       "relation": "imports_from",
@@ -14957,6 +16242,298 @@
       "confidence": "EXTRACTED",
       "source_file": "frontend/components/cancelar-demanda.tsx",
       "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_agenda",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_agenda_conflitoagendaerror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_agenda_salvarcompromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_agenda_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_agenda_dadoscompromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_demandas",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_demandas_listardemandasparaagenda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_demandas_demandaresumo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_lib_demandas_inspetor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialog",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialogcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialogdescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialogheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialogtitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_ui_dialog_dialogtrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_compromisso_form_local",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_compromisso_form_offset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form",
+      "target": "frontend_components_compromisso_form_compromissoform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_components_compromisso_form_compromissoform_toggle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_components_compromisso_form_compromissoform_submit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_components_compromisso_form_local",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_components_compromisso_form_compromissoform_toggle",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform_submit",
+      "target": "frontend_components_compromisso_form_offset",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16363,6 +17940,17 @@
     },
     {
       "source": "frontend_lib_agenda",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
       "target": "frontend_lib_agenda_visaoagenda",
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -16383,7 +17971,7 @@
     },
     {
       "source": "frontend_lib_agenda",
-      "target": "frontend_lib_agenda_agendaresponse",
+      "target": "frontend_lib_agenda_dadoscompromisso",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
@@ -16393,17 +17981,17 @@
     },
     {
       "source": "frontend_lib_agenda",
-      "target": "frontend_lib_agenda_datefrom",
+      "target": "frontend_lib_agenda_agendaresponse",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_lib_agenda",
-      "target": "frontend_lib_agenda_isodate",
+      "target": "frontend_lib_agenda_datefrom",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
@@ -16413,7 +18001,7 @@
     },
     {
       "source": "frontend_lib_agenda",
-      "target": "frontend_lib_agenda_shiftdays",
+      "target": "frontend_lib_agenda_isodate",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
@@ -16423,11 +18011,21 @@
     },
     {
       "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
       "target": "frontend_lib_agenda_hojefortaleza",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16437,7 +18035,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16447,7 +18045,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16457,7 +18055,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16467,7 +18065,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16477,7 +18075,57 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L45",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_conflitoagendaerror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_conflitoagendaerror",
+      "target": "frontend_lib_agenda_conflitoagendaerror_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_respostacompromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_salvarcompromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda",
+      "target": "frontend_lib_agenda_cancelarcompromisso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16488,7 +18136,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16499,24 +18147,13 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast"
     },
     {
       "source": "frontend_lib_agenda_intervaloagenda",
       "target": "frontend_lib_agenda_datefrom",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L18",
-      "weight": 1.0,
-      "_origin": "ast"
-    },
-    {
-      "source": "frontend_lib_agenda_intervaloagenda",
-      "target": "frontend_lib_agenda_shiftdays",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -16527,12 +18164,23 @@
     },
     {
       "source": "frontend_lib_agenda_intervaloagenda",
+      "target": "frontend_lib_agenda_shiftdays",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_intervaloagenda",
       "target": "frontend_lib_agenda_isodate",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16543,7 +18191,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16554,7 +18202,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16565,7 +18213,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16576,7 +18224,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -16587,7 +18235,18 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/agenda.ts",
-      "source_location": "L41",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_salvarcompromisso",
+      "target": "frontend_lib_agenda_respostacompromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -17034,7 +18693,7 @@
     },
     {
       "source": "frontend_lib_demandas",
-      "target": "frontend_lib_demandas_salvardemanda",
+      "target": "frontend_lib_demandas_listardemandasparaagenda",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
@@ -17044,11 +18703,21 @@
     },
     {
       "source": "frontend_lib_demandas",
+      "target": "frontend_lib_demandas_salvardemanda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_demandas",
       "target": "frontend_lib_demandas_listaranexos",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L68",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -17058,7 +18727,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L72",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -17068,7 +18737,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L81",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -17128,7 +18797,7 @@
       "_origin": "ast"
     },
     {
-      "source": "frontend_lib_demandas_salvardemanda",
+      "source": "frontend_lib_demandas_listardemandasparaagenda",
       "target": "frontend_lib_demandas_resposta",
       "relation": "calls",
       "context": "call",
@@ -17139,13 +18808,24 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_lib_demandas_salvardemanda",
+      "target": "frontend_lib_demandas_resposta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/demandas.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_lib_demandas_listaranexos",
       "target": "frontend_lib_demandas_resposta",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L69",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -17156,7 +18836,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L76",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -18574,6 +20254,50 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_tests_gerenciar_agenda_spec",
+      "target": "ref_playwright_test",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-agenda.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_agenda_spec",
+      "target": "frontend_tests_support_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-agenda.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_agenda_spec",
+      "target": "frontend_tests_support_api_entrarcomo",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-agenda.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_tests_gerenciar_agenda_spec",
+      "target": "frontend_tests_support_api_instalarapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/gerenciar-agenda.spec.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_tests_gerenciar_demandas_spec",
       "target": "ref_playwright_test",
       "relation": "imports_from",
@@ -18753,7 +20477,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/tests/support/api.ts",
-      "source_location": "L105",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19315,7 +21039,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_validacao_semana_5",
+      "target": "docs_validacao_agenda_gerenciavel",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -19325,7 +21049,7 @@
     },
     {
       "source": "readme",
-      "target": "docs_status_report_1",
+      "target": "docs_validacao_semana_5",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
@@ -19335,11 +21059,21 @@
     },
     {
       "source": "readme",
-      "target": "docs_paleta_visual",
+      "target": "docs_status_report_1",
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
       "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "readme",
+      "target": "docs_paleta_visual",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19349,7 +21083,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19359,7 +21093,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L76",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19369,7 +21103,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19379,7 +21113,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L88",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19389,7 +21123,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L101",
+      "source_location": "L102",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19399,7 +21133,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19409,7 +21143,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19419,7 +21153,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L174",
+      "source_location": "L175",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19429,7 +21163,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L178",
+      "source_location": "L179",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19729,7 +21463,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L47",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19739,7 +21473,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L63",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19749,7 +21483,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L80",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19759,7 +21493,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L95",
+      "source_location": "L98",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19769,7 +21503,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L114",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19779,7 +21513,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L131",
+      "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19789,7 +21523,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L146",
+      "source_location": "L149",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19799,7 +21533,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L165",
+      "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19809,7 +21543,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L183",
+      "source_location": "L186",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19819,7 +21553,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L194",
+      "source_location": "L197",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19829,7 +21563,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L207",
+      "source_location": "L210",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -19839,7 +21573,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/plano-mvp-operacional.md",
-      "source_location": "L218",
+      "source_location": "L221",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -20704,6 +22438,46 @@
       "_origin": "ast"
     },
     {
+      "source": "docs_validacao_agenda_gerenciavel",
+      "target": "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
+      "target": "docs_validacao_agenda_gerenciavel_escopo_entregue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
+      "target": "docs_validacao_agenda_gerenciavel_verificações_executadas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
+      "target": "docs_validacao_agenda_gerenciavel_limites_atuais",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/validacao-agenda-gerenciavel.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "docs_validacao_anexos",
       "target": "docs_validacao_anexos_validação_de_anexos_de_demandas",
       "relation": "contains",
@@ -21048,6 +22822,28 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_compromisso_form_compromissoform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_agenda_calendar",
+      "target": "frontend_components_cancelar_compromisso_cancelarcompromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/components/agenda-calendar.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_demanda_detail",
       "target": "frontend_components_demanda_form_demandaform",
       "relation": "imports",
@@ -21219,6 +23015,39 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/serializers.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_demandas_models_demanda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers",
+      "target": "backend_usuarios_models_usuario",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/services.py",
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
@@ -21236,7 +23065,7 @@
     },
     {
       "source": "backend_agenda_tests",
-      "target": "backend_usuarios_models_equipe",
+      "target": "backend_demandas_models_demanda",
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -21247,12 +23076,23 @@
     },
     {
       "source": "backend_agenda_tests",
+      "target": "backend_usuarios_models_equipe",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests",
       "target": "backend_usuarios_models_usuario",
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21263,7 +23103,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L9",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21274,7 +23114,51 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "backend/agenda/views.py",
-      "source_location": "L10",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_services_conflitoagenda",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_services_cancelar_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views",
+      "target": "backend_agenda_services_salvar_compromisso",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21462,6 +23346,17 @@
       "confidence": "EXTRACTED",
       "source_file": "backend/config/urls.py",
       "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_config_urls",
+      "target": "backend_agenda_views_compromissodetailview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/config/urls.py",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -21994,6 +23889,17 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_lib_agenda_conflitoagendaerror",
+      "target": "frontend_lib_auth_apierror",
+      "relation": "inherits",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "backend_agenda_management_commands_seed_agenda_command",
       "target": "backend_agenda_models_compromisso",
       "relation": "uses",
@@ -22011,7 +23917,40 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "backend/agenda/serializers.py",
-      "source_location": "L19",
+      "source_location": "L30",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/serializers.py",
+      "source_location": "L43",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_buscar_conflitos",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L25",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_services_salvar_compromisso",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/services.py",
+      "source_location": "L49",
       "weight": 0.8,
       "_origin": "ast"
     },
@@ -22022,7 +23961,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 0.8,
       "_origin": "ast"
     },
@@ -22033,7 +23972,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "backend/agenda/tests.py",
-      "source_location": "L63",
+      "source_location": "L64",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_tests_gerenciamentoagendatest",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/tests.py",
+      "source_location": "L134",
       "weight": 0.8,
       "_origin": "ast"
     },
@@ -22044,7 +23994,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "backend/agenda/views.py",
-      "source_location": "L31",
+      "source_location": "L49",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_models_compromisso",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L70",
       "weight": 0.8,
       "_origin": "ast"
     },
@@ -22055,8 +24016,99 @@
       "confidence": "INFERRED",
       "confidence_score": 0.95,
       "source_file": "backend/agenda/views.py",
-      "source_location": "L44",
+      "source_location": "L36",
       "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_serializers_compromissoserializer",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L83",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L25",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L74",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview",
+      "target": "backend_agenda_services_conflitoagenda",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L35",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview",
+      "target": "backend_agenda_services_conflitoagenda",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L82",
+      "weight": 0.8,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview_post",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview_post",
+      "target": "backend_agenda_services_salvar_compromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissolistview_post",
+      "target": "backend_agenda_serializers_compromissoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L36",
+      "weight": 1.0,
       "_origin": "ast"
     },
     {
@@ -22067,7 +24119,55 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/agenda/views.py",
-      "source_location": "L44",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_patch",
+      "target": "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_patch",
+      "target": "backend_agenda_services_salvar_compromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_patch",
+      "target": "backend_agenda_serializers_compromissoserializer",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_agenda_views_compromissodetailview_delete",
+      "target": "backend_agenda_services_cancelar_compromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agenda/views.py",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22295,7 +24395,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L18",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22307,7 +24407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L24",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22319,7 +24419,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L27",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22331,7 +24431,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L38",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22343,7 +24443,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L47",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22355,7 +24455,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/components/agenda-calendar.tsx",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22432,6 +24532,18 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_components_cancelar_compromisso_cancelarcompromisso_cancel",
+      "target": "frontend_lib_agenda_cancelarcompromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/cancelar-compromisso.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_components_cancelar_demanda_cancelardemanda_cancel",
       "target": "frontend_lib_demandas_alterarstatus",
       "relation": "calls",
@@ -22440,6 +24552,42 @@
       "confidence_score": 1.0,
       "source_file": "frontend/components/cancelar-demanda.tsx",
       "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_lib_demandas_listarinspetores",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform",
+      "target": "frontend_lib_demandas_listardemandasparaagenda",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_components_compromisso_form_compromissoform_submit",
+      "target": "frontend_lib_agenda_salvarcompromisso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/components/compromisso-form.tsx",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22588,6 +24736,30 @@
       "_origin": "ast"
     },
     {
+      "source": "frontend_lib_agenda_salvarcompromisso",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "frontend_lib_agenda_cancelarcompromisso",
+      "target": "frontend_lib_auth_csrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/lib/agenda.ts",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
       "source": "frontend_lib_demandas_alterarstatus",
       "target": "frontend_lib_auth_csrftoken",
       "relation": "calls",
@@ -22619,7 +24791,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L60",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22631,7 +24803,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L73",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast"
     },
@@ -22643,7 +24815,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/lib/demandas.ts",
-      "source_location": "L82",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast"
     }

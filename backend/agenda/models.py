@@ -16,8 +16,11 @@ class Compromisso(models.Model):
     equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT, related_name="compromissos")
     criador = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="compromissos_criados")
     participantes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="compromissos")
+    demanda = models.ForeignKey("demandas.Demanda", on_delete=models.PROTECT, related_name="compromissos", null=True, blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
+    cancelado_em = models.DateTimeField(null=True, blank=True)
+    cancelado_por = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="compromissos_cancelados", null=True, blank=True)
     referencia_demo = models.CharField(max_length=60, unique=True, null=True, blank=True, editable=False)
 
     class Meta:
@@ -37,6 +40,8 @@ class Compromisso(models.Model):
             raise ValidationError({"criador": "O criador deve pertencer à equipe do compromisso."})
         if self.inicio and self.fim and self.fim <= self.inicio:
             raise ValidationError({"fim": "O fim deve ser posterior ao início."})
+        if self.demanda_id and self.equipe_id and self.demanda.equipe_id != self.equipe_id:
+            raise ValidationError({"demanda": "A demanda deve pertencer à equipe do compromisso."})
 
     def save(self, *args, **kwargs):
         self.full_clean()

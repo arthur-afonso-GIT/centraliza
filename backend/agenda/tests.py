@@ -7,6 +7,7 @@ from django.test import TestCase
 from rest_framework.test import APITestCase
 
 from agenda.models import Compromisso
+from demandas.models import Demanda
 from usuarios.models import Equipe, Usuario
 
 
@@ -95,5 +96,78 @@ class CompromissoListagemTest(APITestCase):
 
     def test_exige_sessao(self):
         self.assertEqual(self.client.get(self.url()).status_code, 401)
+
+
+class GerenciamentoAgendaTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe gestão agenda")
+        cls.outra = Equipe.objects.create(nome="Outra gestão agenda")
+        cls.gestor = Usuario.objects.create_user(username="gestor.gerencia.agenda", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.gerencia.agenda", perfil="inspetor", equipe=cls.equipe)
+        cls.segundo = Usuario.objects.create_user(username="segundo.gerencia.agenda", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="externo.gerencia.agenda", perfil="inspetor", equipe=cls.outra)
+        cls.demanda = Demanda.objects.create(titulo="Demanda da agenda", prazo=datetime(2026, 10, 30).date(), equipe=cls.equipe, criador=cls.gestor, responsavel=cls.inspetor)
+
+    def payload(self, **changes):
+        data = {
+            "titulo": "Reunião operacional", "descricao": "Alinhamento", "tipo": "reuniao",
+            "inicio": "2026-10-20T09:00:00-03:00", "fim": "2026-10-20T10:00:00-03:00",
+            "participante_ids": [self.inspetor.id], "demanda_id": self.demanda.id,
+        }
+        data.update(changes)
+        return data
+
+    def test_gestor_cria_edita_e_cancela_compromisso(self):
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post("/api/compromissos/", self.payload(), format="json")
+        self.assertEqual(criado.status_code, 201)
+        self.assertEqual(criado.data["participantes"][0]["id"], self.inspetor.id)
+        self.assertEqual(criado.data["demanda"], self.demanda.id)
+        atualizado = self.client.patch(f"/api/compromissos/{criado.data['id']}/", {"titulo": "Reunião atualizada", "participante_ids": [self.segundo.id]}, format="json")
+        self.assertEqual(atualizado.status_code, 200)
+        self.assertEqual(atualizado.data["titulo"], "Reunião atualizada")
+        self.assertEqual(atualizado.data["participantes"][0]["id"], self.segundo.id)
+        self.assertEqual(self.client.delete(f"/api/compromissos/{criado.data['id']}/").status_code, 204)
+        intervalo = "/api/compromissos/?inicio=2026-10-20T00:00:00-03:00&fim=2026-10-21T00:00:00-03:00"
+        self.assertEqual(self.client.get(intervalo).data["results"], [])
+        compromisso = Compromisso.objects.get(pk=criado.data["id"])
+        self.assertEqual(compromisso.cancelado_por, self.gestor)
+
+    def test_rejeita_conflito_de_participante_com_resposta_util(self):
+        self.client.force_authenticate(self.gestor)
+        primeiro = self.client.post("/api/compromissos/", self.payload(), format="json")
+        segundo = self.client.post("/api/compromissos/", self.payload(titulo="Sobreposto", inicio="2026-10-20T09:30:00-03:00", fim="2026-10-20T10:30:00-03:00"), format="json")
+        self.assertEqual(primeiro.status_code, 201)
+        self.assertEqual(segundo.status_code, 409)
+        self.assertEqual(segundo.data["conflitos"][0]["id"], primeiro.data["id"])
+
+    def test_permite_horario_contiguo_e_participantes_sem_conflito(self):
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.post("/api/compromissos/", self.payload(), format="json").status_code, 201)
+        contiguo = self.client.post("/api/compromissos/", self.payload(titulo="Seguinte", inicio="2026-10-20T10:00:00-03:00", fim="2026-10-20T11:00:00-03:00"), format="json")
+        paralelo = self.client.post("/api/compromissos/", self.payload(titulo="Outro participante", participante_ids=[self.segundo.id]), format="json")
+        self.assertEqual(contiguo.status_code, 201)
+        self.assertEqual(paralelo.status_code, 201)
+
+    def test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa(self):
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.post("/api/compromissos/", self.payload(), format="json").status_code, 403)
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post("/api/compromissos/", self.payload(), format="json")
+        self.client.force_authenticate(self.externo)
+        self.assertEqual(self.client.patch(f"/api/compromissos/{criado.data['id']}/", {"titulo": "Indevido"}, format="json").status_code, 404)
+
+    def test_valida_intervalo_participantes_e_demanda_da_equipe(self):
+        demanda_externa = Demanda.objects.create(titulo="Externa", prazo=datetime(2026, 10, 30).date(), equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.ext.agenda", perfil="gestor", equipe=self.outra))
+        self.client.force_authenticate(self.gestor)
+        casos = [
+            self.payload(fim="2026-10-20T08:00:00-03:00"),
+            self.payload(participante_ids=[self.externo.id]),
+            self.payload(demanda_id=demanda_externa.id),
+        ]
+        for payload in casos:
+            with self.subTest(payload=payload):
+                self.assertEqual(self.client.post("/api/compromissos/", payload, format="json").status_code, 400)
 
 # Create your tests here.

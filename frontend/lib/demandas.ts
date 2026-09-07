@@ -56,6 +56,11 @@ export async function listarInspetores(signal?: AbortSignal) {
   return resposta<{ resultados: Inspetor[] }>(response).then(data => data.resultados);
 }
 
+export async function listarDemandasParaAgenda(signal?: AbortSignal) {
+  const response = await fetch('/api/demandas/?page=1&page_size=50', { credentials: 'same-origin', signal });
+  return resposta<PaginaDemandas>(response).then(data => data.results);
+}
+
 export async function salvarDemanda(dados: DadosDemanda, id?: number) {
   const token = await csrfToken();
   return resposta<DemandaDetalhe>(await fetch(id ? `/api/demandas/${id}/` : '/api/demandas/', {

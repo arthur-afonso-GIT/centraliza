@@ -19,7 +19,7 @@ testável antes de iniciar a próxima.
 | Sessão e perfis | Login, logout, gestor, inspetor e equipe | Administração de usuários e recuperação de acesso |
 | Demandas | Lista, filtros, detalhe, comentários e duas transições | Criação, atribuição, avaliação, correção e cancelamento |
 | Histórico | Eventos de status e comentários | Cobrir todas as ações e proteger eventos contra alteração |
-| Agenda | Consulta por dia, semana e mês | Criar, editar, cancelar, associar e detectar conflitos |
+| Agenda | Consulta, criação, edição, cancelamento, associação e conflitos | Lembretes e recorrência após o MVP |
 | Avisos | Feed categorizado e detalhe | Publicar, editar, cancelar e controlar vigência |
 | Anexos | Upload, lista, download autorizado e remoção lógica | Antivírus e política de retenção para produção |
 | Chat | Página de demonstração | Opcional após o MVP operacional |
@@ -41,8 +41,11 @@ está concluída no escopo do MVP: arquivos ficam fora da área pública, usam n
 interno aleatório e passam por validação de extensão, MIME, assinatura e tamanho.
 Listagem, download e remoção respeitam a autorização da demanda, e inclusão e
 remoção aparecem no histórico. Antes de produção ainda será preciso definir
-retenção, varredura antivírus e armazenamento persistente com backup. A próxima
-etapa é tornar a Agenda gerenciável.
+retenção, varredura antivírus e armazenamento persistente com backup. A Etapa 5
+está tecnicamente concluída: o gestor gerencia compromissos vinculados
+opcionalmente a demandas, escolhe inspetores participantes e recebe conflito
+antes de salvar; o inspetor mantém uma agenda somente de leitura com seus
+próprios compromissos. A próxima etapa é a gestão de publicação dos avisos.
 
 ### Etapa 1 — Regras e base do fluxo de demandas
 

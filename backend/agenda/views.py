@@ -2,12 +2,15 @@ from datetime import timedelta
 from zoneinfo import ZoneInfo
 
 from django.utils.dateparse import parse_datetime
-from rest_framework import exceptions
+from django.core.exceptions import PermissionDenied, ValidationError
+from django.shortcuts import get_object_or_404
+from rest_framework import exceptions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from agenda.models import Compromisso
-from agenda.serializers import CompromissoSerializer
+from agenda.serializers import CompromissoSerializer, GerenciarCompromissoSerializer
+from agenda.services import ConflitoAgenda, cancelar_compromisso, salvar_compromisso
 
 
 def limite_iso(valor, campo):
@@ -18,6 +21,21 @@ def limite_iso(valor, campo):
 
 
 class CompromissoListView(APIView):
+    def post(self, request):
+        serializer = GerenciarCompromissoSerializer(data=request.data, context={"request": request})
+        for campo in ("titulo", "tipo", "inicio", "fim", "participante_ids"):
+            serializer.fields[campo].required = True
+        serializer.is_valid(raise_exception=True)
+        try:
+            compromisso = salvar_compromisso(usuario=request.user, dados=serializer.validated_data)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        except ConflitoAgenda as exc:
+            return Response({"detail": "Há conflito de horário para um ou mais participantes.", "conflitos": CompromissoSerializer(exc.compromissos, many=True).data}, status=status.HTTP_409_CONFLICT)
+        return Response(CompromissoSerializer(compromisso).data, status=status.HTTP_201_CREATED)
+
     def get(self, request):
         inicio = limite_iso(request.query_params.get("inicio"), "inicio")
         fim = limite_iso(request.query_params.get("fim"), "fim")
@@ -29,7 +47,7 @@ class CompromissoListView(APIView):
         if not user.equipe_id:
             raise exceptions.PermissionDenied("O usuário não pertence a uma equipe.")
         queryset = Compromisso.objects.filter(
-            equipe_id=user.equipe_id, inicio__lt=fim, fim__gt=inicio,
+            equipe_id=user.equipe_id, cancelado_em__isnull=True, inicio__lt=fim, fim__gt=inicio,
         ).prefetch_related("participantes")
         if user.perfil == "inspetor":
             queryset = queryset.filter(participantes=user)
@@ -43,3 +61,34 @@ class CompromissoListView(APIView):
             "timezone": "America/Fortaleza",
             "results": CompromissoSerializer(queryset, many=True).data,
         })
+
+
+class CompromissoDetailView(APIView):
+    def get_object(self, request, pk):
+        if not request.user.equipe_id:
+            raise exceptions.PermissionDenied("O usuário não pertence a uma equipe.")
+        return get_object_or_404(Compromisso.objects.prefetch_related("participantes"), pk=pk, equipe_id=request.user.equipe_id)
+
+    def patch(self, request, pk):
+        compromisso = self.get_object(request, pk)
+        serializer = GerenciarCompromissoSerializer(data=request.data, partial=True, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        try:
+            compromisso = salvar_compromisso(usuario=request.user, dados=serializer.validated_data, compromisso=compromisso)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        except ConflitoAgenda as exc:
+            return Response({"detail": "Há conflito de horário para um ou mais participantes.", "conflitos": CompromissoSerializer(exc.compromissos, many=True).data}, status=status.HTTP_409_CONFLICT)
+        return Response(CompromissoSerializer(compromisso).data)
+
+    def delete(self, request, pk):
+        compromisso = self.get_object(request, pk)
+        try:
+            cancelar_compromisso(compromisso=compromisso, usuario=request.user)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        return Response(status=status.HTTP_204_NO_CONTENT)

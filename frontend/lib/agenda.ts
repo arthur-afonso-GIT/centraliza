@@ -1,7 +1,8 @@
-import { ApiError } from './auth';
+import { ApiError, csrfToken } from './auth';
 
 export type VisaoAgenda = 'dia' | 'semana' | 'mes';
-export type Compromisso = { id: number; titulo: string; descricao: string; tipo: 'reuniao' | 'atividade'; inicio: string; fim: string; participantes: Array<{ id: number; nome: string }> };
+export type Compromisso = { id: number; titulo: string; descricao: string; tipo: 'reuniao' | 'atividade'; inicio: string; fim: string; participantes: Array<{ id: number; nome: string }>; demanda: number | null; cancelado_em: string | null };
+export type DadosCompromisso = { titulo: string; descricao: string; tipo: 'reuniao' | 'atividade'; inicio: string; fim: string; participante_ids: number[]; demanda_id: number | null };
 export type AgendaResponse = { inicio: string; fim: string; timezone: 'America/Fortaleza'; results: Compromisso[] };
 
 const dateFrom = (value: string) => new Date(`${value}T12:00:00Z`);
@@ -47,4 +48,31 @@ export async function listarCompromissos(inicio: string, fim: string, signal?: A
   const response = await fetch(`/api/compromissos/?${query}`, { credentials: 'same-origin', signal });
   if (!response.ok) throw new ApiError(response.status, 'Não foi possível carregar a agenda.');
   return response.json() as Promise<AgendaResponse>;
+}
+
+export class ConflitoAgendaError extends ApiError {
+  conflitos: Compromisso[];
+  constructor(message: string, conflitos: Compromisso[]) { super(409, message); this.conflitos = conflitos; }
+}
+
+async function respostaCompromisso(response: Response) {
+  if (response.ok) return response.json() as Promise<Compromisso>;
+  const body = await response.json().catch(() => ({})) as { detail?: string; conflitos?: Compromisso[]; [key: string]: unknown };
+  if (response.status === 409) throw new ConflitoAgendaError(body.detail ?? 'Há conflito de horário.', body.conflitos ?? []);
+  const fieldError = Object.values(body).find(Array.isArray) as string[] | undefined;
+  throw new ApiError(response.status, body.detail ?? fieldError?.[0] ?? 'Não foi possível salvar o compromisso.');
+}
+
+export async function salvarCompromisso(dados: DadosCompromisso, id?: number) {
+  const token = await csrfToken();
+  return respostaCompromisso(await fetch(id ? `/api/compromissos/${id}/` : '/api/compromissos/', {
+    method: id ? 'PATCH' : 'POST', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify(dados),
+  }));
+}
+
+export async function cancelarCompromisso(id: number) {
+  const token = await csrfToken();
+  const response = await fetch(`/api/compromissos/${id}/`, { method: 'DELETE', credentials: 'same-origin', headers: { 'X-CSRFToken': token } });
+  if (!response.ok) throw new ApiError(response.status, 'Não foi possível cancelar o compromisso.');
 }

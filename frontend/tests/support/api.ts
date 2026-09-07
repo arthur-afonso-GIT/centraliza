@@ -7,6 +7,10 @@ export async function instalarApi(page: Page) {
   let demandStatus = 'pendente';
   const history: Array<Record<string, unknown>> = [];
   let attachments: Array<Record<string, unknown>> = [];
+  let appointments: Array<Record<string, unknown>> = [
+    { id: 1, titulo: 'Reunião de alinhamento', descricao: 'Revisão da equipe', tipo: 'reuniao', inicio: '2026-09-23T09:00:00-03:00', fim: '2026-09-23T10:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: null, cancelado_em: null },
+    { id: 2, titulo: 'Visita técnica', descricao: 'Atividade externa', tipo: 'atividade', inicio: '2026-09-24T14:00:00-03:00', fim: '2026-09-24T16:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: 1, cancelado_em: null },
+  ];
   await page.route('**/api/**', async route => {
     const request = route.request();
     const url = new URL(request.url());
@@ -75,15 +79,26 @@ export async function instalarApi(page: Page) {
       return route.fulfill({ status: 201, json: created });
     }
     if (url.pathname === '/api/compromissos/') {
+      if (request.method() === 'POST') {
+        const body = request.postDataJSON() as Record<string, unknown>;
+        const created = { id: 3, ...body, participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: body.demanda_id ?? null, cancelado_em: null };
+        appointments.push(created);
+        return route.fulfill({ status: 201, json: created });
+      }
       await new Promise(resolve => setTimeout(resolve, 80));
       return route.fulfill({ json: {
         inicio: url.searchParams.get('inicio'), fim: url.searchParams.get('fim'), timezone: 'America/Fortaleza',
-        results: [
-          { id: 1, titulo: 'Reunião de alinhamento', descricao: 'Revisão da equipe', tipo: 'reuniao', inicio: '2026-09-23T09:00:00-03:00', fim: '2026-09-23T10:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }] },
-          { id: 2, titulo: 'Visita técnica', descricao: 'Atividade externa', tipo: 'atividade', inicio: '2026-09-24T14:00:00-03:00', fim: '2026-09-24T16:00:00-03:00', participantes: [{ id: 2, nome: 'Inspetor de teste' }] },
-        ],
+        results: appointments,
       } });
     }
+    const appointment = url.pathname.match(/^\/api\/compromissos\/(\d+)\/$/);
+    if (appointment && request.method() === 'PATCH') {
+      const body = request.postDataJSON() as Record<string, unknown>;
+      const index = appointments.findIndex(item => item.id === Number(appointment[1]));
+      appointments[index] = { ...appointments[index], ...body, participantes: body.participante_ids ? [{ id: 2, nome: 'Inspetor de teste' }] : appointments[index].participantes };
+      return route.fulfill({ json: appointments[index] });
+    }
+    if (appointment && request.method() === 'DELETE') { appointments = appointments.filter(item => item.id !== Number(appointment[1])); return route.fulfill({ status: 204 }); }
     if (url.pathname === '/api/avisos/') {
       if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
       await new Promise(resolve => setTimeout(resolve, 80));
