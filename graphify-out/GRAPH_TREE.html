@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Centraliza VISAT — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Centraliza VISAT — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"Centraliza VISAT","total_count":825,"children":[{"name":"@cloudflare","total_count":1,"children":[{"name":"vite-plugin","total_count":1,"children":[]}]},{"name":"@playwright","total_count":1,"children":[{"name":"test","total_count":1,"children":[]}]},{"name":"backend","total_count":273,"children":[{"name":"agenda","total_count":60,"children":[{"name":"apps.py","total_count":1,"children":[{"name":"AgendaConfig","total_count":1,"children":[]}]},{"name":"management","total_count":4,"children":[{"name":"commands","total_count":3,"children":[{"name":"seed_agenda.py","total_count":2,"children":[{"name":".handle()","total_count":1,"children":[]},{"name":"Command","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"migrations","total_count":3,"children":[{"name":"0001_initial.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"models.py","total_count":5,"children":[{"name":".clean()","total_count":1,"children":[]},{"name":".save()","total_count":1,"children":[]},{"name":"Compromisso","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]},{"name":"Tipo","total_count":1,"children":[]}]},{"name":"serializers.py","total_count":9,"children":[{"name":".get_fim()","total_count":1,"children":[]},{"name":".get_inicio()","total_count":1,"children":[]},{"name":".to_internal_value()","total_count":1,"children":[]},{"name":".validate()","total_count":1,"children":[]},{"name":"CompromissoSerializer","total_count":1,"children":[]},{"name":"DataHoraComOffsetField","total_count":1,"children":[]},{"name":"GerenciarCompromissoSerializer","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]},{"name":"ParticipanteSerializer","total_count":1,"children":[]}]},{"name":"services.py","total_count":7,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":"buscar_conflitos()","total_count":1,"children":[]},{"name":"cancelar_compromisso()","total_count":1,"children":[]},{"name":"ConflitoAgenda","total_count":1,"children":[]},{"name":"exigir_gestor()","total_count":1,"children":[]},{"name":"salvar_compromisso()","total_count":1,"children":[]},{"name":"validar_intervalo()","total_count":1,"children":[]}]},{"name":"tests.py","total_count":21,"children":[{"name":".criar()","total_count":1,"children":[]},{"name":".payload()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".test_aceita_intervalo_consciente_valido()","total_count":1,"children":[]},{"name":".test_exige_criador_da_mesma_equipe()","total_count":1,"children":[]},{"name":".test_exige_fim_posterior_ao_inicio()","total_count":1,"children":[]},{"name":".test_exige_sessao()","total_count":1,"children":[]},{"name":".test_gestor_cria_edita_e_cancela_compromisso()","total_count":1,"children":[]},{"name":".test_gestor_recebe_sobreposicao_da_equipe_com_limites_semiabertos()","total_count":1,"children":[]},{"name":".test_inspetor_nao_gerencia_e_usuario_externo_nao_acessa()","total_count":1,"children":[]},{"name":".test_inspetor_recebe_somente_compromissos_em_que_participa()","total_count":1,"children":[]},{"name":".test_permite_horario_contiguo_e_participantes_sem_conflito()","total_count":1,"children":[]},{"name":".test_rejeita_conflito_de_participante_com_resposta_util()","total_count":1,"children":[]},{"name":".test_rejeita_parametros_ausentes_naive_invertidos_e_intervalo_longo()","total_count":1,"children":[]},{"name":".test_valida_intervalo_participantes_e_demanda_da_equipe()","total_count":1,"children":[]},{"name":".url()","total_count":1,"children":[]},{"name":"CompromissoListagemTest","total_count":1,"children":[]},{"name":"CompromissoModelTest","total_count":1,"children":[]},{"name":"GerenciamentoAgendaTest","total_count":1,"children":[]}]},{"name":"views.py","total_count":8,"children":[{"name":".delete()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".get_object()","total_count":1,"children":[]},{"name":".patch()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":"CompromissoDetailView","total_count":1,"children":[]},{"name":"CompromissoListView","total_count":1,"children":[]},{"name":"limite_iso()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]},{"name":"admin.py","total_count":1,"children":[]}]},{"name":"avisos","total_count":56,"children":[{"name":"admin.py","total_count":1,"children":[{"name":"AvisoAdmin","total_count":1,"children":[]}]},{"name":"apps.py","total_count":1,"children":[{"name":"AvisosConfig","total_count":1,"children":[]}]},{"name":"management","total_count":4,"children":[{"name":"commands","total_count":3,"children":[{"name":"seed_avisos.py","total_count":2,"children":[{"name":".handle()","total_count":1,"children":[]},{"name":"Command","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"migrations","total_count":3,"children":[{"name":"0001_initial.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0002_aviso_cancelado_em_aviso_cancelado_por_and_more.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"models.py","total_count":5,"children":[{"name":".clean()","total_count":1,"children":[]},{"name":".save()","total_count":1,"children":[]},{"name":"Aviso","total_count":1,"children":[]},{"name":"Categoria","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]}]},{"name":"serializers.py","total_count":8,"children":[{"name":".get_destinatarios()","total_count":1,"children":[]},{"name":".get_expira_em()","total_count":1,"children":[]},{"name":".get_publicado_em()","total_count":1,"children":[]},{"name":".validate()","total_count":1,"children":[]},{"name":"AvisoDetalheSerializer","total_count":1,"children":[]},{"name":"AvisoFeedSerializer","total_count":1,"children":[]},{"name":"GerenciarAvisoSerializer","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]}]},{"name":"tests.py","total_count":23,"children":[{"name":".criar()","total_count":1,"children":[]},{"name":".dados()","total_count":1,"children":[]},{"name":".payload()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".test_aceita_aviso_de_gestor_ativo_da_equipe()","total_count":1,"children":[]},{"name":".test_carga_e_idempotente()","total_count":1,"children":[]},{"name":".test_detalhe_de_outra_equipe_retorna_404()","total_count":1,"children":[]},{"name":".test_feed_e_detalhe_exigem_sessao()","total_count":1,"children":[]},{"name":".test_feed_prioriza_urgentes_recentes_e_isola_equipe()","total_count":1,"children":[]},{"name":".test_gestor_publica_edita_e_cancela_aviso_direcionado()","total_count":1,"children":[]},{"name":".test_inspetor_nao_gerencia_e_equipe_externa_nao_edita()","total_count":1,"children":[]},{"name":".test_inspetor_pode_consultar_feed_e_detalhe_da_equipe()","total_count":1,"children":[]},{"name":".test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia()","total_count":1,"children":[]},{"name":".test_rejeita_autor_de_outra_equipe()","total_count":1,"children":[]},{"name":".test_rejeita_autor_inspetor()","total_count":1,"children":[]},{"name":".test_rejeita_categoria_desconhecida()","total_count":1,"children":[]},{"name":".test_rejeita_vigencia_e_destinatario_invalidos()","total_count":1,"children":[]},{"name":"AvisoApiTest","total_count":1,"children":[]},{"name":"AvisoModelTest","total_count":1,"children":[]},{"name":"GerenciamentoAvisosTest","total_count":1,"children":[]},{"name":"SeedAvisosTest","total_count":1,"children":[]}]},{"name":"views.py","total_count":10,"children":[{"name":".delete()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".get_queryset()","total_count":1,"children":[]},{"name":".patch()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":"AvisoDetailView","total_count":1,"children":[]},{"name":"AvisoListView","total_count":1,"children":[]},{"name":"avisos_da_equipe()","total_count":1,"children":[]},{"name":"exigir_gestor()","total_count":1,"children":[]},{"name":"salvar_aviso()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"config","total_count":4,"children":[{"name":"__init__.py","total_count":1,"children":[]},{"name":"settings.py","total_count":1,"children":[]},{"name":"urls.py","total_count":1,"children":[]},{"name":"wsgi.py","total_count":1,"children":[]}]},{"name":"demandas","total_count":114,"children":[{"name":"anexos.py","total_count":4,"children":[{"name":"adicionar_anexo()","total_count":1,"children":[]},{"name":"pode_adicionar()","total_count":1,"children":[]},{"name":"remover_anexo()","total_count":1,"children":[]},{"name":"validar_arquivo()","total_count":1,"children":[]}]},{"name":"management","total_count":8,"children":[{"name":"commands","total_count":7,"children":[{"name":"benchmark_demandas.py","total_count":3,"children":[{"name":".add_arguments()","total_count":1,"children":[]},{"name":".handle()","total_count":1,"children":[]},{"name":"Command","total_count":1,"children":[]}]},{"name":"seed_demo.py","total_count":3,"children":[{"name":".add_arguments()","total_count":1,"children":[]},{"name":".handle()","total_count":1,"children":[]},{"name":"Command","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"migrations","total_count":7,"children":[{"name":"0001_initial.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0002_initial.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0003_eventodemanda.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0004_remove_demanda_demanda_status_valido_and_more.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"0006_anexodemanda_and_more.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"models.py","total_count":10,"children":[{"name":".clean()","total_count":1,"children":[]},{"name":".save()","total_count":1,"children":[]},{"name":"AnexoDemanda","total_count":1,"children":[]},{"name":"caminho_anexo()","total_count":1,"children":[]},{"name":"Demanda","total_count":1,"children":[]},{"name":"EventoDemanda","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]},{"name":"Prioridade","total_count":1,"children":[]},{"name":"Status","total_count":1,"children":[]},{"name":"Tipo","total_count":1,"children":[]}]},{"name":"serializers.py","total_count":13,"children":[{"name":".get_atrasada()","total_count":1,"children":[]},{"name":".get_download_url()","total_count":1,"children":[]},{"name":".validate_responsavel_id()","total_count":1,"children":[]},{"name":"AlterarStatusSerializer","total_count":1,"children":[]},{"name":"AnexoDemandaSerializer","total_count":1,"children":[]},{"name":"AutorSerializer","total_count":1,"children":[]},{"name":"CriarComentarioSerializer","total_count":1,"children":[]},{"name":"DemandaDetalheSerializer","total_count":1,"children":[]},{"name":"DemandaSerializer","total_count":1,"children":[]},{"name":"EventoDemandaSerializer","total_count":1,"children":[]},{"name":"GerenciarDemandaSerializer","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]},{"name":"ResponsavelSerializer","total_count":1,"children":[]}]},{"name":"services.py","total_count":4,"children":[{"name":"alterar_status_demanda()","total_count":1,"children":[]},{"name":"criar_demanda()","total_count":1,"children":[]},{"name":"editar_demanda()","total_count":1,"children":[]},{"name":"RegraTransicao","total_count":1,"children":[]}]},{"name":"tests.py","total_count":44,"children":[{"name":".autenticar()","total_count":1,"children":[]},{"name":".criar()","total_count":1,"children":[]},{"name":".payload()","total_count":1,"children":[]},{"name":".pdf()","total_count":1,"children":[]},{"name":".setUp()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".tearDown()","total_count":1,"children":[]},{"name":".test_acesso_e_remocao_logica_respeitam_permissoes()","total_count":1,"children":[]},{"name":".test_combina_responsavel_periodo_e_atraso()","total_count":1,"children":[]},{"name":".test_combina_status_e_criticidade()","total_count":1,"children":[]},{"name":".test_comentario_valida_texto_autor_e_acesso()","total_count":1,"children":[]},{"name":".test_demanda_encerrada_nao_pode_ser_editada()","total_count":1,"children":[]},{"name":".test_demanda_encerrada_nao_recebe_anexo()","total_count":1,"children":[]},{"name":".test_detalhe_respeita_equipe_e_responsavel()","total_count":1,"children":[]},{"name":".test_exclusao_direta_nao_e_oferecida()","total_count":1,"children":[]},{"name":".test_exige_sessao()","total_count":1,"children":[]},{"name":".test_fluxo_csrf_login_me_logout()","total_count":1,"children":[]},{"name":".test_gestor_cancela_estado_ativo_com_justificativa()","total_count":1,"children":[]},{"name":".test_gestor_cria_demanda_atribuida_com_historico()","total_count":1,"children":[]},{"name":".test_gestor_edita_e_reatribui_com_eventos_separados()","total_count":1,"children":[]},{"name":".test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro()","total_count":1,"children":[]},{"name":".test_gestor_ve_ativas_da_propria_equipe_inclusive_nao_atribuida()","total_count":1,"children":[]},{"name":".test_historico_nao_oferece_edicao_ou_exclusao()","total_count":1,"children":[]},{"name":".test_inspetor_atribuido_adiciona_lista_e_baixa_anexo()","total_count":1,"children":[]},{"name":".test_inspetor_executa_transicoes_e_historico_permanece_consistente()","total_count":1,"children":[]},{"name":".test_inspetor_nao_cria_nem_edita()","total_count":1,"children":[]},{"name":".test_inspetor_nao_filtra_por_responsavel()","total_count":1,"children":[]},{"name":".test_inspetor_ve_apenas_as_suas_ativas()","total_count":1,"children":[]},{"name":".test_login_invalido_nao_revela_conta()","total_count":1,"children":[]},{"name":".test_pagina_fora_do_intervalo_retorna_404()","total_count":1,"children":[]},{"name":".test_rejeita_parametros_invalidos()","total_count":1,"children":[]},{"name":".test_rejeita_responsavel_externo()","total_count":1,"children":[]},{"name":".test_resumo_correcao_e_cancelamento_obrigam_texto()","total_count":1,"children":[]},{"name":".test_usuario_sem_equipe_recebe_403()","total_count":1,"children":[]},{"name":".test_valida_formato_assinatura_e_tamanho()","total_count":1,"children":[]},{"name":"AnexosDemandaTest","total_count":1,"children":[]},{"name":"DetalheHistoricoTest","total_count":1,"children":[]},{"name":"GerenciamentoDemandasTest","total_count":1,"children":[]},{"name":"ListagemDemandasTest","total_count":1,"children":[]},{"name":"SessaoTest","total_count":1,"children":[]}]},{"name":"views.py","total_count":23,"children":[{"name":".delete()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".get_anexo()","total_count":1,"children":[]},{"name":".get_demanda()","total_count":1,"children":[]},{"name":".get_page_number()","total_count":1,"children":[]},{"name":".get_page_size()","total_count":1,"children":[]},{"name":".get_queryset()","total_count":1,"children":[]},{"name":".get_queryset()","total_count":1,"children":[]},{"name":".patch()","total_count":1,"children":[]},{"name":".patch()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":"DemandaAnexoDownloadView","total_count":1,"children":[]},{"name":"DemandaAnexoListView","total_count":1,"children":[]},{"name":"DemandaAnexoView","total_count":1,"children":[]},{"name":"DemandaComentarioView","total_count":1,"children":[]},{"name":"DemandaDetailView","total_count":1,"children":[]},{"name":"DemandaListView","total_count":1,"children":[]},{"name":"demandas_permitidas()","total_count":1,"children":[]},{"name":"DemandasPagination","total_count":1,"children":[]},{"name":"DemandaStatusView","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"pyproject.toml","total_count":1,"children":[{"name":"centraliza-api","total_count":1,"children":[]}]},{"name":"README.md","total_count":4,"children":[{"name":"API Centraliza","total_count":1,"children":[]},{"name":"Endpoints dispon\u00edveis","total_count":1,"children":[]},{"name":"Prepara\u00e7\u00e3o local","total_count":1,"children":[]},{"name":"README.md","total_count":1,"children":[]}]},{"name":"usuarios","total_count":33,"children":[{"name":"authentication.py","total_count":2,"children":[{"name":".authenticate_header()","total_count":1,"children":[]},{"name":"SessionAuthentication","total_count":1,"children":[]}]},{"name":"migrations","total_count":2,"children":[{"name":"0001_initial.py","total_count":1,"children":[{"name":"Migration","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"models.py","total_count":6,"children":[{"name":".__str__()","total_count":1,"children":[]},{"name":".nome()","total_count":1,"children":[]},{"name":"Equipe","total_count":1,"children":[]},{"name":"Meta","total_count":1,"children":[]},{"name":"Perfil","total_count":1,"children":[]},{"name":"Usuario","total_count":1,"children":[]}]},{"name":"tests.py","total_count":12,"children":[{"name":".criar_demanda()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".setUpTestData()","total_count":1,"children":[]},{"name":".test_aceita_demanda_sem_responsavel()","total_count":1,"children":[]},{"name":".test_aceita_inspetor_da_mesma_equipe()","total_count":1,"children":[]},{"name":".test_criticidade_independe_do_status()","total_count":1,"children":[]},{"name":".test_gestor_recebe_somente_inspetores_ativos_da_equipe()","total_count":1,"children":[]},{"name":".test_inspetor_e_sessao_ausente_sao_bloqueados()","total_count":1,"children":[]},{"name":".test_rejeita_gestor_como_responsavel()","total_count":1,"children":[]},{"name":".test_rejeita_responsavel_de_outra_equipe()","total_count":1,"children":[]},{"name":"ListaInspetoresTest","total_count":1,"children":[]},{"name":"RegrasDoModeloTest","total_count":1,"children":[]}]},{"name":"views.py","total_count":10,"children":[{"name":".get()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":".post()","total_count":1,"children":[]},{"name":"CsrfView","total_count":1,"children":[]},{"name":"InspetorListView","total_count":1,"children":[]},{"name":"LoginView","total_count":1,"children":[]},{"name":"LogoutView","total_count":1,"children":[]},{"name":"MeView","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"manage.py","total_count":1,"children":[]}]},{"name":"docs","total_count":171,"children":[{"name":"contrato-demandas.md","total_count":7,"children":[{"name":"Acesso e filtros","total_count":1,"children":[]},{"name":"Contrato de listagem de demandas","total_count":1,"children":[]},{"name":"contrato-demandas.md","total_count":1,"children":[]},{"name":"Gerenciamento pelo gestor","total_count":1,"children":[]},{"name":"Interface","total_count":1,"children":[]},{"name":"Sess\u00e3o","total_count":1,"children":[]},{"name":"Transi\u00e7\u00f5es","total_count":1,"children":[]}]},{"name":"fluxo-demandas.md","total_count":4,"children":[{"name":"Estados","total_count":1,"children":[]},{"name":"Fluxo operacional das demandas","total_count":1,"children":[]},{"name":"fluxo-demandas.md","total_count":1,"children":[]},{"name":"Matriz de transi\u00e7\u00f5es","total_count":1,"children":[]}]},{"name":"paleta-visual.md","total_count":2,"children":[{"name":"Paleta visual \u2014 Centraliza VISAT","total_count":1,"children":[]},{"name":"paleta-visual.md","total_count":1,"children":[]}]},{"name":"plano-desenvolvimento.md","total_count":9,"children":[{"name":"Commits das tarefas de implementa\u00e7\u00e3o","total_count":1,"children":[]},{"name":"Entrega t\u00e9cnica conclu\u00edda: semana 1","total_count":1,"children":[]},{"name":"Graphify","total_count":1,"children":[]},{"name":"Plano de desenvolvimento \u2014 Centraliza","total_count":1,"children":[]},{"name":"plano-desenvolvimento.md","total_count":1,"children":[]},{"name":"Processo por tarefa","total_count":1,"children":[]},{"name":"Pr\u00f3xima execu\u00e7\u00e3o: MVP operacional","total_count":1,"children":[]},{"name":"Pr\u00f3ximas entregas propostas","total_count":1,"children":[]},{"name":"Registro","total_count":1,"children":[]}]},{"name":"plano-mvp-operacional.md","total_count":17,"children":[{"name":"Backlog posterior ao MVP","total_count":1,"children":[]},{"name":"Defini\u00e7\u00e3o de pronto","total_count":1,"children":[]},{"name":"Etapa 1 \u2014 Regras e base do fluxo de demandas","total_count":1,"children":[]},{"name":"Etapa 2 \u2014 Gerenciamento de demandas pelo gestor","total_count":1,"children":[]},{"name":"Etapa 3 \u2014 Execu\u00e7\u00e3o e avalia\u00e7\u00e3o da demanda","total_count":1,"children":[]},{"name":"Etapa 4 \u2014 Anexos e evid\u00eancias","total_count":1,"children":[]},{"name":"Etapa 5 \u2014 Agenda gerenci\u00e1vel","total_count":1,"children":[]},{"name":"Etapa 6 \u2014 Gest\u00e3o de avisos","total_count":1,"children":[]},{"name":"Etapa 7 \u2014 Painel, estabiliza\u00e7\u00e3o e implanta\u00e7\u00e3o de homologa\u00e7\u00e3o","total_count":1,"children":[]},{"name":"Objetivo","total_count":1,"children":[]},{"name":"Ordem de execu\u00e7\u00e3o","total_count":1,"children":[]},{"name":"Padr\u00e3o de implementa\u00e7\u00e3o por tarefa","total_count":1,"children":[]},{"name":"Plano de desenvolvimento \u2014 MVP operacional do Centraliza","total_count":1,"children":[]},{"name":"plano-mvp-operacional.md","total_count":1,"children":[]},{"name":"Pr\u00f3xima a\u00e7\u00e3o recomendada","total_count":1,"children":[]},{"name":"Situa\u00e7\u00e3o atual","total_count":1,"children":[]},{"name":"Sugest\u00e3o de ciclos","total_count":1,"children":[]}]},{"name":"semana-1.md","total_count":9,"children":[{"name":"Acesso inicial","total_count":1,"children":[]},{"name":"Arquitetura desta entrega","total_count":1,"children":[]},{"name":"Checklist t\u00e9cnico verificado","total_count":1,"children":[]},{"name":"Contrato proposto para a API futura","total_count":1,"children":[]},{"name":"Fora do escopo","total_count":1,"children":[]},{"name":"Objetivo","total_count":1,"children":[]},{"name":"Semana 1 \u2014 navega\u00e7\u00e3o","total_count":1,"children":[]},{"name":"semana-1.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o automatizada realizada","total_count":1,"children":[]}]},{"name":"semana-2.md","total_count":13,"children":[{"name":"Conte\u00fado e estados da interface","total_count":1,"children":[]},{"name":"Contrato inicial da API","total_count":1,"children":[]},{"name":"Crit\u00e9rios de conclus\u00e3o","total_count":1,"children":[]},{"name":"Cronograma di\u00e1rio","total_count":1,"children":[]},{"name":"Fora do escopo e conting\u00eancia","total_count":1,"children":[]},{"name":"Identidade e integra\u00e7\u00e3o","total_count":1,"children":[]},{"name":"Metas e tarefas","total_count":1,"children":[]},{"name":"Modelo m\u00ednimo","total_count":1,"children":[]},{"name":"Plano de execu\u00e7\u00e3o \u2014 listagem de demandas","total_count":1,"children":[]},{"name":"Ponto de partida","total_count":1,"children":[]},{"name":"Regras propostas para alinhar na segunda-feira","total_count":1,"children":[]},{"name":"semana-2.md","total_count":1,"children":[]},{"name":"Testes e desempenho","total_count":1,"children":[]}]},{"name":"semana-3.md","total_count":17,"children":[{"name":"Adicionar coment\u00e1rio","total_count":1,"children":[]},{"name":"Alterar status","total_count":1,"children":[]},{"name":"Back-end","total_count":1,"children":[]},{"name":"Comportamento da interface","total_count":1,"children":[]},{"name":"Consultar detalhe","total_count":1,"children":[]},{"name":"Contrato inicial da API","total_count":1,"children":[]},{"name":"Crit\u00e9rios de conclus\u00e3o","total_count":1,"children":[]},{"name":"Cronograma di\u00e1rio","total_count":1,"children":[]},{"name":"Decis\u00f5es de escopo propostas","total_count":1,"children":[]},{"name":"Fora do escopo","total_count":1,"children":[]},{"name":"Front-end e fluxo integrado","total_count":1,"children":[]},{"name":"Metas e tarefas","total_count":1,"children":[]},{"name":"Modelo do hist\u00f3rico","total_count":1,"children":[]},{"name":"Plano de execu\u00e7\u00e3o \u2014 detalhe e hist\u00f3rico da demanda","total_count":1,"children":[]},{"name":"Ponto de partida","total_count":1,"children":[]},{"name":"semana-3.md","total_count":1,"children":[]},{"name":"Testes","total_count":1,"children":[]}]},{"name":"semana-4.md","total_count":19,"children":[{"name":"Back-end","total_count":1,"children":[]},{"name":"Comportamento do calend\u00e1rio","total_count":1,"children":[]},{"name":"Contrato inicial da API","total_count":1,"children":[]},{"name":"Controles compartilhados","total_count":1,"children":[]},{"name":"Crit\u00e9rios de conclus\u00e3o","total_count":1,"children":[]},{"name":"Cronograma di\u00e1rio","total_count":1,"children":[]},{"name":"Dia","total_count":1,"children":[]},{"name":"Estados","total_count":1,"children":[]},{"name":"Fora do escopo","total_count":1,"children":[]},{"name":"Front-end","total_count":1,"children":[]},{"name":"Metas e tarefas","total_count":1,"children":[]},{"name":"Modelo m\u00ednimo","total_count":1,"children":[]},{"name":"M\u00eas","total_count":1,"children":[]},{"name":"Plano de execu\u00e7\u00e3o \u2014 agenda e calend\u00e1rio","total_count":1,"children":[]},{"name":"Ponto de partida","total_count":1,"children":[]},{"name":"Regras propostas","total_count":1,"children":[]},{"name":"Semana","total_count":1,"children":[]},{"name":"semana-4.md","total_count":1,"children":[]},{"name":"Testes","total_count":1,"children":[]}]},{"name":"semana-5.md","total_count":22,"children":[{"name":"Back-end","total_count":1,"children":[]},{"name":"Congelamento e apresenta\u00e7\u00e3o","total_count":1,"children":[]},{"name":"Contrato inicial da API","total_count":1,"children":[]},{"name":"Crit\u00e9rios de conclus\u00e3o","total_count":1,"children":[]},{"name":"Cronograma di\u00e1rio","total_count":1,"children":[]},{"name":"Detalhe","total_count":1,"children":[]},{"name":"Detalhe","total_count":1,"children":[]},{"name":"Dire\u00e7\u00e3o visual","total_count":1,"children":[]},{"name":"Escopo do MVP de avisos","total_count":1,"children":[]},{"name":"Estrat\u00e9gia de testes","total_count":1,"children":[]},{"name":"Feed","total_count":1,"children":[]},{"name":"Feed","total_count":1,"children":[]},{"name":"Fora do escopo","total_count":1,"children":[]},{"name":"Front-end","total_count":1,"children":[]},{"name":"Metas e tarefas","total_count":1,"children":[]},{"name":"Modelo m\u00ednimo","total_count":1,"children":[]},{"name":"MUST HAVE do Status Report 1","total_count":1,"children":[]},{"name":"Plano de execu\u00e7\u00e3o \u2014 avisos e Status Report 1","total_count":1,"children":[]},{"name":"Ponto de partida","total_count":1,"children":[]},{"name":"Regras propostas","total_count":1,"children":[]},{"name":"Regress\u00e3o integrada","total_count":1,"children":[]},{"name":"semana-5.md","total_count":1,"children":[]}]},{"name":"status-report-1.md","total_count":7,"children":[{"name":"Checklist de demonstra\u00e7\u00e3o \u2014 Status Report 1","total_count":1,"children":[]},{"name":"Perguntas esperadas","total_count":1,"children":[]},{"name":"Prepara\u00e7\u00e3o do ambiente","total_count":1,"children":[]},{"name":"Regra de congelamento","total_count":1,"children":[]},{"name":"Roteiro de at\u00e9 8 minutos","total_count":1,"children":[]},{"name":"Smoke imediatamente antes da apresenta\u00e7\u00e3o","total_count":1,"children":[]},{"name":"status-report-1.md","total_count":1,"children":[]}]},{"name":"validacao-agenda-gerenciavel.md","total_count":5,"children":[{"name":"Escopo entregue","total_count":1,"children":[]},{"name":"Limites atuais","total_count":1,"children":[]},{"name":"validacao-agenda-gerenciavel.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o da Agenda gerenci\u00e1vel","total_count":1,"children":[]},{"name":"Verifica\u00e7\u00f5es executadas","total_count":1,"children":[]}]},{"name":"validacao-anexos.md","total_count":5,"children":[{"name":"Escopo entregue","total_count":1,"children":[]},{"name":"Limites antes de produ\u00e7\u00e3o","total_count":1,"children":[]},{"name":"validacao-anexos.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o de anexos de demandas","total_count":1,"children":[]},{"name":"Verifica\u00e7\u00f5es executadas","total_count":1,"children":[]}]},{"name":"validacao-avisos-gerenciaveis.md","total_count":5,"children":[{"name":"Escopo entregue","total_count":1,"children":[]},{"name":"Limites atuais","total_count":1,"children":[]},{"name":"validacao-avisos-gerenciaveis.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o dos avisos gerenci\u00e1veis","total_count":1,"children":[]},{"name":"Verifica\u00e7\u00f5es executadas","total_count":1,"children":[]}]},{"name":"validacao-semana-1.md","total_count":6,"children":[{"name":"Inspe\u00e7\u00e3o visual","total_count":1,"children":[]},{"name":"Limites e pend\u00eancias para o uso institucional","total_count":1,"children":[]},{"name":"Reproduzir","total_count":1,"children":[]},{"name":"Resultado","total_count":1,"children":[]},{"name":"validacao-semana-1.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o t\u00e9cnica \u2014 semana 1","total_count":1,"children":[]}]},{"name":"validacao-semana-2.md","total_count":6,"children":[{"name":"Desempenho","total_count":1,"children":[]},{"name":"Limita\u00e7\u00f5es atuais","total_count":1,"children":[]},{"name":"Reproduzir","total_count":1,"children":[]},{"name":"Resultado funcional","total_count":1,"children":[]},{"name":"validacao-semana-2.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o t\u00e9cnica \u2014 listagem de demandas","total_count":1,"children":[]}]},{"name":"validacao-semana-3.md","total_count":6,"children":[{"name":"Consist\u00eancia verificada","total_count":1,"children":[]},{"name":"Fluxo integrado","total_count":1,"children":[]},{"name":"Limita\u00e7\u00f5es","total_count":1,"children":[]},{"name":"Resultado","total_count":1,"children":[]},{"name":"validacao-semana-3.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o t\u00e9cnica \u2014 detalhe e hist\u00f3rico de demandas","total_count":1,"children":[]}]},{"name":"validacao-semana-4.md","total_count":6,"children":[{"name":"Comportamentos verificados","total_count":1,"children":[]},{"name":"Fluxo integrado","total_count":1,"children":[]},{"name":"Limita\u00e7\u00f5es","total_count":1,"children":[]},{"name":"Resultado","total_count":1,"children":[]},{"name":"validacao-semana-4.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o t\u00e9cnica \u2014 agenda e calend\u00e1rio","total_count":1,"children":[]}]},{"name":"validacao-semana-5.md","total_count":6,"children":[{"name":"Comportamentos verificados","total_count":1,"children":[]},{"name":"Fluxo integrado real","total_count":1,"children":[]},{"name":"Limita\u00e7\u00f5es","total_count":1,"children":[]},{"name":"Resultado","total_count":1,"children":[]},{"name":"validacao-semana-5.md","total_count":1,"children":[]},{"name":"Valida\u00e7\u00e3o t\u00e9cnica \u2014 avisos e regress\u00e3o do Status Report 1","total_count":1,"children":[]}]}]},{"name":"frontend","total_count":363,"children":[{"name":".oxfmtrc.json","total_count":10,"children":[{"name":"$schema","total_count":1,"children":[]},{"name":"bun.lock","total_count":1,"children":[]},{"name":"bun.lockb","total_count":1,"children":[]},{"name":"ignorePatterns","total_count":1,"children":[]},{"name":"package-lock.json","total_count":1,"children":[]},{"name":"pnpm-lock.yaml","total_count":1,"children":[]},{"name":"printWidth","total_count":1,"children":[]},{"name":"singleQuote","total_count":1,"children":[]},{"name":"sortPackageJson","total_count":1,"children":[]},{"name":"yarn.lock","total_count":1,"children":[]}]},{"name":".oxlintrc.json","total_count":52,"children":[{"name":"$schema","total_count":1,"children":[]},{"name":".next/**","total_count":1,"children":[]},{"name":".vinext/**","total_count":1,"children":[]},{"name":"browser","total_count":1,"children":[]},{"name":"build/**","total_count":1,"children":[]},{"name":"builtin","total_count":1,"children":[]},{"name":"categories","total_count":1,"children":[]},{"name":"components/ui/**","total_count":1,"children":[]},{"name":"correctness","total_count":1,"children":[]},{"name":"coverage/**","total_count":1,"children":[]},{"name":"dist/**","total_count":1,"children":[]},{"name":"env","total_count":1,"children":[]},{"name":"eslint","total_count":1,"children":[]},{"name":"hooks/use-mobile.ts","total_count":1,"children":[]},{"name":"ignorePatterns","total_count":1,"children":[]},{"name":"import","total_count":1,"children":[]},{"name":"import/no-anonymous-default-export","total_count":1,"children":[]},{"name":"jsx-a11y","total_count":1,"children":[]},{"name":"next-env.d.ts","total_count":1,"children":[]},{"name":"nextjs","total_count":1,"children":[]},{"name":"no-array-constructor","total_count":1,"children":[]},{"name":"no-var","total_count":1,"children":[]},{"name":"node","total_count":1,"children":[]},{"name":"options","total_count":1,"children":[]},{"name":"out/**","total_count":1,"children":[]},{"name":"oxc","total_count":1,"children":[]},{"name":"playwright-report/**","total_count":1,"children":[]},{"name":"plugins","total_count":1,"children":[]},{"name":"prefer-const","total_count":1,"children":[]},{"name":"prefer-rest-params","total_count":1,"children":[]},{"name":"prefer-spread","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react/display-name","total_count":1,"children":[]},{"name":"react/jsx-no-comment-textnodes","total_count":1,"children":[]},{"name":"react/no-unescaped-entities","total_count":1,"children":[]},{"name":"react/react-compiler","total_count":1,"children":[]},{"name":"react/require-render-return","total_count":1,"children":[]},{"name":"react/rules-of-hooks","total_count":1,"children":[]},{"name":"rules","total_count":1,"children":[]},{"name":"test-results/**","total_count":1,"children":[]},{"name":"typeAware","total_count":1,"children":[]},{"name":"typeCheck","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"typescript/ban-ts-comment","total_count":1,"children":[]},{"name":"typescript/no-deprecated","total_count":1,"children":[]},{"name":"typescript/no-empty-object-type","total_count":1,"children":[]},{"name":"typescript/no-explicit-any","total_count":1,"children":[]},{"name":"typescript/no-namespace","total_count":1,"children":[]},{"name":"typescript/no-require-imports","total_count":1,"children":[]},{"name":"typescript/no-unnecessary-type-constraint","total_count":1,"children":[]},{"name":"typescript/no-unsafe-function-type","total_count":1,"children":[]},{"name":"unicorn","total_count":1,"children":[]}]},{"name":"app","total_count":12,"children":[{"name":"[module]","total_count":2,"children":[{"name":"page.tsx","total_count":2,"children":[{"name":"generateMetadata()","total_count":1,"children":[]},{"name":"ModulePage()","total_count":1,"children":[]}]}]},{"name":"avisos","total_count":2,"children":[{"name":"[id]","total_count":2,"children":[{"name":"page.tsx","total_count":2,"children":[{"name":"AvisoPage()","total_count":1,"children":[]},{"name":"metadata","total_count":1,"children":[]}]}]}]},{"name":"demandas","total_count":2,"children":[{"name":"[id]","total_count":2,"children":[{"name":"page.tsx","total_count":2,"children":[{"name":"DemandaPage()","total_count":1,"children":[]},{"name":"metadata","total_count":1,"children":[]}]}]}]},{"name":"error.tsx","total_count":1,"children":[{"name":"ErrorPage()","total_count":1,"children":[]}]},{"name":"layout.tsx","total_count":2,"children":[{"name":"metadata","total_count":1,"children":[]},{"name":"RootLayout()","total_count":1,"children":[]}]},{"name":"not-found.tsx","total_count":1,"children":[{"name":"NotFound()","total_count":1,"children":[]}]},{"name":"page.tsx","total_count":2,"children":[{"name":"Home()","total_count":1,"children":[]},{"name":"metadata","total_count":1,"children":[]}]}]},{"name":"components","total_count":65,"children":[{"name":"agenda-calendar.tsx","total_count":11,"children":[{"name":"AgendaCalendar()","total_count":1,"children":[]},{"name":"changed()","total_count":1,"children":[]},{"name":"changeView()","total_count":1,"children":[]},{"name":"dateLabel()","total_count":1,"children":[]},{"name":"EventCard()","total_count":1,"children":[]},{"name":"goToday()","total_count":1,"children":[]},{"name":"move()","total_count":1,"children":[]},{"name":"prepare()","total_count":1,"children":[]},{"name":"retry()","total_count":1,"children":[]},{"name":"timeLabel()","total_count":1,"children":[]},{"name":"views","total_count":1,"children":[]}]},{"name":"anexos-demanda.tsx","total_count":5,"children":[{"name":"AnexosDemanda()","total_count":1,"children":[]},{"name":"formatarTamanho()","total_count":1,"children":[]},{"name":"remove()","total_count":1,"children":[]},{"name":"tentarNovamente()","total_count":1,"children":[]},{"name":"upload()","total_count":1,"children":[]}]},{"name":"avaliar-demanda.tsx","total_count":2,"children":[{"name":"AvaliarDemanda()","total_count":1,"children":[]},{"name":"submit()","total_count":1,"children":[]}]},{"name":"aviso-detail.tsx","total_count":2,"children":[{"name":"AvisoDetail()","total_count":1,"children":[]},{"name":"data()","total_count":1,"children":[]}]},{"name":"aviso-form.tsx","total_count":5,"children":[{"name":"AvisoForm()","total_count":1,"children":[]},{"name":"local()","total_count":1,"children":[]},{"name":"offset()","total_count":1,"children":[]},{"name":"submit()","total_count":1,"children":[]},{"name":"toggle()","total_count":1,"children":[]}]},{"name":"avisos-feed.tsx","total_count":2,"children":[{"name":"AvisosFeed()","total_count":1,"children":[]},{"name":"data()","total_count":1,"children":[]}]},{"name":"cancelar-aviso.tsx","total_count":1,"children":[{"name":"CancelarAviso()","total_count":1,"children":[]}]},{"name":"cancelar-compromisso.tsx","total_count":2,"children":[{"name":"cancel()","total_count":1,"children":[]},{"name":"CancelarCompromisso()","total_count":1,"children":[]}]},{"name":"cancelar-demanda.tsx","total_count":2,"children":[{"name":"cancel()","total_count":1,"children":[]},{"name":"CancelarDemanda()","total_count":1,"children":[]}]},{"name":"compromisso-form.tsx","total_count":5,"children":[{"name":"CompromissoForm()","total_count":1,"children":[]},{"name":"local()","total_count":1,"children":[]},{"name":"offset()","total_count":1,"children":[]},{"name":"submit()","total_count":1,"children":[]},{"name":"toggle()","total_count":1,"children":[]}]},{"name":"demanda-detail.tsx","total_count":8,"children":[{"name":"advance()","total_count":1,"children":[]},{"name":"comment()","total_count":1,"children":[]},{"name":"data()","total_count":1,"children":[]},{"name":"DemandaDetail()","total_count":1,"children":[]},{"name":"prioridadeLabel","total_count":1,"children":[]},{"name":"refreshHistory()","total_count":1,"children":[]},{"name":"retry()","total_count":1,"children":[]},{"name":"statusLabel","total_count":1,"children":[]}]},{"name":"demanda-form.tsx","total_count":4,"children":[{"name":"changeOpen()","total_count":1,"children":[]},{"name":"DemandaForm()","total_count":1,"children":[]},{"name":"submit()","total_count":1,"children":[]},{"name":"vazio","total_count":1,"children":[]}]},{"name":"demandas-list.tsx","total_count":11,"children":[{"name":"changePage()","total_count":1,"children":[]},{"name":"DemandasList()","total_count":1,"children":[]},{"name":"filtrosVazios","total_count":1,"children":[]},{"name":"moveTab()","total_count":1,"children":[]},{"name":"prepareRequest()","total_count":1,"children":[]},{"name":"prioridadeLabel","total_count":1,"children":[]},{"name":"retry()","total_count":1,"children":[]},{"name":"segmentos","total_count":1,"children":[]},{"name":"select()","total_count":1,"children":[]},{"name":"statusLabel","total_count":1,"children":[]},{"name":"updateFilter()","total_count":1,"children":[]}]},{"name":"login-screen.tsx","total_count":2,"children":[{"name":"LoginScreen()","total_count":1,"children":[]},{"name":"submit()","total_count":1,"children":[]}]},{"name":"module-content.tsx","total_count":1,"children":[{"name":"ModuleContent()","total_count":1,"children":[]}]},{"name":"workspace-layout.tsx","total_count":1,"children":[{"name":"WorkspaceLayout()","total_count":1,"children":[]}]},{"name":"workspace.tsx","total_count":1,"children":[{"name":"Workspace()","total_count":1,"children":[]}]}]},{"name":"components.json","total_count":21,"children":[{"name":"$schema","total_count":1,"children":[]},{"name":"aliases","total_count":1,"children":[]},{"name":"baseColor","total_count":1,"children":[]},{"name":"components","total_count":1,"children":[]},{"name":"config","total_count":1,"children":[]},{"name":"css","total_count":1,"children":[]},{"name":"cssVariables","total_count":1,"children":[]},{"name":"hooks","total_count":1,"children":[]},{"name":"iconLibrary","total_count":1,"children":[]},{"name":"lib","total_count":1,"children":[]},{"name":"menuAccent","total_count":1,"children":[]},{"name":"menuColor","total_count":1,"children":[]},{"name":"prefix","total_count":1,"children":[]},{"name":"registries","total_count":1,"children":[]},{"name":"rsc","total_count":1,"children":[]},{"name":"rtl","total_count":1,"children":[]},{"name":"style","total_count":1,"children":[]},{"name":"tailwind","total_count":1,"children":[]},{"name":"tsx","total_count":1,"children":[]},{"name":"ui","total_count":1,"children":[]},{"name":"utils","total_count":1,"children":[]}]},{"name":"hooks","total_count":4,"children":[{"name":"use-session.ts","total_count":4,"children":[{"name":"login()","total_count":1,"children":[]},{"name":"logout()","total_count":1,"children":[]},{"name":"retry()","total_count":1,"children":[]},{"name":"useSession()","total_count":1,"children":[]}]}]},{"name":"lib","total_count":60,"children":[{"name":"agenda.ts","total_count":18,"children":[{"name":".constructor()","total_count":1,"children":[]},{"name":"AgendaResponse","total_count":1,"children":[]},{"name":"cancelarCompromisso()","total_count":1,"children":[]},{"name":"Compromisso","total_count":1,"children":[]},{"name":"ConflitoAgendaError","total_count":1,"children":[]},{"name":"DadosCompromisso","total_count":1,"children":[]},{"name":"dateFrom()","total_count":1,"children":[]},{"name":"diasEntre()","total_count":1,"children":[]},{"name":"hojeFortaleza()","total_count":1,"children":[]},{"name":"intervaloAgenda()","total_count":1,"children":[]},{"name":"isoDate()","total_count":1,"children":[]},{"name":"listarCompromissos()","total_count":1,"children":[]},{"name":"moverReferencia()","total_count":1,"children":[]},{"name":"ocorreNoDia()","total_count":1,"children":[]},{"name":"respostaCompromisso()","total_count":1,"children":[]},{"name":"salvarCompromisso()","total_count":1,"children":[]},{"name":"shiftDays()","total_count":1,"children":[]},{"name":"VisaoAgenda","total_count":1,"children":[]}]},{"name":"auth.ts","total_count":10,"children":[{"name":".constructor()","total_count":1,"children":[]},{"name":"ApiError","total_count":1,"children":[]},{"name":"cookie()","total_count":1,"children":[]},{"name":"csrfToken()","total_count":1,"children":[]},{"name":"entrar()","total_count":1,"children":[]},{"name":"obterUsuarioAtual()","total_count":1,"children":[]},{"name":"Profile","total_count":1,"children":[]},{"name":"responseJson()","total_count":1,"children":[]},{"name":"sair()","total_count":1,"children":[]},{"name":"User","total_count":1,"children":[]}]},{"name":"avisos.ts","total_count":9,"children":[{"name":"AvisoDetalhe","total_count":1,"children":[]},{"name":"AvisoFeed","total_count":1,"children":[]},{"name":"cancelarAviso()","total_count":1,"children":[]},{"name":"CategoriaAviso","total_count":1,"children":[]},{"name":"DadosAviso","total_count":1,"children":[]},{"name":"listarAvisos()","total_count":1,"children":[]},{"name":"obterAviso()","total_count":1,"children":[]},{"name":"resposta()","total_count":1,"children":[]},{"name":"salvarAviso()","total_count":1,"children":[]}]},{"name":"demandas.ts","total_count":21,"children":[{"name":"adicionarComentario()","total_count":1,"children":[]},{"name":"alterarStatus()","total_count":1,"children":[]},{"name":"AnexoDemanda","total_count":1,"children":[]},{"name":"DadosDemanda","total_count":1,"children":[]},{"name":"DemandaDetalhe","total_count":1,"children":[]},{"name":"DemandaResumo","total_count":1,"children":[]},{"name":"enviarAnexo()","total_count":1,"children":[]},{"name":"EventoDemanda","total_count":1,"children":[]},{"name":"excluirAnexo()","total_count":1,"children":[]},{"name":"FiltrosDemandas","total_count":1,"children":[]},{"name":"Inspetor","total_count":1,"children":[]},{"name":"listarAnexos()","total_count":1,"children":[]},{"name":"listarDemandas()","total_count":1,"children":[]},{"name":"listarDemandasParaAgenda()","total_count":1,"children":[]},{"name":"listarInspetores()","total_count":1,"children":[]},{"name":"obterDemanda()","total_count":1,"children":[]},{"name":"PaginaDemandas","total_count":1,"children":[]},{"name":"resposta()","total_count":1,"children":[]},{"name":"salvarDemanda()","total_count":1,"children":[]},{"name":"SegmentoDemanda","total_count":1,"children":[]},{"name":"StatusDemanda","total_count":1,"children":[]}]},{"name":"navigation.ts","total_count":1,"children":[{"name":"modules","total_count":1,"children":[]}]},{"name":"utils.ts","total_count":1,"children":[{"name":"cn()","total_count":1,"children":[]}]}]},{"name":"next.config.ts","total_count":1,"children":[{"name":"nextConfig","total_count":1,"children":[]}]},{"name":"package.json","total_count":90,"children":[{"name":"@axe-core/playwright","total_count":1,"children":[]},{"name":"@axe-core/playwright","total_count":1,"children":[]},{"name":"@base-ui/react","total_count":1,"children":[]},{"name":"@base-ui/react","total_count":1,"children":[]},{"name":"@cloudflare/vite-plugin","total_count":1,"children":[]},{"name":"@cloudflare/vite-plugin","total_count":1,"children":[]},{"name":"@cloudflare/workers-types","total_count":1,"children":[]},{"name":"@cloudflare/workers-types","total_count":1,"children":[]},{"name":"@openai/sites-vite-plugin","total_count":1,"children":[]},{"name":"@openai/sites-vite-plugin","total_count":1,"children":[]},{"name":"@playwright/test","total_count":1,"children":[]},{"name":"@playwright/test","total_count":1,"children":[]},{"name":"@shadcn/react","total_count":1,"children":[]},{"name":"@shadcn/react","total_count":1,"children":[]},{"name":"@tailwindcss/postcss","total_count":1,"children":[]},{"name":"@tailwindcss/postcss","total_count":1,"children":[]},{"name":"@types/node","total_count":1,"children":[]},{"name":"@types/node","total_count":1,"children":[]},{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"@vitejs/plugin-react","total_count":1,"children":[]},{"name":"@vitejs/plugin-react","total_count":1,"children":[]},{"name":"@vitejs/plugin-rsc","total_count":1,"children":[]},{"name":"@vitejs/plugin-rsc","total_count":1,"children":[]},{"name":"build","total_count":1,"children":[]},{"name":"class-variance-authority","total_count":1,"children":[]},{"name":"class-variance-authority","total_count":1,"children":[]},{"name":"clsx","total_count":1,"children":[]},{"name":"clsx","total_count":1,"children":[]},{"name":"cmdk","total_count":1,"children":[]},{"name":"cmdk","total_count":1,"children":[]},{"name":"date-fns","total_count":1,"children":[]},{"name":"date-fns","total_count":1,"children":[]},{"name":"dependencies","total_count":1,"children":[]},{"name":"dev","total_count":1,"children":[]},{"name":"devDependencies","total_count":1,"children":[]},{"name":"embla-carousel-react","total_count":1,"children":[]},{"name":"embla-carousel-react","total_count":1,"children":[]},{"name":"engines","total_count":1,"children":[]},{"name":"format","total_count":1,"children":[]},{"name":"input-otp","total_count":1,"children":[]},{"name":"input-otp","total_count":1,"children":[]},{"name":"lint","total_count":1,"children":[]},{"name":"lucide-react","total_count":1,"children":[]},{"name":"lucide-react","total_count":1,"children":[]},{"name":"name","total_count":1,"children":[]},{"name":"node","total_count":1,"children":[]},{"name":"oxfmt","total_count":1,"children":[]},{"name":"oxfmt","total_count":1,"children":[]},{"name":"oxlint","total_count":1,"children":[]},{"name":"oxlint","total_count":1,"children":[]},{"name":"oxlint-tsgolint","total_count":1,"children":[]},{"name":"oxlint-tsgolint","total_count":1,"children":[]},{"name":"private","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react-day-picker","total_count":1,"children":[]},{"name":"react-day-picker","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"react-resizable-panels","total_count":1,"children":[]},{"name":"react-resizable-panels","total_count":1,"children":[]},{"name":"react-server-dom-webpack","total_count":1,"children":[]},{"name":"react-server-dom-webpack","total_count":1,"children":[]},{"name":"recharts","total_count":1,"children":[]},{"name":"recharts","total_count":1,"children":[]},{"name":"scripts","total_count":1,"children":[]},{"name":"shadcn","total_count":1,"children":[]},{"name":"shadcn","total_count":1,"children":[]},{"name":"start","total_count":1,"children":[]},{"name":"tailwind-merge","total_count":1,"children":[]},{"name":"tailwind-merge","total_count":1,"children":[]},{"name":"tailwindcss","total_count":1,"children":[]},{"name":"tailwindcss","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"tw-animate-css","total_count":1,"children":[]},{"name":"tw-animate-css","total_count":1,"children":[]},{"name":"type","total_count":1,"children":[]},{"name":"typecheck","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"version","total_count":1,"children":[]},{"name":"vinext","total_count":1,"children":[]},{"name":"vinext","total_count":1,"children":[]},{"name":"vite","total_count":1,"children":[]},{"name":"vite","total_count":1,"children":[]},{"name":"wrangler","total_count":1,"children":[]},{"name":"wrangler","total_count":1,"children":[]}]},{"name":"tests","total_count":15,"children":[{"name":"avaliacao-demanda.spec.ts","total_count":1,"children":[{"name":"enviarParaAvaliacao()","total_count":1,"children":[]}]},{"name":"demandas.spec.ts","total_count":1,"children":[{"name":"entrar()","total_count":1,"children":[]}]},{"name":"support","total_count":3,"children":[{"name":"api.ts","total_count":3,"children":[{"name":"entrarComo()","total_count":1,"children":[]},{"name":"instalarApi()","total_count":1,"children":[]},{"name":"Perfil","total_count":1,"children":[]}]}]},{"name":"accessibility.spec.ts","total_count":1,"children":[]},{"name":"agenda.spec.ts","total_count":1,"children":[]},{"name":"anexos-demanda.spec.ts","total_count":1,"children":[]},{"name":"avisos.spec.ts","total_count":1,"children":[]},{"name":"detalhe-demanda.spec.ts","total_count":1,"children":[]},{"name":"gerenciar-agenda.spec.ts","total_count":1,"children":[]},{"name":"gerenciar-avisos.spec.ts","total_count":1,"children":[]},{"name":"gerenciar-demandas.spec.ts","total_count":1,"children":[]},{"name":"navigation.spec.ts","total_count":1,"children":[]},{"name":"session.spec.ts","total_count":1,"children":[]}]},{"name":"tsconfig.json","total_count":31,"children":[{"name":"**/*.mts","total_count":1,"children":[]},{"name":"**/*.ts","total_count":1,"children":[]},{"name":"**/*.tsx","total_count":1,"children":[]},{"name":".next/dev/types/**/*.ts","total_count":1,"children":[]},{"name":".next/types/**/*.ts","total_count":1,"children":[]},{"name":"@cloudflare/workers-types","total_count":1,"children":[]},{"name":"allowJs","total_count":1,"children":[]},{"name":"compilerOptions","total_count":1,"children":[]},{"name":"dom","total_count":1,"children":[]},{"name":"dom.iterable","total_count":1,"children":[]},{"name":"esModuleInterop","total_count":1,"children":[]},{"name":"esnext","total_count":1,"children":[]},{"name":"exclude","total_count":1,"children":[]},{"name":"include","total_count":1,"children":[]},{"name":"incremental","total_count":1,"children":[]},{"name":"isolatedModules","total_count":1,"children":[]},{"name":"jsx","total_count":1,"children":[]},{"name":"lib","total_count":1,"children":[]},{"name":"module","total_count":1,"children":[]},{"name":"moduleResolution","total_count":1,"children":[]},{"name":"next-env.d.ts","total_count":1,"children":[]},{"name":"node","total_count":1,"children":[]},{"name":"node_modules","total_count":1,"children":[]},{"name":"noEmit","total_count":1,"children":[]},{"name":"paths","total_count":1,"children":[]},{"name":"resolveJsonModule","total_count":1,"children":[]},{"name":"skipLibCheck","total_count":1,"children":[]},{"name":"strict","total_count":1,"children":[]},{"name":"target","total_count":1,"children":[]},{"name":"types","total_count":1,"children":[]},{"name":"vinext/types","total_count":1,"children":[]}]},{"name":"vite.config.ts","total_count":1,"children":[{"name":"localBindingConfig","total_count":1,"children":[]}]},{"name":"playwright.config.ts","total_count":1,"children":[]}]},{"name":"README.md","total_count":16,"children":[{"name":"Architecture","total_count":1,"children":[]},{"name":"Centraliza","total_count":1,"children":[]},{"name":"Core capabilities","total_count":1,"children":[]},{"name":"Data and security","total_count":1,"children":[]},{"name":"Demonstration accounts","total_count":1,"children":[]},{"name":"Home","total_count":1,"children":[]},{"name":"Local development","total_count":1,"children":[]},{"name":"Mobile navigation layout","total_count":1,"children":[]},{"name":"Overview","total_count":1,"children":[]},{"name":"Product direction","total_count":1,"children":[]},{"name":"Project documentation","total_count":1,"children":[]},{"name":"README.md","total_count":1,"children":[]},{"name":"Screenshots","total_count":1,"children":[]},{"name":"Team","total_count":1,"children":[]},{"name":"Team workspace","total_count":1,"children":[]},{"name":"Technology stack","total_count":1,"children":[]}]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>
