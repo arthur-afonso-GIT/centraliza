@@ -33,6 +33,9 @@ class Command(BaseCommand):
                 if created:
                     user.set_password(password)
                     user.save()
+                if username == "demo.gestor.1" and not user.pode_administrar_equipe:
+                    user.pode_administrar_equipe = True
+                    user.save(update_fields=("pode_administrar_equipe",))
                 usuarios.append(user)
             contas.append(usuarios)
         for i in range(options["total"]):
@@ -40,6 +43,7 @@ class Command(BaseCommand):
             gestor, inspetor, segundo = contas[grupo]
             Demanda.objects.get_or_create(referencia_demo=f"seed-v1-{i:04d}", defaults={
                 "titulo": f"Inspeção demonstrativa {i + 1:04d}",
+                "sei_numero": f"PROCESSO-FICTICIO-{i + 1:04d}",
                 "descricao": "Registro fictício para desenvolvimento e validação da listagem.",
                 "status": ["pendente", "em_andamento", "concluida", "cancelada"][(i // 2) % 4],
                 "prioridade": ["baixa", "media", "alta"][i % 3],

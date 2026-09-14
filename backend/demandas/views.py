@@ -1,4 +1,7 @@
 from django.core.exceptions import PermissionDenied, ValidationError
+from datetime import timedelta
+
+from django.db import transaction
 from django.db.models import QuerySet
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404
@@ -10,11 +13,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from demandas.anexos import adicionar_anexo, remover_anexo
-from demandas.models import AnexoDemanda, Demanda, EventoDemanda
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
+from demandas.importacao_sei import interpretar_texto_sei
+from demandas.identidade_sei import normalizar_numero_sei
 from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda
 from demandas.serializers import (
     AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
-    AnexoDemandaSerializer, DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer,
+    AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
+    DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer, ImportacaoSeiSerializer,
 )
 
 
@@ -27,6 +33,18 @@ def demandas_permitidas(user):
     if user.perfil == "gestor":
         return queryset
     raise exceptions.PermissionDenied("Perfil sem acesso às demandas.")
+
+
+def numero_sei_da_consulta(request):
+    valor = request.query_params.get("sei_numero")
+    if valor is None:
+        return None
+    if len(valor) > 80:
+        raise exceptions.ValidationError({"sei_numero": "Informe no máximo 80 caracteres."})
+    normalizado = normalizar_numero_sei(valor)
+    if not normalizado:
+        raise exceptions.ValidationError({"sei_numero": "Informe ao menos uma letra ou número."})
+    return normalizado
 
 
 class DemandasPagination(PageNumberPagination):
@@ -122,7 +140,125 @@ class DemandaListView(generics.ListAPIView):
                 raise exceptions.ValidationError({"atrasada": "Use true ou false."})
             hoje = timezone.localdate()
             queryset = queryset.filter(prazo__lt=hoje) if atrasada == "true" else queryset.filter(prazo__gte=hoje)
+        sei_numero = numero_sei_da_consulta(self.request)
+        if sei_numero:
+            queryset = queryset.filter(sei_numero_normalizado__icontains=sei_numero)
         return queryset.order_by("prazo", "id")
+
+
+class DemandaSeiDuplicidadeView(APIView):
+    def get(self, request):
+        normalizado = numero_sei_da_consulta(request)
+        if normalizado is None:
+            raise exceptions.ValidationError({"sei_numero": "Informe o número do processo SEI."})
+        queryset = demandas_permitidas(request.user).filter(
+            sei_numero_normalizado=normalizado,
+        ).order_by("id")[:10]
+        return Response({
+            "numero_normalizado": normalizado,
+            "resultados": [
+                {"id": item.id, "titulo": item.titulo, "status": item.status, "sei_numero": item.sei_numero}
+                for item in queryset
+            ],
+        })
+
+
+def exigir_gestor_importacao(user):
+    if user.perfil != "gestor" or not user.equipe_id:
+        raise exceptions.PermissionDenied("Somente gestores podem preparar importações do SEI nesta etapa.")
+
+
+def importacao_sei_permitida(request, pk, *, bloquear=False):
+    exigir_gestor_importacao(request.user)
+    queryset = ImportacaoSei.objects
+    if bloquear:
+        queryset = queryset.select_for_update()
+    importacao = get_object_or_404(
+        queryset, pk=pk, equipe_id=request.user.equipe_id, usuario=request.user,
+    )
+    if importacao.status in {ImportacaoSei.Status.CONFIRMADA, ImportacaoSei.Status.DESCARTADA}:
+        raise exceptions.ValidationError({"detail": "Esta prévia já foi encerrada."})
+    if importacao.expira_em <= timezone.now():
+        importacao.status = ImportacaoSei.Status.DESCARTADA
+        importacao.conteudo_bruto = ""
+        importacao.descartada_em = timezone.now()
+        importacao.save(update_fields=["status", "conteudo_bruto", "descartada_em"])
+        raise exceptions.ValidationError({"detail": "Esta prévia expirou. Cole o texto novamente."})
+    return importacao
+
+
+class ImportacaoSeiListView(APIView):
+    def post(self, request):
+        exigir_gestor_importacao(request.user)
+        serializer = CriarImportacaoSeiSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        texto = serializer.validated_data["texto"]
+        campos, avisos, erros = interpretar_texto_sei(texto)
+        importacao = ImportacaoSei.objects.create(
+            equipe_id=request.user.equipe_id,
+            usuario=request.user,
+            status=ImportacaoSei.Status.COM_ERROS if erros else ImportacaoSei.Status.VALIDADA,
+            conteudo_bruto=texto,
+            campos=campos,
+            avisos=avisos,
+            erros=erros,
+            expira_em=timezone.now() + timedelta(hours=24),
+        )
+        return Response(ImportacaoSeiSerializer(importacao).data, status=status.HTTP_201_CREATED)
+
+
+class ImportacaoSeiDetailView(APIView):
+    def get(self, request, pk):
+        return Response(ImportacaoSeiSerializer(importacao_sei_permitida(request, pk)).data)
+
+    def patch(self, request, pk):
+        importacao = importacao_sei_permitida(request, pk)
+        serializer = CamposImportacaoSeiSerializer(data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        campos = {**importacao.campos}
+        for campo, valor in serializer.validated_data.items():
+            campos[campo] = valor.isoformat() if hasattr(valor, "isoformat") else valor
+        completo = CamposImportacaoSeiSerializer(data=campos)
+        completo.is_valid(raise_exception=True)
+        importacao.campos = campos
+        importacao.erros = []
+        importacao.avisos = [] if campos.get("assunto") else ["Assunto ou especificação não identificado; informe um título na confirmação."]
+        importacao.status = ImportacaoSei.Status.VALIDADA
+        importacao.save(update_fields=["campos", "erros", "avisos", "status"])
+        return Response(ImportacaoSeiSerializer(importacao).data)
+
+    def delete(self, request, pk):
+        importacao = importacao_sei_permitida(request, pk)
+        importacao.status = ImportacaoSei.Status.DESCARTADA
+        importacao.conteudo_bruto = ""
+        importacao.descartada_em = timezone.now()
+        importacao.save(update_fields=["status", "conteudo_bruto", "descartada_em"])
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ImportacaoSeiConfirmarView(APIView):
+    @transaction.atomic
+    def post(self, request, pk):
+        importacao = importacao_sei_permitida(request, pk, bloquear=True)
+        if importacao.status != ImportacaoSei.Status.VALIDADA:
+            raise exceptions.ValidationError({"detail": "Corrija os erros da prévia antes de confirmar."})
+        serializer = GerenciarDemandaSerializer(data=request.data, context={"request": request})
+        serializer.fields["titulo"].required = True
+        serializer.fields["prazo"].required = True
+        serializer.is_valid(raise_exception=True)
+        dados = dict(serializer.validated_data)
+        dados["sei_numero"] = str(importacao.campos["sei_numero"])
+        try:
+            demanda = criar_demanda(usuario=request.user, dados=dados)
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        importacao.status = ImportacaoSei.Status.CONFIRMADA
+        importacao.demanda = demanda
+        importacao.conteudo_bruto = ""
+        importacao.confirmada_em = timezone.now()
+        importacao.save(update_fields=["status", "demanda", "conteudo_bruto", "confirmada_em"])
+        demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=demanda.pk)
+        return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
 
 
 class DemandaDetailView(generics.RetrieveAPIView):

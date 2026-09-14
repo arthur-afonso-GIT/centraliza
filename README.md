@@ -24,6 +24,8 @@ Available in the current version:
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request management** — managers can create, edit, assign, reassign, cancel, and filter team requests by assignee, deadline, or overdue state.
+- **SEI reference** — requests can store and search an optional SEI process number, with tolerant comparison and a non-blocking possible-duplicate warning; direct SEI capture is not implemented.
+- **Assisted SEI intake** — managers can paste authorized label-and-value text into a temporary preview, review interpreted fields and possible duplicates, and explicitly confirm request creation; compatibility with the institutional SEI layout remains pending validation.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.
@@ -58,6 +60,8 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
+- [Post-MVP evolution plan](docs/plano-evolucao-pos-mvp.md) — SEI-assisted intake, role-specific dashboards, team administration, structured inspections, audit, and rollout.
+- [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.

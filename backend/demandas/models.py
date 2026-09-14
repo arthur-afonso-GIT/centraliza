@@ -4,6 +4,8 @@ from django.db import models
 from pathlib import Path
 from uuid import uuid4
 
+from demandas.identidade_sei import normalizar_numero_sei
+
 
 def caminho_anexo(instance, filename):
     return f"demandas/{instance.demanda_id}/{uuid4().hex}{Path(filename).suffix.lower()}"
@@ -26,6 +28,8 @@ class Demanda(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField(blank=True)
     origem = models.CharField(max_length=200, blank=True)
+    sei_numero = models.CharField(max_length=80, blank=True)
+    sei_numero_normalizado = models.CharField(max_length=80, blank=True, db_index=True, editable=False)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDENTE)
     prioridade = models.CharField(max_length=10, choices=Prioridade.choices, default=Prioridade.MEDIA)
     prazo = models.DateField()
@@ -52,6 +56,8 @@ class Demanda(models.Model):
 
     def clean(self):
         super().clean()
+        if self.sei_numero and not normalizar_numero_sei(self.sei_numero):
+            raise ValidationError({"sei_numero": "Informe ao menos uma letra ou número."})
         for campo in ("criador", "responsavel"):
             usuario = getattr(self, campo) if getattr(self, f"{campo}_id") else None
             if usuario and usuario.equipe_id != self.equipe_id:
@@ -60,6 +66,11 @@ class Demanda(models.Model):
             raise ValidationError({"responsavel": "Atribua a demanda a um inspetor."})
 
     def save(self, *args, **kwargs):
+        self.sei_numero = self.sei_numero.strip()
+        self.sei_numero_normalizado = normalizar_numero_sei(self.sei_numero)
+        update_fields = kwargs.get("update_fields")
+        if update_fields and "sei_numero" in update_fields:
+            kwargs["update_fields"] = {*update_fields, "sei_numero_normalizado"}
         self.full_clean()
         return super().save(*args, **kwargs)
 
@@ -111,3 +122,39 @@ class AnexoDemanda(models.Model):
     class Meta:
         ordering = ["-criado_em", "-id"]
         indexes = [models.Index(fields=["demanda", "removido_em", "-criado_em"], name="anexo_demanda_ativo")]
+
+
+class ImportacaoSei(models.Model):
+    class Origem(models.TextChoices):
+        TEXTO = "texto", "Texto colado"
+        EXTENSAO = "extensao", "Extensão do navegador"
+
+    class Status(models.TextChoices):
+        VALIDADA = "validada", "Validada"
+        COM_ERROS = "com_erros", "Com erros"
+        CONFIRMADA = "confirmada", "Confirmada"
+        DESCARTADA = "descartada", "Descartada"
+
+    equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT, related_name="importacoes_sei")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="importacoes_sei")
+    origem = models.CharField(max_length=10, choices=Origem.choices, default=Origem.TEXTO)
+    status = models.CharField(max_length=12, choices=Status.choices)
+    conteudo_bruto = models.TextField(blank=True)
+    campos = models.JSONField(default=dict)
+    avisos = models.JSONField(default=list)
+    erros = models.JSONField(default=list)
+    demanda = models.ForeignKey(Demanda, on_delete=models.PROTECT, related_name="importacoes_sei", null=True, blank=True)
+    criada_em = models.DateTimeField(auto_now_add=True)
+    expira_em = models.DateTimeField()
+    confirmada_em = models.DateTimeField(null=True, blank=True)
+    descartada_em = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-criada_em", "-id"]
+        indexes = [models.Index(fields=["equipe", "usuario", "status", "-criada_em"], name="import_sei_acesso")]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(status__in=["validada", "com_erros", "confirmada", "descartada"]),
+                name="import_sei_status_valido",
+            ),
+        ]

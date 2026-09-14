@@ -5,8 +5,32 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import override_settings
 from rest_framework.test import APIClient, APITestCase
 
-from demandas.models import AnexoDemanda, Demanda, EventoDemanda
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
+from demandas.identidade_sei import normalizar_numero_sei
+from demandas.importacao_sei import interpretar_texto_sei
 from usuarios.models import Equipe, Usuario
+
+
+class IdentidadeSeiTest(APITestCase):
+    def test_normalizacao_e_conservadora_e_preserva_letras(self):
+        self.assertEqual(normalizar_numero_sei(" 23.000/2026-AB "), "230002026AB")
+        self.assertEqual(normalizar_numero_sei("PROCESSO-FICTICIO-001"), "PROCESSOFICTICIO001")
+        self.assertEqual(normalizar_numero_sei(" - / . "), "")
+
+    def test_parser_aceita_rotulos_ficticios_e_datas_comuns(self):
+        campos, avisos, erros = interpretar_texto_sei(
+            "Número SEI: PROCESSO-FICTICIO-001\nAssunto: Inspeção demonstrativa\n"
+            "Tipo do Processo: Fiscalização\nUnidade: VISAT DEMONSTRAÇÃO\nData de Autuação: 14/09/2026"
+        )
+        self.assertEqual(erros, [])
+        self.assertEqual(avisos, [])
+        self.assertEqual(campos["sei_numero"], "PROCESSO-FICTICIO-001")
+        self.assertEqual(campos["data_autuacao"], "2026-09-14")
+
+    def test_parser_falha_de_forma_explicita_sem_numero(self):
+        campos, avisos, erros = interpretar_texto_sei("Assunto: Exemplo\nCampo desconhecido: valor")
+        self.assertEqual(campos["assunto"], "Exemplo")
+        self.assertIn("O número do processo SEI não foi identificado.", erros)
 
 
 class ListagemDemandasTest(APITestCase):
@@ -62,6 +86,23 @@ class ListagemDemandasTest(APITestCase):
         response = self.client.get("/api/demandas/?status=pendente&critica=true")
         self.assertEqual(response.data["count"], 1)
         self.assertEqual(response.data["results"][0]["titulo"], "Pendente crítica A")
+
+    def test_busca_numero_sei_normalizado_respeita_acesso(self):
+        propria = Demanda.objects.get(titulo="Pendente crítica A")
+        propria.sei_numero = "23.000/2026-AB"
+        propria.save()
+        externa = Demanda.objects.get(titulo="Pendente B")
+        externa.sei_numero = "23.000/2026-AB"
+        externa.save()
+        self.autenticar(self.gestor_a)
+        response = self.client.get("/api/demandas/?sei_numero=23000-2026ab")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["id"] for item in response.data["results"]], [propria.id])
+        self.assertEqual(response.data["results"][0]["sei_numero"], "23.000/2026-AB")
+
+    def test_rejeita_busca_sei_sem_letras_ou_numeros(self):
+        self.autenticar(self.gestor_a)
+        self.assertEqual(self.client.get("/api/demandas/?sei_numero=---").status_code, 400)
 
     def test_rejeita_parametros_invalidos(self):
         self.autenticar(self.gestor_a)
@@ -323,7 +364,7 @@ class GerenciamentoDemandasTest(APITestCase):
         cls.externo = Usuario.objects.create_user(username="inspetor.externo.crud", perfil="inspetor", equipe=cls.outra)
 
     def payload(self):
-        return {"titulo": "Nova inspeção", "descricao": "Descrição", "origem": "MPT", "prioridade": "alta", "prazo": "2026-10-20", "critica": True, "responsavel_id": self.inspetor.id}
+        return {"titulo": "Nova inspeção", "sei_numero": " PROCESSO-FICTICIO-001 ", "descricao": "Descrição", "origem": "MPT", "prioridade": "alta", "prazo": "2026-10-20", "critica": True, "responsavel_id": self.inspetor.id}
 
     def test_gestor_cria_demanda_atribuida_com_historico(self):
         self.client.force_authenticate(self.gestor)
@@ -331,7 +372,32 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data["responsavel"]["id"], self.inspetor.id)
         self.assertEqual(response.data["origem"], "MPT")
+        self.assertEqual(response.data["sei_numero"], "PROCESSO-FICTICIO-001")
+        self.assertEqual(Demanda.objects.get(pk=response.data["id"]).sei_numero_normalizado, "PROCESSOFICTICIO001")
+        self.assertIn("Processo SEI: PROCESSO-FICTICIO-001", response.data["historico"][-1]["texto"])
         self.assertEqual([item["tipo"] for item in response.data["historico"]], ["responsavel_alterado", "demanda_criada"])
+
+    def test_avisa_duplicidade_sem_bloquear_criacao(self):
+        existente = Demanda.objects.create(
+            titulo="Processo já cadastrado", sei_numero="23.000/2026-AB", prazo=date(2026, 10, 20),
+            equipe=self.equipe, criador=self.gestor, status="concluida",
+        )
+        self.client.force_authenticate(self.gestor)
+        verificacao = self.client.get("/api/demandas/verificar-sei/?sei_numero=23000-2026ab")
+        self.assertEqual(verificacao.status_code, 200)
+        self.assertEqual(verificacao.data["resultados"][0]["id"], existente.id)
+        criado = self.client.post("/api/demandas/", self.payload())
+        self.assertEqual(criado.status_code, 201)
+
+    def test_verificacao_de_duplicidade_respeita_equipe(self):
+        Demanda.objects.create(
+            titulo="Externa", sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20),
+            equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.sei.externo", perfil="gestor", equipe=self.outra),
+        )
+        self.client.force_authenticate(self.gestor)
+        response = self.client.get("/api/demandas/verificar-sei/?sei_numero=PROCESSOFICTICIO001")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["resultados"], [])
 
     def test_inspetor_nao_cria_nem_edita(self):
         self.client.force_authenticate(self.inspetor)
@@ -360,3 +426,85 @@ class GerenciamentoDemandasTest(APITestCase):
         demanda = Demanda.objects.create(titulo="Encerrada", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, status="concluida")
         self.client.force_authenticate(self.gestor)
         self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 400)
+
+
+class ImportacaoSeiTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe importação")
+        cls.gestor = Usuario.objects.create_user(username="gestor.importacao", perfil="gestor", equipe=cls.equipe)
+        cls.outro_gestor = Usuario.objects.create_user(username="outro.gestor.importacao", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.importacao", perfil="inspetor", equipe=cls.equipe)
+
+    def texto(self):
+        return (
+            "Número SEI: PROCESSO-FICTICIO-001\n"
+            "Assunto: Inspeção demonstrativa\n"
+            "Tipo do Processo: Fiscalização\n"
+            "Unidade: VISAT DEMONSTRAÇÃO\n"
+            "Data de Autuação: 14/09/2026"
+        )
+
+    def criar_previa(self):
+        self.client.force_authenticate(self.gestor)
+        return self.client.post("/api/importacoes/sei/", {"texto": self.texto()})
+
+    def test_gestor_cria_previa_sem_expor_texto_bruto(self):
+        response = self.criar_previa()
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data["status"], "validada")
+        self.assertEqual(response.data["campos"]["sei_numero"], "PROCESSO-FICTICIO-001")
+        self.assertNotIn("conteudo_bruto", response.data)
+        importacao = ImportacaoSei.objects.get(pk=response.data["id"])
+        self.assertEqual(importacao.usuario, self.gestor)
+        self.assertGreater(importacao.expira_em, importacao.criada_em)
+
+    def test_inspetor_nao_cria_previa(self):
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.post("/api/importacoes/sei/", {"texto": self.texto()}).status_code, 403)
+
+    def test_previa_com_erro_pode_ser_corrigida(self):
+        self.client.force_authenticate(self.gestor)
+        criada = self.client.post("/api/importacoes/sei/", {"texto": "Assunto: Teste"})
+        self.assertEqual(criada.data["status"], "com_erros")
+        corrigida = self.client.patch(
+            f"/api/importacoes/sei/{criada.data['id']}/", {"sei_numero": "PROCESSO-FICTICIO-002"},
+        )
+        self.assertEqual(corrigida.status_code, 200)
+        self.assertEqual(corrigida.data["status"], "validada")
+        self.assertEqual(corrigida.data["erros"], [])
+
+    def test_confirmacao_cria_demanda_e_apaga_texto_bruto(self):
+        previa = self.criar_previa()
+        response = self.client.post(f"/api/importacoes/sei/{previa.data['id']}/confirmar/", {
+            "titulo": "Inspeção importada", "descricao": "Dados revisados.", "origem": "MPT",
+            "prioridade": "alta", "prazo": "2026-10-20", "critica": True,
+            "responsavel_id": self.inspetor.id,
+        })
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data["sei_numero"], "PROCESSO-FICTICIO-001")
+        importacao = ImportacaoSei.objects.get(pk=previa.data["id"])
+        self.assertEqual(importacao.status, "confirmada")
+        self.assertEqual(importacao.conteudo_bruto, "")
+        self.assertEqual(importacao.demanda_id, response.data["id"])
+        self.assertIsNotNone(importacao.confirmada_em)
+        self.assertEqual(self.client.post(f"/api/importacoes/sei/{previa.data['id']}/confirmar/", {"titulo": "Outra", "prazo": "2026-10-21"}).status_code, 400)
+
+    def test_previa_detecta_duplicidade_e_isola_autor(self):
+        Demanda.objects.create(
+            titulo="Existente", sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20),
+            equipe=self.equipe, criador=self.gestor,
+        )
+        previa = self.criar_previa()
+        self.assertEqual(len(previa.data["possiveis_duplicidades"]), 1)
+        self.client.force_authenticate(self.outro_gestor)
+        self.assertEqual(self.client.get(f"/api/importacoes/sei/{previa.data['id']}/").status_code, 404)
+
+    def test_descarte_encerra_previa_e_remove_texto(self):
+        previa = self.criar_previa()
+        url = f"/api/importacoes/sei/{previa.data['id']}/"
+        self.assertEqual(self.client.delete(url).status_code, 204)
+        importacao = ImportacaoSei.objects.get(pk=previa.data["id"])
+        self.assertEqual(importacao.status, "descartada")
+        self.assertEqual(importacao.conteudo_bruto, "")
+        self.assertEqual(self.client.get(url).status_code, 400)

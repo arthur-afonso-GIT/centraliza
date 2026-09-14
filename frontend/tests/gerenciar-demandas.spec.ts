@@ -9,13 +9,38 @@ test('gestor cria uma demanda atribuída', async ({ page }) => {
   await page.goto('/demandas');
   await page.getByRole('button', { name: 'Nova demanda' }).click();
   await page.getByLabel('Título').fill('Fiscalização solicitada pelo sindicato');
+  await page.getByLabel('Número do processo SEI (opcional)').fill('PROCESSO-FICTICIO-002');
   await page.getByLabel('Descrição').fill('Verificar condições do ambiente.');
   await page.getByLabel('Origem').fill('Sindicato');
-  await page.getByLabel('Prazo').fill('2026-10-20');
+  await page.getByLabel('Prazo', { exact: true }).fill('2026-10-20');
   await page.getByLabel('Prioridade').selectOption('alta');
-  await page.getByLabel('Responsável').selectOption('2');
+  await page.getByRole('dialog').getByLabel('Responsável').selectOption('2');
   await page.getByLabel('Demanda crítica').check();
   await page.getByRole('button', { name: 'Salvar demanda' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('gestor recebe aviso de possível duplicidade do número SEI', async ({ page }) => {
+  await entrarComo(page, 'gestor');
+  await page.goto('/demandas');
+  await page.getByRole('button', { name: 'Nova demanda' }).click();
+  await page.getByLabel('Número do processo SEI (opcional)').fill('processo ficticio 001');
+  await page.getByLabel('Número do processo SEI (opcional)').blur();
+  await expect(page.getByText('Possível duplicidade')).toBeVisible();
+  await expect(page.getByRole('link', { name: /PROCESSO-FICTICIO-001/ })).toBeVisible();
+});
+
+test('gestor interpreta texto, revisa e confirma demanda do SEI', async ({ page }) => {
+  await entrarComo(page, 'gestor');
+  await page.goto('/demandas');
+  await page.getByRole('button', { name: 'Importar do SEI' }).click();
+  await page.getByLabel('Texto copiado do SEI').fill('Número SEI: PROCESSO-FICTICIO-009\nAssunto: Inspeção importada');
+  await page.getByRole('button', { name: 'Gerar prévia' }).click();
+  await expect(page.getByLabel('Número do processo SEI')).toHaveValue('PROCESSO-FICTICIO-009');
+  await expect(page.getByLabel('Título')).toHaveValue('Inspeção importada');
+  expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()).violations).toEqual([]);
+  await page.getByLabel('Prazo', { exact: true }).fill('2026-10-20');
+  await page.getByRole('button', { name: 'Confirmar e criar demanda' }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 

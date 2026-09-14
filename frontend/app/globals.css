@@ -132,6 +132,7 @@ p { line-height: 1.65; }
 .status { color: var(--visat-muted); background: #f0f0f2; border-radius: 5px; padding: 5px 8px; }
 .status-em_andamento { color: #795000; background: #fff4d6; }.critical { color: var(--visat-red-dark); }
 .demand-card h3 { font-size: 17px; margin: 18px 0 20px; }
+.sei-reference { color: var(--visat-muted); font-size: 13px; font-weight: 650; margin: -12px 0 18px; overflow-wrap: anywhere; }
 .demand-card dl { display: grid; grid-template-columns: .8fr 1fr 1.4fr; gap: 12px; margin: 0; }
 .demand-card dl div { min-width: 0; }.demand-card dt { color: var(--visat-muted); font-size: 11px; margin-bottom: 5px; }
 .demand-card dd { display: flex; align-items: center; gap: 5px; margin: 0; font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
@@ -326,7 +327,7 @@ body {
 .notice-summary { margin: 2rem 0 1.25rem; font-size: 1.15rem; font-weight: 600; color: #273139; }
 .notice-body { white-space: pre-wrap; line-height: 1.75; color: #313b43; }
 @media (max-width: 560px) { .notice-card-top, .notice-meta { align-items: flex-start; flex-direction: column; gap: .5rem; }.notice-detail-toolbar { flex-direction: column; }.notice-detail-toolbar > div { width: 100%; flex-wrap: wrap; } }
-.demand-management { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+.demand-management { display: flex; justify-content: flex-end; gap: .65rem; margin-bottom: 1rem; }
 .demand-dialog { max-width: 680px; max-height: calc(100vh - 2rem); overflow-y: auto; }
 .demand-form { display: grid; gap: 1rem; }
 .demand-form label { display: grid; gap: .4rem; color: #273139; font-size: .9rem; font-weight: 650; }
@@ -336,14 +337,21 @@ body {
 .demand-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .demand-form .check-field { display: flex; grid-auto-flow: column; justify-content: start; align-items: center; }
 .demand-form .check-field input { width: 18px; height: 18px; accent-color: #d71929; }
+.demand-form fieldset { display: grid; gap: 1rem; min-width: 0; margin: 0; padding: 1rem; border: 1px solid var(--visat-border); border-radius: 8px; }
+.demand-form legend { padding: 0 .35rem; color: var(--visat-graphite); font-weight: 750; }
 .form-actions { display: flex; justify-content: flex-end; gap: .75rem; padding-top: .5rem; }
 .form-error { display: flex; gap: .5rem; align-items: center; color: #991522; background: #fff0f1; border: 1px solid #f2b7bc; border-radius: 7px; padding: .75rem; }
+.form-note { color: var(--visat-muted); font-size: .85rem; margin: -.35rem 0 0; }
+.form-warning { display: flex; align-items: flex-start; gap: .65rem; color: #684400; background: #fff8e5; border: 1px solid #e7cd86; border-radius: 7px; padding: .8rem; }
+.form-warning p { margin: .2rem 0 .35rem; }.form-warning a { display: block; color: #704900; font-weight: 650; overflow-wrap: anywhere; }
 @media (max-width: 560px) { .demand-form .form-row { grid-template-columns: 1fr; } .form-actions { flex-direction: column-reverse; } .form-actions button { width: 100%; } }
 .danger-action { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-height: 40px; border: 1px solid #c91524; border-radius: 7px; padding: .6rem .9rem; color: #a51320; background: #fff; font-weight: 700; }
 .danger-action:hover { background: #fff0f1; }
 .cancel-reason { display: grid; gap: .45rem; font-size: .9rem; font-weight: 650; }
 .cancel-reason textarea { min-height: 100px; resize: vertical; border: 1px solid #b7bec4; border-radius: 7px; padding: .7rem; font: inherit; }
 .demand-filters { display: grid; grid-template-columns: minmax(160px, 1.2fr) repeat(2, minmax(145px, 1fr)) auto auto; gap: .75rem; align-items: end; margin-bottom: 1rem; padding: 1rem; border: 1px solid #d9dde1; border-radius: 9px; background: #fff; }
+.sei-search { display: grid; gap: .35rem; margin-bottom: 1rem; padding: 1rem; border: 1px solid #d9dde1; border-radius: 9px; background: #fff; }
+.sei-search label { color: #38434b; font-size: .85rem; font-weight: 650; }.sei-search > div { display: flex; gap: .5rem; }.sei-search input { flex: 1; min-width: 0; min-height: 40px; border: 1px solid #b7bec4; border-radius: 7px; padding: .5rem .65rem; }
 .demand-filters label { display: grid; gap: .35rem; color: #38434b; font-size: .85rem; font-weight: 650; }
 .demand-filters input:not([type="checkbox"]), .demand-filters select { min-height: 40px; border: 1px solid #b7bec4; border-radius: 7px; padding: .5rem .65rem; background: #fff; }
 .demand-filters .filter-check { display: flex; align-items: center; min-height: 40px; gap: .45rem; white-space: nowrap; }
