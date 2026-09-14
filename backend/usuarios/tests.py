@@ -80,3 +80,64 @@ class ListaInspetoresTest(APITestCase):
         self.assertEqual(self.client.get("/api/usuarios/inspetores/").status_code, 401)
         self.client.force_authenticate(self.inspetor)
         self.assertEqual(self.client.get("/api/usuarios/inspetores/").status_code, 403)
+
+
+class AdministracaoEquipeTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe administrada")
+        cls.outra = Equipe.objects.create(nome="Equipe externa")
+        cls.admin = Usuario.objects.create_user(username="admin.equipe", password="SenhaForte@2026", perfil="gestor", equipe=cls.equipe, pode_administrar_equipe=True)
+        cls.gestor = Usuario.objects.create_user(username="gestor.comum", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.equipe", first_name="Iara", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="usuario.externo", perfil="inspetor", equipe=cls.outra)
+
+    def test_integrante_pode_consultar_apenas_sua_equipe(self):
+        self.client.force_authenticate(self.inspetor)
+        response = self.client.get("/api/equipe/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["nome"], self.equipe.nome)
+        self.assertFalse(response.data["pode_administrar"])
+        self.assertEqual({item["id"] for item in response.data["membros"]}, {self.admin.id, self.gestor.id, self.inspetor.id})
+
+    def test_admin_cria_conta_com_senha_protegida(self):
+        self.client.force_authenticate(self.admin)
+        response = self.client.post("/api/equipe/usuarios/", {
+            "username": "nova.inspetora", "password": "NovaSenha@2026", "first_name": "Nova",
+            "perfil": "inspetor", "is_active": True, "pode_administrar_equipe": False,
+        }, format="json")
+        self.assertEqual(response.status_code, 201)
+        criada = Usuario.objects.get(username="nova.inspetora")
+        self.assertEqual(criada.equipe, self.equipe)
+        self.assertTrue(criada.check_password("NovaSenha@2026"))
+        self.assertNotIn("password", response.data)
+
+    def test_usuario_sem_permissao_nao_administra(self):
+        for usuario in (self.gestor, self.inspetor):
+            self.client.force_authenticate(usuario)
+            self.assertEqual(self.client.post("/api/equipe/usuarios/", {"username": "bloqueado"}, format="json").status_code, 403)
+
+    def test_admin_nao_acessa_conta_de_outra_equipe(self):
+        self.client.force_authenticate(self.admin)
+        response = self.client.patch(f"/api/equipe/usuarios/{self.externo.id}/", {"first_name": "Alterado"}, format="json")
+        self.assertEqual(response.status_code, 404)
+
+    def test_admin_nao_remove_a_propria_permissao(self):
+        self.client.force_authenticate(self.admin)
+        response = self.client.patch(f"/api/equipe/usuarios/{self.admin.id}/", {"pode_administrar_equipe": False}, format="json")
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("própria permissão", response.data["detail"])
+
+    def test_bloqueia_desativacao_com_demanda_ativa(self):
+        Demanda.objects.create(titulo="Ativa", prazo="2026-09-15", equipe=self.equipe, criador=self.admin, responsavel=self.inspetor)
+        self.client.force_authenticate(self.admin)
+        response = self.client.patch(f"/api/equipe/usuarios/{self.inspetor.id}/", {"is_active": False}, format="json")
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Reatribua", response.data["detail"])
+
+    def test_permite_desativar_inspetor_sem_demanda_ativa(self):
+        self.client.force_authenticate(self.admin)
+        response = self.client.patch(f"/api/equipe/usuarios/{self.inspetor.id}/", {"is_active": False}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.inspetor.refresh_from_db()
+        self.assertFalse(self.inspetor.is_active)

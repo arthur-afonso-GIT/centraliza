@@ -193,6 +193,11 @@ e não expõem conteúdo sensível.
 
 ### Ciclo 3 — Administração de equipes e usuários
 
+**Status em 14/09/2026:** implementado no produto local, com testes automatizados. A
+permissão administrativa é explícita e desativada por padrão; não há exclusão de
+contas nem administração entre equipes. Inspetores com demandas ativas precisam
+ter essas demandas reatribuídas antes da desativação ou mudança de perfil.
+
 **Meta:** retirar a gestão cotidiana de acessos do banco de dados.
 
 1. Validar se será criado um perfil administrador ou uma permissão específica.

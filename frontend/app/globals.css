@@ -177,6 +177,17 @@ p { line-height: 1.65; }
 
 @custom-variant dark (&:is(.dark *));
 
+.team-panel { display: grid; gap: 1rem; max-width: 920px; }
+.team-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; }
+.team-toolbar h2 { margin: .2rem 0; }.team-toolbar p { margin: 0; color: var(--visat-muted); }
+.team-list { display: grid; gap: .75rem; }
+.team-member { display: grid; grid-template-columns: 46px minmax(0,1fr) auto; align-items: center; gap: 1rem; padding: 1rem; background: #fff; border: 1px solid var(--visat-border); border-radius: 9px; }
+.team-member.is-inactive { background: #f5f6f7; opacity: .75; }.team-member h3 { margin: 0 0 .25rem; font-size: 1rem; }.team-member p { margin: 0; color: var(--visat-muted); font-size: .82rem; overflow-wrap: anywhere; }
+.member-avatar { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; color: var(--visat-red-dark); background: var(--visat-soft); }
+.member-badges { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem; }.admin-badge,.inactive-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .5rem; border-radius: 999px; font-size: .7rem; font-weight: 700; }.admin-badge { color: #684400; background: #fff8e5; }.inactive-badge { color: #555f67; background: #e7eaec; }
+.team-state { min-height: 260px; display: grid; place-content: center; justify-items: center; gap: .75rem; text-align: center; border: 1px dashed var(--visat-border); border-radius: 10px; }.team-note { display: flex; align-items: center; gap: .5rem; color: var(--visat-muted); font-size: .85rem; }
+@media(max-width: 560px) { .team-toolbar { align-items: flex-start; flex-direction: column; }.team-toolbar > button { width: 100%; }.team-member { grid-template-columns: 42px minmax(0,1fr); }.team-member > button { grid-column: 1 / -1; width: 100%; border: 1px solid var(--visat-border); } }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

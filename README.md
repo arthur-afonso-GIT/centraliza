@@ -26,6 +26,7 @@ Available in the current version:
 - **Request management** — managers can create, edit, assign, reassign, cancel, and filter team requests by assignee, deadline, or overdue state.
 - **SEI reference** — requests can store and search an optional SEI process number, with tolerant comparison and a non-blocking possible-duplicate warning; direct SEI capture is not implemented.
 - **Assisted SEI intake** — managers can paste authorized label-and-value text into a temporary preview, review interpreted fields and possible duplicates, and explicitly confirm request creation; compatibility with the institutional SEI layout remains pending validation.
+- **Team directory and account management** — every member can view their own team; explicitly authorized managers can create, edit, activate, and deactivate accounts without accessing another team or deleting records.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.

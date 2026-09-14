@@ -8,7 +8,7 @@ test('protege rotas; gestor navega, atualiza e sai', async ({ page }) => {
   await expect(page).toHaveURL('/login');
   await entrarComo(page, 'gestor');
   await expect(page.getByRole('heading', { name: 'Olá, Gestor.' })).toBeVisible();
-  for (const title of ['Agenda', 'Avisos', 'Demandas', 'Chats', 'Home']) {
+  for (const title of ['Agenda', 'Avisos', 'Demandas', 'Equipe', 'Chats', 'Home']) {
     const link = page.getByRole('navigation').getByRole('link', { name: title, exact: true });
     await link.click();
     await expect(page.getByRole('navigation').getByRole('link', { name: title, exact: true })).toHaveAttribute('aria-current', 'page');

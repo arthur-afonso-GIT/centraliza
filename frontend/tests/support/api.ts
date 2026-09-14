@@ -4,6 +4,10 @@ type Perfil = 'gestor' | 'inspetor';
 
 export async function instalarApi(page: Page) {
   let perfil: Perfil | null = null;
+  let membros = [
+    { id: 1, username: 'demo.gestor.1', nome: 'Gestor de teste', first_name: 'Gestor', last_name: 'de teste', email: 'gestor@example.test', perfil: 'gestor', is_active: true, pode_administrar_equipe: true },
+    { id: 2, username: 'demo.inspetor.1', nome: 'Inspetor de teste', first_name: 'Inspetor', last_name: 'de teste', email: '', perfil: 'inspetor', is_active: true, pode_administrar_equipe: false },
+  ];
   let demandStatus = 'pendente';
   const history: Array<Record<string, unknown>> = [];
   let attachments: Array<Record<string, unknown>> = [];
@@ -24,10 +28,19 @@ export async function instalarApi(page: Page) {
       const body = request.postDataJSON() as { username: string; password: string };
       if (body.password !== 'senha-de-teste') return route.fulfill({ status: 401, json: { detail: 'Credenciais inválidas.' } });
       perfil = body.username.includes('inspetor') ? 'inspetor' : 'gestor';
-      return route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil } });
+      return route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil, pode_administrar_equipe: perfil === 'gestor' } });
     }
     if (url.pathname === '/api/auth/logout/') { perfil = null; return route.fulfill({ status: 204 }); }
-    if (url.pathname === '/api/auth/me/') return perfil ? route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil } }) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+    if (url.pathname === '/api/auth/me/') return perfil ? route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil, pode_administrar_equipe: perfil === 'gestor' } }) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+    if (url.pathname === '/api/equipe/') return route.fulfill({ json: { id: 1, nome: 'VISAT Demonstração 1', pode_administrar: perfil === 'gestor', membros } });
+    if (url.pathname === '/api/equipe/usuarios/' && request.method() === 'POST') {
+      if (perfil !== 'gestor') return route.fulfill({ status: 403, json: { detail: 'Você não tem permissão para administrar esta equipe.' } });
+      const body = request.postDataJSON() as Record<string, unknown>;
+      const created = { id: 3, username: String(body.username), nome: `${body.first_name ?? ''} ${body.last_name ?? ''}`.trim() || String(body.username), first_name: String(body.first_name ?? ''), last_name: String(body.last_name ?? ''), email: String(body.email ?? ''), perfil: String(body.perfil), is_active: Boolean(body.is_active), pode_administrar_equipe: Boolean(body.pode_administrar_equipe) };
+      membros = [...membros, created]; return route.fulfill({ status: 201, json: created });
+    }
+    const membro = url.pathname.match(/^\/api\/equipe\/usuarios\/(\d+)\/$/);
+    if (membro && request.method() === 'PATCH') { const body = request.postDataJSON() as Record<string, unknown>; const index = membros.findIndex(item => item.id === Number(membro[1])); membros[index] = { ...membros[index], ...body }; return route.fulfill({ json: membros[index] }); }
     if (url.pathname === '/api/usuarios/inspetores/') return perfil === 'gestor' ? route.fulfill({ json: { resultados: [{ id: 2, nome: 'Inspetor de teste' }, { id: 3, nome: 'Segundo inspetor' }] } }) : route.fulfill({ status: 403, json: {} });
     if (url.pathname === '/api/importacoes/sei/' && request.method() === 'POST') {
       if (perfil !== 'gestor') return route.fulfill({ status: 403, json: { detail: 'Somente gestores podem preparar importações do SEI nesta etapa.' } });

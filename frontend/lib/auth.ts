@@ -1,5 +1,5 @@
 export type Profile = 'gestor' | 'inspetor';
-export type User = { id: number; nome: string; perfil: Profile };
+export type User = { id: number; nome: string; perfil: Profile; pode_administrar_equipe: boolean };
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }

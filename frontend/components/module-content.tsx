@@ -7,6 +7,7 @@ import type { User } from '../lib/auth';
 import DemandasList from './demandas-list';
 import AgendaCalendar from './agenda-calendar';
 import AvisosFeed from './avisos-feed';
+import EquipeManagement from './equipe-management';
 
 export default function ModuleContent({
   page,
@@ -46,7 +47,7 @@ export default function ModuleContent({
           </p>
         </div>
       </div>
-      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed user={user} /> : page === 'home' ? (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed user={user} /> : page === 'equipe' ? <EquipeManagement user={user} /> : page === 'home' ? (
         <>
           <section className="welcome-panel">
             <div>

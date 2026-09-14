@@ -21,7 +21,7 @@ export default async function ModulePage({
   params: Promise<{ module: string }>;
 }) {
   const { module } = await params;
-  if (!['login', 'agenda', 'avisos', 'demandas', 'chats'].includes(module))
+  if (!['login', 'agenda', 'avisos', 'demandas', 'equipe', 'chats'].includes(module))
     notFound();
   return <Workspace key={module} page={module} />;
 }

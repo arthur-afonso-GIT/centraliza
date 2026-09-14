@@ -4,6 +4,7 @@ import {
   Home,
   Megaphone,
   MessagesSquare,
+  Users,
 } from 'lucide-react';
 
 export const modules = [
@@ -34,6 +35,13 @@ export const modules = [
     title: 'Demandas',
     icon: ClipboardList,
     description: 'Acompanhe as atividades do início à conclusão.',
+  },
+  {
+    id: 'equipe',
+    href: '/equipe',
+    title: 'Equipe',
+    icon: Users,
+    description: 'Consulte integrantes e papéis da sua equipe.',
   },
   {
     id: 'chats',
