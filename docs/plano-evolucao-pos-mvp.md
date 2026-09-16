@@ -213,6 +213,11 @@ desativado perde novas sessões; registros históricos continuam íntegros.
 
 ### Ciclo 4 — Home por perfil, prazos e alertas
 
+**Status em 14/09/2026:** implementado no produto local. Os agregados são
+calculados no backend com o mesmo escopo de equipe e atribuição das listagens; os
+indicadores direcionam para filtros equivalentes em Demandas. Alertas permanecem
+internos e derivados dos registros existentes.
+
 **Meta:** transformar a Home em ponto de decisão diário.
 
 Para o gestor:

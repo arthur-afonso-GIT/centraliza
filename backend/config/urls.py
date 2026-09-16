@@ -2,9 +2,10 @@ from django.http import JsonResponse
 from django.urls import path
 
 from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaSeiDuplicidadeView, DemandaStatusView, ImportacaoSeiConfirmarView, ImportacaoSeiDetailView, ImportacaoSeiListView
+from demandas.dashboard import ResumoHomeView
 from agenda.views import CompromissoDetailView, CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView
-from usuarios.views import CsrfView, EquipeDetailView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView
+from usuarios.views import CsrfView, EquipeDetailView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, VinculosEquipeView
 
 urlpatterns = [
     path("api/health/", lambda request: JsonResponse({"status": "ok"}), name="health"),
@@ -13,9 +14,11 @@ urlpatterns = [
     path("api/auth/me/", MeView.as_view(), name="auth-me"),
     path("api/auth/logout/", LogoutView.as_view(), name="auth-logout"),
     path("api/usuarios/inspetores/", InspetorListView.as_view(), name="usuarios-inspetores"),
+    path("api/usuarios/equipes/", VinculosEquipeView.as_view(), name="usuarios-equipes"),
     path("api/equipe/", EquipeDetailView.as_view(), name="equipe-detail"),
     path("api/equipe/usuarios/", MembroEquipeListView.as_view(), name="equipe-usuarios-list"),
     path("api/equipe/usuarios/<int:pk>/", MembroEquipeDetailView.as_view(), name="equipe-usuarios-detail"),
+    path("api/home/resumo/", ResumoHomeView.as_view(), name="home-resumo"),
     path("api/demandas/", DemandaListView.as_view(), name="demandas-list"),
     path("api/demandas/verificar-sei/", DemandaSeiDuplicidadeView.as_view(), name="demandas-verificar-sei"),
     path("api/importacoes/sei/", ImportacaoSeiListView.as_view(), name="importacoes-sei-list"),

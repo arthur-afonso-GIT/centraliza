@@ -1,7 +1,15 @@
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 
-from usuarios.models import Usuario
+from usuarios.models import Usuario, VinculoEquipe
+
+
+class VinculoEquipeSerializer(serializers.ModelSerializer):
+    equipe_nome = serializers.CharField(source="equipe.nome", read_only=True)
+
+    class Meta:
+        model = VinculoEquipe
+        fields = ("id", "equipe", "equipe_nome", "papel", "pode_administrar", "ativo", "criado_em", "encerrado_em")
 
 
 class MembroEquipeSerializer(serializers.ModelSerializer):

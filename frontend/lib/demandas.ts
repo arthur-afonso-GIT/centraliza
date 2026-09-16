@@ -1,6 +1,6 @@
 import { ApiError, csrfToken } from './auth';
 
-export type SegmentoDemanda = 'pendentes' | 'andamento' | 'avaliacao' | 'criticas';
+export type SegmentoDemanda = 'pendentes' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas';
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
@@ -9,7 +9,7 @@ export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDem
 export type AnexoDemanda = { id: number; nome_original: string; mime_type: string; tamanho: number; autor: { id: number; nome: string }; criado_em: string; download_url: string };
 export type Inspetor = { id: number; nome: string };
 export type DadosDemanda = { titulo: string; sei_numero: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null };
-export type FiltrosDemandas = { seiNumero: string; responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean };
+export type FiltrosDemandas = { seiNumero: string; responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean; semResponsavel: boolean };
 export type PossivelDuplicidadeSei = { id: number; titulo: string; status: StatusDemanda; sei_numero: string };
 export type CamposImportacaoSei = { sei_numero: string; assunto: string; tipo_processo: string; unidade: string; data_autuacao: string | null };
 export type ImportacaoSei = { id: number; origem: 'texto' | 'extensao'; status: 'validada' | 'com_erros' | 'confirmada' | 'descartada'; campos: CamposImportacaoSei; avisos: string[]; erros: string[]; possiveis_duplicidades: PossivelDuplicidadeSei[]; demanda_id: number | null; criada_em: string; expira_em: string; confirmada_em: string | null };
@@ -22,13 +22,14 @@ async function resposta<T>(response: Response): Promise<T> {
 }
 
 export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
-  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : { critica: 'true' });
+  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : segmento === 'correcao' ? { status: 'em_correcao' } : { critica: 'true' });
   query.set('page', String(page)); query.set('page_size', '4');
   if (filtros?.responsavel) query.set('responsavel', filtros.responsavel);
   if (filtros?.seiNumero) query.set('sei_numero', filtros.seiNumero);
   if (filtros?.prazoDe) query.set('prazo_de', filtros.prazoDe);
   if (filtros?.prazoAte) query.set('prazo_ate', filtros.prazoAte);
   if (filtros?.atrasada) query.set('atrasada', 'true');
+  if (filtros?.semResponsavel) query.set('sem_responsavel', 'true');
   const response = await fetch(`/api/demandas/?${query}`, { credentials: 'same-origin', signal });
   return resposta<PaginaDemandas>(response);
 }

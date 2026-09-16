@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { listarDemandas, listarInspetores, type FiltrosDemandas, type Inspetor, type PaginaDemandas, type SegmentoDemanda } from '../lib/demandas';
@@ -8,19 +8,21 @@ import type { User } from '../lib/auth';
 import DemandaForm from './demanda-form';
 import ImportarSei from './importar-sei';
 
-const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'avaliacao', label: 'Aguardando avaliação' }, { id: 'criticas', label: 'Críticas' }];
+const segmentos: { id: SegmentoDemanda; label: string }[] = [{ id: 'pendentes', label: 'Pendentes' }, { id: 'andamento', label: 'Em andamento' }, { id: 'avaliacao', label: 'Aguardando avaliação' }, { id: 'criticas', label: 'Críticas' }, { id: 'correcao', label: 'Em correção' }];
 const statusLabel: Record<string, string> = { pendente: 'Pendente', em_andamento: 'Em andamento', aguardando_avaliacao: 'Aguardando avaliação', em_correcao: 'Em correção', concluida: 'Concluída', cancelada: 'Cancelada' };
 const prioridadeLabel = { baixa: 'Baixa', media: 'Média', alta: 'Alta' };
-const filtrosVazios: FiltrosDemandas = { seiNumero: '', responsavel: '', prazoDe: '', prazoAte: '', atrasada: false };
+const filtrosVazios: FiltrosDemandas = { seiNumero: '', responsavel: '', prazoDe: '', prazoAte: '', atrasada: false, semResponsavel: false };
 
 export default function DemandasList({ user }: { user: User }) {
   const router = useRouter();
-  const [segmento, setSegmento] = useState<SegmentoDemanda>('pendentes');
+  const query = useSearchParams();
+  const statusInicial = query.get('status');
+  const [segmento, setSegmento] = useState<SegmentoDemanda>(query.get('critica') === 'true' ? 'criticas' : statusInicial === 'em_andamento' ? 'andamento' : statusInicial === 'aguardando_avaliacao' ? 'avaliacao' : statusInicial === 'em_correcao' ? 'correcao' : 'pendentes');
   const [page, setPage] = useState(1);
   const [data, setData] = useState<PaginaDemandas | null>(null);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
-  const [filtros, setFiltros] = useState<FiltrosDemandas>(filtrosVazios);
+  const [filtros, setFiltros] = useState<FiltrosDemandas>({ ...filtrosVazios, atrasada: query.get('atrasada') === 'true', semResponsavel: query.get('sem_responsavel') === 'true' });
   const [seiRascunho, setSeiRascunho] = useState('');
   const [inspetores, setInspetores] = useState<Inspetor[]>([]);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -54,7 +56,7 @@ export default function DemandasList({ user }: { user: User }) {
   return <section className="demands" aria-labelledby="demandas-titulo">
     {user.perfil === 'gestor' && <div className="demand-management"><ImportarSei onSaved={() => { prepareRequest(); setSegmento('pendentes'); setPage(1); setAttempt(value => value + 1); }} /><DemandaForm onSaved={() => { prepareRequest(); setSegmento('pendentes'); setPage(1); setAttempt(value => value + 1); }} /></div>}
     <search><form className="sei-search" onSubmit={event => { event.preventDefault(); updateFilter('seiNumero', seiRascunho.trim()); }}><label htmlFor="busca-sei">Buscar por número SEI</label><div><input id="busca-sei" maxLength={80} value={seiRascunho} onChange={event => setSeiRascunho(event.target.value)} placeholder="Número completo ou parcial" /><button className="secondary">Buscar</button>{filtros.seiNumero && <button type="button" className="filter-clear" onClick={() => { setSeiRascunho(''); updateFilter('seiNumero', ''); }}>Limpar</button>}</div></form></search>
-    {user.perfil === 'gestor' && <div className="demand-filters" aria-label="Filtros avançados"><label>Responsável<select value={filtros.responsavel} onChange={event => updateFilter('responsavel', event.target.value)}><option value="">Todos</option>{inspetores.map(item => <option key={item.id} value={item.id}>{item.nome}</option>)}</select></label><label>Prazo inicial<input type="date" value={filtros.prazoDe} onChange={event => updateFilter('prazoDe', event.target.value)} /></label><label>Prazo final<input type="date" value={filtros.prazoAte} min={filtros.prazoDe || undefined} onChange={event => updateFilter('prazoAte', event.target.value)} /></label><label className="filter-check"><input type="checkbox" checked={filtros.atrasada} onChange={event => updateFilter('atrasada', event.target.checked)} />Somente atrasadas</label><button className="filter-clear" disabled={!filtros.responsavel && !filtros.prazoDe && !filtros.prazoAte && !filtros.atrasada} onClick={() => { prepareRequest(); setPage(1); setFiltros(filtrosVazios); }}>Limpar filtros</button></div>}
+    {user.perfil === 'gestor' && <div className="demand-filters" aria-label="Filtros avançados"><label>Responsável<select value={filtros.responsavel} onChange={event => updateFilter('responsavel', event.target.value)}><option value="">Todos</option>{inspetores.map(item => <option key={item.id} value={item.id}>{item.nome}</option>)}</select></label><label>Prazo inicial<input type="date" value={filtros.prazoDe} onChange={event => updateFilter('prazoDe', event.target.value)} /></label><label>Prazo final<input type="date" value={filtros.prazoAte} min={filtros.prazoDe || undefined} onChange={event => updateFilter('prazoAte', event.target.value)} /></label><label className="filter-check"><input type="checkbox" checked={filtros.atrasada} onChange={event => updateFilter('atrasada', event.target.checked)} />Somente atrasadas</label><label className="filter-check"><input type="checkbox" checked={filtros.semResponsavel} onChange={event => updateFilter('semResponsavel', event.target.checked)} />Sem responsável</label><button className="filter-clear" disabled={!filtros.responsavel && !filtros.prazoDe && !filtros.prazoAte && !filtros.atrasada && !filtros.semResponsavel} onClick={() => { prepareRequest(); setPage(1); setFiltros(filtrosVazios); }}>Limpar filtros</button></div>}
     <div className="segments" role="tablist" aria-label="Filtrar demandas">{segmentos.map((item, index) => <button key={item.id} ref={element => { tabRefs.current[index] = element; }} role="tab" aria-selected={segmento === item.id} tabIndex={segmento === item.id ? 0 : -1} onClick={() => select(item.id)} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveTab(index, event.key === 'ArrowRight' ? 1 : -1); } }}>{item.label}</button>)}</div>
     <div className="list-summary"><h2 id="demandas-titulo">{segmentos.find(item => item.id === segmento)?.label}</h2><span aria-live="polite">{data ? `${data.count} demanda${data.count === 1 ? '' : 's'}` : 'Atualizando…'}</span></div>
     {!data && !error && <output className="demand-loading"><span className="spinner" /> Carregando demandas…</output>}

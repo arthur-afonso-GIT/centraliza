@@ -10,6 +10,27 @@ class Equipe(models.Model):
         return self.nome
 
 
+class VinculoEquipe(models.Model):
+    class Papel(models.TextChoices):
+        GESTOR = "gestor", "Gestor"
+        INSPETOR = "inspetor", "Inspetor"
+
+    usuario = models.ForeignKey("Usuario", on_delete=models.CASCADE, related_name="vinculos_equipe")
+    equipe = models.ForeignKey(Equipe, on_delete=models.PROTECT, related_name="vinculos")
+    papel = models.CharField(max_length=10, choices=Papel.choices)
+    pode_administrar = models.BooleanField(default=False)
+    ativo = models.BooleanField(default=True)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    encerrado_em = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=("usuario", "equipe"), name="vinculo_usuario_equipe_unico"),
+            models.CheckConstraint(condition=models.Q(pode_administrar=False) | models.Q(papel="gestor"), name="vinculo_admin_gestor"),
+        ]
+        ordering = ("equipe__nome", "usuario__first_name", "usuario__last_name", "id")
+
+
 class Usuario(AbstractUser):
     class Perfil(models.TextChoices):
         GESTOR = "gestor", "Gestor"

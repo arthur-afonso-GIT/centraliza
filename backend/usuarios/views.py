@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from usuarios.models import Usuario
-from usuarios.serializers import AtualizarMembroEquipeSerializer, CriarMembroEquipeSerializer, MembroEquipeSerializer
+from usuarios.serializers import AtualizarMembroEquipeSerializer, CriarMembroEquipeSerializer, MembroEquipeSerializer, VinculoEquipeSerializer
 
 
 def dados_sessao(user):
@@ -65,6 +65,12 @@ class InspetorListView(APIView):
             equipe_id=user.equipe_id, perfil="inspetor", is_active=True,
         ).order_by("first_name", "last_name", "username", "id")
         return Response({"resultados": [{"id": item.id, "nome": item.nome} for item in inspetores]})
+
+
+class VinculosEquipeView(APIView):
+    def get(self, request):
+        vinculos = request.user.vinculos_equipe.filter(ativo=True).select_related("equipe")
+        return Response({"resultados": VinculoEquipeSerializer(vinculos, many=True).data})
 
 
 class EquipeDetailView(APIView):

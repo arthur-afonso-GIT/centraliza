@@ -32,11 +32,19 @@ export async function instalarApi(page: Page) {
     }
     if (url.pathname === '/api/auth/logout/') { perfil = null; return route.fulfill({ status: 204 }); }
     if (url.pathname === '/api/auth/me/') return perfil ? route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil, pode_administrar_equipe: perfil === 'gestor' } }) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
+    if (url.pathname === '/api/usuarios/equipes/') return route.fulfill({ json: { resultados: [{ id: 1, equipe: 1, equipe_nome: 'VISAT Demonstração 1', papel: perfil ?? 'inspetor', pode_administrar: perfil === 'gestor', ativo: true, criado_em: '2026-09-14T12:00:00Z', encerrado_em: null }] } });
+    if (url.pathname === '/api/home/resumo/') return route.fulfill({ json: {
+      perfil, gerado_em: '2026-09-14T12:00:00-03:00',
+      indicadores: perfil === 'gestor' ? { atrasadas: 2, criticas: 4, sem_responsavel: 1, aguardando_avaliacao: 3 } : { atrasadas: 1, criticas: 2, em_correcao: 1, nao_iniciadas: 3 },
+      carga_inspetores: perfil === 'gestor' ? [{ id: 2, nome: 'Inspetor de teste', total: 4 }, { id: 3, nome: 'Segundo inspetor', total: 2 }] : undefined,
+      proximas_demandas: [{ id: 1, titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', status: 'pendente', prioridade: 'alta', prazo: '2026-09-15', critica: true, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' } }],
+      proximos_compromissos: appointments.slice(0, 1), avisos_ativos: notices.slice(0, 1),
+    } });
     if (url.pathname === '/api/equipe/') return route.fulfill({ json: { id: 1, nome: 'VISAT Demonstração 1', pode_administrar: perfil === 'gestor', membros } });
     if (url.pathname === '/api/equipe/usuarios/' && request.method() === 'POST') {
       if (perfil !== 'gestor') return route.fulfill({ status: 403, json: { detail: 'Você não tem permissão para administrar esta equipe.' } });
-      const body = request.postDataJSON() as Record<string, unknown>;
-      const created = { id: 3, username: String(body.username), nome: `${body.first_name ?? ''} ${body.last_name ?? ''}`.trim() || String(body.username), first_name: String(body.first_name ?? ''), last_name: String(body.last_name ?? ''), email: String(body.email ?? ''), perfil: String(body.perfil), is_active: Boolean(body.is_active), pode_administrar_equipe: Boolean(body.pode_administrar_equipe) };
+      const body = request.postDataJSON() as { username: string; first_name?: string; last_name?: string; email?: string; perfil: string; is_active: boolean; pode_administrar_equipe: boolean };
+      const created = { id: 3, username: body.username, nome: `${body.first_name ?? ''} ${body.last_name ?? ''}`.trim() || body.username, first_name: body.first_name ?? '', last_name: body.last_name ?? '', email: body.email ?? '', perfil: body.perfil, is_active: body.is_active, pode_administrar_equipe: body.pode_administrar_equipe };
       membros = [...membros, created]; return route.fulfill({ status: 201, json: created });
     }
     const membro = url.pathname.match(/^\/api\/equipe\/usuarios\/(\d+)\/$/);

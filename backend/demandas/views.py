@@ -122,6 +122,14 @@ class DemandaListView(generics.ListAPIView):
                 raise exceptions.ValidationError({"responsavel": "Informe um ID inteiro positivo."})
             queryset = queryset.filter(responsavel_id=responsavel_id, responsavel__equipe_id=user.equipe_id)
 
+        sem_responsavel = self.request.query_params.get("sem_responsavel")
+        if sem_responsavel is not None:
+            if user.perfil != "gestor":
+                raise exceptions.PermissionDenied("Somente gestores podem consultar demandas sem responsável.")
+            if sem_responsavel not in ["true", "false"]:
+                raise exceptions.ValidationError({"sem_responsavel": "Use true ou false."})
+            queryset = queryset.filter(responsavel__isnull=sem_responsavel == "true")
+
         limites = {}
         for parametro, lookup in (("prazo_de", "prazo__gte"), ("prazo_ate", "prazo__lte")):
             valor = self.request.query_params.get(parametro)

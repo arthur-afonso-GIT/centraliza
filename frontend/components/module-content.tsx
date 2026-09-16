@@ -1,13 +1,14 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ClipboardList, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import type { User } from '../lib/auth';
 import DemandasList from './demandas-list';
 import AgendaCalendar from './agenda-calendar';
 import AvisosFeed from './avisos-feed';
 import EquipeManagement from './equipe-management';
+import HomeDashboard from './home-dashboard';
 
 export default function ModuleContent({
   page,
@@ -47,61 +48,7 @@ export default function ModuleContent({
           </p>
         </div>
       </div>
-      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed user={user} /> : page === 'equipe' ? <EquipeManagement user={user} /> : page === 'home' ? (
-        <>
-          <section className="welcome-panel">
-            <div>
-              <span className="eyebrow">BEM-VINDO AO CENTRALIZA</span>
-              <h2>Seu trabalho, em um só lugar.</h2>
-              <p>
-                {user.perfil === 'gestor'
-                  ? 'Acompanhe as demandas da equipe, organize os próximos passos e mantenha todos informados.'
-                  : 'Encontre suas demandas, acompanhe compromissos e fique por dentro dos avisos da equipe.'}
-              </p>
-              <Link className="primary" href="/demandas">
-                Acessar demandas <ArrowRight size={18} />
-              </Link>
-            </div>
-            <ClipboardList
-              className="welcome-icon"
-              size={116}
-              strokeWidth={1}
-              aria-hidden="true"
-            />
-          </section>
-          <section aria-labelledby="modulos">
-            <div className="section-heading">
-              <h2 id="modulos">Acesso rápido</h2>
-              <span>Explore os módulos</span>
-            </div>
-            <div className="module-grid">
-              {modules.slice(1).map((item) => {
-                const ItemIcon = item.icon;
-                return (
-                  <Link className="module-card" href={item.href} key={item.id}>
-                    <span className="module-icon">
-                      <ItemIcon size={24} />
-                    </span>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <span className="card-link">
-                      Acessar módulo <ArrowRight size={17} />
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </section>
-          <div className="development-note">
-            <ShieldCheck size={21} />
-            <p>
-              <strong>Estamos construindo este espaço.</strong> Nesta primeira
-              entrega, você pode explorar o menu e as páginas. As atividades
-              serão disponibilizadas nas próximas etapas.
-            </p>
-          </div>
-        </>
-      ) : (
+      {page === 'demandas' ? <DemandasList user={user} /> : page === 'agenda' ? <AgendaCalendar user={user} /> : page === 'avisos' ? <AvisosFeed user={user} /> : page === 'equipe' ? <EquipeManagement /> : page === 'home' ? <HomeDashboard user={user} /> : (
         <section className="empty-state">
           <span className="empty-icon">
             <Icon size={36} strokeWidth={1.5} />
