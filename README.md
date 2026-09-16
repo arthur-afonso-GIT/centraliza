@@ -81,17 +81,43 @@ The interface and supporting project documents use Brazilian Portuguese:
 
 ## Screenshots
 
+The following captures show the current authenticated workspace and its main modules.
+
 ### Home
 
-![Centraliza manager home with the red and graphite palette](docs/evidencias/paleta/home-1366.png)
+The Home summarizes deadlines, critical requests, workload, appointments, and active notices for the selected team.
 
-### Mobile navigation layout
+![Centraliza Home dashboard](docs/evidencias/modulos/home.png)
 
-<p align="center">
-  <img src="docs/evidencias/paleta/home-390.png" alt="Centraliza mobile home" width="320">
-</p>
+### Agenda
 
-These screenshots record the approved visual identity. The published static demonstration may not include the authenticated Django integration available in the repository.
+The Agenda centralizes meetings, activities, and other team commitments.
+
+![Centraliza Agenda](docs/evidencias/modulos/agenda.png)
+
+### Notices
+
+Notices provide a single place for urgent and informational team communications.
+
+![Centraliza Notices](docs/evidencias/modulos/avisos.png)
+
+### Requests
+
+Requests organize the workflow from SEI reference and assignment through execution and review.
+
+![Centraliza Requests](docs/evidencias/modulos/demandas.png)
+
+### Team
+
+The Team area presents the current members, roles, and team-management context.
+
+![Centraliza Team](docs/evidencias/modulos/equipe.png)
+
+### Chats
+
+Chats are reserved as a future communication feature and are currently marked as under development.
+
+![Centraliza Chats](docs/evidencias/modulos/chats.png)
 
 ## Technology stack
 

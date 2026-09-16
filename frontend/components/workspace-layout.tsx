@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { LogOut, Menu, X } from 'lucide-react';
 import { modules } from '../lib/navigation';
-import type { User } from '../lib/auth';
+import { obterVinculosEquipe, selecionarEquipe, type TeamMembership, type User } from '../lib/auth';
 
 export default function WorkspaceLayout({
   page,
@@ -19,6 +19,8 @@ export default function WorkspaceLayout({
   children: ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [vinculos, setVinculos] = useState<TeamMembership[]>([]);
+  const [equipeAtiva, setEquipeAtiva] = useState<number | null>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const active = modules.find((item) => item.id === page) ?? modules[0];
   useEffect(() => {
@@ -32,6 +34,16 @@ export default function WorkspaceLayout({
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [menuOpen]);
+  useEffect(() => {
+    obterVinculosEquipe().then((items) => {
+      setVinculos(items);
+      const saved = Number(window.localStorage.getItem('centraliza_equipe_ativa'));
+      setEquipeAtiva(items.some((item) => item.equipe === saved) ? saved : items[0]?.equipe ?? null);
+    }).catch(() => setVinculos([]));
+  }, []);
+  function escolherEquipe(id: number) {
+    selecionarEquipe(id).then(() => { setEquipeAtiva(id); window.localStorage.setItem('centraliza_equipe_ativa', String(id)); window.dispatchEvent(new CustomEvent('centraliza:equipe-alterada', { detail: id })); window.location.reload(); }).catch(() => undefined);
+  }
   return (
     <div className="workspace">
       <a className="skip-link" href="#conteudo">
@@ -109,9 +121,9 @@ export default function WorkspaceLayout({
             Meu espaço <span className="separator">/</span>{' '}
             <strong>{active.title}</strong>
           </span>
-          <span className="team-label">
-            <span className="status-dot" /> Equipe VISAT
-          </span>
+          <label className="team-label" htmlFor="equipe-ativa"><span className="status-dot" />
+            {vinculos.length > 1 ? <><span className="sr-only">Equipe ativa</span><select id="equipe-ativa" value={equipeAtiva ?? ''} onChange={(event) => escolherEquipe(Number(event.target.value))}>{vinculos.map((item) => <option value={item.equipe} key={item.id}>{item.equipe_nome} · {item.papel}</option>)}</select></> : vinculos[0]?.equipe_nome ?? 'Equipe VISAT'}
+          </label>
         </header>
         {children}
       </div>

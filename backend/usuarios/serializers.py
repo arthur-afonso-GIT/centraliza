@@ -1,7 +1,31 @@
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 
-from usuarios.models import Usuario, VinculoEquipe
+from usuarios.models import Equipe, Usuario, VinculoEquipe
+
+
+class EquipeSerializer(serializers.ModelSerializer):
+    integrantes_ativos = serializers.IntegerField(read_only=True)
+    demandas_ativas = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Equipe
+        fields = ("id", "nome", "arquivada", "criada_em", "integrantes_ativos", "demandas_ativas")
+
+
+class CriarEquipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Equipe
+        fields = ("nome",)
+
+    def validate_nome(self, value):
+        return value.strip()
+
+
+class AtualizarEquipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Equipe
+        fields = ("nome", "arquivada")
 
 
 class VinculoEquipeSerializer(serializers.ModelSerializer):

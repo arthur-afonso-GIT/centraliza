@@ -33,6 +33,7 @@ export async function instalarApi(page: Page) {
     if (url.pathname === '/api/auth/logout/') { perfil = null; return route.fulfill({ status: 204 }); }
     if (url.pathname === '/api/auth/me/') return perfil ? route.fulfill({ json: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste', perfil, pode_administrar_equipe: perfil === 'gestor' } }) : route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
     if (url.pathname === '/api/usuarios/equipes/') return route.fulfill({ json: { resultados: [{ id: 1, equipe: 1, equipe_nome: 'VISAT Demonstração 1', papel: perfil ?? 'inspetor', pode_administrar: perfil === 'gestor', ativo: true, criado_em: '2026-09-14T12:00:00Z', encerrado_em: null }] } });
+    if (url.pathname === '/api/usuarios/equipes/ativa/' && request.method() === 'POST') return route.fulfill({ json: { equipe_id: (request.postDataJSON() as { equipe_id: number }).equipe_id } });
     if (url.pathname === '/api/home/resumo/') return route.fulfill({ json: {
       perfil, gerado_em: '2026-09-14T12:00:00-03:00',
       indicadores: perfil === 'gestor' ? { atrasadas: 2, criticas: 4, sem_responsavel: 1, aguardando_avaliacao: 3 } : { atrasadas: 1, criticas: 2, em_correcao: 1, nao_iniciadas: 3 },
@@ -41,6 +42,7 @@ export async function instalarApi(page: Page) {
       proximos_compromissos: appointments.slice(0, 1), avisos_ativos: notices.slice(0, 1),
     } });
     if (url.pathname === '/api/equipe/') return route.fulfill({ json: { id: 1, nome: 'VISAT Demonstração 1', pode_administrar: perfil === 'gestor', membros } });
+    if (url.pathname === '/api/equipes/') return route.fulfill({ json: { resultados: [{ id: 1, nome: 'VISAT Demonstração 1', arquivada: false, integrantes_ativos: membros.filter(item => item.is_active).length, demandas_ativas: 8 }] } });
     if (url.pathname === '/api/equipe/usuarios/' && request.method() === 'POST') {
       if (perfil !== 'gestor') return route.fulfill({ status: 403, json: { detail: 'Você não tem permissão para administrar esta equipe.' } });
       const body = request.postDataJSON() as { username: string; first_name?: string; last_name?: string; email?: string; perfil: string; is_active: boolean; pode_administrar_equipe: boolean };

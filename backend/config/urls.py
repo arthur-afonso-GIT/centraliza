@@ -5,7 +5,7 @@ from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, Deman
 from demandas.dashboard import ResumoHomeView
 from agenda.views import CompromissoDetailView, CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView
-from usuarios.views import CsrfView, EquipeDetailView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, VinculosEquipeView
+from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
     path("api/health/", lambda request: JsonResponse({"status": "ok"}), name="health"),
@@ -15,6 +15,9 @@ urlpatterns = [
     path("api/auth/logout/", LogoutView.as_view(), name="auth-logout"),
     path("api/usuarios/inspetores/", InspetorListView.as_view(), name="usuarios-inspetores"),
     path("api/usuarios/equipes/", VinculosEquipeView.as_view(), name="usuarios-equipes"),
+    path("api/equipes/", EquipesAcessiveisView.as_view(), name="equipes-acessiveis"),
+    path("api/equipes/<int:pk>/", EquipeDetailAdminView.as_view(), name="equipe-admin-detail"),
+    path("api/usuarios/equipes/ativa/", SelecionarEquipeView.as_view(), name="usuarios-equipe-ativa"),
     path("api/equipe/", EquipeDetailView.as_view(), name="equipe-detail"),
     path("api/equipe/usuarios/", MembroEquipeListView.as_view(), name="equipe-usuarios-list"),
     path("api/equipe/usuarios/<int:pk>/", MembroEquipeDetailView.as_view(), name="equipe-usuarios-detail"),

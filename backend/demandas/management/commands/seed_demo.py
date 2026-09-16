@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from demandas.models import Demanda
-from usuarios.models import Equipe, Usuario
+from usuarios.models import Equipe, Usuario, VinculoEquipe
 
 
 class Command(BaseCommand):
@@ -36,6 +36,10 @@ class Command(BaseCommand):
                 if username == "demo.gestor.1" and not user.pode_administrar_equipe:
                     user.pode_administrar_equipe = True
                     user.save(update_fields=("pode_administrar_equipe",))
+                VinculoEquipe.objects.update_or_create(
+                    usuario=user, equipe=equipe,
+                    defaults={"papel": perfil, "pode_administrar": username == "demo.gestor.1", "ativo": user.is_active, "encerrado_em": None},
+                )
                 usuarios.append(user)
             contas.append(usuarios)
         for i in range(options["total"]):

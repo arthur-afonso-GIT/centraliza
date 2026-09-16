@@ -1,5 +1,6 @@
 export type Profile = 'gestor' | 'inspetor';
 export type User = { id: number; nome: string; perfil: Profile; pode_administrar_equipe: boolean };
+export type TeamMembership = { id: number; equipe: number; equipe_nome: string; papel: Profile; pode_administrar: boolean; ativo: boolean; criado_em: string; encerrado_em: string | null };
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }
@@ -26,6 +27,19 @@ export async function obterUsuarioAtual(): Promise<User | null> {
   const response = await fetch('/api/auth/me/', { credentials: 'same-origin' });
   if (response.status === 401 || response.status === 403) return null;
   return responseJson<User>(response);
+}
+
+export async function obterVinculosEquipe(): Promise<TeamMembership[]> {
+  const response = await fetch('/api/usuarios/equipes/', { credentials: 'same-origin' });
+  if (response.status === 401 || response.status === 403) return [];
+  return (await responseJson<{ resultados: TeamMembership[] }>(response)).resultados;
+}
+
+export async function selecionarEquipe(equipeId: number) {
+  const token = await csrfToken();
+  return responseJson<{ equipe_id: number }>(await fetch('/api/usuarios/equipes/ativa/', {
+    method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify({ equipe_id: equipeId }),
+  }));
 }
 
 export async function entrar(username: string, password: string): Promise<User> {

@@ -141,3 +141,17 @@ class AdministracaoEquipeTest(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.inspetor.refresh_from_db()
         self.assertFalse(self.inspetor.is_active)
+
+    def test_admin_pode_arquivar_e_reativar_sua_equipe(self):
+        self.client.force_authenticate(self.admin)
+        response = self.client.patch(f"/api/equipes/{self.equipe.id}/", {"arquivada": True}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.data["arquivada"])
+        response = self.client.patch(f"/api/equipes/{self.equipe.id}/", {"arquivada": False}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.data["arquivada"])
+
+    def test_gestor_sem_permissao_nao_arquiva(self):
+        self.client.force_authenticate(self.gestor)
+        response = self.client.patch(f"/api/equipes/{self.equipe.id}/", {"arquivada": True}, format="json")
+        self.assertEqual(response.status_code, 403)
