@@ -2,13 +2,13 @@ import { ApiError, csrfToken } from './auth';
 
 export type SegmentoDemanda = 'pendentes' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas';
 export type StatusDemanda = 'pendente' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
-export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null };
+export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null; equipes_ids: number[]; equipes: Array<{ id: number; nome: string }> };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
 export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario' | 'anexo_adicionado' | 'anexo_removido'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
 export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
 export type AnexoDemanda = { id: number; nome_original: string; mime_type: string; tamanho: number; autor: { id: number; nome: string }; criado_em: string; download_url: string };
 export type Inspetor = { id: number; nome: string };
-export type DadosDemanda = { titulo: string; sei_numero: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null };
+export type DadosDemanda = { titulo: string; sei_numero: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null; equipes_ids: number[] };
 export type FiltrosDemandas = { seiNumero: string; responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean; semResponsavel: boolean };
 export type PossivelDuplicidadeSei = { id: number; titulo: string; status: StatusDemanda; sei_numero: string };
 export type CamposImportacaoSei = { sei_numero: string; assunto: string; tipo_processo: string; unidade: string; data_autuacao: string | null };

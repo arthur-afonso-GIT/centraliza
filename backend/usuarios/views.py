@@ -90,7 +90,11 @@ class EquipesAcessiveisView(APIView):
             integrantes_ativos=Count("vinculos__usuario", filter=Q(vinculos__ativo=True), distinct=True),
             demandas_ativas=Count("demanda", filter=Q(demanda__status__in=["pendente", "em_andamento", "aguardando_avaliacao", "em_correcao"]), distinct=True),
         ).order_by("arquivada", "nome").distinct()
-        return Response({"resultados": EquipeSerializer(equipes, many=True).data})
+        dados = EquipeSerializer(equipes, many=True).data
+        administraveis = set(request.user.vinculos_equipe.filter(ativo=True, papel=VinculoEquipe.Papel.GESTOR, pode_administrar=True).values_list("equipe_id", flat=True))
+        for item in dados:
+            item["pode_administrar"] = item["id"] in administraveis
+        return Response({"resultados": dados})
 
 
 class EquipeDetailAdminView(APIView):

@@ -11,7 +11,7 @@ import {
 
 const dadosVazios: DadosDemanda = {
   titulo: '', sei_numero: '', descricao: '', origem: '', prioridade: 'media',
-  prazo: '', critica: false, responsavel_id: null,
+  prazo: '', critica: false, responsavel_id: null, equipes_ids: [],
 };
 
 export default function ImportarSei({ onSaved }: { onSaved: (item: DemandaDetalhe) => void }) {

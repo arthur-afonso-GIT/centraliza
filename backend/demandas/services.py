@@ -53,8 +53,11 @@ def criar_demanda(*, usuario, dados: dict) -> Demanda:
     if usuario.perfil != "gestor" or not usuario.equipe_id:
         raise PermissionDenied("Somente gestores vinculados a uma equipe podem criar demandas.")
     responsavel = dados.pop("responsavel_id", None)
+    equipes_ids = dados.pop("equipes_ids", None) or [usuario.equipe_id]
+    if usuario.equipe_id not in equipes_ids:
+        equipes_ids.append(usuario.equipe_id)
     demanda = Demanda.objects.create(**dados, equipe_id=usuario.equipe_id, criador=usuario, responsavel=responsavel)
-    demanda.equipes_participantes.add(usuario.equipe_id)
+    demanda.equipes_participantes.set(equipes_ids)
     identificacao = f" Processo SEI: {demanda.sei_numero}." if demanda.sei_numero else ""
     EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_CRIADA, autor=usuario, texto=f"Demanda criada pela gestão.{identificacao}")
     if responsavel:
@@ -70,6 +73,7 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
         raise ValidationError({"status": "Demandas encerradas não podem ser editadas."})
     marcador = object()
     responsavel = dados.pop("responsavel_id", marcador)
+    equipes_ids = dados.pop("equipes_ids", marcador)
     alterados = []
     for campo, valor in dados.items():
         if getattr(demanda, campo) != valor:
@@ -84,4 +88,12 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
         demanda.save(update_fields=["responsavel", "atualizada_em"])
         novo = responsavel.nome if responsavel else "não atribuído"
         EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.RESPONSAVEL_ALTERADO, autor=usuario, texto=f"Responsável alterado de {anterior} para {novo}.")
+    if equipes_ids is not marcador:
+        if demanda.equipe_id not in equipes_ids:
+            equipes_ids = [*equipes_ids, demanda.equipe_id]
+        atuais = set(demanda.equipes_participantes.values_list("id", flat=True))
+        novos = set(equipes_ids)
+        if atuais != novos:
+            demanda.equipes_participantes.set(equipes_ids)
+            EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto="Equipes participantes atualizadas.")
     return demanda

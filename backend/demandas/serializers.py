@@ -14,13 +14,17 @@ class DemandaSerializer(serializers.ModelSerializer):
     responsavel = ResponsavelSerializer(read_only=True, allow_null=True)
     atrasada = serializers.SerializerMethodField()
     equipes_ids = serializers.SerializerMethodField()
+    equipes = serializers.SerializerMethodField()
 
     class Meta:
         model = Demanda
-        fields = ["id", "titulo", "sei_numero", "status", "prioridade", "prazo", "critica", "atrasada", "responsavel", "equipes_ids"]
+        fields = ["id", "titulo", "sei_numero", "status", "prioridade", "prazo", "critica", "atrasada", "responsavel", "equipes_ids", "equipes"]
 
     def get_equipes_ids(self, obj):
         return list(obj.equipes_participantes.values_list("id", flat=True))
+
+    def get_equipes(self, obj):
+        return [{"id": equipe.id, "nome": equipe.nome} for equipe in obj.equipes_participantes.all()]
 
     def get_atrasada(self, obj):
         return obj.prazo < timezone.localdate() and obj.status not in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}
@@ -55,6 +59,7 @@ class GerenciarDemandaSerializer(serializers.Serializer):
     prazo = serializers.DateField(required=False)
     critica = serializers.BooleanField(required=False)
     responsavel_id = serializers.IntegerField(allow_null=True, required=False)
+    equipes_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), required=False, allow_empty=False)
 
     def validate_sei_numero(self, value):
         if value and not normalizar_numero_sei(value):
@@ -70,6 +75,22 @@ class GerenciarDemandaSerializer(serializers.Serializer):
             return Usuario.objects.get(id=value, equipe_id=user.equipe_id, perfil="inspetor", is_active=True)
         except Usuario.DoesNotExist as exc:
             raise serializers.ValidationError("Selecione um inspetor ativo da sua equipe.") from exc
+
+    def validate_equipes_ids(self, value):
+        from usuarios.models import Equipe, VinculoEquipe
+        user = self.context["request"].user
+        if user.perfil != "gestor":
+            raise serializers.ValidationError("Somente gestores podem compartilhar demandas com equipes.")
+        ids = list(dict.fromkeys(value))
+        existentes = set(Equipe.objects.filter(id__in=ids, arquivada=False).values_list("id", flat=True))
+        administraveis = set(VinculoEquipe.objects.filter(
+            usuario=user, equipe_id__in=ids, papel="gestor", ativo=True, pode_administrar=True,
+        ).values_list("equipe_id", flat=True))
+        if existentes != set(ids):
+            raise serializers.ValidationError("Selecione apenas equipes ativas existentes.")
+        if administraveis != set(ids):
+            raise serializers.ValidationError("Você só pode compartilhar demandas com equipes que administra.")
+        return ids
 
 
 class AlterarStatusSerializer(serializers.Serializer):

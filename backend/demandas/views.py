@@ -27,7 +27,7 @@ from demandas.serializers import (
 def demandas_permitidas(user):
     if not user.equipe_id:
         raise exceptions.PermissionDenied("O usuário não pertence a uma equipe.")
-    queryset = Demanda.objects.filter(equipe_id=user.equipe_id)
+    queryset = Demanda.objects.filter(equipes_participantes=user.equipe_id).distinct()
     if user.perfil == "inspetor":
         return queryset.filter(responsavel=user)
     if user.perfil == "gestor":

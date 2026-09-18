@@ -15,7 +15,7 @@ async function json<T>(response: Response): Promise<T> {
 export async function obterEquipe(signal?: AbortSignal) {
   return json<Equipe>(await fetch('/api/equipe/', { credentials: 'same-origin', signal }));
 }
-export async function listarEquipes(signal?: AbortSignal) { return (await json<{ resultados: Array<{ id: number; nome: string; arquivada: boolean; integrantes_ativos: number; demandas_ativas: number }> }>(await fetch('/api/equipes/', { credentials: 'same-origin', signal }))).resultados; }
+export async function listarEquipes(signal?: AbortSignal) { return (await json<{ resultados: Array<{ id: number; nome: string; arquivada: boolean; integrantes_ativos: number; demandas_ativas: number; pode_administrar: boolean }> }>(await fetch('/api/equipes/', { credentials: 'same-origin', signal }))).resultados; }
 export async function criarEquipe(nome: string) {
   const token = await csrfToken();
   return json<{ id: number; nome: string; arquivada: boolean }>(await fetch('/api/usuarios/equipes/', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify({ nome }) }));
