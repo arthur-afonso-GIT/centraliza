@@ -54,6 +54,7 @@ def criar_demanda(*, usuario, dados: dict) -> Demanda:
         raise PermissionDenied("Somente gestores vinculados a uma equipe podem criar demandas.")
     responsavel = dados.pop("responsavel_id", None)
     demanda = Demanda.objects.create(**dados, equipe_id=usuario.equipe_id, criador=usuario, responsavel=responsavel)
+    demanda.equipes_participantes.add(usuario.equipe_id)
     identificacao = f" Processo SEI: {demanda.sei_numero}." if demanda.sei_numero else ""
     EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_CRIADA, autor=usuario, texto=f"Demanda criada pela gestão.{identificacao}")
     if responsavel:

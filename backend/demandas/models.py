@@ -35,6 +35,7 @@ class Demanda(models.Model):
     prazo = models.DateField()
     critica = models.BooleanField(default=False)
     equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT)
+    equipes_participantes = models.ManyToManyField("usuarios.Equipe", related_name="demandas_participantes", blank=True)
     criador = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="demandas_criadas")
     responsavel = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="demandas_atribuidas", null=True, blank=True)
     criada_em = models.DateTimeField(auto_now_add=True)
