@@ -1,5 +1,7 @@
 # Centraliza
 
+[▶ Watch the screencast](assets/centraliza-screencast.mp4)
+
 <p align="center">
   <img src="assets/centraliza-logo.png" alt="Centraliza VISAT logo" width="450">
 </p>
