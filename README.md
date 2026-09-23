@@ -61,7 +61,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 
 - [Project website](https://sites.google.com/cesar.school/g3-projetos2/kick-off) — academic context and project presentation.
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing) — proposed user needs.
-- [User cards + diagramas de atividades](https://trello.com/b/0qDLqz1F)
+- [User cards + activity diagrams](https://trello.com/b/0qDLqz1F)
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
@@ -71,15 +71,6 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
 - [Request API contract](docs/contrato-demandas.md) — filters, pagination, access rules, and response format.
-- [Navigation validation](docs/validacao-semana-1.md) — browser coverage and visual evidence.
-- [Request-list validation](docs/validacao-semana-2.md) — integrated flow, tests, and performance measurements.
-- [Request-detail validation](docs/validacao-semana-3.md) — status transitions, timeline consistency, and integrated-flow evidence.
-- [Attachment validation](docs/validacao-anexos.md) — protected storage, file checks, authorization, and audit trail.
-- [Agenda validation](docs/validacao-semana-4.md) — date ranges, timezone, calendar navigation, and role-based results.
-- [Managed-agenda validation](docs/validacao-agenda-gerenciavel.md) — management operations, conflicts, logical cancellation, and current limits.
-- [Notices validation](docs/validacao-semana-5.md) — feed/detail permissions, regression, accessibility, and integrated evidence.
-- [Notice-management validation](docs/validacao-avisos-gerenciaveis.md) — publishing, targeting, validity periods, cancellation, and access rules.
-- [Status Report 1 checklist](docs/status-report-1.md) — setup, eight-minute demonstration route, smoke checks, and contingency.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 
 ## Screenshots
