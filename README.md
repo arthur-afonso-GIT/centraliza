@@ -61,6 +61,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 
 - [Project website](https://sites.google.com/cesar.school/g3-projetos2/kick-off) — academic context and project presentation.
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing) — proposed user needs.
+- [User cards + diagramas de atividades](https://trello.com/b/0qDLqz1F)
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
