@@ -54,3 +54,12 @@ class Aviso(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         return super().save(*args, **kwargs)
+
+
+class LeituraAviso(models.Model):
+    aviso = models.ForeignKey(Aviso, on_delete=models.CASCADE, related_name="leituras")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="leituras_avisos")
+    lido_em = models.DateTimeField()
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["aviso", "usuario"], name="leitura_aviso_usuario_unico")]

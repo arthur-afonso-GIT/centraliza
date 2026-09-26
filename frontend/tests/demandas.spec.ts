@@ -19,6 +19,8 @@ test('gestor filtra demandas e percorre a paginação', async ({ page }) => {
   const pendentes = page.getByRole('tab', { name: 'Pendentes' });
   await pendentes.focus();
   await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Aceitas', exact: true })).toBeFocused();
+  await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tab', { name: 'Em andamento' })).toBeFocused();
   await expect(page.getByText('5 demandas')).toBeVisible();
   await expect(page.getByText('Página 1 de 2')).toBeVisible();
@@ -41,7 +43,7 @@ test('inspetor visualiza somente demandas atribuídas em tela móvel', async ({ 
 test('gestor combina responsável, prazo e atraso e limpa os filtros', async ({ page }) => {
   await entrarComo(page, 'gestor');
   await page.goto('/demandas');
-  await page.getByLabel('Responsável').selectOption('2');
+  await page.getByRole('combobox', { name: /^Responsável/ }).selectOption('2');
   await page.getByLabel('Prazo inicial').fill('2026-09-01');
   await page.getByLabel('Prazo final').fill('2026-09-30');
   const requestPromise = page.waitForRequest(value => value.url().includes('/api/demandas/') && value.url().includes('atrasada=true'));
@@ -52,5 +54,5 @@ test('gestor combina responsável, prazo e atraso e limpa os filtros', async ({ 
   expect(request.url()).toContain('prazo_de=2026-09-01');
   expect(request.url()).toContain('prazo_ate=2026-09-30');
   await page.getByRole('button', { name: 'Limpar filtros' }).click();
-  await expect(page.getByLabel('Responsável')).toHaveValue('');
+  await expect(page.getByRole('combobox', { name: /^Responsável/ })).toHaveValue('');
 });

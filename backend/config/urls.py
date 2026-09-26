@@ -4,7 +4,7 @@ from django.urls import path
 from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaSeiDuplicidadeView, DemandaStatusView, ImportacaoSeiConfirmarView, ImportacaoSeiDetailView, ImportacaoSeiListView
 from demandas.dashboard import ResumoHomeView
 from agenda.views import CompromissoDetailView, CompromissoListView
-from avisos.views import AvisoDetailView, AvisoListView
+from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
@@ -36,5 +36,6 @@ urlpatterns = [
     path("api/compromissos/", CompromissoListView.as_view(), name="compromissos-list"),
     path("api/compromissos/<int:pk>/", CompromissoDetailView.as_view(), name="compromissos-detail"),
     path("api/avisos/", AvisoListView.as_view(), name="avisos-list"),
+    path("api/avisos/<int:pk>/leitura/", AvisoLeituraView.as_view(), name="avisos-leitura"),
     path("api/avisos/<int:pk>/", AvisoDetailView.as_view(), name="avisos-detail"),
 ]

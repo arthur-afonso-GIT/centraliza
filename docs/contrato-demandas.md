@@ -1,7 +1,7 @@
 # Contrato de listagem de demandas
 
-Decisão iniciada em S2-01 e ampliada pelo MVP operacional. O cadastro ainda não
-faz parte desta API; as transições usam um endpoint específico e transacional.
+Decisão iniciada em S2-01 e ampliada pelo MVP operacional. Cadastro e edição
+são exclusivos da gestão; as transições usam um endpoint específico e transacional.
 
 ## Acesso e filtros
 
@@ -10,14 +10,15 @@ da própria equipe; inspetor acessa as atribuídas a ele nessa equipe. Nunca
 usar perfil ou ID enviados pelo cliente como autorização. Sem equipe, negar
 acesso. O filtro de acesso também limita o total informado na paginação.
 
-São ativos `pendente`, `em_andamento`, `aguardando_avaliacao` e `em_correcao`.
-`concluida` e `cancelada` distinguem registros encerrados e não entram nesta
-listagem.
+São ativos `pendente`, `aceita`, `em_andamento`, `aguardando_avaliacao` e `em_correcao`.
+`concluida` e `cancelada` distinguem registros encerrados. A listagem padrão
+retorna apenas ativos; filtros explícitos por esses dois estados permitem
+consultar demandas encerradas dentro do mesmo escopo de autorização.
 Crítica é uma flag independente. Status e criticidade combinados usam AND.
 
 | Parâmetro | Validação |
 | --- | --- |
-| status | Opcional: pendente, em_andamento, aguardando_avaliacao ou em_correcao |
+| status | Opcional: pendente, aceita, em_andamento, aguardando_avaliacao, em_correcao, concluida ou cancelada |
 | critica | Opcional: true ou false |
 | responsavel | ID inteiro positivo; disponível ao gestor |
 | prazo_de | Data inicial inclusiva em AAAA-MM-DD |
@@ -33,7 +34,7 @@ prazo ISO, número SEI, flag crítica e responsável `{id, nome}` ou null.
 
 Resposta vazia: 200 com lista vazia; parâmetro inválido: 400; sessão ausente:
 401; usuário sem equipe: 403; página fora do intervalo: 404. Página 1 de
-uma lista vazia é válida. Não oferecer métodos de escrita em demandas.
+uma lista vazia é válida. Escrita segue as permissões de gerenciamento abaixo.
 
 ## Sessão
 
@@ -82,7 +83,7 @@ consultar essa seleção.
 
 ## Interface
 
-Pendentes envia `status=pendente`, Em andamento envia `status=em_andamento`
+Pendentes envia `status=pendente`, Aceitas envia `status=aceita`, Em andamento envia `status=em_andamento`
 e Críticas envia `critica=true`. Ao trocar segmento, voltar à página 1 e
 cancelar/ignorar a resposta anterior. Responsável null aparece como “Não atribuída”.
 Cartões exibem criticidade em texto, sem depender apenas da cor.

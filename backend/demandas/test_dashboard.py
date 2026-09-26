@@ -22,6 +22,8 @@ class ResumoHomeTest(APITestCase):
         Demanda.objects.create(titulo="Sem responsável", prazo=hoje + timedelta(days=2), equipe=cls.equipe, criador=cls.gestor)
         Demanda.objects.create(titulo="Avaliar", prazo=hoje + timedelta(days=3), status="aguardando_avaliacao", equipe=cls.equipe, criador=cls.gestor, responsavel=cls.inspetor)
         Demanda.objects.create(titulo="Externa", prazo=hoje - timedelta(days=1), equipe=cls.outra, criador=cls.outro, responsavel=cls.outro)
+        for demanda in Demanda.objects.all():
+            demanda.equipes_participantes.add(demanda.equipe_id)
         compromisso = Compromisso.objects.create(titulo="Reunião próxima", tipo="reuniao", inicio=timezone.now() + timedelta(days=1), fim=timezone.now() + timedelta(days=1, hours=1), equipe=cls.equipe, criador=cls.gestor)
         compromisso.participantes.add(cls.inspetor)
         aviso = Aviso.objects.create(titulo="Aviso vigente", resumo="Resumo", conteudo="Conteúdo", categoria="informativo", equipe=cls.equipe, autor=cls.gestor, publicado_em=timezone.now() - timedelta(hours=1))
@@ -47,3 +49,11 @@ class ResumoHomeTest(APITestCase):
 
     def test_exige_sessao(self):
         self.assertEqual(self.client.get("/api/home/resumo/").status_code, 401)
+
+    def test_aceita_conta_na_carga_e_aparece_no_painel(self):
+        self.atrasada.status = "aceita"
+        self.atrasada.save()
+        self.client.force_authenticate(self.gestor)
+        response = self.client.get("/api/home/resumo/")
+        self.assertEqual(response.data["carga_inspetores"][0]["total"], 2)
+        self.assertEqual(response.data["proximas_demandas"][0]["status"], "aceita")

@@ -12,9 +12,12 @@ test('inspetor abre detalhe, altera status e vê a lista atualizada', async ({ p
   await expect(page.getByRole('heading', { name: 'Inspeção demonstrativa 1' })).toBeVisible();
   await expect(page.getByText('Ainda não há eventos registrados.')).toBeVisible();
 
+  await expect(page.getByRole('button', { name: 'Iniciar demanda' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Aceitar demanda' }).click();
+  await expect(page.locator('.detail-actions .status')).toHaveText('Aceita');
   await page.getByRole('button', { name: 'Iniciar demanda' }).click();
   await expect(page.getByRole('status')).toHaveText('Demanda iniciada com sucesso.');
-  await expect(page.getByText('Pendente → Em andamento')).toBeVisible();
+  await expect(page.getByText('Aceita → Em andamento')).toBeVisible();
 
   await page.getByRole('link', { name: 'Voltar para demandas' }).click();
   await expect(page.getByText('Inspeção demonstrativa 1')).toHaveCount(0);

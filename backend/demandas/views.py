@@ -94,15 +94,15 @@ class DemandaListView(generics.ListAPIView):
 
     def get_queryset(self) -> QuerySet[Demanda]:
         user = self.request.user
-        queryset = demandas_permitidas(user).filter(
-            status__in=[Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO, Demanda.Status.AGUARDANDO_AVALIACAO, Demanda.Status.EM_CORRECAO],
-        ).select_related("responsavel")
+        queryset = demandas_permitidas(user).select_related("responsavel")
 
         status = self.request.query_params.get("status")
         if status is not None:
-            if status not in [Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO, Demanda.Status.AGUARDANDO_AVALIACAO, Demanda.Status.EM_CORRECAO]:
-                raise exceptions.ValidationError({"status": "Informe um status ativo válido."})
+            if status not in Demanda.Status.values:
+                raise exceptions.ValidationError({"status": "Informe um status válido."})
             queryset = queryset.filter(status=status)
+        else:
+            queryset = queryset.exclude(status__in=[Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA])
 
         critica = self.request.query_params.get("critica")
         if critica is not None:

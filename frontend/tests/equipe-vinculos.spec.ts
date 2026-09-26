@@ -13,7 +13,7 @@ test('usuário com múltiplos vínculos pode alternar a equipe ativa', async ({ 
   await entrarComo(page, 'gestor');
   const selector = page.getByLabel('Equipe ativa');
   await expect(selector).toBeVisible();
-  await selector.selectOption('2');
+  await Promise.all([page.waitForEvent('load'), selector.selectOption('2')]);
   await expect(selector).toHaveValue('2');
   expect(await page.evaluate(() => localStorage.getItem('centraliza_equipe_ativa'))).toBe('2');
 });

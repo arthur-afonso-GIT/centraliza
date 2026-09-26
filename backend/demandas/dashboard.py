@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from agenda.models import Compromisso
 from agenda.serializers import CompromissoSerializer
 from avisos.models import Aviso
+from avisos.views import com_leitura
 from avisos.serializers import AvisoFeedSerializer
 from demandas.models import Demanda
 from demandas.serializers import DemandaSerializer
@@ -18,6 +19,7 @@ from usuarios.models import Usuario
 
 STATUS_ATIVOS = (
     Demanda.Status.PENDENTE,
+    Demanda.Status.ACEITA,
     Demanda.Status.EM_ANDAMENTO,
     Demanda.Status.AGUARDANDO_AVALIACAO,
     Demanda.Status.EM_CORRECAO,
@@ -70,5 +72,5 @@ class ResumoHomeView(APIView):
         ).filter(Q(expira_em__isnull=True) | Q(expira_em__gt=agora)).select_related("autor").prefetch_related("destinatarios")
         if user.perfil == Usuario.Perfil.INSPETOR:
             avisos = avisos.filter(Q(destinatarios=user) | Q(destinatarios__isnull=True))
-        base["avisos_ativos"] = AvisoFeedSerializer(avisos.order_by("-publicado_em", "-id").distinct()[:3], many=True).data
+        base["avisos_ativos"] = AvisoFeedSerializer(com_leitura(avisos, user).order_by("-publicado_em", "-id").distinct()[:3], many=True).data
         return Response(base)

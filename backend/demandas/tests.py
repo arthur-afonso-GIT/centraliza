@@ -11,6 +11,12 @@ from demandas.importacao_sei import interpretar_texto_sei
 from usuarios.models import Equipe, Usuario
 
 
+def criar_demanda_teste(**dados):
+    demanda = Demanda.objects.create(**dados)
+    demanda.equipes_participantes.add(demanda.equipe_id)
+    return demanda
+
+
 class IdentidadeSeiTest(APITestCase):
     def test_normalizacao_e_conservadora_e_preserva_letras(self):
         self.assertEqual(normalizar_numero_sei(" 23.000/2026-AB "), "230002026AB")
@@ -53,7 +59,7 @@ class ListagemDemandasTest(APITestCase):
 
     @classmethod
     def criar(cls, titulo, equipe, criador, responsavel, status, critica, dias):
-        return Demanda.objects.create(
+        return criar_demanda_teste(
             titulo=titulo, equipe=equipe, criador=criador, responsavel=responsavel,
             status=status, critica=critica, prazo=date(2026, 9, 10) + timedelta(days=dias),
         )
@@ -81,6 +87,13 @@ class ListagemDemandasTest(APITestCase):
         self.assertEqual(response.data["count"], 2)
         self.assertEqual({item["titulo"] for item in response.data["results"]}, {"Pendente crítica A", "Em andamento A"})
 
+    def test_consulta_encerradas_apenas_quando_solicitada(self):
+        self.autenticar(self.inspetor_a)
+        response = self.client.get("/api/demandas/?status=concluida")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["titulo"] for item in response.data["results"]], ["Concluída A"])
+        self.assertTrue(all(item["status"] not in ["concluida", "cancelada"] for item in self.client.get("/api/demandas/").data["results"]))
+
     def test_combina_status_e_criticidade(self):
         self.autenticar(self.gestor_a)
         response = self.client.get("/api/demandas/?status=pendente&critica=true")
@@ -106,7 +119,7 @@ class ListagemDemandasTest(APITestCase):
 
     def test_rejeita_parametros_invalidos(self):
         self.autenticar(self.gestor_a)
-        for query in ["status=concluida", "critica=sim", "atrasada=sim", "responsavel=abc", "responsavel=0", "prazo_de=20-09-2026", "prazo_de=2026-10-10&prazo_ate=2026-10-01", "page_size=0", "page_size=51", "page_size=abc", "page=abc"]:
+        for query in ["status=inexistente", "critica=sim", "atrasada=sim", "responsavel=abc", "responsavel=0", "prazo_de=20-09-2026", "prazo_de=2026-10-10&prazo_ate=2026-10-01", "page_size=0", "page_size=51", "page_size=abc", "page=abc"]:
             with self.subTest(query=query):
                 self.assertEqual(self.client.get(f"/api/demandas/?{query}").status_code, 400)
 
@@ -192,7 +205,7 @@ class DetalheHistoricoTest(APITestCase):
         cls.inspetor = Usuario.objects.create_user(username="inspetor.detalhe", perfil="inspetor", equipe=cls.equipe)
         cls.outro_inspetor = Usuario.objects.create_user(username="outro.detalhe", perfil="inspetor", equipe=cls.equipe)
         cls.gestor_externo = Usuario.objects.create_user(username="gestor.externo", perfil="gestor", equipe=cls.outra_equipe)
-        cls.demanda = Demanda.objects.create(
+        cls.demanda = criar_demanda_teste(
             titulo="Demanda com detalhe", descricao="Descrição completa", equipe=cls.equipe,
             criador=cls.gestor, responsavel=cls.inspetor, status="pendente",
             prioridade="alta", prazo=date(2026, 9, 20), critica=True,
@@ -213,21 +226,66 @@ class DetalheHistoricoTest(APITestCase):
 
     def test_inspetor_executa_transicoes_e_historico_permanece_consistente(self):
         self.client.force_authenticate(self.inspetor)
+        aceite = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aceita"})
+        self.assertEqual(aceite.status_code, 200)
+        self.assertEqual(aceite.data["historico"][0]["autor"]["id"], self.inspetor.id)
         primeira = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"})
         self.assertEqual(primeira.status_code, 200)
         self.assertEqual(primeira.data["status"], "em_andamento")
-        self.assertEqual(primeira.data["historico"][0]["status_anterior"], "pendente")
+        self.assertEqual(primeira.data["historico"][0]["status_anterior"], "aceita")
         segunda = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aguardando_avaliacao", "texto": "Atividade executada."})
         self.assertEqual(segunda.status_code, 200)
         self.client.force_authenticate(self.gestor)
         terceira = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "concluida"})
         self.assertEqual(terceira.status_code, 200)
-        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 3)
-        self.assertEqual(list(EventoDemanda.objects.filter(demanda=self.demanda).values_list("status_novo", flat=True)), ["concluida", "aguardando_avaliacao", "em_andamento"])
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 4)
+        self.assertEqual(list(EventoDemanda.objects.filter(demanda=self.demanda).values_list("status_novo", flat=True)), ["concluida", "aguardando_avaliacao", "em_andamento", "aceita"])
         self.client.force_authenticate(self.inspetor)
         invalida = self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"})
         self.assertEqual(invalida.status_code, 400)
-        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 3)
+        self.assertEqual(EventoDemanda.objects.filter(demanda=self.demanda).count(), 4)
+
+    def test_aceite_obrigatorio_e_nao_pode_ser_repetido(self):
+        self.client.force_authenticate(self.inspetor)
+        url = f"/api/demandas/{self.demanda.id}/status/"
+        self.assertEqual(self.client.patch(url, {"status": "em_andamento"}).status_code, 400)
+        self.assertEqual(EventoDemanda.objects.count(), 0)
+        self.assertEqual(self.client.patch(url, {"status": "aceita"}).status_code, 200)
+        self.assertEqual(self.client.patch(url, {"status": "aceita"}).status_code, 400)
+        evento = EventoDemanda.objects.get(demanda=self.demanda)
+        self.assertEqual(evento.autor_id, self.inspetor.id)
+        self.assertIsNotNone(evento.criado_em)
+        self.assertEqual(evento.status_novo, "aceita")
+        response = self.client.get("/api/demandas/?status=aceita")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["count"], 1)
+        self.client.force_authenticate(self.gestor)
+        self.assertEqual(self.client.get("/api/demandas/?status=aceita").data["count"], 1)
+
+    def test_reatribuicao_exige_novo_aceite_e_preserva_historico(self):
+        self.client.force_authenticate(self.inspetor)
+        url = f"/api/demandas/{self.demanda.id}/status/"
+        self.client.patch(url, {"status": "aceita"})
+        self.client.patch(url, {"status": "em_andamento"})
+        self.client.force_authenticate(self.gestor)
+        response = self.client.patch(f"/api/demandas/{self.demanda.id}/", {"responsavel_id": self.outro_inspetor.id})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["status"], "pendente")
+        self.assertTrue(EventoDemanda.objects.filter(demanda=self.demanda, autor=self.inspetor, status_novo="aceita").exists())
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.patch(url, {"status": "aceita"}).status_code, 404)
+        self.client.force_authenticate(self.outro_inspetor)
+        self.assertEqual(self.client.patch(url, {"status": "em_andamento"}).status_code, 400)
+        self.assertEqual(self.client.patch(url, {"status": "aceita"}).status_code, 200)
+
+    def test_edicao_sem_troca_de_responsavel_preserva_aceite(self):
+        self.client.force_authenticate(self.inspetor)
+        self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aceita"})
+        self.client.force_authenticate(self.gestor)
+        response = self.client.patch(f"/api/demandas/{self.demanda.id}/", {"titulo": "Título revisado", "responsavel_id": self.inspetor.id})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["status"], "aceita")
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "cancelada", "texto": "Retirada pela gestão."}).status_code, 200)
 
     def test_resumo_correcao_e_cancelamento_obrigam_texto(self):
         self.demanda.status = "em_andamento"
@@ -251,9 +309,9 @@ class DetalheHistoricoTest(APITestCase):
 
     def test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro(self):
         self.client.force_authenticate(self.gestor)
-        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"}).status_code, 403)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aceita"}).status_code, 403)
         self.client.force_authenticate(self.outro_inspetor)
-        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "em_andamento"}).status_code, 404)
+        self.assertEqual(self.client.patch(f"/api/demandas/{self.demanda.id}/status/", {"status": "aceita"}).status_code, 404)
         self.demanda.refresh_from_db()
         self.assertEqual(self.demanda.status, "pendente")
 
@@ -284,7 +342,7 @@ class AnexosDemandaTest(APITestCase):
         cls.inspetor = Usuario.objects.create_user(username="inspetor.anexos", perfil="inspetor", equipe=cls.equipe)
         cls.outro = Usuario.objects.create_user(username="outro.anexos", perfil="inspetor", equipe=cls.equipe)
         cls.externo = Usuario.objects.create_user(username="externo.anexos", perfil="gestor", equipe=cls.outra)
-        cls.demanda = Demanda.objects.create(
+        cls.demanda = criar_demanda_teste(
             titulo="Demanda com evidências", prazo=date(2026, 10, 20), equipe=cls.equipe,
             criador=cls.gestor, responsavel=cls.inspetor,
         )
@@ -378,7 +436,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertEqual([item["tipo"] for item in response.data["historico"]], ["responsavel_alterado", "demanda_criada"])
 
     def test_avisa_duplicidade_sem_bloquear_criacao(self):
-        existente = Demanda.objects.create(
+        existente = criar_demanda_teste(
             titulo="Processo já cadastrado", sei_numero="23.000/2026-AB", prazo=date(2026, 10, 20),
             equipe=self.equipe, criador=self.gestor, status="concluida",
         )
@@ -390,7 +448,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertEqual(criado.status_code, 201)
 
     def test_verificacao_de_duplicidade_respeita_equipe(self):
-        Demanda.objects.create(
+        criar_demanda_teste(
             titulo="Externa", sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20),
             equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.sei.externo", perfil="gestor", equipe=self.outra),
         )
@@ -403,7 +461,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.client.force_authenticate(self.inspetor)
         self.assertEqual(self.client.post("/api/demandas/", self.payload()).status_code, 403)
         self.client.force_authenticate(self.gestor)
-        demanda = Demanda.objects.create(titulo="Protegida", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
+        demanda = criar_demanda_teste(titulo="Protegida", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
         self.client.force_authenticate(self.inspetor)
         self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 403)
 
@@ -414,7 +472,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertEqual(Demanda.objects.count(), 0)
 
     def test_gestor_edita_e_reatribui_com_eventos_separados(self):
-        demanda = Demanda.objects.create(titulo="Original", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
+        demanda = criar_demanda_teste(titulo="Original", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor)
         self.client.force_authenticate(self.gestor)
         response = self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Revisada", "responsavel_id": self.segundo.id})
         self.assertEqual(response.status_code, 200)
@@ -423,7 +481,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertEqual({item["tipo"] for item in response.data["historico"]}, {"demanda_editada", "responsavel_alterado"})
 
     def test_demanda_encerrada_nao_pode_ser_editada(self):
-        demanda = Demanda.objects.create(titulo="Encerrada", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, status="concluida")
+        demanda = criar_demanda_teste(titulo="Encerrada", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, status="concluida")
         self.client.force_authenticate(self.gestor)
         self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 400)
 
@@ -491,7 +549,7 @@ class ImportacaoSeiTest(APITestCase):
         self.assertEqual(self.client.post(f"/api/importacoes/sei/{previa.data['id']}/confirmar/", {"titulo": "Outra", "prazo": "2026-10-21"}).status_code, 400)
 
     def test_previa_detecta_duplicidade_e_isola_autor(self):
-        Demanda.objects.create(
+        criar_demanda_teste(
             titulo="Existente", sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20),
             equipe=self.equipe, criador=self.gestor,
         )

@@ -84,7 +84,7 @@ class AtualizarMembroEquipeSerializer(serializers.ModelSerializer):
         if self.instance.pk == solicitante.pk:
             if attrs.get("is_active") is False or perfil != Usuario.Perfil.GESTOR or not administra:
                 raise serializers.ValidationError("Você não pode desativar, rebaixar ou remover sua própria permissão administrativa.")
-        statuses_ativos = ("pendente", "em_andamento", "aguardando_avaliacao", "em_correcao")
+        statuses_ativos = ("pendente", "aceita", "em_andamento", "aguardando_avaliacao", "em_correcao")
         deixa_de_atender = attrs.get("is_active") is False or perfil != Usuario.Perfil.INSPETOR
         if self.instance.perfil == Usuario.Perfil.INSPETOR and deixa_de_atender:
             if self.instance.demandas_atribuidas.filter(status__in=statuses_ativos).exists():

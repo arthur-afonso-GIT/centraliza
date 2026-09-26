@@ -88,7 +88,7 @@ class EquipesAcessiveisView(APIView):
     def get(self, request):
         equipes = Equipe.objects.filter(vinculos__usuario=request.user, vinculos__ativo=True).annotate(
             integrantes_ativos=Count("vinculos__usuario", filter=Q(vinculos__ativo=True), distinct=True),
-            demandas_ativas=Count("demanda", filter=Q(demanda__status__in=["pendente", "em_andamento", "aguardando_avaliacao", "em_correcao"]), distinct=True),
+            demandas_ativas=Count("demanda", filter=Q(demanda__status__in=["pendente", "aceita", "em_andamento", "aguardando_avaliacao", "em_correcao"]), distinct=True),
         ).order_by("arquivada", "nome").distinct()
         dados = EquipeSerializer(equipes, many=True).data
         administraveis = set(request.user.vinculos_equipe.filter(ativo=True, papel=VinculoEquipe.Papel.GESTOR, pode_administrar=True).values_list("equipe_id", flat=True))

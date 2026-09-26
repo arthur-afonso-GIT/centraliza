@@ -13,7 +13,9 @@ class RegraTransicao:
 
 
 REGRAS = {
-    (Demanda.Status.PENDENTE, Demanda.Status.EM_ANDAMENTO): RegraTransicao("inspetor"),
+    (Demanda.Status.PENDENTE, Demanda.Status.ACEITA): RegraTransicao("inspetor"),
+    (Demanda.Status.ACEITA, Demanda.Status.EM_ANDAMENTO): RegraTransicao("inspetor"),
+    (Demanda.Status.ACEITA, Demanda.Status.CANCELADA): RegraTransicao("gestor", True),
     (Demanda.Status.EM_ANDAMENTO, Demanda.Status.AGUARDANDO_AVALIACAO): RegraTransicao("inspetor", True),
     (Demanda.Status.EM_CORRECAO, Demanda.Status.AGUARDANDO_AVALIACAO): RegraTransicao("inspetor", True),
     (Demanda.Status.AGUARDANDO_AVALIACAO, Demanda.Status.CONCLUIDA): RegraTransicao("gestor"),
@@ -38,6 +40,8 @@ def alterar_status_demanda(*, demanda_id: int, usuario, novo_status: str, texto:
     texto = texto.strip()
     if regra.exige_texto and not texto:
         raise ValidationError({"texto": "Informe a justificativa ou o resumo desta transição."})
+    if novo_status == Demanda.Status.ACEITA:
+        texto = "Recebimento e responsabilidade confirmados pelo inspetor."
     anterior = demanda.status
     demanda.status = novo_status
     demanda.save(update_fields=["status", "atualizada_em"])
@@ -67,6 +71,7 @@ def criar_demanda(*, usuario, dados: dict) -> Demanda:
 
 @transaction.atomic
 def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
+    demanda = Demanda.objects.select_for_update().get(pk=demanda.pk)
     if usuario.perfil != "gestor" or demanda.equipe_id != usuario.equipe_id:
         raise PermissionDenied("Somente gestores da equipe podem editar a demanda.")
     if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
@@ -84,8 +89,16 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
         EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto=f"Campos atualizados: {', '.join(alterados)}.")
     if responsavel is not marcador and demanda.responsavel_id != (responsavel.id if responsavel else None):
         anterior = demanda.responsavel.nome if demanda.responsavel_id else "não atribuído"
+        status_anterior = demanda.status
         demanda.responsavel = responsavel
-        demanda.save(update_fields=["responsavel", "atualizada_em"])
+        demanda.status = Demanda.Status.PENDENTE
+        demanda.save(update_fields=["responsavel", "status", "atualizada_em"])
+        if status_anterior != Demanda.Status.PENDENTE:
+            EventoDemanda.objects.create(
+                demanda=demanda, tipo=EventoDemanda.Tipo.STATUS_ALTERADO, autor=usuario,
+                status_anterior=status_anterior, status_novo=Demanda.Status.PENDENTE,
+                texto="Atribuição alterada. É necessário o aceite do novo responsável." if responsavel else "Responsável removido. Aguardando nova atribuição.",
+            )
         novo = responsavel.nome if responsavel else "não atribuído"
         EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.RESPONSAVEL_ALTERADO, autor=usuario, texto=f"Responsável alterado de {anterior} para {novo}.")
     if equipes_ids is not marcador:

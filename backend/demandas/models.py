@@ -14,6 +14,7 @@ def caminho_anexo(instance, filename):
 class Demanda(models.Model):
     class Status(models.TextChoices):
         PENDENTE = "pendente", "Pendente"
+        ACEITA = "aceita", "Aceita"
         EM_ANDAMENTO = "em_andamento", "Em andamento"
         AGUARDANDO_AVALIACAO = "aguardando_avaliacao", "Aguardando avaliação"
         EM_CORRECAO = "em_correcao", "Em correção"
@@ -51,7 +52,7 @@ class Demanda(models.Model):
             models.Index(fields=["equipe", "critica", "prazo", "id"], name="demanda_equipe_critica"),
         ]
         constraints = [
-            models.CheckConstraint(condition=models.Q(status__in=["pendente", "em_andamento", "aguardando_avaliacao", "em_correcao", "concluida", "cancelada"]), name="demanda_status_valido"),
+            models.CheckConstraint(condition=models.Q(status__in=["pendente", "aceita", "em_andamento", "aguardando_avaliacao", "em_correcao", "concluida", "cancelada"]), name="demanda_status_valido"),
             models.CheckConstraint(condition=models.Q(prioridade__in=["baixa", "media", "alta"]), name="demanda_prioridade_valida"),
         ]
 

@@ -7,7 +7,7 @@ from django.test import TestCase, override_settings
 from django.utils import timezone
 from rest_framework.test import APITestCase
 
-from avisos.models import Aviso
+from avisos.models import Aviso, LeituraAviso
 from usuarios.models import Equipe, Usuario
 
 
@@ -166,3 +166,80 @@ class GerenciamentoAvisosTest(APITestCase):
         gestor_externo = Usuario.objects.create_user(username="gestor.externo.gerencia.avisos", perfil="gestor", equipe=self.outra)
         self.client.force_authenticate(gestor_externo)
         self.assertEqual(self.client.patch(f"/api/avisos/{criado['id']}/", {"titulo": "Indevido"}, format="json").status_code, 404)
+
+
+class LeituraAvisoTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.equipe = Equipe.objects.create(nome="Equipe leitura")
+        outra = Equipe.objects.create(nome="Outra leitura")
+        cls.gestor = Usuario.objects.create_user(username="gestor.leitura", perfil="gestor", equipe=cls.equipe)
+        cls.inspetor = Usuario.objects.create_user(username="inspetor.leitura", perfil="inspetor", equipe=cls.equipe)
+        cls.segundo = Usuario.objects.create_user(username="segundo.leitura", perfil="inspetor", equipe=cls.equipe)
+        cls.externo = Usuario.objects.create_user(username="externo.leitura", perfil="inspetor", equipe=outra)
+        cls.aviso = Aviso.objects.create(titulo="Comunicado", resumo="Resumo", conteudo="Conteúdo", categoria="urgente", equipe=cls.equipe, autor=cls.gestor, publicado_em=timezone.now() - timedelta(hours=1))
+
+    def marcar(self, versao=None):
+        return self.client.post(f"/api/avisos/{self.aviso.id}/leitura/", {"atualizado_em": versao or self.aviso.atualizado_em.isoformat()}, format="json")
+
+    def test_consulta_nao_marca_e_confirmacao_persiste_por_usuario(self):
+        self.client.force_authenticate(self.inspetor)
+        self.assertFalse(self.client.get(f"/api/avisos/{self.aviso.id}/").data["lido"])
+        self.assertEqual(LeituraAviso.objects.count(), 0)
+        primeira = self.marcar()
+        self.assertEqual(primeira.status_code, 200)
+        self.assertEqual(self.marcar().data["lido_em"], primeira.data["lido_em"])
+        self.assertEqual(LeituraAviso.objects.count(), 1)
+        self.assertTrue(self.client.get("/api/avisos/").data["resultados"][0]["lido"])
+        self.assertTrue(self.client.get("/api/home/resumo/").data["avisos_ativos"][0]["lido"])
+        self.client.force_authenticate(self.segundo)
+        self.assertFalse(self.client.get("/api/avisos/").data["resultados"][0]["lido"])
+
+    def test_edicao_exige_leitura_da_nova_versao(self):
+        self.client.force_authenticate(self.inspetor)
+        self.marcar()
+        anterior = self.aviso.atualizado_em.isoformat()
+        self.client.force_authenticate(self.gestor)
+        self.client.patch(f"/api/avisos/{self.aviso.id}/", {"conteudo": "Orientação revisada"})
+        self.client.force_authenticate(self.inspetor)
+        self.assertFalse(self.client.get(f"/api/avisos/{self.aviso.id}/").data["lido"])
+        self.assertEqual(self.marcar(anterior).status_code, 409)
+        self.aviso.refresh_from_db()
+        self.assertEqual(self.marcar().status_code, 200)
+        self.assertEqual(LeituraAviso.objects.count(), 1)
+        self.assertTrue(self.client.get(f"/api/avisos/{self.aviso.id}/").data["lido"])
+
+    def test_nao_permite_leitura_de_outra_equipe_ou_destinatario(self):
+        self.client.force_authenticate(self.externo)
+        self.assertEqual(self.marcar().status_code, 404)
+        self.aviso.destinatarios.set([self.segundo])
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.marcar().status_code, 404)
+        self.assertEqual(LeituraAviso.objects.count(), 0)
+
+    def test_nao_marca_agendado_expirado_ou_cancelado(self):
+        self.client.force_authenticate(self.gestor)
+        self.aviso.publicado_em = timezone.now() + timedelta(days=1)
+        self.aviso.save()
+        self.assertEqual(self.marcar().status_code, 404)
+        self.assertEqual(self.client.get(f"/api/avisos/{self.aviso.id}/").data["situacao"], "agendado")
+        self.aviso.publicado_em = timezone.now() - timedelta(days=2)
+        self.aviso.expira_em = timezone.now() - timedelta(days=1)
+        self.aviso.save()
+        self.assertEqual(self.marcar().status_code, 404)
+        self.assertEqual(self.client.get(f"/api/avisos/{self.aviso.id}/").data["situacao"], "expirado")
+        self.aviso.cancelado_em = timezone.now()
+        self.aviso.save()
+        self.assertEqual(self.marcar().status_code, 404)
+        self.assertEqual(LeituraAviso.objects.count(), 0)
+
+    def test_exige_autenticacao_versao_e_csrf(self):
+        self.assertEqual(self.marcar().status_code, 401)
+        self.client.force_authenticate(self.inspetor)
+        for versao in ("inválida", "2026-09-24T12:00:00"):
+            self.assertEqual(self.marcar(versao).status_code, 400)
+        from rest_framework.test import APIClient
+        protegido = APIClient(enforce_csrf_checks=True)
+        protegido.force_login(self.inspetor)
+        self.assertEqual(protegido.post(f"/api/avisos/{self.aviso.id}/leitura/", {"atualizado_em": self.aviso.atualizado_em.isoformat()}, format="json").status_code, 403)
+        self.assertEqual(LeituraAviso.objects.count(), 0)

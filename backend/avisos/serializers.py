@@ -1,12 +1,16 @@
 from zoneinfo import ZoneInfo
 
 from rest_framework import serializers
+from django.utils import timezone
 
 from avisos.models import Aviso
 from usuarios.models import Usuario
 
 
 class AvisoFeedSerializer(serializers.ModelSerializer):
+    lido = serializers.SerializerMethodField()
+    lido_em = serializers.SerializerMethodField()
+    situacao = serializers.SerializerMethodField()
     autor = serializers.CharField(source="autor.nome", read_only=True)
     publicado_em = serializers.SerializerMethodField()
     expira_em = serializers.SerializerMethodField()
@@ -14,7 +18,23 @@ class AvisoFeedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aviso
-        fields = ["id", "titulo", "resumo", "categoria", "autor", "publicado_em", "expira_em", "destinatarios"]
+        fields = ["id", "titulo", "resumo", "categoria", "autor", "publicado_em", "expira_em", "destinatarios", "atualizado_em", "situacao", "lido", "lido_em"]
+
+    def get_lido(self, obj):
+        leitura = getattr(obj, "minha_leitura_em", None)
+        return bool(leitura and leitura >= obj.atualizado_em)
+
+    def get_lido_em(self, obj):
+        leitura = getattr(obj, "minha_leitura_em", None)
+        return leitura.isoformat() if self.get_lido(obj) else None
+
+    def get_situacao(self, obj):
+        agora = timezone.now()
+        if obj.publicado_em > agora:
+            return "agendado"
+        if obj.expira_em and obj.expira_em <= agora:
+            return "expirado"
+        return "ativo"
 
     def get_publicado_em(self, obj):
         return obj.publicado_em.astimezone(ZoneInfo("America/Fortaleza")).isoformat()

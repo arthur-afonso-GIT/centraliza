@@ -20,6 +20,12 @@ export async function instalarApi(page: Page) {
     { id: 1, titulo: 'Plantão extraordinário', resumo: 'Mudança na escala desta sexta-feira.', conteudo: 'Consulte a nova escala e confirme sua disponibilidade com a gestão.', categoria: 'urgente', autor: 'Gestor de teste', publicado_em: '2026-10-01T09:00:00-03:00', expira_em: null, destinatarios: [] },
     { id: 2, titulo: 'Atualização de procedimento', resumo: 'Novo roteiro disponível para inspeções.', conteudo: 'Consulte o procedimento atualizado.', categoria: 'informativo', autor: 'Gestor de teste', publicado_em: '2026-09-30T09:00:00-03:00', expira_em: null, destinatarios: [] },
   ];
+  const leituras = new Map<string, string>();
+  function noticeData(item: Record<string, unknown>) {
+    const version = item.atualizado_em as string ?? '2026-09-14T12:00:00Z';
+    const lido = leituras.get(`${perfil}-${String(item.id)}`) === version;
+    return { ...item, atualizado_em: version, situacao: item.situacao ?? 'ativo', lido, lido_em: lido ? version : null };
+  }
   await page.route('**/api/**', async route => {
     const request = route.request();
     const url = new URL(request.url());
@@ -39,7 +45,7 @@ export async function instalarApi(page: Page) {
       indicadores: perfil === 'gestor' ? { atrasadas: 2, criticas: 4, sem_responsavel: 1, aguardando_avaliacao: 3 } : { atrasadas: 1, criticas: 2, em_correcao: 1, nao_iniciadas: 3 },
       carga_inspetores: perfil === 'gestor' ? [{ id: 2, nome: 'Inspetor de teste', total: 4 }, { id: 3, nome: 'Segundo inspetor', total: 2 }] : undefined,
       proximas_demandas: [{ id: 1, titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', status: 'pendente', prioridade: 'alta', prazo: '2026-09-15', critica: true, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' } }],
-      proximos_compromissos: appointments.slice(0, 1), avisos_ativos: notices.slice(0, 1),
+      proximos_compromissos: appointments.slice(0, 1), avisos_ativos: notices.slice(0, 1).map(noticeData),
     } });
     if (url.pathname === '/api/equipe/') return route.fulfill({ json: { id: 1, nome: 'VISAT Demonstração 1', pode_administrar: perfil === 'gestor', membros } });
     if (url.pathname === '/api/equipes/') return route.fulfill({ json: { resultados: [{ id: 1, nome: 'VISAT Demonstração 1', arquivada: false, integrantes_ativos: membros.filter(item => item.is_active).length, demandas_ativas: 8 }] } });
@@ -71,7 +77,7 @@ export async function instalarApi(page: Page) {
     if (seiConfirm && request.method() === 'POST') {
       const body = request.postDataJSON() as Record<string, unknown>;
       const campos = (seiPreview?.campos ?? {}) as Record<string, unknown>;
-      return route.fulfill({ status: 201, json: { id: 91, ...body, sei_numero: campos.sei_numero, status: 'pendente', responsavel: null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: [] } });
+      return route.fulfill({ status: 201, json: { id: 91, ...body, sei_numero: campos.sei_numero, status: 'pendente', responsavel: null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: [] } });
     }
     if (url.pathname === '/api/demandas/verificar-sei/') {
       const numero = url.searchParams.get('sei_numero') ?? '';
@@ -82,7 +88,7 @@ export async function instalarApi(page: Page) {
       if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
       if (request.method() === 'POST') {
         const body = request.postDataJSON() as Record<string, unknown>;
-        return route.fulfill({ status: 201, json: { id: 90, ...body, origem: body.origem ?? '', status: 'pendente', responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: [{ id: 90, tipo: 'demanda_criada', autor: { id: 1, nome: 'Gestor de teste' }, criado_em: '2026-09-14T12:00:00Z', status_anterior: '', status_novo: '', texto: 'Demanda criada pela gestão.' }] } });
+        return route.fulfill({ status: 201, json: { id: 90, ...body, origem: body.origem ?? '', status: 'pendente', responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: [{ id: 90, tipo: 'demanda_criada', autor: { id: 1, nome: 'Gestor de teste' }, criado_em: '2026-09-14T12:00:00Z', status_anterior: '', status_novo: '', texto: 'Demanda criada pela gestão.' }] } });
       }
       await new Promise(resolve => setTimeout(resolve, 120));
       const segmento = url.searchParams.get('status');
@@ -92,7 +98,7 @@ export async function instalarApi(page: Page) {
       const total = (perfil === 'gestor' ? (critica ? 4 : segmento === 'pendente' ? 9 : 5) : (critica ? 3 : segmento === 'pendente' ? 7 : 4)) - (moved ? 1 : 0);
       const current = Number(url.searchParams.get('page') ?? 1);
       const start = (current - 1) * 4;
-      const results = Array.from({ length: Math.min(4, Math.max(0, total - start)) }, (_, index) => { const id = start + index + 1 + (moved ? 1 : 0); return { id, titulo: `Inspeção demonstrativa ${id}`, sei_numero: id === 1 ? 'PROCESSO-FICTICIO-001' : '', status: segmento ?? (index % 2 ? 'pendente' : 'em_andamento'), prioridade: 'alta', prazo: atrasada ? '2026-09-01' : '2026-09-15', critica, atrasada, responsavel: { id: 2, nome: 'Inspetor de teste' } }; });
+      const results = Array.from({ length: Math.min(4, Math.max(0, total - start)) }, (_, index) => { const id = start + index + 1 + (moved ? 1 : 0); return { equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], id, titulo: `Inspeção demonstrativa ${id}`, sei_numero: id === 1 ? 'PROCESSO-FICTICIO-001' : '', status: segmento ?? (index % 2 ? 'pendente' : 'em_andamento'), prioridade: 'alta', prazo: atrasada ? '2026-09-01' : '2026-09-15', critica, atrasada, responsavel: { id: 2, nome: 'Inspetor de teste' } }; });
       return route.fulfill({ json: { count: total, previous: current > 1 ? 'anterior' : null, next: start + 4 < total ? 'proxima' : null, results } });
     }
     const attachmentList = url.pathname.match(/^\/api\/demandas\/(\d+)\/anexos\/$/);
@@ -115,16 +121,16 @@ export async function instalarApi(page: Page) {
       if (detail[1] === '404') return route.fulfill({ status: 404, json: {} });
       if (request.method() === 'PATCH') {
         const body = request.postDataJSON() as Record<string, unknown>;
-        return route.fulfill({ json: { id: Number(detail[1]), titulo: body.titulo ?? 'Inspeção demonstrativa 1', sei_numero: body.sei_numero ?? 'PROCESSO-FICTICIO-001', descricao: body.descricao ?? 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: body.origem ?? 'MPT', status: demandStatus, prioridade: body.prioridade ?? 'alta', prazo: body.prazo ?? '2026-09-20', critica: body.critica ?? true, responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: body.responsavel_id === 3 ? 'Segundo inspetor' : 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', historico: history } });
+        return route.fulfill({ json: { id: Number(detail[1]), titulo: body.titulo ?? 'Inspeção demonstrativa 1', sei_numero: body.sei_numero ?? 'PROCESSO-FICTICIO-001', descricao: body.descricao ?? 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: body.origem ?? 'MPT', status: demandStatus, prioridade: body.prioridade ?? 'alta', prazo: body.prazo ?? '2026-09-20', critica: body.critica ?? true, responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: body.responsavel_id === 3 ? 'Segundo inspetor' : 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
       }
-      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', historico: history } });
+      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
     }
     const status = url.pathname.match(/^\/api\/demandas\/(\d+)\/status\/$/);
     if (status && request.method() === 'PATCH') {
       const previous = demandStatus;
       demandStatus = (request.postDataJSON() as { status: string }).status;
-      history.unshift({ id: history.length + 1, tipo: 'status_alterado', autor: { id: 2, nome: 'Inspetor de teste' }, criado_em: '2026-09-14T13:00:00Z', status_anterior: previous, status_novo: demandStatus, texto: '' });
-      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', historico: history } });
+      history.unshift({ id: history.length + 1, tipo: 'status_alterado', autor: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste' }, criado_em: '2026-09-14T13:00:00Z', status_anterior: previous, status_novo: demandStatus, texto: (request.postDataJSON() as { texto?: string }).texto ?? '' });
+      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
     }
     const comment = url.pathname.match(/^\/api\/demandas\/(\d+)\/historico\/$/);
     if (comment && request.method() === 'POST') {
@@ -159,19 +165,27 @@ export async function instalarApi(page: Page) {
         const body = request.postDataJSON() as Record<string, unknown>;
         const created = { id: 3, ...body, autor: 'Gestor de teste', destinatarios: (body.destinatario_ids as number[]).map(id => ({ id, nome: id === 2 ? 'Inspetor de teste' : 'Segundo inspetor' })) };
         notices = [created, ...notices];
-        return route.fulfill({ status: 201, json: created });
+        return route.fulfill({ status: 201, json: noticeData(created) });
       }
       await new Promise(resolve => setTimeout(resolve, 80));
-      return route.fulfill({ json: { resultados: notices } });
+      return route.fulfill({ json: { resultados: notices.map(noticeData) } });
+    }
+    const leitura = url.pathname.match(/^\/api\/avisos\/(\d+)\/leitura\/$/);
+    if (leitura && request.method() === 'POST') {
+      const item = notices.find(value => value.id === Number(leitura[1]));
+      if (!item || !perfil) return route.fulfill({ status: 404, json: {} });
+      const data = noticeData(item);
+      leituras.set(`${perfil}-${String(item.id)}`, data.atualizado_em);
+      return route.fulfill({ json: { lido: true, lido_em: data.atualizado_em } });
     }
     const aviso = url.pathname.match(/^\/api\/avisos\/(\d+)\/$/);
     if (aviso) {
       if (!perfil) return route.fulfill({ status: 401, json: {} });
       if (aviso[1] === '404') return route.fulfill({ status: 404, json: {} });
       const index = notices.findIndex(item => item.id === Number(aviso[1]));
-      if (request.method() === 'PATCH') { const body = request.postDataJSON() as Record<string, unknown>; notices[index] = { ...notices[index], ...body, destinatarios: (body.destinatario_ids as number[]).map(id => ({ id, nome: id === 2 ? 'Inspetor de teste' : 'Segundo inspetor' })) }; return route.fulfill({ json: notices[index] }); }
+      if (request.method() === 'PATCH') { const body = request.postDataJSON() as Record<string, unknown>; notices[index] = { ...notices[index], ...body, atualizado_em: new Date().toISOString(), destinatarios: (body.destinatario_ids as number[]).map(id => ({ id, nome: id === 2 ? 'Inspetor de teste' : 'Segundo inspetor' })) }; return route.fulfill({ json: noticeData(notices[index]) }); }
       if (request.method() === 'DELETE') { notices = notices.filter(item => item.id !== Number(aviso[1])); return route.fulfill({ status: 204 }); }
-      return route.fulfill({ json: notices[index] });
+      return route.fulfill({ json: noticeData(notices[index]) });
     }
     return route.fulfill({ status: 404 });
   });

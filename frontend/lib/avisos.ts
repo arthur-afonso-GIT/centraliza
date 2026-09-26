@@ -1,7 +1,9 @@
 import { ApiError, csrfToken } from './auth';
 
 export type CategoriaAviso = 'urgente' | 'informativo';
-export type AvisoFeed = { id: number; titulo: string; resumo: string; categoria: CategoriaAviso; autor: string; publicado_em: string; expira_em: string | null; destinatarios: Array<{ id: number; nome: string }> };
+export type SituacaoAviso = 'ativo' | 'agendado' | 'expirado';
+export const situacaoAvisoLabel: Record<SituacaoAviso, string> = { ativo: 'Publicado', agendado: 'Agendado', expirado: 'Expirado' };
+export type AvisoFeed = { lido: boolean; lido_em: string | null; atualizado_em: string; situacao: SituacaoAviso; id: number; titulo: string; resumo: string; categoria: CategoriaAviso; autor: string; publicado_em: string; expira_em: string | null; destinatarios: Array<{ id: number; nome: string }> };
 export type AvisoDetalhe = AvisoFeed & { conteudo: string };
 export type DadosAviso = { titulo: string; resumo: string; conteudo: string; categoria: CategoriaAviso; publicado_em: string; expira_em: string | null; destinatario_ids: number[] };
 
@@ -35,4 +37,13 @@ export async function cancelarAviso(id: number) {
   const token = await csrfToken();
   const response = await fetch(`/api/avisos/${id}/`, { method: 'DELETE', credentials: 'same-origin', headers: { 'X-CSRFToken': token } });
   if (!response.ok) throw new ApiError(response.status, 'Não foi possível cancelar o aviso.');
+}
+
+export async function marcarAvisoLido(id: number, atualizadoEm: string, signal?: AbortSignal) {
+  const token = await csrfToken();
+  return resposta<{ lido: boolean; lido_em: string }>(await fetch(`/api/avisos/${id}/leitura/`, {
+    method: 'POST', credentials: 'same-origin', signal,
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ atualizado_em: atualizadoEm }),
+  }), 'Não foi possível registrar a leitura.');
 }
