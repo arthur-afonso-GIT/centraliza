@@ -13,8 +13,8 @@
   const panel = document.createElement('aside');
   panel.setAttribute('role', 'status');
   panel.innerHTML = `<style>
-    aside{position:fixed;right:20px;bottom:20px;z-index:2147483647;width:min(340px,calc(100vw - 40px));box-sizing:border-box;padding:18px;border:1px solid #ddd;border-radius:12px;background:#fff;color:#25292c;box-shadow:0 12px 40px #0002;font:14px/1.45 system-ui,sans-serif}
-    strong{display:block;margin-bottom:6px;color:#c71c2c;font-size:16px}p{margin:0 0 14px}div{display:flex;gap:8px}button{cursor:pointer;border-radius:7px;padding:9px 12px;font:600 13px system-ui,sans-serif}button.primary{border:0;background:#d7192c;color:#fff}button.close{border:1px solid #d7d7d7;background:#fff;color:#363b3f}
+    aside{position:fixed;left:24px;top:24px;z-index:2147483647;width:min(440px,calc(100vw - 48px));box-sizing:border-box;padding:24px;border:1px solid #ddd;border-radius:14px;background:#fff;color:#25292c;box-shadow:0 12px 40px #0002;font:16px/1.5 system-ui,sans-serif}
+    strong{display:block;margin-bottom:8px;color:#c71c2c;font-size:19px}p{margin:0 0 18px}div{display:flex;flex-wrap:wrap;gap:10px}button{cursor:pointer;border-radius:8px;padding:11px 15px;font:600 14px system-ui,sans-serif}button.primary{border:0;background:#d7192c;color:#fff}button.close{border:1px solid #d7d7d7;background:#fff;color:#363b3f}
   </style>`;
   const title = document.createElement('strong');
   title.textContent = 'Centraliza encontrou dados SEI';
