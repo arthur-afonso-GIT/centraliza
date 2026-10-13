@@ -26,8 +26,9 @@ Available in the current version:
 - **Responsive workspace** — shared layout and navigation across Home, Agenda, Notices, Requests, and Chats.
 - **Authenticated roles** — sign in as a manager or inspector using Django sessions protected by CSRF.
 - **Request management** — managers can create, edit, assign, reassign, cancel, and filter team requests by assignee, deadline, or overdue state.
-- **SEI reference** — requests can store and search an optional SEI process number, with tolerant comparison and a non-blocking possible-duplicate warning; direct SEI capture is not implemented.
+- **SEI reference** — every new request requires a process number; normalized duplicates are blocked across teams. Managers can request access to an existing request, and managers of participating teams can approve or reject it.
 - **Assisted SEI intake** — managers can paste authorized label-and-value text into a temporary preview, review interpreted fields and possible duplicates, and explicitly confirm request creation; compatibility with the institutional SEI layout remains pending validation.
+- **Demonstration browser extension** — on local fictitious SEI pages, a Brave extension reads the visible process number and requesting institution, then opens a separate Centraliza review tab. It does not connect to the institutional SEI.
 - **Team directory and account management** — every member can view their own team; explicitly authorized managers can create, edit, activate, and deactivate accounts without accessing another team or deleting records.
 - **Role-based operational home** — managers receive team risk and workload indicators, while inspectors receive a personal summary of deadlines, corrections, appointments, and active notices.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
@@ -138,6 +139,7 @@ centraliza/
 │   ├── public/            Browser assets
 │   └── tests/             Navigation, session, and accessibility checks
 ├── backend/               Django API, models, migrations, tests, and demo seed
+├── extension-sei/         Brave extension for local fictitious SEI pages
 ├── assets/                Project identity
 ├── docs/                  Planning, contracts, validation, and visual references
 └── graphify-out/           Versioned code graph
@@ -147,7 +149,7 @@ Workspace coordinates session state and chooses the appropriate screen. The sess
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
-The current quality baseline includes 60 Django tests and 37 browser scenarios, plus lint, TypeScript, production build, keyboard navigation, responsive checks, and automated accessibility scans. With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md), [managed-agenda validation](docs/validacao-agenda-gerenciavel.md), and [notice-management validation](docs/validacao-avisos-gerenciaveis.md) reports for their methods and limitations.
+With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) for its method and limitations.
 
 ## Local development
 
@@ -185,6 +187,12 @@ npm run dev
 ```
 
 Open the address printed by the terminal, normally http://localhost:3000. The frontend proxies `/api` to http://127.0.0.1:8000. Set `CENTRALIZA_API_URL` before starting the frontend to use another local API address.
+
+### Try the SEI capture demonstration in Brave
+
+With the API and frontend running on their default local addresses, open `brave://extensions`, enable **Developer mode**, choose **Load unpacked**, and select the repository's `extension-sei` folder. Open [the fictitious process page](http://localhost:3000/mock-sei/processo.html). A small Centraliza notice offers **Revisar no Centraliza**; you can also click the extension icon and select **Enviar para revisão**. A new Centraliza tab opens with the process number and requesting institution ready for review. If you are signed out, log in in that new tab; the captured fields stay there until you save or cancel. Closing the tab discards the unsaved capture. If the extension was already installed, use **Reload** on `brave://extensions` to get the latest version.
+
+The [fictitious document page](http://localhost:3000/mock-sei/documento.html) also shows the notice and demonstrates the distinction between process and document numbers. The [ambiguous example](http://localhost:3000/mock-sei/ambiguo.html) asks for manual correction. These pages contain demonstration data only. Remove the extension from `brave://extensions` when finished. The extension is restricted to `localhost:3000`; a real SEI page requires an authorized adapter and validation against anonymized examples. Government domains alone are not used to trigger the notice.
 
 ### Demonstration accounts
 

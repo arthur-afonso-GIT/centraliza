@@ -52,7 +52,7 @@ class DemandaDetalheSerializer(DemandaSerializer):
 
 class GerenciarDemandaSerializer(serializers.Serializer):
     titulo = serializers.CharField(max_length=200, required=False)
-    sei_numero = serializers.CharField(max_length=80, allow_blank=True, required=False, trim_whitespace=True)
+    sei_numero = serializers.CharField(max_length=80, allow_blank=False, required=False, trim_whitespace=True)
     descricao = serializers.CharField(allow_blank=True, required=False)
     origem = serializers.CharField(max_length=200, allow_blank=True, required=False)
     prioridade = serializers.ChoiceField(choices=Demanda.Prioridade.choices, required=False)
@@ -62,7 +62,7 @@ class GerenciarDemandaSerializer(serializers.Serializer):
     equipes_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), required=False, allow_empty=False)
 
     def validate_sei_numero(self, value):
-        if value and not normalizar_numero_sei(value):
+        if not normalizar_numero_sei(value):
             raise serializers.ValidationError("Informe ao menos uma letra ou número.")
         return value
 
@@ -146,10 +146,9 @@ class ImportacaoSeiSerializer(serializers.ModelSerializer):
         normalizado = normalizar_numero_sei(str(obj.campos.get("sei_numero", "")))
         if not normalizado:
             return []
-        queryset = Demanda.objects.filter(
-            equipe_id=obj.equipe_id, sei_numero_normalizado=normalizado,
-        ).order_by("id")[:10]
+        queryset = Demanda.objects.filter(sei_numero_normalizado=normalizado)[:1]
         return [
-            {"id": item.id, "titulo": item.titulo, "status": item.status, "sei_numero": item.sei_numero}
+            {"id": item.id, "titulo": item.titulo, "origem": item.origem, "sei_numero": item.sei_numero,
+             "acessivel": item.equipes_participantes.filter(pk=obj.equipe_id).exists()}
             for item in queryset
         ]

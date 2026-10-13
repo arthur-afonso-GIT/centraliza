@@ -82,8 +82,11 @@ export async function instalarApi(page: Page) {
     if (url.pathname === '/api/demandas/verificar-sei/') {
       const numero = url.searchParams.get('sei_numero') ?? '';
       const duplicado = numero.replace(/[^a-z0-9]/gi, '').toUpperCase() === 'PROCESSOFICTICIO001';
-      return route.fulfill({ json: { numero_normalizado: numero, resultados: duplicado ? [{ id: 1, titulo: 'Inspeção demonstrativa 1', status: 'pendente', sei_numero: 'PROCESSO-FICTICIO-001' }] : [] } });
+      const externa = numero.replace(/[^a-z0-9]/gi, '').toUpperCase() === 'PROCESSOEXTERNO001';
+      return route.fulfill({ json: { numero_normalizado: numero, resultados: duplicado ? [{ id: 1, titulo: 'Inspeção demonstrativa 1', origem: 'Sindicato', sei_numero: 'PROCESSO-FICTICIO-001', acessivel: true }] : externa ? [{ id: 99, titulo: 'Inspeção de outra equipe', origem: 'Ministério Público', sei_numero: 'PROCESSO-EXTERNO-001', acessivel: false }] : [] } });
     }
+    if (url.pathname === '/api/demandas/solicitacoes/') return route.fulfill({ json: { resultados: [] } });
+    if (url.pathname === '/api/demandas/99/solicitacoes/' && request.method() === 'POST') return route.fulfill({ status: 201, json: { id: 1, demanda: { id: 99, titulo: 'Inspeção de outra equipe', sei_numero: 'PROCESSO-EXTERNO-001', origem: 'Ministério Público' }, equipe: { id: 1, nome: 'VISAT Demonstração 1' }, status: 'pendente', solicitante: { id: 1, nome: 'Gestor de teste' }, criada_em: '2026-10-10T12:00:00Z', decidida_em: null } });
     if (url.pathname === '/api/demandas/') {
       if (!perfil) return route.fulfill({ status: 401, json: { detail: 'Não autenticado.' } });
       if (request.method() === 'POST') {

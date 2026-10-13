@@ -1,7 +1,7 @@
 from django.core.exceptions import PermissionDenied, ValidationError
 from datetime import timedelta
 
-from django.db import transaction
+from django.db import IntegrityError, transaction
 from django.db.models import QuerySet
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404
@@ -13,10 +13,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from demandas.anexos import adicionar_anexo, remover_anexo
-from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
-from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda
+from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
     AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
     AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
@@ -84,11 +84,14 @@ class DemandaListView(generics.ListAPIView):
         serializer = GerenciarDemandaSerializer(data=request.data, context={"request": request})
         serializer.fields["titulo"].required = True
         serializer.fields["prazo"].required = True
+        serializer.fields["sei_numero"].required = True
         serializer.is_valid(raise_exception=True)
         try:
             demanda = criar_demanda(usuario=request.user, dados=dict(serializer.validated_data))
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
+        except (ValidationError, IntegrityError) as exc:
+            raise exceptions.ValidationError({"sei_numero": "Este número de processo SEI já está cadastrado ou é inválido."}) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=demanda.pk)
         return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
 
@@ -159,16 +162,77 @@ class DemandaSeiDuplicidadeView(APIView):
         normalizado = numero_sei_da_consulta(request)
         if normalizado is None:
             raise exceptions.ValidationError({"sei_numero": "Informe o número do processo SEI."})
-        queryset = demandas_permitidas(request.user).filter(
-            sei_numero_normalizado=normalizado,
-        ).order_by("id")[:10]
+        if request.user.perfil != "gestor" or not request.user.equipe_id:
+            raise exceptions.PermissionDenied("Somente gestores podem verificar processos SEI.")
+        queryset = Demanda.objects.filter(sei_numero_normalizado=normalizado).prefetch_related("equipes_participantes")[:1]
         return Response({
             "numero_normalizado": normalizado,
             "resultados": [
-                {"id": item.id, "titulo": item.titulo, "status": item.status, "sei_numero": item.sei_numero}
+                {"id": item.id, "titulo": item.titulo, "origem": item.origem, "sei_numero": item.sei_numero,
+                 "acessivel": item.equipes_participantes.filter(pk=request.user.equipe_id).exists()}
                 for item in queryset
             ],
         })
+
+
+def resumo_solicitacao(solicitacao):
+    demanda = solicitacao.demanda
+    return {
+        "id": solicitacao.id,
+        "demanda": {"id": demanda.id, "sei_numero": demanda.sei_numero, "titulo": demanda.titulo, "origem": demanda.origem},
+        "equipe": {"id": solicitacao.equipe_id, "nome": solicitacao.equipe.nome},
+        "status": solicitacao.status,
+        "solicitante": {"id": solicitacao.solicitante_id, "nome": solicitacao.solicitante.nome},
+        "criada_em": solicitacao.criada_em,
+        "decidida_em": solicitacao.decidida_em,
+    }
+
+
+class SolicitacoesParticipacaoView(APIView):
+    def get(self, request):
+        if request.user.perfil != "gestor" or not request.user.equipe_id:
+            raise exceptions.PermissionDenied("Somente gestores podem consultar solicitações.")
+        visao = request.query_params.get("visao", "recebidas")
+        if visao not in {"recebidas", "minhas"}:
+            raise exceptions.ValidationError({"visao": "Use recebidas ou minhas."})
+        queryset = SolicitacaoParticipacao.objects.select_related("demanda", "equipe", "solicitante")
+        if visao == "recebidas":
+            queryset = queryset.filter(
+                status=SolicitacaoParticipacao.Status.PENDENTE,
+                demanda__equipes_participantes=request.user.equipe_id,
+            ).exclude(equipe_id=request.user.equipe_id).distinct()
+        else:
+            queryset = queryset.filter(equipe_id=request.user.equipe_id)
+        return Response({"resultados": [resumo_solicitacao(item) for item in queryset[:50]]})
+
+
+class DemandaSolicitarParticipacaoView(APIView):
+    def post(self, request, pk):
+        try:
+            solicitacao = solicitar_participacao(demanda_id=pk, usuario=request.user)
+        except Demanda.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        return Response(resumo_solicitacao(SolicitacaoParticipacao.objects.select_related("demanda", "equipe", "solicitante").get(pk=solicitacao.pk)), status=status.HTTP_201_CREATED)
+
+
+class SolicitacaoParticipacaoDecisaoView(APIView):
+    def post(self, request, pk):
+        decisao = request.data.get("decisao")
+        if decisao not in {"aprovar", "recusar"}:
+            raise exceptions.ValidationError({"decisao": "Use aprovar ou recusar."})
+        try:
+            solicitacao = decidir_participacao(solicitacao_id=pk, usuario=request.user, aprovar=decisao == "aprovar")
+        except SolicitacaoParticipacao.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        return Response(resumo_solicitacao(SolicitacaoParticipacao.objects.select_related("demanda", "equipe", "solicitante").get(pk=solicitacao.pk)))
 
 
 def exigir_gestor_importacao(user):
@@ -260,6 +324,8 @@ class ImportacaoSeiConfirmarView(APIView):
             demanda = criar_demanda(usuario=request.user, dados=dados)
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
+        except (ValidationError, IntegrityError) as exc:
+            raise exceptions.ValidationError({"sei_numero": "Este número de processo SEI já está cadastrado ou é inválido."}) from exc
         importacao.status = ImportacaoSei.Status.CONFIRMADA
         importacao.demanda = demanda
         importacao.conteudo_bruto = ""

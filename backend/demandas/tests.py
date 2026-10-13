@@ -1,17 +1,19 @@
 from datetime import date, timedelta
 from tempfile import TemporaryDirectory
+from uuid import uuid4
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import override_settings
 from rest_framework.test import APIClient, APITestCase
 
-from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
+from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.identidade_sei import normalizar_numero_sei
 from demandas.importacao_sei import interpretar_texto_sei
 from usuarios.models import Equipe, Usuario
 
 
 def criar_demanda_teste(**dados):
+    dados.setdefault("sei_numero", f"TESTE-{uuid4().hex}")
     demanda = Demanda.objects.create(**dados)
     demanda.equipes_participantes.add(demanda.equipe_id)
     return demanda
@@ -105,7 +107,7 @@ class ListagemDemandasTest(APITestCase):
         propria.sei_numero = "23.000/2026-AB"
         propria.save()
         externa = Demanda.objects.get(titulo="Pendente B")
-        externa.sei_numero = "23.000/2026-AB"
+        externa.sei_numero = "23.000/2026-CD"
         externa.save()
         self.autenticar(self.gestor_a)
         response = self.client.get("/api/demandas/?sei_numero=23000-2026ab")
@@ -435,7 +437,7 @@ class GerenciamentoDemandasTest(APITestCase):
         self.assertIn("Processo SEI: PROCESSO-FICTICIO-001", response.data["historico"][-1]["texto"])
         self.assertEqual([item["tipo"] for item in response.data["historico"]], ["responsavel_alterado", "demanda_criada"])
 
-    def test_avisa_duplicidade_sem_bloquear_criacao(self):
+    def test_duplicidade_normalizada_bloqueia_criacao(self):
         existente = criar_demanda_teste(
             titulo="Processo já cadastrado", sei_numero="23.000/2026-AB", prazo=date(2026, 10, 20),
             equipe=self.equipe, criador=self.gestor, status="concluida",
@@ -444,10 +446,12 @@ class GerenciamentoDemandasTest(APITestCase):
         verificacao = self.client.get("/api/demandas/verificar-sei/?sei_numero=23000-2026ab")
         self.assertEqual(verificacao.status_code, 200)
         self.assertEqual(verificacao.data["resultados"][0]["id"], existente.id)
-        criado = self.client.post("/api/demandas/", self.payload())
-        self.assertEqual(criado.status_code, 201)
+        payload = self.payload(); payload["sei_numero"] = "23000-2026ab"
+        criado = self.client.post("/api/demandas/", payload)
+        self.assertEqual(criado.status_code, 400)
+        self.assertEqual(Demanda.objects.count(), 1)
 
-    def test_verificacao_de_duplicidade_respeita_equipe(self):
+    def test_verificacao_global_retorna_somente_identificacao(self):
         criar_demanda_teste(
             titulo="Externa", sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20),
             equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.sei.externo", perfil="gestor", equipe=self.outra),
@@ -455,7 +459,22 @@ class GerenciamentoDemandasTest(APITestCase):
         self.client.force_authenticate(self.gestor)
         response = self.client.get("/api/demandas/verificar-sei/?sei_numero=PROCESSOFICTICIO001")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data["resultados"], [])
+        self.assertEqual(len(response.data["resultados"]), 1)
+        self.assertEqual(response.data["resultados"][0]["titulo"], "Externa")
+        self.assertFalse(response.data["resultados"][0]["acessivel"])
+        self.assertNotIn("status", response.data["resultados"][0])
+        self.assertEqual(self.client.post("/api/demandas/", self.payload()).status_code, 400)
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.get("/api/demandas/verificar-sei/?sei_numero=PROCESSOFICTICIO001").status_code, 403)
+
+    def test_exige_numero_sei_na_criacao(self):
+        self.client.force_authenticate(self.gestor)
+        payload = self.payload(); del payload["sei_numero"]
+        self.assertEqual(self.client.post("/api/demandas/", payload).status_code, 400)
+
+
+        payload["sei_numero"] = "---"
+        self.assertEqual(self.client.post("/api/demandas/", payload).status_code, 400)
 
     def test_inspetor_nao_cria_nem_edita(self):
         self.client.force_authenticate(self.inspetor)
@@ -484,6 +503,67 @@ class GerenciamentoDemandasTest(APITestCase):
         demanda = criar_demanda_teste(titulo="Encerrada", prazo=date(2026, 10, 20), equipe=self.equipe, criador=self.gestor, status="concluida")
         self.client.force_authenticate(self.gestor)
         self.assertEqual(self.client.patch(f"/api/demandas/{demanda.id}/", {"titulo": "Alterada"}).status_code, 400)
+
+
+class ParticipacaoEntreEquipesTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.a = Equipe.objects.create(nome="Participante A")
+        cls.b = Equipe.objects.create(nome="Solicitante B")
+        cls.c = Equipe.objects.create(nome="Terceira C")
+        cls.gestor_a = Usuario.objects.create_user(username="part.gestor.a", perfil="gestor", equipe=cls.a)
+        cls.gestor_b = Usuario.objects.create_user(username="part.gestor.b", perfil="gestor", equipe=cls.b)
+        cls.gestor_c = Usuario.objects.create_user(username="part.gestor.c", perfil="gestor", equipe=cls.c)
+        cls.inspetor_b = Usuario.objects.create_user(username="part.inspetor.b", perfil="inspetor", equipe=cls.b)
+        cls.demanda = criar_demanda_teste(
+            titulo="Inspeção compartilhável", origem="Instituição solicitante", descricao="Detalhe privado",
+            sei_numero="SEI-2026-001", prazo=date(2026, 11, 1), equipe=cls.a, criador=cls.gestor_a,
+        )
+
+    def test_pedido_aprovacao_e_acesso_posterior(self):
+        self.client.force_authenticate(self.gestor_b)
+        consulta = self.client.get("/api/demandas/verificar-sei/?sei_numero=sei2026001")
+        self.assertEqual(consulta.data["resultados"][0]["origem"], "Instituição solicitante")
+        self.assertNotIn("descricao", consulta.data["resultados"][0])
+        self.assertEqual(self.client.get(f"/api/demandas/{self.demanda.id}/").status_code, 404)
+        pedido = self.client.post(f"/api/demandas/{self.demanda.id}/solicitacoes/")
+        self.assertEqual(pedido.status_code, 201)
+        self.assertEqual(pedido.data["status"], "pendente")
+        self.assertEqual(self.client.post(f"/api/demandas/{self.demanda.id}/solicitacoes/").data["id"], pedido.data["id"])
+        self.assertEqual(SolicitacaoParticipacao.objects.count(), 1)
+        self.assertEqual(self.client.get(f"/api/demandas/{self.demanda.id}/").status_code, 404)
+        self.client.force_authenticate(self.gestor_c)
+        self.assertEqual(self.client.get("/api/demandas/solicitacoes/").data["resultados"], [])
+        self.assertEqual(self.client.post(f"/api/demandas/solicitacoes/{pedido.data['id']}/decisao/", {"decisao": "aprovar"}).status_code, 403)
+        self.client.force_authenticate(self.gestor_a)
+        recebidas = self.client.get("/api/demandas/solicitacoes/").data["resultados"]
+        self.assertEqual(len(recebidas), 1)
+        self.assertEqual(recebidas[0]["equipe"]["id"], self.b.id)
+        decisao = self.client.post(f"/api/demandas/solicitacoes/{pedido.data['id']}/decisao/", {"decisao": "aprovar"})
+        self.assertEqual(decisao.status_code, 200)
+        self.assertEqual(decisao.data["status"], "aprovada")
+        self.assertEqual(self.client.post(f"/api/demandas/solicitacoes/{pedido.data['id']}/decisao/", {"decisao": "recusar"}).status_code, 400)
+        self.client.force_authenticate(self.gestor_b)
+        detalhe = self.client.get(f"/api/demandas/{self.demanda.id}/")
+        self.assertEqual(detalhe.status_code, 200)
+        self.assertEqual(detalhe.data["descricao"], "Detalhe privado")
+        self.assertEqual(self.client.get("/api/demandas/solicitacoes/?visao=minhas").data["resultados"][0]["status"], "aprovada")
+
+    def test_recusa_e_novo_pedido(self):
+        self.client.force_authenticate(self.gestor_b)
+        pedido = self.client.post(f"/api/demandas/{self.demanda.id}/solicitacoes/").data
+        self.client.force_authenticate(self.gestor_a)
+        self.assertEqual(self.client.post(f"/api/demandas/solicitacoes/{pedido['id']}/decisao/", {"decisao": "recusar"}).data["status"], "recusada")
+        self.client.force_authenticate(self.gestor_b)
+        self.assertEqual(self.client.get(f"/api/demandas/{self.demanda.id}/").status_code, 404)
+        repetido = self.client.post(f"/api/demandas/{self.demanda.id}/solicitacoes/")
+        self.assertEqual(repetido.data["id"], pedido["id"])
+        self.assertEqual(repetido.data["status"], "pendente")
+
+    def test_inspetor_nao_solicita_nem_consulta_fila(self):
+        self.client.force_authenticate(self.inspetor_b)
+        self.assertEqual(self.client.post(f"/api/demandas/{self.demanda.id}/solicitacoes/").status_code, 403)
+        self.assertEqual(self.client.get("/api/demandas/solicitacoes/").status_code, 403)
 
 
 class ImportacaoSeiTest(APITestCase):
@@ -557,6 +637,20 @@ class ImportacaoSeiTest(APITestCase):
         self.assertEqual(len(previa.data["possiveis_duplicidades"]), 1)
         self.client.force_authenticate(self.outro_gestor)
         self.assertEqual(self.client.get(f"/api/importacoes/sei/{previa.data['id']}/").status_code, 404)
+
+    def test_previa_detecta_duplicidade_externa_sem_expor_detalhes(self):
+        outra = Equipe.objects.create(nome="Outra equipe da prévia")
+        externo = Usuario.objects.create_user(username="gestor.previa.externo", perfil="gestor", equipe=outra)
+        criar_demanda_teste(
+            titulo="Já registrada", origem="Instituição", descricao="Conteúdo privado",
+            sei_numero="PROCESSO-FICTICIO-001", prazo=date(2026, 10, 20), equipe=outra, criador=externo,
+        )
+        previa = self.criar_previa()
+        resultado = previa.data["possiveis_duplicidades"][0]
+        self.assertEqual(resultado["titulo"], "Já registrada")
+        self.assertFalse(resultado["acessivel"])
+        self.assertNotIn("descricao", resultado)
+        self.assertNotIn("status", resultado)
 
     def test_descarte_encerra_previa_e_remove_texto(self):
         previa = self.criar_previa()

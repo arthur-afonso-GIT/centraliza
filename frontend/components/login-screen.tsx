@@ -1,6 +1,6 @@
 'use client';
 import { useState, type SyntheticEvent } from 'react';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function LoginScreen({
   busy,
@@ -24,12 +24,12 @@ export default function LoginScreen({
         <div>
           <span className="eyebrow">VIGILÂNCIA EM SAÚDE DO TRABALHADOR</span>
           <h1>
-            Mais organização.
+            Trabalho em equipe.
             <br />
-            Mais cuidado.
+            Com clareza.
           </h1>
           <p>
-            Um espaço para conectar a equipe e acompanhar o trabalho da VISAT.
+            Demandas, prazos e decisões da VISAT em um só lugar.
           </p>
         </div>
         <span className="login-footer">Gestão de atividades · VISAT</span>
@@ -37,22 +37,18 @@ export default function LoginScreen({
       <section className="login-form">
         <div className="login-inner">
           <span className="badge">ACESSO DA EQUIPE</span>
-          <h2>Bem-vindo ao Centraliza</h2>
+          <h2>Acesse seu espaço de trabalho</h2>
           <p>Entre com a conta fornecida pela gestão da VISAT.</p>
           <form className="login-fields" onSubmit={submit}>
             <label htmlFor="username">Usuário</label>
             <input id="username" name="username" autoComplete="username" required value={username} onChange={event => setUsername(event.target.value)} />
             <label htmlFor="password">Senha</label>
             <input id="password" name="password" type="password" autoComplete="current-password" required value={password} onChange={event => setPassword(event.target.value)} />
-            <button className="profile-choice" disabled={busy} type="submit">
-              <ShieldCheck />
-              <span><strong>{busy ? 'Entrando…' : 'Entrar'}</strong><small>Acesso protegido por sessão</small></span>
+            <button className="login-submit" disabled={busy} type="submit">
+              <strong>{busy ? 'Entrando…' : 'Entrar'}</strong>
               <ArrowRight />
             </button>
           </form>
-          <p className="fine-print">
-            No ambiente local, use uma das contas criadas pela carga fictícia.
-          </p>
         </div>
       </section>
     </main>

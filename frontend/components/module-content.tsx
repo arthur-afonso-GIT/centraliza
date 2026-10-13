@@ -43,7 +43,7 @@ export default function ModuleContent({
           </h1>
           <p>
             {page === 'home'
-              ? 'Tudo começa com uma equipe conectada.'
+              ? user.perfil === 'gestor' ? 'Acompanhe prazos, distribuição e entregas da equipe.' : 'Veja seus prazos, aceites e entregas em um só lugar.'
               : active.description}
           </p>
         </div>
@@ -81,7 +81,6 @@ export default function ModuleContent({
       )}
       <footer className="content-footer">
         <span>Centraliza · VISAT</span>
-        <span>Protótipo de navegação</span>
       </footer>
     </main>
   );

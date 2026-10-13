@@ -43,6 +43,7 @@ test('inspetor visualiza somente demandas atribuídas em tela móvel', async ({ 
 test('gestor combina responsável, prazo e atraso e limpa os filtros', async ({ page }) => {
   await entrarComo(page, 'gestor');
   await page.goto('/demandas');
+  await page.getByText('Filtros avançados').click();
   await page.getByRole('combobox', { name: /^Responsável/ }).selectOption('2');
   await page.getByLabel('Prazo inicial').fill('2026-09-01');
   await page.getByLabel('Prazo final').fill('2026-09-30');

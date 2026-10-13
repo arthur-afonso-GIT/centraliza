@@ -52,14 +52,15 @@ class Demanda(models.Model):
             models.Index(fields=["equipe", "critica", "prazo", "id"], name="demanda_equipe_critica"),
         ]
         constraints = [
+            models.UniqueConstraint(fields=["sei_numero_normalizado"], condition=~models.Q(sei_numero_normalizado=""), name="demanda_sei_unico"),
             models.CheckConstraint(condition=models.Q(status__in=["pendente", "aceita", "em_andamento", "aguardando_avaliacao", "em_correcao", "concluida", "cancelada"]), name="demanda_status_valido"),
             models.CheckConstraint(condition=models.Q(prioridade__in=["baixa", "media", "alta"]), name="demanda_prioridade_valida"),
         ]
 
     def clean(self):
         super().clean()
-        if self.sei_numero and not normalizar_numero_sei(self.sei_numero):
-            raise ValidationError({"sei_numero": "Informe ao menos uma letra ou número."})
+        if not normalizar_numero_sei(self.sei_numero):
+            raise ValidationError({"sei_numero": "Informe o número do processo SEI com ao menos uma letra ou número."})
         for campo in ("criador", "responsavel"):
             usuario = getattr(self, campo) if getattr(self, f"{campo}_id") else None
             if usuario and usuario.equipe_id != self.equipe_id:
@@ -159,4 +160,26 @@ class ImportacaoSei(models.Model):
                 condition=models.Q(status__in=["validada", "com_erros", "confirmada", "descartada"]),
                 name="import_sei_status_valido",
             ),
+        ]
+
+
+class SolicitacaoParticipacao(models.Model):
+    class Status(models.TextChoices):
+        PENDENTE = "pendente", "Pendente"
+        APROVADA = "aprovada", "Aprovada"
+        RECUSADA = "recusada", "Recusada"
+
+    demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="solicitacoes_participacao")
+    equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT, related_name="solicitacoes_participacao")
+    solicitante = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="solicitacoes_participacao_criadas")
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDENTE)
+    criada_em = models.DateTimeField(auto_now_add=True)
+    decidida_em = models.DateTimeField(null=True, blank=True)
+    decidida_por = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="solicitacoes_participacao_decididas", null=True, blank=True)
+
+    class Meta:
+        ordering = ["-criada_em", "-id"]
+        constraints = [
+            models.UniqueConstraint(fields=["demanda", "equipe"], name="solicitacao_demanda_equipe_unica"),
+            models.CheckConstraint(condition=models.Q(status__in=["pendente", "aprovada", "recusada"]), name="solicitacao_status_valido"),
         ]

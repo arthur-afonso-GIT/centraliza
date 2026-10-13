@@ -10,7 +10,8 @@ export type AnexoDemanda = { id: number; nome_original: string; mime_type: strin
 export type Inspetor = { id: number; nome: string };
 export type DadosDemanda = { titulo: string; sei_numero: string; descricao: string; origem: string; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; responsavel_id: number | null; equipes_ids: number[] };
 export type FiltrosDemandas = { seiNumero: string; responsavel: string; prazoDe: string; prazoAte: string; atrasada: boolean; semResponsavel: boolean };
-export type PossivelDuplicidadeSei = { id: number; titulo: string; status: StatusDemanda; sei_numero: string };
+export type PossivelDuplicidadeSei = { id: number; titulo: string; origem: string; sei_numero: string; acessivel: boolean };
+export type SolicitacaoParticipacao = { id: number; demanda: { id: number; sei_numero: string; titulo: string; origem: string }; equipe: { id: number; nome: string }; status: 'pendente' | 'aprovada' | 'recusada'; solicitante: { id: number; nome: string }; criada_em: string; decidida_em: string | null };
 export type CamposImportacaoSei = { sei_numero: string; assunto: string; tipo_processo: string; unidade: string; data_autuacao: string | null };
 export type ImportacaoSei = { id: number; origem: 'texto' | 'extensao'; status: 'validada' | 'com_erros' | 'confirmada' | 'descartada'; campos: CamposImportacaoSei; avisos: string[]; erros: string[]; possiveis_duplicidades: PossivelDuplicidadeSei[]; demanda_id: number | null; criada_em: string; expira_em: string; confirmada_em: string | null };
 
@@ -79,6 +80,24 @@ export async function verificarNumeroSei(numero: string, signal?: AbortSignal) {
   const query = new URLSearchParams({ sei_numero: numero });
   const response = await fetch(`/api/demandas/verificar-sei/?${query}`, { credentials: 'same-origin', signal });
   return resposta<{ numero_normalizado: string; resultados: PossivelDuplicidadeSei[] }>(response);
+}
+
+export async function solicitarParticipacao(demandaId: number) {
+  const token = await csrfToken();
+  return resposta<SolicitacaoParticipacao>(await fetch(`/api/demandas/${demandaId}/solicitacoes/`, {
+    method: 'POST', credentials: 'same-origin', headers: { 'X-CSRFToken': token },
+  }));
+}
+
+export async function listarSolicitacoes(visao: 'recebidas' | 'minhas', signal?: AbortSignal) {
+  return resposta<{ resultados: SolicitacaoParticipacao[] }>(await fetch(`/api/demandas/solicitacoes/?visao=${visao}`, { credentials: 'same-origin', signal })).then(data => data.resultados);
+}
+
+export async function decidirParticipacao(id: number, decisao: 'aprovar' | 'recusar') {
+  const token = await csrfToken();
+  return resposta<SolicitacaoParticipacao>(await fetch(`/api/demandas/solicitacoes/${id}/decisao/`, {
+    method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify({ decisao }),
+  }));
 }
 
 export async function criarPreviaSei(texto: string) {

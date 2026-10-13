@@ -23,8 +23,8 @@ export function useSession(page: string) {
       .then((current) => {
         if (cancelled) return;
         setUser(current);
-        if (!current && page !== 'login') router.replace('/login');
-        else if (current && page === 'login') router.replace('/');
+        if (!current && page !== 'login') router.replace(page === 'captura-sei' ? '/login?next=/captura-sei' : '/login');
+        else if (current && page === 'login') router.replace(window.location.search === '?next=/captura-sei' ? '/captura-sei' : '/');
         else setLoading(false);
       })
       .catch(() => {
@@ -42,7 +42,7 @@ export function useSession(page: string) {
     setBusy(true);
     try {
       await entrar(username, password);
-      router.replace('/');
+      router.replace(window.location.search === '?next=/captura-sei' ? '/captura-sei' : '/');
     } catch {
       setError(true);
     } finally {

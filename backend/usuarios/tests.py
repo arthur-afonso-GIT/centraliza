@@ -24,6 +24,7 @@ class RegrasDoModeloTest(TestCase):
     def criar_demanda(self, **alteracoes):
         dados = {
             "titulo": "Inspeção de teste",
+            "sei_numero": "TESTE-MODELO-1",
             "prazo": "2026-09-15",
             "equipe": self.equipe_a,
             "criador": self.gestor,
@@ -129,7 +130,7 @@ class AdministracaoEquipeTest(APITestCase):
         self.assertIn("própria permissão", response.data["detail"])
 
     def test_bloqueia_desativacao_com_demanda_ativa(self):
-        Demanda.objects.create(titulo="Ativa", prazo="2026-09-15", equipe=self.equipe, criador=self.admin, responsavel=self.inspetor)
+        Demanda.objects.create(titulo="Ativa", sei_numero="TESTE-USUARIOS-1", prazo="2026-09-15", equipe=self.equipe, criador=self.admin, responsavel=self.inspetor)
         self.client.force_authenticate(self.admin)
         response = self.client.patch(f"/api/equipe/usuarios/{self.inspetor.id}/", {"is_active": False}, format="json")
         self.assertEqual(response.status_code, 400)

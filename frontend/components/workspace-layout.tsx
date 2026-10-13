@@ -94,11 +94,6 @@ export default function WorkspaceLayout({
         </nav>
         <div className="sidebar-bottom">
           <span className="badge">{user.perfil === 'gestor' ? 'GESTÃO' : 'INSPEÇÃO'}</span>
-          <p>
-            Uma base para o trabalho
-            <br />
-            que vem pela frente.
-          </p>
           <div className="identity">
             <span className="avatar">
               {user.perfil === 'gestor' ? 'G' : 'I'}

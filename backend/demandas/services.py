@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import transaction
 
-from demandas.models import Demanda, EventoDemanda
+from demandas.models import Demanda, EventoDemanda, SolicitacaoParticipacao
+from django.utils import timezone
 
 
 @dataclass(frozen=True)
@@ -67,6 +68,54 @@ def criar_demanda(*, usuario, dados: dict) -> Demanda:
     if responsavel:
         EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.RESPONSAVEL_ALTERADO, autor=usuario, texto=f"Responsável definido: {responsavel.nome}.")
     return demanda
+
+
+@transaction.atomic
+def solicitar_participacao(*, demanda_id: int, usuario) -> SolicitacaoParticipacao:
+    if usuario.perfil != "gestor" or not usuario.equipe_id:
+        raise PermissionDenied("Somente gestores vinculados a uma equipe podem solicitar participação.")
+    demanda = Demanda.objects.select_for_update().get(pk=demanda_id)
+    if demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists():
+        raise ValidationError({"detail": "Sua equipe já participa desta demanda."})
+    solicitacao = SolicitacaoParticipacao.objects.select_for_update().filter(demanda=demanda, equipe_id=usuario.equipe_id).first()
+    if solicitacao:
+        if solicitacao.status == SolicitacaoParticipacao.Status.PENDENTE:
+            return solicitacao
+        if solicitacao.status == SolicitacaoParticipacao.Status.APROVADA:
+            raise ValidationError({"detail": "Esta participação já foi aprovada."})
+        solicitacao.status = SolicitacaoParticipacao.Status.PENDENTE
+        solicitacao.solicitante = usuario
+        solicitacao.criada_em = timezone.now()
+        solicitacao.decidida_em = None
+        solicitacao.decidida_por = None
+        solicitacao.save(update_fields=["status", "solicitante", "criada_em", "decidida_em", "decidida_por"])
+        return solicitacao
+    return SolicitacaoParticipacao.objects.create(demanda=demanda, equipe_id=usuario.equipe_id, solicitante=usuario)
+
+
+@transaction.atomic
+def decidir_participacao(*, solicitacao_id: int, usuario, aprovar: bool) -> SolicitacaoParticipacao:
+    if usuario.perfil != "gestor" or not usuario.equipe_id:
+        raise PermissionDenied("Somente gestores de equipes participantes podem decidir solicitações.")
+    # O bloqueio da demanda serializa decisões e pedidos para a mesma demanda.
+    solicitacao_base = SolicitacaoParticipacao.objects.only("demanda_id").get(pk=solicitacao_id)
+    demanda = Demanda.objects.select_for_update().get(pk=solicitacao_base.demanda_id)
+    solicitacao = SolicitacaoParticipacao.objects.select_for_update().select_related("equipe", "solicitante").get(pk=solicitacao_id)
+    if not demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists():
+        raise PermissionDenied("Sua equipe não participa desta demanda.")
+    if solicitacao.status != SolicitacaoParticipacao.Status.PENDENTE:
+        raise ValidationError({"detail": "Esta solicitação já foi decidida."})
+    solicitacao.status = SolicitacaoParticipacao.Status.APROVADA if aprovar else SolicitacaoParticipacao.Status.RECUSADA
+    solicitacao.decidida_em = timezone.now()
+    solicitacao.decidida_por = usuario
+    solicitacao.save(update_fields=["status", "decidida_em", "decidida_por"])
+    if aprovar:
+        demanda.equipes_participantes.add(solicitacao.equipe)
+    EventoDemanda.objects.create(
+        demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario,
+        texto=f"Participação da equipe {solicitacao.equipe.nome} {'aprovada' if aprovar else 'recusada'} por {usuario.nome}.",
+    )
+    return solicitacao
 
 
 @transaction.atomic

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enviar ao Centraliza</title>
+  <style>
+    body { width: 320px; margin: 0; padding: 22px; box-sizing: border-box; font: 14px/1.5 system-ui, sans-serif; color: #25292c; background: #f8f8f9; }
+    .brand { color: #cf1424; font-weight: 800; letter-spacing: -.04em; font-size: 22px; }
+    h1 { font-size: 19px; line-height: 1.2; margin: 20px 0 8px; }
+    p { margin: 0 0 18px; color: #596167; }
+    button { width: 100%; border: 0; border-radius: 8px; padding: 12px 16px; background: #db1729; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: .6; cursor: wait; }
+    #status { display: block; min-height: 2em; margin-top: 13px; color: #8d1724; }
+  </style>
+</head>
+<body>
+  <div class="brand">centraliza •</div>
+  <h1>Capturar processo SEI</h1>
+  <p>Leia o número do processo e a instituição demandante desta página fictícia. Você poderá conferir tudo antes de criar a demanda.</p>
+  <button id="send" type="button">Enviar para revisão</button>
+  <output id="status" role="status"></output>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

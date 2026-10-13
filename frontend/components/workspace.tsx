@@ -6,6 +6,7 @@ import ModuleContent from './module-content';
 import WorkspaceLayout from './workspace-layout';
 import DemandaDetail from './demanda-detail';
 import AvisoDetail from './aviso-detail';
+import CaptureSei from './capture-sei';
 
 export default function Workspace({ page, demandId, avisoId }: { page: string; demandId?: number; avisoId?: number }) {
   const session = useSession(page);
@@ -35,12 +36,12 @@ export default function Workspace({ page, demandId, avisoId }: { page: string; d
   if (!session.user) return null;
   return (
     <WorkspaceLayout
-      page={page}
+      page={page === 'captura-sei' ? 'demandas' : page}
       user={session.user}
       busy={session.busy}
       logout={session.logout}
     >
-      {demandId ? <DemandaDetail id={demandId} user={session.user} /> : avisoId ? <AvisoDetail id={avisoId} user={session.user} /> : <ModuleContent page={page} user={session.user} />}
+      {page === 'captura-sei' ? <CaptureSei user={session.user} /> : demandId ? <DemandaDetail id={demandId} user={session.user} /> : avisoId ? <AvisoDetail id={avisoId} user={session.user} /> : <ModuleContent page={page} user={session.user} />}
     </WorkspaceLayout>
   );
 }

@@ -9,9 +9,9 @@ test('gestor cria uma demanda atribuída', async ({ page }) => {
   await page.goto('/demandas');
   await page.getByRole('button', { name: 'Nova demanda' }).click();
   await page.getByLabel('Título').fill('Fiscalização solicitada pelo sindicato');
-  await page.getByLabel('Número do processo SEI (opcional)').fill('PROCESSO-FICTICIO-002');
+  await page.getByLabel('Número do processo SEI').fill('PROCESSO-FICTICIO-002');
   await page.getByLabel('Descrição').fill('Verificar condições do ambiente.');
-  await page.getByLabel('Origem').fill('Sindicato');
+  await page.getByLabel('Demandante (instituição)').fill('Sindicato');
   await page.getByLabel('Prazo', { exact: true }).fill('2026-10-20');
   await page.getByLabel('Prioridade').selectOption('alta');
   await page.getByRole('dialog').getByLabel('Responsável').selectOption('2');
@@ -24,10 +24,37 @@ test('gestor recebe aviso de possível duplicidade do número SEI', async ({ pag
   await entrarComo(page, 'gestor');
   await page.goto('/demandas');
   await page.getByRole('button', { name: 'Nova demanda' }).click();
-  await page.getByLabel('Número do processo SEI (opcional)').fill('processo ficticio 001');
-  await page.getByLabel('Número do processo SEI (opcional)').blur();
-  await expect(page.getByText('Possível duplicidade')).toBeVisible();
+  await page.getByLabel('Número do processo SEI').fill('processo ficticio 001');
+  await page.getByLabel('Número do processo SEI').blur();
+  await expect(page.getByText('Demanda já cadastrada')).toBeVisible();
   await expect(page.getByRole('link', { name: /PROCESSO-FICTICIO-001/ })).toBeVisible();
+});
+
+test('gestor solicita participação em demanda de outra equipe', async ({ page }) => {
+  await entrarComo(page, 'gestor');
+  await page.goto('/demandas');
+  await page.getByRole('button', { name: 'Nova demanda' }).click();
+  await page.getByLabel('Número do processo SEI').fill('PROCESSO-EXTERNO-001');
+  await page.getByLabel('Número do processo SEI').blur();
+  await expect(page.getByText('Inspeção de outra equipe')).toBeVisible();
+  await expect(page.getByText('Ministério Público')).toBeVisible();
+  await page.getByRole('button', { name: 'Solicitar participação da equipe' }).click();
+  await expect(page.getByRole('button', { name: 'Participação solicitada' })).toBeDisabled();
+});
+
+test('gestor aprova pedido de participação de outra equipe', async ({ page }) => {
+  await page.route('**/api/demandas/solicitacoes/?visao=recebidas', route => route.fulfill({ json: { resultados: [{
+    id: 7, demanda: { id: 1, titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', origem: 'Sindicato' },
+    equipe: { id: 2, nome: 'Equipe solicitante' }, status: 'pendente', solicitante: { id: 8, nome: 'Gestor externo' },
+    criada_em: '2026-10-10T12:00:00Z', decidida_em: null,
+  }] } }));
+  await page.route('**/api/demandas/solicitacoes/7/decisao/', route => route.fulfill({ json: { status: 'aprovada' } }));
+  await entrarComo(page, 'gestor');
+  await page.goto('/demandas');
+  await expect(page.getByRole('heading', { name: 'Pedidos para avaliar' })).toBeVisible();
+  await expect(page.getByText('Equipe solicitante')).toBeVisible();
+  await page.getByRole('button', { name: 'Aprovar' }).click();
+  await expect(page.getByText('Equipe solicitante')).toHaveCount(0);
 });
 
 test('gestor interpreta texto, revisa e confirma demanda do SEI', async ({ page }) => {

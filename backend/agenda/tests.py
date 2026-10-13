@@ -107,7 +107,7 @@ class GerenciamentoAgendaTest(APITestCase):
         cls.inspetor = Usuario.objects.create_user(username="inspetor.gerencia.agenda", perfil="inspetor", equipe=cls.equipe)
         cls.segundo = Usuario.objects.create_user(username="segundo.gerencia.agenda", perfil="inspetor", equipe=cls.equipe)
         cls.externo = Usuario.objects.create_user(username="externo.gerencia.agenda", perfil="inspetor", equipe=cls.outra)
-        cls.demanda = Demanda.objects.create(titulo="Demanda da agenda", prazo=datetime(2026, 10, 30).date(), equipe=cls.equipe, criador=cls.gestor, responsavel=cls.inspetor)
+        cls.demanda = Demanda.objects.create(titulo="Demanda da agenda", sei_numero="TESTE-AGENDA-1", prazo=datetime(2026, 10, 30).date(), equipe=cls.equipe, criador=cls.gestor, responsavel=cls.inspetor)
 
     def payload(self, **changes):
         data = {
@@ -159,7 +159,7 @@ class GerenciamentoAgendaTest(APITestCase):
         self.assertEqual(self.client.patch(f"/api/compromissos/{criado.data['id']}/", {"titulo": "Indevido"}, format="json").status_code, 404)
 
     def test_valida_intervalo_participantes_e_demanda_da_equipe(self):
-        demanda_externa = Demanda.objects.create(titulo="Externa", prazo=datetime(2026, 10, 30).date(), equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.ext.agenda", perfil="gestor", equipe=self.outra))
+        demanda_externa = Demanda.objects.create(titulo="Externa", sei_numero="TESTE-AGENDA-2", prazo=datetime(2026, 10, 30).date(), equipe=self.outra, criador=Usuario.objects.create_user(username="gestor.ext.agenda", perfil="gestor", equipe=self.outra))
         self.client.force_authenticate(self.gestor)
         casos = [
             self.payload(fim="2026-10-20T08:00:00-03:00"),
