@@ -1,265 +1,153 @@
 {
   "communities": {
     "0": [
-      "frontend_components_anexos_demanda",
-      "frontend_components_anexos_demanda_anexosdemanda",
-      "frontend_components_anexos_demanda_anexosdemanda_remove",
-      "frontend_components_anexos_demanda_anexosdemanda_tentarnovamente",
-      "frontend_components_anexos_demanda_anexosdemanda_upload",
-      "frontend_components_anexos_demanda_formatartamanho",
-      "frontend_components_avaliar_demanda",
-      "frontend_components_avaliar_demanda_avaliardemanda",
-      "frontend_components_avaliar_demanda_avaliardemanda_submit",
-      "frontend_components_aviso_detail",
-      "frontend_components_aviso_detail_avisodetail",
-      "frontend_components_aviso_detail_data",
-      "frontend_components_aviso_form",
-      "frontend_components_aviso_form_avisoform",
-      "frontend_components_aviso_form_avisoform_submit",
-      "frontend_components_aviso_form_avisoform_toggle",
-      "frontend_components_aviso_form_local",
-      "frontend_components_aviso_form_offset",
-      "frontend_components_avisos_feed",
-      "frontend_components_avisos_feed_avisosfeed",
-      "frontend_components_avisos_feed_data",
-      "frontend_components_cancelar_aviso",
-      "frontend_components_cancelar_aviso_cancelaraviso",
-      "frontend_components_cancelar_demanda",
-      "frontend_components_cancelar_demanda_cancelardemanda",
-      "frontend_components_cancelar_demanda_cancelardemanda_cancel",
-      "frontend_components_demanda_detail",
-      "frontend_components_demanda_detail_data",
-      "frontend_components_demanda_detail_demandadetail",
-      "frontend_components_demanda_detail_demandadetail_advance",
-      "frontend_components_demanda_detail_demandadetail_comment",
-      "frontend_components_demanda_detail_demandadetail_refreshhistory",
-      "frontend_components_demanda_detail_demandadetail_retry",
-      "frontend_components_demanda_detail_prioridadelabel",
-      "frontend_components_demanda_detail_statuslabel",
-      "frontend_components_demanda_form",
-      "frontend_components_demanda_form_demandaform",
-      "frontend_components_demanda_form_demandaform_changeopen",
-      "frontend_components_demanda_form_demandaform_submit",
-      "frontend_components_demanda_form_vazio",
-      "frontend_components_demandas_list",
-      "frontend_components_demandas_list_demandaslist",
-      "frontend_components_demandas_list_demandaslist_changepage",
-      "frontend_components_demandas_list_demandaslist_movetab",
-      "frontend_components_demandas_list_demandaslist_preparerequest",
-      "frontend_components_demandas_list_demandaslist_retry",
-      "frontend_components_demandas_list_demandaslist_select",
-      "frontend_components_demandas_list_demandaslist_updatefilter",
-      "frontend_components_demandas_list_filtrosvazios",
-      "frontend_components_demandas_list_prioridadelabel",
-      "frontend_components_demandas_list_segmentos",
-      "frontend_components_demandas_list_statuslabel",
-      "frontend_lib_auth_csrftoken",
-      "frontend_lib_avisos",
-      "frontend_lib_avisos_avisodetalhe",
-      "frontend_lib_avisos_avisofeed",
-      "frontend_lib_avisos_cancelaraviso",
-      "frontend_lib_avisos_categoriaaviso",
-      "frontend_lib_avisos_dadosaviso",
-      "frontend_lib_avisos_listaravisos",
-      "frontend_lib_avisos_obteraviso",
-      "frontend_lib_avisos_resposta",
-      "frontend_lib_avisos_salvaraviso",
-      "frontend_lib_demandas",
-      "frontend_lib_demandas_adicionarcomentario",
-      "frontend_lib_demandas_alterarstatus",
-      "frontend_lib_demandas_anexodemanda",
-      "frontend_lib_demandas_dadosdemanda",
-      "frontend_lib_demandas_demandadetalhe",
-      "frontend_lib_demandas_enviaranexo",
-      "frontend_lib_demandas_eventodemanda",
-      "frontend_lib_demandas_excluiranexo",
-      "frontend_lib_demandas_filtrosdemandas",
-      "frontend_lib_demandas_inspetor",
-      "frontend_lib_demandas_listaranexos",
-      "frontend_lib_demandas_listardemandas",
-      "frontend_lib_demandas_listardemandasparaagenda",
-      "frontend_lib_demandas_listarinspetores",
-      "frontend_lib_demandas_obterdemanda",
-      "frontend_lib_demandas_paginademandas",
-      "frontend_lib_demandas_resposta",
-      "frontend_lib_demandas_salvardemanda",
-      "frontend_lib_demandas_segmentodemanda",
-      "frontend_lib_demandas_statusdemanda",
-      "ref_react"
+      "backend_demandas_tests_anexosdemandatest",
+      "backend_demandas_tests_anexosdemandatest_pdf",
+      "backend_demandas_tests_anexosdemandatest_setuptestdata",
+      "backend_demandas_tests_anexosdemandatest_teardown",
+      "backend_demandas_tests_anexosdemandatest_test_acesso_e_remocao_logica_respeitam_permissoes",
+      "backend_demandas_tests_anexosdemandatest_test_demanda_encerrada_nao_recebe_anexo",
+      "backend_demandas_tests_anexosdemandatest_test_inspetor_atribuido_adiciona_lista_e_baixa_anexo",
+      "backend_demandas_tests_anexosdemandatest_test_valida_formato_assinatura_e_tamanho",
+      "backend_demandas_tests_criar_demanda_teste",
+      "backend_demandas_tests_detalhehistoricotest",
+      "backend_demandas_tests_detalhehistoricotest_setuptestdata",
+      "backend_demandas_tests_detalhehistoricotest_test_aceite_obrigatorio_e_nao_pode_ser_repetido",
+      "backend_demandas_tests_detalhehistoricotest_test_comentario_valida_texto_autor_e_acesso",
+      "backend_demandas_tests_detalhehistoricotest_test_detalhe_respeita_equipe_e_responsavel",
+      "backend_demandas_tests_detalhehistoricotest_test_edicao_sem_troca_de_responsavel_preserva_aceite",
+      "backend_demandas_tests_detalhehistoricotest_test_gestor_cancela_estado_ativo_com_justificativa",
+      "backend_demandas_tests_detalhehistoricotest_test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro",
+      "backend_demandas_tests_detalhehistoricotest_test_historico_nao_oferece_edicao_ou_exclusao",
+      "backend_demandas_tests_detalhehistoricotest_test_inspetor_executa_transicoes_e_historico_permanece_consistente",
+      "backend_demandas_tests_detalhehistoricotest_test_reatribuicao_exige_novo_aceite_e_preserva_historico",
+      "backend_demandas_tests_detalhehistoricotest_test_resumo_correcao_e_cancelamento_obrigam_texto",
+      "backend_demandas_tests_gerenciamentodemandastest",
+      "backend_demandas_tests_gerenciamentodemandastest_payload",
+      "backend_demandas_tests_gerenciamentodemandastest_setuptestdata",
+      "backend_demandas_tests_gerenciamentodemandastest_test_demanda_encerrada_nao_pode_ser_editada",
+      "backend_demandas_tests_gerenciamentodemandastest_test_duplicidade_normalizada_bloqueia_criacao",
+      "backend_demandas_tests_gerenciamentodemandastest_test_exige_numero_sei_na_criacao",
+      "backend_demandas_tests_gerenciamentodemandastest_test_gestor_cria_demanda_atribuida_com_historico",
+      "backend_demandas_tests_gerenciamentodemandastest_test_gestor_edita_e_reatribui_com_eventos_separados",
+      "backend_demandas_tests_gerenciamentodemandastest_test_inspetor_nao_cria_nem_edita",
+      "backend_demandas_tests_gerenciamentodemandastest_test_rejeita_responsavel_externo",
+      "backend_demandas_tests_gerenciamentodemandastest_test_verificacao_global_retorna_somente_identificacao",
+      "backend_demandas_tests_importacaoseitest",
+      "backend_demandas_tests_importacaoseitest_criar_previa",
+      "backend_demandas_tests_importacaoseitest_setuptestdata",
+      "backend_demandas_tests_importacaoseitest_test_confirmacao_cria_demanda_e_apaga_texto_bruto",
+      "backend_demandas_tests_importacaoseitest_test_descarte_encerra_previa_e_remove_texto",
+      "backend_demandas_tests_importacaoseitest_test_gestor_cria_previa_sem_expor_texto_bruto",
+      "backend_demandas_tests_importacaoseitest_test_inspetor_nao_cria_previa",
+      "backend_demandas_tests_importacaoseitest_test_previa_com_erro_pode_ser_corrigida",
+      "backend_demandas_tests_importacaoseitest_test_previa_detecta_duplicidade_e_isola_autor",
+      "backend_demandas_tests_importacaoseitest_test_previa_detecta_duplicidade_externa_sem_expor_detalhes",
+      "backend_demandas_tests_importacaoseitest_texto",
+      "backend_demandas_tests_participacaoentreequipestest",
+      "backend_demandas_tests_participacaoentreequipestest_setuptestdata",
+      "backend_demandas_tests_participacaoentreequipestest_test_inspetor_nao_solicita_nem_consulta_fila",
+      "backend_demandas_tests_participacaoentreequipestest_test_pedido_aprovacao_e_acesso_posterior",
+      "backend_demandas_tests_participacaoentreequipestest_test_recusa_e_novo_pedido",
+      "backend_demandas_tests_py_apitestcase",
+      "backend_demandas_tests_sessaotest",
+      "backend_demandas_tests_sessaotest_setuptestdata",
+      "backend_demandas_tests_sessaotest_test_fluxo_csrf_login_me_logout",
+      "backend_demandas_tests_sessaotest_test_login_invalido_nao_revela_conta"
     ],
     "1": [
-      "frontend_app_avisos_id_page",
-      "frontend_app_avisos_id_page_avisopage",
-      "frontend_app_avisos_id_page_metadata",
-      "frontend_app_demandas_id_page",
-      "frontend_app_demandas_id_page_demandapage",
-      "frontend_app_demandas_id_page_metadata",
-      "frontend_app_module_page",
-      "frontend_app_module_page_generatemetadata",
-      "frontend_app_module_page_modulepage",
-      "frontend_app_page",
-      "frontend_app_page_home",
-      "frontend_app_page_metadata",
-      "frontend_components_agenda_calendar",
-      "frontend_components_agenda_calendar_agendacalendar",
-      "frontend_components_agenda_calendar_agendacalendar_changed",
-      "frontend_components_agenda_calendar_agendacalendar_changeview",
-      "frontend_components_agenda_calendar_agendacalendar_gotoday",
-      "frontend_components_agenda_calendar_agendacalendar_move",
-      "frontend_components_agenda_calendar_agendacalendar_prepare",
-      "frontend_components_agenda_calendar_agendacalendar_retry",
-      "frontend_components_agenda_calendar_datelabel",
-      "frontend_components_agenda_calendar_eventcard",
-      "frontend_components_agenda_calendar_timelabel",
-      "frontend_components_agenda_calendar_views",
-      "frontend_components_cancelar_compromisso",
-      "frontend_components_cancelar_compromisso_cancelarcompromisso",
-      "frontend_components_cancelar_compromisso_cancelarcompromisso_cancel",
+      "backend_config_urls",
+      "backend_usuarios_serializers",
+      "backend_usuarios_serializers_atualizarequipeserializer",
+      "backend_usuarios_serializers_atualizarmembroequipeserializer",
+      "backend_usuarios_serializers_atualizarmembroequipeserializer_validate",
+      "backend_usuarios_serializers_criarequipeserializer",
+      "backend_usuarios_serializers_criarequipeserializer_validate_nome",
+      "backend_usuarios_serializers_criarmembroequipeserializer",
+      "backend_usuarios_serializers_criarmembroequipeserializer_create",
+      "backend_usuarios_serializers_criarmembroequipeserializer_validate",
+      "backend_usuarios_serializers_criarmembroequipeserializer_validate_password",
+      "backend_usuarios_serializers_equipeserializer",
+      "backend_usuarios_serializers_membroequipeserializer",
+      "backend_usuarios_serializers_meta",
+      "backend_usuarios_serializers_vinculoequipeserializer",
+      "backend_usuarios_views",
+      "backend_usuarios_views_csrfview",
+      "backend_usuarios_views_csrfview_get",
+      "backend_usuarios_views_dados_sessao",
+      "backend_usuarios_views_equipedetailadminview",
+      "backend_usuarios_views_equipedetailadminview_patch",
+      "backend_usuarios_views_equipedetailview",
+      "backend_usuarios_views_equipedetailview_get",
+      "backend_usuarios_views_equipesacessiveisview",
+      "backend_usuarios_views_equipesacessiveisview_get",
+      "backend_usuarios_views_erro_serializer",
+      "backend_usuarios_views_inspetorlistview",
+      "backend_usuarios_views_inspetorlistview_get",
+      "backend_usuarios_views_loginview",
+      "backend_usuarios_views_loginview_post",
+      "backend_usuarios_views_logoutview",
+      "backend_usuarios_views_logoutview_post",
+      "backend_usuarios_views_membroequipedetailview",
+      "backend_usuarios_views_membroequipedetailview_patch",
+      "backend_usuarios_views_membroequipelistview",
+      "backend_usuarios_views_membroequipelistview_post",
+      "backend_usuarios_views_meview",
+      "backend_usuarios_views_meview_get",
+      "backend_usuarios_views_py_apiview",
+      "backend_usuarios_views_selecionarequipeview",
+      "backend_usuarios_views_selecionarequipeview_post",
+      "backend_usuarios_views_vinculosequipeview",
+      "backend_usuarios_views_vinculosequipeview_get",
+      "backend_usuarios_views_vinculosequipeview_post",
+      "method_decorator"
+    ],
+    "2": [
       "frontend_components_compromisso_form",
       "frontend_components_compromisso_form_compromissoform",
       "frontend_components_compromisso_form_compromissoform_submit",
       "frontend_components_compromisso_form_compromissoform_toggle",
       "frontend_components_compromisso_form_local",
       "frontend_components_compromisso_form_offset",
-      "frontend_components_login_screen",
-      "frontend_components_login_screen_loginscreen",
-      "frontend_components_login_screen_loginscreen_submit",
-      "frontend_components_module_content",
-      "frontend_components_module_content_modulecontent",
-      "frontend_components_workspace",
-      "frontend_components_workspace_layout",
-      "frontend_components_workspace_layout_workspacelayout",
-      "frontend_components_workspace_workspace",
-      "frontend_hooks_use_session",
-      "frontend_hooks_use_session_usesession",
-      "frontend_hooks_use_session_usesession_login",
-      "frontend_hooks_use_session_usesession_logout",
-      "frontend_hooks_use_session_usesession_retry",
-      "frontend_lib_agenda",
-      "frontend_lib_agenda_agendaresponse",
-      "frontend_lib_agenda_cancelarcompromisso",
-      "frontend_lib_agenda_compromisso",
-      "frontend_lib_agenda_conflitoagendaerror",
-      "frontend_lib_agenda_conflitoagendaerror_constructor",
-      "frontend_lib_agenda_dadoscompromisso",
-      "frontend_lib_agenda_datefrom",
-      "frontend_lib_agenda_diasentre",
-      "frontend_lib_agenda_hojefortaleza",
-      "frontend_lib_agenda_intervaloagenda",
-      "frontend_lib_agenda_isodate",
-      "frontend_lib_agenda_listarcompromissos",
-      "frontend_lib_agenda_moverreferencia",
-      "frontend_lib_agenda_ocorrenodia",
-      "frontend_lib_agenda_respostacompromisso",
-      "frontend_lib_agenda_salvarcompromisso",
-      "frontend_lib_agenda_shiftdays",
-      "frontend_lib_agenda_visaoagenda",
-      "frontend_lib_auth",
-      "frontend_lib_auth_apierror",
-      "frontend_lib_auth_apierror_constructor",
-      "frontend_lib_auth_cookie",
-      "frontend_lib_auth_entrar",
-      "frontend_lib_auth_obterusuarioatual",
-      "frontend_lib_auth_profile",
-      "frontend_lib_auth_responsejson",
-      "frontend_lib_auth_sair",
-      "frontend_lib_auth_user",
+      "frontend_components_demandas_list",
+      "frontend_components_demandas_list_filtrosvazios",
+      "frontend_components_demandas_list_prioridadelabel",
+      "frontend_components_demandas_list_segmentos",
+      "frontend_components_demandas_list_statuslabel",
+      "frontend_components_importar_sei",
+      "frontend_components_importar_sei_dadosvazios",
+      "frontend_components_importar_sei_importarsei",
+      "frontend_components_importar_sei_importarsei_changeopen",
+      "frontend_components_importar_sei_importarsei_confirm",
+      "frontend_components_importar_sei_importarsei_discard",
+      "frontend_components_importar_sei_importarsei_externalfield",
+      "frontend_components_importar_sei_importarsei_field",
+      "frontend_components_importar_sei_importarsei_interpret",
+      "frontend_components_participation_requests",
+      "frontend_components_participation_requests_participationrequests",
+      "frontend_components_participation_requests_participationrequests_decide",
+      "frontend_components_participation_requests_participationrequests_load",
+      "frontend_lib_demandas",
+      "frontend_lib_demandas_atualizarpreviasei",
+      "frontend_lib_demandas_camposimportacaosei",
+      "frontend_lib_demandas_confirmarpreviasei",
+      "frontend_lib_demandas_criarpreviasei",
+      "frontend_lib_demandas_decidirparticipacao",
       "frontend_lib_demandas_demandaresumo",
-      "frontend_lib_navigation",
-      "frontend_lib_navigation_modules"
-    ],
-    "2": [
-      "backend_agenda_management_commands_seed_agenda",
-      "backend_agenda_management_commands_seed_agenda_command",
-      "backend_agenda_management_commands_seed_agenda_command_handle",
-      "backend_agenda_management_commands_seed_agenda_py_atomic",
-      "backend_agenda_management_commands_seed_agenda_py_basecommand",
-      "backend_agenda_models",
-      "backend_agenda_models_compromisso",
-      "backend_agenda_models_compromisso_clean",
-      "backend_agenda_models_compromisso_save",
-      "backend_agenda_models_meta",
-      "backend_agenda_models_tipo",
-      "backend_agenda_serializers",
-      "backend_agenda_serializers_compromissoserializer",
-      "backend_agenda_serializers_compromissoserializer_get_fim",
-      "backend_agenda_serializers_compromissoserializer_get_inicio",
-      "backend_agenda_serializers_datahoracomoffsetfield",
-      "backend_agenda_serializers_datahoracomoffsetfield_to_internal_value",
-      "backend_agenda_serializers_gerenciarcompromissoserializer",
-      "backend_agenda_serializers_gerenciarcompromissoserializer_validate",
-      "backend_agenda_serializers_meta",
-      "backend_agenda_serializers_participanteserializer",
-      "backend_agenda_services",
-      "backend_agenda_services_buscar_conflitos",
-      "backend_agenda_services_cancelar_compromisso",
-      "backend_agenda_services_conflitoagenda",
-      "backend_agenda_services_conflitoagenda_init",
-      "backend_agenda_services_exigir_gestor",
-      "backend_agenda_services_py_atomic",
-      "backend_agenda_services_salvar_compromisso",
-      "backend_agenda_services_validar_intervalo",
-      "backend_agenda_tests_compromissomodeltest",
-      "backend_agenda_tests_compromissomodeltest_setuptestdata",
-      "backend_agenda_tests_compromissomodeltest_test_aceita_intervalo_consciente_valido",
-      "backend_agenda_tests_compromissomodeltest_test_exige_criador_da_mesma_equipe",
-      "backend_agenda_tests_compromissomodeltest_test_exige_fim_posterior_ao_inicio",
-      "backend_agenda_tests_py_testcase",
-      "backend_agenda_views",
-      "backend_agenda_views_compromissodetailview",
-      "backend_agenda_views_compromissodetailview_delete",
-      "backend_agenda_views_compromissodetailview_get_object",
-      "backend_agenda_views_compromissodetailview_patch",
-      "backend_agenda_views_compromissolistview",
-      "backend_agenda_views_compromissolistview_get",
-      "backend_agenda_views_compromissolistview_post",
-      "backend_agenda_views_limite_iso",
-      "backend_agenda_views_py_apiview",
-      "exception"
+      "frontend_lib_demandas_descartarpreviasei",
+      "frontend_lib_demandas_eventodemanda",
+      "frontend_lib_demandas_filtrosdemandas",
+      "frontend_lib_demandas_importacaosei",
+      "frontend_lib_demandas_inspetor",
+      "frontend_lib_demandas_listardemandas",
+      "frontend_lib_demandas_listardemandasparaagenda",
+      "frontend_lib_demandas_listarsolicitacoes",
+      "frontend_lib_demandas_paginademandas",
+      "frontend_lib_demandas_resposta",
+      "frontend_lib_demandas_segmentodemanda",
+      "frontend_lib_demandas_solicitacaoparticipacao"
     ],
     "3": [
-      "frontend_oxlintrc",
-      "frontend_oxlintrc_categories",
-      "frontend_oxlintrc_categories_correctness",
-      "frontend_oxlintrc_env",
-      "frontend_oxlintrc_env_browser",
-      "frontend_oxlintrc_env_builtin",
-      "frontend_oxlintrc_env_node",
-      "frontend_oxlintrc_options",
-      "frontend_oxlintrc_options_typeaware",
-      "frontend_oxlintrc_options_typecheck",
-      "frontend_oxlintrc_plugins",
-      "frontend_oxlintrc_rules",
-      "frontend_oxlintrc_rules_import_no_anonymous_default_export",
-      "frontend_oxlintrc_rules_no_array_constructor",
-      "frontend_oxlintrc_rules_no_var",
-      "frontend_oxlintrc_rules_prefer_const",
-      "frontend_oxlintrc_rules_prefer_rest_params",
-      "frontend_oxlintrc_rules_prefer_spread",
-      "frontend_oxlintrc_rules_react_display_name",
-      "frontend_oxlintrc_rules_react_jsx_no_comment_textnodes",
-      "frontend_oxlintrc_rules_react_no_unescaped_entities",
-      "frontend_oxlintrc_rules_react_react_compiler",
-      "frontend_oxlintrc_rules_react_require_render_return",
-      "frontend_oxlintrc_rules_react_rules_of_hooks",
-      "frontend_oxlintrc_rules_typescript_ban_ts_comment",
-      "frontend_oxlintrc_rules_typescript_no_deprecated",
-      "frontend_oxlintrc_rules_typescript_no_empty_object_type",
-      "frontend_oxlintrc_rules_typescript_no_explicit_any",
-      "frontend_oxlintrc_rules_typescript_no_namespace",
-      "frontend_oxlintrc_rules_typescript_no_require_imports",
-      "frontend_oxlintrc_rules_typescript_no_unnecessary_type_constraint",
-      "frontend_oxlintrc_rules_typescript_no_unsafe_function_type",
-      "frontend_oxlintrc_schema",
-      "ref_eslint",
-      "ref_import",
-      "ref_jsx_a11y",
-      "ref_nextjs",
-      "ref_oxc",
-      "ref_typescript",
-      "ref_unicorn"
-    ],
-    "4": [
       "base_ui_react",
       "class_variance_authority",
       "clsx",
@@ -300,45 +188,147 @@
       "tw_animate_css",
       "vinext"
     ],
+    "4": [
+      "backend_agenda_models_compromisso",
+      "backend_agenda_models_compromisso_clean",
+      "backend_agenda_models_compromisso_save",
+      "backend_agenda_models_meta",
+      "backend_agenda_models_tipo",
+      "backend_agenda_serializers",
+      "backend_agenda_serializers_compromissoserializer",
+      "backend_agenda_serializers_compromissoserializer_get_fim",
+      "backend_agenda_serializers_compromissoserializer_get_inicio",
+      "backend_agenda_serializers_datahoracomoffsetfield",
+      "backend_agenda_serializers_datahoracomoffsetfield_to_internal_value",
+      "backend_agenda_serializers_gerenciarcompromissoserializer",
+      "backend_agenda_serializers_gerenciarcompromissoserializer_validate",
+      "backend_agenda_serializers_meta",
+      "backend_agenda_serializers_participanteserializer",
+      "backend_agenda_services",
+      "backend_agenda_services_buscar_conflitos",
+      "backend_agenda_services_cancelar_compromisso",
+      "backend_agenda_services_conflitoagenda",
+      "backend_agenda_services_conflitoagenda_init",
+      "backend_agenda_services_exigir_gestor",
+      "backend_agenda_services_py_atomic",
+      "backend_agenda_services_salvar_compromisso",
+      "backend_agenda_services_validar_intervalo",
+      "backend_agenda_views",
+      "backend_agenda_views_compromissodetailview",
+      "backend_agenda_views_compromissodetailview_delete",
+      "backend_agenda_views_compromissodetailview_get_object",
+      "backend_agenda_views_compromissodetailview_patch",
+      "backend_agenda_views_compromissolistview",
+      "backend_agenda_views_compromissolistview_get",
+      "backend_agenda_views_compromissolistview_post",
+      "backend_agenda_views_limite_iso",
+      "backend_agenda_views_py_apiview",
+      "exception"
+    ],
     "5": [
-      "backend_demandas_tests_detalhehistoricotest",
-      "backend_demandas_tests_detalhehistoricotest_setuptestdata",
-      "backend_demandas_tests_detalhehistoricotest_test_comentario_valida_texto_autor_e_acesso",
-      "backend_demandas_tests_detalhehistoricotest_test_detalhe_respeita_equipe_e_responsavel",
-      "backend_demandas_tests_detalhehistoricotest_test_gestor_cancela_estado_ativo_com_justificativa",
-      "backend_demandas_tests_detalhehistoricotest_test_gestor_nao_altera_status_e_outro_inspetor_nao_descobre_registro",
-      "backend_demandas_tests_detalhehistoricotest_test_historico_nao_oferece_edicao_ou_exclusao",
-      "backend_demandas_tests_detalhehistoricotest_test_inspetor_executa_transicoes_e_historico_permanece_consistente",
-      "backend_demandas_tests_detalhehistoricotest_test_resumo_correcao_e_cancelamento_obrigam_texto",
-      "backend_demandas_tests_gerenciamentodemandastest",
-      "backend_demandas_tests_gerenciamentodemandastest_payload",
-      "backend_demandas_tests_gerenciamentodemandastest_setuptestdata",
-      "backend_demandas_tests_gerenciamentodemandastest_test_demanda_encerrada_nao_pode_ser_editada",
-      "backend_demandas_tests_gerenciamentodemandastest_test_gestor_cria_demanda_atribuida_com_historico",
-      "backend_demandas_tests_gerenciamentodemandastest_test_gestor_edita_e_reatribui_com_eventos_separados",
-      "backend_demandas_tests_gerenciamentodemandastest_test_inspetor_nao_cria_nem_edita",
-      "backend_demandas_tests_gerenciamentodemandastest_test_rejeita_responsavel_externo",
-      "backend_demandas_tests_listagemdemandastest",
-      "backend_demandas_tests_listagemdemandastest_autenticar",
-      "backend_demandas_tests_listagemdemandastest_criar",
-      "backend_demandas_tests_listagemdemandastest_setuptestdata",
-      "backend_demandas_tests_listagemdemandastest_test_combina_responsavel_periodo_e_atraso",
-      "backend_demandas_tests_listagemdemandastest_test_combina_status_e_criticidade",
-      "backend_demandas_tests_listagemdemandastest_test_exclusao_direta_nao_e_oferecida",
-      "backend_demandas_tests_listagemdemandastest_test_exige_sessao",
-      "backend_demandas_tests_listagemdemandastest_test_gestor_ve_ativas_da_propria_equipe_inclusive_nao_atribuida",
-      "backend_demandas_tests_listagemdemandastest_test_inspetor_nao_filtra_por_responsavel",
-      "backend_demandas_tests_listagemdemandastest_test_inspetor_ve_apenas_as_suas_ativas",
-      "backend_demandas_tests_listagemdemandastest_test_pagina_fora_do_intervalo_retorna_404",
-      "backend_demandas_tests_listagemdemandastest_test_rejeita_parametros_invalidos",
-      "backend_demandas_tests_listagemdemandastest_test_usuario_sem_equipe_recebe_403",
-      "backend_demandas_tests_py_apitestcase",
-      "backend_demandas_tests_sessaotest",
-      "backend_demandas_tests_sessaotest_setuptestdata",
-      "backend_demandas_tests_sessaotest_test_fluxo_csrf_login_me_logout",
-      "backend_demandas_tests_sessaotest_test_login_invalido_nao_revela_conta"
+      "backend_avisos_admin",
+      "backend_avisos_admin_avisoadmin",
+      "backend_avisos_models",
+      "backend_avisos_models_aviso",
+      "backend_avisos_models_aviso_clean",
+      "backend_avisos_models_aviso_save",
+      "backend_avisos_models_categoria",
+      "backend_avisos_models_leituraaviso",
+      "backend_avisos_models_meta",
+      "backend_avisos_serializers",
+      "backend_avisos_serializers_avisodetalheserializer",
+      "backend_avisos_serializers_gerenciaravisoserializer",
+      "backend_avisos_serializers_gerenciaravisoserializer_validate",
+      "backend_avisos_views",
+      "backend_avisos_views_avisodetailview",
+      "backend_avisos_views_avisodetailview_delete",
+      "backend_avisos_views_avisodetailview_get_queryset",
+      "backend_avisos_views_avisodetailview_patch",
+      "backend_avisos_views_avisoleituraview",
+      "backend_avisos_views_avisoleituraview_post",
+      "backend_avisos_views_avisolistview",
+      "backend_avisos_views_avisolistview_get",
+      "backend_avisos_views_avisolistview_post",
+      "backend_avisos_views_avisos_da_equipe",
+      "backend_avisos_views_avisos_visiveis",
+      "backend_avisos_views_com_leitura",
+      "backend_avisos_views_exigir_gestor",
+      "backend_avisos_views_py_apiview",
+      "backend_avisos_views_py_atomic",
+      "backend_avisos_views_salvar_aviso",
+      "backend_demandas_dashboard",
+      "register",
+      "retrieveapiview"
     ],
     "6": [
+      "frontend_components_agenda_calendar",
+      "frontend_components_agenda_calendar_agendacalendar",
+      "frontend_components_agenda_calendar_agendacalendar_changed",
+      "frontend_components_agenda_calendar_agendacalendar_changeview",
+      "frontend_components_agenda_calendar_agendacalendar_gotoday",
+      "frontend_components_agenda_calendar_agendacalendar_move",
+      "frontend_components_agenda_calendar_agendacalendar_prepare",
+      "frontend_components_agenda_calendar_agendacalendar_retry",
+      "frontend_components_agenda_calendar_datelabel",
+      "frontend_components_agenda_calendar_eventcard",
+      "frontend_components_agenda_calendar_timelabel",
+      "frontend_components_agenda_calendar_views",
+      "frontend_components_cancelar_compromisso",
+      "frontend_components_cancelar_compromisso_cancelarcompromisso",
+      "frontend_components_cancelar_compromisso_cancelarcompromisso_cancel",
+      "frontend_lib_agenda",
+      "frontend_lib_agenda_agendaresponse",
+      "frontend_lib_agenda_cancelarcompromisso",
+      "frontend_lib_agenda_compromisso",
+      "frontend_lib_agenda_dadoscompromisso",
+      "frontend_lib_agenda_datefrom",
+      "frontend_lib_agenda_diasentre",
+      "frontend_lib_agenda_hojefortaleza",
+      "frontend_lib_agenda_intervaloagenda",
+      "frontend_lib_agenda_isodate",
+      "frontend_lib_agenda_listarcompromissos",
+      "frontend_lib_agenda_moverreferencia",
+      "frontend_lib_agenda_ocorrenodia",
+      "frontend_lib_agenda_respostacompromisso",
+      "frontend_lib_agenda_salvarcompromisso",
+      "frontend_lib_agenda_shiftdays",
+      "frontend_lib_agenda_visaoagenda"
+    ],
+    "7": [
+      "frontend_components_aviso_detail",
+      "frontend_components_aviso_detail_avisodetail",
+      "frontend_components_aviso_detail_data",
+      "frontend_components_aviso_form",
+      "frontend_components_aviso_form_agoralocal",
+      "frontend_components_aviso_form_avisoform",
+      "frontend_components_aviso_form_avisoform_changeopen",
+      "frontend_components_aviso_form_avisoform_submit",
+      "frontend_components_aviso_form_avisoform_toggle",
+      "frontend_components_aviso_form_local",
+      "frontend_components_aviso_form_offset",
+      "frontend_components_avisos_feed",
+      "frontend_components_avisos_feed_avisosfeed",
+      "frontend_components_avisos_feed_avisosfeed_limpar",
+      "frontend_components_avisos_feed_data",
+      "frontend_components_avisos_feed_normalizar",
+      "frontend_components_cancelar_aviso",
+      "frontend_components_cancelar_aviso_cancelaraviso",
+      "frontend_components_cancelar_aviso_cancelaraviso_cancel",
+      "frontend_lib_avisos",
+      "frontend_lib_avisos_avisodetalhe",
+      "frontend_lib_avisos_cancelaraviso",
+      "frontend_lib_avisos_categoriaaviso",
+      "frontend_lib_avisos_dadosaviso",
+      "frontend_lib_avisos_listaravisos",
+      "frontend_lib_avisos_marcaravisolido",
+      "frontend_lib_avisos_obteraviso",
+      "frontend_lib_avisos_resposta",
+      "frontend_lib_avisos_salvaraviso",
+      "frontend_lib_avisos_situacaoaviso",
+      "frontend_lib_avisos_situacaoavisolabel",
+      "frontend_lib_demandas_listarinspetores"
+    ],
+    "8": [
       "frontend_tsconfig",
       "frontend_tsconfig_compileroptions",
       "frontend_tsconfig_compileroptions_allowjs",
@@ -372,40 +362,215 @@
       "ref_tsx",
       "ref_vinext_types"
     ],
-    "7": [
-      "backend_avisos_admin",
-      "backend_avisos_admin_avisoadmin",
-      "backend_avisos_models",
-      "backend_avisos_models_aviso",
-      "backend_avisos_models_aviso_clean",
-      "backend_avisos_models_aviso_save",
-      "backend_avisos_models_categoria",
-      "backend_avisos_models_meta",
-      "backend_avisos_serializers",
-      "backend_avisos_serializers_avisodetalheserializer",
-      "backend_avisos_serializers_avisofeedserializer",
-      "backend_avisos_serializers_avisofeedserializer_get_destinatarios",
-      "backend_avisos_serializers_avisofeedserializer_get_expira_em",
-      "backend_avisos_serializers_avisofeedserializer_get_publicado_em",
-      "backend_avisos_serializers_gerenciaravisoserializer",
-      "backend_avisos_serializers_gerenciaravisoserializer_validate",
-      "backend_avisos_serializers_meta",
-      "backend_avisos_views",
-      "backend_avisos_views_avisodetailview",
-      "backend_avisos_views_avisodetailview_delete",
-      "backend_avisos_views_avisodetailview_get_queryset",
-      "backend_avisos_views_avisodetailview_patch",
-      "backend_avisos_views_avisolistview",
-      "backend_avisos_views_avisolistview_get",
-      "backend_avisos_views_avisolistview_post",
-      "backend_avisos_views_avisos_da_equipe",
-      "backend_avisos_views_exigir_gestor",
-      "backend_avisos_views_py_apiview",
-      "backend_avisos_views_salvar_aviso",
-      "register",
-      "retrieveapiview"
+    "9": [
+      "frontend_app_avisos_id_page",
+      "frontend_app_avisos_id_page_avisopage",
+      "frontend_app_avisos_id_page_metadata",
+      "frontend_app_captura_sei_page",
+      "frontend_app_captura_sei_page_capturaseipage",
+      "frontend_app_captura_sei_page_metadata",
+      "frontend_app_demandas_id_page",
+      "frontend_app_demandas_id_page_demandapage",
+      "frontend_app_demandas_id_page_metadata",
+      "frontend_app_module_page",
+      "frontend_app_module_page_generatemetadata",
+      "frontend_app_module_page_modulepage",
+      "frontend_app_page",
+      "frontend_app_page_home",
+      "frontend_app_page_metadata",
+      "frontend_components_login_screen",
+      "frontend_components_login_screen_loginscreen",
+      "frontend_components_login_screen_loginscreen_submit",
+      "frontend_components_module_content",
+      "frontend_components_module_content_modulecontent",
+      "frontend_components_workspace",
+      "frontend_components_workspace_layout",
+      "frontend_components_workspace_layout_workspacelayout",
+      "frontend_components_workspace_layout_workspacelayout_escolherequipe",
+      "frontend_components_workspace_workspace",
+      "frontend_lib_auth_obtervinculosequipe",
+      "frontend_lib_auth_teammembership",
+      "frontend_lib_auth_user",
+      "frontend_lib_navigation",
+      "frontend_lib_navigation_modules",
+      "ref_react"
     ],
-    "8": [
+    "10": [
+      "backend_demandas_identidade_sei",
+      "backend_demandas_identidade_sei_normalizar_numero_sei",
+      "backend_demandas_identidade_sei_rationale_2",
+      "backend_demandas_importacao_sei",
+      "backend_demandas_importacao_sei_interpretar_texto_sei",
+      "backend_demandas_importacao_sei_normalizar_rotulo",
+      "backend_demandas_migrations_0006_anexodemanda_and_more",
+      "backend_demandas_migrations_0006_anexodemanda_and_more_migration",
+      "backend_demandas_models",
+      "backend_demandas_models_anexodemanda",
+      "backend_demandas_models_caminho_anexo",
+      "backend_demandas_models_demanda",
+      "backend_demandas_models_demanda_clean",
+      "backend_demandas_models_demanda_save",
+      "backend_demandas_models_eventodemanda",
+      "backend_demandas_models_importacaosei",
+      "backend_demandas_models_meta",
+      "backend_demandas_models_origem",
+      "backend_demandas_models_prioridade",
+      "backend_demandas_models_solicitacaoparticipacao",
+      "backend_demandas_models_status",
+      "backend_demandas_models_tipo",
+      "backend_demandas_serializers",
+      "backend_demandas_serializers_autorserializer",
+      "backend_demandas_serializers_responsavelserializer",
+      "backend_demandas_tests",
+      "backend_demandas_tests_identidadeseitest",
+      "backend_demandas_tests_identidadeseitest_test_normalizacao_e_conservadora_e_preserva_letras",
+      "backend_demandas_tests_identidadeseitest_test_parser_aceita_rotulos_ficticios_e_datas_comuns",
+      "backend_demandas_tests_identidadeseitest_test_parser_falha_de_forma_explicita_sem_numero"
+    ],
+    "11": [
+      "frontend_components_equipe_management",
+      "frontend_components_equipe_management_equipemanagement",
+      "frontend_components_equipe_management_equipemanagement_saved",
+      "frontend_components_equipe_management_equipemanagement_submitequipe",
+      "frontend_components_equipe_management_membroform",
+      "frontend_components_equipe_management_membroform_changeopen",
+      "frontend_components_equipe_management_membroform_field",
+      "frontend_components_equipe_management_membroform_submit",
+      "frontend_components_equipe_management_novo",
+      "frontend_components_home_dashboard",
+      "frontend_components_home_dashboard_datetime",
+      "frontend_components_home_dashboard_day",
+      "frontend_components_home_dashboard_homedashboard",
+      "frontend_components_home_dashboard_statuslabel",
+      "frontend_lib_auth_profile",
+      "frontend_lib_avisos_avisofeed",
+      "frontend_lib_equipe",
+      "frontend_lib_equipe_atualizarmembro",
+      "frontend_lib_equipe_criarequipe",
+      "frontend_lib_equipe_criarmembro",
+      "frontend_lib_equipe_dadosmembro",
+      "frontend_lib_equipe_equipe",
+      "frontend_lib_equipe_json",
+      "frontend_lib_equipe_listarequipes",
+      "frontend_lib_equipe_membroequipe",
+      "frontend_lib_equipe_obterequipe",
+      "frontend_lib_home",
+      "frontend_lib_home_obterresumohome",
+      "frontend_lib_home_resumohome"
+    ],
+    "12": [
+      "frontend_components_capture_sei",
+      "frontend_components_capture_sei_capture",
+      "frontend_components_capture_sei_capturesei",
+      "frontend_components_capture_sei_capturesei_cancel",
+      "frontend_components_capture_sei_capturesei_field",
+      "frontend_components_capture_sei_capturesei_receive",
+      "frontend_components_capture_sei_capturesei_request",
+      "frontend_components_capture_sei_capturesei_submit",
+      "frontend_components_capture_sei_empty",
+      "frontend_components_capture_sei_readcapture",
+      "frontend_components_demanda_form",
+      "frontend_components_demanda_form_demandaform",
+      "frontend_components_demanda_form_demandaform_changeopen",
+      "frontend_components_demanda_form_demandaform_checksei",
+      "frontend_components_demanda_form_demandaform_requestparticipation",
+      "frontend_components_demanda_form_demandaform_submit",
+      "frontend_components_demanda_form_vazio",
+      "frontend_components_importar_sei_importarsei_requestparticipation",
+      "frontend_lib_agenda_conflitoagendaerror",
+      "frontend_lib_agenda_conflitoagendaerror_constructor",
+      "frontend_lib_auth_apierror",
+      "frontend_lib_auth_apierror_constructor",
+      "frontend_lib_demandas_dadosdemanda",
+      "frontend_lib_demandas_possivelduplicidadesei",
+      "frontend_lib_demandas_salvardemanda",
+      "frontend_lib_demandas_solicitarparticipacao",
+      "frontend_lib_demandas_verificarnumerosei"
+    ],
+    "13": [
+      "docs_plano_evolucao_pos_mvp_api_planejada",
+      "docs_plano_evolucao_pos_mvp_backlog_posterior",
+      "docs_plano_evolucao_pos_mvp_ciclo_0_descoberta_e_acordo_institucional",
+      "docs_plano_evolucao_pos_mvp_ciclo_1_identidade_sei_e_pesquisa",
+      "docs_plano_evolucao_pos_mvp_ciclo_2_colar_interpretar_e_confirmar",
+      "docs_plano_evolucao_pos_mvp_ciclo_3_administração_de_equipes_e_usuários",
+      "docs_plano_evolucao_pos_mvp_ciclo_4_home_por_perfil_prazos_e_alertas",
+      "docs_plano_evolucao_pos_mvp_ciclo_5_execução_estruturada_da_inspeção",
+      "docs_plano_evolucao_pos_mvp_ciclo_6_pesquisa_e_visão_operacional",
+      "docs_plano_evolucao_pos_mvp_ciclo_7_extensão_de_captura_assistida",
+      "docs_plano_evolucao_pos_mvp_ciclo_8_auditoria_e_relatórios",
+      "docs_plano_evolucao_pos_mvp_ciclo_9_homologação_e_endurecimento",
+      "docs_plano_evolucao_pos_mvp_ciclos_de_desenvolvimento",
+      "docs_plano_evolucao_pos_mvp_decisões_de_produto",
+      "docs_plano_evolucao_pos_mvp_definição_de_pronto",
+      "docs_plano_evolucao_pos_mvp_demanda",
+      "docs_plano_evolucao_pos_mvp_dependências_entre_ciclos",
+      "docs_plano_evolucao_pos_mvp_escopo_priorizado",
+      "docs_plano_evolucao_pos_mvp_estratégia_de_testes",
+      "docs_plano_evolucao_pos_mvp_fluxo_de_entrada_do_sei",
+      "docs_plano_evolucao_pos_mvp_importação_temporária",
+      "docs_plano_evolucao_pos_mvp_modelo_de_dados_preliminar",
+      "docs_plano_evolucao_pos_mvp_objetivo",
+      "docs_plano_evolucao_pos_mvp_plano_de_evolução_pós_mvp_centraliza",
+      "docs_plano_evolucao_pos_mvp_próxima_ação",
+      "docs_plano_evolucao_pos_mvp_riscos_e_respostas"
+    ],
+    "14": [
+      "frontend_tests_accessibility_spec",
+      "frontend_tests_aceite_demanda_spec",
+      "frontend_tests_agenda_spec",
+      "frontend_tests_anexos_demanda_spec",
+      "frontend_tests_avaliacao_demanda_spec",
+      "frontend_tests_avaliacao_demanda_spec_enviarparaavaliacao",
+      "frontend_tests_avisos_spec",
+      "frontend_tests_captura_sei_spec",
+      "frontend_tests_demandas_spec",
+      "frontend_tests_demandas_spec_entrar",
+      "frontend_tests_detalhe_demanda_spec",
+      "frontend_tests_equipe_spec",
+      "frontend_tests_equipe_vinculos_spec",
+      "frontend_tests_gerenciar_agenda_spec",
+      "frontend_tests_gerenciar_avisos_spec",
+      "frontend_tests_gerenciar_demandas_spec",
+      "frontend_tests_home_spec",
+      "frontend_tests_leitura_avisos_spec",
+      "frontend_tests_navigation_spec",
+      "frontend_tests_session_spec",
+      "frontend_tests_support_api",
+      "frontend_tests_support_api_entrarcomo",
+      "frontend_tests_support_api_instalarapi",
+      "frontend_tests_support_api_instalarapi_noticedata",
+      "frontend_tests_support_api_perfil",
+      "test"
+    ],
+    "15": [
+      "docs_descoberta_integracao_sei_a_001_tela_de_pesquisa_do_sei",
+      "docs_descoberta_integracao_sei_amostras_necessárias",
+      "docs_descoberta_integracao_sei_catálogo_provisório_de_campos",
+      "docs_descoberta_integracao_sei_como_anonimizar",
+      "docs_descoberta_integracao_sei_critérios_para_encerrar_o_ciclo_0",
+      "docs_descoberta_integracao_sei_d_001_identidade_interna",
+      "docs_descoberta_integracao_sei_d_002_entrada_progressiva",
+      "docs_descoberta_integracao_sei_d_003_confirmação_humana",
+      "docs_descoberta_integracao_sei_d_004_limite_da_captura",
+      "docs_descoberta_integracao_sei_d_005_autoridade_dos_campos",
+      "docs_descoberta_integracao_sei_decisões_registradas",
+      "docs_descoberta_integracao_sei_descoberta_da_entrada_assistida_do_sei_ciclo_0",
+      "docs_descoberta_integracao_sei_evidência_recebida",
+      "docs_descoberta_integracao_sei_fatos_confirmados_no_centraliza",
+      "docs_descoberta_integracao_sei_finalidade",
+      "docs_descoberta_integracao_sei_matriz_inicial_de_perfis",
+      "docs_descoberta_integracao_sei_modelo_de_envio",
+      "docs_descoberta_integracao_sei_perguntas_para_a_equipe",
+      "docs_descoberta_integracao_sei_permissões",
+      "docs_descoberta_integracao_sei_processo_e_dados",
+      "docs_descoberta_integracao_sei_regra_de_unicidade_a_decidir",
+      "docs_descoberta_integracao_sei_retenção_e_segurança",
+      "docs_descoberta_integracao_sei_saída_para_o_ciclo_1",
+      "docs_descoberta_integracao_sei_situação_do_ciclo",
+      "docs_descoberta_integracao_sei_unicidade_e_equipes"
+    ],
+    "16": [
       "docs_semana_4",
       "docs_semana_4_back_end",
       "docs_semana_4_comportamento_do_calendário",
@@ -432,7 +597,58 @@
       "docs_validacao_semana_4_resultado",
       "docs_validacao_semana_4_validação_técnica_agenda_e_calendário"
     ],
-    "9": [
+    "17": [
+      "backend_demandas_serializers_camposimportacaoseiserializer",
+      "backend_demandas_serializers_camposimportacaoseiserializer_validate_sei_numero",
+      "backend_demandas_serializers_criarimportacaoseiserializer",
+      "backend_demandas_serializers_importacaoseiserializer",
+      "backend_demandas_serializers_importacaoseiserializer_get_possiveis_duplicidades",
+      "backend_demandas_views",
+      "backend_demandas_views_demandaseiduplicidadeview",
+      "backend_demandas_views_demandaseiduplicidadeview_get",
+      "backend_demandas_views_demandastatusview",
+      "backend_demandas_views_exigir_gestor_importacao",
+      "backend_demandas_views_importacao_sei_permitida",
+      "backend_demandas_views_importacaoseidetailview",
+      "backend_demandas_views_importacaoseidetailview_delete",
+      "backend_demandas_views_importacaoseidetailview_get",
+      "backend_demandas_views_importacaoseidetailview_patch",
+      "backend_demandas_views_importacaoseilistview",
+      "backend_demandas_views_importacaoseilistview_post",
+      "backend_demandas_views_numero_sei_da_consulta",
+      "backend_demandas_views_py_apiview",
+      "backend_demandas_views_resumo_solicitacao",
+      "backend_demandas_views_solicitacaoparticipacaodecisaoview",
+      "backend_demandas_views_solicitacaoparticipacaodecisaoview_post",
+      "backend_demandas_views_solicitacoesparticipacaoview",
+      "backend_demandas_views_solicitacoesparticipacaoview_get"
+    ],
+    "18": [
+      "backend_avisos_tests_avisoapitest",
+      "backend_avisos_tests_avisoapitest_criar",
+      "backend_avisos_tests_avisoapitest_setuptestdata",
+      "backend_avisos_tests_avisoapitest_test_detalhe_de_outra_equipe_retorna_404",
+      "backend_avisos_tests_avisoapitest_test_feed_e_detalhe_exigem_sessao",
+      "backend_avisos_tests_avisoapitest_test_feed_prioriza_urgentes_recentes_e_isola_equipe",
+      "backend_avisos_tests_avisoapitest_test_inspetor_pode_consultar_feed_e_detalhe_da_equipe",
+      "backend_avisos_tests_gerenciamentoavisostest",
+      "backend_avisos_tests_gerenciamentoavisostest_payload",
+      "backend_avisos_tests_gerenciamentoavisostest_setuptestdata",
+      "backend_avisos_tests_gerenciamentoavisostest_test_gestor_publica_edita_e_cancela_aviso_direcionado",
+      "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_nao_gerencia_e_equipe_externa_nao_edita",
+      "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia",
+      "backend_avisos_tests_gerenciamentoavisostest_test_rejeita_vigencia_e_destinatario_invalidos",
+      "backend_avisos_tests_leituraavisotest",
+      "backend_avisos_tests_leituraavisotest_marcar",
+      "backend_avisos_tests_leituraavisotest_setuptestdata",
+      "backend_avisos_tests_leituraavisotest_test_consulta_nao_marca_e_confirmacao_persiste_por_usuario",
+      "backend_avisos_tests_leituraavisotest_test_edicao_exige_leitura_da_nova_versao",
+      "backend_avisos_tests_leituraavisotest_test_exige_autenticacao_versao_e_csrf",
+      "backend_avisos_tests_leituraavisotest_test_nao_marca_agendado_expirado_ou_cancelado",
+      "backend_avisos_tests_leituraavisotest_test_nao_permite_leitura_de_outra_equipe_ou_destinatario",
+      "backend_avisos_tests_py_apitestcase"
+    ],
+    "19": [
       "docs_semana_3",
       "docs_semana_3_adicionar_comentário",
       "docs_semana_3_alterar_status",
@@ -457,55 +673,7 @@
       "docs_validacao_semana_3_resultado",
       "docs_validacao_semana_3_validação_técnica_detalhe_e_histórico_de_demandas"
     ],
-    "10": [
-      "backend_config_urls",
-      "backend_demandas_views_demandaanexodownloadview",
-      "backend_demandas_views_demandaanexodownloadview_get",
-      "backend_demandas_views_demandaanexoview",
-      "backend_demandas_views_demandaanexoview_delete",
-      "backend_demandas_views_demandaanexoview_get_anexo",
-      "backend_demandas_views_demandacomentarioview",
-      "backend_demandas_views_demandastatusview",
-      "backend_demandas_views_py_apiview",
-      "backend_usuarios_views",
-      "backend_usuarios_views_csrfview",
-      "backend_usuarios_views_csrfview_get",
-      "backend_usuarios_views_inspetorlistview",
-      "backend_usuarios_views_inspetorlistview_get",
-      "backend_usuarios_views_loginview",
-      "backend_usuarios_views_loginview_post",
-      "backend_usuarios_views_logoutview",
-      "backend_usuarios_views_logoutview_post",
-      "backend_usuarios_views_meview",
-      "backend_usuarios_views_meview_get",
-      "backend_usuarios_views_py_apiview",
-      "method_decorator"
-    ],
-    "11": [
-      "docs_semana_5",
-      "docs_semana_5_back_end",
-      "docs_semana_5_congelamento_e_apresentação",
-      "docs_semana_5_contrato_inicial_da_api",
-      "docs_semana_5_critérios_de_conclusão",
-      "docs_semana_5_cronograma_diário",
-      "docs_semana_5_detalhe",
-      "docs_semana_5_detalhe_123",
-      "docs_semana_5_direção_visual",
-      "docs_semana_5_escopo_do_mvp_de_avisos",
-      "docs_semana_5_estratégia_de_testes",
-      "docs_semana_5_feed",
-      "docs_semana_5_feed_114",
-      "docs_semana_5_fora_do_escopo",
-      "docs_semana_5_front_end",
-      "docs_semana_5_metas_e_tarefas",
-      "docs_semana_5_modelo_mínimo",
-      "docs_semana_5_must_have_do_status_report_1",
-      "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
-      "docs_semana_5_ponto_de_partida",
-      "docs_semana_5_regras_propostas",
-      "docs_semana_5_regressão_integrada"
-    ],
-    "12": [
+    "20": [
       "frontend_components",
       "frontend_components_aliases",
       "frontend_components_aliases_components",
@@ -529,92 +697,119 @@
       "frontend_components_tailwind_prefix",
       "frontend_components_tsx"
     ],
-    "13": [
-      "backend_avisos_tests_avisomodeltest",
-      "backend_avisos_tests_avisomodeltest_dados",
-      "backend_avisos_tests_avisomodeltest_setuptestdata",
-      "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
-      "backend_avisos_tests_avisomodeltest_test_rejeita_autor_de_outra_equipe",
-      "backend_avisos_tests_avisomodeltest_test_rejeita_autor_inspetor",
-      "backend_avisos_tests_avisomodeltest_test_rejeita_categoria_desconhecida",
-      "backend_avisos_tests_py_testcase",
-      "backend_avisos_tests_seedavisostest",
-      "backend_avisos_tests_seedavisostest_test_carga_e_idempotente",
-      "backend_demandas_tests_anexosdemandatest",
-      "backend_demandas_tests_anexosdemandatest_pdf",
-      "backend_demandas_tests_anexosdemandatest_setup",
-      "backend_demandas_tests_anexosdemandatest_setuptestdata",
-      "backend_demandas_tests_anexosdemandatest_teardown",
-      "backend_demandas_tests_anexosdemandatest_test_acesso_e_remocao_logica_respeitam_permissoes",
-      "backend_demandas_tests_anexosdemandatest_test_demanda_encerrada_nao_recebe_anexo",
-      "backend_demandas_tests_anexosdemandatest_test_inspetor_atribuido_adiciona_lista_e_baixa_anexo",
-      "backend_demandas_tests_anexosdemandatest_test_valida_formato_assinatura_e_tamanho",
-      "override_settings"
+    "21": [
+      "frontend_components_avaliar_demanda",
+      "frontend_components_avaliar_demanda_avaliardemanda",
+      "frontend_components_avaliar_demanda_avaliardemanda_submit",
+      "frontend_components_cancelar_demanda",
+      "frontend_components_cancelar_demanda_cancelardemanda",
+      "frontend_components_cancelar_demanda_cancelardemanda_cancel",
+      "frontend_components_demanda_detail",
+      "frontend_components_demanda_detail_data",
+      "frontend_components_demanda_detail_demandadetail",
+      "frontend_components_demanda_detail_demandadetail_advance",
+      "frontend_components_demanda_detail_demandadetail_comment",
+      "frontend_components_demanda_detail_demandadetail_refreshhistory",
+      "frontend_components_demanda_detail_demandadetail_retry",
+      "frontend_components_demanda_detail_prioridadelabel",
+      "frontend_components_demanda_detail_statuslabel",
+      "frontend_components_demanda_progress",
+      "frontend_components_demanda_progress_demandaprogress",
+      "frontend_components_demanda_progress_etapas",
+      "frontend_lib_demandas_adicionarcomentario",
+      "frontend_lib_demandas_alterarstatus",
+      "frontend_lib_demandas_demandadetalhe",
+      "frontend_lib_demandas_obterdemanda"
     ],
-    "14": [
-      "frontend_app_layout",
-      "frontend_app_layout_metadata",
-      "frontend_app_layout_rootlayout",
-      "frontend_next_config",
-      "frontend_next_config_nextconfig",
-      "frontend_oxlintrc_ignorepatterns",
-      "frontend_oxlintrc_json_ref_next_env_d_ts",
-      "frontend_vite_config",
-      "frontend_vite_config_localbindingconfig",
-      "ref_build",
-      "ref_components_ui",
-      "ref_coverage",
-      "ref_dist",
-      "ref_hooks_use_mobile_ts",
-      "ref_next",
-      "ref_out",
-      "ref_playwright_report",
-      "ref_test_results",
-      "ref_vinext",
-      "vite_plugin"
+    "22": [
+      "docs_semana_5_back_end",
+      "docs_semana_5_congelamento_e_apresentação",
+      "docs_semana_5_contrato_inicial_da_api",
+      "docs_semana_5_critérios_de_conclusão",
+      "docs_semana_5_cronograma_diário",
+      "docs_semana_5_detalhe",
+      "docs_semana_5_detalhe_123",
+      "docs_semana_5_direção_visual",
+      "docs_semana_5_escopo_do_mvp_de_avisos",
+      "docs_semana_5_estratégia_de_testes",
+      "docs_semana_5_feed",
+      "docs_semana_5_feed_114",
+      "docs_semana_5_fora_do_escopo",
+      "docs_semana_5_front_end",
+      "docs_semana_5_metas_e_tarefas",
+      "docs_semana_5_modelo_mínimo",
+      "docs_semana_5_must_have_do_status_report_1",
+      "docs_semana_5_plano_de_execução_avisos_e_status_report_1",
+      "docs_semana_5_ponto_de_partida",
+      "docs_semana_5_regras_propostas",
+      "docs_semana_5_regressão_integrada"
     ],
-    "15": [
-      "frontend_tests_accessibility_spec",
-      "frontend_tests_agenda_spec",
-      "frontend_tests_anexos_demanda_spec",
-      "frontend_tests_avaliacao_demanda_spec",
-      "frontend_tests_avaliacao_demanda_spec_enviarparaavaliacao",
-      "frontend_tests_avisos_spec",
-      "frontend_tests_demandas_spec",
-      "frontend_tests_demandas_spec_entrar",
-      "frontend_tests_detalhe_demanda_spec",
-      "frontend_tests_gerenciar_agenda_spec",
-      "frontend_tests_gerenciar_avisos_spec",
-      "frontend_tests_gerenciar_demandas_spec",
-      "frontend_tests_navigation_spec",
-      "frontend_tests_session_spec",
-      "frontend_tests_support_api",
-      "frontend_tests_support_api_entrarcomo",
-      "frontend_tests_support_api_instalarapi",
-      "frontend_tests_support_api_perfil",
-      "test"
+    "23": [
+      "frontend_oxlintrc_rules",
+      "frontend_oxlintrc_rules_import_no_anonymous_default_export",
+      "frontend_oxlintrc_rules_no_array_constructor",
+      "frontend_oxlintrc_rules_no_var",
+      "frontend_oxlintrc_rules_prefer_const",
+      "frontend_oxlintrc_rules_prefer_rest_params",
+      "frontend_oxlintrc_rules_prefer_spread",
+      "frontend_oxlintrc_rules_react_display_name",
+      "frontend_oxlintrc_rules_react_jsx_no_comment_textnodes",
+      "frontend_oxlintrc_rules_react_no_unescaped_entities",
+      "frontend_oxlintrc_rules_react_react_compiler",
+      "frontend_oxlintrc_rules_react_require_render_return",
+      "frontend_oxlintrc_rules_react_rules_of_hooks",
+      "frontend_oxlintrc_rules_typescript_ban_ts_comment",
+      "frontend_oxlintrc_rules_typescript_no_deprecated",
+      "frontend_oxlintrc_rules_typescript_no_empty_object_type",
+      "frontend_oxlintrc_rules_typescript_no_explicit_any",
+      "frontend_oxlintrc_rules_typescript_no_namespace",
+      "frontend_oxlintrc_rules_typescript_no_require_imports",
+      "frontend_oxlintrc_rules_typescript_no_unnecessary_type_constraint",
+      "frontend_oxlintrc_rules_typescript_no_unsafe_function_type"
     ],
-    "16": [
+    "24": [
       "abstractuser",
+      "backend_agenda_management_commands_seed_agenda",
+      "backend_agenda_models",
       "backend_agenda_tests",
       "backend_avisos_management_commands_seed_avisos",
       "backend_avisos_tests",
       "backend_demandas_management_commands_benchmark_demandas",
-      "backend_demandas_management_commands_benchmark_demandas_command",
-      "backend_demandas_management_commands_benchmark_demandas_command_add_arguments",
-      "backend_demandas_management_commands_benchmark_demandas_command_handle",
-      "backend_demandas_management_commands_benchmark_demandas_py_basecommand",
       "backend_demandas_management_commands_seed_demo",
+      "backend_demandas_test_dashboard",
       "backend_usuarios_models",
       "backend_usuarios_models_equipe",
       "backend_usuarios_models_equipe_str",
       "backend_usuarios_models_meta",
+      "backend_usuarios_models_papel",
       "backend_usuarios_models_perfil",
       "backend_usuarios_models_usuario",
+      "backend_usuarios_models_usuario_clean",
       "backend_usuarios_models_usuario_nome",
+      "backend_usuarios_models_vinculoequipe",
       "backend_usuarios_tests"
     ],
-    "17": [
+    "25": [
+      "extension_sei_background",
+      "extension_sei_background_awaitcomplete",
+      "extension_sei_background_awaitcomplete_finish",
+      "extension_sei_background_awaitcomplete_updated",
+      "extension_sei_background_opencapture",
+      "extension_sei_background_test",
+      "extension_sei_background_test_addlistener",
+      "extension_sei_background_test_dispatchevent",
+      "extension_sei_background_test_removelistener",
+      "extension_sei_extractor",
+      "extension_sei_extractor_extractvisiblefields",
+      "extension_sei_extractor_extractvisiblefields_visiblevalues",
+      "extension_sei_extractor_test",
+      "extension_sei_extractor_test_element",
+      "extension_sei_extractor_test_page",
+      "extension_sei_popup",
+      "extension_sei_popup_send",
+      "extension_sei_popup_status"
+    ],
+    "26": [
       "backend_agenda_tests_compromissolistagemtest",
       "backend_agenda_tests_compromissolistagemtest_criar",
       "backend_agenda_tests_compromissolistagemtest_setuptestdata",
@@ -633,104 +828,156 @@
       "backend_agenda_tests_gerenciamentoagendatest_test_valida_intervalo_participantes_e_demanda_da_equipe",
       "backend_agenda_tests_py_apitestcase"
     ],
-    "18": [
-      "docs_plano_mvp_operacional_backlog_posterior_ao_mvp",
-      "docs_plano_mvp_operacional_definição_de_pronto",
-      "docs_plano_mvp_operacional_etapa_1_regras_e_base_do_fluxo_de_demandas",
-      "docs_plano_mvp_operacional_etapa_2_gerenciamento_de_demandas_pelo_gestor",
-      "docs_plano_mvp_operacional_etapa_3_execução_e_avaliação_da_demanda",
-      "docs_plano_mvp_operacional_etapa_4_anexos_e_evidências",
-      "docs_plano_mvp_operacional_etapa_5_agenda_gerenciável",
-      "docs_plano_mvp_operacional_etapa_6_gestão_de_avisos",
-      "docs_plano_mvp_operacional_etapa_7_painel_estabilização_e_implantação_de_homologação",
-      "docs_plano_mvp_operacional_objetivo",
-      "docs_plano_mvp_operacional_ordem_de_execução",
-      "docs_plano_mvp_operacional_padrão_de_implementação_por_tarefa",
-      "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
-      "docs_plano_mvp_operacional_próxima_ação_recomendada",
-      "docs_plano_mvp_operacional_situação_atual",
-      "docs_plano_mvp_operacional_sugestão_de_ciclos"
+    "27": [
+      "backend_demandas_tests_listagemdemandastest",
+      "backend_demandas_tests_listagemdemandastest_autenticar",
+      "backend_demandas_tests_listagemdemandastest_criar",
+      "backend_demandas_tests_listagemdemandastest_setuptestdata",
+      "backend_demandas_tests_listagemdemandastest_test_busca_numero_sei_normalizado_respeita_acesso",
+      "backend_demandas_tests_listagemdemandastest_test_combina_responsavel_periodo_e_atraso",
+      "backend_demandas_tests_listagemdemandastest_test_combina_status_e_criticidade",
+      "backend_demandas_tests_listagemdemandastest_test_consulta_encerradas_apenas_quando_solicitada",
+      "backend_demandas_tests_listagemdemandastest_test_exclusao_direta_nao_e_oferecida",
+      "backend_demandas_tests_listagemdemandastest_test_exige_sessao",
+      "backend_demandas_tests_listagemdemandastest_test_gestor_ve_ativas_da_propria_equipe_inclusive_nao_atribuida",
+      "backend_demandas_tests_listagemdemandastest_test_inspetor_nao_filtra_por_responsavel",
+      "backend_demandas_tests_listagemdemandastest_test_inspetor_ve_apenas_as_suas_ativas",
+      "backend_demandas_tests_listagemdemandastest_test_pagina_fora_do_intervalo_retorna_404",
+      "backend_demandas_tests_listagemdemandastest_test_rejeita_busca_sei_sem_letras_ou_numeros",
+      "backend_demandas_tests_listagemdemandastest_test_rejeita_parametros_invalidos",
+      "backend_demandas_tests_listagemdemandastest_test_usuario_sem_equipe_recebe_403"
     ],
-    "19": [
-      "backend_avisos_tests_avisoapitest",
-      "backend_avisos_tests_avisoapitest_criar",
-      "backend_avisos_tests_avisoapitest_setuptestdata",
-      "backend_avisos_tests_avisoapitest_test_detalhe_de_outra_equipe_retorna_404",
-      "backend_avisos_tests_avisoapitest_test_feed_e_detalhe_exigem_sessao",
-      "backend_avisos_tests_avisoapitest_test_feed_prioriza_urgentes_recentes_e_isola_equipe",
-      "backend_avisos_tests_avisoapitest_test_inspetor_pode_consultar_feed_e_detalhe_da_equipe",
-      "backend_avisos_tests_gerenciamentoavisostest",
-      "backend_avisos_tests_gerenciamentoavisostest_payload",
-      "backend_avisos_tests_gerenciamentoavisostest_setuptestdata",
-      "backend_avisos_tests_gerenciamentoavisostest_test_gestor_publica_edita_e_cancela_aviso_direcionado",
-      "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_nao_gerencia_e_equipe_externa_nao_edita",
-      "backend_avisos_tests_gerenciamentoavisostest_test_inspetor_ve_aviso_geral_ou_destinado_a_ele_durante_vigencia",
-      "backend_avisos_tests_gerenciamentoavisostest_test_rejeita_vigencia_e_destinatario_invalidos",
-      "backend_avisos_tests_py_apitestcase"
+    "28": [
+      "extension_sei_manifest",
+      "extension_sei_manifest_action",
+      "extension_sei_manifest_action_default_popup",
+      "extension_sei_manifest_action_default_title",
+      "extension_sei_manifest_background",
+      "extension_sei_manifest_background_service_worker",
+      "extension_sei_manifest_background_type",
+      "extension_sei_manifest_content_scripts",
+      "extension_sei_manifest_description",
+      "extension_sei_manifest_host_permissions",
+      "extension_sei_manifest_manifest_version",
+      "extension_sei_manifest_name",
+      "extension_sei_manifest_permissions",
+      "extension_sei_manifest_version",
+      "ref_activetab",
+      "ref_http_localhost_3000",
+      "ref_scripting"
     ],
-    "20": [
-      "backend_demandas_anexos",
-      "backend_demandas_anexos_adicionar_anexo",
-      "backend_demandas_anexos_pode_adicionar",
-      "backend_demandas_anexos_py_atomic",
-      "backend_demandas_anexos_remover_anexo",
-      "backend_demandas_anexos_validar_arquivo",
-      "backend_demandas_migrations_0006_anexodemanda_and_more",
-      "backend_demandas_migrations_0006_anexodemanda_and_more_migration",
-      "backend_demandas_models",
-      "backend_demandas_models_anexodemanda",
-      "backend_demandas_models_caminho_anexo",
-      "backend_demandas_models_eventodemanda",
-      "backend_demandas_models_meta",
-      "backend_demandas_models_tipo",
-      "backend_demandas_tests"
+    "29": [
+      "backend_demandas_serializers_gerenciardemandaserializer",
+      "backend_demandas_serializers_gerenciardemandaserializer_validate_equipes_ids",
+      "backend_demandas_serializers_gerenciardemandaserializer_validate_responsavel_id",
+      "backend_demandas_serializers_gerenciardemandaserializer_validate_sei_numero",
+      "backend_demandas_services_criar_demanda",
+      "backend_demandas_views_demandadetailview",
+      "backend_demandas_views_demandadetailview_get_queryset",
+      "backend_demandas_views_demandadetailview_patch",
+      "backend_demandas_views_demandalistview",
+      "backend_demandas_views_demandalistview_get_queryset",
+      "backend_demandas_views_demandalistview_post",
+      "backend_demandas_views_demandas_permitidas",
+      "backend_demandas_views_importacaoseiconfirmarview",
+      "backend_demandas_views_importacaoseiconfirmarview_post",
+      "backend_demandas_views_py_atomic",
+      "queryset"
     ],
-    "21": [
+    "30": [
+      "backend_usuarios_tests_administracaoequipetest",
+      "backend_usuarios_tests_administracaoequipetest_setuptestdata",
+      "backend_usuarios_tests_administracaoequipetest_test_admin_cria_conta_com_senha_protegida",
+      "backend_usuarios_tests_administracaoequipetest_test_admin_nao_acessa_conta_de_outra_equipe",
+      "backend_usuarios_tests_administracaoequipetest_test_admin_nao_remove_a_propria_permissao",
+      "backend_usuarios_tests_administracaoequipetest_test_admin_pode_arquivar_e_reativar_sua_equipe",
+      "backend_usuarios_tests_administracaoequipetest_test_bloqueia_desativacao_com_demanda_ativa",
+      "backend_usuarios_tests_administracaoequipetest_test_gestor_sem_permissao_nao_arquiva",
+      "backend_usuarios_tests_administracaoequipetest_test_integrante_pode_consultar_apenas_sua_equipe",
+      "backend_usuarios_tests_administracaoequipetest_test_permite_desativar_inspetor_sem_demanda_ativa",
+      "backend_usuarios_tests_administracaoequipetest_test_usuario_sem_permissao_nao_administra",
+      "backend_usuarios_tests_listainspetorestest",
+      "backend_usuarios_tests_listainspetorestest_setuptestdata",
+      "backend_usuarios_tests_listainspetorestest_test_gestor_recebe_somente_inspetores_ativos_da_equipe",
+      "backend_usuarios_tests_listainspetorestest_test_inspetor_e_sessao_ausente_sao_bloqueados",
+      "backend_usuarios_tests_py_apitestcase"
+    ],
+    "31": [
+      "docs_dev_plan",
+      "docs_dev_plan_1_contexto_e_objetivos",
+      "docs_dev_plan_2_diagnóstico_investigativo_da_base",
+      "docs_dev_plan_3_blueprint_arquitetural",
+      "docs_dev_plan_4_roadmap_sequencial",
+      "docs_dev_plan_5_estratégia_de_testes_e_validação",
+      "docs_dev_plan_6_contingência_e_rollback",
+      "docs_dev_plan_fase_0_fechar_decisões_e_critérios",
+      "docs_dev_plan_fase_1_número_obrigatório_em_novas_demandas",
+      "docs_dev_plan_fase_1a_descoberta_e_solicitação_de_participação_entre_equipes",
+      "docs_dev_plan_fase_2_contrato_de_prévia_para_captura_estruturada",
+      "docs_dev_plan_fase_3_página_fictícia_e_extensão_demonstrativa",
+      "docs_dev_plan_fase_4_validação_do_fluxo_e_medição",
+      "docs_dev_plan_fase_5_caminho_para_o_sei_institucional_fora_do_aceite_do_mock",
+      "docs_dev_plan_plano_de_desenvolvimento_captura_assistida_do_sei"
+    ],
+    "32": [
+      "frontend_hooks_use_session",
+      "frontend_hooks_use_session_usesession",
+      "frontend_hooks_use_session_usesession_login",
+      "frontend_hooks_use_session_usesession_logout",
+      "frontend_hooks_use_session_usesession_retry",
+      "frontend_lib_auth",
+      "frontend_lib_auth_cookie",
+      "frontend_lib_auth_csrftoken",
+      "frontend_lib_auth_entrar",
+      "frontend_lib_auth_obterusuarioatual",
+      "frontend_lib_auth_responsejson",
+      "frontend_lib_auth_sair",
+      "frontend_lib_auth_selecionarequipe"
+    ],
+    "33": [
       "readme_architecture",
       "readme_centraliza",
       "readme_core_capabilities",
       "readme_data_and_security",
       "readme_demonstration_accounts",
-      "readme_home",
       "readme_local_development",
-      "readme_mobile_navigation_layout",
       "readme_overview",
       "readme_product_direction",
       "readme_project_documentation",
-      "readme_screenshots",
-      "readme_team",
+      "readme_team_237",
       "readme_team_workspace",
-      "readme_technology_stack"
+      "readme_technology_stack",
+      "readme_try_the_sei_capture_demonstration_in_brave"
     ],
-    "22": [
-      "backend_demandas_models_demanda",
-      "backend_demandas_models_demanda_clean",
-      "backend_demandas_models_demanda_save",
-      "backend_demandas_models_prioridade",
-      "backend_demandas_models_status",
+    "34": [
+      "backend_avisos_tests_avisomodeltest",
+      "backend_avisos_tests_avisomodeltest_dados",
+      "backend_avisos_tests_avisomodeltest_setuptestdata",
+      "backend_avisos_tests_avisomodeltest_test_aceita_aviso_de_gestor_ativo_da_equipe",
+      "backend_avisos_tests_avisomodeltest_test_rejeita_autor_de_outra_equipe",
+      "backend_avisos_tests_avisomodeltest_test_rejeita_autor_inspetor",
+      "backend_avisos_tests_avisomodeltest_test_rejeita_categoria_desconhecida",
+      "backend_avisos_tests_py_testcase",
+      "backend_avisos_tests_seedavisostest",
+      "backend_avisos_tests_seedavisostest_test_carga_e_idempotente",
+      "backend_demandas_tests_anexosdemandatest_setup",
+      "override_settings"
+    ],
+    "35": [
+      "backend_demandas_serializers_alterarstatusserializer",
       "backend_demandas_services",
       "backend_demandas_services_alterar_status_demanda",
-      "backend_demandas_services_criar_demanda",
+      "backend_demandas_services_decidir_participacao",
       "backend_demandas_services_editar_demanda",
       "backend_demandas_services_py_atomic",
       "backend_demandas_services_regratransicao",
-      "backend_demandas_views"
+      "backend_demandas_services_solicitar_participacao",
+      "backend_demandas_views_demandasolicitarparticipacaoview",
+      "backend_demandas_views_demandasolicitarparticipacaoview_post",
+      "backend_demandas_views_demandastatusview_patch",
+      "solicitacaoparticipacao"
     ],
-    "23": [
-      "backend_demandas_serializers",
-      "backend_demandas_serializers_alterarstatusserializer",
-      "backend_demandas_serializers_autorserializer",
-      "backend_demandas_serializers_criarcomentarioserializer",
-      "backend_demandas_serializers_demandadetalheserializer",
-      "backend_demandas_serializers_demandaserializer",
-      "backend_demandas_serializers_demandaserializer_get_atrasada",
-      "backend_demandas_serializers_eventodemandaserializer",
-      "backend_demandas_serializers_meta",
-      "backend_demandas_serializers_responsavelserializer",
-      "backend_demandas_views_demandacomentarioview_post",
-      "backend_demandas_views_demandastatusview_patch"
-    ],
-    "24": [
+    "36": [
       "docs_semana_2_conteúdo_e_estados_da_interface",
       "docs_semana_2_contrato_inicial_da_api",
       "docs_semana_2_critérios_de_conclusão",
@@ -744,33 +991,59 @@
       "docs_semana_2_regras_propostas_para_alinhar_na_segunda_feira",
       "docs_semana_2_testes_e_desempenho"
     ],
-    "25": [
-      "backend_readme",
-      "backend_readme_api_centraliza",
-      "backend_readme_endpoints_disponíveis",
-      "backend_readme_preparação_local",
-      "docs_semana_2",
-      "docs_validacao_semana_2",
-      "docs_validacao_semana_2_desempenho",
-      "docs_validacao_semana_2_limitações_atuais",
-      "docs_validacao_semana_2_reproduzir",
-      "docs_validacao_semana_2_resultado_funcional",
-      "docs_validacao_semana_2_validação_técnica_listagem_de_demandas"
+    "37": [
+      "axe_core_playwright",
+      "frontend_package_devdependencies",
+      "frontend_package_devdependencies_axe_core_playwright",
+      "frontend_package_devdependencies_oxlint",
+      "frontend_package_devdependencies_types_node",
+      "frontend_package_devdependencies_vitejs_plugin_react",
+      "frontend_package_devdependencies_vitejs_plugin_rsc",
+      "oxlint",
+      "types_node",
+      "vitejs_plugin_react",
+      "vitejs_plugin_rsc"
     ],
-    "26": [
-      "docs_contrato_demandas",
-      "docs_contrato_demandas_acesso_e_filtros",
-      "docs_contrato_demandas_contrato_de_listagem_de_demandas",
-      "docs_contrato_demandas_gerenciamento_pelo_gestor",
-      "docs_contrato_demandas_interface",
-      "docs_contrato_demandas_sessão",
-      "docs_contrato_demandas_transições",
-      "docs_fluxo_demandas",
-      "docs_fluxo_demandas_estados",
-      "docs_fluxo_demandas_fluxo_operacional_das_demandas",
-      "docs_fluxo_demandas_matriz_de_transições"
+    "38": [
+      "backend_avisos_serializers_avisofeedserializer",
+      "backend_avisos_serializers_avisofeedserializer_get_destinatarios",
+      "backend_avisos_serializers_avisofeedserializer_get_expira_em",
+      "backend_avisos_serializers_avisofeedserializer_get_lido",
+      "backend_avisos_serializers_avisofeedserializer_get_lido_em",
+      "backend_avisos_serializers_avisofeedserializer_get_publicado_em",
+      "backend_avisos_serializers_avisofeedserializer_get_situacao",
+      "backend_avisos_serializers_meta",
+      "backend_demandas_dashboard_py_apiview",
+      "backend_demandas_dashboard_resumohomeview",
+      "backend_demandas_dashboard_resumohomeview_get"
     ],
-    "27": [
+    "39": [
+      "backend_demandas_anexos",
+      "backend_demandas_anexos_adicionar_anexo",
+      "backend_demandas_anexos_pode_adicionar",
+      "backend_demandas_anexos_py_atomic",
+      "backend_demandas_anexos_remover_anexo",
+      "backend_demandas_anexos_validar_arquivo",
+      "backend_demandas_views_demandaanexodownloadview",
+      "backend_demandas_views_demandaanexodownloadview_get",
+      "backend_demandas_views_demandaanexoview",
+      "backend_demandas_views_demandaanexoview_delete",
+      "backend_demandas_views_demandaanexoview_get_anexo"
+    ],
+    "40": [
+      "frontend_components_anexos_demanda",
+      "frontend_components_anexos_demanda_anexosdemanda",
+      "frontend_components_anexos_demanda_anexosdemanda_remove",
+      "frontend_components_anexos_demanda_anexosdemanda_tentarnovamente",
+      "frontend_components_anexos_demanda_anexosdemanda_upload",
+      "frontend_components_anexos_demanda_formatartamanho",
+      "frontend_lib_demandas_anexodemanda",
+      "frontend_lib_demandas_enviaranexo",
+      "frontend_lib_demandas_excluiranexo",
+      "frontend_lib_demandas_listaranexos",
+      "frontend_lib_demandas_statusdemanda"
+    ],
+    "41": [
       "frontend_oxfmtrc",
       "frontend_oxfmtrc_ignorepatterns",
       "frontend_oxfmtrc_printwidth",
@@ -783,32 +1056,68 @@
       "ref_pnpm_lock_yaml",
       "ref_yarn_lock"
     ],
-    "28": [
-      "frontend_package_devdependencies",
-      "frontend_package_devdependencies_oxlint",
-      "frontend_package_devdependencies_tailwindcss_postcss",
-      "frontend_package_devdependencies_types_node",
-      "frontend_package_devdependencies_vitejs_plugin_react",
-      "frontend_package_devdependencies_vitejs_plugin_rsc",
-      "oxlint",
-      "tailwindcss_postcss",
-      "types_node",
-      "vitejs_plugin_react",
-      "vitejs_plugin_rsc"
+    "42": [
+      "frontend_oxlintrc",
+      "frontend_oxlintrc_categories",
+      "frontend_oxlintrc_categories_correctness",
+      "frontend_oxlintrc_env",
+      "frontend_oxlintrc_env_browser",
+      "frontend_oxlintrc_env_builtin",
+      "frontend_oxlintrc_env_node",
+      "frontend_oxlintrc_options",
+      "frontend_oxlintrc_options_typeaware",
+      "frontend_oxlintrc_options_typecheck",
+      "frontend_oxlintrc_schema"
     ],
-    "29": [
-      "backend_demandas_serializers_gerenciardemandaserializer",
-      "backend_demandas_serializers_gerenciardemandaserializer_validate_responsavel_id",
-      "backend_demandas_views_demandadetailview",
-      "backend_demandas_views_demandadetailview_get_queryset",
-      "backend_demandas_views_demandadetailview_patch",
-      "backend_demandas_views_demandalistview",
-      "backend_demandas_views_demandalistview_get_queryset",
-      "backend_demandas_views_demandalistview_post",
-      "backend_demandas_views_demandas_permitidas",
-      "queryset"
+    "43": [
+      "backend_demandas_serializers_criarcomentarioserializer",
+      "backend_demandas_serializers_demandadetalheserializer",
+      "backend_demandas_serializers_demandaserializer",
+      "backend_demandas_serializers_demandaserializer_get_atrasada",
+      "backend_demandas_serializers_demandaserializer_get_equipes",
+      "backend_demandas_serializers_demandaserializer_get_equipes_ids",
+      "backend_demandas_serializers_eventodemandaserializer",
+      "backend_demandas_serializers_meta",
+      "backend_demandas_views_demandacomentarioview",
+      "backend_demandas_views_demandacomentarioview_post"
     ],
-    "30": [
+    "44": [
+      "backend_readme",
+      "backend_readme_api_centraliza",
+      "backend_readme_endpoints_disponíveis",
+      "backend_readme_preparação_local",
+      "docs_validacao_semana_2",
+      "docs_validacao_semana_2_desempenho",
+      "docs_validacao_semana_2_limitações_atuais",
+      "docs_validacao_semana_2_reproduzir",
+      "docs_validacao_semana_2_resultado_funcional",
+      "docs_validacao_semana_2_validação_técnica_listagem_de_demandas"
+    ],
+    "45": [
+      "docs_descoberta_integracao_sei",
+      "docs_paleta_visual",
+      "docs_paleta_visual_paleta_visual_centraliza_visat",
+      "docs_plano_desenvolvimento",
+      "docs_plano_evolucao_pos_mvp",
+      "docs_plano_mvp_operacional",
+      "docs_semana_1",
+      "docs_semana_5",
+      "docs_validacao_semana_1",
+      "readme"
+    ],
+    "46": [
+      "frontend_oxlintrc_ignorepatterns",
+      "frontend_oxlintrc_json_ref_next_env_d_ts",
+      "ref_build",
+      "ref_components_ui",
+      "ref_coverage",
+      "ref_dist",
+      "ref_hooks_use_mobile_ts",
+      "ref_out",
+      "ref_playwright_report",
+      "ref_test_results"
+    ],
+    "47": [
       "backend_usuarios_tests_py_testcase",
       "backend_usuarios_tests_regrasdomodelotest",
       "backend_usuarios_tests_regrasdomodelotest_criar_demanda",
@@ -819,7 +1128,17 @@
       "backend_usuarios_tests_regrasdomodelotest_test_rejeita_gestor_como_responsavel",
       "backend_usuarios_tests_regrasdomodelotest_test_rejeita_responsavel_de_outra_equipe"
     ],
-    "31": [
+    "48": [
+      "docs_contrato_demandas",
+      "docs_fluxo_demandas",
+      "docs_fluxo_demandas_aceite_história_7",
+      "docs_fluxo_demandas_correções_história_14",
+      "docs_fluxo_demandas_estados",
+      "docs_fluxo_demandas_fluxo_operacional_das_demandas",
+      "docs_fluxo_demandas_matriz_de_transições",
+      "docs_semana_2"
+    ],
+    "49": [
       "docs_plano_desenvolvimento_commits_das_tarefas_de_implementação",
       "docs_plano_desenvolvimento_entrega_técnica_concluída_semana_1",
       "docs_plano_desenvolvimento_graphify",
@@ -829,7 +1148,27 @@
       "docs_plano_desenvolvimento_próximas_entregas_propostas",
       "docs_plano_desenvolvimento_registro"
     ],
-    "32": [
+    "50": [
+      "docs_plano_mvp_operacional_backlog_posterior_ao_mvp",
+      "docs_plano_mvp_operacional_definição_de_pronto",
+      "docs_plano_mvp_operacional_objetivo",
+      "docs_plano_mvp_operacional_padrão_de_implementação_por_tarefa",
+      "docs_plano_mvp_operacional_plano_de_desenvolvimento_mvp_operacional_do_centraliza",
+      "docs_plano_mvp_operacional_próxima_ação_recomendada",
+      "docs_plano_mvp_operacional_situação_atual",
+      "docs_plano_mvp_operacional_sugestão_de_ciclos"
+    ],
+    "51": [
+      "docs_plano_mvp_operacional_etapa_1_regras_e_base_do_fluxo_de_demandas",
+      "docs_plano_mvp_operacional_etapa_2_gerenciamento_de_demandas_pelo_gestor",
+      "docs_plano_mvp_operacional_etapa_3_execução_e_avaliação_da_demanda",
+      "docs_plano_mvp_operacional_etapa_4_anexos_e_evidências",
+      "docs_plano_mvp_operacional_etapa_5_agenda_gerenciável",
+      "docs_plano_mvp_operacional_etapa_6_gestão_de_avisos",
+      "docs_plano_mvp_operacional_etapa_7_painel_estabilização_e_implantação_de_homologação",
+      "docs_plano_mvp_operacional_ordem_de_execução"
+    ],
+    "52": [
       "docs_semana_1_acesso_inicial",
       "docs_semana_1_arquitetura_desta_entrega",
       "docs_semana_1_checklist_técnico_verificado",
@@ -839,7 +1178,17 @@
       "docs_semana_1_semana_1_navegação",
       "docs_semana_1_validação_automatizada_realizada"
     ],
-    "33": [
+    "53": [
+      "frontend_oxlintrc_plugins",
+      "ref_eslint",
+      "ref_import",
+      "ref_jsx_a11y",
+      "ref_nextjs",
+      "ref_oxc",
+      "ref_typescript",
+      "ref_unicorn"
+    ],
+    "54": [
       "frontend_package_scripts",
       "frontend_package_scripts_build",
       "frontend_package_scripts_dev",
@@ -849,16 +1198,25 @@
       "frontend_package_scripts_test",
       "frontend_package_scripts_typecheck"
     ],
-    "34": [
-      "docs_paleta_visual",
-      "docs_paleta_visual_paleta_visual_centraliza_visat",
-      "docs_plano_desenvolvimento",
-      "docs_plano_mvp_operacional",
-      "docs_semana_1",
-      "docs_validacao_semana_1",
-      "readme"
+    "55": [
+      "backend_demandas_test_dashboard_py_apitestcase",
+      "backend_demandas_test_dashboard_resumohometest",
+      "backend_demandas_test_dashboard_resumohometest_setuptestdata",
+      "backend_demandas_test_dashboard_resumohometest_test_aceita_conta_na_carga_e_aparece_no_painel",
+      "backend_demandas_test_dashboard_resumohometest_test_exige_sessao",
+      "backend_demandas_test_dashboard_resumohometest_test_gestor_recebe_resumo_da_equipe",
+      "backend_demandas_test_dashboard_resumohometest_test_inspetor_recebe_apenas_seu_resumo"
     ],
-    "35": [
+    "56": [
+      "docs_contrato_demandas_acesso_e_filtros",
+      "docs_contrato_demandas_contrato_de_listagem_de_demandas",
+      "docs_contrato_demandas_entrada_assistida_do_sei",
+      "docs_contrato_demandas_gerenciamento_pelo_gestor",
+      "docs_contrato_demandas_interface",
+      "docs_contrato_demandas_sessão",
+      "docs_contrato_demandas_transições"
+    ],
+    "57": [
       "docs_status_report_1",
       "docs_status_report_1_checklist_de_demonstração_status_report_1",
       "docs_status_report_1_perguntas_esperadas",
@@ -867,7 +1225,16 @@
       "docs_status_report_1_roteiro_de_até_8_minutos",
       "docs_status_report_1_smoke_imediatamente_antes_da_apresentação"
     ],
-    "36": [
+    "58": [
+      "frontend_components_demandas_list_demandaslist",
+      "frontend_components_demandas_list_demandaslist_changepage",
+      "frontend_components_demandas_list_demandaslist_movetab",
+      "frontend_components_demandas_list_demandaslist_preparerequest",
+      "frontend_components_demandas_list_demandaslist_retry",
+      "frontend_components_demandas_list_demandaslist_select",
+      "frontend_components_demandas_list_demandaslist_updatefilter"
+    ],
+    "59": [
       "frontend_package",
       "frontend_package_engines",
       "frontend_package_engines_node",
@@ -876,7 +1243,24 @@
       "frontend_package_type",
       "frontend_package_version"
     ],
-    "37": [
+    "60": [
+      "readme_agenda",
+      "readme_chats",
+      "readme_home",
+      "readme_notices",
+      "readme_requests",
+      "readme_screenshots",
+      "readme_team"
+    ],
+    "61": [
+      "backend_agenda_tests_compromissomodeltest",
+      "backend_agenda_tests_compromissomodeltest_setuptestdata",
+      "backend_agenda_tests_compromissomodeltest_test_aceita_intervalo_consciente_valido",
+      "backend_agenda_tests_compromissomodeltest_test_exige_criador_da_mesma_equipe",
+      "backend_agenda_tests_compromissomodeltest_test_exige_fim_posterior_ao_inicio",
+      "backend_agenda_tests_py_testcase"
+    ],
+    "62": [
       "backend_demandas_serializers_anexodemandaserializer",
       "backend_demandas_serializers_anexodemandaserializer_get_download_url",
       "backend_demandas_views_demandaanexolistview",
@@ -884,7 +1268,15 @@
       "backend_demandas_views_demandaanexolistview_get_demanda",
       "backend_demandas_views_demandaanexolistview_post"
     ],
-    "38": [
+    "63": [
+      "docs_leitura_avisos",
+      "docs_leitura_avisos_api",
+      "docs_leitura_avisos_avisos_e_confirmação_de_leitura_história_30",
+      "docs_leitura_avisos_comportamento",
+      "docs_leitura_avisos_instalação",
+      "docs_leitura_avisos_interface"
+    ],
+    "64": [
       "docs_validacao_semana_5",
       "docs_validacao_semana_5_comportamentos_verificados",
       "docs_validacao_semana_5_fluxo_integrado_real",
@@ -892,330 +1284,415 @@
       "docs_validacao_semana_5_resultado",
       "docs_validacao_semana_5_validação_técnica_avisos_e_regressão_do_status_report_1"
     ],
-    "39": [
+    "65": [
+      "frontend_app_layout",
+      "frontend_app_layout_metadata",
+      "frontend_app_layout_rootlayout",
+      "frontend_next_config",
+      "frontend_next_config_nextconfig",
+      "ref_next"
+    ],
+    "66": [
       "backend_demandas_management_commands_seed_demo_command",
       "backend_demandas_management_commands_seed_demo_command_add_arguments",
       "backend_demandas_management_commands_seed_demo_command_handle",
       "backend_demandas_management_commands_seed_demo_py_atomic",
       "backend_demandas_management_commands_seed_demo_py_basecommand"
     ],
-    "40": [
-      "backend_usuarios_tests_listainspetorestest",
-      "backend_usuarios_tests_listainspetorestest_setuptestdata",
-      "backend_usuarios_tests_listainspetorestest_test_gestor_recebe_somente_inspetores_ativos_da_equipe",
-      "backend_usuarios_tests_listainspetorestest_test_inspetor_e_sessao_ausente_sao_bloqueados",
-      "backend_usuarios_tests_py_apitestcase"
+    "67": [
+      "backend_usuarios_middleware",
+      "backend_usuarios_middleware_equipeativamiddleware",
+      "backend_usuarios_middleware_equipeativamiddleware_call",
+      "backend_usuarios_middleware_equipeativamiddleware_init",
+      "backend_usuarios_middleware_rationale_5"
     ],
-    "41": [
+    "68": [
       "docs_validacao_agenda_gerenciavel",
       "docs_validacao_agenda_gerenciavel_escopo_entregue",
       "docs_validacao_agenda_gerenciavel_limites_atuais",
       "docs_validacao_agenda_gerenciavel_validação_da_agenda_gerenciável",
       "docs_validacao_agenda_gerenciavel_verificações_executadas"
     ],
-    "42": [
+    "69": [
       "docs_validacao_anexos",
       "docs_validacao_anexos_escopo_entregue",
       "docs_validacao_anexos_limites_antes_de_produção",
       "docs_validacao_anexos_validação_de_anexos_de_demandas",
       "docs_validacao_anexos_verificações_executadas"
     ],
-    "43": [
+    "70": [
       "docs_validacao_avisos_gerenciaveis",
       "docs_validacao_avisos_gerenciaveis_escopo_entregue",
       "docs_validacao_avisos_gerenciaveis_limites_atuais",
       "docs_validacao_avisos_gerenciaveis_validação_dos_avisos_gerenciáveis",
       "docs_validacao_avisos_gerenciaveis_verificações_executadas"
     ],
-    "44": [
+    "71": [
       "docs_validacao_semana_1_inspeção_visual",
       "docs_validacao_semana_1_limites_e_pendências_para_o_uso_institucional",
       "docs_validacao_semana_1_reproduzir",
       "docs_validacao_semana_1_resultado",
       "docs_validacao_semana_1_validação_técnica_semana_1"
     ],
-    "45": [
+    "72": [
+      "extension_sei_package",
+      "extension_sei_package_private",
+      "extension_sei_package_scripts",
+      "extension_sei_package_scripts_test",
+      "extension_sei_package_type"
+    ],
+    "73": [
+      "backend_agenda_management_commands_seed_agenda_command",
+      "backend_agenda_management_commands_seed_agenda_command_handle",
+      "backend_agenda_management_commands_seed_agenda_py_atomic",
+      "backend_agenda_management_commands_seed_agenda_py_basecommand"
+    ],
+    "74": [
       "backend_avisos_management_commands_seed_avisos_command",
       "backend_avisos_management_commands_seed_avisos_command_handle",
       "backend_avisos_management_commands_seed_avisos_py_atomic",
       "backend_avisos_management_commands_seed_avisos_py_basecommand"
     ],
-    "46": [
+    "75": [
+      "backend_demandas_management_commands_benchmark_demandas_command",
+      "backend_demandas_management_commands_benchmark_demandas_command_add_arguments",
+      "backend_demandas_management_commands_benchmark_demandas_command_handle",
+      "backend_demandas_management_commands_benchmark_demandas_py_basecommand"
+    ],
+    "76": [
       "backend_demandas_views_demandaspagination",
       "backend_demandas_views_demandaspagination_get_page_number",
       "backend_demandas_views_demandaspagination_get_page_size",
       "pagenumberpagination"
     ],
-    "47": [
+    "77": [
       "backend_usuarios_authentication",
       "backend_usuarios_authentication_sessionauthentication",
       "backend_usuarios_authentication_sessionauthentication_authenticate_header",
       "drfsessionauthentication"
     ],
-    "48": [
+    "78": [
+      "docs_contrato_equipes",
+      "docs_contrato_equipes_current_scope",
+      "docs_contrato_equipes_endpoints",
+      "docs_contrato_equipes_team_management_contract"
+    ],
+    "79": [
+      "frontend_vite_config",
+      "frontend_vite_config_localbindingconfig",
+      "ref_vinext",
+      "vite_plugin"
+    ],
+    "80": [
       "backend_agenda_apps",
       "backend_agenda_apps_agendaconfig",
       "backend_agenda_apps_py_appconfig"
     ],
-    "49": [
+    "81": [
       "backend_avisos_apps",
       "backend_avisos_apps_avisosconfig",
       "backend_avisos_apps_py_appconfig"
     ],
-    "50": [
-      "axe_core_playwright",
-      "frontend_package_devdependencies_axe_core_playwright"
+    "82": [
+      "backend_demandas_migrations_0009_demanda_equipes_participantes",
+      "backend_demandas_migrations_0009_demanda_equipes_participantes_copiar_equipes_principais",
+      "backend_demandas_migrations_0009_demanda_equipes_participantes_migration"
     ],
-    "51": [
+    "83": [
+      "backend_demandas_migrations_0011_demanda_demanda_sei_unico",
+      "backend_demandas_migrations_0011_demanda_demanda_sei_unico_migration",
+      "backend_demandas_migrations_0011_demanda_demanda_sei_unico_preencher_numeros_demo"
+    ],
+    "84": [
+      "backend_usuarios_migrations_0004_equipe_admin",
+      "backend_usuarios_migrations_0004_equipe_admin_migration",
+      "backend_usuarios_migrations_0004_equipe_admin_preencher_criadores"
+    ],
+    "85": [
       "backend_agenda_migrations_0001_initial",
       "backend_agenda_migrations_0001_initial_migration"
     ],
-    "52": [
+    "86": [
       "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more",
       "backend_agenda_migrations_0002_compromisso_cancelado_em_compromisso_cancelado_por_and_more_migration"
     ],
-    "53": [
+    "87": [
       "backend_avisos_migrations_0001_initial",
       "backend_avisos_migrations_0001_initial_migration"
     ],
-    "54": [
+    "88": [
       "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more",
       "backend_avisos_migrations_0002_aviso_cancelado_em_aviso_cancelado_por_and_more_migration"
     ],
-    "55": [
+    "89": [
+      "backend_avisos_migrations_0003_leituraaviso",
+      "backend_avisos_migrations_0003_leituraaviso_migration"
+    ],
+    "90": [
       "backend_demandas_migrations_0001_initial",
       "backend_demandas_migrations_0001_initial_migration"
     ],
-    "56": [
+    "91": [
       "backend_demandas_migrations_0002_initial",
       "backend_demandas_migrations_0002_initial_migration"
     ],
-    "57": [
+    "92": [
       "backend_demandas_migrations_0003_eventodemanda",
       "backend_demandas_migrations_0003_eventodemanda_migration"
     ],
-    "58": [
+    "93": [
       "backend_demandas_migrations_0004_remove_demanda_demanda_status_valido_and_more",
       "backend_demandas_migrations_0004_remove_demanda_demanda_status_valido_and_more_migration"
     ],
-    "59": [
+    "94": [
       "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more",
       "backend_demandas_migrations_0005_remove_eventodemanda_evento_conteudo_por_tipo_and_more_migration"
     ],
-    "60": [
+    "95": [
+      "backend_demandas_migrations_0007_demanda_sei_numero",
+      "backend_demandas_migrations_0007_demanda_sei_numero_migration"
+    ],
+    "96": [
+      "backend_demandas_migrations_0008_importacaosei",
+      "backend_demandas_migrations_0008_importacaosei_migration"
+    ],
+    "97": [
+      "backend_demandas_migrations_0010_remove_demanda_demanda_status_valido_and_more",
+      "backend_demandas_migrations_0010_remove_demanda_demanda_status_valido_and_more_migration"
+    ],
+    "98": [
+      "backend_demandas_migrations_0012_solicitacaoparticipacao",
+      "backend_demandas_migrations_0012_solicitacaoparticipacao_migration"
+    ],
+    "99": [
       "backend_usuarios_migrations_0001_initial",
       "backend_usuarios_migrations_0001_initial_migration"
     ],
-    "61": [
+    "100": [
+      "backend_usuarios_migrations_0002_usuario_pode_administrar_equipe",
+      "backend_usuarios_migrations_0002_usuario_pode_administrar_equipe_migration"
+    ],
+    "101": [
+      "backend_usuarios_migrations_0003_vinculoequipe",
+      "backend_usuarios_migrations_0003_vinculoequipe_migration"
+    ],
+    "102": [
       "cloudflare_vite_plugin",
       "frontend_package_devdependencies_cloudflare_vite_plugin"
     ],
-    "62": [
+    "103": [
       "cloudflare_workers_types",
       "frontend_package_devdependencies_cloudflare_workers_types"
     ],
-    "63": [
+    "104": [
       "frontend_app_error",
       "frontend_app_error_errorpage"
     ],
-    "64": [
+    "105": [
       "frontend_app_not_found",
       "frontend_app_not_found_notfound"
     ],
-    "65": [
+    "106": [
       "frontend_lib_utils",
       "frontend_lib_utils_cn"
     ],
-    "66": [
+    "107": [
       "frontend_package_devdependencies_openai_sites_vite_plugin",
       "openai_sites_vite_plugin"
     ],
-    "67": [
+    "108": [
       "frontend_package_devdependencies_oxfmt",
       "oxfmt"
     ],
-    "68": [
+    "109": [
       "frontend_package_devdependencies_oxlint_tsgolint",
       "oxlint_tsgolint"
     ],
-    "69": [
+    "110": [
       "frontend_package_devdependencies_playwright_test",
       "playwright_test"
     ],
-    "70": [
+    "111": [
       "frontend_package_devdependencies_tailwindcss",
       "tailwindcss"
     ],
-    "71": [
+    "112": [
+      "frontend_package_devdependencies_tailwindcss_postcss",
+      "tailwindcss_postcss"
+    ],
+    "113": [
       "frontend_package_devdependencies_types_react",
       "types_react"
     ],
-    "72": [
+    "114": [
       "frontend_package_devdependencies_types_react_dom",
       "types_react_dom"
     ],
-    "73": [
+    "115": [
       "frontend_package_devdependencies_typescript",
       "typescript"
     ],
-    "74": [
+    "116": [
       "frontend_package_devdependencies_vite",
       "vite"
     ],
-    "75": [
+    "117": [
       "frontend_package_devdependencies_wrangler",
       "wrangler"
     ],
-    "76": [
+    "118": [
       "backend_agenda_admin"
     ],
-    "77": [
+    "119": [
       "backend_agenda_init"
     ],
-    "78": [
+    "120": [
       "backend_agenda_management_commands_init"
     ],
-    "79": [
+    "121": [
       "backend_agenda_management_init"
     ],
-    "80": [
+    "122": [
       "backend_agenda_migrations_init"
     ],
-    "81": [
+    "123": [
       "backend_avisos_init"
     ],
-    "82": [
+    "124": [
       "backend_avisos_management_commands_init"
     ],
-    "83": [
+    "125": [
       "backend_avisos_management_init"
     ],
-    "84": [
+    "126": [
       "backend_avisos_migrations_init"
     ],
-    "85": [
+    "127": [
       "backend_config_init"
     ],
-    "86": [
+    "128": [
       "backend_config_settings"
     ],
-    "87": [
+    "129": [
       "backend_config_wsgi"
     ],
-    "88": [
+    "130": [
       "backend_demandas_init"
     ],
-    "89": [
+    "131": [
       "backend_demandas_management_commands_init"
     ],
-    "90": [
+    "132": [
       "backend_demandas_management_init"
     ],
-    "91": [
+    "133": [
       "backend_demandas_migrations_init"
     ],
-    "92": [
+    "134": [
       "backend_manage"
     ],
-    "93": [
+    "135": [
       "backend_usuarios_init"
     ],
-    "94": [
+    "136": [
       "backend_usuarios_migrations_init"
     ],
-    "95": [
+    "137": [
+      "extension_sei_notice"
+    ],
+    "138": [
       "frontend_playwright_config"
     ],
-    "96": [
+    "139": [
       "pkg_centraliza_api"
     ]
   },
   "cohesion": {
-    "0": 0.05350140056022409,
-    "1": 0.05160662122687439,
-    "2": 0.08140610545790934,
-    "3": 0.05,
-    "4": 0.05128205128205128,
-    "5": 0.07777777777777778,
-    "6": 0.0625,
-    "7": 0.11612903225806452,
-    "8": 0.08,
-    "9": 0.08695652173913043,
-    "10": 0.15151515151515152,
-    "11": 0.09090909090909091,
-    "12": 0.09090909090909091,
-    "13": 0.1368421052631579,
-    "14": 0.1,
-    "15": 0.2573099415204678,
-    "16": 0.17647058823529413,
-    "17": 0.19117647058823528,
-    "18": 0.125,
-    "19": 0.18095238095238095,
-    "20": 0.20952380952380953,
-    "21": 0.13333333333333333,
-    "22": 0.30303030303030304,
-    "23": 0.24242424242424243,
-    "24": 0.16666666666666666,
-    "25": 0.18181818181818182,
-    "26": 0.18181818181818182,
-    "27": 0.18181818181818182,
-    "28": 0.18181818181818182,
-    "29": 0.28888888888888886,
-    "30": 0.3611111111111111,
-    "31": 0.25,
-    "32": 0.25,
-    "33": 0.25,
-    "34": 0.47619047619047616,
-    "35": 0.2857142857142857,
-    "36": 0.2857142857142857,
-    "37": 0.5333333333333333,
-    "38": 0.3333333333333333,
-    "39": 0.4,
-    "40": 0.4,
-    "41": 0.4,
-    "42": 0.4,
-    "43": 0.4,
-    "44": 0.4,
-    "45": 0.5,
-    "46": 0.5,
-    "47": 0.5,
-    "48": 0.6666666666666666,
-    "49": 0.6666666666666666,
-    "50": 1.0,
-    "51": 1.0,
-    "52": 1.0,
-    "53": 1.0,
-    "54": 1.0,
-    "55": 1.0,
-    "56": 1.0,
-    "57": 1.0,
-    "58": 1.0,
-    "59": 1.0,
-    "60": 1.0,
-    "61": 1.0,
-    "62": 1.0,
-    "63": 1.0,
-    "64": 1.0,
-    "65": 1.0,
-    "66": 1.0,
-    "67": 1.0,
-    "68": 1.0,
-    "69": 1.0,
-    "70": 1.0,
-    "71": 1.0,
-    "72": 1.0,
-    "73": 1.0,
-    "74": 1.0,
-    "75": 1.0,
-    "76": 1.0,
-    "77": 1.0,
-    "78": 1.0,
-    "79": 1.0,
-    "80": 1.0,
-    "81": 1.0,
-    "82": 1.0,
-    "83": 1.0,
-    "84": 1.0,
+    "0": 0.05587808417997097,
+    "1": 0.09797979797979799,
+    "2": 0.08859357696567,
+    "3": 0.05128205128205128,
+    "4": 0.11932773109243698,
+    "5": 0.11742424242424243,
+    "6": 0.13911290322580644,
+    "7": 0.1310483870967742,
+    "8": 0.0625,
+    "9": 0.1010752688172043,
+    "10": 0.135632183908046,
+    "11": 0.12807881773399016,
+    "12": 0.10826210826210826,
+    "13": 0.07692307692307693,
+    "14": 0.19076923076923077,
+    "15": 0.08,
+    "16": 0.08,
+    "17": 0.14855072463768115,
+    "18": 0.12648221343873517,
+    "19": 0.08695652173913043,
+    "20": 0.09090909090909091,
+    "21": 0.15584415584415584,
+    "22": 0.09523809523809523,
+    "23": 0.09523809523809523,
+    "24": 0.18947368421052632,
+    "25": 0.1503267973856209,
+    "26": 0.19117647058823528,
+    "27": 0.22058823529411764,
+    "28": 0.11764705882352941,
+    "29": 0.175,
+    "30": 0.125,
+    "31": 0.13333333333333333,
+    "32": 0.32051282051282054,
+    "33": 0.15384615384615385,
+    "34": 0.22727272727272727,
+    "35": 0.22727272727272727,
+    "36": 0.16666666666666666,
+    "37": 0.18181818181818182,
+    "38": 0.2,
+    "39": 0.2727272727272727,
+    "40": 0.2545454545454545,
+    "41": 0.18181818181818182,
+    "42": 0.18181818181818182,
+    "43": 0.2222222222222222,
+    "44": 0.2,
+    "45": 0.28888888888888886,
+    "46": 0.2,
+    "47": 0.3611111111111111,
+    "48": 0.25,
+    "49": 0.25,
+    "50": 0.25,
+    "51": 0.25,
+    "52": 0.25,
+    "53": 0.25,
+    "54": 0.25,
+    "55": 0.2857142857142857,
+    "56": 0.2857142857142857,
+    "57": 0.2857142857142857,
+    "58": 0.5238095238095238,
+    "59": 0.2857142857142857,
+    "60": 0.2857142857142857,
+    "61": 0.3333333333333333,
+    "62": 0.5333333333333333,
+    "63": 0.3333333333333333,
+    "64": 0.3333333333333333,
+    "65": 0.3333333333333333,
+    "66": 0.4,
+    "67": 0.4,
+    "68": 0.4,
+    "69": 0.4,
+    "70": 0.4,
+    "71": 0.4,
+    "72": 0.4,
+    "73": 0.5,
+    "74": 0.5,
+    "75": 0.5,
+    "76": 0.5,
+    "77": 0.5,
+    "78": 0.5,
+    "79": 0.5,
+    "80": 0.6666666666666666,
+    "81": 0.6666666666666666,
+    "82": 0.6666666666666666,
+    "83": 0.6666666666666666,
+    "84": 0.6666666666666666,
     "85": 1.0,
     "86": 1.0,
     "87": 1.0,
@@ -1227,13 +1704,76 @@
     "93": 1.0,
     "94": 1.0,
     "95": 1.0,
-    "96": 1.0
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0,
+    "123": 1.0,
+    "124": 1.0,
+    "125": 1.0,
+    "126": 1.0,
+    "127": 1.0,
+    "128": 1.0,
+    "129": 1.0,
+    "130": 1.0,
+    "131": 1.0,
+    "132": 1.0,
+    "133": 1.0,
+    "134": 1.0,
+    "135": 1.0,
+    "136": 1.0,
+    "137": 1.0,
+    "138": 1.0,
+    "139": 1.0
   },
   "gods": [
     {
+      "id": "frontend_lib_auth_csrftoken",
+      "label": "csrfToken()",
+      "degree": 28
+    },
+    {
+      "id": "backend_agenda_models_compromisso",
+      "label": "Compromisso",
+      "degree": 24
+    },
+    {
       "id": "backend_demandas_models_demanda",
       "label": "Demanda",
-      "degree": 21
+      "degree": 23
+    },
+    {
+      "id": "backend_usuarios_models_usuario",
+      "label": "Usuario",
+      "degree": 22
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 22
     },
     {
       "id": "frontend_oxlintrc_rules",
@@ -1241,49 +1781,51 @@
       "degree": 21
     },
     {
-      "id": "backend_agenda_models_compromisso",
-      "label": "Compromisso",
+      "id": "frontend_tests_support_api_instalarapi",
+      "label": "instalarApi()",
       "degree": 20
-    },
-    {
-      "id": "backend_usuarios_models_usuario",
-      "label": "Usuario",
-      "degree": 17
-    },
-    {
-      "id": "ref_react",
-      "label": "react",
-      "degree": 16
-    },
-    {
-      "id": "frontend_lib_auth_csrftoken",
-      "label": "csrfToken()",
-      "degree": 16
-    },
-    {
-      "id": "frontend_tsconfig_compileroptions",
-      "label": "compilerOptions",
-      "degree": 16
-    },
-    {
-      "id": "backend_demandas_tests_listagemdemandastest",
-      "label": "ListagemDemandasTest",
-      "degree": 15
     },
     {
       "id": "frontend_tests_support_api_entrarcomo",
       "label": "entrarComo()",
-      "degree": 15
+      "degree": 20
     },
     {
-      "id": "frontend_components_agenda_calendar_agendacalendar",
-      "label": "AgendaCalendar()",
-      "degree": 14
+      "id": "backend_demandas_tests_listagemdemandastest",
+      "label": "ListagemDemandasTest",
+      "degree": 18
+    },
+    {
+      "id": "frontend_lib_auth_apierror",
+      "label": "ApiError",
+      "degree": 18
     }
   ],
   "surprises": [
     {
+      "source": "Command",
+      "target": "Compromisso",
+      "source_files": [
+        "backend/agenda/management/commands/seed_agenda.py",
+        "backend/agenda/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
       "source": "CompromissoListagemTest",
+      "target": "Compromisso",
+      "source_files": [
+        "backend/agenda/tests.py",
+        "backend/agenda/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "CompromissoModelTest",
       "target": "Compromisso",
       "source_files": [
         "backend/agenda/tests.py",
@@ -1305,74 +1847,52 @@
       "why": "inferred connection - not explicitly stated in source; bridges separate communities"
     },
     {
-      "source": "Command",
+      "source": "ResumoHomeView",
       "target": "Compromisso",
       "source_files": [
-        "backend/agenda/management/commands/seed_agenda.py",
+        "backend/demandas/dashboard.py",
         "backend/agenda/models.py"
       ],
       "confidence": "INFERRED",
       "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source"
-    },
-    {
-      "source": "CompromissoSerializer",
-      "target": "Compromisso",
-      "source_files": [
-        "backend/agenda/serializers.py",
-        "backend/agenda/models.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source"
-    },
-    {
-      "source": "GerenciarCompromissoSerializer",
-      "target": "Compromisso",
-      "source_files": [
-        "backend/agenda/serializers.py",
-        "backend/agenda/models.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source"
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `react` connect `Community 0` to `Community 1`, `Community 3`?",
-      "why": "High betweenness centrality (0.025) - this node is a cross-community bridge."
+      "question": "Why does `Usuario` connect `Community 24` to `Community 1`, `Community 10`, `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.022) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `plugins` connect `Community 3` to `Community 0`?",
-      "why": "High betweenness centrality (0.023) - this node is a cross-community bridge."
+      "question": "Why does `react` connect `Community 9` to `Community 32`, `Community 2`, `Community 6`, `Community 7`, `Community 40`, `Community 11`, `Community 12`, `Community 21`, `Community 53`?",
+      "why": "High betweenness centrality (0.017) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `Usuario` connect `Community 16` to `Community 2`, `Community 7`, `Community 10`, `Community 20`, `Community 23`?",
-      "why": "High betweenness centrality (0.020) - this node is a cross-community bridge."
+      "question": "Why does `plugins` connect `Community 53` to `Community 9`, `Community 42`?",
+      "why": "High betweenness centrality (0.014) - this node is a cross-community bridge."
     },
     {
       "type": "verify_inferred",
-      "question": "Are the 10 inferred relationships involving `Compromisso` (e.g. with `Command` and `CompromissoSerializer`) actually correct?",
-      "why": "`Compromisso` has 10 INFERRED edges - model-reasoned connections that need verification."
+      "question": "Are the 12 inferred relationships involving `Compromisso` (e.g. with `Command` and `CompromissoSerializer`) actually correct?",
+      "why": "`Compromisso` has 12 INFERRED edges - model-reasoned connections that need verification."
     },
     {
       "type": "isolated_nodes",
       "question": "What connects `Migration`, `Migration`, `Tipo` to the rest of the system?",
-      "why": "328 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "430 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
       "question": "Should `Community 0` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.05350140056022409 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.05587808417997097 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
       "question": "Should `Community 1` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.05160662122687439 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.09797979797979799 - nodes in this community are weakly interconnected."
     }
   ]
 }
