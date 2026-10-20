@@ -10010,6 +10010,231 @@
       "_origin": "ast"
     },
     {
+      "id": "docs_plano_acao_sr2",
+      "label": "plano-acao-sr2.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "label": "Plano de ação até o SR2 — Centraliza",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_1_objetivo_do_ciclo",
+      "label": "1. Objetivo do ciclo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_2_diagnóstico_do_estado_atual",
+      "label": "2. Diagnóstico do estado atual",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "label": "3. Decisão de escopo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_must_have",
+      "label": "Must have",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_should_have",
+      "label": "Should have",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_could_have",
+      "label": "Could have",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_fora_do_compromisso_do_sr2",
+      "label": "Fora do compromisso do SR2",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_4_organização_da_equipe",
+      "label": "4. Organização da equipe",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_5_capacidade_e_regras_de_execução",
+      "label": "5. Capacidade e regras de execução",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L83",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "label": "6. Cronograma de execução",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L95",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_preparação_20_10_a_22_10",
+      "label": "Preparação — 20/10 a 22/10",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L97",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_sprint_1_20_10_a_01_11",
+      "label": "Sprint 1 — 20/10 a 01/11",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_sprint_2_02_11_a_08_11",
+      "label": "Sprint 2 — 02/11 a 08/11",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L127",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_sprint_3_09_11_a_15_11",
+      "label": "Sprint 3 — 09/11 a 15/11",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L143",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_sprint_4_16_11_a_22_11",
+      "label": "Sprint 4 — 16/11 a 22/11",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L159",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_sprint_5_23_11_a_29_11",
+      "label": "Sprint 5 — 23/11 a 29/11",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L182",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_congelamento_30_11_a_04_12",
+      "label": "Congelamento — 30/11 a 04/12",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L196",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_7_fluxo_dos_cartões",
+      "label": "7. Fluxo dos cartões",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L209",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_8_política_de_branches_e_revisão",
+      "label": "8. Política de branches e revisão",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L231",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_9_reuniões_e_comunicação",
+      "label": "9. Reuniões e comunicação",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L241",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_10_indicadores_do_tech_lead",
+      "label": "10. Indicadores do Tech Lead",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L251",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_11_riscos_e_respostas",
+      "label": "11. Riscos e respostas",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L264",
+      "_origin": "ast"
+    },
+    {
+      "id": "docs_plano_acao_sr2_12_definição_de_pronto_do_sr2",
+      "label": "12. Definição de pronto do SR2",
+      "file_type": "document",
+      "node_kind": "heading",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L276",
+      "_origin": "ast"
+    },
+    {
       "id": "docs_plano_desenvolvimento",
       "label": "plano-desenvolvimento.md",
       "file_type": "document",
@@ -33197,6 +33422,246 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/paleta-visual.md",
       "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2",
+      "target": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_1_objetivo_do_ciclo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_2_diagnóstico_do_estado_atual",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "target": "docs_plano_acao_sr2_must_have",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "target": "docs_plano_acao_sr2_should_have",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "target": "docs_plano_acao_sr2_could_have",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_3_decisão_de_escopo",
+      "target": "docs_plano_acao_sr2_fora_do_compromisso_do_sr2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_4_organização_da_equipe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_5_capacidade_e_regras_de_execução",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_preparação_20_10_a_22_10",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_sprint_1_20_10_a_01_11",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_sprint_2_02_11_a_08_11",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_sprint_3_09_11_a_15_11",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_sprint_4_16_11_a_22_11",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_sprint_5_23_11_a_29_11",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L182",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_6_cronograma_de_execução",
+      "target": "docs_plano_acao_sr2_congelamento_30_11_a_04_12",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L196",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_7_fluxo_dos_cartões",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_8_política_de_branches_e_revisão",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L231",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_9_reuniões_e_comunicação",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L241",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_10_indicadores_do_tech_lead",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_11_riscos_e_respostas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L264",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "docs_plano_acao_sr2_plano_de_ação_até_o_sr2_centraliza",
+      "target": "docs_plano_acao_sr2_12_definição_de_pronto_do_sr2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plano-acao-sr2.md",
+      "source_location": "L276",
       "weight": 1.0,
       "_origin": "ast"
     },
