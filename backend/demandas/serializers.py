@@ -3,6 +3,12 @@ from django.utils import timezone
 
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
 from demandas.identidade_sei import normalizar_numero_sei
+from demandas.prazos import fim_do_dia
+
+
+class PrazoCompativelField(serializers.DateTimeField):
+    def to_internal_value(self, value):
+        return super().to_internal_value(fim_do_dia(value))
 
 
 class ResponsavelSerializer(serializers.Serializer):
@@ -27,7 +33,7 @@ class DemandaSerializer(serializers.ModelSerializer):
         return [{"id": equipe.id, "nome": equipe.nome} for equipe in obj.equipes_participantes.all()]
 
     def get_atrasada(self, obj):
-        return obj.prazo < timezone.localdate() and obj.status not in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}
+        return obj.prazo < timezone.now() and obj.status not in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}
 
 
 class AutorSerializer(serializers.Serializer):
@@ -56,7 +62,7 @@ class GerenciarDemandaSerializer(serializers.Serializer):
     descricao = serializers.CharField(allow_blank=True, required=False)
     origem = serializers.CharField(max_length=200, allow_blank=True, required=False)
     prioridade = serializers.ChoiceField(choices=Demanda.Prioridade.choices, required=False)
-    prazo = serializers.DateField(required=False)
+    prazo = PrazoCompativelField(required=False)
     critica = serializers.BooleanField(required=False)
     responsavel_id = serializers.IntegerField(allow_null=True, required=False)
     equipes_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), required=False, allow_empty=False)
@@ -152,3 +158,18 @@ class ImportacaoSeiSerializer(serializers.ModelSerializer):
              "acessivel": item.equipes_participantes.filter(pk=obj.equipe_id).exists()}
             for item in queryset
         ]
+
+
+class AlterarPrazoSerializer(serializers.Serializer):
+    prazo = serializers.DateTimeField()
+
+    def validate_prazo(self, value):
+        raw = self.initial_data.get("prazo")
+        if not isinstance(raw, str) or "T" not in raw:
+            raise serializers.ValidationError("Informe data e horário no formato ISO 8601.")
+        return value
+
+    def validate(self, attrs):
+        if set(self.initial_data) != {"prazo"}:
+            raise serializers.ValidationError("Informe somente o prazo.")
+        return attrs

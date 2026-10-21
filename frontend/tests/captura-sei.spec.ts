@@ -25,7 +25,7 @@ test('captura permanece na aba durante login e é removida após salvar', async 
   await expect(page.getByLabel('Número do processo SEI')).toHaveValue('PROCESSO-FICTICIO-2026-010');
   await expect(page.getByLabel('Demandante (instituição)')).toHaveValue('Sindicato dos Trabalhadores');
   await page.getByLabel('Título da demanda').fill('Nova inspeção');
-  await page.getByLabel('Prazo').fill('2026-11-15');
+  await page.getByLabel('Prazo').fill('2026-11-15T17:00');
   await page.getByRole('button', { name: 'Criar demanda' }).click();
   await expect(page).toHaveURL(/\/demandas\/90$/);
   expect(await page.evaluate(() => sessionStorage.getItem('centraliza:captura-sei:v1'))).toBeNull();

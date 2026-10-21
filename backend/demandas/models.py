@@ -33,7 +33,7 @@ class Demanda(models.Model):
     sei_numero_normalizado = models.CharField(max_length=80, blank=True, db_index=True, editable=False)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDENTE)
     prioridade = models.CharField(max_length=10, choices=Prioridade.choices, default=Prioridade.MEDIA)
-    prazo = models.DateField()
+    prazo = models.DateTimeField()
     critica = models.BooleanField(default=False)
     equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT)
     equipes_participantes = models.ManyToManyField("usuarios.Equipe", related_name="demandas_participantes", blank=True)
@@ -69,6 +69,8 @@ class Demanda(models.Model):
             raise ValidationError({"responsavel": "Atribua a demanda a um inspetor."})
 
     def save(self, *args, **kwargs):
+        from demandas.prazos import fim_do_dia
+        self.prazo = fim_do_dia(self.prazo)
         self.sei_numero = self.sei_numero.strip()
         self.sei_numero_normalizado = normalizar_numero_sei(self.sei_numero)
         update_fields = kwargs.get("update_fields")

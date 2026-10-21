@@ -23,7 +23,7 @@ Crítica é uma flag independente. Status e criticidade combinados usam AND.
 | responsavel | ID inteiro positivo; disponível ao gestor |
 | prazo_de | Data inicial inclusiva em AAAA-MM-DD |
 | prazo_ate | Data final inclusiva em AAAA-MM-DD |
-| atrasada | true ou false; compara o prazo com a data local do servidor |
+| atrasada | true ou false; compara o prazo com o instante atual; demandas concluídas e canceladas não ficam atrasadas |
 | sei_numero | Até 80 caracteres; busca parcial após normalização tolerante |
 | page | Inteiro positivo, padrão 1 |
 | page_size | Inteiro de 1 a 50, padrão 20 |
@@ -122,3 +122,29 @@ prévia expirada também é encerrada e exige uma nova colagem.
 O parser atual não comprova compatibilidade com a instalação da VISAT. Ele existe
 para validar o fluxo do produto com dados fictícios e deve receber um adaptador
 específico somente após amostras anonimizadas serem aprovadas.
+
+
+## HU3 — Prazo com data e horário
+
+`prazo` é retornado como datetime ISO 8601 com fuso. Os formulários usam
+America/Fortaleza (UTC−3), independentemente do fuso do navegador. Filtros
+`prazo_de` e `prazo_ate` continuam aceitando datas e incluem o dia inteiro no
+fuso institucional. A listagem e o painel consideram o horário no atraso.
+
+`PATCH /api/demandas/{id}/prazo/` recebe somente
+`{"prazo":"2026-10-30T17:00:00-03:00"}` e retorna os detalhes atualizados.
+Permite gestor da equipe participante e inspetor responsável com acesso à
+mesma demanda. Demandas concluídas ou canceladas retornam 400; usuários sem
+acesso recebem 404; sessão ausente recebe 401. Outros campos são rejeitados.
+Alterações efetivas registram autor, horário e os prazos anterior e novo no
+histórico. Reenviar o mesmo prazo não duplica o evento.
+
+A migração 0013 preserva os vencimentos antigos às 23:59 da mesma data em
+America/Fortaleza. Por compatibilidade, criação/edição geral ainda aceitam
+clientes antigos com data apenas, interpretada como 23:59. A nova operação
+específica exige data e horário. O MVP permite datas passadas; o vencimento é
+exibido como atrasado, sem impor uma restrição ausente na HU3.
+
+Validação: testes de API em `demandas.test_prazos` e testes de interface em
+`frontend/tests/prazo-demanda.spec.ts`. Após atualizar o projeto, execute
+`uv run python manage.py migrate` antes de iniciar a API.

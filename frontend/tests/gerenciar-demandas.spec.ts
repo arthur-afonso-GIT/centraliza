@@ -12,7 +12,7 @@ test('gestor cria uma demanda atribuída', async ({ page }) => {
   await page.getByLabel('Número do processo SEI').fill('PROCESSO-FICTICIO-002');
   await page.getByLabel('Descrição').fill('Verificar condições do ambiente.');
   await page.getByLabel('Demandante (instituição)').fill('Sindicato');
-  await page.getByLabel('Prazo', { exact: true }).fill('2026-10-20');
+  await page.getByLabel('Prazo (horário de Fortaleza)', { exact: true }).fill('2026-10-20T17:00');
   await page.getByLabel('Prioridade').selectOption('alta');
   await page.getByRole('dialog').getByLabel('Responsável').selectOption('2');
   await page.getByLabel('Demanda crítica').check();
@@ -66,7 +66,7 @@ test('gestor interpreta texto, revisa e confirma demanda do SEI', async ({ page 
   await expect(page.getByLabel('Número do processo SEI')).toHaveValue('PROCESSO-FICTICIO-009');
   await expect(page.getByLabel('Título')).toHaveValue('Inspeção importada');
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()).violations).toEqual([]);
-  await page.getByLabel('Prazo', { exact: true }).fill('2026-10-20');
+  await page.getByLabel('Prazo (horário de Fortaleza)', { exact: true }).fill('2026-10-20T17:00');
   await page.getByRole('button', { name: 'Confirmar e criar demanda' }).click();
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });

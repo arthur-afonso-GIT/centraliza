@@ -16,9 +16,9 @@ from demandas.anexos import adicionar_anexo, remover_anexo
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
-from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
+from demandas.services import alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
-    AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
+    AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
     AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
     DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer, ImportacaoSeiSerializer,
 )
@@ -134,14 +134,17 @@ class DemandaListView(generics.ListAPIView):
             queryset = queryset.filter(responsavel__isnull=sem_responsavel == "true")
 
         limites = {}
-        for parametro, lookup in (("prazo_de", "prazo__gte"), ("prazo_ate", "prazo__lte")):
+        for parametro, lookup in (("prazo_de", "prazo__date__gte"), ("prazo_ate", "prazo__date__lte")):
             valor = self.request.query_params.get(parametro)
             if valor is not None:
-                parsed = parse_date(valor)
+                try:
+                    parsed = parse_date(valor)
+                except ValueError:
+                    parsed = None
                 if parsed is None:
                     raise exceptions.ValidationError({parametro: "Informe uma data no formato AAAA-MM-DD."})
                 limites[lookup] = parsed
-        if limites.get("prazo__gte") and limites.get("prazo__lte") and limites["prazo__gte"] > limites["prazo__lte"]:
+        if limites.get("prazo__date__gte") and limites.get("prazo__date__lte") and limites["prazo__date__gte"] > limites["prazo__date__lte"]:
             raise exceptions.ValidationError({"prazo_ate": "O fim do período deve ser igual ou posterior ao início."})
         queryset = queryset.filter(**limites)
 
@@ -149,8 +152,9 @@ class DemandaListView(generics.ListAPIView):
         if atrasada is not None:
             if atrasada not in ["true", "false"]:
                 raise exceptions.ValidationError({"atrasada": "Use true ou false."})
-            hoje = timezone.localdate()
-            queryset = queryset.filter(prazo__lt=hoje) if atrasada == "true" else queryset.filter(prazo__gte=hoje)
+            agora = timezone.now()
+            vencidas = queryset.filter(prazo__lt=agora).exclude(status__in=["concluida", "cancelada"])
+            queryset = vencidas if atrasada == "true" else queryset.exclude(pk__in=vencidas.values("pk"))
         sei_numero = numero_sei_da_consulta(self.request)
         if sei_numero:
             queryset = queryset.filter(sei_numero_normalizado__icontains=sei_numero)
@@ -429,3 +433,22 @@ class DemandaAnexoDownloadView(DemandaAnexoView):
         response = FileResponse(anexo.arquivo.open("rb"), as_attachment=True, filename=anexo.nome_original, content_type=anexo.mime_type)
         response["X-Content-Type-Options"] = "nosniff"
         return response
+
+
+class DemandaPrazoView(APIView):
+    def patch(self, request, pk):
+        get_object_or_404(demandas_permitidas(request.user), pk=pk)
+        serializer = AlterarPrazoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        try:
+            alterar_prazo_demanda(demanda_id=pk, usuario=request.user, prazo=serializer.validated_data["prazo"])
+        except Demanda.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        demanda = get_object_or_404(
+            demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor", "equipes_participantes"), pk=pk,
+        )
+        return Response(DemandaDetalheSerializer(demanda).data)

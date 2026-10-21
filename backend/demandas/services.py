@@ -159,3 +159,27 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
             demanda.equipes_participantes.set(equipes_ids)
             EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto="Equipes participantes atualizadas.")
     return demanda
+
+
+@transaction.atomic
+def alterar_prazo_demanda(*, demanda_id: int, usuario, prazo) -> Demanda:
+    demanda = Demanda.objects.select_for_update().get(pk=demanda_id)
+    if not usuario.equipe_id or not demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists():
+        raise Demanda.DoesNotExist
+    if usuario.perfil == "inspetor":
+        if demanda.responsavel_id != usuario.id:
+            raise Demanda.DoesNotExist
+    elif usuario.perfil != "gestor":
+        raise PermissionDenied("Seu perfil não pode alterar prazos.")
+    if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
+        raise ValidationError({"prazo": "Demandas encerradas não podem ter o prazo alterado."})
+    if demanda.prazo != prazo:
+        anterior = timezone.localtime(demanda.prazo).strftime("%d/%m/%Y às %H:%M")
+        novo = timezone.localtime(prazo).strftime("%d/%m/%Y às %H:%M")
+        demanda.prazo = prazo
+        demanda.save(update_fields=["prazo", "atualizada_em"])
+        EventoDemanda.objects.create(
+            demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario,
+            texto=f"Prazo alterado de {anterior} para {novo} (America/Fortaleza).",
+        )
+    return demanda

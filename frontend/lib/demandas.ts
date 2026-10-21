@@ -1,3 +1,4 @@
+import { prazoParaApi } from './prazos';
 import { ApiError, csrfToken } from './auth';
 
 export type SegmentoDemanda = 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas' | 'concluidas' | 'canceladas';
@@ -72,7 +73,7 @@ export async function salvarDemanda(dados: DadosDemanda, id?: number) {
   return resposta<DemandaDetalhe>(await fetch(id ? `/api/demandas/${id}/` : '/api/demandas/', {
     method: id ? 'PATCH' : 'POST', credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
-    body: JSON.stringify(dados),
+    body: JSON.stringify({ ...dados, prazo: prazoParaApi(dados.prazo) }),
   }));
 }
 
@@ -123,7 +124,7 @@ export async function confirmarPreviaSei(id: number, dados: DadosDemanda) {
   return resposta<DemandaDetalhe>(await fetch(`/api/importacoes/sei/${id}/confirmar/`, {
     method: 'POST', credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
-    body: JSON.stringify(dados),
+    body: JSON.stringify({ ...dados, prazo: prazoParaApi(dados.prazo) }),
   }));
 }
 
@@ -154,4 +155,13 @@ export async function excluirAnexo(demandaId: number, anexoId: number) {
     method: 'DELETE', credentials: 'same-origin', headers: { 'X-CSRFToken': token },
   });
   if (!response.ok) await resposta<never>(response);
+}
+
+export async function alterarPrazo(id: number, prazo: string) {
+  const token = await csrfToken();
+  return resposta<DemandaDetalhe>(await fetch(`/api/demandas/${id}/prazo/`, {
+    method: 'PATCH', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ prazo: prazoParaApi(prazo) }),
+  }));
 }
