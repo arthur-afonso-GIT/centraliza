@@ -1,4 +1,7 @@
-from datetime import timedelta
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
+from django.db import connection
 from unittest.mock import patch
 
 from django.utils import timezone
@@ -81,3 +84,27 @@ class PrazoDemandaTest(APITestCase):
 
     def test_data_legada_preserva_fim_do_dia(self):
         self.assertEqual(timezone.localtime(self.demanda.prazo).strftime("%Y-%m-%d %H:%M"), "2026-10-30 23:59")
+
+
+    def test_filtro_inclui_dia_local_inteiro_sem_conversao_de_fuso_no_banco(self):
+        self.client.force_authenticate(self.gestor)
+        inicio = datetime(2026, 10, 30, tzinfo=ZoneInfo("America/Fortaleza"))
+        for instante, esperado in [
+            (inicio - timedelta(microseconds=1), 0),
+            (inicio, 1),
+            (inicio + timedelta(days=1) - timedelta(microseconds=1), 1),
+            (inicio + timedelta(days=1), 0),
+        ]:
+            with self.subTest(instante=instante):
+                Demanda.objects.filter(pk=self.demanda.pk).update(prazo=instante)
+                with patch.object(connection.ops, "datetime_cast_date_sql", side_effect=AssertionError("Conversão de data no banco proibida")):
+                    response = self.client.get("/api/demandas/?prazo_de=2026-10-30&prazo_ate=2026-10-30")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.data["count"], esperado)
+
+    def test_filtros_abertos_e_datas_invalidas(self):
+        self.client.force_authenticate(self.gestor)
+        for query in ["prazo_de=2026-10-30", "prazo_ate=2026-10-30"]:
+            self.assertEqual(self.client.get(f"/api/demandas/?{query}").data["count"], 1)
+        for query in ["prazo_de=2026-02-30", "prazo_ate=9999-12-31", "prazo_de=2026-10-31&prazo_ate=2026-10-30"]:
+            self.assertEqual(self.client.get(f"/api/demandas/?{query}").status_code, 400)

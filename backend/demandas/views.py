@@ -1,5 +1,5 @@
 from django.core.exceptions import PermissionDenied, ValidationError
-from datetime import timedelta
+from datetime import datetime, time, timedelta
 
 from django.db import IntegrityError, transaction
 from django.db.models import QuerySet
@@ -133,8 +133,8 @@ class DemandaListView(generics.ListAPIView):
                 raise exceptions.ValidationError({"sem_responsavel": "Use true ou false."})
             queryset = queryset.filter(responsavel__isnull=sem_responsavel == "true")
 
-        limites = {}
-        for parametro, lookup in (("prazo_de", "prazo__date__gte"), ("prazo_ate", "prazo__date__lte")):
+        datas = {}
+        for parametro in ("prazo_de", "prazo_ate"):
             valor = self.request.query_params.get(parametro)
             if valor is not None:
                 try:
@@ -143,10 +143,22 @@ class DemandaListView(generics.ListAPIView):
                     parsed = None
                 if parsed is None:
                     raise exceptions.ValidationError({parametro: "Informe uma data no formato AAAA-MM-DD."})
-                limites[lookup] = parsed
-        if limites.get("prazo__date__gte") and limites.get("prazo__date__lte") and limites["prazo__date__gte"] > limites["prazo__date__lte"]:
+                datas[parametro] = parsed
+        if datas.get("prazo_de") and datas.get("prazo_ate") and datas["prazo_de"] > datas["prazo_ate"]:
             raise exceptions.ValidationError({"prazo_ate": "O fim do período deve ser igual ou posterior ao início."})
-        queryset = queryset.filter(**limites)
+        # Calcula os limites em Python: não exige tabelas de fuso no PostgreSQL
+        # e mantém comparações diretas sobre a coluna indexada.
+        fuso = timezone.get_default_timezone()
+        if "prazo_de" in datas:
+            inicio = timezone.make_aware(datetime.combine(datas["prazo_de"], time.min), fuso)
+            queryset = queryset.filter(prazo__gte=inicio)
+        if "prazo_ate" in datas:
+            try:
+                dia_seguinte = datas["prazo_ate"] + timedelta(days=1)
+            except OverflowError:
+                raise exceptions.ValidationError({"prazo_ate": "Informe uma data anterior a 9999-12-31."}) from None
+            fim = timezone.make_aware(datetime.combine(dia_seguinte, time.min), fuso)
+            queryset = queryset.filter(prazo__lt=fim)
 
         atrasada = self.request.query_params.get("atrasada")
         if atrasada is not None:
