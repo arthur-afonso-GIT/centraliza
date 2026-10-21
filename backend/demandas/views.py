@@ -16,7 +16,7 @@ from demandas.anexos import adicionar_anexo, remover_anexo
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
-from demandas.services import alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
+from demandas.services import PrazoDesatualizado, alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
     AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
     AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
@@ -365,6 +365,8 @@ class DemandaDetailView(generics.RetrieveAPIView):
             editar_demanda(demanda=demanda, usuario=request.user, dados=dict(serializer.validated_data))
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
+        except PrazoDesatualizado as exc:
+            raise ConflitoPrazo(exc.messages[0]) from exc
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk)).data)
@@ -447,17 +449,24 @@ class DemandaAnexoDownloadView(DemandaAnexoView):
         return response
 
 
+class ConflitoPrazo(exceptions.APIException):
+    status_code = status.HTTP_409_CONFLICT
+    default_code = "prazo_desatualizado"
+
+
 class DemandaPrazoView(APIView):
     def patch(self, request, pk):
         get_object_or_404(demandas_permitidas(request.user), pk=pk)
         serializer = AlterarPrazoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         try:
-            alterar_prazo_demanda(demanda_id=pk, usuario=request.user, prazo=serializer.validated_data["prazo"])
+            alterar_prazo_demanda(demanda_id=pk, usuario=request.user, **serializer.validated_data)
         except Demanda.DoesNotExist:
             raise exceptions.NotFound() from None
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
+        except PrazoDesatualizado as exc:
+            raise ConflitoPrazo(exc.messages[0]) from exc
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         demanda = get_object_or_404(

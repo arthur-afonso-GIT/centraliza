@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import timedelta
 
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import transaction
@@ -125,6 +126,12 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
         raise PermissionDenied("Somente gestores da equipe podem editar a demanda.")
     if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
         raise ValidationError({"status": "Demandas encerradas não podem ser editadas."})
+    versao = dados.pop("atualizada_em", None)
+    if versao is not None and versao != demanda.atualizada_em:
+        raise PrazoDesatualizado("A demanda foi atualizada por outra pessoa. Recarregue antes de salvar.")
+    versao_anterior = demanda.atualizada_em
+    mudou = False
+    prazo_anterior = demanda.prazo
     marcador = object()
     responsavel = dados.pop("responsavel_id", marcador)
     equipes_ids = dados.pop("equipes_ids", marcador)
@@ -134,9 +141,14 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
             setattr(demanda, campo, valor)
             alterados.append(campo)
     if alterados:
+        mudou = True
         demanda.save(update_fields=[*alterados, "atualizada_em"])
-        EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto=f"Campos atualizados: {', '.join(alterados)}.")
+        EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto=f"Campos atualizados: {', '.join(alterados)}." + (
+            f" Prazo alterado de {timezone.localtime(prazo_anterior):%d/%m/%Y às %H:%M} para {timezone.localtime(demanda.prazo):%d/%m/%Y às %H:%M} (America/Fortaleza)."
+            if "prazo" in alterados else ""
+        ))
     if responsavel is not marcador and demanda.responsavel_id != (responsavel.id if responsavel else None):
+        mudou = True
         anterior = demanda.responsavel.nome if demanda.responsavel_id else "não atribuído"
         status_anterior = demanda.status
         demanda.responsavel = responsavel
@@ -156,13 +168,21 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
         atuais = set(demanda.equipes_participantes.values_list("id", flat=True))
         novos = set(equipes_ids)
         if atuais != novos:
+            mudou = True
             demanda.equipes_participantes.set(equipes_ids)
             EventoDemanda.objects.create(demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario, texto="Equipes participantes atualizadas.")
+    if mudou:
+        demanda.atualizada_em = max(timezone.now(), versao_anterior + timedelta(microseconds=1))
+        Demanda.objects.filter(pk=demanda.pk).update(atualizada_em=demanda.atualizada_em)
     return demanda
 
 
+class PrazoDesatualizado(ValidationError):
+    pass
+
+
 @transaction.atomic
-def alterar_prazo_demanda(*, demanda_id: int, usuario, prazo) -> Demanda:
+def alterar_prazo_demanda(*, demanda_id: int, usuario, prazo, atualizada_em=None) -> Demanda:
     demanda = Demanda.objects.select_for_update().get(pk=demanda_id)
     if not usuario.equipe_id or not demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists():
         raise Demanda.DoesNotExist
@@ -173,11 +193,18 @@ def alterar_prazo_demanda(*, demanda_id: int, usuario, prazo) -> Demanda:
         raise PermissionDenied("Seu perfil não pode alterar prazos.")
     if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
         raise ValidationError({"prazo": "Demandas encerradas não podem ter o prazo alterado."})
+    if atualizada_em is not None and demanda.atualizada_em != atualizada_em:
+        raise PrazoDesatualizado("A demanda foi atualizada por outra pessoa. Recarregue antes de salvar o prazo.")
     if demanda.prazo != prazo:
         anterior = timezone.localtime(demanda.prazo).strftime("%d/%m/%Y às %H:%M")
         novo = timezone.localtime(prazo).strftime("%d/%m/%Y às %H:%M")
         demanda.prazo = prazo
-        demanda.save(update_fields=["prazo", "atualizada_em"])
+        # Mesmo com relógio de baixa resolução, cada edição recebe nova versão.
+        demanda.atualizada_em = max(timezone.now(), demanda.atualizada_em + timedelta(microseconds=1))
+        # O prazo foi validado pela API e a autorização pela equipe ativa acima.
+        # Atualiza somente estes campos, sem revalidar vínculos históricos do
+        # criador/responsável contra suas equipes principais atuais.
+        Demanda.objects.filter(pk=demanda.pk).update(prazo=prazo, atualizada_em=demanda.atualizada_em)
         EventoDemanda.objects.create(
             demanda=demanda, tipo=EventoDemanda.Tipo.DEMANDA_EDITADA, autor=usuario,
             texto=f"Prazo alterado de {anterior} para {novo} (America/Fortaleza).",

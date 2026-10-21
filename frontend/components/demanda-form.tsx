@@ -49,7 +49,7 @@ export default function DemandaForm({ initial, onSaved }: { initial?: DemandaDet
     event.preventDefault();
     if (duplicados.length) { setError('Este processo SEI já tem uma demanda. Abra a demanda existente.'); return; }
     setBusy(true); setError('');
-    try { const saved = await salvarDemanda(dados, initial?.id); onSaved(saved); setOpen(false); }
+    try { const saved = await salvarDemanda(initial && dados.prazo === prazoParaInput(initial.prazo) ? { ...dados, prazo: initial.prazo } : dados, initial?.id, initial?.atualizada_em, initial?.prazo); onSaved(saved); setOpen(false); }
     catch (reason) { setError(reason instanceof ApiError ? reason.message : 'Não foi possível salvar a demanda.'); }
     finally { setBusy(false); }
   }

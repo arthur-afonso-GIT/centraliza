@@ -57,6 +57,7 @@ class DemandaDetalheSerializer(DemandaSerializer):
 
 
 class GerenciarDemandaSerializer(serializers.Serializer):
+    atualizada_em = serializers.DateTimeField(required=False)
     titulo = serializers.CharField(max_length=200, required=False)
     sei_numero = serializers.CharField(max_length=80, allow_blank=False, required=False, trim_whitespace=True)
     descricao = serializers.CharField(allow_blank=True, required=False)
@@ -162,6 +163,7 @@ class ImportacaoSeiSerializer(serializers.ModelSerializer):
 
 class AlterarPrazoSerializer(serializers.Serializer):
     prazo = serializers.DateTimeField()
+    atualizada_em = serializers.DateTimeField(required=False)
 
     def validate_prazo(self, value):
         raw = self.initial_data.get("prazo")
@@ -170,6 +172,6 @@ class AlterarPrazoSerializer(serializers.Serializer):
         return value
 
     def validate(self, attrs):
-        if set(self.initial_data) != {"prazo"}:
-            raise serializers.ValidationError("Informe somente o prazo.")
+        if set(self.initial_data) - {"prazo", "atualizada_em"}:
+            raise serializers.ValidationError("Informe somente o prazo e a versão da demanda.")
         return attrs
