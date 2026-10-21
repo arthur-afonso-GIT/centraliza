@@ -3,6 +3,7 @@ from django.urls import path
 
 from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaSeiDuplicidadeView, DemandaStatusView, ImportacaoSeiConfirmarView, ImportacaoSeiDetailView, ImportacaoSeiListView, SolicitacoesParticipacaoView, DemandaSolicitarParticipacaoView, SolicitacaoParticipacaoDecisaoView
 from demandas.dashboard import ResumoHomeView
+from demandas.views import DemandaPrazoView
 from agenda.views import CompromissoDetailView, CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
@@ -31,6 +32,7 @@ urlpatterns = [
     path("api/importacoes/sei/<int:pk>/", ImportacaoSeiDetailView.as_view(), name="importacoes-sei-detail"),
     path("api/importacoes/sei/<int:pk>/confirmar/", ImportacaoSeiConfirmarView.as_view(), name="importacoes-sei-confirmar"),
     path("api/demandas/<int:pk>/", DemandaDetailView.as_view(), name="demandas-detail"),
+    path("api/demandas/<int:pk>/prazo/", DemandaPrazoView.as_view(), name="demandas-prazo"),
     path("api/demandas/<int:pk>/status/", DemandaStatusView.as_view(), name="demandas-status"),
     path("api/demandas/<int:pk>/historico/", DemandaComentarioView.as_view(), name="demandas-historico"),
     path("api/demandas/<int:pk>/anexos/", DemandaAnexoListView.as_view(), name="demandas-anexos"),

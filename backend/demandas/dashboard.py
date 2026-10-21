@@ -31,14 +31,13 @@ class ResumoHomeView(APIView):
         user = request.user
         if not user.equipe_id or user.perfil not in {Usuario.Perfil.GESTOR, Usuario.Perfil.INSPETOR}:
             raise exceptions.PermissionDenied("Sua conta não possui acesso a uma equipe.")
-        hoje = timezone.localdate()
         agora = timezone.now()
         demandas = demandas_permitidas(user).filter(status__in=STATUS_ATIVOS)
         base = {
             "perfil": user.perfil,
             "gerado_em": agora,
             "indicadores": {
-                "atrasadas": demandas.filter(prazo__lt=hoje).count(),
+                "atrasadas": demandas.filter(prazo__lt=agora).count(),
                 "criticas": demandas.filter(critica=True).count(),
             },
         }
