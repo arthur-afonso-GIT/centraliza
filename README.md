@@ -74,6 +74,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
 - [Request API contract](docs/contrato-demandas.md) — filters, pagination, access rules, and response format.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
+- [Screencast of the tests](https://drive.google.com/drive/folders/12SYSir8B1HeT4OVfL2s_kWwH_NuxjDJD?usp=drive_link) — Screencast of the tests for the implemented tasks.
 
 ## Screenshots
 
