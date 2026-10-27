@@ -40,6 +40,15 @@ export async function obterDemanda(id: number, signal?: AbortSignal) {
   return resposta<DemandaDetalhe>(await fetch(`/api/demandas/${id}/`, { credentials: 'same-origin', signal }));
 }
 
+export async function alterarPrioridade(id: number, prioridade: DemandaResumo['prioridade']) {
+  const token = await csrfToken();
+  return resposta<DemandaDetalhe>(await fetch(`/api/demandas/${id}/prioridade/`, {
+    method: 'PATCH', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ prioridade }),
+  }));
+}
+
 export async function alterarStatus(id: number, status: StatusDemanda, texto = '') {
   const token = await csrfToken();
   return resposta<DemandaDetalhe>(await fetch(`/api/demandas/${id}/status/`, {

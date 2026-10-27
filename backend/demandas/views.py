@@ -16,6 +16,8 @@ from demandas.anexos import adicionar_anexo, remover_anexo
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
+from demandas.prioridade import alterar_prioridade
+from rest_framework import serializers
 from demandas.services import PrazoDesatualizado, alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
     AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
@@ -370,6 +372,32 @@ class DemandaDetailView(generics.RetrieveAPIView):
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk)).data)
+
+
+class PrioridadeSerializer(serializers.Serializer):
+    prioridade = serializers.ChoiceField(choices=Demanda.Prioridade.choices)
+
+    def validate(self, attrs):
+        if set(self.initial_data) != {"prioridade"}:
+            raise serializers.ValidationError("Envie somente o campo prioridade.")
+        return attrs
+
+
+class DemandaPrioridadeView(APIView):
+    def patch(self, request, pk):
+        get_object_or_404(demandas_permitidas(request.user), pk=pk)
+        serializer = PrioridadeSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        try:
+            alterar_prioridade(demanda_id=pk, usuario=request.user, **serializer.validated_data)
+        except Demanda.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=pk)
+        return Response(DemandaDetalheSerializer(demanda).data)
 
 
 class DemandaStatusView(APIView):
