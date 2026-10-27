@@ -1,5 +1,5 @@
 from django.core.exceptions import PermissionDenied, ValidationError
-from datetime import timedelta
+from datetime import datetime, time, timedelta
 
 from django.db import IntegrityError, transaction
 from django.db.models import QuerySet
@@ -18,9 +18,9 @@ from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
 from demandas.prioridade import alterar_prioridade
 from rest_framework import serializers
-from demandas.services import alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
+from demandas.services import PrazoDesatualizado, alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
-    AlterarStatusSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
+    AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
     AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
     DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer, ImportacaoSeiSerializer,
 )
@@ -135,24 +135,40 @@ class DemandaListView(generics.ListAPIView):
                 raise exceptions.ValidationError({"sem_responsavel": "Use true ou false."})
             queryset = queryset.filter(responsavel__isnull=sem_responsavel == "true")
 
-        limites = {}
-        for parametro, lookup in (("prazo_de", "prazo__gte"), ("prazo_ate", "prazo__lte")):
+        datas = {}
+        for parametro in ("prazo_de", "prazo_ate"):
             valor = self.request.query_params.get(parametro)
             if valor is not None:
-                parsed = parse_date(valor)
+                try:
+                    parsed = parse_date(valor)
+                except ValueError:
+                    parsed = None
                 if parsed is None:
                     raise exceptions.ValidationError({parametro: "Informe uma data no formato AAAA-MM-DD."})
-                limites[lookup] = parsed
-        if limites.get("prazo__gte") and limites.get("prazo__lte") and limites["prazo__gte"] > limites["prazo__lte"]:
+                datas[parametro] = parsed
+        if datas.get("prazo_de") and datas.get("prazo_ate") and datas["prazo_de"] > datas["prazo_ate"]:
             raise exceptions.ValidationError({"prazo_ate": "O fim do período deve ser igual ou posterior ao início."})
-        queryset = queryset.filter(**limites)
+        # Calcula os limites em Python: não exige tabelas de fuso no PostgreSQL
+        # e mantém comparações diretas sobre a coluna indexada.
+        fuso = timezone.get_default_timezone()
+        if "prazo_de" in datas:
+            inicio = timezone.make_aware(datetime.combine(datas["prazo_de"], time.min), fuso)
+            queryset = queryset.filter(prazo__gte=inicio)
+        if "prazo_ate" in datas:
+            try:
+                dia_seguinte = datas["prazo_ate"] + timedelta(days=1)
+            except OverflowError:
+                raise exceptions.ValidationError({"prazo_ate": "Informe uma data anterior a 9999-12-31."}) from None
+            fim = timezone.make_aware(datetime.combine(dia_seguinte, time.min), fuso)
+            queryset = queryset.filter(prazo__lt=fim)
 
         atrasada = self.request.query_params.get("atrasada")
         if atrasada is not None:
             if atrasada not in ["true", "false"]:
                 raise exceptions.ValidationError({"atrasada": "Use true ou false."})
-            hoje = timezone.localdate()
-            queryset = queryset.filter(prazo__lt=hoje) if atrasada == "true" else queryset.filter(prazo__gte=hoje)
+            agora = timezone.now()
+            vencidas = queryset.filter(prazo__lt=agora).exclude(status__in=["concluida", "cancelada"])
+            queryset = vencidas if atrasada == "true" else queryset.exclude(pk__in=vencidas.values("pk"))
         sei_numero = numero_sei_da_consulta(self.request)
         if sei_numero:
             queryset = queryset.filter(sei_numero_normalizado__icontains=sei_numero)
@@ -351,6 +367,8 @@ class DemandaDetailView(generics.RetrieveAPIView):
             editar_demanda(demanda=demanda, usuario=request.user, dados=dict(serializer.validated_data))
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
+        except PrazoDesatualizado as exc:
+            raise ConflitoPrazo(exc.messages[0]) from exc
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk)).data)
@@ -457,3 +475,29 @@ class DemandaAnexoDownloadView(DemandaAnexoView):
         response = FileResponse(anexo.arquivo.open("rb"), as_attachment=True, filename=anexo.nome_original, content_type=anexo.mime_type)
         response["X-Content-Type-Options"] = "nosniff"
         return response
+
+
+class ConflitoPrazo(exceptions.APIException):
+    status_code = status.HTTP_409_CONFLICT
+    default_code = "prazo_desatualizado"
+
+
+class DemandaPrazoView(APIView):
+    def patch(self, request, pk):
+        get_object_or_404(demandas_permitidas(request.user), pk=pk)
+        serializer = AlterarPrazoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        try:
+            alterar_prazo_demanda(demanda_id=pk, usuario=request.user, **serializer.validated_data)
+        except Demanda.DoesNotExist:
+            raise exceptions.NotFound() from None
+        except PermissionDenied as exc:
+            raise exceptions.PermissionDenied(str(exc)) from exc
+        except PrazoDesatualizado as exc:
+            raise ConflitoPrazo(exc.messages[0]) from exc
+        except ValidationError as exc:
+            raise exceptions.ValidationError(exc.message_dict) from exc
+        demanda = get_object_or_404(
+            demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor", "equipes_participantes"), pk=pk,
+        )
+        return Response(DemandaDetalheSerializer(demanda).data)

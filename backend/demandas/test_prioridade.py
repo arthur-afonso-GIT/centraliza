@@ -1,5 +1,6 @@
 from datetime import date
 from unittest.mock import patch
+from django.utils import timezone
 
 from rest_framework.test import APITestCase
 
@@ -84,3 +85,55 @@ class PrioridadeDemandaTest(APITestCase):
                 alterar_prioridade(demanda_id=self.demanda.pk, usuario=self.inspetor, prioridade="alta")
         self.demanda.refresh_from_db()
         self.assertEqual(self.demanda.prioridade, "media")
+
+    def test_criador_em_outra_equipe_nao_impede_alteracao_e_preserva_campos(self):
+        nova = Equipe.objects.create(nome="Nova equipe do criador")
+        Usuario.objects.filter(pk=self.gestor.pk).update(equipe=nova)
+        antes = Demanda.objects.values().get(pk=self.demanda.pk)
+        response = self.client.patch(self.url, {"prioridade": "alta"}, format="json")
+        self.assertEqual(response.status_code, 200, response.data)
+        depois = Demanda.objects.values().get(pk=self.demanda.pk)
+        for campo, valor in antes.items():
+            if campo not in {"prioridade", "atualizada_em"}:
+                self.assertEqual(depois[campo], valor, campo)
+        self.assertEqual(depois["prioridade"], "alta")
+        self.assertGreater(depois["atualizada_em"], antes["atualizada_em"])
+        self.assertEqual(self.demanda.historico.get().autor_id, self.inspetor.pk)
+
+    def test_equipe_ativa_do_responsavel_pode_diferir_da_principal(self):
+        from rest_framework.test import APIClient
+        from usuarios.models import VinculoEquipe
+        principal = Equipe.objects.create(nome="Principal do responsável")
+        Usuario.objects.filter(pk=self.inspetor.pk).update(equipe=principal)
+        VinculoEquipe.objects.create(usuario=self.inspetor, equipe=self.equipe, papel="inspetor", ativo=True)
+        client = APIClient()
+        client.force_login(Usuario.objects.get(pk=self.inspetor.pk))
+        sessao = client.session
+        sessao["equipe_ativa_id"] = self.equipe.pk
+        sessao.save()
+        response = client.patch(self.url, {"prioridade": "baixa"}, format="json")
+        self.assertEqual(response.status_code, 200, response.data)
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.prioridade, "baixa")
+
+    def test_prioridade_invalida_versao_antiga_do_prazo_sem_alterar_prazo(self):
+        instante = self.demanda.atualizada_em
+        prazo = self.demanda.prazo
+        with patch("django.utils.timezone.now", return_value=instante):
+            response = self.client.patch(self.url, {"prioridade": "alta"}, format="json")
+        self.assertEqual(response.status_code, 200, response.data)
+        response = self.client.patch(f"/api/demandas/{self.demanda.pk}/prazo/", {
+            "prazo": "2026-12-02T17:00:00-03:00", "atualizada_em": instante.isoformat(),
+        }, format="json")
+        self.assertEqual(response.status_code, 409)
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.prazo, prazo)
+        self.assertGreater(self.demanda.atualizada_em, instante)
+        response = self.client.patch(f"/api/demandas/{self.demanda.pk}/prazo/", {
+            "prazo": "2026-12-02T17:00:00-03:00", "atualizada_em": self.demanda.atualizada_em.isoformat(),
+        }, format="json")
+        self.assertEqual(response.status_code, 200, response.data)
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.prioridade, "alta")
+        self.assertEqual(timezone.localtime(self.demanda.prazo).hour, 17)
+        self.assertEqual(self.demanda.historico.count(), 2)

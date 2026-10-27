@@ -63,6 +63,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Project website](https://sites.google.com/cesar.school/g3-projetos2/kick-off) — academic context and project presentation.
 - [User stories](https://docs.google.com/document/d/16kUCRMTKoWA6baSPuiB9Tu2W-Y0lDQZfsuvdFY4LZjo/edit?usp=sharing) — proposed user needs.
 - [User cards + activity diagrams](https://trello.com/b/0qDLqz1F)
+- [Pair programming report](https://docs.google.com/document/d/1wDZ5A5P1mDM35wur025545l33LzxW-olVBhIn_phKJM/edit?tab=t.0) — Sprint 1 and Sprint 2 summaries of HU3 (request deadlines, Silvio and Lívia) and HU4 (request priority, Victor and Antônio), including completed work, validation, and next steps.
 - [Backlog](https://docs.google.com/document/d/1xlQBoN-2C-LtF59Zb2HhzJUCzOO1bQ3bnZY_P2gJNrY/edit?usp=sharing) — planned features.
 - [Development plan](docs/plano-desenvolvimento.md) — tasks, validation process, and Graphify usage.
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
@@ -73,6 +74,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
 - [Request API contract](docs/contrato-demandas.md) — filters, pagination, access rules, and response format.
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
+- [Screencast of the tests](https://drive.google.com/drive/folders/12SYSir8B1HeT4OVfL2s_kWwH_NuxjDJD?usp=drive_link) — Screencast of the tests for the implemented tasks.
 
 ## Screenshots
 
