@@ -1,5 +1,21 @@
 const fuso = 'America/Fortaleza';
 
+export function formatarAtraso(prazo: string, agora: number): string {
+  const iso = prazo.includes('T') ? prazo : `${prazo}T23:59:59.999-03:00`;
+  const diferenca = agora - new Date(iso).getTime();
+  if (!Number.isFinite(diferenca) || diferenca <= 0) return '';
+  const minutos = Math.floor(diferenca / 60000);
+  if (minutos === 0) return 'menos de 1 minuto';
+  const dias = Math.floor(minutos / 1440);
+  const horas = Math.floor((minutos % 1440) / 60);
+  const restante = minutos % 60;
+  const partes = [];
+  if (dias) partes.push(`${dias} ${dias === 1 ? 'dia' : 'dias'}`);
+  if (horas) partes.push(`${horas} ${horas === 1 ? 'hora' : 'horas'}`);
+  if (!dias && restante) partes.push(`${restante} ${restante === 1 ? 'minuto' : 'minutos'}`);
+  return partes.join(' e ');
+}
+
 export function prazoParaInput(value: string): string {
   if (!value) return '';
   if (!value.includes('T')) return `${value}T23:59`;
