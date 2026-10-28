@@ -512,3 +512,10 @@ body {
 .capture-page { max-width: 960px; }
 .capture-page > p { max-width: 66ch; line-height: 1.55; color: var(--visat-muted); }
 .capture-form { margin-top: 22px; padding: 24px; border: 1px solid var(--visat-border); border-radius: 8px; background: #fff; }
+
+/* HU 16: atraso identificado por texto, ícone e borda. */
+.demand-card-overdue { border-left: 4px solid #8c1a24; }
+.overdue-duration { display: block; margin-top: 8px; color: #8c1a24; font-size: 13px; font-weight: 600; }
+.detail-overdue { flex-wrap: wrap; padding: 14px; background: #fff3f3; border-radius: 8px; }
+.detail-overdue .overdue-duration { margin-top: 0; }
+.demand-card-top { flex-wrap: wrap; }

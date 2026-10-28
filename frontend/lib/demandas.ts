@@ -1,7 +1,7 @@
 import { prazoParaApi } from './prazos';
 import { ApiError, csrfToken } from './auth';
 
-export type SegmentoDemanda = 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas' | 'concluidas' | 'canceladas';
+export type SegmentoDemanda = 'atrasadas' | 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas' | 'concluidas' | 'canceladas';
 export type StatusDemanda = 'pendente' | 'aceita' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null; equipes_ids: number[]; equipes: Array<{ id: number; nome: string }> };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
@@ -24,7 +24,7 @@ async function resposta<T>(response: Response): Promise<T> {
 }
 
 export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
-  const query = new URLSearchParams(segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'aceitas' ? { status: 'aceita' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : segmento === 'correcao' ? { status: 'em_correcao' } : segmento === 'concluidas' ? { status: 'concluida' } : segmento === 'canceladas' ? { status: 'cancelada' } : { critica: 'true' });
+  const query = new URLSearchParams(segmento === 'atrasadas' ? { atrasada: 'true' } : segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'aceitas' ? { status: 'aceita' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : segmento === 'correcao' ? { status: 'em_correcao' } : segmento === 'concluidas' ? { status: 'concluida' } : segmento === 'canceladas' ? { status: 'cancelada' } : { critica: 'true' });
   query.set('page', String(page)); query.set('page_size', '4');
   if (filtros?.responsavel) query.set('responsavel', filtros.responsavel);
   if (filtros?.seiNumero) query.set('sei_numero', filtros.seiNumero);
