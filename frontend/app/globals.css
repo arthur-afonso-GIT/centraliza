@@ -444,9 +444,6 @@ body {
 .timeline strong, .timeline small { display: block; }
 .timeline small { margin-top: 6px; }
 
-.delivery-summary { margin-bottom: 20px; }
-.delivery-summary label { display: block; margin-bottom: 10px; }
-.delivery-summary textarea { display: block; width: 100%; min-height: 110px; resize: vertical; border: 1px solid var(--visat-border); border-radius: 6px; padding: 12px; font: inherit; }
 
 /* Task-first layout refinements */
 .login { grid-template-columns: minmax(320px, 42%) minmax(0, 1fr); }

@@ -55,6 +55,11 @@ As permissões e origens válidas estão na
 [matriz do fluxo operacional](fluxo-demandas.md). A operação bloqueia a linha,
 altera a demanda e cria o evento na mesma transação.
 
+O detalhe da demanda inclui `status_disponiveis`, com os destinos que o usuário
+da sessão pode escolher a partir do status atual e se cada um exige texto
+(`[{ "status": "aceita", "exige_texto": false }]`). Veja a
+[HU de alteração de status](hu-alterar-status.md).
+
 ## Gerenciamento pelo gestor
 
 `POST /api/demandas/` cria uma demanda com `titulo`, `sei_numero`, `descricao`, `origem`,

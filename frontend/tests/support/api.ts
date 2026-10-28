@@ -9,6 +9,8 @@ export async function instalarApi(page: Page) {
     { id: 2, username: 'demo.inspetor.1', nome: 'Inspetor de teste', first_name: 'Inspetor', last_name: 'de teste', email: '', perfil: 'inspetor', is_active: true, pode_administrar_equipe: false },
   ];
   let demandStatus = 'pendente';
+  const opcoesInspetor: Record<string, Array<{ status: string; exige_texto: boolean }>> = { pendente: [{ status: 'aceita', exige_texto: false }], aceita: [{ status: 'em_andamento', exige_texto: false }], em_andamento: [{ status: 'aguardando_avaliacao', exige_texto: true }], em_correcao: [{ status: 'aguardando_avaliacao', exige_texto: true }] };
+  const statusDisponiveis = () => perfil === 'inspetor' ? opcoesInspetor[demandStatus] ?? [] : [];
   const history: Array<Record<string, unknown>> = [];
   let attachments: Array<Record<string, unknown>> = [];
   let seiPreview: Record<string, unknown> | null = null;
@@ -124,16 +126,16 @@ export async function instalarApi(page: Page) {
       if (detail[1] === '404') return route.fulfill({ status: 404, json: {} });
       if (request.method() === 'PATCH') {
         const body = request.postDataJSON() as Record<string, unknown>;
-        return route.fulfill({ json: { id: Number(detail[1]), titulo: body.titulo ?? 'Inspeção demonstrativa 1', sei_numero: body.sei_numero ?? 'PROCESSO-FICTICIO-001', descricao: body.descricao ?? 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: body.origem ?? 'MPT', status: demandStatus, prioridade: body.prioridade ?? 'alta', prazo: body.prazo ?? '2026-09-20', critica: body.critica ?? true, responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: body.responsavel_id === 3 ? 'Segundo inspetor' : 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
+        return route.fulfill({ json: { id: Number(detail[1]), titulo: body.titulo ?? 'Inspeção demonstrativa 1', sei_numero: body.sei_numero ?? 'PROCESSO-FICTICIO-001', descricao: body.descricao ?? 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: body.origem ?? 'MPT', status: demandStatus, prioridade: body.prioridade ?? 'alta', prazo: body.prazo ?? '2026-09-20', critica: body.critica ?? true, responsavel: body.responsavel_id ? { id: body.responsavel_id, nome: body.responsavel_id === 3 ? 'Segundo inspetor' : 'Inspetor de teste' } : null, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history, status_disponiveis: statusDisponiveis() } });
       }
-      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
+      return route.fulfill({ json: { id: Number(detail[1]), titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T12:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history, status_disponiveis: statusDisponiveis() } });
     }
     const status = url.pathname.match(/^\/api\/demandas\/(\d+)\/status\/$/);
     if (status && request.method() === 'PATCH') {
       const previous = demandStatus;
       demandStatus = (request.postDataJSON() as { status: string }).status;
       history.unshift({ id: history.length + 1, tipo: 'status_alterado', autor: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste' }, criado_em: '2026-09-14T13:00:00Z', status_anterior: previous, status_novo: demandStatus, texto: (request.postDataJSON() as { texto?: string }).texto ?? '' });
-      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
+      return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history, status_disponiveis: statusDisponiveis() } });
     }
     const comment = url.pathname.match(/^\/api\/demandas\/(\d+)\/historico\/$/);
     if (comment && request.method() === 'POST') {

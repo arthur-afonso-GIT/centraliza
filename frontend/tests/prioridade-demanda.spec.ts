@@ -7,7 +7,7 @@ test('inspetor altera prioridade, vê histórico e mantém o valor ao recarregar
   let prioridade = 'alta';
   let falhar = true;
   const historico: Array<Record<string, unknown>> = [];
-  const demanda = () => ({ id: 1, titulo: 'Demanda HU4', sei_numero: 'HU4-001', descricao: '', origem: '', status: 'pendente', prioridade, prazo: '2026-12-01', critica: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-20T12:00:00Z', atualizada_em: '2026-10-20T12:00:00Z', historico });
+  const demanda = () => ({ id: 1, titulo: 'Demanda HU4', sei_numero: 'HU4-001', descricao: '', origem: '', status: 'pendente', prioridade, prazo: '2026-12-01', critica: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-20T12:00:00Z', atualizada_em: '2026-10-20T12:00:00Z', historico, status_disponiveis: [] });
   await page.route('**/api/demandas/1/', route => route.fulfill({ json: demanda() }));
   await page.route('**/api/demandas/1/prioridade/', route => {
     expect(route.request().method()).toBe('PATCH');
@@ -40,7 +40,7 @@ test('gestor continua usando a edição geral', async ({ page }) => {
 for (const status of ['concluida', 'cancelada']) {
   test(`inspetor não altera prioridade de demanda ${status}`, async ({ page }) => {
     await page.route('**/api/demandas/1/', async route => {
-      await route.fulfill({ json: { id: 1, titulo: 'Encerrada', status, prioridade: 'alta', prazo: '2026-12-01', responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes: [], historico: [], criada_em: '2026-10-20T12:00:00Z', atualizada_em: '2026-10-20T12:00:00Z' } });
+      await route.fulfill({ json: { id: 1, titulo: 'Encerrada', status, prioridade: 'alta', prazo: '2026-12-01', responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes: [], historico: [], status_disponiveis: [], criada_em: '2026-10-20T12:00:00Z', atualizada_em: '2026-10-20T12:00:00Z' } });
     });
     await entrarComo(page, 'inspetor');
     await page.goto('/demandas/1');

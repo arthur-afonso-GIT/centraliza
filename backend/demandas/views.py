@@ -95,7 +95,7 @@ class DemandaListView(generics.ListAPIView):
         except (ValidationError, IntegrityError) as exc:
             raise exceptions.ValidationError({"sei_numero": "Este número de processo SEI já está cadastrado ou é inválido."}) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=demanda.pk)
-        return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
+        return Response(DemandaDetalheSerializer(demanda, context={"request": request}).data, status=status.HTTP_201_CREATED)
 
     def get_queryset(self) -> QuerySet[Demanda]:
         user = self.request.user
@@ -350,7 +350,7 @@ class ImportacaoSeiConfirmarView(APIView):
         importacao.confirmada_em = timezone.now()
         importacao.save(update_fields=["status", "demanda", "conteudo_bruto", "confirmada_em"])
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=demanda.pk)
-        return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
+        return Response(DemandaDetalheSerializer(demanda, context={"request": request}).data, status=status.HTTP_201_CREATED)
 
 
 class DemandaDetailView(generics.RetrieveAPIView):
@@ -371,7 +371,7 @@ class DemandaDetailView(generics.RetrieveAPIView):
             raise ConflitoPrazo(exc.messages[0]) from exc
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
-        return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk)).data)
+        return Response(DemandaDetalheSerializer(self.get_queryset().get(pk=pk), context={"request": request}).data)
 
 
 class PrioridadeSerializer(serializers.Serializer):
@@ -397,7 +397,7 @@ class DemandaPrioridadeView(APIView):
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=pk)
-        return Response(DemandaDetalheSerializer(demanda).data)
+        return Response(DemandaDetalheSerializer(demanda, context={"request": request}).data)
 
 
 class DemandaStatusView(APIView):
@@ -417,7 +417,7 @@ class DemandaStatusView(APIView):
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=pk)
-        return Response(DemandaDetalheSerializer(demanda).data)
+        return Response(DemandaDetalheSerializer(demanda, context={"request": request}).data)
 
 
 class DemandaComentarioView(APIView):
@@ -500,4 +500,4 @@ class DemandaPrazoView(APIView):
         demanda = get_object_or_404(
             demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor", "equipes_participantes"), pk=pk,
         )
-        return Response(DemandaDetalheSerializer(demanda).data)
+        return Response(DemandaDetalheSerializer(demanda, context={"request": request}).data)
