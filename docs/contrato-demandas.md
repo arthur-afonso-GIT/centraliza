@@ -176,3 +176,38 @@ sem revalidar a equipe principal atual do criador histórico ou do responsável;
 a permissão é conferida com a equipe ativa e o responsável da demanda.
 
 Evidências e comandos reproduzíveis: [validação da HU3](validacao-hu3.md).
+
+## HU18 — Registrar andamento
+
+`POST /api/demandas/{id}/andamentos/` exige sessão e CSRF. Somente o inspetor
+responsável, com acesso à equipe da demanda, pode registrar durante os estados
+`em_andamento` ou `em_correcao`. O registro não muda o status da demanda.
+
+```json
+{
+  "realizado": "Visita realizada e entrevistas concluídas.",
+  "pendente": "Receber o laudo técnico."
+}
+```
+
+Ambos os campos são obrigatórios, removem espaços nas extremidades e aceitam
+até 2.000 caracteres cada. Quando não há pendências, o inspetor pode informar
+“Nenhuma pendência”. Conteúdo vazio, ausente ou acima do limite retorna 400;
+gestor não pode registrar (403); demandas fora do acesso do usuário retornam
+404; sessão ausente retorna 401.
+
+A resposta 201 contém o detalhe atualizado da demanda. O histórico inclui um
+evento `tipo: "andamento"`, com `realizado`, `pendente`, `autor` e `criado_em`.
+Os campos `texto`, `status_anterior` e `status_novo` ficam vazios nesse evento.
+A gravação do evento e a atualização de `atualizada_em` são atômicas.
+
+O inspetor responsável e gestores das equipes participantes consultam os
+registros por `GET /api/demandas/{id}/`, mais recentes primeiro. Os registros
+continuam disponíveis após o encerramento e não oferecem edição ou exclusão.
+A tela mantém o texto preenchido quando o salvamento falha.
+
+Ao atualizar uma instalação existente, execute `uv run python manage.py migrate`
+no backend para aplicar a migração `0014_registro_andamento` antes de usar a tela.
+
+Validação: `uv run python manage.py test demandas.test_andamento` no backend e
+`npx playwright test tests/andamento-demanda.spec.ts` no frontend.

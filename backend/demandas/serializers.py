@@ -46,7 +46,7 @@ class EventoDemandaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EventoDemanda
-        fields = ["id", "tipo", "autor", "criado_em", "status_anterior", "status_novo", "texto"]
+        fields = ["id", "tipo", "autor", "criado_em", "status_anterior", "status_novo", "texto", "realizado", "pendente"]
 
 
 class DemandaDetalheSerializer(DemandaSerializer):
@@ -107,6 +107,11 @@ class AlterarStatusSerializer(serializers.Serializer):
 
 class CriarComentarioSerializer(serializers.Serializer):
     texto = serializers.CharField(max_length=2000, allow_blank=False, trim_whitespace=True)
+
+
+class RegistrarAndamentoSerializer(serializers.Serializer):
+    realizado = serializers.CharField(max_length=2000, allow_blank=False, trim_whitespace=True)
+    pendente = serializers.CharField(max_length=2000, allow_blank=False, trim_whitespace=True)
 
 
 class AnexoDemandaSerializer(serializers.ModelSerializer):

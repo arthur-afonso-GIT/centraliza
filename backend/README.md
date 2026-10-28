@@ -13,6 +13,11 @@ paginada de demandas com acesso por equipe e perfil.
 - `PATCH /api/demandas/{id}/status/` para o inspetor responsável executar a
   próxima transição permitida.
 - `POST /api/demandas/{id}/historico/` para adicionar um comentário simples.
+- `POST /api/demandas/{id}/andamentos/` para o inspetor responsável registrar
+  `realizado` e `pendente` (obrigatórios, até 2.000 caracteres cada) durante
+  execução ou correção. Retorna o detalhe atualizado com status HTTP 201.
+  O andamento é consultado no histórico, com autor e data, sem mudar o status
+  da demanda e sem permitir edição ou exclusão do registro.
 - `GET /api/compromissos/?inicio={ISO}&fim={ISO}` para listar compromissos
   sobrepostos ao intervalo autorizado, com horários em `America/Fortaleza`.
 

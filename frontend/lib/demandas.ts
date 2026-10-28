@@ -5,7 +5,7 @@ export type SegmentoDemanda = 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao
 export type StatusDemanda = 'pendente' | 'aceita' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
 export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null; equipes_ids: number[]; equipes: Array<{ id: number; nome: string }> };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
-export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario' | 'anexo_adicionado' | 'anexo_removido'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
+export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario' | 'andamento' | 'anexo_adicionado' | 'anexo_removido'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string; realizado: string; pendente: string };
 export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
 export type AnexoDemanda = { id: number; nome_original: string; mime_type: string; tamanho: number; autor: { id: number; nome: string }; criado_em: string; download_url: string };
 export type Inspetor = { id: number; nome: string };
@@ -64,6 +64,15 @@ export async function adicionarComentario(id: number, texto: string) {
     method: 'POST', credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
     body: JSON.stringify({ texto }),
+  }));
+}
+
+export async function registrarAndamento(id: number, realizado: string, pendente: string) {
+  const token = await csrfToken();
+  return resposta<DemandaDetalhe>(await fetch(`/api/demandas/${id}/andamentos/`, {
+    method: 'POST', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ realizado, pendente }),
   }));
 }
 

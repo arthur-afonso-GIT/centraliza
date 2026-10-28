@@ -20,7 +20,7 @@ from demandas.prioridade import alterar_prioridade
 from rest_framework import serializers
 from demandas.services import PrazoDesatualizado, alterar_prazo_demanda, alterar_status_demanda, criar_demanda, editar_demanda, solicitar_participacao, decidir_participacao
 from demandas.serializers import (
-    AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer,
+    AlterarStatusSerializer, AlterarPrazoSerializer, CriarComentarioSerializer, DemandaDetalheSerializer, RegistrarAndamentoSerializer,
     AnexoDemandaSerializer, CamposImportacaoSeiSerializer, CriarImportacaoSeiSerializer,
     DemandaSerializer, EventoDemandaSerializer, GerenciarDemandaSerializer, ImportacaoSeiSerializer,
 )
@@ -418,6 +418,28 @@ class DemandaStatusView(APIView):
             raise exceptions.ValidationError(exc.message_dict) from exc
         demanda = demandas_permitidas(request.user).select_related("responsavel").prefetch_related("historico__autor").get(pk=pk)
         return Response(DemandaDetalheSerializer(demanda).data)
+
+
+class DemandaAndamentoView(APIView):
+    @transaction.atomic
+    def post(self, request, pk):
+        # Bloqueie a demanda sem DISTINCT (incompatível com FOR UPDATE no PostgreSQL).
+        demanda = get_object_or_404(
+            Demanda.objects.select_for_update().filter(pk__in=demandas_permitidas(request.user).values("pk")),
+            pk=pk,
+        )
+        if request.user.perfil != "inspetor" or demanda.responsavel_id != request.user.id:
+            raise exceptions.PermissionDenied("Somente o inspetor responsável pode registrar o andamento.")
+        if demanda.status not in {Demanda.Status.EM_ANDAMENTO, Demanda.Status.EM_CORRECAO}:
+            raise exceptions.ValidationError({"detail": "Registre o andamento enquanto a demanda estiver em execução ou em correção."})
+        serializer = RegistrarAndamentoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        EventoDemanda.objects.create(
+            demanda=demanda, tipo=EventoDemanda.Tipo.ANDAMENTO,
+            autor=request.user, **serializer.validated_data,
+        )
+        demanda.save(update_fields=["atualizada_em"])
+        return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
 
 
 class DemandaComentarioView(APIView):
