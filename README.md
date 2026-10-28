@@ -76,9 +76,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 - [Screencast of the tests](https://drive.google.com/drive/folders/12SYSir8B1HeT4OVfL2s_kWwH_NuxjDJD?usp=drive_link) — Screencast of the tests for the implemented tasks.
 
-## Screenshots
 
-The following captures show the current authenticated workspace and its main modules.
 
 ### Home
 
@@ -235,6 +233,14 @@ For code exploration, run graphify explain Workspace from the repository root. A
 ## Product direction
 
 The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, and managed notices. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, notifications, and chat remain later product increments.
+
+
+##Sprints 
+
+##Sprint 01
+<img width="1351" height="629" alt="image" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+
+
 
 ## Team
 
