@@ -241,7 +241,7 @@ The operational MVP now covers the complete request lifecycle, protected evidenc
 | Member | Role | Contact |
 | --- | --- | --- |
 | Antônio Marcos Soares de Araujo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/antonio-m-29aa4a3b0/) |
-| Arthur Florêncio Afonso de Albuquerque | Tech Leader | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
+| Arthur Florêncio Afonso de Albuquerque | Tech Leader · Product Owner · Developer | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
 | Cecília de Moraes Andrade Oliveira | Quality Assurance | [LinkedIn](https://www.linkedin.com/in/ceciliademoraesa) |
 | Lívia Cabral da Mata Buonora | Developer | [LinkedIn](https://www.linkedin.com/in/l%C3%ADvia-buonora-381294365/) |
 | Luiza Beltrão Pereira de Melo | Quality Assurance  | [LinkedIn](https://www.linkedin.com/in/luiza-beltr%C3%A3o-pereira-de-melo/) |
