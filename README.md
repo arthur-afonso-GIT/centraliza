@@ -56,6 +56,7 @@ The product is designed around two roles. The API currently restricts managers t
 
 The planned workflow is assignment, acceptance, execution, management review, and completion. Requests requiring corrections return to execution before a new review.
 
+
 ## Project documentation
 
 The interface and supporting project documents use Brazilian Portuguese:
@@ -151,6 +152,54 @@ The server is a modular Django application backed by PostgreSQL. It currently en
 
 With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) for its method and limitations.
 
+## Sprint 01
+
+**21 completed user stories**, grouped into six epics. Source: [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), checked on October 29, 2026.
+
+### Epic 1 — Request intake and assignment
+
+- [HU 1 — Create requests]
+- [HU 2 — Assign requests to inspectors]
+- [HU 21 — Reassign a request]
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 3 — Set a request deadline]
+- [HU 4 — Set a request priority]
+- [HU 5 — View pending requests]
+- [HU 6 — View request details]
+- [HU 15 — View team requests]
+
+### Epic 3 — Execution, evidence, and traceability
+
+- [HU 7 — Accept a request]
+- [HU 8 — Start request execution]
+- [HU 9 — Update a request's status]
+- [HU 10 — Attach files]
+- [HU 19 — Add request notes]
+- [HU 20 — View request history]
+
+### Epic 4 — Review and quality assurance
+
+- [HU 12 — Submit a request for review]
+- [HU 13 — Approve a completed request]
+- [HU 14 — Request corrections]
+
+### Epic 5 — Team calendar and scheduling visibility
+
+- [HU 23 — View the team calendar]
+- [HU 24 — View field appointments]
+- [HU 25 — View meetings]
+
+### Epic 6 — Notice reading status
+
+- [HU 30 — Mark a notice as read]
+
+### Sprint evidence
+
+<img width="1351" height="629" alt="image" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+<img width="592" height="558" alt="image" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
+
 ## Local development
 
 Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`.
@@ -233,14 +282,6 @@ For code exploration, run graphify explain Workspace from the repository root. A
 ## Product direction
 
 The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, and managed notices. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, notifications, and chat remain later product increments.
-
-
-##Sprints 
-
-##Sprint 01
-<img width="1351" height="629" alt="image" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
-<img width="592" height="558" alt="image" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
-
 
 
 ## Team
