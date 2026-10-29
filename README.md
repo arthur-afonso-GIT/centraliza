@@ -152,54 +152,6 @@ The server is a modular Django application backed by PostgreSQL. It currently en
 
 With 1,000 demonstration records, the local sequential request-list benchmark measured a 14.79 ms p95 and a constant four SQL queries per request. See the [request-list validation](docs/validacao-semana-2.md) for its method and limitations.
 
-## Sprint 01
-
-**21 completed user stories**, grouped into six epics. Source: [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), checked on October 29, 2026.
-
-### Epic 1 — Request intake and assignment
-
-- [HU 1 — Create requests]
-- [HU 2 — Assign requests to inspectors]
-- [HU 21 — Reassign a request]
-
-### Epic 2 — Planning and workload visibility
-
-- [HU 3 — Set a request deadline]
-- [HU 4 — Set a request priority]
-- [HU 5 — View pending requests]
-- [HU 6 — View request details]
-- [HU 15 — View team requests]
-
-### Epic 3 — Execution, evidence, and traceability
-
-- [HU 7 — Accept a request]
-- [HU 8 — Start request execution]
-- [HU 9 — Update a request's status]
-- [HU 10 — Attach files]
-- [HU 19 — Add request notes]
-- [HU 20 — View request history]
-
-### Epic 4 — Review and quality assurance
-
-- [HU 12 — Submit a request for review]
-- [HU 13 — Approve a completed request]
-- [HU 14 — Request corrections]
-
-### Epic 5 — Team calendar and scheduling visibility
-
-- [HU 23 — View the team calendar]
-- [HU 24 — View field appointments]
-- [HU 25 — View meetings]
-
-### Epic 6 — Notice reading status
-
-- [HU 30 — Mark a notice as read]
-
-### Sprint evidence
-
-<img width="1351" height="629" alt="image" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
-<img width="592" height="558" alt="image" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
-
 ## Local development
 
 Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`.
@@ -295,3 +247,34 @@ The operational MVP now covers the complete request lifecycle, protected evidenc
 | Luiza Beltrão Pereira de Melo | Quality Assurance  | [LinkedIn](https://www.linkedin.com/in/luiza-beltr%C3%A3o-pereira-de-melo/) |
 | Silvio Ronaldo de Lima Lobo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/silvio-lobo-a836b6393/) |
 | Victor Bacelar Palazzin | Developer | [LinkedIn](https://www.linkedin.com/in/victor-bacelar-palazzin-a444a23b0/) |
+
+## Sprint 01 — Delivered work
+
+The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) marks the following 21 user-story cards complete as of October 29, 2026. They describe the capabilities available in the MVP; the development completed during this sprint is detailed below.
+
+### User stories
+
+| Area | Completed stories |
+| --- | --- |
+| Intake and assignment | [HU 1 — Create requests](https://trello.com/c/PP6Srufr), [HU 2 — Assign an inspector](https://trello.com/c/20UtshZM), [HU 21 — Reassign a request](https://trello.com/c/ZsAP8Nxy) |
+| Planning and visibility | [HU 3 — Set a deadline](https://trello.com/c/QzEjh9j8), [HU 4 — Set a priority](https://trello.com/c/dwC60dL3), [HU 5 — View pending requests](https://trello.com/c/oTczSDYh), [HU 6 — View request details](https://trello.com/c/WTH98bR8), [HU 15 — View team requests](https://trello.com/c/r8QbrIBr) |
+| Execution and evidence | [HU 7 — Accept a request](https://trello.com/c/AHWtBINM), [HU 8 — Start execution](https://trello.com/c/Kb2d6Uo0), [HU 9 — Update status](https://trello.com/c/3irjFpoO), [HU 10 — Attach files](https://trello.com/c/dZpusIoG), [HU 19 — Add notes](https://trello.com/c/doT7QbZ9), [HU 20 — View history](https://trello.com/c/AOki27tj) |
+| Review | [HU 12 — Submit for review](https://trello.com/c/oK3QeUrP), [HU 13 — Approve a request](https://trello.com/c/IcEuxZLE), [HU 14 — Request corrections](https://trello.com/c/yJ50KhDD) |
+| Calendar | [HU 23 — View team calendar](https://trello.com/c/gEAkYZZx), [HU 24 — View appointments](https://trello.com/c/n9lZUCNn), [HU 25 — View meetings](https://trello.com/c/zS9MQeJh) |
+| Notices | [HU 30 — Mark a notice as read](https://trello.com/c/iYo4UpLH) |
+
+### Development completed in Sprint 01
+
+- **HU 3 — Deadline rules:** [PR #1](https://github.com/arthur-afonso-GIT/centraliza/pull/1) added date-and-time deadlines, authorized changes by managers and assigned inspectors, migration of existing dates, deadline history, filters, and regression tests. The [Sprint 01 Trello card](https://trello.com/c/erYbOOBp) is complete.
+- **HU 4 — Priority rules:** [PR #2](https://github.com/arthur-afonso-GIT/centraliza/pull/2) added the inspector's priority control, role and request-state checks, history, and backend and browser tests. The [Sprint 01 Trello card](https://trello.com/c/vRTkq5AX) is complete.
+- **HU 16 — Overdue requests:** [PR #3](https://github.com/arthur-afonso-GIT/centraliza/pull/3) added overdue indicators and elapsed-time display to the request list and detail, plus tests. The [Sprint 01 delivery card](https://trello.com/c/Qy3IoWrx) is complete; the separate general HU 16 card has not yet been marked complete on Trello.
+- **HU 9 — Status updates:** the [status-control change](https://github.com/arthur-afonso-GIT/centraliza/commit/7280fb576d7481a5736e8aff6c839e57c0ce1521) added a dedicated inspector control driven by allowed API transitions, including delivery-summary validation and immediate updates to the request history. The [Sprint 01 rules card](https://trello.com/c/MhxHBBsq) remains open, so its final business-rule review is not recorded as complete.
+
+Sprint 01 also produced API contracts, migrations, automated backend and browser coverage, and [pair-programming notes](https://docs.google.com/document/d/1wDZ5A5P1mDM35wur025545l33LzxW-olVBhIn_phKJM/edit?tab=t.0). The [sprint plan](docs/plano-acao-sr2.md) still calls for an integrated smoke test against the real frontend, API, and PostgreSQL; the individual feature tests do not replace that acceptance check.
+
+The [MVP Sprint 1 milestone](https://trello.com/c/vWy50e6j) is marked complete on Trello. The repository also contains the initial SEI capture demonstration: a Brave extension reads fields from fictitious process and document pages, opens a Centraliza review tab, and requires manager confirmation before creating a request. This is a local prototype, not an integration with the institutional SEI.
+
+### Sprint evidence
+
+<img width="1351" height="629" alt="Sprint 01 Trello overview" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+<img width="592" height="558" alt="Sprint 01 delivery evidence" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
