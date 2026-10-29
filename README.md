@@ -250,14 +250,14 @@ The operational MVP now covers the complete request lifecycle, protected evidenc
 
 ## Sprint 01 — Delivered work
 
-The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) marks the following 21 user-story cards complete as of October 29, 2026. They describe the capabilities available in the MVP; the development completed during this sprint is detailed below.
+The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) has completed cards for the following 22 distinct user stories as of October 29, 2026. This includes HU 16's completed Sprint 01 delivery card; its separate card in the general user-story list is still open. The development completed during this sprint is detailed below.
 
 ### User stories
 
 | Area | Completed stories |
 | --- | --- |
 | Intake and assignment | [HU 1 — Create requests](https://trello.com/c/PP6Srufr), [HU 2 — Assign an inspector](https://trello.com/c/20UtshZM), [HU 21 — Reassign a request](https://trello.com/c/ZsAP8Nxy) |
-| Planning and visibility | [HU 3 — Set a deadline](https://trello.com/c/QzEjh9j8), [HU 4 — Set a priority](https://trello.com/c/dwC60dL3), [HU 5 — View pending requests](https://trello.com/c/oTczSDYh), [HU 6 — View request details](https://trello.com/c/WTH98bR8), [HU 15 — View team requests](https://trello.com/c/r8QbrIBr) |
+| Planning and visibility | [HU 3 — Set a deadline](https://trello.com/c/QzEjh9j8), [HU 4 — Set a priority](https://trello.com/c/dwC60dL3), [HU 5 — View pending requests](https://trello.com/c/oTczSDYh), [HU 6 — View request details](https://trello.com/c/WTH98bR8), [HU 15 — View team requests](https://trello.com/c/r8QbrIBr), [HU 16 — Track overdue requests](https://trello.com/c/Qy3IoWrx) |
 | Execution and evidence | [HU 7 — Accept a request](https://trello.com/c/AHWtBINM), [HU 8 — Start execution](https://trello.com/c/Kb2d6Uo0), [HU 9 — Update status](https://trello.com/c/3irjFpoO), [HU 10 — Attach files](https://trello.com/c/dZpusIoG), [HU 19 — Add notes](https://trello.com/c/doT7QbZ9), [HU 20 — View history](https://trello.com/c/AOki27tj) |
 | Review | [HU 12 — Submit for review](https://trello.com/c/oK3QeUrP), [HU 13 — Approve a request](https://trello.com/c/IcEuxZLE), [HU 14 — Request corrections](https://trello.com/c/yJ50KhDD) |
 | Calendar | [HU 23 — View team calendar](https://trello.com/c/gEAkYZZx), [HU 24 — View appointments](https://trello.com/c/n9lZUCNn), [HU 25 — View meetings](https://trello.com/c/zS9MQeJh) |
