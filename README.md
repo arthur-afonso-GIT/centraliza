@@ -239,6 +239,7 @@ The operational MVP now covers the complete request lifecycle, protected evidenc
 
 ##Sprint 01
 <img width="1351" height="629" alt="image" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+<img width="592" height="558" alt="image" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
 
 
 
