@@ -292,12 +292,6 @@ The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) has comp
 
 - [HU 30 — Mark a notice as read](https://trello.com/c/iYo4UpLH)
 
-### Development completed in Sprint 01
-
-- **HU 3 — Deadline rules:** [PR #1](https://github.com/arthur-afonso-GIT/centraliza/pull/1) added date-and-time deadlines, authorized changes by managers and assigned inspectors, migration of existing dates, deadline history, filters, and regression tests. The [Sprint 01 Trello card](https://trello.com/c/erYbOOBp) is complete.
-- **HU 4 — Priority rules:** [PR #2](https://github.com/arthur-afonso-GIT/centraliza/pull/2) added the inspector's priority control, role and request-state checks, history, and backend and browser tests. The [Sprint 01 Trello card](https://trello.com/c/vRTkq5AX) is complete.
-- **HU 16 — Overdue requests:** [PR #3](https://github.com/arthur-afonso-GIT/centraliza/pull/3) added overdue indicators and elapsed-time display to the request list and detail, plus tests. The [Sprint 01 delivery card](https://trello.com/c/Qy3IoWrx) is complete; the separate general HU 16 card has not yet been marked complete on Trello.
-- **HU 9 — Status updates:** the [status-control change](https://github.com/arthur-afonso-GIT/centraliza/commit/7280fb576d7481a5736e8aff6c839e57c0ce1521) added a dedicated inspector control driven by allowed API transitions, including delivery-summary validation and immediate updates to the request history. The [Sprint 01 rules card](https://trello.com/c/MhxHBBsq) remains open, so its final business-rule review is not recorded as complete.
 
 Sprint 01 also produced API contracts, migrations, automated backend and browser coverage, and [pair-programming notes](https://docs.google.com/document/d/1wDZ5A5P1mDM35wur025545l33LzxW-olVBhIn_phKJM/edit?tab=t.0). The [sprint plan](docs/plano-acao-sr2.md) still calls for an integrated smoke test against the real frontend, API, and PostgreSQL; the individual feature tests do not replace that acceptance check.
 
