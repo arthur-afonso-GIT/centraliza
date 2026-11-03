@@ -6,6 +6,12 @@
 *.pyc
 backend/.env
 backend/.data/
+backend/smoke-server.log
+backend/smoke-server.error.log
+frontend/smoke-server.log
+frontend/smoke-server.error.log
+frontend/playwright-report-smoke/
+frontend/test-results-smoke/
 
 # Metadados locais do Graphify; graph.json é versionado
 graphify-out/cache/

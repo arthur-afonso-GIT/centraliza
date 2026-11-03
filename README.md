@@ -220,6 +220,29 @@ npm run build
 npm test
 ```
 
+### Integrated smoke test
+
+The ordinary Playwright suite uses an in-browser API simulation so frontend
+regression remains fast and deterministic. The integrated smoke test is a
+separate acceptance check: it uses the real frontend proxy, Django API and a
+disposable PostgreSQL database, without intercepting `/api`.
+
+From the repository root, with ports `3000` and `8000` free, run:
+
+```powershell
+.\scripts\smoke-integrado.ps1
+```
+
+The script locates PostgreSQL in `.local/postgresql` or in `PATH`, starts the
+local instance when necessary, recreates only `centraliza_smoke`, applies the
+migrations and fictitious seed, starts both application services, runs the
+browser flow and cleans up its processes. The disposable database remains
+available for diagnosis and is recreated at the start of the next run. Failures retain the
+Playwright trace, screenshot and video under `frontend/test-results-smoke`.
+
+The decision to use local PostgreSQL without Docker or Supabase at this stage
+is recorded in [ADR 0001](docs/adr/0001-postgresql-local-sem-docker.md).
+
 Browser tests use an installed Microsoft Edge. Adjust the channel in frontend/playwright.config.ts for another environment. Generated starter components in components/ui and hooks/use-mobile.ts are excluded from the application lint configuration.
 
 For code exploration, run graphify explain Workspace from the repository root. After source changes, run graphify update . --no-cluster to refresh graphify-out/graph.json. This mode analyzes code locally and does not send it to an external model.
