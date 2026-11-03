@@ -64,6 +64,13 @@ O inspetor responsável altera o status pelo card “Status da demanda”, que
 oferece só as opções desta matriz disponíveis para ele. Detalhes em
 [hu-alterar-status.md](hu-alterar-status.md).
 
+## Conclusão da execução
+
+O inspetor registra que finalizou as atividades mudando o status para
+“Aguardando avaliação” (opção “Execução concluída”). A demanda sai das
+pendências do inspetor no painel inicial, mas só fica Concluída após a
+aprovação do gestor. Detalhes em [hu-concluir-execucao.md](hu-concluir-execucao.md).
+
 As etapas aparecem no detalhe e cada estado tem identificação textual. A lista
 inclui filtros para aceitas, em andamento, em avaliação, em correção, concluídas
 e canceladas, além das pendentes e críticas.

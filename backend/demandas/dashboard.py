@@ -25,6 +25,12 @@ STATUS_ATIVOS = (
     Demanda.Status.EM_CORRECAO,
 )
 
+# Pendências do inspetor: o que ainda depende dele. Após concluir a execução
+# (envio para avaliação), a demanda sai desta lista e passa a depender do gestor.
+STATUS_PENDENCIAS_INSPETOR = tuple(
+    status for status in STATUS_ATIVOS if status != Demanda.Status.AGUARDANDO_AVALIACAO
+)
+
 
 class ResumoHomeView(APIView):
     def get(self, request):
@@ -32,7 +38,8 @@ class ResumoHomeView(APIView):
         if not user.equipe_id or user.perfil not in {Usuario.Perfil.GESTOR, Usuario.Perfil.INSPETOR}:
             raise exceptions.PermissionDenied("Sua conta não possui acesso a uma equipe.")
         agora = timezone.now()
-        demandas = demandas_permitidas(user).filter(status__in=STATUS_ATIVOS)
+        status_lista = STATUS_ATIVOS if user.perfil == Usuario.Perfil.GESTOR else STATUS_PENDENCIAS_INSPETOR
+        demandas = demandas_permitidas(user).filter(status__in=status_lista)
         base = {
             "perfil": user.perfil,
             "gerado_em": agora,

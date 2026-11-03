@@ -45,7 +45,7 @@ class ResumoHomeTest(APITestCase):
         self.assertEqual(response.data["indicadores"]["atrasadas"], 1)
         self.assertEqual(response.data["indicadores"]["nao_iniciadas"], 1)
         self.assertNotIn("carga_inspetores", response.data)
-        self.assertEqual({item["id"] for item in response.data["proximas_demandas"]}, {self.atrasada.id, self.atrasada.id + 2})
+        self.assertEqual({item["id"] for item in response.data["proximas_demandas"]}, {self.atrasada.id})
 
     def test_exige_sessao(self):
         self.assertEqual(self.client.get("/api/home/resumo/").status_code, 401)
