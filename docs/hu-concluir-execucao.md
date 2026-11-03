@@ -41,8 +41,8 @@ Testes: `python manage.py test demandas.test_concluir_execucao` e
   concorrência ignorado. 5 testes novos cobrem o evento com resumo e autor,
   o resumo obrigatório, a recusa de Concluída direta pelo inspetor, a saída das
   pendências do inspetor e a permanência para o gestor.
-- Interface: 3 cenários Playwright novos escritos (conclusão com resumo,
-  visão do gestor, acessibilidade em 390px). **Ainda não executados**, assim
-  como TypeScript, Oxlint e build, porque o Node.js não estava disponível no
-  ambiente.
+- Interface: 3 cenários Playwright novos (conclusão com resumo, visão do
+  gestor, acessibilidade em 390px). Suíte completa: 77 cenários aprovados no
+  Edge.
+- TypeScript, Oxlint e build de produção aprovados.
 - PostgreSQL não foi validado nesta execução.
