@@ -325,3 +325,28 @@ The [MVP Sprint 1 milestone](https://trello.com/c/vWy50e6j) is marked complete o
 
 <img width="1351" height="629" alt="Sprint 01 Trello overview" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
 <img width="592" height="558" alt="Sprint 01 delivery evidence" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
+
+## Sprint 02 — Delivered work
+
+Sprint 02 covered the following 2 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on request deadlines and priorities. The development completed during this sprint is detailed below.
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 3 — Set a request deadline](https://trello.com/c/QzEjh9j8)
+- [HU 4 — Set a request priority](https://trello.com/c/dwC60dL3)
+
+## Sprint 03 — Delivered work
+
+Sprint 03 covered the following 6 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on overdue and critical requests, execution updates, and access to previous requests. The development completed during this sprint is detailed below.
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 16 — Track overdue requests](https://trello.com/c/uAS1r4cn)
+- [HU 17 — Track critical requests](https://trello.com/c/dx0PvCKf)
+
+### Epic 3 — Execution, evidence, and traceability
+
+- [HU 9 — Update a request's status](https://trello.com/c/3irjFpoO)
+- [HU 11 — Complete request execution](https://trello.com/c/Hj3Z0ZaF)
+- [HU 18 — Record request progress](https://trello.com/c/pkgIOOFv)
+- [HU 22 — View previous requests](https://trello.com/c/gT9lb8SP)
