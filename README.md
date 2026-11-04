@@ -272,6 +272,10 @@ The operational MVP now covers the complete request lifecycle, protected evidenc
 | Silvio Ronaldo de Lima Lobo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/silvio-lobo-a836b6393/) |
 | Victor Bacelar Palazzin | Developer | [LinkedIn](https://www.linkedin.com/in/victor-bacelar-palazzin-a444a23b0/) |
 
+### Sprint evidence
+
+<img width="1351" height="629" alt="Sprint 01 Trello overview" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+
 ## Sprint 01 — Delivered work
 
 The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) has completed cards for the following 22 distinct user stories as of October 29, 2026. This includes HU 16's completed Sprint 01 delivery card; its separate card in the general user-story list is still open. The development completed during this sprint is detailed below.
@@ -320,11 +324,6 @@ The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) has comp
 Sprint 01 also produced API contracts, migrations, automated backend and browser coverage, and [pair-programming notes](https://docs.google.com/document/d/1wDZ5A5P1mDM35wur025545l33LzxW-olVBhIn_phKJM/edit?tab=t.0). The [sprint plan](docs/plano-acao-sr2.md) still calls for an integrated smoke test against the real frontend, API, and PostgreSQL; the individual feature tests do not replace that acceptance check.
 
 The [MVP Sprint 1 milestone](https://trello.com/c/vWy50e6j) is marked complete on Trello. The repository also contains the initial SEI capture demonstration: a Brave extension reads fields from fictitious process and document pages, opens a Centraliza review tab, and requires manager confirmation before creating a request. This is a local prototype, not an integration with the institutional SEI.
-
-### Sprint evidence
-
-<img width="1351" height="629" alt="Sprint 01 Trello overview" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
-<img width="592" height="558" alt="Sprint 01 delivery evidence" src="https://github.com/user-attachments/assets/b959cf8f-5470-47b8-978c-bc728fa2d0d0" />
 
 ## Sprint 02 — Delivered work
 
