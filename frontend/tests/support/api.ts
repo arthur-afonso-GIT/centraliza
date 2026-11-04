@@ -135,6 +135,12 @@ export async function instalarApi(page: Page) {
       history.unshift({ id: history.length + 1, tipo: 'status_alterado', autor: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste' }, criado_em: '2026-09-14T13:00:00Z', status_anterior: previous, status_novo: demandStatus, texto: (request.postDataJSON() as { texto?: string }).texto ?? '' });
       return route.fulfill({ json: { id: Number(status[1]), titulo: 'Inspeção demonstrativa 1', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T13:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: "Equipe de teste" }], historico: history } });
     }
+    const progress = url.pathname.match(/^\/api\/demandas\/(\d+)\/andamentos\/$/);
+    if (progress && request.method() === 'POST') {
+      const body = request.postDataJSON() as { realizado: string; pendente: string };
+      history.unshift({ id: history.length + 1, tipo: 'andamento', autor: { id: 2, nome: 'Inspetor de teste' }, criado_em: '2026-09-14T14:00:00Z', status_anterior: '', status_novo: '', texto: '', ...body });
+      return route.fulfill({ status: 201, json: { id: Number(progress[1]), titulo: 'Inspeção demonstrativa 1', sei_numero: 'PROCESSO-FICTICIO-001', descricao: 'Verificar condições de segurança e saúde no ambiente de trabalho.', origem: 'MPT', status: demandStatus, prioridade: 'alta', prazo: '2026-09-20', critica: true, responsavel: { id: 2, nome: 'Inspetor de teste' }, criada_em: '2026-09-14T12:00:00Z', atualizada_em: '2026-09-14T14:00:00Z', equipes_ids: [1], equipes: [{ id: 1, nome: 'Equipe de teste' }], historico: history } });
+    }
     const comment = url.pathname.match(/^\/api\/demandas\/(\d+)\/historico\/$/);
     if (comment && request.method() === 'POST') {
       const created = { id: history.length + 1, tipo: 'comentario', autor: { id: perfil === 'gestor' ? 1 : 2, nome: perfil === 'gestor' ? 'Gestor de teste' : 'Inspetor de teste' }, criado_em: '2026-09-14T14:00:00Z', status_anterior: '', status_novo: '', texto: (request.postDataJSON() as { texto: string }).texto };

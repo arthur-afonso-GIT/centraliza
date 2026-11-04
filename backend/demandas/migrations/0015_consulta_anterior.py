@@ -9,7 +9,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('demandas', '0013_prazo_com_horario'),
+        ('demandas', '0014_registro_andamento'),
         ('usuarios', '0004_equipe_admin'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
