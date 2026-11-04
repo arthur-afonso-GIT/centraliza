@@ -522,3 +522,7 @@ body {
 .detail-overdue { flex-wrap: wrap; padding: 14px; background: #fff3f3; border-radius: 8px; }
 .detail-overdue .overdue-duration { margin-top: 0; }
 .demand-card-top { flex-wrap: wrap; }
+
+/* HU 17: sinalizações independentes, sem depender somente da cor. */
+.high-priority { display: inline-flex; align-items: center; padding: 3px 8px; border: 1px solid #e5c5c8; border-radius: 999px; background: #fff3f3; color: var(--visat-red-dark); font-size: 12px; font-weight: 650; }
+.demand-card-critical { background: linear-gradient(var(--visat-soft), var(--visat-soft)) top / 100% 3px no-repeat, #fff; }

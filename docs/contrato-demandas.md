@@ -86,9 +86,15 @@ consultar essa seleção.
 ## Interface
 
 Pendentes envia `status=pendente`, Aceitas envia `status=aceita`, Em andamento envia `status=em_andamento`
-e Críticas envia `critica=true`. Ao trocar segmento, voltar à página 1 e
+e Críticas envia `critica=true`. Prioridade alta envia `prioridade=alta`, sem
+exigir criticidade. Fora desse segmento, o parâmetro de prioridade é omitido.
+O acesso direto por `/demandas?prioridade=alta` seleciona a aba correspondente.
+Ao trocar segmento, voltar à página 1 e
 cancelar/ignorar a resposta anterior. Responsável null aparece como “Não atribuída”.
 Cartões exibem criticidade em texto, sem depender apenas da cor.
+Lista e detalhe exibem o selo “Alta prioridade” quando a prioridade é alta,
+independentemente da indicação “Crítica”; ambos podem aparecer simultaneamente.
+Cartões críticos têm uma faixa superior discreta, preservando a borda de atraso.
 Demandas atrasadas também recebem indicação textual. No perfil de gestor, os
 filtros de responsável, período e atraso combinam com o segmento ativo e toda
 alteração retorna à primeira página.
