@@ -15,11 +15,13 @@ São ativos `pendente`, `aceita`, `em_andamento`, `aguardando_avaliacao` e `em_c
 retorna apenas ativos; filtros explícitos por esses dois estados permitem
 consultar demandas encerradas dentro do mesmo escopo de autorização.
 Crítica é uma flag independente. Status e criticidade combinados usam AND.
+Prioridade também é independente da criticidade; os filtros combinados usam AND.
 
 | Parâmetro | Validação |
 | --- | --- |
 | status | Opcional: pendente, aceita, em_andamento, aguardando_avaliacao, em_correcao, concluida ou cancelada |
 | critica | Opcional: true ou false |
+| prioridade | Opcional: baixa, media ou alta; valor inválido retorna 400 |
 | responsavel | ID inteiro positivo; disponível ao gestor |
 | prazo_de | Data inicial inclusiva em AAAA-MM-DD |
 | prazo_ate | Data final inclusiva em AAAA-MM-DD |
@@ -84,9 +86,15 @@ consultar essa seleção.
 ## Interface
 
 Pendentes envia `status=pendente`, Aceitas envia `status=aceita`, Em andamento envia `status=em_andamento`
-e Críticas envia `critica=true`. Ao trocar segmento, voltar à página 1 e
+e Críticas envia `critica=true`. Prioridade alta envia `prioridade=alta`, sem
+exigir criticidade. Fora desse segmento, o parâmetro de prioridade é omitido.
+O acesso direto por `/demandas?prioridade=alta` seleciona a aba correspondente.
+Ao trocar segmento, voltar à página 1 e
 cancelar/ignorar a resposta anterior. Responsável null aparece como “Não atribuída”.
 Cartões exibem criticidade em texto, sem depender apenas da cor.
+Lista e detalhe exibem o selo “Alta prioridade” quando a prioridade é alta,
+independentemente da indicação “Crítica”; ambos podem aparecer simultaneamente.
+Cartões críticos têm uma faixa superior discreta, preservando a borda de atraso.
 Demandas atrasadas também recebem indicação textual. No perfil de gestor, os
 filtros de responsável, período e atraso combinam com o segmento ativo e toda
 alteração retorna à primeira página.

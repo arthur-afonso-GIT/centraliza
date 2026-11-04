@@ -19,11 +19,13 @@ test('inspetor altera prioridade, vê histórico e mantém o valor ao recarregar
   });
   await entrarComo(page, 'inspetor');
   await page.goto('/demandas/1');
+  await expect(page.locator('.detail-actions .high-priority')).toBeVisible();
   await page.getByLabel('Nível de prioridade').selectOption('baixa');
   await page.getByRole('button', { name: 'Salvar prioridade' }).click();
   await expect(page.getByRole('alert')).toContainText('Falha temporária.');
   await page.getByRole('button', { name: 'Salvar prioridade' }).click();
   await expect(page.getByText('Prioridade atualizada com sucesso.')).toBeVisible();
+  await expect(page.locator('.detail-actions .high-priority')).toHaveCount(0);
   await expect(page.locator('.timeline')).toContainText('Prioridade alterada de Alta para Baixa.');
   await page.reload();
   await expect(page.getByLabel('Nível de prioridade')).toHaveValue('baixa');

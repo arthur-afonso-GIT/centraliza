@@ -116,6 +116,12 @@ class DemandaListView(generics.ListAPIView):
                 raise exceptions.ValidationError({"critica": "Use true ou false."})
             queryset = queryset.filter(critica=critica == "true")
 
+        prioridade = self.request.query_params.get("prioridade")
+        if prioridade is not None:
+            if prioridade not in Demanda.Prioridade.values:
+                raise exceptions.ValidationError({"prioridade": "Informe uma prioridade válida."})
+            queryset = queryset.filter(prioridade=prioridade)
+
         responsavel = self.request.query_params.get("responsavel")
         if responsavel is not None:
             if user.perfil != "gestor":

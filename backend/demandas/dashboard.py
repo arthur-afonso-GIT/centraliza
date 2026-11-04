@@ -39,6 +39,7 @@ class ResumoHomeView(APIView):
             "indicadores": {
                 "atrasadas": demandas.filter(prazo__lt=agora).count(),
                 "criticas": demandas.filter(critica=True).count(),
+                "alta_prioridade": demandas.filter(prioridade=Demanda.Prioridade.ALTA).count(),
             },
         }
         if user.perfil == Usuario.Perfil.GESTOR:
