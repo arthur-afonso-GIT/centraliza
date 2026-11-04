@@ -15,11 +15,13 @@ São ativos `pendente`, `aceita`, `em_andamento`, `aguardando_avaliacao` e `em_c
 retorna apenas ativos; filtros explícitos por esses dois estados permitem
 consultar demandas encerradas dentro do mesmo escopo de autorização.
 Crítica é uma flag independente. Status e criticidade combinados usam AND.
+Prioridade também é independente da criticidade; os filtros combinados usam AND.
 
 | Parâmetro | Validação |
 | --- | --- |
 | status | Opcional: pendente, aceita, em_andamento, aguardando_avaliacao, em_correcao, concluida ou cancelada |
 | critica | Opcional: true ou false |
+| prioridade | Opcional: baixa, media ou alta; valor inválido retorna 400 |
 | responsavel | ID inteiro positivo; disponível ao gestor |
 | prazo_de | Data inicial inclusiva em AAAA-MM-DD |
 | prazo_ate | Data final inclusiva em AAAA-MM-DD |

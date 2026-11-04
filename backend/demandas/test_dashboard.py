@@ -33,7 +33,7 @@ class ResumoHomeTest(APITestCase):
         self.client.force_authenticate(self.gestor)
         response = self.client.get("/api/home/resumo/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data["indicadores"], {"atrasadas": 1, "criticas": 1, "sem_responsavel": 1, "aguardando_avaliacao": 1})
+        self.assertEqual(response.data["indicadores"], {"atrasadas": 1, "criticas": 1, "alta_prioridade": 0, "sem_responsavel": 1, "aguardando_avaliacao": 1})
         self.assertEqual(response.data["carga_inspetores"], [{"id": self.inspetor.id, "nome": "Iara", "total": 2}])
         self.assertEqual(len(response.data["proximos_compromissos"]), 1)
         self.assertEqual(len(response.data["avisos_ativos"]), 1)
@@ -49,6 +49,29 @@ class ResumoHomeTest(APITestCase):
 
     def test_exige_sessao(self):
         self.assertEqual(self.client.get("/api/home/resumo/").status_code, 401)
+
+    def test_indicadores_independentes_contam_apenas_ativas_autorizadas(self):
+        self.atrasada.prioridade = "alta"
+        self.atrasada.save()
+        # Alta sem criticidade: visível ao gestor, mas sem atribuição ao inspetor.
+        Demanda.objects.filter(titulo="Sem responsável").update(prioridade="alta")
+        # Crítica sem alta prioridade continua contando somente como crítica.
+        Demanda.objects.filter(titulo="Avaliar").update(critica=True)
+        Demanda.objects.filter(titulo="Externa").update(prioridade="alta", critica=True)
+        for status in ["concluida", "cancelada"]:
+            demanda = Demanda.objects.create(
+                titulo=f"Encerrada {status}", sei_numero=f"TESTE-PAINEL-{status}",
+                prazo=timezone.localdate(), status=status, prioridade="alta", critica=True,
+                equipe=self.equipe, criador=self.gestor, responsavel=self.inspetor,
+            )
+            demanda.equipes_participantes.add(self.equipe)
+        for usuario, alta_prioridade in [(self.gestor, 2), (self.inspetor, 1)]:
+            with self.subTest(perfil=usuario.perfil):
+                self.client.force_authenticate(usuario)
+                response = self.client.get("/api/home/resumo/")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.data["indicadores"]["criticas"], 2)
+                self.assertEqual(response.data["indicadores"]["alta_prioridade"], alta_prioridade)
 
     def test_aceita_conta_na_carga_e_aparece_no_painel(self):
         self.atrasada.status = "aceita"
