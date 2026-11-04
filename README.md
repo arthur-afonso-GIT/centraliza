@@ -335,6 +335,17 @@ Sprint 02 covered the following 2 user stories from the [Centraliza Trello board
 - [HU 3 — Set a request deadline](https://trello.com/c/QzEjh9j8)
 - [HU 4 — Set a request priority](https://trello.com/c/dwC60dL3)
 
+### Pair programming report
+
+[View the Sprint 02 pair programming report](docs/relatorio-pair-programming-sprint-02.png)
+
+<details>
+<summary>Preview the Sprint 02 report</summary>
+
+![Sprint 02 pair programming report](docs/relatorio-pair-programming-sprint-02.png)
+
+</details>
+
 ## Sprint 03 — Delivered work
 
 Sprint 03 covered the following 6 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on overdue and critical requests, execution updates, and access to previous requests. The development completed during this sprint is detailed below.
@@ -350,3 +361,14 @@ Sprint 03 covered the following 6 user stories from the [Centraliza Trello board
 - [HU 11 — Complete request execution](https://trello.com/c/Hj3Z0ZaF)
 - [HU 18 — Record request progress](https://trello.com/c/pkgIOOFv)
 - [HU 22 — View previous requests](https://trello.com/c/gT9lb8SP)
+
+### Pair programming report — Sprints 02 and 03
+
+[View the combined Sprints 02 and 03 pair programming report](docs/relatorio-pair-programming-sprints-02-03.png)
+
+<details>
+<summary>Preview the Sprints 02 and 03 report</summary>
+
+![Sprints 02 and 03 pair programming report](docs/relatorio-pair-programming-sprints-02-03.png)
+
+</details>
