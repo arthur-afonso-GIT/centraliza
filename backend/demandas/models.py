@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.exceptions import ValidationError
 from django.db import models
 from pathlib import Path
@@ -111,6 +112,20 @@ class EventoDemanda(models.Model):
                 name="evento_conteudo_por_tipo",
             ),
         ]
+
+
+class ConsultaAnteriorDemanda(models.Model):
+    demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="consultas_anteriores")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT)
+    encerrada_em = models.DateTimeField()
+    sei_numero_normalizado = models.CharField(max_length=80, db_index=True)
+    dados = models.JSONField(encoder=DjangoJSONEncoder)
+    anexos = models.JSONField(encoder=DjangoJSONEncoder, default=list)
+
+    class Meta:
+        ordering = ["-encerrada_em", "-id"]
+        constraints = [models.UniqueConstraint(fields=["demanda", "usuario"], name="consulta_anterior_usuario_unica")]
 
 
 class AnexoDemanda(models.Model):

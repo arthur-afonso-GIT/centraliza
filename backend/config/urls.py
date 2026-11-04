@@ -3,12 +3,13 @@ from django.urls import path
 
 from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaSeiDuplicidadeView, DemandaStatusView, ImportacaoSeiConfirmarView, ImportacaoSeiDetailView, ImportacaoSeiListView, SolicitacoesParticipacaoView, DemandaSolicitarParticipacaoView, SolicitacaoParticipacaoDecisaoView
 from demandas.dashboard import ResumoHomeView
-from demandas.views import DemandaPrioridadeView, DemandaPrazoView
+from demandas.views import DemandaPrioridadeView, DemandaPrazoView, ConsultasAnterioresView
 from agenda.views import CompromissoDetailView, CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
+    path("api/demandas/consultas-anteriores/", ConsultasAnterioresView.as_view(), name="demandas-consultas-anteriores"),
     path("api/demandas/<int:pk>/prioridade/", DemandaPrioridadeView.as_view(), name="demandas-prioridade"),
     path("api/health/", lambda request: JsonResponse({"status": "ok"}), name="health"),
     path("api/auth/csrf/", CsrfView.as_view(), name="auth-csrf"),

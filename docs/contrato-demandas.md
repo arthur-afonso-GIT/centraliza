@@ -176,3 +176,44 @@ sem revalidar a equipe principal atual do criador histórico ou do responsável;
 a permissão é conferida com a equipe ativa e o responsável da demanda.
 
 Evidências e comandos reproduzíveis: [validação da HU3](validacao-hu3.md).
+
+## HU22 — Consulta após reatribuição
+
+Na reatribuição (inclusive remoção do responsável), a API preserva um retrato
+para o inspetor que está saindo, na mesma transação e antes de alterar qualquer
+campo do pedido. O retrato inclui dados, histórico e metadados dos anexos ativos
+até aquele momento. Nunca é reconstruído a partir dos dados atuais.
+
+- `GET /api/demandas/consultas-anteriores/`: lista pessoal paginada do inspetor,
+  com `page`, `page_size` e busca `sei_numero` no número SEI preservado. Não altera
+  a lista operacional nem seus indicadores. Retorna 403 para outros perfis.
+- `GET /api/demandas/{id}/`: o responsável atual e gestores mantêm a consulta
+  atual; o ex-responsável recebe o retrato com `somente_leitura: true` e
+  `consulta_encerrada_em`. Título, descrição, prazo, status, responsável, equipes,
+  nomes de autores e histórico correspondem ao período preservado.
+- `GET /api/demandas/{id}/anexos/` e download: ex-responsáveis só consultam anexos
+  incluídos no retrato que continuam ativos. Arquivos posteriores são negados.
+  Remover um anexo revoga seu download, sem expor dados do evento posterior.
+- Escritas (edição, comentários, prazo, prioridade, status, anexos) continuam
+  exigindo acesso operacional; o retrato não concede permissão de escrita.
+- Exige sessão, perfil de inspetor e a equipe do retrato como equipe ativa,
+  ainda participante da demanda e não arquivada. Vínculo explicitamente
+  revogado não concede acesso. Contas legadas sem vínculos seguem a equipe
+  principal, conforme a compatibilidade existente no sistema.
+- Se voltar a ser responsável, o inspetor recebe acesso operacional. Uma nova
+  saída substitui seu retrato pelo período mais recente autorizado. Há um
+  retrato por demanda/inspetor, sem duplicação na lista.
+
+A interface oferece a aba **Consultas anteriores**, aviso com data de corte e
+nenhum controle de alteração. O status exibido é histórico, não o atual.
+
+**Migração:** executar `uv run python manage.py migrate`. A migração
+`0014_consulta_anterior` cria a tabela. Reatribuições anteriores à implantação
+não são recuperadas automaticamente: o histórico antigo não permite reconstruir
+com segurança todos os dados. Não se concede acesso retroativo aos dados atuais.
+
+**Validação:** `uv run python manage.py test demandas.test_consultas_anteriores`
+e `npx playwright test tests/consulta-anterior.spec.ts`. Testes cobrem consulta,
+limite temporal, busca, anexos, bloqueios de escrita, revogação de equipe, ciclos
+de reatribuição e rollback. Validar também no PostgreSQL e no navegador antes de
+integrar à main quando essas ferramentas não estiverem disponíveis no ambiente.

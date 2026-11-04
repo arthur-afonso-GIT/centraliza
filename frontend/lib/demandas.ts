@@ -1,9 +1,9 @@
 import { prazoParaApi } from './prazos';
 import { ApiError, csrfToken } from './auth';
 
-export type SegmentoDemanda = 'atrasadas' | 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas' | 'concluidas' | 'canceladas';
+export type SegmentoDemanda = 'anteriores' | 'atrasadas' | 'pendentes' | 'aceitas' | 'andamento' | 'avaliacao' | 'correcao' | 'criticas' | 'concluidas' | 'canceladas';
 export type StatusDemanda = 'pendente' | 'aceita' | 'em_andamento' | 'aguardando_avaliacao' | 'em_correcao' | 'concluida' | 'cancelada';
-export type DemandaResumo = { id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null; equipes_ids: number[]; equipes: Array<{ id: number; nome: string }> };
+export type DemandaResumo = { somente_leitura?: boolean; consulta_encerrada_em?: string; id: number; titulo: string; sei_numero: string; status: StatusDemanda; prioridade: 'baixa' | 'media' | 'alta'; prazo: string; critica: boolean; atrasada: boolean; responsavel: { id: number; nome: string } | null; equipes_ids: number[]; equipes: Array<{ id: number; nome: string }> };
 export type PaginaDemandas = { count: number; next: string | null; previous: string | null; results: DemandaResumo[] };
 export type EventoDemanda = { id: number; tipo: 'demanda_criada' | 'demanda_editada' | 'responsavel_alterado' | 'status_alterado' | 'comentario' | 'anexo_adicionado' | 'anexo_removido'; autor: { id: number; nome: string }; criado_em: string; status_anterior: string; status_novo: string; texto: string };
 export type DemandaDetalhe = Omit<DemandaResumo, 'status'> & { status: StatusDemanda; descricao: string; origem: string; criada_em: string; atualizada_em: string; historico: EventoDemanda[] };
@@ -24,6 +24,11 @@ async function resposta<T>(response: Response): Promise<T> {
 }
 
 export async function listarDemandas(segmento: SegmentoDemanda, page: number, filtros?: FiltrosDemandas, signal?: AbortSignal): Promise<PaginaDemandas> {
+  if (segmento === 'anteriores') {
+    const query = new URLSearchParams({ page: String(page), page_size: '4' });
+    if (filtros?.seiNumero) query.set('sei_numero', filtros.seiNumero);
+    return resposta<PaginaDemandas>(await fetch(`/api/demandas/consultas-anteriores/?${query}`, { credentials: 'same-origin', signal }));
+  }
   const query = new URLSearchParams(segmento === 'atrasadas' ? { atrasada: 'true' } : segmento === 'pendentes' ? { status: 'pendente' } : segmento === 'aceitas' ? { status: 'aceita' } : segmento === 'andamento' ? { status: 'em_andamento' } : segmento === 'avaliacao' ? { status: 'aguardando_avaliacao' } : segmento === 'correcao' ? { status: 'em_correcao' } : segmento === 'concluidas' ? { status: 'concluida' } : segmento === 'canceladas' ? { status: 'cancelada' } : { critica: 'true' });
   query.set('page', String(page)); query.set('page_size', '4');
   if (filtros?.responsavel) query.set('responsavel', filtros.responsavel);

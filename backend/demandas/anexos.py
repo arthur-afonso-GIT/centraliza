@@ -36,6 +36,9 @@ def pode_adicionar(demanda, usuario):
 
 @transaction.atomic
 def adicionar_anexo(*, demanda, usuario, arquivo):
+    demanda = Demanda.objects.select_for_update().get(pk=demanda.pk)
+    if not demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists():
+        raise PermissionDenied("Você não tem acesso a esta demanda.")
     if demanda.status in {Demanda.Status.CONCLUIDA, Demanda.Status.CANCELADA}:
         raise ValidationError({"arquivo": "Não é possível anexar arquivos a uma demanda encerrada."})
     if not pode_adicionar(demanda, usuario):
@@ -54,6 +57,9 @@ def adicionar_anexo(*, demanda, usuario, arquivo):
 
 @transaction.atomic
 def remover_anexo(*, anexo, usuario):
+    demanda = Demanda.objects.select_for_update().get(pk=anexo.demanda_id)
+    if not demanda.equipes_participantes.filter(pk=usuario.equipe_id).exists() or not pode_adicionar(demanda, usuario):
+        raise PermissionDenied("Você não pode remover anexos desta demanda.")
     if usuario.perfil != "gestor" and anexo.autor_id != usuario.id:
         raise PermissionDenied("Você não pode remover este anexo.")
     anexo.removido_em = timezone.now()

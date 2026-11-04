@@ -13,6 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from demandas.anexos import adicionar_anexo, remover_anexo
+from demandas.consultas_anteriores import consultas_permitidas, detalhe_anterior, anexos_anteriores
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei, SolicitacaoParticipacao
 from demandas.importacao_sei import interpretar_texto_sei
 from demandas.identidade_sei import normalizar_numero_sei
@@ -356,6 +357,22 @@ class ImportacaoSeiConfirmarView(APIView):
 class DemandaDetailView(generics.RetrieveAPIView):
     serializer_class = DemandaDetalheSerializer
 
+    @transaction.atomic
+    def retrieve(self, request, *args, **kwargs):
+        # Serializa a leitura com a transferência para não misturar dados de períodos diferentes.
+        demanda = Demanda.objects.select_for_update().filter(
+            pk__in=demandas_permitidas(request.user).values("pk"), pk=kwargs["pk"],
+        ).prefetch_related("historico__autor", "equipes_participantes").first()
+        if demanda is not None:
+            response = Response(self.get_serializer(demanda).data)
+        elif request.user.perfil == "inspetor":
+            consulta = get_object_or_404(consultas_permitidas(request.user), demanda_id=kwargs["pk"])
+            response = Response(detalhe_anterior(consulta))
+        else:
+            raise exceptions.NotFound()
+        response["Cache-Control"] = "private, no-store"
+        return response
+
     def get_queryset(self):
         return demandas_permitidas(self.request.user).select_related("responsavel").prefetch_related("historico__autor")
 
@@ -421,8 +438,9 @@ class DemandaStatusView(APIView):
 
 
 class DemandaComentarioView(APIView):
+    @transaction.atomic
     def post(self, request, pk):
-        demanda = get_object_or_404(demandas_permitidas(request.user), pk=pk)
+        demanda = get_object_or_404(Demanda.objects.select_for_update().filter(pk__in=demandas_permitidas(request.user).values("pk")), pk=pk)
         serializer = CriarComentarioSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         evento = EventoDemanda.objects.create(
@@ -436,8 +454,16 @@ class DemandaAnexoListView(APIView):
     def get_demanda(self, request, pk):
         return get_object_or_404(demandas_permitidas(request.user), pk=pk)
 
+    @transaction.atomic
     def get(self, request, pk):
-        demanda = self.get_demanda(request, pk)
+        demanda = Demanda.objects.select_for_update().filter(
+            pk__in=demandas_permitidas(request.user).values("pk"), pk=pk,
+        ).first()
+        if demanda is None and request.user.perfil == "inspetor":
+            consulta = get_object_or_404(consultas_permitidas(request.user), demanda_id=pk)
+            return Response({"resultados": anexos_anteriores(consulta)}, headers={"Cache-Control": "private, no-store"})
+        if demanda is None:
+            raise exceptions.NotFound()
         anexos = demanda.anexos.filter(removido_em__isnull=True).select_related("autor")
         return Response({"resultados": AnexoDemandaSerializer(anexos, many=True).data})
 
@@ -471,9 +497,39 @@ class DemandaAnexoView(APIView):
 
 class DemandaAnexoDownloadView(DemandaAnexoView):
     def get(self, request, pk, anexo_id):
-        anexo = self.get_anexo(request, pk, anexo_id)
-        response = FileResponse(anexo.arquivo.open("rb"), as_attachment=True, filename=anexo.nome_original, content_type=anexo.mime_type)
+        if demandas_permitidas(request.user).filter(pk=pk).exists():
+            anexo = self.get_anexo(request, pk, anexo_id)
+            nome, mime = anexo.nome_original, anexo.mime_type
+        elif request.user.perfil == "inspetor":
+            consulta = get_object_or_404(consultas_permitidas(request.user), demanda_id=pk)
+            metadata = next((item for item in anexos_anteriores(consulta) if item["id"] == anexo_id), None)
+            if metadata is None:
+                raise exceptions.NotFound()
+            anexo = get_object_or_404(AnexoDemanda, pk=anexo_id, demanda_id=pk, removido_em__isnull=True)
+            nome, mime = metadata["nome_original"], metadata["mime_type"]
+        else:
+            raise exceptions.NotFound()
+        response = FileResponse(anexo.arquivo.open("rb"), as_attachment=True, filename=nome, content_type=mime)
+        response["Cache-Control"] = "private, no-store"
         response["X-Content-Type-Options"] = "nosniff"
+        return response
+
+
+class ConsultasAnterioresView(generics.ListAPIView):
+    pagination_class = DemandasPagination
+
+    def get(self, request):
+        consultas = consultas_permitidas(request.user)
+        numero = numero_sei_da_consulta(request)
+        if numero:
+            # Busca exclusivamente no número preservado, nunca nos dados atuais.
+            consultas = consultas.filter(sei_numero_normalizado__icontains=numero)
+        pagina = self.paginate_queryset(consultas)
+        campos = DemandaSerializer.Meta.fields
+        dados = [{**{campo: item.dados[campo] for campo in campos}, "somente_leitura": True,
+                  "consulta_encerrada_em": item.encerrada_em} for item in pagina]
+        response = self.get_paginated_response(dados)
+        response["Cache-Control"] = "private, no-store"
         return response
 
 
