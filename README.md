@@ -32,6 +32,7 @@ Available in the current version:
 - **Team directory and account management** — every member can view their own team; explicitly authorized managers can create, edit, activate, and deactivate accounts without accessing another team or deleting records.
 - **Role-based operational home** — managers receive team risk and workload indicators, while inspectors receive a personal summary of deadlines, corrections, appointments, and active notices.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
+- **Progress records (HU18)** — assigned inspectors record completed work and pending tasks during execution or correction. Records retain author and timestamp in the request history for authorized inspectors and managers.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.
 - **Team notices** — managers publish, edit, target, schedule, expire, and cancel urgent or informational notices; inspectors receive the active notices authorized for them.
@@ -41,7 +42,7 @@ Available in the current version:
 
 Planned operational capabilities:
 
-- **Inspection execution** — expand structured progress records beyond comments and evidence files.
+- **Inspection execution** — expand inspection-specific workflows beyond progress records and evidence files.
 - **Team communication** — exchange messages after the operational core is stable.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 

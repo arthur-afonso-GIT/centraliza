@@ -443,6 +443,9 @@ body {
 
 .timeline strong, .timeline small { display: block; }
 .timeline small { margin-top: 6px; }
+.progress-form { border-bottom: 0; padding-bottom: 0; }
+.progress-record p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.timeline li > div { min-width: 0; }
 
 .delivery-summary { margin-bottom: 20px; }
 .delivery-summary label { display: block; margin-bottom: 10px; }
