@@ -80,7 +80,8 @@ usuário de outra equipe, demanda sem responsável e tentativa repetida.
    cancelamento.
 
 **Aceite:** o gestor cria e atribui uma demanda; o inspetor correto passa a
-visualizá-la; uma reatribuição remove o acesso do responsável anterior; todos os
+visualizá-la; uma reatribuição remove a edição do responsável anterior e preserva uma consulta
+somente leitura dos dados até sua saída (HU22); todos os
 passos aparecem na timeline.
 
 ### Etapa 3 — Execução e avaliação da demanda
