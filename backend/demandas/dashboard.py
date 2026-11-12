@@ -25,6 +25,12 @@ STATUS_ATIVOS = (
     Demanda.Status.EM_CORRECAO,
 )
 
+# Pendências do inspetor: o que ainda depende dele. Após concluir a execução
+# (envio para avaliação), a demanda sai desta lista e passa a depender do gestor.
+STATUS_PENDENCIAS_INSPETOR = tuple(
+    status for status in STATUS_ATIVOS if status != Demanda.Status.AGUARDANDO_AVALIACAO
+)
+
 
 class ResumoHomeView(APIView):
     def get(self, request):
@@ -58,8 +64,11 @@ class ResumoHomeView(APIView):
                 "em_correcao": demandas.filter(status=Demanda.Status.EM_CORRECAO).count(),
                 "nao_iniciadas": demandas.filter(status=Demanda.Status.PENDENTE).count(),
             })
+        proximas_demandas = demandas
+        if user.perfil == Usuario.Perfil.INSPETOR:
+            proximas_demandas = proximas_demandas.filter(status__in=STATUS_PENDENCIAS_INSPETOR)
         base["proximas_demandas"] = DemandaSerializer(
-            demandas.select_related("responsavel").order_by("prazo", "id")[:5], many=True,
+            proximas_demandas.select_related("responsavel").order_by("prazo", "id")[:5], many=True,
         ).data
         compromissos = Compromisso.objects.filter(
             equipe_id=user.equipe_id, cancelado_em__isnull=True, inicio__gte=agora, inicio__lt=agora + timedelta(days=14),

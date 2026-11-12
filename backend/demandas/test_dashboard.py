@@ -45,7 +45,7 @@ class ResumoHomeTest(APITestCase):
         self.assertEqual(response.data["indicadores"]["atrasadas"], 1)
         self.assertEqual(response.data["indicadores"]["nao_iniciadas"], 1)
         self.assertNotIn("carga_inspetores", response.data)
-        self.assertEqual({item["id"] for item in response.data["proximas_demandas"]}, {self.atrasada.id, self.atrasada.id + 2})
+        self.assertEqual({item["id"] for item in response.data["proximas_demandas"]}, {self.atrasada.id})
 
     def test_exige_sessao(self):
         self.assertEqual(self.client.get("/api/home/resumo/").status_code, 401)
@@ -80,3 +80,16 @@ class ResumoHomeTest(APITestCase):
         response = self.client.get("/api/home/resumo/")
         self.assertEqual(response.data["carga_inspetores"][0]["total"], 2)
         self.assertEqual(response.data["proximas_demandas"][0]["status"], "aceita")
+
+    def test_aguardando_avaliacao_conta_nos_indicadores_mas_nao_nas_pendencias(self):
+        demanda = Demanda.objects.get(titulo="Avaliar")
+        Demanda.objects.filter(pk=demanda.pk).update(
+            prazo=timezone.localdate() - timedelta(days=1), critica=True, prioridade="alta",
+        )
+        self.client.force_authenticate(self.inspetor)
+        response = self.client.get("/api/home/resumo/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["indicadores"]["atrasadas"], 2)
+        self.assertEqual(response.data["indicadores"]["criticas"], 2)
+        self.assertEqual(response.data["indicadores"]["alta_prioridade"], 1)
+        self.assertNotIn(demanda.pk, {item["id"] for item in response.data["proximas_demandas"]})
