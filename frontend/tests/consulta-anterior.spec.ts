@@ -29,6 +29,7 @@ test('consulta anterior oferece histórico e download sem controles de escrita',
   await entrarComo(page, 'inspetor');
   await page.goto('/demandas/1');
   await expect(page.getByRole('heading', { name: 'Consulta anterior — somente leitura' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Status da demanda' })).toHaveCount(0);
   await expect(page.getByText('Registro anterior à transferência')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Baixar anterior.pdf' })).toBeVisible();
   await expect(page.getByRole('button', { name: /Enviar para avaliação|Aceitar demanda|Iniciar demanda|Registrar comentário|Remover anterior|Alterar prazo|Alterar prioridade|Editar demanda|Cancelar demanda/ })).toHaveCount(0);

@@ -11,7 +11,7 @@ for (const perfil of ['gestor', 'inspetor'] as const) {
       id: 1, titulo: 'Demanda com prazo', sei_numero: 'HU3-001', descricao: '', origem: '',
       status: 'aceita', prioridade: 'media', prazo, critica: false, atrasada: false,
       responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [],
-      criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [],
+      criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [], status_disponiveis: [],
     });
     await page.route('**/api/demandas/1/', route => route.fulfill({ json: detalhe() }));
     await page.route('**/api/demandas/1/prazo/', async route => {
@@ -62,7 +62,7 @@ test('conflito de edição bloqueia sobrescrita e oferece recarregar', async ({ 
 test('salvar sem editar preserva segundos e frações do prazo original', async ({ page }) => {
   await instalarApi(page);
   const original = '2026-10-30T20:00:59.123456Z';
-  const detalhe = { id: 1, titulo: 'Prazo com segundos', sei_numero: 'HU3-SEG', descricao: '', origem: '', status: 'aceita', prioridade: 'media', prazo: original, critica: false, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [] };
+  const detalhe = { id: 1, titulo: 'Prazo com segundos', sei_numero: 'HU3-SEG', descricao: '', origem: '', status: 'aceita', prioridade: 'media', prazo: original, critica: false, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [], status_disponiveis: [] };
   await page.route('**/api/demandas/1/', route => route.fulfill({ json: detalhe }));
   await page.route('**/api/demandas/1/prazo/', async route => {
     expect(route.request().postDataJSON().prazo).toBe(original);
@@ -78,7 +78,7 @@ test('salvar sem editar preserva segundos e frações do prazo original', async 
 
 test('editar somente o título não reenvia nem trunca o prazo', async ({ page }) => {
   await instalarApi(page);
-  const detalhe = { id: 1, titulo: 'Título original', sei_numero: 'HU3-TITULO', descricao: '', origem: '', status: 'aceita', prioridade: 'media', prazo: '2026-10-30T20:00:59.123456Z', critica: false, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [] };
+  const detalhe = { id: 1, titulo: 'Título original', sei_numero: 'HU3-TITULO', descricao: '', origem: '', status: 'aceita', prioridade: 'media', prazo: '2026-10-30T20:00:59.123456Z', critica: false, atrasada: false, responsavel: { id: 2, nome: 'Inspetor de teste' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [], status_disponiveis: [] };
   await page.route('**/api/demandas/1/', async route => {
     if (route.request().method() === 'PATCH') {
       const body = route.request().postDataJSON();
@@ -104,7 +104,7 @@ for (const cenario of [
 ]) {
   test(`inspetor não recebe ação de prazo em demanda ${cenario.nome}`, async ({ page }) => {
     await instalarApi(page);
-    await page.route('**/api/demandas/1/', route => route.fulfill({ json: { id: 1, titulo: 'Restrita', sei_numero: 'HU3-RESTRITA', descricao: '', origem: '', status: cenario.status, prioridade: 'media', prazo: '2026-10-30T20:00:00Z', critica: false, atrasada: false, responsavel: { id: cenario.responsavel, nome: 'Responsável' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [] } }));
+    await page.route('**/api/demandas/1/', route => route.fulfill({ json: { id: 1, titulo: 'Restrita', sei_numero: 'HU3-RESTRITA', descricao: '', origem: '', status: cenario.status, prioridade: 'media', prazo: '2026-10-30T20:00:00Z', critica: false, atrasada: false, responsavel: { id: cenario.responsavel, nome: 'Responsável' }, equipes_ids: [1], equipes: [], criada_em: '2026-10-21T12:00:00Z', atualizada_em: '2026-10-21T12:00:00Z', historico: [], status_disponiveis: [] } }));
     await entrarComo(page, 'inspetor');
     await page.goto('/demandas/1');
     await expect(page.getByRole('heading', { name: 'Restrita' })).toBeVisible();

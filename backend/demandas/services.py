@@ -29,6 +29,16 @@ REGRAS = {
 }
 
 
+def status_disponiveis(demanda: Demanda, usuario) -> list[dict]:
+    if usuario.perfil == "inspetor" and demanda.responsavel_id != usuario.id:
+        return []
+    return [
+        {"status": destino, "exige_texto": regra.exige_texto}
+        for (origem, destino), regra in REGRAS.items()
+        if origem == demanda.status and regra.perfil == usuario.perfil
+    ]
+
+
 @transaction.atomic
 def alterar_status_demanda(*, demanda_id: int, usuario, novo_status: str, texto: str = "") -> Demanda:
     demanda = Demanda.objects.select_for_update().filter(equipe_id=usuario.equipe_id).get(pk=demanda_id)

@@ -34,9 +34,10 @@ Tentativas inválidas não alteram a demanda nem criam eventos.
 Referência: [Histórias do usuário no Notion](https://www.notion.so/3c73d03a0b9e8040afc1dff24a3e2bc8).
 
 A atribuição mantém a demanda pendente. O gestor vê “Aguardando aceite” e
-somente o inspetor responsável pode selecionar “Aceitar demanda”. O evento de
-aceite registra autor, data e horário. Depois disso, uma ação separada,
-“Iniciar demanda”, registra o início da execução, conforme a história 8.
+somente o inspetor responsável pode mudar o status para “Aceita” no card
+“Status da demanda”. O evento de aceite registra autor, data e horário. Depois
+disso, uma alteração separada para “Em andamento” registra o início da
+execução, conforme a história 8.
 A API impede pular o aceite e rejeita confirmações repetidas sem duplicar eventos.
 
 A lista oferece o segmento “Aceitas”. Demandas aceitas continuam nas listas
@@ -53,8 +54,15 @@ de aceites retroativos.
 
 Na avaliação, o gestor pode aprovar a entrega ou solicitar correções com
 justificativa obrigatória. Em correção, o detalhe destaca a orientação mais
-recente, seu autor e sua data. O inspetor registra o resumo dos ajustes e usa
-“Reenviar para avaliação”. O processo pode repetir-se sem apagar o histórico.
+recente, seu autor e sua data. O inspetor muda o status para “Aguardando
+avaliação” e registra o resumo dos ajustes. O processo pode repetir-se sem
+apagar o histórico.
+
+## Alteração de status
+
+O inspetor responsável altera o status pelo card “Status da demanda”, que
+oferece só as opções desta matriz disponíveis para ele. Detalhes em
+[hu-alterar-status.md](hu-alterar-status.md).
 
 As etapas aparecem no detalhe e cada estado tem identificação textual. A lista
 inclui filtros para aceitas, em andamento, em avaliação, em correção, concluídas

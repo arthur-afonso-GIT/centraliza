@@ -6,12 +6,16 @@ test.beforeEach(async ({ page }) => instalarApi(page));
 async function enviarParaAvaliacao(page: Page) {
   await entrarComo(page, 'inspetor');
   await page.goto('/demandas/1');
-  await expect(page.getByRole('button', { name: 'Iniciar demanda' })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Aceitar demanda' }).click();
+  await expect(page.getByLabel('Novo status').locator('option')).toHaveText(['Aceita']);
+  await page.getByLabel('Novo status').selectOption('aceita');
+  await page.getByRole('button', { name: 'Salvar status' }).click();
   await expect(page.locator('.detail-actions .status')).toHaveText('Aceita');
-  await page.getByRole('button', { name: 'Iniciar demanda' }).click();
+  await page.getByLabel('Novo status').selectOption('em_andamento');
+  await page.getByRole('button', { name: 'Salvar status' }).click();
+  await page.getByLabel('Novo status').selectOption('aguardando_avaliacao');
+  await expect(page.getByRole('button', { name: 'Salvar status' })).toBeDisabled();
   await page.getByLabel('Resumo da entrega').fill('Inspeção realizada e relatório conferido.');
-  await page.getByRole('button', { name: 'Enviar para avaliação' }).click();
+  await page.getByRole('button', { name: 'Salvar status' }).click();
   await expect(page.getByText('Aguardando avaliação', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Sair' }).click();
   await entrarComo(page, 'gestor');
@@ -44,7 +48,8 @@ test('gestor devolve uma entrega com justificativa', async ({ page }, testInfo) 
     await page.screenshot({ path: testInfo.outputPath(`correcao-${width}.png`), fullPage: true });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
+  await page.getByLabel('Novo status').selectOption('aguardando_avaliacao');
   await page.getByLabel('Resumo da entrega').fill('Fotografias incluídas e relatório reenviado.');
-  await page.getByRole('button', { name: 'Reenviar para avaliação' }).click();
+  await page.getByRole('button', { name: 'Salvar status' }).click();
   await expect(page.getByText('Aguardando avaliação', { exact: true })).toBeVisible();
 });

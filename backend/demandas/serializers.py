@@ -4,6 +4,7 @@ from django.utils import timezone
 from demandas.models import AnexoDemanda, Demanda, EventoDemanda, ImportacaoSei
 from demandas.identidade_sei import normalizar_numero_sei
 from demandas.prazos import fim_do_dia
+from demandas.services import status_disponiveis
 
 
 class PrazoCompativelField(serializers.DateTimeField):
@@ -51,9 +52,14 @@ class EventoDemandaSerializer(serializers.ModelSerializer):
 
 class DemandaDetalheSerializer(DemandaSerializer):
     historico = EventoDemandaSerializer(many=True, read_only=True)
+    status_disponiveis = serializers.SerializerMethodField()
 
     class Meta(DemandaSerializer.Meta):
-        fields = DemandaSerializer.Meta.fields + ["descricao", "origem", "criada_em", "atualizada_em", "historico"]
+        fields = DemandaSerializer.Meta.fields + ["descricao", "origem", "criada_em", "atualizada_em", "historico", "status_disponiveis"]
+
+    def get_status_disponiveis(self, obj):
+        request = self.context.get("request")
+        return status_disponiveis(obj, request.user) if request else []
 
 
 class GerenciarDemandaSerializer(serializers.Serializer):
