@@ -178,7 +178,7 @@ p { line-height: 1.65; }
 @custom-variant dark (&:is(.dark *));
 
 .home-dashboard { display: grid; gap: 1.25rem; }.home-state { min-height: 360px; display: grid; place-content: center; justify-items: center; gap: .8rem; text-align: center; }
-.indicator-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .85rem; }.indicator-card { position: relative; display: grid; gap: .3rem; min-height: 128px; padding: 1.15rem; color: var(--visat-graphite); text-decoration: none; background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; }.indicator-card:hover,.indicator-card:focus-visible { border-color: var(--visat-red); }.indicator-card strong { font-size: 2rem; line-height: 1; }.indicator-card span { color: var(--visat-muted); font-size: .86rem; }.indicator-card svg { position: absolute; right: 1rem; bottom: 1rem; color: var(--visat-red); }.indicator-card.has-alert { border-top: 3px solid var(--visat-red); }
+.indicator-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .85rem; }.indicator-card { position: relative; display: grid; gap: .3rem; min-height: 128px; padding: 1.15rem; color: var(--visat-graphite); text-decoration: none; background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; }.indicator-card:hover,.indicator-card:focus-visible { border-color: var(--visat-red); }.indicator-card strong { font-size: 2rem; line-height: 1; }.indicator-card span { color: var(--visat-muted); font-size: .86rem; }.indicator-card svg { position: absolute; right: 1rem; bottom: 1rem; color: var(--visat-red); }.indicator-card.has-alert { border-top: 3px solid var(--visat-red); }
 .home-columns { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }.home-block { min-width: 0; padding: 1.2rem; background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; }.home-block > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }.home-block h2 { margin: .25rem 0 0; font-size: 1.15rem; }.home-block header > a { color: var(--visat-red-dark); font-size: .8rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .home-items { display: grid; }.home-items > a { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: .7rem; padding: .8rem 0; color: inherit; text-decoration: none; border-top: 1px solid var(--visat-border); }.home-items > a:first-child { border-top: 0; }.home-items > a > svg { color: var(--visat-red-dark); }.home-items div { min-width: 0; display: grid; gap: .25rem; }.home-items strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .88rem; }.home-items small,.home-items time { color: var(--visat-muted); font-size: .72rem; }.home-items time { text-align: right; }.home-empty { display: flex; align-items: center; gap: .5rem; min-height: 64px; color: var(--visat-muted); }
 .workload-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; }.workload-grid > div { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .4rem; padding: .8rem; border: 1px solid var(--visat-border); border-radius: 8px; }.workload-grid span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .82rem; }.workload-grid > div > div { grid-column: 1/-1; height: 5px; overflow: hidden; background: #eceff1; border-radius: 999px; }.workload-grid i { display: block; height: 100%; background: var(--visat-red); }
@@ -443,6 +443,9 @@ body {
 
 .timeline strong, .timeline small { display: block; }
 .timeline small { margin-top: 6px; }
+.progress-form { border-bottom: 0; padding-bottom: 0; }
+.progress-record p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.timeline li > div { min-width: 0; }
 
 
 /* Task-first layout refinements */
@@ -509,3 +512,19 @@ body {
 .capture-page { max-width: 960px; }
 .capture-page > p { max-width: 66ch; line-height: 1.55; color: var(--visat-muted); }
 .capture-form { margin-top: 22px; padding: 24px; border: 1px solid var(--visat-border); border-radius: 8px; background: #fff; }
+
+/* HU 16: atraso identificado por texto, ícone e borda. */
+.demand-card-overdue { border-left: 4px solid #8c1a24; }
+.overdue-duration { display: block; margin-top: 8px; color: #8c1a24; font-size: 13px; font-weight: 600; }
+.detail-overdue { flex-wrap: wrap; padding: 14px; background: #fff3f3; border-radius: 8px; }
+.detail-overdue .overdue-duration { margin-top: 0; }
+.demand-card-top { flex-wrap: wrap; }
+
+/* HU 17: sinalizações independentes, sem depender somente da cor. */
+.high-priority { display: inline-flex; align-items: center; padding: 3px 8px; border: 1px solid #e5c5c8; border-radius: 999px; background: #fff3f3; color: var(--visat-red-dark); font-size: 12px; font-weight: 650; }
+.demand-card-critical { background: linear-gradient(var(--visat-soft), var(--visat-soft)) top / 100% 3px no-repeat, #fff; }
+
+@media (max-width: 1100px) {
+  .indicator-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .indicator-grid > .indicator-card:nth-of-type(5) { grid-column: 1 / -1; }
+}

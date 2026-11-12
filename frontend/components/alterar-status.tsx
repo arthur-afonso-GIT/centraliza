@@ -5,7 +5,7 @@ import { alterarStatus, type DemandaDetalhe, type StatusDemanda } from '../lib/d
 const statusLabel: Record<string, string> = { pendente: 'Aguardando aceite', aceita: 'Aceita', em_andamento: 'Em andamento', aguardando_avaliacao: 'Aguardando avaliação', em_correcao: 'Em correção', concluida: 'Concluída', cancelada: 'Cancelada' };
 
 export default function AlterarStatus({ demanda, onSaved }: { demanda: DemandaDetalhe; onSaved: (item: DemandaDetalhe, text: string) => void }) {
-  const opcoes = demanda.status_disponiveis;
+  const opcoes = demanda.status_disponiveis ?? [];
   const [status, setStatus] = useState<StatusDemanda | ''>(opcoes[0]?.status ?? '');
   const [texto, setTexto] = useState('');
   const [busy, setBusy] = useState(false);

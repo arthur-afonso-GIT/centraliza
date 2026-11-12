@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.exceptions import ValidationError
 from django.db import models
 from pathlib import Path
@@ -87,6 +88,7 @@ class EventoDemanda(models.Model):
         RESPONSAVEL_ALTERADO = "responsavel_alterado", "Responsável alterado"
         STATUS_ALTERADO = "status_alterado", "Status alterado"
         COMENTARIO = "comentario", "Comentário"
+        ANDAMENTO = "andamento", "Andamento registrado"
         ANEXO_ADICIONADO = "anexo_adicionado", "Anexo adicionado"
         ANEXO_REMOVIDO = "anexo_removido", "Anexo removido"
 
@@ -97,6 +99,8 @@ class EventoDemanda(models.Model):
     status_anterior = models.CharField(max_length=20, choices=Demanda.Status.choices, blank=True)
     status_novo = models.CharField(max_length=20, choices=Demanda.Status.choices, blank=True)
     texto = models.CharField(max_length=2000, blank=True)
+    realizado = models.CharField(max_length=2000, blank=True)
+    pendente = models.CharField(max_length=2000, blank=True)
 
     class Meta:
         ordering = ["-criado_em", "-id"]
@@ -104,13 +108,28 @@ class EventoDemanda(models.Model):
         constraints = [
             models.CheckConstraint(
                 condition=(
-                    models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="")
+                    models.Q(tipo="andamento", status_anterior="", status_novo="", realizado__gt="", pendente__gt="")
+                    | models.Q(tipo="status_alterado", status_anterior__gt="", status_novo__gt="")
                     | models.Q(tipo="comentario", status_anterior="", status_novo="", texto__gt="")
                     | models.Q(tipo__in=["demanda_criada", "demanda_editada", "responsavel_alterado", "anexo_adicionado", "anexo_removido"], status_anterior="", status_novo="", texto__gt="")
                 ),
                 name="evento_conteudo_por_tipo",
             ),
         ]
+
+
+class ConsultaAnteriorDemanda(models.Model):
+    demanda = models.ForeignKey(Demanda, on_delete=models.CASCADE, related_name="consultas_anteriores")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT)
+    encerrada_em = models.DateTimeField()
+    sei_numero_normalizado = models.CharField(max_length=80, db_index=True)
+    dados = models.JSONField(encoder=DjangoJSONEncoder)
+    anexos = models.JSONField(encoder=DjangoJSONEncoder, default=list)
+
+    class Meta:
+        ordering = ["-encerrada_em", "-id"]
+        constraints = [models.UniqueConstraint(fields=["demanda", "usuario"], name="consulta_anterior_usuario_unica")]
 
 
 class AnexoDemanda(models.Model):

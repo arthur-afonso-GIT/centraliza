@@ -7,6 +7,7 @@
   },
   "scripts": {
     "test": "playwright test",
+    "test:smoke:integrado": "playwright test --config playwright.smoke.config.ts",
     "typecheck": "tsc --noEmit",
     "dev": "vinext dev",
     "build": "vinext build",
