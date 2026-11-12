@@ -31,6 +31,8 @@ Available in the current version:
 - **Demonstration browser extension** — on local fictitious SEI pages, a Brave extension reads the visible process number and requesting institution, then opens a separate Centraliza review tab. It does not connect to the institutional SEI.
 - **Team directory and account management** — every member can view their own team; explicitly authorized managers can create, edit, activate, and deactivate accounts without accessing another team or deleting records.
 - **Role-based operational home** — managers receive team risk and workload indicators, while inspectors receive a personal summary of deadlines, corrections, appointments, and active notices.
+- **Former assignee access (HU22)** — inspectors can consult a read-only snapshot from their latest reassignment, without later request data or attachments.
+- **Progress records (HU18)** — assigned inspectors record completed work and pending tasks during execution or correction. Records retain author and timestamp in the request history for authorized inspectors and managers.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.
@@ -41,7 +43,7 @@ Available in the current version:
 
 Planned operational capabilities:
 
-- **Inspection execution** — expand structured progress records beyond comments and evidence files.
+- **Inspection execution** — expand inspection-specific workflows beyond progress records and evidence files.
 - **Team communication** — exchange messages after the operational core is stable.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
@@ -55,6 +57,7 @@ The product is designed around two roles. The API currently restricts managers t
 | Inspector (Inspetor) | Follow assigned requests, record progress and evidence, submit activities for review, and consult meetings and team communication. |
 
 The planned workflow is assignment, acceptance, execution, management review, and completion. Requests requiring corrections return to execution before a new review.
+
 
 ## Project documentation
 
@@ -76,9 +79,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Visual palette](docs/paleta-visual.md) — red, graphite, and white identity with accessible supporting tones.
 - [Screencast of the tests](https://drive.google.com/drive/folders/12SYSir8B1HeT4OVfL2s_kWwH_NuxjDJD?usp=drive_link) — Screencast of the tests for the implemented tasks.
 
-## Screenshots
 
-The following captures show the current authenticated workspace and its main modules.
 
 ### Home
 
@@ -221,6 +222,29 @@ npm run build
 npm test
 ```
 
+### Integrated smoke test
+
+The ordinary Playwright suite uses an in-browser API simulation so frontend
+regression remains fast and deterministic. The integrated smoke test is a
+separate acceptance check: it uses the real frontend proxy, Django API and a
+disposable PostgreSQL database, without intercepting `/api`.
+
+From the repository root, with ports `3000` and `8000` free, run:
+
+```powershell
+.\scripts\smoke-integrado.ps1
+```
+
+The script locates PostgreSQL in `.local/postgresql` or in `PATH`, starts the
+local instance when necessary, recreates only `centraliza_smoke`, applies the
+migrations and fictitious seed, starts both application services, runs the
+browser flow and cleans up its processes. The disposable database remains
+available for diagnosis and is recreated at the start of the next run. Failures retain the
+Playwright trace, screenshot and video under `frontend/test-results-smoke`.
+
+The decision to use local PostgreSQL without Docker or Supabase at this stage
+is recorded in [ADR 0001](docs/adr/0001-postgresql-local-sem-docker.md).
+
 Browser tests use an installed Microsoft Edge. Adjust the channel in frontend/playwright.config.ts for another environment. Generated starter components in components/ui and hooks/use-mobile.ts are excluded from the application lint configuration.
 
 For code exploration, run graphify explain Workspace from the repository root. After source changes, run graphify update . --no-cluster to refresh graphify-out/graph.json. This mode analyzes code locally and does not send it to an external model.
@@ -236,14 +260,115 @@ For code exploration, run graphify explain Workspace from the repository root. A
 
 The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, and managed notices. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, notifications, and chat remain later product increments.
 
+
 ## Team
 
 | Member | Role | Contact |
 | --- | --- | --- |
 | Antônio Marcos Soares de Araujo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/antonio-m-29aa4a3b0/) |
-| Arthur Florêncio Afonso de Albuquerque | Solutions Architect | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
-| Cecília de Moraes Andrade Oliveira | UX Designer | [LinkedIn](https://www.linkedin.com/in/ceciliademoraesa) |
-| Lívia Cabral da Mata Buonora | Project Manager | [LinkedIn](https://www.linkedin.com/in/l%C3%ADvia-buonora-381294365/) |
-| Luiza Beltrão Pereira de Melo | Researcher | [LinkedIn](https://www.linkedin.com/in/luiza-beltr%C3%A3o-pereira-de-melo/) |
-| Silvio Ronaldo de Lima Lobo Filho | Product | [LinkedIn](https://www.linkedin.com/in/silvio-lobo-a836b6393/) |
-| Victor Bacelar Palazzin | UX Researcher | [LinkedIn](https://www.linkedin.com/in/victor-bacelar-palazzin-a444a23b0/) |
+| Arthur Florêncio Afonso de Albuquerque | Tech Leader · Product Owner · Developer | [LinkedIn](https://www.linkedin.com/in/arthur-flor%C3%AAncio-afonso/)<br>[arthurafonsodev@gmail.com](mailto:arthurafonsodev@gmail.com) |
+| Cecília de Moraes Andrade Oliveira | Quality Assurance | [LinkedIn](https://www.linkedin.com/in/ceciliademoraesa) |
+| Lívia Cabral da Mata Buonora | Developer | [LinkedIn](https://www.linkedin.com/in/l%C3%ADvia-buonora-381294365/) |
+| Luiza Beltrão Pereira de Melo | Quality Assurance  | [LinkedIn](https://www.linkedin.com/in/luiza-beltr%C3%A3o-pereira-de-melo/) |
+| Silvio Ronaldo de Lima Lobo Filho | Developer | [LinkedIn](https://www.linkedin.com/in/silvio-lobo-a836b6393/) |
+| Victor Bacelar Palazzin | Developer | [LinkedIn](https://www.linkedin.com/in/victor-bacelar-palazzin-a444a23b0/) |
+
+### Sprint evidence
+
+<img width="1351" height="629" alt="Sprint 01 Trello overview" src="https://github.com/user-attachments/assets/8c78db35-04bd-4933-8413-65613df21e38" />
+
+## Sprint 01 — Delivered work
+
+The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) has completed cards for the following 22 distinct user stories as of October 29, 2026. This includes HU 16's completed Sprint 01 delivery card; its separate card in the general user-story list is still open. The development completed during this sprint is detailed below.
+
+### Epic 1 — Request intake and assignment
+
+- [HU 1 — Create requests](https://trello.com/c/PP6Srufr)
+- [HU 2 — Assign requests to inspectors](https://trello.com/c/20UtshZM)
+- [HU 21 — Reassign a request](https://trello.com/c/ZsAP8Nxy)
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 3 — Set a request deadline](https://trello.com/c/QzEjh9j8)
+- [HU 4 — Set a request priority](https://trello.com/c/dwC60dL3)
+- [HU 5 — View pending requests](https://trello.com/c/oTczSDYh)
+- [HU 6 — View request details](https://trello.com/c/WTH98bR8)
+- [HU 15 — View team requests](https://trello.com/c/r8QbrIBr)
+- [HU 16 — Track overdue requests](https://trello.com/c/Qy3IoWrx)
+
+### Epic 3 — Execution, evidence, and traceability
+
+- [HU 7 — Accept a request](https://trello.com/c/AHWtBINM)
+- [HU 8 — Start request execution](https://trello.com/c/Kb2d6Uo0)
+- [HU 9 — Update a request's status](https://trello.com/c/3irjFpoO)
+- [HU 10 — Attach files](https://trello.com/c/dZpusIoG)
+- [HU 19 — Add request notes](https://trello.com/c/doT7QbZ9)
+- [HU 20 — View request history](https://trello.com/c/AOki27tj)
+
+### Epic 4 — Review and quality assurance
+
+- [HU 12 — Submit a request for review](https://trello.com/c/oK3QeUrP)
+- [HU 13 — Approve a completed request](https://trello.com/c/IcEuxZLE)
+- [HU 14 — Request corrections](https://trello.com/c/yJ50KhDD)
+
+### Epic 5 — Team calendar and scheduling visibility
+
+- [HU 23 — View the team calendar](https://trello.com/c/gEAkYZZx)
+- [HU 24 — View field appointments](https://trello.com/c/n9lZUCNn)
+- [HU 25 — View meetings](https://trello.com/c/zS9MQeJh)
+
+### Epic 6 — Notice reading status
+
+- [HU 30 — Mark a notice as read](https://trello.com/c/iYo4UpLH)
+
+
+Sprint 01 also produced API contracts, migrations, automated backend and browser coverage, and [pair-programming notes](https://docs.google.com/document/d/1wDZ5A5P1mDM35wur025545l33LzxW-olVBhIn_phKJM/edit?tab=t.0). The [sprint plan](docs/plano-acao-sr2.md) still calls for an integrated smoke test against the real frontend, API, and PostgreSQL; the individual feature tests do not replace that acceptance check.
+
+The [MVP Sprint 1 milestone](https://trello.com/c/vWy50e6j) is marked complete on Trello. The repository also contains the initial SEI capture demonstration: a Brave extension reads fields from fictitious process and document pages, opens a Centraliza review tab, and requires manager confirmation before creating a request. This is a local prototype, not an integration with the institutional SEI.
+
+## Sprint 02 — Delivered work
+
+Sprint 02 covered the following 2 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on request deadlines and priorities. The development completed during this sprint is detailed below.
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 3 — Set a request deadline](https://trello.com/c/QzEjh9j8)
+- [HU 4 — Set a request priority](https://trello.com/c/dwC60dL3)
+
+### Pair programming report
+
+[View the Sprint 02 pair programming report](docs/relatorio-pair-programming-sprint-02.png)
+
+<details>
+<summary>Preview the Sprint 02 report</summary>
+
+![Sprint 02 pair programming report](docs/relatorio-pair-programming-sprint-02.png)
+
+</details>
+
+## Sprint 03 — Delivered work
+
+Sprint 03 covered the following 6 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on overdue and critical requests, execution updates, and access to previous requests. The development completed during this sprint is detailed below.
+
+### Epic 2 — Planning and workload visibility
+
+- [HU 16 — Track overdue requests](https://trello.com/c/uAS1r4cn)
+- [HU 17 — Track critical requests](https://trello.com/c/dx0PvCKf)
+
+### Epic 3 — Execution, evidence, and traceability
+
+- [HU 9 — Update a request's status](https://trello.com/c/3irjFpoO)
+- [HU 11 — Complete request execution](https://trello.com/c/Hj3Z0ZaF)
+- [HU 18 — Record request progress](https://trello.com/c/pkgIOOFv)
+- [HU 22 — View previous requests](https://trello.com/c/gT9lb8SP)
+
+### Pair programming report — Sprints 02 and 03
+
+[View the combined Sprints 02 and 03 pair programming report](docs/relatorio-pair-programming-sprints-02-03.png)
+
+<details>
+<summary>Preview the Sprints 02 and 03 report</summary>
+
+![Sprints 02 and 03 pair programming report](docs/relatorio-pair-programming-sprints-02-03.png)
+
+</details>

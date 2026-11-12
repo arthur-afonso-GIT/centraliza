@@ -45,7 +45,7 @@ class Command(BaseCommand):
         for i in range(options["total"]):
             grupo = i % 2
             gestor, inspetor, segundo = contas[grupo]
-            Demanda.objects.get_or_create(referencia_demo=f"seed-v1-{i:04d}", defaults={
+            demanda, _ = Demanda.objects.get_or_create(referencia_demo=f"seed-v1-{i:04d}", defaults={
                 "titulo": f"Inspeção demonstrativa {i + 1:04d}",
                 "sei_numero": f"PROCESSO-FICTICIO-{i + 1:04d}",
                 "descricao": "Registro fictício para desenvolvimento e validação da listagem.",
@@ -56,4 +56,5 @@ class Command(BaseCommand):
                 "equipe": equipes[grupo], "criador": gestor,
                 "responsavel": None if i % 5 == 0 else inspetor if i % 3 else segundo,
             })
+            demanda.equipes_participantes.add(equipes[grupo])
         self.stdout.write(self.style.SUCCESS(f"Carga preparada: {options['total']} referências fictícias; registros anteriores preservados."))

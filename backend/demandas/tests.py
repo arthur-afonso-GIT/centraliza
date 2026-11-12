@@ -115,6 +115,47 @@ class ListagemDemandasTest(APITestCase):
         self.assertEqual([item["id"] for item in response.data["results"]], [propria.id])
         self.assertEqual(response.data["results"][0]["sei_numero"], "23.000/2026-AB")
 
+    def test_prioridade_alta_respeita_acesso_paginacao_e_ordem(self):
+        Demanda.objects.all().update(prioridade="alta")
+        for usuario, titulos in [
+            (self.gestor_a, ["Pendente crítica A", "Em andamento A", "Outro inspetor A", "Não atribuída A"]),
+            (self.inspetor_a, ["Pendente crítica A", "Em andamento A"]),
+        ]:
+            with self.subTest(perfil=usuario.perfil):
+                self.autenticar(usuario)
+                response = self.client.get("/api/demandas/?prioridade=alta&page_size=1")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.data["count"], len(titulos))
+                self.assertEqual(response.data["results"][0]["titulo"], titulos[0])
+                response = self.client.get("/api/demandas/?prioridade=alta")
+                self.assertEqual([item["titulo"] for item in response.data["results"]], titulos)
+
+    def test_prioridade_e_criticidade_sao_independentes(self):
+        Demanda.objects.filter(titulo="Em andamento A").update(prioridade="alta")
+        self.autenticar(self.gestor_a)
+        for consulta, titulos in [
+            ("prioridade=alta", ["Em andamento A"]),
+            ("critica=true", ["Pendente crítica A"]),
+            ("prioridade=alta&critica=true", []),
+            ("prioridade=alta&critica=false&status=em_andamento", ["Em andamento A"]),
+            ("prioridade=baixa", []),
+        ]:
+            with self.subTest(consulta=consulta):
+                response = self.client.get(f"/api/demandas/?{consulta}")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual([item["titulo"] for item in response.data["results"]], titulos)
+        Demanda.objects.filter(titulo="Pendente crítica A").update(prioridade="alta")
+        response = self.client.get("/api/demandas/?prioridade=alta&critica=true")
+        self.assertEqual([item["titulo"] for item in response.data["results"]], ["Pendente crítica A"])
+
+    def test_prioridade_rejeita_valores_invalidos(self):
+        self.autenticar(self.gestor_a)
+        for valor in ["", "urgente", "Alta"]:
+            with self.subTest(valor=valor):
+                response = self.client.get("/api/demandas/", {"prioridade": valor})
+                self.assertEqual(response.status_code, 400)
+                self.assertIn("prioridade", response.data)
+
     def test_rejeita_busca_sei_sem_letras_ou_numeros(self):
         self.autenticar(self.gestor_a)
         self.assertEqual(self.client.get("/api/demandas/?sei_numero=---").status_code, 400)

@@ -8,7 +8,7 @@ const opcaoLabel: Record<string, string> = { ...statusLabel, aguardando_avaliaca
 const sucesso = (status: StatusDemanda) => status === 'aguardando_avaliacao' ? 'Execução concluída. A demanda saiu das suas pendências e foi enviada para avaliação.' : `Status alterado para ${statusLabel[status]}.`;
 
 export default function AlterarStatus({ demanda, onSaved }: { demanda: DemandaDetalhe; onSaved: (item: DemandaDetalhe, text: string) => void }) {
-  const opcoes = demanda.status_disponiveis;
+  const opcoes = demanda.status_disponiveis ?? [];
   const [status, setStatus] = useState<StatusDemanda | ''>(opcoes[0]?.status ?? '');
   const [texto, setTexto] = useState('');
   const [busy, setBusy] = useState(false);

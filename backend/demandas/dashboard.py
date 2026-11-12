@@ -38,14 +38,14 @@ class ResumoHomeView(APIView):
         if not user.equipe_id or user.perfil not in {Usuario.Perfil.GESTOR, Usuario.Perfil.INSPETOR}:
             raise exceptions.PermissionDenied("Sua conta não possui acesso a uma equipe.")
         agora = timezone.now()
-        status_lista = STATUS_ATIVOS if user.perfil == Usuario.Perfil.GESTOR else STATUS_PENDENCIAS_INSPETOR
-        demandas = demandas_permitidas(user).filter(status__in=status_lista)
+        demandas = demandas_permitidas(user).filter(status__in=STATUS_ATIVOS)
         base = {
             "perfil": user.perfil,
             "gerado_em": agora,
             "indicadores": {
                 "atrasadas": demandas.filter(prazo__lt=agora).count(),
                 "criticas": demandas.filter(critica=True).count(),
+                "alta_prioridade": demandas.filter(prioridade=Demanda.Prioridade.ALTA).count(),
             },
         }
         if user.perfil == Usuario.Perfil.GESTOR:
@@ -64,8 +64,11 @@ class ResumoHomeView(APIView):
                 "em_correcao": demandas.filter(status=Demanda.Status.EM_CORRECAO).count(),
                 "nao_iniciadas": demandas.filter(status=Demanda.Status.PENDENTE).count(),
             })
+        proximas_demandas = demandas
+        if user.perfil == Usuario.Perfil.INSPETOR:
+            proximas_demandas = proximas_demandas.filter(status__in=STATUS_PENDENCIAS_INSPETOR)
         base["proximas_demandas"] = DemandaSerializer(
-            demandas.select_related("responsavel").order_by("prazo", "id")[:5], many=True,
+            proximas_demandas.select_related("responsavel").order_by("prazo", "id")[:5], many=True,
         ).data
         compromissos = Compromisso.objects.filter(
             equipe_id=user.equipe_id, cancelado_em__isnull=True, inicio__gte=agora, inicio__lt=agora + timedelta(days=14),

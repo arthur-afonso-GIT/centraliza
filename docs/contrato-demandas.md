@@ -15,11 +15,13 @@ São ativos `pendente`, `aceita`, `em_andamento`, `aguardando_avaliacao` e `em_c
 retorna apenas ativos; filtros explícitos por esses dois estados permitem
 consultar demandas encerradas dentro do mesmo escopo de autorização.
 Crítica é uma flag independente. Status e criticidade combinados usam AND.
+Prioridade também é independente da criticidade; os filtros combinados usam AND.
 
 | Parâmetro | Validação |
 | --- | --- |
 | status | Opcional: pendente, aceita, em_andamento, aguardando_avaliacao, em_correcao, concluida ou cancelada |
 | critica | Opcional: true ou false |
+| prioridade | Opcional: baixa, media ou alta; valor inválido retorna 400 |
 | responsavel | ID inteiro positivo; disponível ao gestor |
 | prazo_de | Data inicial inclusiva em AAAA-MM-DD |
 | prazo_ate | Data final inclusiva em AAAA-MM-DD |
@@ -89,9 +91,15 @@ consultar essa seleção.
 ## Interface
 
 Pendentes envia `status=pendente`, Aceitas envia `status=aceita`, Em andamento envia `status=em_andamento`
-e Críticas envia `critica=true`. Ao trocar segmento, voltar à página 1 e
+e Críticas envia `critica=true`. Prioridade alta envia `prioridade=alta`, sem
+exigir criticidade. Fora desse segmento, o parâmetro de prioridade é omitido.
+O acesso direto por `/demandas?prioridade=alta` seleciona a aba correspondente.
+Ao trocar segmento, voltar à página 1 e
 cancelar/ignorar a resposta anterior. Responsável null aparece como “Não atribuída”.
 Cartões exibem criticidade em texto, sem depender apenas da cor.
+Lista e detalhe exibem o selo “Alta prioridade” quando a prioridade é alta,
+independentemente da indicação “Crítica”; ambos podem aparecer simultaneamente.
+Cartões críticos têm uma faixa superior discreta, preservando a borda de atraso.
 Demandas atrasadas também recebem indicação textual. No perfil de gestor, os
 filtros de responsável, período e atraso combinam com o segmento ativo e toda
 alteração retorna à primeira página.
@@ -181,3 +189,79 @@ sem revalidar a equipe principal atual do criador histórico ou do responsável;
 a permissão é conferida com a equipe ativa e o responsável da demanda.
 
 Evidências e comandos reproduzíveis: [validação da HU3](validacao-hu3.md).
+
+## HU18 — Registrar andamento
+
+`POST /api/demandas/{id}/andamentos/` exige sessão e CSRF. Somente o inspetor
+responsável, com acesso à equipe da demanda, pode registrar durante os estados
+`em_andamento` ou `em_correcao`. O registro não muda o status da demanda.
+
+```json
+{
+  "realizado": "Visita realizada e entrevistas concluídas.",
+  "pendente": "Receber o laudo técnico."
+}
+```
+
+Ambos os campos são obrigatórios, removem espaços nas extremidades e aceitam
+até 2.000 caracteres cada. Quando não há pendências, o inspetor pode informar
+“Nenhuma pendência”. Conteúdo vazio, ausente ou acima do limite retorna 400;
+gestor não pode registrar (403); demandas fora do acesso do usuário retornam
+404; sessão ausente retorna 401.
+
+A resposta 201 contém o detalhe atualizado da demanda. O histórico inclui um
+evento `tipo: "andamento"`, com `realizado`, `pendente`, `autor` e `criado_em`.
+Os campos `texto`, `status_anterior` e `status_novo` ficam vazios nesse evento.
+A gravação do evento e a atualização de `atualizada_em` são atômicas.
+
+O inspetor responsável e gestores das equipes participantes consultam os
+registros por `GET /api/demandas/{id}/`, mais recentes primeiro. Os registros
+continuam disponíveis após o encerramento e não oferecem edição ou exclusão.
+A tela mantém o texto preenchido quando o salvamento falha.
+
+Ao atualizar uma instalação existente, execute `uv run python manage.py migrate`
+no backend para aplicar a migração `0014_registro_andamento` antes de usar a tela.
+
+Validação: `uv run python manage.py test demandas.test_andamento` no backend e
+`npx playwright test tests/andamento-demanda.spec.ts` no frontend.
+
+## HU22 — Consulta após reatribuição
+
+Na reatribuição (inclusive remoção do responsável), a API preserva um retrato
+para o inspetor que está saindo, na mesma transação e antes de alterar qualquer
+campo do pedido. O retrato inclui dados, histórico e metadados dos anexos ativos
+até aquele momento. Nunca é reconstruído a partir dos dados atuais.
+
+- `GET /api/demandas/consultas-anteriores/`: lista pessoal paginada do inspetor,
+  com `page`, `page_size` e busca `sei_numero` no número SEI preservado. Não altera
+  a lista operacional nem seus indicadores. Retorna 403 para outros perfis.
+- `GET /api/demandas/{id}/`: o responsável atual e gestores mantêm a consulta
+  atual; o ex-responsável recebe o retrato com `somente_leitura: true` e
+  `consulta_encerrada_em`. Título, descrição, prazo, status, responsável, equipes,
+  nomes de autores e histórico correspondem ao período preservado.
+- `GET /api/demandas/{id}/anexos/` e download: ex-responsáveis só consultam anexos
+  incluídos no retrato que continuam ativos. Arquivos posteriores são negados.
+  Remover um anexo revoga seu download, sem expor dados do evento posterior.
+- Escritas (edição, comentários, prazo, prioridade, status, anexos) continuam
+  exigindo acesso operacional; o retrato não concede permissão de escrita.
+- Exige sessão, perfil de inspetor e a equipe do retrato como equipe ativa,
+  ainda participante da demanda e não arquivada. Vínculo explicitamente
+  revogado não concede acesso. Contas legadas sem vínculos seguem a equipe
+  principal, conforme a compatibilidade existente no sistema.
+- Se voltar a ser responsável, o inspetor recebe acesso operacional. Uma nova
+  saída substitui seu retrato pelo período mais recente autorizado. Há um
+  retrato por demanda/inspetor, sem duplicação na lista.
+
+A interface oferece a aba **Consultas anteriores**, aviso com data de corte e
+nenhum controle de alteração. O status exibido é histórico, não o atual.
+
+**Migração:** executar `uv run python manage.py migrate`. A migração
+`0015_consulta_anterior` cria a tabela. Reatribuições anteriores à implantação
+não são recuperadas automaticamente: o histórico antigo não permite reconstruir
+com segurança todos os dados. Não se concede acesso retroativo aos dados atuais.
+
+**Validação:** `uv run python manage.py test demandas.test_consultas_anteriores`
+e `npx playwright test tests/consulta-anterior.spec.ts`. Testes cobrem consulta,
+limite temporal, busca, anexos, bloqueios de escrita, revogação de equipe, ciclos
+de reatribuição e rollback. Validar também no PostgreSQL e no navegador antes de
+integrar à main quando essas ferramentas não estiverem disponíveis no ambiente.

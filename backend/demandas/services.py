@@ -145,6 +145,9 @@ def editar_demanda(*, demanda: Demanda, usuario, dados: dict) -> Demanda:
     marcador = object()
     responsavel = dados.pop("responsavel_id", marcador)
     equipes_ids = dados.pop("equipes_ids", marcador)
+    if responsavel is not marcador and demanda.responsavel_id != (responsavel.id if responsavel else None):
+        from demandas.consultas_anteriores import preservar_consulta
+        preservar_consulta(demanda)
     alterados = []
     for campo, valor in dados.items():
         if getattr(demanda, campo) != valor:
