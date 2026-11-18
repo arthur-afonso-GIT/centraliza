@@ -6,9 +6,14 @@ from demandas.dashboard import ResumoHomeView
 from demandas.views import DemandaPrioridadeView, DemandaPrazoView, DemandaAndamentoView, ConsultasAnterioresView
 from agenda.views import CompromissoDetailView, CompromissoListView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
+from chats.views import ConversaListView, ConversaDetailView, MensagemListView, MembrosChatView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
+    path("api/conversas/membros/", MembrosChatView.as_view(), name="conversas-membros"),
+    path("api/conversas/", ConversaListView.as_view(), name="conversas-list"),
+    path("api/conversas/<int:pk>/", ConversaDetailView.as_view(), name="conversas-detail"),
+    path("api/conversas/<int:pk>/mensagens/", MensagemListView.as_view(), name="conversas-mensagens"),
     path("api/demandas/consultas-anteriores/", ConsultasAnterioresView.as_view(), name="demandas-consultas-anteriores"),
     path("api/demandas/<int:pk>/prioridade/", DemandaPrioridadeView.as_view(), name="demandas-prioridade"),
     path("api/health/", lambda request: JsonResponse({"status": "ok"}), name="health"),

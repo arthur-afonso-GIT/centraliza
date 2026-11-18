@@ -113,9 +113,11 @@ The Team area presents the current members, roles, and team-management context.
 
 ### Chats
 
-Chats are reserved as a future communication feature and are currently marked as under development.
+Chats let team members create private conversations, exchange messages, and filter authorized conversations by keyword, date, or participant. The interface refreshes messages periodically. See the [chat API and filtering guide](docs/FILTRO_CONVERSAS.md).
 
-![Centraliza Chats](docs/evidencias/modulos/chats.png)
+The image below shows the earlier navigation prototype.
+
+![Centraliza Chats prototype](docs/evidencias/modulos/chats.png)
 
 ## Technology stack
 
@@ -258,7 +260,7 @@ For code exploration, run graphify explain Workspace from the repository root. A
 
 ## Product direction
 
-The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, and managed notices. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, notifications, and chat remain later product increments.
+The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, managed notices, and team conversations. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, and notifications remain later product increments.
 
 
 ## Team
