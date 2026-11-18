@@ -56,6 +56,24 @@ def salvar_compromisso(*, usuario, dados, compromisso=None):
 
 
 @transaction.atomic
+def criar_reuniao_inspetor(*, usuario, dados):
+    if usuario.perfil != "inspetor" or not usuario.equipe_id:
+        raise PermissionDenied("Somente inspetores vinculados a uma equipe podem agendar reuniões por esta ação.")
+    inicio, fim = dados["inicio"], dados["fim"]
+    validar_intervalo(inicio, fim)
+    # O inspetor participa da própria reunião; o conflito considera apenas a agenda dele.
+    conflitos = buscar_conflitos(equipe_id=usuario.equipe_id, participantes=[usuario], inicio=inicio, fim=fim)
+    if conflitos:
+        raise ConflitoAgenda(conflitos)
+    reuniao = Compromisso.objects.create(
+        titulo=dados["titulo"], descricao=dados["pauta"], tipo=Compromisso.Tipo.REUNIAO,
+        inicio=inicio, fim=fim, equipe_id=usuario.equipe_id, criador=usuario,
+    )
+    reuniao.participantes.set([usuario])
+    return reuniao
+
+
+@transaction.atomic
 def cancelar_compromisso(*, compromisso, usuario):
     exigir_gestor(usuario)
     if compromisso.cancelado_em:

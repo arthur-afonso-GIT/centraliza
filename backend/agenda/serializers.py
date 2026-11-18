@@ -37,6 +37,19 @@ class CompromissoSerializer(serializers.ModelSerializer):
         return obj.fim.astimezone(ZoneInfo("America/Fortaleza")).isoformat()
 
 
+class ReuniaoInspetorSerializer(serializers.Serializer):
+    titulo = serializers.CharField(max_length=200)
+    pauta = serializers.CharField(max_length=2000)
+    inicio = DataHoraComOffsetField()
+    fim = DataHoraComOffsetField()
+
+    def validate(self, attrs):
+        extras = sorted(set(self.initial_data) - set(self.fields))
+        if extras:
+            raise serializers.ValidationError({campo: "Campo não permitido ao agendar uma reunião." for campo in extras})
+        return attrs
+
+
 class GerenciarCompromissoSerializer(serializers.Serializer):
     titulo = serializers.CharField(max_length=200, required=False)
     descricao = serializers.CharField(allow_blank=True, required=False)

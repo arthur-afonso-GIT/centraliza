@@ -20,6 +20,10 @@ paginada de demandas com acesso por equipe e perfil.
   da demanda e sem permitir edição ou exclusão do registro.
 - `GET /api/compromissos/?inicio={ISO}&fim={ISO}` para listar compromissos
   sobrepostos ao intervalo autorizado, com horários em `America/Fortaleza`.
+- `POST /api/compromissos/` para o gestor criar compromissos ou para o
+  inspetor agendar uma reunião com `titulo`, `pauta`, `inicio` e `fim`. A
+  reunião do inspetor inclui somente ele como participante e informa conflitos
+  com a agenda dele (HTTP 409).
 
 Alterações de status geram um evento na mesma transação. O histórico exposto
 pela API não oferece edição ou exclusão.

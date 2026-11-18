@@ -152,6 +152,14 @@ export async function instalarApi(page: Page) {
       return route.fulfill({ status: 201, json: created });
     }
     if (url.pathname === '/api/compromissos/') {
+      if (request.method() === 'POST' && perfil === 'inspetor') {
+        const { pauta, ...body } = request.postDataJSON() as { titulo: string; pauta: string; inicio: string; fim: string };
+        const conflitos = appointments.filter(item => (item.participantes as Array<{ id: number }>).some(person => person.id === 2) && Date.parse(item.inicio as string) < Date.parse(body.fim) && Date.parse(item.fim as string) > Date.parse(body.inicio));
+        if (conflitos.length) return route.fulfill({ status: 409, json: { detail: 'Há conflito de horário para um ou mais participantes.', conflitos } });
+        const created = { id: appointments.length + 10, ...body, descricao: pauta, tipo: 'reuniao', participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: null, cancelado_em: null };
+        appointments.push(created);
+        return route.fulfill({ status: 201, json: created });
+      }
       if (request.method() === 'POST') {
         const body = request.postDataJSON() as Record<string, unknown>;
         const created = { id: 3, ...body, participantes: [{ id: 2, nome: 'Inspetor de teste' }], demanda: body.demanda_id ?? null, cancelado_em: null };

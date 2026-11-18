@@ -1,12 +1,13 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
+import { AlertTriangle, CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError } from '../lib/auth';
 import { diasEntre, hojeFortaleza, intervaloAgenda, listarCompromissos, moverReferencia, ocorreNoDia, type AgendaResponse, type Compromisso, type VisaoAgenda } from '../lib/agenda';
 import type { User } from '../lib/auth';
 import CompromissoForm from './compromisso-form';
 import CancelarCompromisso from './cancelar-compromisso';
+import ReuniaoForm from './reuniao-form';
 
 const views: Array<{ id: VisaoAgenda; label: string }> = [{ id: 'dia', label: 'Dia' }, { id: 'semana', label: 'Semana' }, { id: 'mes', label: 'Mês' }];
 const dateLabel = (value: string, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat('pt-BR', { ...options, timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
@@ -24,6 +25,7 @@ export default function AgendaCalendar({ user }: { user: User }) {
   const [agenda, setAgenda] = useState<AgendaResponse | null>(null);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const [notice, setNotice] = useState('');
   const range = useMemo(() => intervaloAgenda(view, reference), [view, reference]);
   useEffect(() => {
     const controller = new AbortController();
@@ -33,17 +35,22 @@ export default function AgendaCalendar({ user }: { user: User }) {
     });
     return () => controller.abort();
   }, [range.inicio, range.fim, attempt, router]);
-  function prepare() { setAgenda(null); setError(false); }
+  function prepare() { setAgenda(null); setError(false); setNotice(''); }
   function changeView(next: VisaoAgenda) { prepare(); setView(next); }
   function move(direction: number) { prepare(); setReference(value => moverReferencia(view, value, direction)); }
   function goToday() { prepare(); setReference(today); }
   function retry() { prepare(); setAttempt(value => value + 1); }
   function changed() { prepare(); setAttempt(value => value + 1); }
+  function scheduled(item: Compromisso) {
+    prepare(); setReference(item.inicio.slice(0, 10)); setAttempt(value => value + 1);
+    setNotice(`Reunião “${item.titulo}” agendada para ${dateLabel(item.inicio.slice(0, 10), { day: '2-digit', month: '2-digit' })}, ${timeLabel(item.inicio)}–${timeLabel(item.fim)}.`);
+  }
   const days = diasEntre(range.start, range.end);
   const containsToday = today >= range.start && today < range.end;
   const heading = view === 'dia' ? dateLabel(range.start, { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' }) : view === 'semana' ? `${dateLabel(range.start, { day: '2-digit', month: 'short' })} – ${dateLabel(days.at(-1)!, { day: '2-digit', month: 'short', year: 'numeric' })}` : dateLabel(range.start, { month: 'long', year: 'numeric' });
   return <section className="calendar" aria-labelledby="periodo-agenda">
-    <header className="calendar-toolbar"><div><span className="eyebrow">AGENDA DA EQUIPE</span><h2 id="periodo-agenda">{heading}</h2></div><div className="calendar-controls">{user.perfil === 'gestor' && <CompromissoForm onSaved={changed} />}<button className="secondary" onClick={() => move(-1)} aria-label={`Período anterior na visão de ${view}`}><ChevronLeft /></button><button className="secondary today-button" disabled={containsToday} onClick={goToday}>Hoje</button><button className="secondary" onClick={() => move(1)} aria-label={`Próximo período na visão de ${view}`}><ChevronRight /></button><div className="view-switch" aria-label="Visualização da agenda">{views.map(item => <button key={item.id} aria-pressed={view === item.id} onClick={() => changeView(item.id)}>{item.label}</button>)}</div></div></header>
+    <header className="calendar-toolbar"><div><span className="eyebrow">AGENDA DA EQUIPE</span><h2 id="periodo-agenda">{heading}</h2></div><div className="calendar-controls">{user.perfil === 'gestor' && <CompromissoForm onSaved={changed} />}{user.perfil === 'inspetor' && <ReuniaoForm onSaved={scheduled} />}<button className="secondary" onClick={() => move(-1)} aria-label={`Período anterior na visão de ${view}`}><ChevronLeft /></button><button className="secondary today-button" disabled={containsToday} onClick={goToday}>Hoje</button><button className="secondary" onClick={() => move(1)} aria-label={`Próximo período na visão de ${view}`}><ChevronRight /></button><div className="view-switch" aria-label="Visualização da agenda">{views.map(item => <button key={item.id} aria-pressed={view === item.id} onClick={() => changeView(item.id)}>{item.label}</button>)}</div></div></header>
+    {notice && <output className="toast success"><CheckCircle2 />{notice}</output>}
     {!agenda && !error && <output className="calendar-state"><span className="spinner" /> Carregando compromissos…</output>}
     {error && <div className="calendar-state" role="alert"><AlertTriangle /><strong>Não foi possível carregar a agenda</strong><button className="secondary" onClick={retry}><RotateCcw /> Tentar novamente</button></div>}
     {agenda?.results.length === 0 && <div className="calendar-state"><CalendarDays /><strong>Nenhum compromisso neste período</strong><p>Use os controles para consultar outra data.</p></div>}

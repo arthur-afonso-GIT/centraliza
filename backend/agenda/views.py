@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from agenda.models import Compromisso
-from agenda.serializers import CompromissoSerializer, GerenciarCompromissoSerializer
-from agenda.services import ConflitoAgenda, cancelar_compromisso, salvar_compromisso
+from agenda.serializers import CompromissoSerializer, GerenciarCompromissoSerializer, ReuniaoInspetorSerializer
+from agenda.services import ConflitoAgenda, cancelar_compromisso, criar_reuniao_inspetor, salvar_compromisso
 
 
 def limite_iso(valor, campo):
@@ -22,12 +22,19 @@ def limite_iso(valor, campo):
 
 class CompromissoListView(APIView):
     def post(self, request):
-        serializer = GerenciarCompromissoSerializer(data=request.data, context={"request": request})
-        for campo in ("titulo", "tipo", "inicio", "fim", "participante_ids"):
-            serializer.fields[campo].required = True
-        serializer.is_valid(raise_exception=True)
+        if request.user.perfil == "inspetor":
+            # O inspetor agenda somente reuniões das quais participa.
+            serializer = ReuniaoInspetorSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            salvar = lambda: criar_reuniao_inspetor(usuario=request.user, dados=serializer.validated_data)
+        else:
+            serializer = GerenciarCompromissoSerializer(data=request.data, context={"request": request})
+            for campo in ("titulo", "tipo", "inicio", "fim", "participante_ids"):
+                serializer.fields[campo].required = True
+            serializer.is_valid(raise_exception=True)
+            salvar = lambda: salvar_compromisso(usuario=request.user, dados=serializer.validated_data)
         try:
-            compromisso = salvar_compromisso(usuario=request.user, dados=serializer.validated_data)
+            compromisso = salvar()
         except PermissionDenied as exc:
             raise exceptions.PermissionDenied(str(exc)) from exc
         except ValidationError as exc:
