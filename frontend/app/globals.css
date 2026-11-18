@@ -119,6 +119,41 @@ p { line-height: 1.65; }
 @media(max-width: 380px) { .module-grid { grid-template-columns: 1fr; }.team-label { display: none; } }
 @media(prefers-reduced-motion: reduce) { .spinner { animation: none; } }
 
+.chats-layout { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); min-height: 620px; height: min(72dvh, 780px); background: #fff; border: 1px solid var(--visat-border); border-radius: 10px; overflow: hidden; }
+.chats-sidebar { min-width: 0; overflow-y: auto; border-right: 1px solid var(--visat-border); }
+.chats-sidebar-heading, .chats-thread-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 20px; border-bottom: 1px solid var(--visat-border); }
+.chats-sidebar-heading h2, .chats-thread-heading h2 { margin: 0; font-size: 18px; }
+.chats-sidebar-heading span, .chats-thread-heading p { margin: 4px 0 0; color: var(--visat-muted); font-size: 12px; }
+.chats-sidebar-heading .secondary { padding: 9px 12px; white-space: nowrap; }
+.conversa-filtros-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--visat-border); }
+.conversa-filtros-campos label:first-child, .conversa-filtros-campos label:last-of-type { grid-column: 1 / -1; }
+.conversa-filtros-campos label, .chats-create label, .chats-composer label { display: grid; gap: 5px; font-size: 12px; font-weight: 650; }
+.conversa-filtros-campos input, .conversa-filtros-campos select, .chats-create input, .chats-composer textarea { min-width: 0; width: 100%; padding: 9px 10px; font: inherit; border: 1px solid var(--visat-border); border-radius: 6px; background: #fff; color: var(--visat-graphite); }
+.conversa-filtros-campos .secondary { grid-column: 1 / -1; padding: 8px; }
+.conversa-filtros > p { margin: 10px 20px; color: var(--visat-muted); font-size: 12px; }
+.conversa-filtros > p[role="alert"] { color: var(--visat-red-dark); }
+.conversa-resultados { list-style: none; margin: 0; padding: 0; }
+.conversa-resultados li { border-top: 1px solid var(--visat-border); }
+.conversa-resultados button { display: grid; width: 100%; gap: 3px; padding: 15px 20px; background: #fff; border: 0; text-align: left; color: var(--visat-graphite); }
+.conversa-resultados button:hover, .conversa-resultados button.is-selected { background: var(--visat-soft); }
+.conversa-resultados button.is-selected { box-shadow: inset 3px 0 var(--visat-red); }
+.conversa-resultados strong { font-size: 14px; }
+.conversa-resultados small, .conversa-resultados span { color: var(--visat-muted); font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.conversa-filtros .empty-state { min-height: 140px; border: 0; padding: 22px; }.conversa-filtros .empty-state h2 { font-size: 16px; margin: 0 0 8px; }.conversa-filtros .empty-state p { margin: 0; font-size: 13px; }
+.chats-create { display: grid; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--visat-border); background: var(--visat-canvas); }
+.chats-create fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }.chats-create legend { font-size: 12px; font-weight: 650; margin-bottom: 8px; }.chats-create fieldset label { display: flex; align-items: center; gap: 8px; font-weight: 400; }.chats-create fieldset input { width: auto; }.chats-create fieldset p { color: var(--visat-muted); font-size: 13px; margin: 0; }
+.chats-create-actions { display: flex; gap: 8px; }.chats-create-actions button { padding: 9px 10px; }
+.chats-thread { min-width: 0; display: flex; flex-direction: column; position: relative; }
+.chats-thread-heading { min-height: 78px; }.chats-thread-heading > div { flex: 1; min-width: 0; }.chats-thread-heading h2, .chats-thread-heading p { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.chats-refresh, .chats-back { border: 0; background: none; color: var(--visat-muted); padding: 8px; }.chats-back { display: none; }
+.chats-messages { flex: 1; overflow-y: auto; list-style: none; padding: 24px; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.chats-messages li { align-self: flex-start; max-width: min(85%, 520px); padding: 11px 14px; border: 1px solid var(--visat-border); border-radius: 9px; background: var(--visat-canvas); overflow-wrap: anywhere; }.chats-messages li.mine { align-self: flex-end; border-color: #f1cbd0; background: var(--visat-soft); }.chats-messages li.chats-no-messages { align-self: center; color: var(--visat-muted); text-align: center; border: 0; background: none; }
+.chats-messages strong { font-size: 12px; }.chats-messages p { margin: 5px 0; font-size: 14px; white-space: pre-wrap; }.chats-messages time { display: block; color: var(--visat-muted); font-size: 11px; text-align: right; }
+.chats-composer { border-top: 1px solid var(--visat-border); padding: 16px 20px; }.chats-composer > div { display: flex; gap: 10px; margin-top: 7px; align-items: stretch; }.chats-composer textarea { resize: vertical; }.chats-composer button { padding: 10px 16px; }
+.chats-blank, .chats-loading { display: grid; place-content: center; justify-items: center; text-align: center; gap: 8px; flex: 1; padding: 24px; color: var(--visat-muted); }.chats-blank h2 { margin: 0; color: var(--visat-graphite); font-size: 19px; }.chats-blank p, .chats-loading p { margin: 0; max-width: 350px; }
+.chats-error { position: absolute; left: 20px; right: 20px; bottom: 96px; padding: 10px 14px; background: var(--visat-soft); color: var(--visat-red-dark); border: 1px solid #f1cbd0; border-radius: 6px; font-size: 13px; }
+@media(max-width: 760px) { .chats-layout { display: block; height: min(76dvh, 760px); min-height: 540px; }.chats-sidebar, .chats-thread { height: 100%; }.chats-thread { display: none; }.chats-layout.show-conversation .chats-sidebar { display: none; }.chats-layout.show-conversation .chats-thread { display: flex; }.chats-back { display: inline-flex; }.chats-composer button span { display: none; } }
+
 .demands { display: grid; gap: 20px; }
 .segments { display: flex; gap: 6px; width: fit-content; max-width: 100%; overflow-x: auto; padding: 5px; background: #ececef; border-radius: 9px; }
 .segments button { border: 0; background: transparent; color: var(--visat-muted); border-radius: 6px; padding: 10px 16px; font-weight: 600; }

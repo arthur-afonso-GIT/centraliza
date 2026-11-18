@@ -2,8 +2,8 @@
 import { useMemo, useState } from 'react';
 import { filtrarConversas, filtrosValidos, type ConversaFiltravel } from '../lib/conversas-filtros';
 
-type Props = { conversas: ConversaFiltravel[]; onSelecionar?: (id: number) => void };
-export default function ConversasFiltros({ conversas, onSelecionar }: Props) {
+type Props = { conversas: ConversaFiltravel[]; selecionada: number | null; onSelecionar: (id: number) => void };
+export default function ConversasFiltros({ conversas, selecionada, onSelecionar }: Props) {
   const [palavraChave, setPalavraChave] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
@@ -13,8 +13,7 @@ export default function ConversasFiltros({ conversas, onSelecionar }: Props) {
       .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')), [conversas]);
   const filtros = { palavraChave, dataInicio, dataFim, participanteId: participanteId ? Number(participanteId) : null };
   const datasValidas = filtrosValidos(filtros);
-  const filtradas = useMemo(() => filtrarConversas(conversas, filtros),
-    [conversas, palavraChave, dataInicio, dataFim, participanteId]);
+  const filtradas = filtrarConversas(conversas, filtros);
   function limpar() {
     setPalavraChave(''); setDataInicio(''); setDataFim(''); setParticipanteId('');
   }
@@ -44,9 +43,10 @@ export default function ConversasFiltros({ conversas, onSelecionar }: Props) {
       <p>{conversas.length ? 'Experimente ajustar os filtros.' : 'Ainda não há conversas disponíveis.'}</p>
     </div> : <ul className="conversa-resultados">
       {filtradas.map(c => <li key={c.id}>
-        <button type="button" onClick={() => onSelecionar?.(c.id)} disabled={!onSelecionar}>
+        <button type="button" className={selecionada === c.id ? 'is-selected' : ''} aria-current={selecionada === c.id ? 'true' : undefined} onClick={() => onSelecionar(c.id)}>
           <strong>{c.titulo}</strong>
           <small>{c.participantes.map(p => p.nome).join(', ')}</small>
+          <span>{c.mensagens.at(-1)?.texto ?? 'Nenhuma mensagem ainda'}</span>
         </button>
       </li>)}
     </ul>}

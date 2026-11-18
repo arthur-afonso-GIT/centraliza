@@ -1,28 +1,33 @@
-# Filtros de conversas (S5, Could)
+# Chats e filtros de conversas
 
-Implementação preparada sobre a versão consultada da `main` em 18/11/2026.
+A página **Chats** permite criar uma conversa com integrantes ativos da equipe,
+trocar mensagens e filtrar a lista por palavra-chave, data e participante.
+Os filtros podem ser combinados e ignoram diferenças de acentos e maiúsculas.
 
-## Critérios
-- Palavra-chave: título, nomes dos participantes e mensagens, sem diferenciar maiúsculas ou acentos.
-- Data inicial e final inclusivas; uma conversa corresponde se sua criação ou pelo menos uma mensagem ocorreu no período.
-- Participante: identificação numérica, não comparação por nome.
-- Filtros combinados: todas as condições devem ser satisfeitas (AND).
-- Limpar filtros; mensagem para lista vazia; validação de intervalo de datas.
+## Acesso e API
 
-## Integração
-O módulo `chats` do repositório original ainda é apenas uma tela de 'Em desenvolvimento'.
-Não há API/modelo de conversa no backend consultado. O componente reutilizável
-`frontend/components/conversas-filtros.tsx` recebe `conversas` já autorizadas pela API;
-**não** gera dados fictícios e não deve ser apresentado como chat operacional.
+- `GET /api/conversas/`: lista somente conversas da equipe ativa das quais o usuário participa, incluindo mensagens para a pesquisa local.
+- `GET /api/conversas/membros/`: lista integrantes ativos da equipe que podem ser convidados.
+- `POST /api/conversas/`: cria conversa com `titulo` e `participante_ids`; o criador entra automaticamente.
+- `GET /api/conversas/{id}/`: lê uma conversa autorizada.
+- `POST /api/conversas/{id}/mensagens/`: envia `texto` para uma conversa autorizada.
 
-Quando a funcionalidade de conversas for implementada, renderize
-`<ConversasFiltros conversas={conversasAutorizadas} onSelecionar={abrirConversa} />`
-na página de Chats e adapte o tipo `ConversaFiltravel` à resposta do backend.
-É obrigatório restringir permissões no backend antes de fornecer os dados ao filtro
-local; filtragem no cliente não substitui autorização. Para grandes volumes,
-migrar o filtro para consulta paginada no servidor.
+O backend verifica equipe ativa e participação em cada leitura e envio. Integrantes
+de outras equipes, usuários sem participação e contas inativas não recebem o
+conteúdo. A interface atualiza a lista a cada 15 segundos e após cada envio.
 
-## Verificações
-Executar `node --experimental-strip-types --test frontend/tests/conversas-filtros.test.ts`
-na raiz do repositório (Node 22+ com suporte ao strip types).
-Não foi realizado merge na main.
+## Filtros
+
+- Palavra-chave: título, nomes dos participantes e mensagens.
+- Data inicial e final inclusivas no fuso de Fortaleza: criação da conversa ou mensagem no período.
+- Participante: identificação numérica.
+- Combinações usam lógica **E**; datas invertidas exibem erro.
+
+Esta primeira versão carrega as mensagens autorizadas para pesquisa local. Para
+equipes com histórico grande, a busca deverá migrar para uma API paginada.
+
+## Verificação
+
+Execute `node --experimental-strip-types --test frontend/unit-tests/conversas-filtros.test.ts`
+na raiz do repositório para testar a lógica dos filtros. Os testes da API estão
+em `backend/chats/tests.py` e o fluxo da tela em `frontend/tests/conversas.spec.ts`.

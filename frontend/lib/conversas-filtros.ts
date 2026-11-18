@@ -1,10 +1,11 @@
 /** Filtros locais sobre conversas já autorizadas pelo backend. */
 export type ParticipanteConversa = { id: number; nome: string };
-export type MensagemConversa = { id: number; texto: string; criada_em: string; autor_id: number };
+export type MensagemConversa = { id: number; texto: string; criada_em: string; autor_id: number; autor_nome: string };
 export type ConversaFiltravel = {
   id: number;
   titulo: string;
   criada_em: string;
+  atualizada_em: string;
   participantes: ParticipanteConversa[];
   mensagens: MensagemConversa[];
 };
@@ -17,7 +18,9 @@ export type FiltrosConversa = {
 const normalizar = (value: string) =>
   value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
 
-const dia = (value: string) => value.slice(0, 10);
+const dia = (value: string) => new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'America/Fortaleza', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(new Date(value));
 export function filtrosValidos(filtros: FiltrosConversa): boolean {
   return !filtros.dataInicio || !filtros.dataFim || filtros.dataInicio <= filtros.dataFim;
 }
