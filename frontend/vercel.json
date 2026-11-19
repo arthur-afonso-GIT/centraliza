@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "npm run build",
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://centraliza-api-f5us.onrender.com/api/:path*"
-    }
-  ]
+  "buildCommand": "npm run build"
 }
