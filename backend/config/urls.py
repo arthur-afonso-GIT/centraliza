@@ -4,12 +4,13 @@ from django.urls import path
 from demandas.views import DemandaAnexoDownloadView, DemandaAnexoListView, DemandaAnexoView, DemandaComentarioView, DemandaDetailView, DemandaListView, DemandaSeiDuplicidadeView, DemandaStatusView, ImportacaoSeiConfirmarView, ImportacaoSeiDetailView, ImportacaoSeiListView, SolicitacoesParticipacaoView, DemandaSolicitarParticipacaoView, SolicitacaoParticipacaoDecisaoView
 from demandas.dashboard import ResumoHomeView
 from demandas.views import DemandaPrioridadeView, DemandaPrazoView, DemandaAndamentoView, ConsultasAnterioresView
-from agenda.views import CompromissoDetailView, CompromissoListView
+from agenda.views import CompromissoDetailView, CompromissoListView, ParticipantesReuniaoView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
 from chats.views import ConversaListView, ConversaDetailView, MensagemListView, MembrosChatView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
+    path("api/compromissos/participantes/", ParticipantesReuniaoView.as_view(), name="compromissos-participantes"),
     path("api/conversas/membros/", MembrosChatView.as_view(), name="conversas-membros"),
     path("api/conversas/", ConversaListView.as_view(), name="conversas-list"),
     path("api/conversas/<int:pk>/", ConversaDetailView.as_view(), name="conversas-detail"),

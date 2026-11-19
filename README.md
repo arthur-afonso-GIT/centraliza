@@ -35,7 +35,7 @@ Available in the current version:
 - **Progress records (HU18)** — assigned inspectors record completed work and pending tasks during execution or correction. Records retain author and timestamp in the request history for authorized inspectors and managers.
 - **Request details and history** — inspect complete request data, add timeline comments, submit work for management evaluation, request corrections, approve, or cancel according to role.
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
-- **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time.
+- **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time; inspectors can schedule alignment meetings with a title, date, start and end times, and agenda.
 - **Team notices** — managers publish, edit, target, schedule, expire, and cancel urgent or informational notices; inspectors receive the active notices authorized for them.
 - **Team chats** — active team members create conversations, exchange persisted messages, and filter authorized conversations by keyword, date, and participant. The interface refreshes every 15 seconds.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
