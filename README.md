@@ -75,7 +75,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
 - [Chats and conversation filters](docs/FILTRO_CONVERSAS.md) — access rules, API routes, filter behavior, and current limits.
 - [Sprint 03 delivery record](docs/sprint-03.md) — completed stories, implementation evidence, and remaining validation.
-- [Deployment URL map](docs/urls-deploy.md) — how the Render database and API fit with the planned Vercel frontend.
+- [Deployment URL map](docs/urls-deploy.md) — Render and Vercel setup, including the frontend API URL.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
