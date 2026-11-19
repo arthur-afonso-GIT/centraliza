@@ -3,7 +3,7 @@ import { ApiError, csrfToken } from './auth';
 export type VisaoAgenda = 'dia' | 'semana' | 'mes';
 export type Compromisso = { id: number; titulo: string; descricao: string; tipo: 'reuniao' | 'atividade'; inicio: string; fim: string; participantes: Array<{ id: number; nome: string }>; demanda: number | null; cancelado_em: string | null };
 export type DadosCompromisso = { titulo: string; descricao: string; tipo: 'reuniao' | 'atividade'; inicio: string; fim: string; participante_ids: number[]; demanda_id: number | null };
-export type DadosReuniao = { titulo: string; pauta: string; inicio: string; fim: string };
+export type DadosReuniao = { titulo: string; pauta: string; inicio: string; fim: string; participante_ids: number[] };
 export type AgendaResponse = { inicio: string; fim: string; timezone: 'America/Fortaleza'; results: Compromisso[] };
 
 const dateFrom = (value: string) => new Date(`${value}T12:00:00Z`);
@@ -78,6 +78,12 @@ export async function criarReuniao(dados: DadosReuniao) {
     method: 'POST', credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify(dados),
   }));
+}
+
+export async function listarParticipantesReuniao(signal?: AbortSignal) {
+  const response = await fetch('/api/compromissos/participantes/', { credentials: 'same-origin', signal });
+  if (!response.ok) throw new ApiError(response.status, 'Não foi possível carregar os integrantes da equipe.');
+  return (await response.json() as { resultados: Array<{ id: number; nome: string }> }).resultados;
 }
 
 export async function cancelarCompromisso(id: number) {

@@ -23,9 +23,11 @@ def validar_intervalo(inicio, fim):
 def buscar_conflitos(*, equipe_id, participantes, inicio, fim, ignorar_id=None):
     ids = [participante.id for participante in participantes]
     queryset = Compromisso.objects.filter(
-        equipe_id=equipe_id, cancelado_em__isnull=True, participantes__id__in=ids,
+        cancelado_em__isnull=True, participantes__id__in=ids,
         inicio__lt=fim, fim__gt=inicio,
     ).exclude(pk=ignorar_id).distinct().order_by("inicio", "id")
+    if equipe_id is not None:
+        queryset = queryset.filter(equipe_id=equipe_id)
     return list(queryset)
 
 
@@ -61,15 +63,16 @@ def criar_reuniao_inspetor(*, usuario, dados):
         raise PermissionDenied("Somente inspetores vinculados a uma equipe podem agendar reuniões por esta ação.")
     inicio, fim = dados["inicio"], dados["fim"]
     validar_intervalo(inicio, fim)
-    # O inspetor participa da própria reunião; o conflito considera apenas a agenda dele.
-    conflitos = buscar_conflitos(equipe_id=usuario.equipe_id, participantes=[usuario], inicio=inicio, fim=fim)
+    participantes = dados["participantes"]
+    # A mesma pessoa pode participar de várias equipes; sua agenda é única.
+    conflitos = buscar_conflitos(equipe_id=None, participantes=participantes, inicio=inicio, fim=fim)
     if conflitos:
         raise ConflitoAgenda(conflitos)
     reuniao = Compromisso.objects.create(
         titulo=dados["titulo"], descricao=dados["pauta"], tipo=Compromisso.Tipo.REUNIAO,
         inicio=inicio, fim=fim, equipe_id=usuario.equipe_id, criador=usuario,
     )
-    reuniao.participantes.set([usuario])
+    reuniao.participantes.set(participantes)
     return reuniao
 
 

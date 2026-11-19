@@ -42,11 +42,22 @@ class ReuniaoInspetorSerializer(serializers.Serializer):
     pauta = serializers.CharField(max_length=2000)
     inicio = DataHoraComOffsetField()
     fim = DataHoraComOffsetField()
+    participante_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), allow_empty=True, required=False)
 
     def validate(self, attrs):
         extras = sorted(set(self.initial_data) - set(self.fields))
         if extras:
             raise serializers.ValidationError({campo: "Campo não permitido ao agendar uma reunião." for campo in extras})
+        usuario = self.context["request"].user
+        ids = list(dict.fromkeys(attrs.pop("participante_ids", [])))
+        ids = [pk for pk in ids if pk != usuario.id]
+        colegas = list(Usuario.objects.filter(
+            id__in=ids, is_active=True,
+            vinculos_equipe__equipe_id=usuario.equipe_id, vinculos_equipe__ativo=True,
+        ).distinct())
+        if len(colegas) != len(ids):
+            raise serializers.ValidationError({"participante_ids": "Selecione somente integrantes ativos da sua equipe."})
+        attrs["participantes"] = [usuario, *colegas]
         return attrs
 
 

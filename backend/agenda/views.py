@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from agenda.models import Compromisso
 from agenda.serializers import CompromissoSerializer, GerenciarCompromissoSerializer, ReuniaoInspetorSerializer
 from agenda.services import ConflitoAgenda, cancelar_compromisso, criar_reuniao_inspetor, salvar_compromisso
+from usuarios.models import Usuario
 
 
 def limite_iso(valor, campo):
@@ -24,7 +25,7 @@ class CompromissoListView(APIView):
     def post(self, request):
         if request.user.perfil == "inspetor":
             # O inspetor agenda somente reuniões das quais participa.
-            serializer = ReuniaoInspetorSerializer(data=request.data)
+            serializer = ReuniaoInspetorSerializer(data=request.data, context={"request": request})
             serializer.is_valid(raise_exception=True)
             salvar = lambda: criar_reuniao_inspetor(usuario=request.user, dados=serializer.validated_data)
         else:
@@ -40,7 +41,13 @@ class CompromissoListView(APIView):
         except ValidationError as exc:
             raise exceptions.ValidationError(exc.message_dict) from exc
         except ConflitoAgenda as exc:
-            return Response({"detail": "Há conflito de horário para um ou mais participantes.", "conflitos": CompromissoSerializer(exc.compromissos, many=True).data}, status=status.HTTP_409_CONFLICT)
+            visiveis = [
+                item for item in exc.compromissos
+                if item.equipe_id == request.user.equipe_id and (
+                    request.user.perfil == "gestor" or item.participantes.filter(pk=request.user.pk).exists()
+                )
+            ]
+            return Response({"detail": "Há conflito de horário para um ou mais participantes.", "conflitos": CompromissoSerializer(visiveis, many=True).data}, status=status.HTTP_409_CONFLICT)
         return Response(CompromissoSerializer(compromisso).data, status=status.HTTP_201_CREATED)
 
     def get(self, request):
@@ -68,6 +75,18 @@ class CompromissoListView(APIView):
             "timezone": "America/Fortaleza",
             "results": CompromissoSerializer(queryset, many=True).data,
         })
+
+
+class ParticipantesReuniaoView(APIView):
+    def get(self, request):
+        if not request.user.equipe_id:
+            raise exceptions.PermissionDenied("O usuário não pertence a uma equipe.")
+        integrantes = Usuario.objects.filter(
+            vinculos_equipe__equipe_id=request.user.equipe_id,
+            vinculos_equipe__ativo=True,
+            is_active=True,
+        ).exclude(pk=request.user.pk).distinct().order_by("first_name", "last_name", "username", "id")
+        return Response({"resultados": [{"id": item.id, "nome": item.nome} for item in integrantes]})
 
 
 class CompromissoDetailView(APIView):

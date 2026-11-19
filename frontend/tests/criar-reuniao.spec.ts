@@ -21,7 +21,7 @@ test('inspetor cria reunião e ela entra no calendário no horário informado', 
   await dialog.getByLabel('Pauta').fill('Revisar prazos e prioridades da semana.');
   const request = page.waitForRequest(item => item.url().endsWith('/api/compromissos/') && item.method() === 'POST');
   await dialog.getByRole('button', { name: 'Salvar reunião' }).click();
-  expect((await request).postDataJSON()).toEqual({ titulo: 'Alinhamento das demandas', pauta: 'Revisar prazos e prioridades da semana.', inicio: '2026-09-25T14:00:00-03:00', fim: '2026-09-25T15:30:00-03:00' });
+  expect((await request).postDataJSON()).toEqual({ titulo: 'Alinhamento das demandas', pauta: 'Revisar prazos e prioridades da semana.', inicio: '2026-09-25T14:00:00-03:00', fim: '2026-09-25T15:30:00-03:00', participante_ids: [] });
   await expect(dialog).toHaveCount(0);
   await expect(page.getByRole('status')).toContainText('Reunião “Alinhamento das demandas” agendada para 25/09, 14:00–15:30.');
   const evento = page.locator('.calendar-event', { hasText: 'Alinhamento das demandas' });
@@ -44,6 +44,24 @@ test('reunião em outra semana leva o calendário até a data agendada', async (
   await expect(page.getByRole('heading', { name: /28 de set\.? – 04 de out\.? de 2026/ })).toBeVisible();
   await expect(page.locator('.calendar-event', { hasText: 'Planejamento de outubro' })).toContainText('09:00–10:00');
   await expect(page.getByRole('button', { name: 'Hoje' })).toBeEnabled();
+});
+
+test('inspetor pode convidar colega da equipe para a reunião', async ({ page }) => {
+  await entrarComo(page, 'inspetor');
+  await page.goto('/agenda');
+  await page.getByRole('button', { name: 'Nova reunião' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Nova reunião' });
+  await expect(dialog.getByRole('checkbox', { name: 'Gestor de teste' })).toBeVisible();
+  await dialog.getByRole('checkbox', { name: 'Gestor de teste' }).check();
+  await dialog.getByLabel('Título').fill('Alinhamento com a gestão');
+  await dialog.getByLabel('Data').fill('2026-09-25');
+  await dialog.getByLabel('Início').fill('14:00');
+  await dialog.getByLabel('Término').fill('15:00');
+  await dialog.getByLabel('Pauta').fill('Decisões da equipe.');
+  const request = page.waitForRequest(item => item.url().endsWith('/api/compromissos/') && item.method() === 'POST');
+  await dialog.getByRole('button', { name: 'Salvar reunião' }).click();
+  expect((await request).postDataJSON().participante_ids).toEqual([1]);
+  await expect(dialog).toHaveCount(0);
 });
 
 test('valida horários e informa conflito com a agenda do inspetor', async ({ page }) => {

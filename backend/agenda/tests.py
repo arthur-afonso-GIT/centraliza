@@ -8,7 +8,7 @@ from rest_framework.test import APITestCase
 
 from agenda.models import Compromisso
 from demandas.models import Demanda
-from usuarios.models import Equipe, Usuario
+from usuarios.models import Equipe, Usuario, VinculoEquipe
 
 
 class CompromissoModelTest(TestCase):
@@ -182,6 +182,8 @@ class ReuniaoInspetorTest(APITestCase):
         cls.gestor = Usuario.objects.create_user(username="gestor.reuniao", perfil="gestor", equipe=cls.equipe)
         cls.inspetor = Usuario.objects.create_user(username="inspetor.reuniao", perfil="inspetor", equipe=cls.equipe)
         cls.colega = Usuario.objects.create_user(username="colega.reuniao", perfil="inspetor", equipe=cls.equipe)
+        VinculoEquipe.objects.create(usuario=cls.inspetor, equipe=cls.equipe, papel="inspetor")
+        VinculoEquipe.objects.create(usuario=cls.colega, equipe=cls.equipe, papel="inspetor")
         cls.sem_equipe = Usuario.objects.create_user(username="sem.equipe.reuniao", perfil="inspetor")
         cls.intervalo = "/api/compromissos/?inicio=2026-10-20T00:00:00-03:00&fim=2026-10-21T00:00:00-03:00"
 
@@ -228,12 +230,57 @@ class ReuniaoInspetorTest(APITestCase):
 
     def test_rejeita_campos_reservados_a_gestao(self):
         self.client.force_authenticate(self.inspetor)
-        for campo, valor in {"participante_ids": [self.colega.id], "tipo": "atividade", "demanda_id": 1}.items():
+        for campo, valor in {"tipo": "atividade", "demanda_id": 1}.items():
             with self.subTest(campo=campo):
                 resposta = self.client.post("/api/compromissos/", self.payload(**{campo: valor}), format="json")
                 self.assertEqual(resposta.status_code, 400)
                 self.assertIn(campo, resposta.data)
         self.assertFalse(Compromisso.objects.exists())
+
+    def test_convida_colega_ativo_e_rejeita_pessoa_de_outra_equipe(self):
+        outra = Equipe.objects.create(nome="Outra equipe para convite")
+        externo = Usuario.objects.create_user(username="externo.reuniao", perfil="inspetor", equipe=outra)
+        VinculoEquipe.objects.create(usuario=externo, equipe=outra, papel="inspetor")
+        self.client.force_authenticate(self.inspetor)
+        lista = self.client.get("/api/compromissos/participantes/")
+        self.assertEqual(lista.status_code, 200)
+        self.assertEqual([item["id"] for item in lista.data["resultados"]], [self.colega.id])
+        criado = self.client.post("/api/compromissos/", self.payload(participante_ids=[self.colega.id]), format="json")
+        self.assertEqual(criado.status_code, 201)
+        self.assertEqual({item["id"] for item in criado.data["participantes"]}, {self.inspetor.id, self.colega.id})
+        self.client.force_authenticate(self.colega)
+        self.assertEqual([item["id"] for item in self.client.get(self.intervalo).data["results"]], [criado.data["id"]])
+        self.client.force_authenticate(self.inspetor)
+        invalido = self.client.post("/api/compromissos/", self.payload(participante_ids=[externo.id]), format="json")
+        self.assertEqual(invalido.status_code, 400)
+        self.assertIn("participante_ids", invalido.data)
+
+    def test_conflito_em_outra_equipe_bloqueia_sem_expor_detalhes(self):
+        outra = Equipe.objects.create(nome="Outra equipe para conflito")
+        gestor_externo = Usuario.objects.create_user(username="gestor.externo.reuniao", perfil="gestor", equipe=outra)
+        VinculoEquipe.objects.create(usuario=self.inspetor, equipe=outra, papel="inspetor")
+        compromisso = Compromisso.objects.create(
+            titulo="Assunto reservado", tipo="reuniao", inicio=datetime.fromisoformat("2026-10-20T14:30:00-03:00"),
+            fim=datetime.fromisoformat("2026-10-20T15:30:00-03:00"), equipe=outra, criador=gestor_externo,
+        )
+        compromisso.participantes.add(self.inspetor)
+        self.client.force_authenticate(self.inspetor)
+        resposta = self.client.post("/api/compromissos/", self.payload(), format="json")
+        self.assertEqual(resposta.status_code, 409)
+        self.assertEqual(resposta.data["conflitos"], [])
+
+    def test_conflito_de_convidado_nao_expoe_reuniao_privada(self):
+        self.client.force_authenticate(self.gestor)
+        criado = self.client.post("/api/compromissos/", {
+            "titulo": "Reunião privada do colega", "tipo": "reuniao",
+            "inicio": "2026-10-20T14:30:00-03:00", "fim": "2026-10-20T15:30:00-03:00",
+            "participante_ids": [self.colega.id],
+        }, format="json")
+        self.assertEqual(criado.status_code, 201)
+        self.client.force_authenticate(self.inspetor)
+        resposta = self.client.post("/api/compromissos/", self.payload(participante_ids=[self.colega.id]), format="json")
+        self.assertEqual(resposta.status_code, 409)
+        self.assertEqual(resposta.data["conflitos"], [])
 
     def test_informa_conflito_com_a_agenda_do_inspetor(self):
         self.client.force_authenticate(self.gestor)
