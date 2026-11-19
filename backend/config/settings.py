@@ -67,7 +67,10 @@ SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_NAME = "centraliza_csrftoken"
 CSRF_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SAMESITE = "Lax"
-SECURE_SSL_REDIRECT = not DEBUG
+# Render enforces HTTPS at its edge. An external Vercel rewrite may forward an
+# HTTP scheme header even when the browser uses HTTPS; redirecting again here
+# would send the browser back to the same Vercel URL indefinitely.
+SECURE_SSL_REDIRECT = not DEBUG and not bool(os.getenv("RENDER"))
 SECURE_HSTS_SECONDS = 0 if DEBUG else 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG

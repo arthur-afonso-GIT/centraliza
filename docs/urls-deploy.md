@@ -19,3 +19,5 @@ O plano de demonstração usa **Render PostgreSQL** para o banco, **Render Web S
 7. Teste login, criação de demanda, Chats e logout pelo domínio principal. Para uma URL de preview, registre cada origem HTTPS adicional em `DJANGO_CSRF_TRUSTED_ORIGINS` e cada hostname real da API em `DJANGO_ALLOWED_HOSTS`.
 
 O plano gratuito do Render serve para demonstração: o banco gratuito expira após 30 dias e o sistema de arquivos do serviço web é efêmero. Os anexos de demandas precisam de armazenamento persistente antes de qualquer uso real. Não carregue dados institucionais na demonstração.
+
+O Render já redireciona HTTP para HTTPS na borda. A API desativa o redirecionamento adicional do Django apenas quando `RENDER=true`, evitando um ciclo de redirecionamentos através do rewrite externo da Vercel; cookies seguros e HSTS continuam ativos.
