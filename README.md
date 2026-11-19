@@ -37,6 +37,7 @@ Available in the current version:
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time; inspectors can schedule alignment meetings with a title, date, start and end times, and agenda.
 - **Team notices** — managers publish, edit, target, schedule, expire, and cancel urgent or informational notices; inspectors receive the active notices authorized for them.
+- **Team chats** — active team members create conversations, exchange persisted messages, and filter authorized conversations by keyword, date, and participant. The interface refreshes every 15 seconds.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
@@ -44,7 +45,7 @@ Available in the current version:
 Planned operational capabilities:
 
 - **Inspection execution** — expand inspection-specific workflows beyond progress records and evidence files.
-- **Team communication** — exchange messages after the operational core is stable.
+- **Team communication at scale** — paginate message history and move conversation search to the API when local histories grow.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
 ## Team workspace
@@ -72,6 +73,9 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
 - [Post-MVP evolution plan](docs/plano-evolucao-pos-mvp.md) — SEI-assisted intake, role-specific dashboards, team administration, structured inspections, audit, and rollout.
 - [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
+- [Chats and conversation filters](docs/FILTRO_CONVERSAS.md) — access rules, API routes, filter behavior, and current limits.
+- [Sprint 03 delivery record](docs/sprint-03.md) — completed stories, implementation evidence, and remaining validation.
+- [Deployment URL map](docs/urls-deploy.md) — Render and Vercel setup, including the frontend API URL.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
 - [Request-list implementation plan](docs/semana-2.md) — data rules, delivery tasks, and completion criteria.
@@ -150,7 +154,7 @@ centraliza/
 └── graphify-out/           Versioned code graph
 ```
 
-Workspace coordinates session state and chooses the appropriate screen. The session hook calls the API adapter in frontend/lib/auth.ts; layout and module components handle presentation. Request filters call frontend/lib/demandas.ts, and calendar ranges use frontend/lib/agenda.ts. The Django API applies role and team authorization before querying PostgreSQL.
+Workspace coordinates session state and chooses the appropriate screen. The session hook calls the API adapter in frontend/lib/auth.ts; layout and module components handle presentation. Request filters call frontend/lib/demandas.ts, calendar ranges use frontend/lib/agenda.ts, and Chats uses frontend/lib/conversas.ts. The Django API applies role and team authorization before querying PostgreSQL.
 
 The server is a modular Django application backed by PostgreSQL. It currently enforces authentication, request visibility, active statuses, filters, ordering, and pagination.
 
@@ -158,7 +162,7 @@ With 1,000 demonstration records, the local sequential request-list benchmark me
 
 ## Local development
 
-Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Configure the database variables from `backend/.env.example`.
+Requirements: Node.js 22.13 or later, npm, Python 3.12 with uv, and PostgreSQL 16 or later. Copy `backend/.env.example` to `backend/.env` and set a local Django secret key and PostgreSQL credentials. Copy `frontend/.env.example` to `frontend/.env` if the API runs at a different address. These local files are ignored by Git; commit only the examples. Vite reads `CENTRALIZA_API_URL` from the frontend file when it starts.
 
 The prepared Windows workspace uses an isolated PostgreSQL instance on port `55432`. Start it from the repository root:
 
@@ -260,7 +264,7 @@ For code exploration, run graphify explain Workspace from the repository root. A
 
 ## Product direction
 
-The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, managed notices, and team conversations. The next stage is production hardening and integrated acceptance with VISAT. Account administration, dashboards, and notifications remain later product increments.
+The operational MVP now covers the complete request lifecycle, protected evidence, managed scheduling, managed notices, team conversations, account administration, and role-specific dashboards. The next stage is integrated acceptance with VISAT and production hardening. External notifications remain a later product increment.
 
 
 ## Team
@@ -350,19 +354,19 @@ Sprint 02 covered the following 2 user stories from the [Centraliza Trello board
 
 ## Sprint 03 — Delivered work
 
-Sprint 03 covered the following 6 user stories from the [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza), focusing on overdue and critical requests, execution updates, and access to previous requests. The development completed during this sprint is detailed below.
+Sprint 03 covered the following 6 user stories, focusing on overdue and critical requests, execution updates, and access to previous requests. The [Sprint 03 Trello list](https://trello.com/b/0qDLqz1F/centraliza) records completed delivery cards linked to their source stories. The [delivery record](docs/sprint-03.md) distinguishes implementation from remaining integrated validation.
 
 ### Epic 2 — Planning and workload visibility
 
-- [HU 16 — Track overdue requests](https://trello.com/c/uAS1r4cn)
-- [HU 17 — Track critical requests](https://trello.com/c/dx0PvCKf)
+- [HU 16 — Track overdue requests](https://trello.com/c/fjuD7c9Q)
+- [HU 17 — Track critical requests](https://trello.com/c/IUy9FWbR)
 
 ### Epic 3 — Execution, evidence, and traceability
 
-- [HU 9 — Update a request's status](https://trello.com/c/3irjFpoO)
-- [HU 11 — Complete request execution](https://trello.com/c/Hj3Z0ZaF)
-- [HU 18 — Record request progress](https://trello.com/c/pkgIOOFv)
-- [HU 22 — View previous requests](https://trello.com/c/gT9lb8SP)
+- [HU 9 — Update a request's status](https://trello.com/c/D8OCorO8)
+- [HU 11 — Complete request execution](https://trello.com/c/HIttNRF5)
+- [HU 18 — Record request progress](https://trello.com/c/kiuXlM7u)
+- [HU 22 — View previous requests](https://trello.com/c/ryZepfjF)
 
 ### Pair programming report — Sprints 02 and 03
 

@@ -5,6 +5,8 @@
 **/__pycache__/
 *.pyc
 backend/.env
+.env
+frontend/.env
 backend/.data/
 backend/smoke-server.log
 backend/smoke-server.error.log
