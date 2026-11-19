@@ -1,5 +1,7 @@
 # Plano de evolução pós-MVP — Centraliza
 
+> Atualização em 18/11/2026: este documento registra decisões e ciclos de planejamento. O estado implementado deve ser conferido no [README](../README.md). O número SEI é obrigatório na criação de demandas, duplicatas normalizadas são bloqueadas entre equipes, a extensão Brave funciona apenas nas páginas fictícias locais e o módulo de Chats já está disponível. A validação no SEI institucional e com usuários da VISAT continua pendente.
+
 ## Objetivo
 
 Evoluir o MVP operacional para uma versão de homologação capaz de reduzir a
@@ -24,8 +26,8 @@ confirmação.
    os mesmos endpoints, validações e tela de confirmação.
 6. A extensão não acessará senha, cookie ou documento do SEI e funcionará apenas
    em endereços institucionais previamente autorizados.
-7. Chat, automações decisórias e sincronização bidirecional com o SEI não fazem
-   parte desta fase.
+7. Automações decisórias e sincronização bidirecional com o SEI não fazem parte
+   desta fase. O módulo inicial de Chats foi entregue posteriormente.
 
 ## Escopo priorizado
 
@@ -44,7 +46,7 @@ confirmação.
 | Posterior | Notificações externas | E-mail ou outro canal após regras e consentimentos |
 | Posterior | Modelos de documentos | Pareceres e relatórios gerados a partir das demandas |
 | Posterior | Integração direta com o SEI | Somente se houver autorização e serviço disponível |
-| Posterior | Chat | Somente após validação da necessidade operacional |
+| Entregue | Chat inicial | Conversas persistidas, mensagens e filtros locais; paginação e busca no servidor são evoluções futuras |
 
 ## Fluxo de entrada do SEI
 
@@ -86,9 +88,9 @@ Adicionar, após validar o formato real utilizado pela instituição:
 - `origem_cadastro`: manual, texto copiado, extensão ou importação;
 - `ultima_importacao_em`: última confirmação de dados externos.
 
-A unicidade deve considerar o contexto institucional e o número normalizado,
-não apenas a pontuação digitada pelo usuário. A regra final depende de confirmar
-se equipes diferentes podem trabalhar sobre o mesmo processo.
+A regra implementada usa o número normalizado como identificador único entre
+equipes. Gestores de outras equipes podem solicitar participação na demanda
+existente. O formato institucional do número ainda precisa ser validado.
 
 ### Importação temporária
 
@@ -152,10 +154,10 @@ decisão sobre unicidade aprovados pela equipe.
 
 ### Ciclo 1 — Identidade SEI e pesquisa
 
-**Situação técnica:** implementado em modo conservador. O número é opcional,
-preservado para apresentação e normalizado somente para busca e aviso de
-possível duplicidade. A unicidade rígida e o formato definitivo continuam
-pendentes de validação institucional.
+**Situação técnica:** implementado. O número é obrigatório na criação,
+preservado para apresentação e normalizado para busca e prevenção de
+duplicidade entre equipes. O formato definitivo continua pendente de
+validação institucional.
 
 **Meta:** tornar o processo SEI parte segura da identidade da demanda.
 
@@ -376,21 +378,21 @@ Uma entrega somente está pronta quando:
 
 ## Backlog posterior
 
-Somente reavaliar depois da homologação:
+Reavaliar após a homologação das capacidades já implementadas:
 
-1. Confirmação de leitura de avisos.
-2. Recorrência e integração externa de calendário.
-3. Notificações por e-mail ou outro canal institucional.
-4. Modelos e geração de pareceres e relatórios.
-5. Consulta direta aos Web Services do SEI, se autorizada.
-6. Sincronização periódica e, posteriormente, operações de escrita.
-7. Aplicativo móvel ou modo offline.
-8. Chat individual ou de equipe.
-9. Automação ou IA, apenas para necessidades e dados formalmente aprovados.
+1. Recorrência e integração externa de calendário.
+2. Notificações por e-mail ou outro canal institucional.
+3. Modelos e geração de pareceres e relatórios.
+4. Consulta direta aos Web Services do SEI, se autorizada.
+5. Sincronização periódica e, posteriormente, operações de escrita.
+6. Aplicativo móvel ou modo offline.
+7. Busca e paginação de mensagens no servidor, se o uso do Chat crescer.
+8. Automação ou IA, apenas para necessidades e dados formalmente aprovados.
 
 ## Próxima ação
 
-Executar o Ciclo 0. A equipe deve fornecer exemplos anonimizados de texto
-copiado do SEI e decidir a unicidade do processo, os campos permitidos e a
-matriz de perfis. Com essas decisões registradas, iniciar o Ciclo 1 pelo modelo,
-normalização e testes do número do SEI.
+Concluir a descoberta do Ciclo 0 com exemplos anonimizados do SEI institucional,
+confirmar os campos permitidos e validar com a equipe o fluxo de solicitação de
+participação quando o número do processo já existe. Depois, executar a
+aceitação integrada dos fluxos de demanda, agenda, avisos e Chats antes de
+planejar a implantação real.
