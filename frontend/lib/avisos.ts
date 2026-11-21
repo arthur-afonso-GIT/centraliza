@@ -6,6 +6,20 @@ export const situacaoAvisoLabel: Record<SituacaoAviso, string> = { ativo: 'Publi
 export type AvisoFeed = { lido: boolean; lido_em: string | null; atualizado_em: string; situacao: SituacaoAviso; id: number; titulo: string; resumo: string; categoria: CategoriaAviso; autor: string; publicado_em: string; expira_em: string | null; destinatarios: Array<{ id: number; nome: string }> };
 export type AvisoDetalhe = AvisoFeed & { conteudo: string };
 export type DadosAviso = { titulo: string; resumo: string; conteudo: string; categoria: CategoriaAviso; publicado_em: string; expira_em: string | null; destinatario_ids: number[] };
+export type RascunhoAviso = { id: number; titulo: string; conteudo: string; criado_em: string; atualizado_em: string };
+
+export function listarRascunhos(signal?: AbortSignal) {
+  return fetch('/api/avisos/rascunhos/', { credentials: 'same-origin', signal })
+    .then(response => resposta<RascunhoAviso[]>(response, 'Não foi possível carregar os rascunhos.'));
+}
+
+export async function salvarRascunho(dados: Pick<RascunhoAviso, 'titulo' | 'conteudo'>, id?: number) {
+  const token = await csrfToken();
+  return resposta<RascunhoAviso>(await fetch(id ? `/api/avisos/rascunhos/${id}/` : '/api/avisos/rascunhos/', {
+    method: id ? 'PATCH' : 'POST', credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token }, body: JSON.stringify(dados),
+  }), 'Não foi possível salvar o rascunho.');
+}
 
 async function resposta<T>(response: Response, message: string): Promise<T> {
   if (!response.ok) {
