@@ -18,6 +18,28 @@ O plano de demonstração usa **Render PostgreSQL** para o banco, **Render Web S
 6. No Render, defina `DJANGO_CSRF_TRUSTED_ORIGINS=https://centralizavisat.vercel.app` nas variáveis do serviço `centraliza-api` e faça redeploy.
 7. Teste login, criação de demanda, Chats e logout pelo domínio principal. Para uma URL de preview, registre cada origem HTTPS adicional em `DJANGO_CSRF_TRUSTED_ORIGINS` e cada hostname real da API em `DJANGO_ALLOWED_HOSTS`.
 
+## Primeiro gestor no banco hospedado
+
+O banco novo não recebe as contas fictícias do desenvolvimento: `seed_demo` é
+bloqueado em produção. Para criar a primeira conta no plano gratuito do Render,
+abra **centraliza-api → Environment** e adicione as duas variáveis abaixo na
+mesma alteração:
+
+| Variável | Valor |
+| --- | --- |
+| `CENTRALIZA_BOOTSTRAP_USERNAME` | Nome de usuário escolhido, por exemplo `gestor.centraliza` |
+| `CENTRALIZA_BOOTSTRAP_PASSWORD` | Senha nova e exclusiva, com pelo menos 12 caracteres |
+
+Opcionalmente, defina `CENTRALIZA_BOOTSTRAP_TEAM_NAME`; o padrão é `Equipe VISAT`.
+Selecione **Save, rebuild, and deploy**. Após as migrações, o comando
+`bootstrap_manager` cria a equipe, o gestor e seu vínculo administrativo uma
+única vez. Confira nos logs a mensagem `Gestor inicial e equipe criados.`;
+em seguida, entre em `https://centralizavisat.vercel.app/login` com esses dados.
+Remova as duas variáveis de bootstrap do Render depois do primeiro acesso e
+salve a alteração. O gestor e a senha permanecem no PostgreSQL. O comando não
+redefine a senha de uma conta já criada e recusa criar uma conta adicional se
+o banco já contém usuários.
+
 O plano gratuito do Render serve para demonstração: o banco gratuito expira após 30 dias e o sistema de arquivos do serviço web é efêmero. Os anexos de demandas precisam de armazenamento persistente antes de qualquer uso real. Não carregue dados institucionais na demonstração.
 
 O Render já redireciona HTTP para HTTPS na borda. O proxy Nitro envia `X-Forwarded-Proto: https` à API e o Django desativa o redirecionamento adicional apenas quando `RENDER=true`. Cookies seguros e HSTS continuam ativos.
