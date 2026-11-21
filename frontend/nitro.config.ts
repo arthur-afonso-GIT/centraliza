@@ -7,6 +7,12 @@ if (!apiUrl || !apiUrl.startsWith('https://')) {
 
 export default defineConfig({
   routeRules: {
-    '/api/**': { proxy: `${apiUrl}/api/**` },
+    '/api/**': {
+      proxy: {
+        to: `${apiUrl}/api/**`,
+        // Keep this in Nitro's runtime proxy so the forwarded scheme reaches Django.
+        headers: { 'x-forwarded-proto': 'https' },
+      },
+    },
   },
 });

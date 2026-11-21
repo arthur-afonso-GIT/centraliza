@@ -20,4 +20,4 @@ O plano de demonstração usa **Render PostgreSQL** para o banco, **Render Web S
 
 O plano gratuito do Render serve para demonstração: o banco gratuito expira após 30 dias e o sistema de arquivos do serviço web é efêmero. Os anexos de demandas precisam de armazenamento persistente antes de qualquer uso real. Não carregue dados institucionais na demonstração.
 
-O Render já redireciona HTTP para HTTPS na borda. A API desativa o redirecionamento adicional do Django apenas quando `RENDER=true`, evitando um ciclo de redirecionamentos através do rewrite externo da Vercel; cookies seguros e HSTS continuam ativos.
+O Render já redireciona HTTP para HTTPS na borda. O proxy Nitro envia `X-Forwarded-Proto: https` à API e o Django desativa o redirecionamento adicional apenas quando `RENDER=true`. Cookies seguros e HSTS continuam ativos.
