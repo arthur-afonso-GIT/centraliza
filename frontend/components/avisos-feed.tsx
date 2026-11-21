@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ApiError, type User } from '../lib/auth';
 import { listarAvisos, situacaoAvisoLabel, type AvisoFeed } from '../lib/avisos';
 import AvisoForm from './aviso-form';
+import RascunhosAvisos from './rascunhos-avisos';
 
 const data = (value: string) => new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'America/Fortaleza' }).format(new Date(value));
 const normalizar = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
@@ -40,6 +41,7 @@ export default function AvisosFeed({ user }: { user: User }) {
     normalizar(`${item.titulo} ${item.resumo} ${item.autor}`).includes(normalizar(busca.trim())),
   ).sort((a, b) => Number(b.categoria === 'urgente') - Number(a.categoria === 'urgente') || Number(a.lido) - Number(b.lido) || b.publicado_em.localeCompare(a.publicado_em));
   return <>
+    {(user.perfil === 'gestor' || user.perfil === 'inspetor') && <RascunhosAvisos />}
     <div className="notice-management"><p className="notice-inbox-summary"><Bell size={18} /> {naoLidos ? `${naoLidos} aviso${naoLidos === 1 ? '' : 's'} para ler` : 'Nenhum aviso pendente de leitura'}</p>{user.perfil === 'gestor' && <AvisoForm onSaved={item => { setItems(current => [item, ...(current ?? [])]); limpar(); setNotice(item.situacao === 'agendado' ? 'Aviso agendado com sucesso.' : 'Aviso publicado com sucesso.'); }} />}</div>
     {notice && <output className="toast success">{notice}</output>}
     <div className="notice-filters"><label htmlFor="busca-avisos">Buscar avisos<input id="busca-avisos" type="search" value={busca} onChange={event => setBusca(event.target.value)} placeholder="Título, resumo ou autor" /></label><label htmlFor="categoria-avisos">Categoria<select id="categoria-avisos" value={categoria} onChange={event => setCategoria(event.target.value)}><option value="todas">Todas</option><option value="urgente">Urgentes</option><option value="informativo">Informativos</option></select></label>{user.perfil === 'gestor' && <label htmlFor="situacao-avisos">Situação<select id="situacao-avisos" value={situacao} onChange={event => setSituacao(event.target.value)}><option value="todas">Todas</option><option value="ativo">Publicados</option><option value="agendado">Agendados</option><option value="expirado">Expirados</option></select></label>}</div>

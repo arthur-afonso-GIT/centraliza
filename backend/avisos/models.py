@@ -3,6 +3,20 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 
+class RascunhoAviso(models.Model):
+    """Texto privado do autor; não integra o fluxo de avisos publicados."""
+
+    titulo = models.CharField(max_length=200)
+    conteudo = models.TextField()
+    equipe = models.ForeignKey("usuarios.Equipe", on_delete=models.PROTECT)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    criado_em = models.DateTimeField(auto_now_add=True)
+    atualizado_em = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-atualizado_em", "-id"]
+
+
 class Aviso(models.Model):
     class Categoria(models.TextChoices):
         URGENTE = "urgente", "Urgente"
