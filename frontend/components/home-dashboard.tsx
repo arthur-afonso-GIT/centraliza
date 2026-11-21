@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from './navigation-link';
 import { AlertTriangle, ArrowRight, CalendarDays, ClipboardList, Megaphone, RotateCcw } from 'lucide-react';
 import { formatarPrazo } from '../lib/prazos';
 import type { User } from '../lib/auth';

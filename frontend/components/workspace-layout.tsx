@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import Link from 'next/link';
+import Link from './navigation-link';
 import { LogOut, Menu, X } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import { obterVinculosEquipe, selecionarEquipe, type TeamMembership, type User } from '../lib/auth';

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import Link from 'next/link';
+import Link from './navigation-link';
 import { ArrowRight } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import type { User } from '../lib/auth';

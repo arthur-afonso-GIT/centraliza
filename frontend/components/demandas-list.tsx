@@ -2,7 +2,7 @@
 import { formatarPrazo } from '../lib/prazos';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import Link from './navigation-link';
 import { AlertTriangle, CalendarDays, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { listarDemandas, listarInspetores, type FiltrosDemandas, type Inspetor, type PaginaDemandas, type SegmentoDemanda } from '../lib/demandas';
 import type { User } from '../lib/auth';

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import Link from './navigation-link';
 import { AlertTriangle, ArrowLeft, RotateCcw } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError } from '../lib/auth';
