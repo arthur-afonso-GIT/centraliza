@@ -20,5 +20,7 @@ services:
           property: connectionString
       - key: DJANGO_DEBUG
         value: "0"
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://centralizavisat.vercel.app
       - key: DJANGO_SECRET_KEY
         generateValue: true
