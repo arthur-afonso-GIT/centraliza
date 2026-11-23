@@ -6,6 +6,7 @@ from demandas.dashboard import ResumoHomeView
 from demandas.views import DemandaPrioridadeView, DemandaPrazoView, DemandaAndamentoView, ConsultasAnterioresView
 from agenda.views import CompromissoDetailView, CompromissoListView, ParticipantesReuniaoView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
+from avisos.rascunhos import RascunhoAvisoDetailView, RascunhoAvisoListView
 from chats.views import ConversaListView, ConversaDetailView, MensagemListView, MembrosChatView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
@@ -49,6 +50,8 @@ urlpatterns = [
     path("api/demandas/<int:pk>/anexos/<int:anexo_id>/download/", DemandaAnexoDownloadView.as_view(), name="demandas-anexo-download"),
     path("api/compromissos/", CompromissoListView.as_view(), name="compromissos-list"),
     path("api/compromissos/<int:pk>/", CompromissoDetailView.as_view(), name="compromissos-detail"),
+    path("api/avisos/rascunhos/", RascunhoAvisoListView.as_view(), name="avisos-rascunhos-list"),
+    path("api/avisos/rascunhos/<int:pk>/", RascunhoAvisoDetailView.as_view(), name="avisos-rascunhos-detail"),
     path("api/avisos/", AvisoListView.as_view(), name="avisos-list"),
     path("api/avisos/<int:pk>/leitura/", AvisoLeituraView.as_view(), name="avisos-leitura"),
     path("api/avisos/<int:pk>/", AvisoDetailView.as_view(), name="avisos-detail"),
