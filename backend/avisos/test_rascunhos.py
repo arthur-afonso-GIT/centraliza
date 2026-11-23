@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 
 from avisos.models import Aviso, LeituraAviso, RascunhoAviso
-from usuarios.models import Equipe, Usuario
+from usuarios.models import Equipe, Usuario, VinculoEquipe
 
 
 class RascunhoAvisoTest(APITestCase):
@@ -69,6 +69,15 @@ class RascunhoAvisoTest(APITestCase):
         self.autor.equipe = self.outra
         self.assertEqual(self.client.get(self.url).data, [])
         self.assertEqual(self.client.get(f"{self.url}{pk}/").status_code, 404)
+
+    def test_vinculo_revogado_impede_acesso_mesmo_com_equipe_selecionada(self):
+        pk = self.criar()
+        VinculoEquipe.objects.create(usuario=self.autor, equipe=self.equipe, papel="inspetor", ativo=False)
+        self.assertEqual(self.client.get(self.url).status_code, 403)
+        self.assertEqual(self.client.get(f"{self.url}{pk}/").status_code, 403)
+        self.assertEqual(self.client.patch(f"{self.url}{pk}/", {"titulo": "Alterado"}, format="json").status_code, 403)
+        self.assertEqual(self.client.post(self.url, {"titulo": "Novo", "conteudo": "Texto"}, format="json").status_code, 403)
+        self.assertEqual(RascunhoAviso.objects.count(), 1)
 
     def test_valida_texto_e_rejeita_campos_de_publicacao_ou_autoria(self):
         self.client.force_authenticate(self.autor)
