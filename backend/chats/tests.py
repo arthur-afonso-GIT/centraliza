@@ -45,6 +45,28 @@ class ConversasApiTest(APITestCase):
                 self.assertEqual(self.client.post(f"/api/conversas/{conversa_id}/mensagens/", {"texto": "Tentativa"}, format="json").status_code, 404)
         self.assertEqual(MensagemConversa.objects.count(), 0)
 
+    def test_inspetor_lista_conversas_por_atividade_recente(self):
+        anterior = self.criar().data["id"]
+        recente = self.criar().data["id"]
+        self.client.force_authenticate(self.inspetor)
+        lista = self.client.get("/api/conversas/").data["resultados"]
+        self.assertEqual([item["id"] for item in lista], [recente, anterior])
+
+        url = f"/api/conversas/{anterior}/mensagens/"
+        self.client.force_authenticate(self.gestor)
+        recebida = self.client.post(url, {"texto": "Vistoria agendada"}, format="json")
+        self.assertEqual(recebida.status_code, 201)
+        self.client.force_authenticate(self.inspetor)
+        lista = self.client.get("/api/conversas/").data["resultados"]
+        self.assertEqual([item["id"] for item in lista], [anterior, recente])
+        self.assertEqual(lista[0]["mensagens"][0]["autor_id"], self.gestor.id)
+
+        enviada = self.client.post(f"/api/conversas/{recente}/mensagens/", {"texto": "Confirmado"}, format="json")
+        self.assertEqual(enviada.status_code, 201)
+        lista = self.client.get("/api/conversas/").data["resultados"]
+        self.assertEqual([item["id"] for item in lista], [recente, anterior])
+        self.assertEqual(lista[0]["mensagens"][0]["autor_id"], self.inspetor.id)
+
     def test_participante_transferido_nao_acessa_conversa_da_equipe_anterior(self):
         conversa_id = self.criar().data["id"]
         Usuario.objects.filter(pk=self.inspetor.id).update(equipe=self.outra_equipe)

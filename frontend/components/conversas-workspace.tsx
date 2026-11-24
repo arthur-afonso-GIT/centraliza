@@ -14,7 +14,8 @@ const horario = (value: string) => new Intl.DateTimeFormat('pt-BR', {
 export default function ConversasWorkspace({ user }: { user: User }) {
   const router = useRouter();
   const [conversas, setConversas] = useState<ConversaFiltravel[] | null>(null);
-  const [membros, setMembros] = useState<ParticipanteConversa[]>([]);
+  const [membros, setMembros] = useState<ParticipanteConversa[] | null>(null);
+  const [erroMembros, setErroMembros] = useState(false);
   const [selecionadaId, setSelecionadaId] = useState<number | null>(null);
   const [mostrarConversa, setMostrarConversa] = useState(false);
   const [criando, setCriando] = useState(false);
@@ -27,8 +28,8 @@ export default function ConversasWorkspace({ user }: { user: User }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    Promise.all([listarConversas(controller.signal), listarMembrosChat(controller.signal)])
-      .then(([items, team]) => { setConversas(items); setMembros(team); setErro(''); })
+    listarConversas(controller.signal)
+      .then(items => { setConversas(items); setErro(''); })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === 'AbortError') return;
         if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
@@ -39,6 +40,15 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     }, 15000);
     return () => { controller.abort(); window.clearInterval(timer); };
   }, [router, tentativa]);
+
+  useEffect(() => {
+    if (!criando) return;
+    const controller = new AbortController();
+    listarMembrosChat(controller.signal)
+      .then(setMembros)
+      .catch(() => { if (!controller.signal.aborted) setErroMembros(true); });
+    return () => controller.abort();
+  }, [criando]);
 
   const selecionada = conversas?.find(item => item.id === selecionadaId) ?? null;
   async function atualizar() {
@@ -77,11 +87,19 @@ export default function ConversasWorkspace({ user }: { user: User }) {
 
   return <section className={`chats-layout${mostrarConversa ? ' show-conversation' : ''}`} aria-label="Conversas da equipe">
     <div className="chats-sidebar">
-      <div className="chats-sidebar-heading"><div><h2>Conversas</h2><span>{conversas.length} conversa{conversas.length === 1 ? '' : 's'}</span></div><button className="secondary" onClick={() => setCriando(value => !value)}><Plus size={17} /> Nova conversa</button></div>
+      <div className="chats-sidebar-heading"><div><h2>Conversas</h2><span>{conversas.length} conversa{conversas.length === 1 ? '' : 's'}</span></div><button className="secondary" onClick={() => {
+        if (!criando) { setMembros(null); setErroMembros(false); }
+        setCriando(!criando);
+      }}><Plus size={17} /> Nova conversa</button></div>
       {criando && <form className="chats-create" onSubmit={criar}>
         <label htmlFor="conversa-titulo">Assunto<input id="conversa-titulo" maxLength={160} required value={titulo} onChange={event => setTitulo(event.target.value)} placeholder="Ex.: Visita ao estabelecimento" /></label>
-        <fieldset><legend>Participantes</legend>{membros.length ? membros.map(member => <label key={member.id}><input type="checkbox" checked={participanteIds.includes(member.id)} onChange={() => alternarParticipante(member.id)} />{member.nome}</label>) : <p>Não há outros integrantes ativos nesta equipe.</p>}</fieldset>
-        <div className="chats-create-actions"><button className="primary" disabled={busy || !titulo.trim() || !participanteIds.length}>Criar conversa</button><button type="button" className="secondary" onClick={() => setCriando(false)}>Cancelar</button></div>
+        <fieldset><legend>Participantes</legend>
+          {erroMembros && <p role="alert">Não foi possível carregar os integrantes da equipe.</p>}
+          {!membros && !erroMembros && <p role="status">Carregando integrantes…</p>}
+          {membros?.length === 0 && <p>Não há outros integrantes ativos nesta equipe.</p>}
+          {membros?.map(member => <label key={member.id}><input type="checkbox" checked={participanteIds.includes(member.id)} onChange={() => alternarParticipante(member.id)} />{member.nome}</label>)}
+        </fieldset>
+        <div className="chats-create-actions"><button className="primary" disabled={busy || !membros || !titulo.trim() || !participanteIds.length}>Criar conversa</button><button type="button" className="secondary" onClick={() => setCriando(false)}>Cancelar</button></div>
       </form>}
       <ConversasFiltros conversas={conversas} selecionada={selecionadaId} onSelecionar={id => { setSelecionadaId(id); setMostrarConversa(true); setErro(''); }} />
     </div>
