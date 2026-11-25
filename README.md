@@ -74,7 +74,11 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Post-MVP evolution plan](docs/plano-evolucao-pos-mvp.md) — SEI-assisted intake, role-specific dashboards, team administration, structured inspections, audit, and rollout.
 - [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
 - [Chats and conversation filters](docs/FILTRO_CONVERSAS.md) — access rules, API routes, filter behavior, and current limits.
+- [Sprint 01 delivery record](docs/sprint-01.md) — user stories, delivery references, implementation context, and remaining validation.
+- [Sprint 02 delivery record](docs/sprint-02.md) — request deadline and priority rules, implementation references, and remaining validation.
 - [Sprint 03 delivery record](docs/sprint-03.md) — completed stories, implementation evidence, and remaining validation.
+- [Sprint 04 delivery record](docs/sprint-04.md) — meetings, notices, conversations, ownership, and remaining validation.
+- [Sprint 05 development record](docs/sprint-05.md) — chat P0/P1 stories, owners, implementation scope, and acceptance checks.
 - [Deployment URL map](docs/urls-deploy.md) — Render and Vercel setup, including the frontend API URL.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
