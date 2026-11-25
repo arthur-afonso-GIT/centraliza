@@ -461,7 +461,10 @@ class DemandaAndamentoView(APIView):
             demanda=demanda, tipo=EventoDemanda.Tipo.ANDAMENTO,
             autor=request.user, **serializer.validated_data,
         )
-        demanda.save(update_fields=["atualizada_em"])
+        # A autorização e os campos do evento já foram validados. Atualize só
+        # a versão da demanda sem revalidar o vínculo histórico do criador.
+        demanda.atualizada_em = max(timezone.now(), demanda.atualizada_em + timedelta(microseconds=1))
+        Demanda.objects.filter(pk=demanda.pk).update(atualizada_em=demanda.atualizada_em)
         return Response(DemandaDetalheSerializer(demanda).data, status=status.HTTP_201_CREATED)
 
 

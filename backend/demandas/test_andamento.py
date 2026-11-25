@@ -1,6 +1,7 @@
 from datetime import timedelta
+from unittest.mock import patch
 
-from django.db import IntegrityError, transaction
+from django.db import DatabaseError, IntegrityError, transaction
 from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 
@@ -58,6 +59,29 @@ class RegistroAndamentoTest(APITestCase):
         self.client.post(self.url, {"realizado": "Laudo recebido.", "pendente": "Nenhuma pendência."}, format="json")
         historico = self.client.get(self.detalhe).data["historico"]
         self.assertEqual([e["realizado"] for e in historico], ["Laudo recebido.", self.dados["realizado"]])
+
+    def test_criador_transferido_nao_impede_andamento_do_inspetor(self):
+        anterior = self.demanda.atualizada_em
+        Usuario.objects.filter(pk=self.gestor.pk).update(equipe=self.outra)
+        response = self.client.post(self.url, self.dados, format="json")
+        self.assertEqual(response.status_code, 201)
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.status, Demanda.Status.EM_ANDAMENTO)
+        self.assertEqual(self.demanda.responsavel_id, self.inspetor.pk)
+        self.assertGreater(self.demanda.atualizada_em, anterior)
+        evento = EventoDemanda.objects.get(demanda=self.demanda)
+        self.assertEqual((evento.realizado, evento.pendente, evento.autor_id),
+                         (self.dados["realizado"], self.dados["pendente"], self.inspetor.pk))
+        self.assertEqual(response.data["historico"][0]["id"], evento.pk)
+
+    def test_falha_ao_atualizar_demanda_desfaz_evento(self):
+        anterior = self.demanda.atualizada_em
+        with patch("django.db.models.query.QuerySet.update", side_effect=DatabaseError("Falha simulada na atualização")):
+            with self.assertRaises(DatabaseError):
+                self.client.post(self.url, self.dados, format="json")
+        self.assertFalse(EventoDemanda.objects.filter(demanda=self.demanda).exists())
+        self.demanda.refresh_from_db()
+        self.assertEqual(self.demanda.atualizada_em, anterior)
 
     def test_aceita_correcao(self):
         self.demanda.status = Demanda.Status.EM_CORRECAO
