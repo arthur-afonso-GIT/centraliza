@@ -60,11 +60,24 @@ class ConversaDetailView(APIView):
 class MensagemListView(APIView):
     @transaction.atomic
     def post(self, request, pk):
-        conversa = get_object_or_404(conversas_permitidas(request.user).select_for_update(), pk=pk)
+        # Keep DISTINCT in the permission subquery: PostgreSQL forbids it with FOR UPDATE.
+        permitidas = conversas_permitidas(request.user).values("pk")
+        conversa = get_object_or_404(
+            Conversa.objects.filter(pk__in=permitidas).select_for_update(), pk=pk,
+        )
         serializer = CriarMensagemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        client_id = serializer.validated_data.get("client_id")
+        if client_id:
+            existente = MensagemConversa.objects.filter(
+                conversa=conversa, autor=request.user, client_id=client_id,
+            ).first()
+            if existente:
+                if existente.texto != serializer.validated_data["texto"]:
+                    return Response({"detail": "Identificador já utilizado para outra mensagem."}, status=status.HTTP_409_CONFLICT)
+                return Response(MensagemSerializer(existente).data)
         mensagem = MensagemConversa.objects.create(
-            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"],
+            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"], client_id=client_id,
         )
         Conversa.objects.filter(pk=conversa.pk).update(atualizada_em=timezone.now())
         return Response(MensagemSerializer(mensagem).data, status=status.HTTP_201_CREATED)

@@ -15,6 +15,7 @@ test('inspetor cria conversa, envia mensagem e encontra pelo filtro', async ({ p
       conversations.push(item);
       return route.fulfill({ status: 201, json: item });
     }
+    if (url.pathname === '/api/conversas/1/' && request.method() === 'GET') return route.fulfill({ json: conversations[0] });
     if (url.pathname === '/api/conversas/1/mensagens/' && request.method() === 'POST') {
       const body = request.postDataJSON() as { texto: string };
       const message = { id: 1, texto: body.texto, criada_em: '2026-11-18T12:01:00Z', autor_id: 2, autor_nome: 'Inspetor de teste' };
@@ -31,7 +32,7 @@ test('inspetor cria conversa, envia mensagem e encontra pelo filtro', async ({ p
   await page.getByLabel('Gestor de teste').check();
   await page.getByRole('button', { name: 'Criar conversa' }).click();
   await expect(page.getByRole('heading', { name: 'Visita técnica' })).toBeVisible();
-  await page.getByLabel('Mensagem').fill('Relatório enviado para análise.');
+  await page.getByLabel('Mensagem', { exact: true }).fill('Relatório enviado para análise.');
   await page.getByRole('button', { name: 'Enviar mensagem' }).click();
   await expect(page.getByText('Relatório enviado para análise.').last()).toBeVisible();
   await page.getByLabel('Palavra-chave').fill('relatorio');
