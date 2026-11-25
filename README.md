@@ -404,6 +404,17 @@ Sprint 04 covered the following 6 user stories, focusing on meeting scheduling a
 
 Sprint 04 focused on expanding Centraliza's internal communication and coordination capabilities. The selected stories cover meeting organization, drafting and distributing notices, and accessing and filtering team conversations, supporting a more centralized workflow for VISAT members.
 
+### Pair programming report — Sprint 04
+
+[View the Sprint 04 pair programming report](docs/relatorio-pair-programming-sprint-04.png)
+
+<details>
+<summary>Preview the Sprint 04 report</summary>
+
+![Sprint 04 pair programming report](docs/relatorio-pair-programming-sprint-04.png)
+
+</details>
+
 ## Sprint 05 — Chat improvements and operational reliability
 
 Sprint 05 covers the following 6 user stories, focusing on making Centraliza's internal chat reliable for daily team communication. The sprint prioritizes real-time message updates, unread message tracking, persistent conversation history, participant management, and notifications.
