@@ -378,3 +378,54 @@ Sprint 03 covered the following 6 user stories, focusing on overdue and critical
 ![Sprints 02 and 03 pair programming report](docs/relatorio-pair-programming-sprints-02-03.png)
 
 </details>
+
+## Sprint 04 — Delivered work
+
+Sprint 04 covered the following 6 user stories, focusing on meeting scheduling and participant management, notice creation and publication, and team conversation management. The [Centraliza Trello board](https://trello.com/b/0qDLqz1F/centraliza) contains the corresponding user stories, with responsibilities distributed among six team members. The development addressed below is organized by epic.
+
+### Epic 5 — Team calendar and scheduling visibility
+
+- [HU 26 — Create a meeting](https://trello.com/c/IZXxSSne) — Lívia Cabral
+- [HU 27 — Add participants to a meeting](https://trello.com/c/iE1ZDito) — Sílvio Lobo
+
+### Epic 7 — Notice creation and publication
+
+- [HU 28 — Create a notice](https://trello.com/c/ICTuSTBV) — Victor Bacelar
+- [HU 29 — Send a notice](https://trello.com/c/TwNIrGFs) — Antônio Marcos
+
+### Epic 8 — Team conversations and communication
+
+- [HU 31 — View conversations](https://trello.com/c/VsdM7Qy5) — Luiza Beltrão
+- [HU 32 — Filter conversations](https://trello.com/c/I8PRb5Tj) — Cecília de Moraes
+
+Sprint 04 focused on expanding Centraliza's internal communication and coordination capabilities. The selected stories cover meeting organization, drafting and distributing notices, and accessing and filtering team conversations, supporting a more centralized workflow for VISAT members.
+
+## Sprint 05 — Chat improvements and operational reliability
+
+Sprint 05 covers the following 6 user stories, focusing on making Centraliza's internal chat reliable for daily team communication. The sprint prioritizes real-time message updates, unread message tracking, persistent conversation history, participant management, and notifications.
+
+The development is organized into two priority levels: **P0 (Operational delivery)**, which establishes a functional and reliable chat experience, and **P1 (Continuous-use reliability)**, which expands the system's capabilities for larger teams and ongoing communication.
+
+### Epic 8 — Team conversations and communication
+
+#### P0 — Operational delivery
+
+- **CHAT-01 — Demonstrate a conversation between two users** — Antônio Marcos
+  - Validate message exchange between two active team members, ensuring conversation persistence, authorized access, and successful communication through the deployed application.
+- **CHAT-02 — Receive new messages with clear status** — Cecília de Moraes
+  - Implement automatic message updates, recoverable error feedback, retry functionality, and proper scrolling behavior without losing or duplicating messages.
+- **CHAT-03 — Identify conversations with unread messages** — Luiza Beltrão
+  - Track unread messages per user and conversation, display unread indicators, and update reading status when conversations are accessed.
+
+#### P1 — Continuous-use reliability
+
+- **CHAT-04 — Browse conversation history and search efficiently** — Victor Bacelar
+  - Implement pagination for conversations and messages, server-side search filters, and efficient retrieval of historical messages while preserving access permissions.
+- **CHAT-05 — Manage conversation participants** — Sílvio Lobo
+  - Enable authorized participant management, including adding and removing members, controlling conversation access, and recording changes for auditability.
+- **CHAT-06 — Receive new message notifications** — Lívia Cabral
+  - Implement unread message indicators and in-app notifications, allowing users to identify new messages while navigating other areas of Centraliza.
+
+Sprint 05 aims to strengthen the chat module by improving message delivery, usability, security, and scalability. The P0 stories establish the essential operational workflow, while the P1 stories improve conversation management, historical data access, and notification behavior.
+
+The sprint also includes validation of role-based authorization, backend and browser tests, PostgreSQL integration, responsive layouts, accessibility, and error recovery.
