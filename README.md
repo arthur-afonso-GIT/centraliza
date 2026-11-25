@@ -62,6 +62,8 @@ The planned workflow is assignment, acceptance, execution, management review, an
 
 ## Project documentation
 
+- [Contributing guide](CONTRIBUTING.md) — environment setup, development workflow, tests, pull requests, and pair programming.
+
 The interface and supporting project documents use Brazilian Portuguese:
 
 - [Project website](https://sites.google.com/cesar.school/g3-projetos2/kick-off) — academic context and project presentation.
