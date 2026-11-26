@@ -1,5 +1,9 @@
 # Centraliza
 
+### Access the deployed application
+
+**[ Open Centraliza VISAT](https://centralizavisat.vercel.app/)**
+
 [▶ Watch the screencast](assets/centraliza-screencast.mp4)
 
 <p align="center">
