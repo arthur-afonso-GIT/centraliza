@@ -138,6 +138,7 @@ p { line-height: 1.65; }
 .conversa-resultados button:hover, .conversa-resultados button.is-selected { background: var(--visat-soft); }
 .conversa-resultados button.is-selected { box-shadow: inset 3px 0 var(--visat-red); }
 .conversa-resultados strong { font-size: 14px; }
+.conversa-resultados .conversa-nao-lidas { color: var(--visat-red); font-size: 12px; }
 .conversa-resultados small, .conversa-resultados span { color: var(--visat-muted); font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .conversa-filtros .empty-state { min-height: 140px; border: 0; padding: 22px; }.conversa-filtros .empty-state h2 { font-size: 16px; margin: 0 0 8px; }.conversa-filtros .empty-state p { margin: 0; font-size: 13px; }
 .chats-create { display: grid; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--visat-border); background: var(--visat-canvas); }

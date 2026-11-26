@@ -24,3 +24,13 @@ class MensagemConversa(models.Model):
     class Meta:
         ordering = ("criada_em", "id")
         indexes = [models.Index(fields=("conversa", "criada_em", "id"), name="mensagem_conversa_data")]
+
+
+class LeituraConversa(models.Model):
+    conversa = models.ForeignKey(Conversa, on_delete=models.CASCADE, related_name="leituras")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="leituras_conversa")
+    # Cursor monotônico: não depende da existência futura da mensagem.
+    ultima_mensagem_lida_id = models.PositiveBigIntegerField(default=0)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("conversa", "usuario"), name="leitura_conversa_usuario_unica")]

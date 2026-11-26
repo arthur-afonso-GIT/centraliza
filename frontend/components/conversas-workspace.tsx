@@ -1,10 +1,12 @@
 'use client';
-import { useEffect, useState, type SyntheticEvent } from 'react';
+import { useCallback, useEffect, useState, type SyntheticEvent } from 'react';
 import { ArrowLeft, MessageSquare, Plus, RefreshCw, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError, type User } from '../lib/auth';
 import { criarConversa, enviarMensagem, listarConversas, listarMembrosChat } from '../lib/conversas';
 import type { ConversaFiltravel, ParticipanteConversa } from '../lib/conversas-filtros';
+import { aplicarLeitura, conciliarLeituras } from '../lib/conversas-leitura';
+import { useConversaLeitura } from '../hooks/use-conversa-leitura';
 import ConversasFiltros from './conversas-filtros';
 
 const horario = (value: string) => new Intl.DateTimeFormat('pt-BR', {
@@ -24,25 +26,32 @@ export default function ConversasWorkspace({ user }: { user: User }) {
   const [busy, setBusy] = useState(false);
   const [erro, setErro] = useState('');
   const [tentativa, setTentativa] = useState(0);
+  const receberLista = useCallback((items: ConversaFiltravel[]) => {
+    setConversas(anteriores => conciliarLeituras(anteriores, items, user.id));
+  }, [user.id]);
+  const confirmarLeitura = useCallback((id: number, cursor: number) => {
+    setConversas(items => items?.map(c => c.id === id ? aplicarLeitura(c, cursor, user.id) : c) ?? null);
+  }, [user.id]);
 
   useEffect(() => {
     const controller = new AbortController();
     Promise.all([listarConversas(controller.signal), listarMembrosChat(controller.signal)])
-      .then(([items, team]) => { setConversas(items); setMembros(team); setErro(''); })
+      .then(([items, team]) => { receberLista(items); setMembros(team); setErro(''); })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === 'AbortError') return;
         if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
         else setErro('Não foi possível carregar as conversas. Tente novamente.');
       });
     const timer = window.setInterval(() => {
-      listarConversas(controller.signal).then(setConversas).catch(() => {});
+      listarConversas(controller.signal).then(receberLista).catch(() => {});
     }, 15000);
     return () => { controller.abort(); window.clearInterval(timer); };
-  }, [router, tentativa]);
+  }, [router, tentativa, receberLista]);
 
   const selecionada = conversas?.find(item => item.id === selecionadaId) ?? null;
+  const { erroLeitura, tentarLeitura } = useConversaLeitura(selecionada, mostrarConversa, confirmarLeitura);
   async function atualizar() {
-    try { setConversas(await listarConversas()); setErro(''); }
+    try { receberLista(await listarConversas()); setErro(''); }
     catch (reason) { setErro(reason instanceof Error ? reason.message : 'Não foi possível atualizar as conversas.'); }
   }
   async function criar(event: SyntheticEvent<HTMLFormElement>) {
@@ -87,7 +96,8 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     </div>
     <div className="chats-thread">
       {selecionada ? <>
-        <header className="chats-thread-heading"><button className="chats-back" onClick={() => setMostrarConversa(false)} aria-label="Voltar para conversas"><ArrowLeft size={20} /></button><div><h2>{selecionada.titulo}</h2><p>{selecionada.participantes.map(item => item.nome).join(', ')}</p></div><button className="chats-refresh" onClick={atualizar} aria-label="Atualizar mensagens"><RefreshCw size={18} /></button></header>
+        <header className="chats-thread-heading"><button className="chats-back" onClick={() => { setMostrarConversa(false); setSelecionadaId(null); }} aria-label="Voltar para conversas"><ArrowLeft size={20} /></button><div><h2>{selecionada.titulo}</h2><p>{selecionada.participantes.map(item => item.nome).join(', ')}</p></div><button className="chats-refresh" onClick={atualizar} aria-label="Atualizar mensagens"><RefreshCw size={18} /></button></header>
+        {erroLeitura && <div className="chats-error" role="alert">Não foi possível registrar a leitura. <button className="secondary" onClick={tentarLeitura}>Tentar novamente</button></div>}
         <ol className="chats-messages" aria-label="Mensagens">{selecionada.mensagens.length ? selecionada.mensagens.map(message => <li key={message.id} className={message.autor_id === user.id ? 'mine' : ''}><strong>{message.autor_id === user.id ? 'Você' : message.autor_nome}</strong><p>{message.texto}</p><time dateTime={message.criada_em}>{horario(message.criada_em)}</time></li>) : <li className="chats-no-messages">Nenhuma mensagem ainda. Envie a primeira para iniciar a conversa.</li>}</ol>
         <form className="chats-composer" onSubmit={enviar}><label htmlFor="mensagem-conversa">Mensagem</label><div><textarea id="mensagem-conversa" maxLength={4000} rows={2} value={rascunho} onChange={event => setRascunho(event.target.value)} placeholder="Escreva uma mensagem para a equipe" /><button className="primary" disabled={busy || !rascunho.trim()} aria-label="Enviar mensagem"><Send size={18} /><span>Enviar</span></button></div></form>
       </> : <div className="chats-blank"><MessageSquare size={34} /><h2>{conversas.length ? 'Escolha uma conversa' : 'Nenhuma conversa ainda'}</h2><p>{conversas.length ? 'Selecione uma conversa da lista para ler e responder.' : 'Crie uma conversa para trocar mensagens com integrantes da equipe.'}</p></div>}

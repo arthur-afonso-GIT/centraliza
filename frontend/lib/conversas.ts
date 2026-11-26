@@ -18,6 +18,14 @@ export async function listarMembrosChat(signal?: AbortSignal) {
   return (await resposta<{ resultados: ParticipanteConversa[] }>(response)).resultados;
 }
 
+export async function marcarConversaLida(conversaId: number, mensagemId: number) {
+  const token = await csrfToken();
+  return resposta<{ ultima_mensagem_lida_id: number }>(await fetch(`/api/conversas/${conversaId}/leitura/`, {
+    method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ mensagem_id: mensagemId }),
+  }));
+}
+
 export async function criarConversa(titulo: string, participanteIds: number[]) {
   const token = await csrfToken();
   return resposta<ConversaFiltravel>(await fetch('/api/conversas/', {
