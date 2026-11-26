@@ -43,10 +43,11 @@ test('frontend, API e PostgreSQL executam o fluxo principal de uma demanda', asy
   await page.getByLabel('Buscar por número SEI').fill(sei);
   await page.getByRole('button', { name: 'Buscar', exact: true }).click();
   await page.locator('article').filter({ hasText: title }).getByRole('link', { name: 'Ver detalhes' }).click();
-  await page.getByRole('button', { name: 'Aceitar demanda' }).click();
+  await page.getByLabel('Novo status').selectOption('aceita');
+  await page.getByRole('button', { name: 'Salvar status' }).click();
 
-  await expect(page.getByText('Aceita', { exact: true })).toBeVisible();
-  await expect(page.getByRole('status')).toContainText('Demanda aceita');
+  await expect(page.locator('.detail-actions .status')).toHaveText('Aceita');
+  await expect(page.getByRole('status')).toContainText('Status alterado para Aceita.');
   await expect(page.getByText('Aguardando aceite → Aceita')).toBeVisible();
 
   const persisted = await page.request.get(`/api/demandas/?status=aceita&sei_numero=${encodeURIComponent(sei)}`);

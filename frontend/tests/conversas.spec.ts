@@ -31,7 +31,7 @@ test('inspetor cria conversa, envia mensagem e encontra pelo filtro', async ({ p
   await page.getByLabel('Gestor de teste').check();
   await page.getByRole('button', { name: 'Criar conversa' }).click();
   await expect(page.getByRole('heading', { name: 'Visita técnica' })).toBeVisible();
-  await page.getByLabel('Mensagem').fill('Relatório enviado para análise.');
+  await page.getByLabel('Mensagem', { exact: true }).fill('Relatório enviado para análise.');
   await page.getByRole('button', { name: 'Enviar mensagem' }).click();
   await expect(page.getByText('Relatório enviado para análise.').last()).toBeVisible();
   await page.getByLabel('Palavra-chave').fill('relatorio');

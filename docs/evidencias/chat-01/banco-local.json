@@ -1,0 +1,15 @@
+{
+  "executadoEm": "2026-11-26T23:41:56.778514+00:00",
+  "banco": "centraliza_smoke",
+  "postgresql": "16.15",
+  "migracoesChats": [
+    "0001_initial"
+  ],
+  "conversas": [
+    {
+      "id": 1,
+      "mensagens": 2,
+      "autores": 2
+    }
+  ]
+}
