@@ -10,7 +10,9 @@ async function entrar(page: import('@playwright/test').Page, username: string) {
   await expect(page).toHaveURL('/');
 }
 
-test('frontend, API e PostgreSQL executam o fluxo principal de uma demanda', async ({ page }) => {
+test('frontend, API e PostgreSQL executam o fluxo principal de uma demanda', async ({ page, baseURL }) => {
+  const local = baseURL && ['localhost', '127.0.0.1'].includes(new URL(baseURL).hostname);
+  test.skip(!local, 'O fluxo de demanda usa contas e dados do banco descartável local.');
   const suffix = `${Date.now()}`;
   const title = `Smoke integrado ${suffix}`;
   const sei = `SMOKE-${suffix}`;

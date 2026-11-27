@@ -59,6 +59,8 @@ A=`demo.gestor.1`, B=`demo.inspetor.1`, C=`demo.inspetor2.1` e
 D=`demo.inspetor.2`. A/B/C pertencem à equipe 1; D pertence à equipe 2.
 `DemoPassword` permite escolher uma senha local para as contas recém-criadas.
 Sem `-TestFile`, o script também executa o smoke existente de demandas.
+As contas do smoke local vêm da carga fictícia. As credenciais `CENTRALIZA_CHAT_*`
+são usadas apenas no chat remoto, e o smoke de demandas roda somente em localhost.
 
 O relatório HTML fica em `frontend/playwright-report-smoke/index.html` e os
 anexos em `frontend/test-results-smoke/`. O teste anexa capturas do histórico de

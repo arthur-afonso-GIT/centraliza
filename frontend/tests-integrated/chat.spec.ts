@@ -9,9 +9,14 @@ test.setTimeout(180_000);
 
 function conta(papel: 'A' | 'B' | 'C' | 'D', local: boolean) {
   const usuarios = { A: 'demo.gestor.1', B: 'demo.inspetor.1', C: 'demo.inspetor2.1', D: 'demo.inspetor.2' };
-  const username = process.env[`CENTRALIZA_CHAT_${papel}_USERNAME`] ?? (local ? usuarios[papel] : '');
-  const password = process.env[`CENTRALIZA_CHAT_${papel}_PASSWORD`] ?? (local ? process.env.CENTRALIZA_SMOKE_PASSWORD : '');
-  if (!username || !password) throw new Error(`Configure CENTRALIZA_CHAT_${papel}_USERNAME e CENTRALIZA_CHAT_${papel}_PASSWORD (ou CENTRALIZA_SMOKE_PASSWORD no smoke local).`);
+  if (local) {
+    const password = process.env.CENTRALIZA_SMOKE_PASSWORD;
+    if (!password) throw new Error('Configure CENTRALIZA_SMOKE_PASSWORD para o smoke local.');
+    return { username: usuarios[papel], password };
+  }
+  const username = process.env[`CENTRALIZA_CHAT_${papel}_USERNAME`];
+  const password = process.env[`CENTRALIZA_CHAT_${papel}_PASSWORD`];
+  if (!username || !password) throw new Error(`Configure CENTRALIZA_CHAT_${papel}_USERNAME e CENTRALIZA_CHAT_${papel}_PASSWORD para o smoke remoto.`);
   return { username, password };
 }
 
@@ -34,10 +39,14 @@ async function sair(page: Page) {
   expect((await page.request.get('/api/conversas/')).status()).toBe(401);
 }
 
-async function abrir(page: Page, titulo: string) {
-  await page.goto('/chats');
+async function selecionarConversa(page: Page, titulo: string) {
   await page.getByRole('button').filter({ has: page.locator('strong', { hasText: titulo }) }).click();
   await expect(page.getByRole('heading', { name: titulo, exact: true })).toBeVisible();
+}
+
+async function abrir(page: Page, titulo: string) {
+  await page.goto('/chats');
+  await selecionarConversa(page, titulo);
 }
 
 async function enviar(page: Page, id: number, texto: string) {
@@ -91,12 +100,14 @@ test('CHAT-01: duas sessões trocam mensagens, recuperam histórico e bloqueiam 
     await expect(a.getByRole('list', { name: 'Mensagens', exact: true }).getByText(mensagemB, { exact: true })).toBeVisible();
 
     for (const [page, credenciais, papel] of [[a, contas.A, 'A'], [b, contas.B, 'B']] as const) {
+      const historico = page.getByRole('list', { name: 'Mensagens', exact: true });
       await page.reload();
-      await abrir(page, titulo);
+      await selecionarConversa(page, titulo);
+      await expect(historico.locator('li')).toHaveCount(2);
+      await expect(historico.locator('li')).toContainText([mensagemA, mensagemB]);
       await sair(page);
       await entrar(page, credenciais);
       await abrir(page, titulo);
-      const historico = page.getByRole('list', { name: 'Mensagens', exact: true });
       await expect(historico.locator('li')).toHaveCount(2);
       await expect(historico.locator('li').nth(0)).toContainText(mensagemA);
       await expect(historico.locator('li').nth(1)).toContainText(mensagemB);
