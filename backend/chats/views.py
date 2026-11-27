@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.db.models import OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import exceptions, status
@@ -6,9 +7,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from chats.models import Conversa, MensagemConversa
+from chats.pesquisa import parametros, filtrar_conversas, filtrar_mensagens, paginar
 from chats.serializers import (
-    ConversaSerializer, CriarConversaSerializer, CriarMensagemSerializer,
-    MembroChatSerializer, MensagemSerializer, membros_ativos,
+    CriarConversaSerializer, CriarMensagemSerializer,
+    MembroChatSerializer, MensagemSerializer, ResumoConversaSerializer, membros_ativos,
 )
 from usuarios.models import VinculoEquipe
 
@@ -26,7 +28,18 @@ def conversas_permitidas(user):
 
 
 def conversa_completa(queryset):
-    return queryset.prefetch_related("participantes", "mensagens__autor")
+    return queryset.prefetch_related("participantes").annotate(ultima_mensagem=Subquery(
+        MensagemConversa.objects.filter(conversa_id=OuterRef("pk")).order_by("-criada_em", "-id").values("texto")[:1]))
+
+
+def pagina_mensagens(request, conversa, p):
+    qs = filtrar_mensagens(conversa.mensagens.select_related("autor"), p)
+    if "apos" in p:
+        qs = qs.filter(id__gt=p["apos"])
+    rows, cursor = paginar(qs, request, p, f"mensagens:{conversa.pk}", asc="apos" in p)
+    if "apos" not in p:
+        rows.reverse()
+    return {"resultados": MensagemSerializer(rows, many=True).data, "proximo_cursor": cursor}
 
 
 class MembrosChatView(APIView):
@@ -38,8 +51,11 @@ class MembrosChatView(APIView):
 
 class ConversaListView(APIView):
     def get(self, request):
-        conversas = conversa_completa(conversas_permitidas(request.user)).order_by("-atualizada_em", "-id")
-        return Response({"resultados": ConversaSerializer(conversas, many=True).data})
+        permitidas = conversas_permitidas(request.user)
+        p = parametros(request)
+        conversas = conversa_completa(filtrar_conversas(permitidas, p))
+        rows, cursor = paginar(conversas, request, p, "conversas")
+        return Response({"resultados": ResumoConversaSerializer(rows, many=True).data, "proximo_cursor": cursor})
 
     @transaction.atomic
     def post(self, request):
@@ -50,16 +66,22 @@ class ConversaListView(APIView):
             titulo=serializer.validated_data["titulo"], equipe_id=request.user.equipe_id, criador=request.user,
         )
         conversa.participantes.set([request.user.id, *serializer.validated_data["participante_ids"]])
-        return Response(ConversaSerializer(conversa_completa(Conversa.objects).get(pk=conversa.pk)).data, status=status.HTTP_201_CREATED)
+        data = ResumoConversaSerializer(conversa_completa(Conversa.objects).get(pk=conversa.pk)).data
+        return Response({**data, "mensagens": [], "proximo_cursor": None}, status=status.HTTP_201_CREATED)
 
 
 class ConversaDetailView(APIView):
     def get(self, request, pk):
         conversa = get_object_or_404(conversa_completa(conversas_permitidas(request.user)), pk=pk)
-        return Response(ConversaSerializer(conversa).data)
+        page = pagina_mensagens(request, conversa, parametros(request))
+        return Response({**ResumoConversaSerializer(conversa).data, "mensagens": page["resultados"], "proximo_cursor": page["proximo_cursor"]})
 
 
 class MensagemListView(APIView):
+    def get(self, request, pk):
+        conversa = get_object_or_404(conversas_permitidas(request.user), pk=pk)
+        return Response(pagina_mensagens(request, conversa, parametros(request)))
+
     @transaction.atomic
     def post(self, request, pk):
         conversa = get_object_or_404(conversas_permitidas(request.user).select_for_update(of=("self",)), pk=pk)

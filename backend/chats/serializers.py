@@ -38,6 +38,15 @@ class ConversaSerializer(serializers.ModelSerializer):
         fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "mensagens")
 
 
+class ResumoConversaSerializer(serializers.ModelSerializer):
+    participantes = MembroChatSerializer(many=True, read_only=True)
+    ultima_mensagem = serializers.CharField(read_only=True, allow_null=True)
+
+    class Meta:
+        model = Conversa
+        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "ultima_mensagem")
+
+
 class CriarConversaSerializer(serializers.Serializer):
     titulo = serializers.CharField(max_length=160, trim_whitespace=True)
     participante_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), allow_empty=False)
