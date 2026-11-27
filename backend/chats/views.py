@@ -20,7 +20,9 @@ def conversas_permitidas(user):
         usuario=user, equipe_id=user.equipe_id, ativo=True,
     ).exists():
         raise exceptions.PermissionDenied("Seu vínculo com esta equipe não está ativo.")
-    return Conversa.objects.filter(equipe_id=user.equipe_id, participantes=user).distinct()
+    # O par conversa/participante é único na tabela intermediária. Este filtro
+    # não duplica conversas; DISTINCT impediria SELECT FOR UPDATE no PostgreSQL.
+    return Conversa.objects.filter(equipe_id=user.equipe_id, participantes=user)
 
 
 def conversa_completa(queryset):
@@ -60,11 +62,7 @@ class ConversaDetailView(APIView):
 class MensagemListView(APIView):
     @transaction.atomic
     def post(self, request, pk):
-        # Keep DISTINCT in the permission subquery: PostgreSQL forbids it with FOR UPDATE.
-        permitidas = conversas_permitidas(request.user).values("pk")
-        conversa = get_object_or_404(
-            Conversa.objects.filter(pk__in=permitidas).select_for_update(), pk=pk,
-        )
+        conversa = get_object_or_404(conversas_permitidas(request.user).select_for_update(of=("self",)), pk=pk)
         serializer = CriarMensagemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         client_id = serializer.validated_data.get("client_id")

@@ -9,7 +9,7 @@ Responsável: Cecília. Prioridade P0. Fonte: backlog do chat de 23/11/2026.
 - A interface informa atualização em andamento, sucesso e falha recuperável. O erro tem botão para tentar atualizar novamente; a atualização automática também continua após falhas.
 - O envio mostra “Enviando mensagem…”, bloqueia cliques repetidos e só limpa o texto após confirmação. Em falha, mostra o erro e permite tentar enviar novamente. Rascunhos e tentativas ficam associados à conversa durante a permanência na tela.
 - Cada tentativa lógica de envio usa um UUID (`client_id`). Repetir o mesmo UUID, autor e conversa retorna a mensagem já persistida. A API valida permissões antes de consultar a chave. Reutilizar a chave com outro texto retorna 409. Novos envios intencionais, mesmo com texto igual, recebem outra chave.
-- A restrição única no banco e o bloqueio transacional da conversa protegem contra concorrência. A consulta de bloqueio usa uma subconsulta de IDs autorizados: PostgreSQL não permite `FOR UPDATE` com `DISTINCT` na mesma consulta, combinação presente anteriormente.
+- A restrição única no banco e o bloqueio transacional da conversa protegem contra concorrência. A consulta autorizada usa a unicidade do par conversa/participante para bloquear apenas a conversa com `FOR UPDATE`, sem precisar de `DISTINCT`.
 - Um GET iniciado antes de um envio confirmado não remove a mensagem da interface. Mensagens são reconciliadas pelo ID e ordenadas por data/ID.
 - No fim do histórico, a rolagem acompanha mensagens novas. Ao ler conteúdo antigo, mantém a posição e oferece “Ver novas mensagens”.
 

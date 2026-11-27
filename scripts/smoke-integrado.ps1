@@ -2,8 +2,9 @@
 param(
     [string]$DatabaseName = "centraliza_smoke",
     [string]$DatabaseUser = "centraliza",
-    [string]$DatabasePassword = "",
-    [string]$DemoPassword = "Centraliza@2026"
+    [string]$DatabasePassword = $env:CENTRALIZA_LOCAL_DB_PASSWORD,
+    [string]$DemoPassword = "Centraliza@2026",
+    [string]$TestFile = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -20,12 +21,18 @@ $frontendErrorLog = Join-Path $frontend "smoke-server.error.log"
 $backendProcess = $null
 $frontendProcess = $null
 $postgresStartedHere = $false
+$environmentBefore = @{}
+foreach ($key in @('DATABASE_URL', 'PGPASSWORD', 'DJANGO_DEBUG', 'POSTGRES_DB', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_HOST', 'POSTGRES_PORT', 'CENTRALIZA_DEMO_PASSWORD', 'CENTRALIZA_SMOKE_PASSWORD', 'CENTRALIZA_SMOKE_URL', 'CENTRALIZA_API_URL')) {
+    $environmentBefore[$key] = [Environment]::GetEnvironmentVariable($key, 'Process')
+}
 
 function Resolve-Executable([string]$name) {
     $local = Join-Path $pgBinLocal "$name.exe"
     if (Test-Path -LiteralPath $local) { return $local }
     $command = Get-Command $name -ErrorAction SilentlyContinue
     if ($command) { return $command.Source }
+    $installed = Get-ChildItem -Path "$env:ProgramFiles\PostgreSQL\*\bin\$name.exe" -ErrorAction SilentlyContinue | Sort-Object FullName -Descending | Select-Object -First 1
+    if ($installed) { return $installed.FullName }
     throw "Executável '$name' não encontrado. Instale PostgreSQL 16+ ou prepare .local/postgresql."
 }
 
@@ -81,6 +88,10 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "Não foi possível criar o banco descartável $DatabaseName." }
 
     $env:DJANGO_DEBUG = "1"
+    # DATABASE_URL tem precedência no Django; nunca usar o banco hospedado aqui.
+    $dbUserEncoded = [Uri]::EscapeDataString($DatabaseUser)
+    $dbPasswordEncoded = [Uri]::EscapeDataString($DatabasePassword)
+    $env:DATABASE_URL = "postgresql://${dbUserEncoded}:${dbPasswordEncoded}@127.0.0.1:55432/$DatabaseName"
     $env:POSTGRES_DB = $DatabaseName
     $env:POSTGRES_USER = $DatabaseUser
     $env:POSTGRES_PASSWORD = $DatabasePassword
@@ -99,9 +110,13 @@ try {
     if (-not (Test-Path -LiteralPath $python)) { throw "Ambiente Python do backend não foi criado." }
 
     & $python (Join-Path $backend "manage.py") migrate --noinput
+    if ($LASTEXITCODE -ne 0) { throw "Falha ao aplicar migrações no banco descartável." }
     & $python (Join-Path $backend "manage.py") seed_demo --total 30
+    if ($LASTEXITCODE -ne 0) { throw "Falha ao preparar contas fictícias." }
     & $python (Join-Path $backend "manage.py") seed_agenda
+    if ($LASTEXITCODE -ne 0) { throw "Falha ao preparar agenda fictícia." }
     & $python (Join-Path $backend "manage.py") seed_avisos
+    if ($LASTEXITCODE -ne 0) { throw "Falha ao preparar avisos fictícios." }
 
     $backendProcess = Start-Process -FilePath $python -ArgumentList @("manage.py", "runserver", "127.0.0.1:8000", "--noreload") -WorkingDirectory $backend -WindowStyle Hidden -RedirectStandardOutput $backendLog -RedirectStandardError $backendErrorLog -PassThru
     Wait-Http "http://127.0.0.1:8000/api/auth/csrf/" "Backend"
@@ -111,7 +126,8 @@ try {
 
     Push-Location $frontend
     try {
-        & npm.cmd run test:smoke:integrado
+        if ($TestFile) { & npm.cmd run test:smoke:integrado -- $TestFile }
+        else { & npm.cmd run test:smoke:integrado }
         if ($LASTEXITCODE -ne 0) { throw "O smoke integrado falhou. Consulte frontend/test-results-smoke." }
     } finally { Pop-Location }
 }
@@ -120,5 +136,7 @@ finally {
     if ($backendProcess) { Stop-ProcessTree $backendProcess.Id }
     Start-Sleep -Milliseconds 500
     if ($postgresStartedHere) { & $pgCtl stop -D $pgDataLocal -m fast 2>$null }
-    Remove-Item Env:PGPASSWORD -ErrorAction SilentlyContinue
+    foreach ($key in $environmentBefore.Keys) {
+        [Environment]::SetEnvironmentVariable($key, $environmentBefore[$key], 'Process')
+    }
 }

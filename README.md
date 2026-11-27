@@ -1,5 +1,9 @@
 # Centraliza
 
+### Access the deployed application
+
+**[ Open Centraliza VISAT](https://centralizavisat.vercel.app/)**
+
 [▶ Watch the screencast](assets/centraliza-screencast.mp4)
 
 <p align="center">
@@ -62,6 +66,8 @@ The planned workflow is assignment, acceptance, execution, management review, an
 
 ## Project documentation
 
+- [Contributing guide](CONTRIBUTING.md) — environment setup, development workflow, tests, pull requests, and pair programming.
+
 The interface and supporting project documents use Brazilian Portuguese:
 
 - [Project website](https://sites.google.com/cesar.school/g3-projetos2/kick-off) — academic context and project presentation.
@@ -74,7 +80,11 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Post-MVP evolution plan](docs/plano-evolucao-pos-mvp.md) — SEI-assisted intake, role-specific dashboards, team administration, structured inspections, audit, and rollout.
 - [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
 - [Chats and conversation filters](docs/FILTRO_CONVERSAS.md) — access rules, API routes, filter behavior, and current limits.
+- [Sprint 01 delivery record](docs/sprint-01.md) — user stories, delivery references, implementation context, and remaining validation.
+- [Sprint 02 delivery record](docs/sprint-02.md) — request deadline and priority rules, implementation references, and remaining validation.
 - [Sprint 03 delivery record](docs/sprint-03.md) — completed stories, implementation evidence, and remaining validation.
+- [Sprint 04 delivery record](docs/sprint-04.md) — meetings, notices, conversations, ownership, and remaining validation.
+- [Sprint 05 development record](docs/sprint-05.md) — chat P0/P1 stories, owners, implementation scope, and acceptance checks.
 - [Deployment URL map](docs/urls-deploy.md) — Render and Vercel setup, including the frontend API URL.
 - [Notices and Status Report plan](docs/semana-5.md) — notice MVP, final regression, code freeze, and demonstration checklist.
 - [Navigation foundation](docs/semana-1.md) — responsive routes, guards, and accessibility decisions.
@@ -399,6 +409,17 @@ Sprint 04 covered the following 6 user stories, focusing on meeting scheduling a
 - [HU 32 — Filter conversations](https://trello.com/c/I8PRb5Tj) — Cecília de Moraes
 
 Sprint 04 focused on expanding Centraliza's internal communication and coordination capabilities. The selected stories cover meeting organization, drafting and distributing notices, and accessing and filtering team conversations, supporting a more centralized workflow for VISAT members.
+
+### Pair programming report — Sprint 04
+
+[View the Sprint 04 pair programming report](docs/relatorio-pair-programming-sprint-04.png)
+
+<details>
+<summary>Preview the Sprint 04 report</summary>
+
+![Sprint 04 pair programming report](docs/relatorio-pair-programming-sprint-04.png)
+
+</details>
 
 ## Sprint 05 — Chat improvements and operational reliability
 

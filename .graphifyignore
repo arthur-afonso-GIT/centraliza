@@ -5,6 +5,8 @@
 **/.vinext/**
 **/test-results/**
 **/playwright-report/**
+**/test-results-smoke/**
+**/playwright-report-smoke/**
 **/*.tsbuildinfo
 frontend/components/ui/**
 frontend/hooks/use-mobile.ts

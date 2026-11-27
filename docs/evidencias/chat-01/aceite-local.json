@@ -1,0 +1,24 @@
+{
+  "ambiente": "http://localhost:3000",
+  "executadoEm": "2026-11-26T23:41:09.160Z",
+  "conversaId": 1,
+  "mensagens": 2,
+  "recargaENovoLogin": [
+    "A",
+    "B"
+  ],
+  "semSessao": 401,
+  "semCsrf": 403,
+  "negacoes": [
+    {
+      "papel": "C",
+      "leitura": 404,
+      "envio": 404
+    },
+    {
+      "papel": "D",
+      "leitura": 404,
+      "envio": 404
+    }
+  ]
+}

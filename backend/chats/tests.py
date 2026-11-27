@@ -1,4 +1,4 @@
-from rest_framework.test import APITestCase
+from rest_framework.test import APIClient, APITestCase
 
 from chats.models import Conversa, MensagemConversa
 from usuarios.models import Equipe, Usuario, VinculoEquipe
@@ -99,4 +99,44 @@ class ConversasApiTest(APITestCase):
         self.assertEqual(self.client.post(url, {"texto": "Oi", "client_id": "inválido"}, format="json").status_code, 400)
         for key in ("ccdb3e91-7967-47ce-8758-c0fd308731b6", "ccdb3e91-7967-47ce-8758-c0fd308731b7"):
             self.assertEqual(self.client.post(url, {"texto": "Oi", "client_id": key}, format="json").status_code, 201)
+        self.assertEqual(MensagemConversa.objects.count(), 2)
+
+
+class ConversasSessaoTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        equipe = Equipe.objects.create(nome="Equipe sessões chat")
+        cls.senha = "senha-ficticia-teste-chat"
+        cls.a = Usuario.objects.create_user(username="sessao.a", password=cls.senha, perfil="inspetor", equipe=equipe)
+        cls.b = Usuario.objects.create_user(username="sessao.b", password=cls.senha, perfil="inspetor", equipe=equipe)
+
+    def entrar(self, usuario):
+        client = APIClient(enforce_csrf_checks=True)
+        token = client.get("/api/auth/csrf/").data["csrfToken"]
+        response = client.post("/api/auth/login/", {"username": usuario.username, "password": self.senha}, format="json", HTTP_X_CSRFTOKEN=token)
+        self.assertEqual(response.status_code, 200)
+        # Login rotaciona o token; obter o novo antes de escrever.
+        token = client.get("/api/auth/csrf/").data["csrfToken"]
+        return client, token
+
+    def test_sessoes_independentes_csrf_e_historico_apos_novo_login(self):
+        a, token_a = self.entrar(self.a)
+        b, token_b = self.entrar(self.b)
+        dados = {"titulo": "Conversa persistida", "participante_ids": [self.b.id]}
+        self.assertEqual(a.post("/api/conversas/", dados, format="json").status_code, 403)
+        criada = a.post("/api/conversas/", dados, format="json", HTTP_X_CSRFTOKEN=token_a)
+        self.assertEqual(criada.status_code, 201)
+        url = f"/api/conversas/{criada.data['id']}/"
+        for client, token, texto in ((a, token_a, "Olá de A"), (b, token_b, "Resposta de B")):
+            self.assertEqual(client.post(f"{url}mensagens/", {"texto": "Sem CSRF"}, format="json").status_code, 403)
+            sent = client.post(f"{url}mensagens/", {"texto": texto}, format="json", HTTP_X_CSRFTOKEN=token)
+            self.assertEqual(sent.status_code, 201)
+        for client, token, usuario in ((a, token_a, self.a), (b, token_b, self.b)):
+            self.assertEqual(client.post("/api/auth/logout/", HTTP_X_CSRFTOKEN=token).status_code, 204)
+            self.assertEqual(client.get(url).status_code, 401)
+            novo_client, _ = self.entrar(usuario)
+            response = novo_client.get(url)
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual([m["texto"] for m in response.data["mensagens"]], ["Olá de A", "Resposta de B"])
+            self.assertEqual([m["autor_id"] for m in response.data["mensagens"]], [self.a.id, self.b.id])
         self.assertEqual(MensagemConversa.objects.count(), 2)
