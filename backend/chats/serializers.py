@@ -32,19 +32,36 @@ class MensagemSerializer(serializers.ModelSerializer):
 class ConversaSerializer(serializers.ModelSerializer):
     participantes = MembroChatSerializer(many=True, read_only=True)
     mensagens = MensagemSerializer(many=True, read_only=True)
+    ultima_mensagem_lida_id = serializers.SerializerMethodField()
+    nao_lidas = serializers.SerializerMethodField()
 
     class Meta:
         model = Conversa
-        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "mensagens")
+        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "mensagens", "ultima_mensagem_lida_id", "nao_lidas")
+
+    def get_ultima_mensagem_lida_id(self, obj):
+        leituras = obj.leituras_usuario
+        return leituras[0].ultima_mensagem_lida_id if leituras else 0
+
+    def get_nao_lidas(self, obj):
+        cursor = self.get_ultima_mensagem_lida_id(obj)
+        usuario_id = self.context["request"].user.id
+        return sum(m.id > cursor and m.autor_id != usuario_id for m in obj.mensagens.all())
+
+
+class MarcarLeituraSerializer(serializers.Serializer):
+    mensagem_id = serializers.IntegerField(min_value=1, max_value=9223372036854775807)
 
 
 class ResumoConversaSerializer(serializers.ModelSerializer):
+    ultima_mensagem_lida_id = serializers.IntegerField(read_only=True)
+    nao_lidas = serializers.IntegerField(read_only=True)
     participantes = MembroChatSerializer(many=True, read_only=True)
     ultima_mensagem = serializers.CharField(read_only=True, allow_null=True)
 
     class Meta:
         model = Conversa
-        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "ultima_mensagem")
+        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "ultima_mensagem", "ultima_mensagem_lida_id", "nao_lidas")
 
 
 class CriarConversaSerializer(serializers.Serializer):

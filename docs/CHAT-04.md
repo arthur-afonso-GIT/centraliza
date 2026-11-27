@@ -131,3 +131,20 @@ Antes de integrar, aplicar a migração em PostgreSQL de desenvolvimento, execut
 os 18 testes do chat e os testes de navegador acima. Não foi medida latência em
 produção nem aprovada a experiência visual nesta sessão. O teste de volume está
 escrito, mas depende dessa execução para confirmar seus resultados.
+
+## Integração local com CHAT-03 e CHAT-06
+
+Conflitos com `origin/main` em `e3be6d4` resolvidos preservando notificações,
+leitura persistida e paginação. A migração `0004_integrar_busca_leitura` reúne os
+ramos de migração. As contagens de não lidas são calculadas no banco, sem carregar
+o histórico inteiro. A confirmação de leitura retorna a contagem restante; a
+interface não deduz o total apenas da página visível. Avisos podem abrir pelo ID
+uma conversa autorizada que não aparece na primeira página da lista.
+
+Validação após a resolução: build do frontend concluído, TypeScript aprovado,
+`manage.py check` aprovado, dois testes unitários de leitura paginada aprovados,
+consulta ORM de contagem compilada e `git diff --check` aprovado.
+`makemigrations --check --dry-run` não encontrou alterações pendentes; a consulta
+ao histórico do banco apresentou timeout. Testes integrados com PostgreSQL e
+navegador continuam pendentes. Adicionado teste de 1.205 não lidas com página de
+30 mensagens para execução no banco. Não houve commit, push ou merge remoto.

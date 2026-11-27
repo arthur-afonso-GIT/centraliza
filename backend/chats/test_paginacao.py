@@ -130,3 +130,14 @@ class HistoricoPaginadoTest(APITestCase):
             cursor.execute("SELECT indexname FROM pg_indexes WHERE tablename IN ('chats_conversa', 'chats_mensagemconversa')")
             indexes = {row[0] for row in cursor.fetchall()}
         self.assertTrue({"chat_titulo_busca", "chat_texto_busca", "conversa_equipe_criada", "mensagem_conversa_data"} <= indexes)
+
+    def test_contagem_nao_lidas_independe_da_pagina(self):
+        detail = self.get(f"/api/conversas/{self.antiga.pk}/")
+        self.assertEqual(len(detail["mensagens"]), 30)
+        self.assertEqual(detail["nao_lidas"], 1205)
+        response = self.client.post(f"/api/conversas/{self.antiga.pk}/leitura/",
+                                   {"mensagem_id": self.mensagens[-1].pk}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["nao_lidas"], 0)
+        MensagemConversa.objects.create(conversa=self.antiga, autor=self.b, texto="Nova mensagem")
+        self.assertEqual(self.get(f"/api/conversas/{self.antiga.pk}/")["nao_lidas"], 1)

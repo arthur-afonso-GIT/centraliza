@@ -31,6 +31,14 @@ export async function listarMembrosChat(signal?: AbortSignal) {
   return (await resposta<{ resultados: ParticipanteConversa[] }>(response)).resultados;
 }
 
+export async function marcarConversaLida(conversaId: number, mensagemId: number) {
+  const token = await csrfToken();
+  return resposta<{ ultima_mensagem_lida_id: number; nao_lidas?: number }>(await fetch(`/api/conversas/${conversaId}/leitura/`, {
+    method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
+    body: JSON.stringify({ mensagem_id: mensagemId }),
+  }));
+}
+
 export async function criarConversa(titulo: string, participanteIds: number[]) {
   const token = await csrfToken();
   return resposta<ConversaFiltravel>(await fetch('/api/conversas/', {
@@ -49,4 +57,20 @@ export async function enviarMensagem(conversaId: number, texto: string, clientId
     method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
     body: JSON.stringify({ texto, client_id: clientId }), signal: AbortSignal.timeout(15000),
   }));
+}
+
+export type ConversaNotificada = {
+  id: number;
+  titulo: string;
+  nao_lidas: number;
+  ultima_mensagem: { id: number; autor_nome: string; criada_em: string };
+};
+export type NotificacoesChat = { total: number; conversas: ConversaNotificada[] };
+
+// Disparado ao registrar uma leitura, para o contador do menu não esperar a próxima consulta.
+export const EVENTO_LEITURA_CHAT = 'centraliza:chat-leitura';
+
+export async function obterNotificacoesChat(signal?: AbortSignal) {
+  const response = await fetch('/api/notificacoes/chat/', { credentials: 'same-origin', signal });
+  return resposta<NotificacoesChat>(response);
 }

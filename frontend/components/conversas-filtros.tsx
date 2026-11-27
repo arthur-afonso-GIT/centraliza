@@ -40,6 +40,7 @@ export default function ConversasFiltros({ conversas, selecionada, onSelecionar,
       {filtradas.map(c => <li key={c.id}>
         <button type="button" className={selecionada === c.id ? 'is-selected' : ''} aria-current={selecionada === c.id ? 'true' : undefined} onClick={() => onSelecionar(c.id)}>
           <strong>{c.titulo}</strong>
+          {(c.nao_lidas ?? 0) > 0 && <strong className="conversa-nao-lidas">{c.nao_lidas} {c.nao_lidas === 1 ? 'mensagem não lida' : 'mensagens não lidas'}</strong>}
           <small>{c.participantes.map(p => p.nome).join(', ')}</small>
           <span>{c.ultima_mensagem ?? c.mensagens.at(-1)?.texto ?? 'Nenhuma mensagem ainda'}</span>
         </button>

@@ -8,6 +8,8 @@ export type ConversaFiltravel = {
   atualizada_em: string;
   participantes: ParticipanteConversa[];
   mensagens: MensagemConversa[];
+  ultima_mensagem_lida_id?: number;
+  nao_lidas?: number;
   ultima_mensagem?: string | null;
   proximo_cursor?: string | null;
 };

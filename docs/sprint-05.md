@@ -17,6 +17,7 @@ Este registro reúne **seis novas histórias** do chat cadastradas na lista [Spr
 - O backend de Chats concentra rotas e regras em `backend/chats/`, e a interface e filtros utilizam `frontend/components/` e `frontend/lib/conversas.ts`.
 - A atualização periódica de 15 segundos é preservada. A implementação local de CHAT-04 move a busca para a API e pagina o histórico; veja [contrato e validação pendente](CHAT-04.md).
 - CHAT-01: diagnóstico, correção do envio no PostgreSQL, smoke com duas sessões e roteiro de aceitação em [chat-01.md](chat-01.md). A validação publicada depende do administrador do Render.
+- CHAT-06: contador de não lidas no menu e aviso de nova mensagem fora da tela de Chats, sem o texto da mensagem, em [CHAT-06.md](CHAT-06.md). Depende do CHAT-03.
 - CHAT-01 a CHAT-03 são o núcleo P0. CHAT-04 a CHAT-06 tratam escalabilidade, controle de participantes e notificações. O planejamento não implica que cada uma dessas melhorias já esteja no código.
 
 ## Validação restante

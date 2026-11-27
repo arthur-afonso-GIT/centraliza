@@ -7,14 +7,16 @@ from demandas.views import DemandaPrioridadeView, DemandaPrazoView, DemandaAndam
 from agenda.views import CompromissoDetailView, CompromissoListView, ParticipantesReuniaoView
 from avisos.views import AvisoDetailView, AvisoListView, AvisoLeituraView
 from avisos.rascunhos import RascunhoAvisoDetailView, RascunhoAvisoListView
-from chats.views import ConversaListView, ConversaDetailView, MensagemListView, MembrosChatView
+from chats.views import ConversaListView, ConversaDetailView, ConversaLeituraView, MensagemListView, MembrosChatView, NotificacoesChatView
 from usuarios.views import CsrfView, EquipeDetailAdminView, EquipeDetailView, EquipesAcessiveisView, InspetorListView, LoginView, LogoutView, MeView, MembroEquipeDetailView, MembroEquipeListView, SelecionarEquipeView, VinculosEquipeView
 
 urlpatterns = [
     path("api/compromissos/participantes/", ParticipantesReuniaoView.as_view(), name="compromissos-participantes"),
     path("api/conversas/membros/", MembrosChatView.as_view(), name="conversas-membros"),
+    path("api/notificacoes/chat/", NotificacoesChatView.as_view(), name="notificacoes-chat"),
     path("api/conversas/", ConversaListView.as_view(), name="conversas-list"),
     path("api/conversas/<int:pk>/", ConversaDetailView.as_view(), name="conversas-detail"),
+    path("api/conversas/<int:pk>/leitura/", ConversaLeituraView.as_view(), name="conversas-leitura"),
     path("api/conversas/<int:pk>/mensagens/", MensagemListView.as_view(), name="conversas-mensagens"),
     path("api/demandas/consultas-anteriores/", ConsultasAnterioresView.as_view(), name="demandas-consultas-anteriores"),
     path("api/demandas/<int:pk>/prioridade/", DemandaPrioridadeView.as_view(), name="demandas-prioridade"),
