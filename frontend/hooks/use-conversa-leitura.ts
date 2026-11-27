@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { marcarConversaLida } from '../lib/conversas';
 import type { ConversaFiltravel } from '../lib/conversas-filtros';
 
-export function useConversaLeitura(conversa: ConversaFiltravel | null, aberta: boolean, confirmar: (id: number, cursor: number) => void) {
+export function useConversaLeitura(conversa: ConversaFiltravel | null, aberta: boolean, confirmar: (id: number, cursor: number, naoLidas?: number) => void) {
   const [visivel, setVisivel] = useState(false);
   const [tentativa, setTentativa] = useState(0);
   const [falha, setFalha] = useState<number | null>(null);
@@ -22,7 +22,7 @@ export function useConversaLeitura(conversa: ConversaFiltravel | null, aberta: b
     let ativo = true;
     setFalha(null);
     marcarConversaLida(id, ultima).then(resultado => {
-      if (ativo) confirmar(id, resultado.ultima_mensagem_lida_id);
+      if (ativo) confirmar(id, resultado.ultima_mensagem_lida_id, resultado.nao_lidas);
     }).catch(() => { if (ativo) setFalha(id); });
     return () => { ativo = false; };
   }, [aberta, visivel, id, cursor, ultima, confirmar, tentativa]);

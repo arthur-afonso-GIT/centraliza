@@ -32,7 +32,8 @@ class ConversasApiTest(APITestCase):
         self.assertEqual(sent.data["autor_id"], self.inspetor.id)
         listed = self.client.get("/api/conversas/")
         self.assertEqual(listed.status_code, 200)
-        self.assertEqual(listed.data["resultados"][0]["mensagens"][0]["texto"], "Relatório pronto")
+        self.assertEqual(listed.data["resultados"][0]["ultima_mensagem"], "Relatório pronto")
+        self.assertNotIn("mensagens", listed.data["resultados"][0])
         self.assertEqual(MensagemConversa.objects.count(), 1)
 
     def test_terceiro_e_outra_equipe_nao_leem_nem_enviam(self):

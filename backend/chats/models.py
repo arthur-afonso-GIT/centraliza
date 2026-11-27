@@ -12,7 +12,10 @@ class Conversa(models.Model):
 
     class Meta:
         ordering = ("-atualizada_em", "-id")
-        indexes = [models.Index(fields=("equipe", "-atualizada_em", "-id"), name="conversa_equipe_recente")]
+        indexes = [
+            models.Index(fields=("equipe", "-atualizada_em", "-id"), name="conversa_equipe_recente"),
+            models.Index(fields=("equipe", "-criada_em", "-id"), name="conversa_equipe_criada"),
+        ]
 
 
 class MensagemConversa(models.Model):

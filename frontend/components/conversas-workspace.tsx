@@ -4,7 +4,7 @@ import { ArrowLeft, MessageSquare, Plus, RefreshCw, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError, type User } from '../lib/auth';
 import { EVENTO_LEITURA_CHAT, criarConversa, enviarMensagem, listarConversas, listarMembrosChat, obterConversa } from '../lib/conversas';
-import type { ConversaFiltravel, ParticipanteConversa } from '../lib/conversas-filtros';
+import { filtrosValidos, type FiltrosConversa, type ConversaFiltravel, type ParticipanteConversa } from '../lib/conversas-filtros';
 import { aplicarLeitura, conciliarLeituras } from '../lib/conversas-leitura';
 import { useConversaLeitura } from '../hooks/use-conversa-leitura';
 import ConversasFiltros from './conversas-filtros';
@@ -29,6 +29,19 @@ function combinarConversa(atual: ConversaFiltravel, nova: ConversaFiltravel, usu
 export default function ConversasWorkspace({ user }: { user: User }) {
   const router = useRouter();
   const [conversas, setConversas] = useState<ConversaFiltravel[] | null>(null);
+  const [filtros, setFiltros] = useState<FiltrosConversa>({});
+  const [pesquisando, setPesquisando] = useState(false);
+  const [cursorLista, setCursorLista] = useState<string | null>(null);
+  const [listaExpandida, setListaExpandida] = useState(false);
+  const [maisConversas, setMaisConversas] = useState(false);
+  const consultaAtual = useRef(0);
+  const [aberta, setAberta] = useState<ConversaFiltravel | null>(null);
+  const [buscaHistorico, setBuscaHistorico] = useState('');
+  const [buscaAplicada, setBuscaAplicada] = useState('');
+  const [cursorHistorico, setCursorHistorico] = useState<string | null>(null);
+  const [maisMensagens, setMaisMensagens] = useState(false);
+  const historicoVersao = useRef(0);
+  const prepend = useRef<{ height: number; top: number } | null>(null);
   const [membros, setMembros] = useState<ParticipanteConversa[]>([]);
   const [selecionadaId, setSelecionadaId] = useState<number | null>(null);
   const [mostrarConversa, setMostrarConversa] = useState(false);
@@ -53,31 +66,63 @@ export default function ConversasWorkspace({ user }: { user: User }) {
   const [erro, setErro] = useState('');
   const [tentativa, setTentativa] = useState(0);
   const criacoesLocais = useRef(0);
-  const confirmarLeitura = useCallback((id: number, cursor: number) => {
-    setConversas(items => items?.map(c => c.id === id ? aplicarLeitura(c, cursor, user.id) : c) ?? null);
+  const confirmarLeitura = useCallback((id: number, cursor: number, naoLidas?: number) => {
+    setConversas(items => items?.map(c => c.id === id ? aplicarLeitura(c, cursor, user.id, naoLidas) : c) ?? null);
+    setAberta(c => c?.id === id ? aplicarLeitura(c, cursor, user.id, naoLidas) : c);
     window.dispatchEvent(new Event(EVENTO_LEITURA_CHAT));
   }, [user.id]);
 
   useEffect(() => {
     const controller = new AbortController();
-    Promise.all([listarConversas(controller.signal), listarMembrosChat(controller.signal)])
-      .then(([items, team]) => {
-        setConversas(anteriores => conciliarLeituras(anteriores, items, user.id)); setMembros(team); setErro('');
-        // Aviso de nova mensagem: /chats?conversa=ID abre a conversa indicada.
-        const alvo = Number(new URLSearchParams(window.location.search).get('conversa'));
-        if (items.some(item => item.id === alvo)) { setSelecionadaId(alvo); setMostrarConversa(true); }
-      })
-      .catch((reason: unknown) => {
-        if (reason instanceof DOMException && reason.name === 'AbortError') return;
-        if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
-        else setErro('Não foi possível carregar as conversas. Tente novamente.');
-      });
-    return () => { controller.abort(); };
-  }, [router, tentativa, user.id]);
+    const versao = ++consultaAtual.current;
+    const timer = window.setTimeout(() => {
+      setCursorLista(null); setListaExpandida(false);
+      if (!filtrosValidos(filtros)) { setConversas([]); setPesquisando(false); return; }
+      setPesquisando(true);
+      Promise.all([listarConversas(controller.signal, filtros), listarMembrosChat(controller.signal)])
+        .then(([page, team]) => {
+          if (controller.signal.aborted || versao !== consultaAtual.current) return;
+          setConversas(anteriores => conciliarLeituras(anteriores, page.resultados, user.id)); setCursorLista(page.proximo_cursor ?? null); setMembros(team); setErro('');
+        })
+        .catch((reason: unknown) => {
+          if (controller.signal.aborted) return;
+          if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
+          else setErro('Não foi possível carregar as conversas. Tente novamente.');
+        }).finally(() => { if (!controller.signal.aborted) setPesquisando(false); });
+    }, filtros.palavraChave ? 300 : 0);
+    return () => { controller.abort(); window.clearTimeout(timer); };
+  }, [router, tentativa, filtros, user.id]);
+
+  async function carregarConversas() {
+    if (!cursorLista || maisConversas || pesquisando) return;
+    const versao = consultaAtual.current;
+    setMaisConversas(true);
+    try {
+      const page = await listarConversas(AbortSignal.timeout(15000), { ...filtros, cursor: cursorLista });
+      if (versao !== consultaAtual.current) return;
+      setConversas(items => [...new Map([...(items ?? []), ...page.resultados].map(c => [c.id, c])).values()]);
+      setCursorLista(page.proximo_cursor); setListaExpandida(true); setErro('');
+    } catch { if (versao === consultaAtual.current) setErro('Não foi possível carregar mais conversas. Tente novamente.'); }
+    finally { setMaisConversas(false); }
+  }
+
+  useEffect(() => {
+    const alvo = Number(new URLSearchParams(window.location.search).get('conversa'));
+    if (!Number.isSafeInteger(alvo) || alvo <= 0) return;
+    const controller = new AbortController();
+    obterConversa(alvo, controller.signal).then(conversa => {
+      if (controller.signal.aborted) return;
+      setAberta(conversa); setSelecionadaId(alvo); setMostrarConversa(true);
+    }).catch(reason => {
+      if (!controller.signal.aborted) setErro(reason instanceof ApiError && [403, 404].includes(reason.status)
+        ? 'Esta conversa não está disponível.' : 'Não foi possível abrir a conversa do aviso.');
+    });
+    return () => controller.abort();
+  }, []);
 
   const listaCarregada = conversas !== null;
   useEffect(() => {
-    if (!listaCarregada) return;
+    if (!listaCarregada || listaExpandida || pesquisando || !filtrosValidos(filtros)) return;
     const controller = new AbortController();
     let timer: number;
 
@@ -85,9 +130,11 @@ export default function ConversasWorkspace({ user }: { user: User }) {
       const criacoesAntesDaConsulta = criacoesLocais.current;
       try {
         const signal = AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]);
-        const novas = await listarConversas(signal);
+        const pagina = await listarConversas(signal, filtros);
+        const novas = pagina.resultados;
         // A resposta pode ter sido gerada antes da criação de uma conversa local.
         if (controller.signal.aborted || criacoesAntesDaConsulta !== criacoesLocais.current) return;
+        setCursorLista(pagina.proximo_cursor ?? null);
         setConversas(items => {
           const atuaisPorId = new Map(items?.map(item => [item.id, item]));
           return novas.map(nova => {
@@ -106,20 +153,24 @@ export default function ConversasWorkspace({ user }: { user: User }) {
 
     timer = window.setTimeout(atualizarLista, 30000);
     return () => { controller.abort(); window.clearTimeout(timer); };
-  }, [listaCarregada, router, user.id]);
+  }, [listaCarregada, router, filtros, listaExpandida, pesquisando, user.id]);
 
-  const selecionada = conversas?.find(item => item.id === selecionadaId) ?? null;
+  const selecionada = aberta;
   const receberConversa = useCallback((nova: ConversaFiltravel) => {
-    setConversas(items => items?.map(item => item.id === nova.id ? combinarConversa(item, nova, user.id) : item) ?? null);
+    setAberta(atual => atual?.id === nova.id ? combinarConversa(atual, nova, user.id) : atual);
   }, [user.id]);
-  const { erroLeitura, tentarLeitura } = useConversaLeitura(selecionada, mostrarConversa, confirmarLeitura);
+  const { erroLeitura, tentarLeitura } = useConversaLeitura(selecionada, mostrarConversa && !buscaAplicada, confirmarLeitura);
 
   function selecionar(id: number) {
+    if (id === selecionadaId && mostrarConversa) return;
     noFim.current = true;
     ultimaMensagem.current = undefined;
     setNovasMensagens(false);
     setErroAtualizacao('');
     setEstadoAtualizacao('');
+    historicoVersao.current++;
+    setBuscaHistorico(''); setBuscaAplicada(''); setCursorHistorico(null);
+    setAberta(conversas?.find(c => c.id === id) ?? null);
     setSelecionadaId(id);
     setMostrarConversa(true);
     setErro('');
@@ -130,36 +181,54 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     const controller = new AbortController();
     let timer: number;
     let emCurso = false;
+    let inicial = true;
+    let ultimoId = 0;
+    const versao = ++historicoVersao.current;
     async function atualizar() {
       if (emCurso || controller.signal.aborted) return;
       window.clearTimeout(timer);
       emCurso = true;
-      setEstadoAtualizacao('Atualizando mensagens…');
+      setEstadoAtualizacao('Atualizando mensagensââ‚¬¦');
       try {
-        const nova = await obterConversa(selecionadaId!, controller.signal);
+        let cursor: string | null = null;
+        const apos = ultimoId;
+        do {
+          const nova: ConversaFiltravel = await obterConversa(selecionadaId!, controller.signal,
+            { palavraChave: buscaAplicada, ...(inicial || buscaAplicada ? {} : { apos }), cursor });
+          if (controller.signal.aborted || versao !== historicoVersao.current) return;
+          if (inicial || buscaAplicada) setCursorHistorico(nova.proximo_cursor ?? null);
+          if (buscaAplicada) setAberta(nova);
+          else receberConversa(nova);
+          for (const m of nova.mensagens) ultimoId = Math.max(ultimoId, m.id);
+          cursor = !inicial && !buscaAplicada ? nova.proximo_cursor ?? null : null;
+        } while (cursor);
+        inicial = false;
         if (controller.signal.aborted) return;
-        receberConversa(nova);
         setErroAtualizacao('');
-        setEstadoAtualizacao('Mensagens atualizadas. Atualização automática a cada 15 segundos.');
+        setEstadoAtualizacao(buscaAplicada ? 'Resultado da busca no histórico. Limpe a busca para acompanhar mensagens novas.' : 'Mensagens atualizadas. Atualização automática a cada 15 segundos.');
       } catch (reason) {
         if (controller.signal.aborted) return;
         if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
+        if (reason instanceof ApiError && [403, 404].includes(reason.status)) { setAberta(null); setSelecionadaId(null); setTentativa(v => v + 1); }
         setErroAtualizacao('Não foi possível atualizar as mensagens. Tente novamente.');
         setEstadoAtualizacao('');
       } finally {
         emCurso = false;
-        if (!controller.signal.aborted) timer = window.setTimeout(atualizar, 15000);
+        if (!controller.signal.aborted && !buscaAplicada) timer = window.setTimeout(atualizar, 15000);
       }
     }
     atualizarRef.current = atualizar;
     void atualizar();
     return () => { controller.abort(); window.clearTimeout(timer); atualizarRef.current = () => {}; };
-  }, [selecionadaId, mostrarConversa, receberConversa, router]);
+  }, [selecionadaId, mostrarConversa, receberConversa, router, buscaAplicada]);
 
   useLayoutEffect(() => {
     const lista = listaRef.current;
     const ultima = selecionada?.mensagens.at(-1)?.id;
-    if (lista && noFim.current) lista.scrollTop = lista.scrollHeight;
+    if (lista && prepend.current) {
+      lista.scrollTop = prepend.current.top + lista.scrollHeight - prepend.current.height;
+      prepend.current = null;
+    } else if (lista && noFim.current) lista.scrollTop = lista.scrollHeight;
     else if (ultima !== ultimaMensagem.current) setNovasMensagens(true);
     ultimaMensagem.current = ultima;
   }, [selecionada?.mensagens, selecionadaId, mostrarConversa]);
@@ -172,7 +241,7 @@ export default function ConversasWorkspace({ user }: { user: User }) {
       const nova = await criarConversa(titulo.trim(), participanteIds);
       criacoesLocais.current++;
       setConversas(items => [nova, ...(items ?? []).filter(item => item.id !== nova.id)]);
-      selecionar(nova.id); setCriando(false);
+      selecionar(nova.id); setAberta(nova); setCriando(false);
       setTitulo(''); setParticipanteIds([]);
     } catch (reason) { setErro(reason instanceof Error ? reason.message : 'Não foi possível criar a conversa.'); }
     finally { setBusy(false); }
@@ -189,11 +258,11 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     setErrosEnvio(items => ({ ...items, [id]: '' }));
     try {
       const mensagem = await enviarMensagem(id, texto, envio.clientId);
-      setConversas(items => items?.map(item => item.id !== id ? item : {
-        ...item, mensagens: [...item.mensagens.filter(message => message.id !== mensagem.id), mensagem]
-          .sort((a, b) => a.criada_em.localeCompare(b.criada_em) || a.id - b.id),
-        atualizada_em: mensagem.criada_em,
-      }) ?? null);
+      setAberta(item => !item || item.id !== id ? item : {
+        ...item, mensagens: [...item.mensagens.filter(m => m.id !== mensagem.id), mensagem]
+          .sort((a,b) => a.criada_em.localeCompare(b.criada_em) || a.id-b.id), atualizada_em: mensagem.criada_em,
+      });
+      setConversas(items => items?.map(c => c.id === id ? { ...c, ultima_mensagem: mensagem.texto } : c) ?? null);
       setRascunhos(items => ({ ...items, [id]: '' }));
       delete envios.current[id];
     } catch (reason) {
@@ -201,11 +270,24 @@ export default function ConversasWorkspace({ user }: { user: User }) {
       setErrosEnvio(items => ({ ...items, [id]: 'Não foi possível confirmar o envio. Seu texto foi preservado.' }));
     } finally { envioEmCurso.current = false; setEnviandoId(null); }
   }
+  async function carregarHistorico() {
+    if (!selecionadaId || !cursorHistorico || maisMensagens) return;
+    const versao = historicoVersao.current;
+    setMaisMensagens(true);
+    try {
+      const nova = await obterConversa(selecionadaId, undefined, { palavraChave: buscaAplicada, cursor: cursorHistorico });
+      if (versao !== historicoVersao.current) return;
+      const lista = listaRef.current;
+      if (lista) prepend.current = { height: lista.scrollHeight, top: lista.scrollTop };
+      receberConversa(nova); setCursorHistorico(nova.proximo_cursor ?? null); setErroAtualizacao('');
+    } catch { if (versao === historicoVersao.current) setErroAtualizacao('Não foi possível carregar mensagens anteriores. Tente novamente.'); }
+    finally { setMaisMensagens(false); }
+  }
   function alternarParticipante(id: number) {
     setParticipanteIds(ids => ids.includes(id) ? ids.filter(item => item !== id) : [...ids, id]);
   }
 
-  if (!conversas && !erro) return <section className="chats-loading"><span className="spinner" /><p>Carregando conversas…</p></section>;
+  if (!conversas && !erro) return <section className="chats-loading"><span className="spinner" /><p>Carregando conversasââ‚¬¦</p></section>;
   if (!conversas) return <section className="chats-loading" role="alert"><p>{erro}</p><button className="secondary" onClick={() => { setErro(''); setTentativa(value => value + 1); }}>Tentar novamente</button></section>;
 
   return <section className={`chats-layout${mostrarConversa ? ' show-conversation' : ''}`} aria-label="Conversas da equipe">
@@ -216,7 +298,9 @@ export default function ConversasWorkspace({ user }: { user: User }) {
         <fieldset><legend>Participantes</legend>{membros.length ? membros.map(member => <label key={member.id}><input type="checkbox" checked={participanteIds.includes(member.id)} onChange={() => alternarParticipante(member.id)} />{member.nome}</label>) : <p>Não há outros integrantes ativos nesta equipe.</p>}</fieldset>
         <div className="chats-create-actions"><button className="primary" disabled={busy || !titulo.trim() || !participanteIds.length}>Criar conversa</button><button type="button" className="secondary" onClick={() => setCriando(false)}>Cancelar</button></div>
       </form>}
-      <ConversasFiltros conversas={conversas} selecionada={selecionadaId} onSelecionar={selecionar} />
+      <ConversasFiltros conversas={conversas} selecionada={selecionadaId} onSelecionar={selecionar} filtros={filtros} onFiltros={setFiltros} membros={membros} carregando={pesquisando} />
+      {cursorLista && <button className="secondary" disabled={maisConversas || pesquisando} onClick={carregarConversas}>{maisConversas ? 'Carregandoââ‚¬¦' : 'Carregar mais conversas'}</button>}
+      {listaExpandida && <button className="secondary" onClick={() => setTentativa(v => v+1)}>Atualizar lista</button>}
     </div>
     <div className="chats-thread">
       {selecionada ? <>
@@ -224,11 +308,13 @@ export default function ConversasWorkspace({ user }: { user: User }) {
         <output className="chats-sync">{estadoAtualizacao}</output>
         {erroLeitura && <div className="chats-error" role="alert">Não foi possível registrar a leitura. <button className="secondary" onClick={tentarLeitura}>Tentar novamente</button></div>}
         {erroAtualizacao && <div className="chats-error" role="alert">{erroAtualizacao} <button className="secondary" onClick={() => atualizarRef.current()}>Tentar atualizar novamente</button></div>}
+        <form className="chats-composer" onSubmit={event => { event.preventDefault(); if (buscaHistorico.trim() === buscaAplicada) { atualizarRef.current(); return; } historicoVersao.current++; setCursorHistorico(null); setAberta(c => c ? { ...c, mensagens: [] } : null); setBuscaAplicada(buscaHistorico.trim()); }}><label htmlFor="busca-historico">Buscar no histórico</label><div><input id="busca-historico" type="search" maxLength={200} value={buscaHistorico} onChange={e => setBuscaHistorico(e.target.value)} /><button className="secondary">Buscar mensagens</button></div></form>
+        {cursorHistorico && <button className="secondary" disabled={maisMensagens} onClick={carregarHistorico}>{maisMensagens ? 'Carregandoââ‚¬¦' : 'Carregar mensagens anteriores'}</button>}
         <ol ref={listaRef} onScroll={() => { const lista = listaRef.current; if (lista) { noFim.current = lista.scrollHeight - lista.scrollTop - lista.clientHeight < 48; if (noFim.current) setNovasMensagens(false); } }} className="chats-messages" aria-label="Mensagens">{selecionada.mensagens.length ? selecionada.mensagens.map(message => <li key={message.id} className={message.autor_id === user.id ? 'mine' : ''}><strong>{message.autor_id === user.id ? 'Você' : message.autor_nome}</strong><p>{message.texto}</p><time dateTime={message.criada_em}>{horario(message.criada_em)}</time></li>) : <li className="chats-no-messages">Nenhuma mensagem ainda. Envie a primeira para iniciar a conversa.</li>}</ol>
         {novasMensagens && <button className="secondary" onClick={() => { const lista = listaRef.current; if (lista) lista.scrollTop = lista.scrollHeight; noFim.current = true; setNovasMensagens(false); }}>Ver novas mensagens</button>}
         {errosEnvio[selecionada.id] && <p className="chats-error" role="alert">{errosEnvio[selecionada.id]}</p>}
-        {enviandoId === selecionada.id && <output className="chats-sync">Enviando mensagem…</output>}
-        <form className="chats-composer" onSubmit={enviar}><label htmlFor="mensagem-conversa">Mensagem</label><div><textarea id="mensagem-conversa" maxLength={4000} rows={2} value={rascunho} disabled={enviandoId === selecionada.id} onChange={event => setRascunhos(items => ({ ...items, [selecionada.id]: event.target.value }))} placeholder="Escreva uma mensagem para a equipe" /><button className="primary" disabled={enviandoId !== null || !rascunho.trim()} aria-label={errosEnvio[selecionada.id] ? "Tentar enviar novamente" : "Enviar mensagem"}><Send size={18} /><span>{enviandoId === selecionada.id ? "Enviando…" : errosEnvio[selecionada.id] ? "Tentar novamente" : "Enviar"}</span></button></div></form>
+        {enviandoId === selecionada.id && <output className="chats-sync">Enviando mensagemââ‚¬¦</output>}
+        <form className="chats-composer" onSubmit={enviar}><label htmlFor="mensagem-conversa">Mensagem</label><div><textarea id="mensagem-conversa" maxLength={4000} rows={2} value={rascunho} disabled={enviandoId === selecionada.id} onChange={event => setRascunhos(items => ({ ...items, [selecionada.id]: event.target.value }))} placeholder="Escreva uma mensagem para a equipe" /><button className="primary" disabled={enviandoId !== null || !rascunho.trim()} aria-label={errosEnvio[selecionada.id] ? "Tentar enviar novamente" : "Enviar mensagem"}><Send size={18} /><span>{enviandoId === selecionada.id ? "Enviandoââ‚¬¦" : errosEnvio[selecionada.id] ? "Tentar novamente" : "Enviar"}</span></button></div></form>
       </> : <div className="chats-blank"><MessageSquare size={34} /><h2>{conversas.length ? 'Escolha uma conversa' : 'Nenhuma conversa ainda'}</h2><p>{conversas.length ? 'Selecione uma conversa da lista para ler e responder.' : 'Crie uma conversa para trocar mensagens com integrantes da equipe.'}</p></div>}
       {erro && <p className="chats-error" role="alert">{erro}</p>}
     </div>

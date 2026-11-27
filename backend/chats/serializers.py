@@ -53,6 +53,17 @@ class MarcarLeituraSerializer(serializers.Serializer):
     mensagem_id = serializers.IntegerField(min_value=1, max_value=9223372036854775807)
 
 
+class ResumoConversaSerializer(serializers.ModelSerializer):
+    ultima_mensagem_lida_id = serializers.IntegerField(read_only=True)
+    nao_lidas = serializers.IntegerField(read_only=True)
+    participantes = MembroChatSerializer(many=True, read_only=True)
+    ultima_mensagem = serializers.CharField(read_only=True, allow_null=True)
+
+    class Meta:
+        model = Conversa
+        fields = ("id", "titulo", "criada_em", "atualizada_em", "participantes", "ultima_mensagem", "ultima_mensagem_lida_id", "nao_lidas")
+
+
 class CriarConversaSerializer(serializers.Serializer):
     titulo = serializers.CharField(max_length=160, trim_whitespace=True)
     participante_ids = serializers.ListField(child=serializers.IntegerField(min_value=1), allow_empty=False)

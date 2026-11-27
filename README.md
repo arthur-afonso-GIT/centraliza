@@ -41,7 +41,7 @@ Available in the current version:
 - **Protected evidence files** — attach, list, download, and logically remove PDF, JPEG, and PNG evidence through authorized request endpoints, with every change recorded in the timeline.
 - **Team agenda** — browse commitments by day, week, or month; managers can create, edit, link requests, select participants, detect schedule conflicts, and cancel entries in Fortaleza time; inspectors can schedule alignment meetings with a title, date, start and end times, and agenda.
 - **Team notices** — managers publish, edit, target, schedule, expire, and cancel urgent or informational notices; inspectors receive the active notices authorized for them.
-- **Team chats** — active team members create conversations, exchange persisted messages, and filter authorized conversations by keyword, date, and participant. The interface refreshes every 15 seconds. A counter on the Chats menu item and in-app alerts show new messages from anywhere in the workspace, without exposing message text.
+- **Team chats** — active team members create conversations, exchange persisted messages, and filter authorized conversations by keyword, date, and participant. Message updates run every 15 seconds. Conversation search runs on the API, with cursor pagination and paginated history. Unread counters and in-app notifications remain available throughout the workspace, without exposing message text.
 - **Session navigation** — redirect to the entry screen without a valid server session, preserve the session across reloads, and sign out.
 - **Accessible interaction** — keyboard navigation, visible focus, a skip-to-content link, descriptive page titles, and checked color contrast.
 - **Recovery states** — loading, empty, API error and retry feedback, plus a page-not-found screen.
@@ -49,7 +49,7 @@ Available in the current version:
 Planned operational capabilities:
 
 - **Inspection execution** — expand inspection-specific workflows beyond progress records and evidence files.
-- **Team communication at scale** — paginate message history and move conversation search to the API when local histories grow.
+- **Team communication at scale** — expand operational validation and monitoring for larger teams.
 - **Monitoring** — summarize pending work, overdue requests, critical activities, and team progress.
 
 ## Team workspace
@@ -79,6 +79,7 @@ The interface and supporting project documents use Brazilian Portuguese:
 - [Operational MVP roadmap](docs/plano-mvp-operacional.md) — complete request workflow, protected attachments, managed calendar, notices, and acceptance criteria.
 - [Post-MVP evolution plan](docs/plano-evolucao-pos-mvp.md) — SEI-assisted intake, role-specific dashboards, team administration, structured inspections, audit, and rollout.
 - [SEI-assisted intake discovery](docs/descoberta-integracao-sei.md) — confirmed decisions, candidate fields, permission questions, anonymization, and Cycle 0 exit criteria.
+- [Chat history and API pagination](docs/CHAT-04.md) — search, cursors, deployment migration, and validation.
 - [Chats and conversation filters](docs/FILTRO_CONVERSAS.md) — access rules, API routes, filter behavior, and current limits.
 - [Sprint 01 delivery record](docs/sprint-01.md) — user stories, delivery references, implementation context, and remaining validation.
 - [Sprint 02 delivery record](docs/sprint-02.md) — request deadline and priority rules, implementation references, and remaining validation.

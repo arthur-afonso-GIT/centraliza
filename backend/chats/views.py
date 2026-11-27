@@ -1,5 +1,5 @@
 from django.db import transaction
-from django.db.models import F, OuterRef, Prefetch, Subquery, Value
+from django.db.models import Count, F, OuterRef, Subquery, Value
 from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -8,9 +8,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from chats.models import Conversa, LeituraConversa, MensagemConversa
+from chats.pesquisa import parametros, filtrar_conversas, filtrar_mensagens, paginar
 from chats.serializers import (
-    ConversaSerializer, CriarConversaSerializer, CriarMensagemSerializer,
-    MarcarLeituraSerializer, MembroChatSerializer, MensagemSerializer, membros_ativos,
+    CriarConversaSerializer, CriarMensagemSerializer, MarcarLeituraSerializer,
+    MembroChatSerializer, MensagemSerializer, ResumoConversaSerializer, membros_ativos,
 )
 from usuarios.models import VinculoEquipe
 
@@ -28,16 +29,32 @@ def conversas_permitidas(user):
 
 
 def conversa_completa(queryset, user):
-    return queryset.prefetch_related(
-        "participantes", "mensagens__autor",
-        Prefetch("leituras", queryset=LeituraConversa.objects.filter(usuario=user), to_attr="leituras_usuario"),
+    leitura = LeituraConversa.objects.filter(conversa_id=OuterRef("pk"), usuario=user)
+    cursor = Coalesce(Subquery(leitura.values("ultima_mensagem_lida_id")[:1]), Value(0))
+    novas = (MensagemConversa.objects.filter(conversa_id=OuterRef("pk"), id__gt=OuterRef("ultima_mensagem_lida_id"))
+             .exclude(autor=user).order_by().values("conversa_id").annotate(total=Count("pk")).values("total"))
+    return queryset.prefetch_related("participantes").annotate(
+        ultima_mensagem_lida_id=cursor,
+    ).annotate(
+        nao_lidas=Coalesce(Subquery(novas), Value(0)),
+        ultima_mensagem=Subquery(MensagemConversa.objects.filter(conversa_id=OuterRef("pk"))
+                                .order_by("-criada_em", "-id").values("texto")[:1]),
     )
 
 
 def conversa_para_escrita(user, pk):
-    # PostgreSQL não permite FOR UPDATE com DISTINCT na mesma consulta.
     permitidas = conversas_permitidas(user).values("pk")
     return get_object_or_404(Conversa.objects.filter(pk__in=permitidas).select_for_update(), pk=pk)
+
+
+def pagina_mensagens(request, conversa, p):
+    qs = filtrar_mensagens(conversa.mensagens.select_related("autor"), p)
+    if "apos" in p:
+        qs = qs.filter(id__gt=p["apos"])
+    rows, cursor = paginar(qs, request, p, f"mensagens:{conversa.pk}", asc="apos" in p)
+    if "apos" not in p:
+        rows.reverse()
+    return {"resultados": MensagemSerializer(rows, many=True).data, "proximo_cursor": cursor}
 
 
 class MembrosChatView(APIView):
@@ -49,8 +66,11 @@ class MembrosChatView(APIView):
 
 class ConversaListView(APIView):
     def get(self, request):
-        conversas = conversa_completa(conversas_permitidas(request.user), request.user).order_by("-atualizada_em", "-id")
-        return Response({"resultados": ConversaSerializer(conversas, many=True, context={"request": request}).data})
+        permitidas = conversas_permitidas(request.user)
+        p = parametros(request)
+        conversas = conversa_completa(filtrar_conversas(permitidas, p), request.user)
+        rows, cursor = paginar(conversas, request, p, "conversas")
+        return Response({"resultados": ResumoConversaSerializer(rows, many=True).data, "proximo_cursor": cursor})
 
     @transaction.atomic
     def post(self, request):
@@ -61,16 +81,22 @@ class ConversaListView(APIView):
             titulo=serializer.validated_data["titulo"], equipe_id=request.user.equipe_id, criador=request.user,
         )
         conversa.participantes.set([request.user.id, *serializer.validated_data["participante_ids"]])
-        return Response(ConversaSerializer(conversa_completa(Conversa.objects, request.user).get(pk=conversa.pk), context={"request": request}).data, status=status.HTTP_201_CREATED)
+        data = ResumoConversaSerializer(conversa_completa(Conversa.objects, request.user).get(pk=conversa.pk)).data
+        return Response({**data, "mensagens": [], "proximo_cursor": None}, status=status.HTTP_201_CREATED)
 
 
 class ConversaDetailView(APIView):
     def get(self, request, pk):
         conversa = get_object_or_404(conversa_completa(conversas_permitidas(request.user), request.user), pk=pk)
-        return Response(ConversaSerializer(conversa, context={"request": request}).data)
+        page = pagina_mensagens(request, conversa, parametros(request))
+        return Response({**ResumoConversaSerializer(conversa).data, "mensagens": page["resultados"], "proximo_cursor": page["proximo_cursor"]})
 
 
 class MensagemListView(APIView):
+    def get(self, request, pk):
+        conversa = get_object_or_404(conversas_permitidas(request.user), pk=pk)
+        return Response(pagina_mensagens(request, conversa, parametros(request)))
+
     @transaction.atomic
     def post(self, request, pk):
         conversa = conversa_para_escrita(request.user, pk)
@@ -105,7 +131,8 @@ class ConversaLeituraView(APIView):
         if mensagem_id > leitura.ultima_mensagem_lida_id:
             leitura.ultima_mensagem_lida_id = mensagem_id
             leitura.save(update_fields=["ultima_mensagem_lida_id"])
-        return Response({"ultima_mensagem_lida_id": leitura.ultima_mensagem_lida_id})
+        return Response({"ultima_mensagem_lida_id": leitura.ultima_mensagem_lida_id,
+                         "nao_lidas": conversa.mensagens.filter(id__gt=leitura.ultima_mensagem_lida_id).exclude(autor=request.user).count()})
 
 
 class NotificacoesChatView(APIView):
