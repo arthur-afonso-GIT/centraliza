@@ -8,6 +8,9 @@ export type ConversaFiltravel = {
   atualizada_em: string;
   participantes: ParticipanteConversa[];
   mensagens: MensagemConversa[];
+  // Opcionais durante a transição de API e para fixtures anteriores à CHAT-03.
+  ultima_mensagem_lida_id?: number;
+  nao_lidas?: number;
 };
 export type FiltrosConversa = {
   palavraChave?: string;

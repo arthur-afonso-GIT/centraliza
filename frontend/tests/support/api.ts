@@ -61,6 +61,7 @@ export async function instalarApi(page: Page) {
     if (membro && request.method() === 'PATCH') { const body = request.postDataJSON() as Record<string, unknown>; const index = membros.findIndex(item => item.id === Number(membro[1])); membros[index] = { ...membros[index], ...body }; return route.fulfill({ json: membros[index] }); }
     if (url.pathname === '/api/usuarios/inspetores/') return perfil === 'gestor' ? route.fulfill({ json: { resultados: [{ id: 2, nome: 'Inspetor de teste' }, { id: 3, nome: 'Segundo inspetor' }] } }) : route.fulfill({ status: 403, json: {} });
     if (url.pathname === '/api/conversas/' && request.method() === 'GET') return route.fulfill({ json: { resultados: [] } });
+    if (url.pathname === '/api/notificacoes/chat/') return route.fulfill({ json: { total: 0, conversas: [] } });
     if (url.pathname === '/api/conversas/membros/') return route.fulfill({ json: { resultados: membros.filter(item => item.is_active && item.id !== (perfil === 'gestor' ? 1 : 2)).map(item => ({ id: item.id, nome: item.nome })) } });
     if (url.pathname === '/api/importacoes/sei/' && request.method() === 'POST') {
       if (perfil !== 'gestor') return route.fulfill({ status: 403, json: { detail: 'Somente gestores podem preparar importações do SEI nesta etapa.' } });

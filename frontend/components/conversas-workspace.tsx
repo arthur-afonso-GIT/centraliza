@@ -3,23 +3,27 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Synthet
 import { ArrowLeft, MessageSquare, Plus, RefreshCw, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError, type User } from '../lib/auth';
-import { criarConversa, enviarMensagem, listarConversas, listarMembrosChat, obterConversa } from '../lib/conversas';
+import { EVENTO_LEITURA_CHAT, criarConversa, enviarMensagem, listarConversas, listarMembrosChat, obterConversa } from '../lib/conversas';
 import type { ConversaFiltravel, ParticipanteConversa } from '../lib/conversas-filtros';
+import { aplicarLeitura, conciliarLeituras } from '../lib/conversas-leitura';
+import { useConversaLeitura } from '../hooks/use-conversa-leitura';
 import ConversasFiltros from './conversas-filtros';
 
 const horario = (value: string) => new Intl.DateTimeFormat('pt-BR', {
   day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'America/Fortaleza',
 }).format(new Date(value));
 
-function combinarConversa(atual: ConversaFiltravel, nova: ConversaFiltravel): ConversaFiltravel {
+function combinarConversa(atual: ConversaFiltravel, nova: ConversaFiltravel, usuarioId: number): ConversaFiltravel {
   // Uma leitura iniciada antes de um envio pode chegar depois da confirmação.
   const mensagens = new Map(atual.mensagens.map(message => [message.id, message]));
   nova.mensagens.forEach(message => mensagens.set(message.id, message));
-  return {
+  const combinada = {
     ...nova,
     atualizada_em: atual.atualizada_em > nova.atualizada_em ? atual.atualizada_em : nova.atualizada_em,
     mensagens: [...mensagens.values()].sort((a, b) => a.criada_em.localeCompare(b.criada_em) || a.id - b.id),
   };
+  // A leitura confirmada localmente não regride com uma resposta mais antiga.
+  return aplicarLeitura(combinada, atual.ultima_mensagem_lida_id ?? 0, usuarioId);
 }
 
 export default function ConversasWorkspace({ user }: { user: User }) {
@@ -49,18 +53,27 @@ export default function ConversasWorkspace({ user }: { user: User }) {
   const [erro, setErro] = useState('');
   const [tentativa, setTentativa] = useState(0);
   const criacoesLocais = useRef(0);
+  const confirmarLeitura = useCallback((id: number, cursor: number) => {
+    setConversas(items => items?.map(c => c.id === id ? aplicarLeitura(c, cursor, user.id) : c) ?? null);
+    window.dispatchEvent(new Event(EVENTO_LEITURA_CHAT));
+  }, [user.id]);
 
   useEffect(() => {
     const controller = new AbortController();
     Promise.all([listarConversas(controller.signal), listarMembrosChat(controller.signal)])
-      .then(([items, team]) => { setConversas(items); setMembros(team); setErro(''); })
+      .then(([items, team]) => {
+        setConversas(anteriores => conciliarLeituras(anteriores, items, user.id)); setMembros(team); setErro('');
+        // Aviso de nova mensagem: /chats?conversa=ID abre a conversa indicada.
+        const alvo = Number(new URLSearchParams(window.location.search).get('conversa'));
+        if (items.some(item => item.id === alvo)) { setSelecionadaId(alvo); setMostrarConversa(true); }
+      })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === 'AbortError') return;
         if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
         else setErro('Não foi possível carregar as conversas. Tente novamente.');
       });
     return () => { controller.abort(); };
-  }, [router, tentativa]);
+  }, [router, tentativa, user.id]);
 
   const listaCarregada = conversas !== null;
   useEffect(() => {
@@ -79,7 +92,7 @@ export default function ConversasWorkspace({ user }: { user: User }) {
           const atuaisPorId = new Map(items?.map(item => [item.id, item]));
           return novas.map(nova => {
             const atual = atuaisPorId.get(nova.id);
-            return atual ? combinarConversa(atual, nova) : nova;
+            return atual ? combinarConversa(atual, nova, user.id) : nova;
           });
         });
       } catch (reason) {
@@ -93,12 +106,13 @@ export default function ConversasWorkspace({ user }: { user: User }) {
 
     timer = window.setTimeout(atualizarLista, 30000);
     return () => { controller.abort(); window.clearTimeout(timer); };
-  }, [listaCarregada, router]);
+  }, [listaCarregada, router, user.id]);
 
   const selecionada = conversas?.find(item => item.id === selecionadaId) ?? null;
   const receberConversa = useCallback((nova: ConversaFiltravel) => {
-    setConversas(items => items?.map(item => item.id === nova.id ? combinarConversa(item, nova) : item) ?? null);
-  }, []);
+    setConversas(items => items?.map(item => item.id === nova.id ? combinarConversa(item, nova, user.id) : item) ?? null);
+  }, [user.id]);
+  const { erroLeitura, tentarLeitura } = useConversaLeitura(selecionada, mostrarConversa, confirmarLeitura);
 
   function selecionar(id: number) {
     noFim.current = true;
@@ -206,8 +220,9 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     </div>
     <div className="chats-thread">
       {selecionada ? <>
-        <header className="chats-thread-heading"><button className="chats-back" onClick={() => setMostrarConversa(false)} aria-label="Voltar para conversas"><ArrowLeft size={20} /></button><div><h2>{selecionada.titulo}</h2><p>{selecionada.participantes.map(item => item.nome).join(', ')}</p></div><button className="chats-refresh" onClick={() => atualizarRef.current()} aria-label="Atualizar mensagens"><RefreshCw size={18} /></button></header>
+        <header className="chats-thread-heading"><button className="chats-back" onClick={() => { setMostrarConversa(false); setSelecionadaId(null); }} aria-label="Voltar para conversas"><ArrowLeft size={20} /></button><div><h2>{selecionada.titulo}</h2><p>{selecionada.participantes.map(item => item.nome).join(', ')}</p></div><button className="chats-refresh" onClick={() => atualizarRef.current()} aria-label="Atualizar mensagens"><RefreshCw size={18} /></button></header>
         <output className="chats-sync">{estadoAtualizacao}</output>
+        {erroLeitura && <div className="chats-error" role="alert">Não foi possível registrar a leitura. <button className="secondary" onClick={tentarLeitura}>Tentar novamente</button></div>}
         {erroAtualizacao && <div className="chats-error" role="alert">{erroAtualizacao} <button className="secondary" onClick={() => atualizarRef.current()}>Tentar atualizar novamente</button></div>}
         <ol ref={listaRef} onScroll={() => { const lista = listaRef.current; if (lista) { noFim.current = lista.scrollHeight - lista.scrollTop - lista.clientHeight < 48; if (noFim.current) setNovasMensagens(false); } }} className="chats-messages" aria-label="Mensagens">{selecionada.mensagens.length ? selecionada.mensagens.map(message => <li key={message.id} className={message.autor_id === user.id ? 'mine' : ''}><strong>{message.autor_id === user.id ? 'Você' : message.autor_nome}</strong><p>{message.texto}</p><time dateTime={message.criada_em}>{horario(message.criada_em)}</time></li>) : <li className="chats-no-messages">Nenhuma mensagem ainda. Envie a primeira para iniciar a conversa.</li>}</ol>
         {novasMensagens && <button className="secondary" onClick={() => { const lista = listaRef.current; if (lista) lista.scrollTop = lista.scrollHeight; noFim.current = true; setNovasMensagens(false); }}>Ver novas mensagens</button>}

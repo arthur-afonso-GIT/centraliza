@@ -4,6 +4,8 @@ import Link from './navigation-link';
 import { LogOut, Menu, X } from 'lucide-react';
 import { modules } from '../lib/navigation';
 import { obterVinculosEquipe, selecionarEquipe, type TeamMembership, type User } from '../lib/auth';
+import { useNotificacoesChat } from '../hooks/use-notificacoes-chat';
+import ChatNotificacoes from './chat-notificacoes';
 
 export default function WorkspaceLayout({
   page,
@@ -23,6 +25,10 @@ export default function WorkspaceLayout({
   const [equipeAtiva, setEquipeAtiva] = useState<number | null>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const active = modules.find((item) => item.id === page) ?? modules[0];
+  // Na tela de Chats as conversas já mostram as novidades; fora dela, avisa.
+  const chat = useNotificacoesChat(user.id, page !== 'chats');
+  const naoLidas = chat.total > 99 ? '99+' : String(chat.total);
+  const descricaoNaoLidas = `${chat.total} ${chat.total === 1 ? 'mensagem não lida' : 'mensagens não lidas'} no chat`;
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (event: KeyboardEvent) => {
@@ -55,12 +61,13 @@ export default function WorkspaceLayout({
         </span>
         <button
           ref={menuButton}
-          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={`${menuOpen ? 'Fechar menu' : 'Abrir menu'}${chat.total > 0 ? `, ${descricaoNaoLidas}` : ''}`}
           aria-controls="menu-principal"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X /> : <Menu />}
+          {chat.total > 0 && <span className="menu-count" aria-hidden="true">{naoLidas}</span>}
         </button>
       </header>
       <aside
@@ -80,6 +87,7 @@ export default function WorkspaceLayout({
                 key={item.id}
                 href={item.href}
                 aria-current={page === item.id ? 'page' : undefined}
+                aria-label={item.id === 'chats' && chat.total > 0 ? `${item.title}, ${descricaoNaoLidas}` : undefined}
                 onClick={() => {
                   setMenuOpen(false);
                   if (menuOpen && page === item.id) menuButton.current?.focus();
@@ -87,6 +95,7 @@ export default function WorkspaceLayout({
               >
                 <ItemIcon size={20} />
                 {item.title}
+                {item.id === 'chats' && chat.total > 0 && <span className="nav-count" aria-hidden="true">{naoLidas}</span>}
                 {page === item.id && <span className="active-dot" />}
               </Link>
             );
@@ -122,6 +131,7 @@ export default function WorkspaceLayout({
         </header>
         {children}
       </div>
+      <ChatNotificacoes avisos={chat.avisos} dispensar={chat.dispensar} />
     </div>
   );
 }

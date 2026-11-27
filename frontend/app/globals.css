@@ -68,6 +68,15 @@ p { line-height: 1.65; }
 .sidebar nav a[aria-current] { background: var(--visat-soft); color: var(--visat-red-dark); font-weight: 650; }
 .active-dot, .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--visat-red); }
 .active-dot { margin-left: auto; }
+.nav-count { margin-left: auto; min-width: 22px; padding: 1px 7px; border-radius: 999px; background: var(--visat-red-dark); color: #fff; font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }.nav-count + .active-dot { margin-left: 0; }
+.mobile-header button { position: relative; }.menu-count { position: absolute; top: -6px; right: -6px; min-width: 20px; padding: 1px 5px; border-radius: 999px; background: var(--visat-red-dark); color: #fff; font-size: 11px; font-weight: 700; line-height: 18px; }
+.chat-avisos { position: fixed; right: 24px; bottom: 24px; z-index: 60; display: grid; gap: 10px; width: min(380px, calc(100vw - 32px)); }
+.chat-aviso { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 12px; align-items: start; padding: 14px 14px 14px 16px; background: #fff; border: 1px solid var(--visat-border); border-left: 4px solid var(--visat-red); border-radius: 8px; box-shadow: 0 10px 30px rgba(36,41,44,.14); }
+.chat-aviso > svg { color: var(--visat-red); margin-top: 2px; }.chat-aviso p { margin: 0; line-height: 1.45; font-size: 14px; overflow-wrap: anywhere; }.chat-aviso small { display: block; margin-top: 2px; color: var(--visat-muted); font-size: 12px; }
+.chat-aviso a { display: inline-block; margin-top: 6px; color: var(--visat-red-dark); font-size: 13px; font-weight: 700; text-decoration: underline; }
+.chat-aviso button { border: 0; background: transparent; color: var(--visat-muted); padding: 4px; border-radius: 6px; cursor: pointer; }.chat-aviso button:hover { background: var(--visat-canvas); }
+.chat-aviso a:focus-visible, .chat-aviso button:focus-visible { outline: 3px solid rgba(227,27,43,.35); outline-offset: 2px; }
+@media(max-width: 760px) { .chat-avisos { right: 16px; left: 16px; bottom: 16px; width: auto; } }
 .sidebar-bottom { margin-top: auto; padding-top: 50px; }
 .sidebar-bottom > p { color: var(--visat-muted); font-size: 13px; margin: 12px 0 26px; }
 .identity { display: flex; gap: 11px; border-top: 1px solid var(--visat-border); padding-top: 22px; align-items: center; }
@@ -138,6 +147,7 @@ p { line-height: 1.65; }
 .conversa-resultados button:hover, .conversa-resultados button.is-selected { background: var(--visat-soft); }
 .conversa-resultados button.is-selected { box-shadow: inset 3px 0 var(--visat-red); }
 .conversa-resultados strong { font-size: 14px; }
+.conversa-resultados .conversa-nao-lidas { color: var(--visat-red); font-size: 12px; }
 .conversa-resultados small, .conversa-resultados span { color: var(--visat-muted); font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .conversa-filtros .empty-state { min-height: 140px; border: 0; padding: 22px; }.conversa-filtros .empty-state h2 { font-size: 16px; margin: 0 0 8px; }.conversa-filtros .empty-state p { margin: 0; font-size: 13px; }
 .chats-create { display: grid; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--visat-border); background: var(--visat-canvas); }
