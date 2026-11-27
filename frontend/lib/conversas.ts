@@ -45,3 +45,19 @@ export async function enviarMensagem(conversaId: number, texto: string, clientId
     body: JSON.stringify({ texto, client_id: clientId }), signal: AbortSignal.timeout(15000),
   }));
 }
+
+export type ConversaNotificada = {
+  id: number;
+  titulo: string;
+  nao_lidas: number;
+  ultima_mensagem: { id: number; autor_nome: string; criada_em: string };
+};
+export type NotificacoesChat = { total: number; conversas: ConversaNotificada[] };
+
+// Disparado ao registrar uma leitura, para o contador do menu não esperar a próxima consulta.
+export const EVENTO_LEITURA_CHAT = 'centraliza:chat-leitura';
+
+export async function obterNotificacoesChat(signal?: AbortSignal) {
+  const response = await fetch('/api/notificacoes/chat/', { credentials: 'same-origin', signal });
+  return resposta<NotificacoesChat>(response);
+}

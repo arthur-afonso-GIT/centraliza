@@ -1,5 +1,6 @@
 from django.db import transaction
-from django.db.models import Prefetch
+from django.db.models import F, OuterRef, Prefetch, Subquery, Value
+from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import exceptions, status
@@ -105,3 +106,37 @@ class ConversaLeituraView(APIView):
             leitura.ultima_mensagem_lida_id = mensagem_id
             leitura.save(update_fields=["ultima_mensagem_lida_id"])
         return Response({"ultima_mensagem_lida_id": leitura.ultima_mensagem_lida_id})
+
+
+class NotificacoesChatView(APIView):
+    """Resumo das mensagens não lidas para avisos fora da tela de Chats."""
+
+    def get(self, request):
+        user = request.user
+        cursor = Coalesce(Subquery(
+            LeituraConversa.objects.filter(conversa=OuterRef("conversa"), usuario=user).values("ultima_mensagem_lida_id")[:1]
+        ), Value(0))
+        # Mesma regra das não lidas do CHAT-03: depois do cursor e de outra pessoa.
+        novas = (
+            MensagemConversa.objects.filter(conversa__in=conversas_permitidas(user).values("pk"))
+            .exclude(autor=user).annotate(cursor=cursor).filter(id__gt=F("cursor"))
+            .order_by().values_list("conversa_id", "id")
+        )
+        por_conversa = {}
+        for conversa_id, mensagem_id in novas:
+            total, ultima = por_conversa.get(conversa_id, (0, 0))
+            por_conversa[conversa_id] = (total + 1, max(ultima, mensagem_id))
+        ultimas = MensagemConversa.objects.select_related("autor", "conversa").in_bulk(
+            [ultima for _, ultima in por_conversa.values()]
+        )
+        conversas = sorted((
+            {
+                "id": conversa_id, "titulo": ultimas[ultima].conversa.titulo, "nao_lidas": total,
+                # Sem o texto: o aviso pode aparecer em telas compartilhadas.
+                "ultima_mensagem": {
+                    "id": ultima, "autor_nome": ultimas[ultima].autor.nome, "criada_em": ultimas[ultima].criada_em,
+                },
+            }
+            for conversa_id, (total, ultima) in por_conversa.items()
+        ), key=lambda item: item["ultima_mensagem"]["id"], reverse=True)
+        return Response({"total": sum(item["nao_lidas"] for item in conversas), "conversas": conversas})

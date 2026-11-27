@@ -3,7 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Synthet
 import { ArrowLeft, MessageSquare, Plus, RefreshCw, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ApiError, type User } from '../lib/auth';
-import { criarConversa, enviarMensagem, listarConversas, listarMembrosChat, obterConversa } from '../lib/conversas';
+import { EVENTO_LEITURA_CHAT, criarConversa, enviarMensagem, listarConversas, listarMembrosChat, obterConversa } from '../lib/conversas';
 import type { ConversaFiltravel, ParticipanteConversa } from '../lib/conversas-filtros';
 import { aplicarLeitura, conciliarLeituras } from '../lib/conversas-leitura';
 import { useConversaLeitura } from '../hooks/use-conversa-leitura';
@@ -55,12 +55,18 @@ export default function ConversasWorkspace({ user }: { user: User }) {
   const criacoesLocais = useRef(0);
   const confirmarLeitura = useCallback((id: number, cursor: number) => {
     setConversas(items => items?.map(c => c.id === id ? aplicarLeitura(c, cursor, user.id) : c) ?? null);
+    window.dispatchEvent(new Event(EVENTO_LEITURA_CHAT));
   }, [user.id]);
 
   useEffect(() => {
     const controller = new AbortController();
     Promise.all([listarConversas(controller.signal), listarMembrosChat(controller.signal)])
-      .then(([items, team]) => { setConversas(anteriores => conciliarLeituras(anteriores, items, user.id)); setMembros(team); setErro(''); })
+      .then(([items, team]) => {
+        setConversas(anteriores => conciliarLeituras(anteriores, items, user.id)); setMembros(team); setErro('');
+        // Aviso de nova mensagem: /chats?conversa=ID abre a conversa indicada.
+        const alvo = Number(new URLSearchParams(window.location.search).get('conversa'));
+        if (items.some(item => item.id === alvo)) { setSelecionadaId(alvo); setMostrarConversa(true); }
+      })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === 'AbortError') return;
         if (reason instanceof ApiError && reason.status === 401) router.replace('/login');
