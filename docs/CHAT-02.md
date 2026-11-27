@@ -4,7 +4,7 @@ Responsável: Cecília. Prioridade P0. Fonte: backlog do chat de 23/11/2026.
 
 ## Comportamento implementado
 
-- A lista de conversas e os membros são carregados ao entrar na tela. Ao abrir uma conversa, o frontend consulta imediatamente seu detalhe e agenda a próxima consulta 15 segundos após o término da anterior. Somente a conversa aberta é atualizada. A lista global não é consultada a cada ciclo.
+- A lista de conversas e os membros são carregados ao entrar na tela. Ao abrir uma conversa, o frontend consulta imediatamente seu detalhe e agenda a próxima consulta 15 segundos após o término da anterior. A lista é atualizada separadamente, 30 segundos após a consulta anterior, para descobrir conversas criadas por outras pessoas.
 - Atualização manual e automática compartilham a mesma proteção contra chamadas sobrepostas. Trocar a conversa ou sair cancela a leitura anterior; respostas antigas não substituem a conversa atual. Consultas de detalhe e envios têm timeout de 15 segundos.
 - A interface informa atualização em andamento, sucesso e falha recuperável. O erro tem botão para tentar atualizar novamente; a atualização automática também continua após falhas.
 - O envio mostra “Enviando mensagem…”, bloqueia cliques repetidos e só limpa o texto após confirmação. Em falha, mostra o erro e permite tentar enviar novamente. Rascunhos e tentativas ficam associados à conversa durante a permanência na tela.
@@ -54,4 +54,4 @@ npx playwright test --config playwright.smoke.config.ts chat-02.spec.ts
 
 ## Limites e revisão
 
-Os testes integrados foram locais, não na URL de produção. A revisão de outro integrante e o screencast de produção previstos no checklist do backlog ficam pendentes para a integração da branch. Rascunhos ficam em memória, não sobrevivem ao recarregamento da página. Indicadores de não lidas, notificações fora da tela e paginação pertencem às histórias CHAT-03, CHAT-06 e CHAT-04. A consulta periódica traz o histórico completo somente da conversa aberta.
+Os testes integrados foram locais, não na URL de produção. A revisão de outro integrante e o screencast de produção previstos no checklist do backlog ficam pendentes para a integração da branch. Rascunhos ficam em memória, não sobrevivem ao recarregamento da página. Indicadores de não lidas, notificações fora da tela e paginação pertencem às histórias CHAT-03, CHAT-06 e CHAT-04. A consulta periódica da lista usa o endpoint existente, que inclui os históricos.

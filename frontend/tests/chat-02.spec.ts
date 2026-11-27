@@ -65,6 +65,22 @@ test('não sobrepõe consultas e ignora resposta de conversa anterior', async ({
   await expect(page.getByRole('heading', { name: 'Conversa 2' })).toBeVisible();
 });
 
+test('mostra conversa criada por outro participante sem sair da conversa aberta', async ({ page }) => {
+  await page.clock.install();
+  const { state, conversas } = await preparar(page);
+  const nova = { ...conversas[1], id: 3, titulo: 'Conversa nova de B', mensagens: [] };
+  const botao = page.getByRole('button', { name: /Conversa nova de B/ });
+  await expect(botao).toHaveCount(0);
+  conversas.push(nova);
+
+  await page.clock.fastForward(30000);
+  await expect(botao).toBeVisible();
+  expect(state.listas).toBe(2);
+  await expect(page.getByRole('heading', { name: 'Conversa 1' })).toBeVisible();
+  await botao.click();
+  await expect(page.getByRole('heading', { name: 'Conversa nova de B' })).toBeVisible();
+});
+
 test('preserva rascunho e identidade no reenvio após resposta perdida', async ({ page }) => {
   const { state } = await preparar(page);
   state.perderResposta = true;

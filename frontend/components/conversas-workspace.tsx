@@ -11,6 +11,17 @@ const horario = (value: string) => new Intl.DateTimeFormat('pt-BR', {
   day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'America/Fortaleza',
 }).format(new Date(value));
 
+function combinarConversa(atual: ConversaFiltravel, nova: ConversaFiltravel): ConversaFiltravel {
+  // Uma leitura iniciada antes de um envio pode chegar depois da confirmação.
+  const mensagens = new Map(atual.mensagens.map(message => [message.id, message]));
+  nova.mensagens.forEach(message => mensagens.set(message.id, message));
+  return {
+    ...nova,
+    atualizada_em: atual.atualizada_em > nova.atualizada_em ? atual.atualizada_em : nova.atualizada_em,
+    mensagens: [...mensagens.values()].sort((a, b) => a.criada_em.localeCompare(b.criada_em) || a.id - b.id),
+  };
+}
+
 export default function ConversasWorkspace({ user }: { user: User }) {
   const router = useRouter();
   const [conversas, setConversas] = useState<ConversaFiltravel[] | null>(null);
@@ -37,6 +48,7 @@ export default function ConversasWorkspace({ user }: { user: User }) {
   const [busy, setBusy] = useState(false);
   const [erro, setErro] = useState('');
   const [tentativa, setTentativa] = useState(0);
+  const criacoesLocais = useRef(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -50,15 +62,42 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     return () => { controller.abort(); };
   }, [router, tentativa]);
 
+  const listaCarregada = conversas !== null;
+  useEffect(() => {
+    if (!listaCarregada) return;
+    const controller = new AbortController();
+    let timer: number;
+
+    async function atualizarLista() {
+      const criacoesAntesDaConsulta = criacoesLocais.current;
+      try {
+        const signal = AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]);
+        const novas = await listarConversas(signal);
+        // A resposta pode ter sido gerada antes da criação de uma conversa local.
+        if (controller.signal.aborted || criacoesAntesDaConsulta !== criacoesLocais.current) return;
+        setConversas(items => {
+          const atuaisPorId = new Map(items?.map(item => [item.id, item]));
+          return novas.map(nova => {
+            const atual = atuaisPorId.get(nova.id);
+            return atual ? combinarConversa(atual, nova) : nova;
+          });
+        });
+      } catch (reason) {
+        if (!controller.signal.aborted && reason instanceof ApiError && reason.status === 401) {
+          router.replace('/login');
+        }
+      } finally {
+        if (!controller.signal.aborted) timer = window.setTimeout(atualizarLista, 30000);
+      }
+    }
+
+    timer = window.setTimeout(atualizarLista, 30000);
+    return () => { controller.abort(); window.clearTimeout(timer); };
+  }, [listaCarregada, router]);
+
   const selecionada = conversas?.find(item => item.id === selecionadaId) ?? null;
   const receberConversa = useCallback((nova: ConversaFiltravel) => {
-    setConversas(items => items?.map(item => {
-      if (item.id !== nova.id) return item;
-      // A GET started before a successful POST must not erase its confirmed message.
-      const mensagens = new Map(item.mensagens.map(message => [message.id, message]));
-      nova.mensagens.forEach(message => mensagens.set(message.id, message));
-      return { ...nova, mensagens: [...mensagens.values()].sort((a, b) => a.criada_em.localeCompare(b.criada_em) || a.id - b.id) };
-    }) ?? null);
+    setConversas(items => items?.map(item => item.id === nova.id ? combinarConversa(item, nova) : item) ?? null);
   }, []);
 
   function selecionar(id: number) {
@@ -117,7 +156,8 @@ export default function ConversasWorkspace({ user }: { user: User }) {
     setBusy(true); setErro('');
     try {
       const nova = await criarConversa(titulo.trim(), participanteIds);
-      setConversas(items => [nova, ...(items ?? [])]);
+      criacoesLocais.current++;
+      setConversas(items => [nova, ...(items ?? []).filter(item => item.id !== nova.id)]);
       selecionar(nova.id); setCriando(false);
       setTitulo(''); setParticipanteIds([]);
     } catch (reason) { setErro(reason instanceof Error ? reason.message : 'Não foi possível criar a conversa.'); }
