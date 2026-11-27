@@ -74,6 +74,33 @@ class ConversasApiTest(APITestCase):
         self.client.force_authenticate(user=None)
         self.assertEqual(self.client.get("/api/conversas/").status_code, 401)
 
+    def test_reenvio_apos_resposta_perdida_nao_duplica_mensagem(self):
+        conversa_id = self.criar().data["id"]
+        url = f"/api/conversas/{conversa_id}/mensagens/"
+        payload = {"texto": "Uma única mensagem", "client_id": "ccdb3e91-7967-47ce-8758-c0fd308731b6"}
+        primeiro = self.client.post(url, payload, format="json")
+        segundo = self.client.post(url, payload, format="json")
+        self.assertEqual(primeiro.status_code, 201)
+        self.assertEqual(segundo.status_code, 200)
+        self.assertEqual(primeiro.data, segundo.data)
+        self.assertEqual(MensagemConversa.objects.count(), 1)
+        conflito = self.client.post(url, {**payload, "texto": "Outro conteúdo"}, format="json")
+        self.assertEqual(conflito.status_code, 409)
+        self.assertEqual(MensagemConversa.objects.count(), 1)
+        self.client.force_authenticate(self.inspetor)
+        self.assertEqual(self.client.post(url, payload, format="json").status_code, 201)
+        self.client.force_authenticate(self.terceiro)
+        self.assertEqual(self.client.post(url, payload, format="json").status_code, 404)
+        self.assertEqual(MensagemConversa.objects.count(), 2)
+
+    def test_client_id_invalido_e_envios_distintos_com_mesmo_texto(self):
+        conversa_id = self.criar().data["id"]
+        url = f"/api/conversas/{conversa_id}/mensagens/"
+        self.assertEqual(self.client.post(url, {"texto": "Oi", "client_id": "inválido"}, format="json").status_code, 400)
+        for key in ("ccdb3e91-7967-47ce-8758-c0fd308731b6", "ccdb3e91-7967-47ce-8758-c0fd308731b7"):
+            self.assertEqual(self.client.post(url, {"texto": "Oi", "client_id": key}, format="json").status_code, 201)
+        self.assertEqual(MensagemConversa.objects.count(), 2)
+
 
 class ConversasSessaoTest(APITestCase):
     @classmethod

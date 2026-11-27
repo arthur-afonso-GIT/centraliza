@@ -1,5 +1,5 @@
 import { ApiError, csrfToken } from './auth';
-import type { ConversaFiltravel, ParticipanteConversa } from './conversas-filtros';
+import type { ConversaFiltravel, MensagemConversa, ParticipanteConversa } from './conversas-filtros';
 
 async function resposta<T>(response: Response): Promise<T> {
   if (response.ok) return response.json() as Promise<T>;
@@ -26,10 +26,14 @@ export async function criarConversa(titulo: string, participanteIds: number[]) {
   }));
 }
 
-export async function enviarMensagem(conversaId: number, texto: string) {
+export async function obterConversa(conversaId: number, signal?: AbortSignal) {
+  return resposta<ConversaFiltravel>(await fetch(`/api/conversas/${conversaId}/`, { credentials: 'same-origin', signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(15000)]) : AbortSignal.timeout(15000) }));
+}
+
+export async function enviarMensagem(conversaId: number, texto: string, clientId: string) {
   const token = await csrfToken();
-  return resposta(await fetch(`/api/conversas/${conversaId}/mensagens/`, {
+  return resposta<MensagemConversa>(await fetch(`/api/conversas/${conversaId}/mensagens/`, {
     method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': token },
-    body: JSON.stringify({ texto }),
+    body: JSON.stringify({ texto, client_id: clientId }), signal: AbortSignal.timeout(15000),
   }));
 }

@@ -19,8 +19,10 @@ class MensagemConversa(models.Model):
     conversa = models.ForeignKey(Conversa, on_delete=models.CASCADE, related_name="mensagens")
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="mensagens_conversa")
     texto = models.CharField(max_length=4000)
+    client_id = models.UUIDField(null=True, blank=True)
     criada_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ("criada_em", "id")
+        constraints = [models.UniqueConstraint(fields=("conversa", "autor", "client_id"), name="mensagem_envio_unico")]
         indexes = [models.Index(fields=("conversa", "criada_em", "id"), name="mensagem_conversa_data")]

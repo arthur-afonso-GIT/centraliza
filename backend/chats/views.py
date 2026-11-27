@@ -65,8 +65,17 @@ class MensagemListView(APIView):
         conversa = get_object_or_404(conversas_permitidas(request.user).select_for_update(of=("self",)), pk=pk)
         serializer = CriarMensagemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        client_id = serializer.validated_data.get("client_id")
+        if client_id:
+            existente = MensagemConversa.objects.filter(
+                conversa=conversa, autor=request.user, client_id=client_id,
+            ).first()
+            if existente:
+                if existente.texto != serializer.validated_data["texto"]:
+                    return Response({"detail": "Identificador já utilizado para outra mensagem."}, status=status.HTTP_409_CONFLICT)
+                return Response(MensagemSerializer(existente).data)
         mensagem = MensagemConversa.objects.create(
-            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"],
+            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"], client_id=client_id,
         )
         Conversa.objects.filter(pk=conversa.pk).update(atualizada_em=timezone.now())
         return Response(MensagemSerializer(mensagem).data, status=status.HTTP_201_CREATED)
