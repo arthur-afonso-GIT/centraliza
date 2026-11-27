@@ -8,6 +8,7 @@
   "scripts": {
     "test": "playwright test",
     "test:smoke:integrado": "playwright test --config playwright.smoke.config.ts",
+    "test:smoke:chat": "playwright test --config playwright.smoke.config.ts chat.spec.ts",
     "typecheck": "tsc --noEmit",
     "dev": "vinext dev",
     "build": "vinext build",

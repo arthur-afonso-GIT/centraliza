@@ -68,4 +68,5 @@ class CriarConversaSerializer(serializers.Serializer):
 
 
 class CriarMensagemSerializer(serializers.Serializer):
+    client_id = serializers.UUIDField(required=False)
     texto = serializers.CharField(max_length=4000, trim_whitespace=True)

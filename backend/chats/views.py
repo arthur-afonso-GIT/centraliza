@@ -21,7 +21,9 @@ def conversas_permitidas(user):
         usuario=user, equipe_id=user.equipe_id, ativo=True,
     ).exists():
         raise exceptions.PermissionDenied("Seu vínculo com esta equipe não está ativo.")
-    return Conversa.objects.filter(equipe_id=user.equipe_id, participantes=user).distinct()
+    # O par conversa/participante é único na tabela intermediária. Este filtro
+    # não duplica conversas; DISTINCT impediria SELECT FOR UPDATE no PostgreSQL.
+    return Conversa.objects.filter(equipe_id=user.equipe_id, participantes=user)
 
 
 def conversa_completa(queryset, user):
@@ -73,8 +75,17 @@ class MensagemListView(APIView):
         conversa = conversa_para_escrita(request.user, pk)
         serializer = CriarMensagemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        client_id = serializer.validated_data.get("client_id")
+        if client_id:
+            existente = MensagemConversa.objects.filter(
+                conversa=conversa, autor=request.user, client_id=client_id,
+            ).first()
+            if existente:
+                if existente.texto != serializer.validated_data["texto"]:
+                    return Response({"detail": "Identificador já utilizado para outra mensagem."}, status=status.HTTP_409_CONFLICT)
+                return Response(MensagemSerializer(existente).data)
         mensagem = MensagemConversa.objects.create(
-            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"],
+            conversa=conversa, autor=request.user, texto=serializer.validated_data["texto"], client_id=client_id,
         )
         Conversa.objects.filter(pk=conversa.pk).update(atualizada_em=timezone.now())
         return Response(MensagemSerializer(mensagem).data, status=status.HTTP_201_CREATED)
